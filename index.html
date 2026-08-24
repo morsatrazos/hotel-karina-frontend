@@ -220,112 +220,114 @@
   <!-- ========================================== -->
   <!-- 4. SECCIÓN DE NUESTRAS SEDES               -->
   <!-- ========================================== -->
-  <section id="sedes" class="max-w-7xl mx-auto space-y-8 text-center py-20 px-6 sm:px-12 bg-[#FFF6EA]">
+  <section id="sedes" class="w-full bg-[#FFF6EA] py-20 px-6 sm:px-12 text-karina-charcoal">
+    <div class="max-w-7xl mx-auto space-y-8 text-center">
 
-    <!-- CABECERA CON CURVA ORGÁNICA -->
-    <div class="space-y-2">
-      <h2 class="text-3xl sm:text-5xl font-light text-karina-charcoal tracking-tight">
-        Nuestras Sedes
-      </h2>
-      <p class="text-xs sm:text-sm text-karina-charcoal/70 max-w-md mx-auto font-light">
-        Oriente es Territorio Kariña.
-      </p>
-
-      <!-- LÍNEA AMARILLA CURVA DE TRAZO SUAVE (SVG CURVED STROKE) -->
-      <div class="flex justify-center pt-1">
-        <svg width="104" height="10" viewBox="0 0 104 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-karina-mustard-light">
-          <path d="M3 7C30 2.5 74 2.5 101 7" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-    </div>
-
-    <!-- CONTROLES FLECHA DE SECCIÓN -->
-    <div class="flex items-center justify-center gap-4 pt-1">
-      <button id="prev-sede-btn" 
-              onclick="navigateSede(-1)" 
-              class="w-10 h-10 rounded-full border border-karina-charcoal/20 bg-white/60 hover:bg-karina-charcoal hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95" 
-              aria-label="Sede anterior">
-        <i class="fa-solid fa-chevron-left text-xs"></i>
-      </button>
-
-      <!-- Dots e Indicador Numérico Light -->
-      <div class="flex items-center gap-2 text-xs text-karina-charcoal/70 font-mono font-normal px-2">
-        <span class="sede-dot w-2.5 h-2.5 rounded-full bg-karina-charcoal transition-all"></span>
-        <span class="sede-dot w-2 h-2 rounded-full bg-karina-charcoal/30 transition-all"></span>
-        <span class="sede-dot w-2 h-2 rounded-full bg-karina-charcoal/30 transition-all"></span>
-        <span id="sede-counter" class="ml-2 font-normal">01 - 03</span>
-      </div>
-
-      <button id="next-sede-btn" 
-              onclick="navigateSede(1)" 
-              class="w-10 h-10 rounded-full border border-karina-charcoal/20 bg-white/60 hover:bg-karina-charcoal hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95" 
-              aria-label="Siguiente sede">
-        <i class="fa-solid fa-chevron-right text-xs"></i>
-      </button>
-    </div>
-
-    <!-- TARJETAS CON DISEÑO ASIMÉTRICO Y TIPOGRAFÍA LIGHT EDITORIAL -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left pt-4">
-      
-      <!-- Sede 0: Maturín -->
-      <div id="sede-card-0" 
-           onclick="openSedeModal(0)" 
-           class="sede-card group cursor-pointer">
-        <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-3 border border-black/5 bg-black/5">
-          <img src="https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg" 
-               alt="Hotel Kariña Maturín" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-          
-          <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <h3 class="text-2xl font-light tracking-tight text-white">Maturín</h3>
-          </div>
-        </div>
-        <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light px-1">
-          Etapa II, Macroparcela MC-30 de La Urbanización Palma Real.
+      <!-- CABECERA CON CURVA ORGÁNICA -->
+      <div class="space-y-2">
+        <h2 class="text-3xl sm:text-5xl font-light text-karina-charcoal tracking-tight">
+          Nuestras Sedes
+        </h2>
+        <p class="text-xs sm:text-sm text-karina-charcoal/70 max-w-md mx-auto font-light">
+          Oriente es Territorio Kariña.
         </p>
+
+        <!-- LÍNEA AMARILLA CURVA DE TRAZO SUAVE (SVG CURVED STROKE) -->
+        <div class="flex justify-center pt-1">
+          <svg width="104" height="10" viewBox="0 0 104 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-karina-mustard-light">
+            <path d="M3 7C30 2.5 74 2.5 101 7" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+        </div>
       </div>
 
-      <!-- Sede 1: Punta de Mata -->
-      <div id="sede-card-1" 
-           onclick="openSedeModal(1)" 
-           class="sede-card group cursor-pointer">
-        <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-3 border border-black/5 bg-black/5">
-          <img src="https://uploads.onecompiler.io/44s48z3dm/1787540097635/Fachada-Aerea.2.jpg" 
-               alt="Hotel Kariña Punta de Mata" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-          
-          <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <h3 class="text-2xl font-light tracking-tight text-white">Punta de Mata</h3>
-          </div>
+      <!-- CONTROLES FLECHA DE SECCIÓN -->
+      <div class="flex items-center justify-center gap-4 pt-1">
+        <button id="prev-sede-btn" 
+                onclick="navigateSede(-1)" 
+                class="w-10 h-10 rounded-full border border-karina-charcoal/20 bg-white/60 hover:bg-karina-charcoal hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95" 
+                aria-label="Sede anterior">
+          <i class="fa-solid fa-chevron-left text-xs"></i>
+        </button>
+
+        <!-- Dots e Indicador Numérico Light -->
+        <div class="flex items-center gap-2 text-xs text-karina-charcoal/70 font-mono font-normal px-2">
+          <span class="sede-dot w-2.5 h-2.5 rounded-full bg-karina-charcoal transition-all"></span>
+          <span class="sede-dot w-2 h-2 rounded-full bg-karina-charcoal/30 transition-all"></span>
+          <span class="sede-dot w-2 h-2 rounded-full bg-karina-charcoal/30 transition-all"></span>
+          <span id="sede-counter" class="ml-2 font-normal">01 - 03</span>
         </div>
-        <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light px-1">
-          Sector Zona Industrial, Ramal 7, al lado del Depósito Empresas Polar.
-        </p>
+
+        <button id="next-sede-btn" 
+                onclick="navigateSede(1)" 
+                class="w-10 h-10 rounded-full border border-karina-charcoal/20 bg-white/60 hover:bg-karina-charcoal hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95" 
+                aria-label="Siguiente sede">
+          <i class="fa-solid fa-chevron-right text-xs"></i>
+        </button>
       </div>
 
-      <!-- Sede 2: El Tigre -->
-      <div id="sede-card-2" 
-           onclick="openSedeModal(2)" 
-           class="sede-card group cursor-pointer">
-        <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-3 border border-black/5 bg-black/5">
-          <img src="https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png" 
-               alt="Hotel Kariña El Tigre" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-          
-          <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <h3 class="text-2xl font-light tracking-tight text-white">El Tigre</h3>
+      <!-- TARJETAS CON DISEÑO ASIMÉTRICO Y TIPOGRAFÍA LIGHT EDITORIAL -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left pt-4">
+        
+        <!-- Sede 0: Maturín -->
+        <div id="sede-card-0" 
+             onclick="openSedeModal(0)" 
+             class="sede-card group cursor-pointer">
+          <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-3 border border-black/5 bg-black/5">
+            <img src="https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg" 
+                 alt="Hotel Kariña Maturín" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+            
+            <div class="absolute bottom-6 left-6 text-white space-y-1">
+              <h3 class="text-2xl font-light tracking-tight text-white">Maturín</h3>
+            </div>
           </div>
+          <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light px-1">
+            Etapa II, Macroparcela MC-30 de La Urbanización Palma Real.
+          </p>
         </div>
-        <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light px-1">
-          A 100mts del Balancín Tricolor, Avenida Ruiz Pineda, cruce con Calle 23 de Enero.
-        </p>
+
+        <!-- Sede 1: Punta de Mata -->
+        <div id="sede-card-1" 
+             onclick="openSedeModal(1)" 
+             class="sede-card group cursor-pointer">
+          <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-3 border border-black/5 bg-black/5">
+            <img src="https://uploads.onecompiler.io/44s48z3dm/1787540097635/Fachada-Aerea.2.jpg" 
+                 alt="Hotel Kariña Punta de Mata" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+            
+            <div class="absolute bottom-6 left-6 text-white space-y-1">
+              <h3 class="text-2xl font-light tracking-tight text-white">Punta de Mata</h3>
+            </div>
+          </div>
+          <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light px-1">
+            Sector Zona Industrial, Ramal 7, al lado del Depósito Empresas Polar.
+          </p>
+        </div>
+
+        <!-- Sede 2: El Tigre -->
+        <div id="sede-card-2" 
+             onclick="openSedeModal(2)" 
+             class="sede-card group cursor-pointer">
+          <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-3 border border-black/5 bg-black/5">
+            <img src="https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png" 
+                 alt="Hotel Kariña El Tigre" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+            
+            <div class="absolute bottom-6 left-6 text-white space-y-1">
+              <h3 class="text-2xl font-light tracking-tight text-white">El Tigre</h3>
+            </div>
+          </div>
+          <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light px-1">
+            A 100mts del Balancín Tricolor, Avenida Ruiz Pineda, cruce con Calle 23 de Enero.
+          </p>
+        </div>
+
       </div>
 
     </div>
-
   </section>
 
   <!-- ========================================== -->
