@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Kariña | Lujo, Confort y Hospitalidad de Clase Mundial</title>
+  <meta name="description" content="Descubre la experiencia de lujo y exclusividad en Hotel Kariña. Sedes de primer nivel, suites ejecutivas, business center de alta tecnología, gastronomía de autor y compromiso social." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            karina: {
+              gold: '#C5A059',
+              goldLight: '#E7CE8F',
+              goldDark: '#99732B',
+              bronze: '#8C6239',
+              dark: '#0A0D14',
+              surface: '#111622',
+              card: '#161D2D',
+              border: '#232D42',
+              cream: '#F9F6F0'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'Playfair Display', 'serif'],
+            display: ['Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS for Animated Borders & Aesthetics -->
+  <style>
+    @property --gradient-angle {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    @keyframes rotate-gradient {
+      0% {
+        --gradient-angle: 0deg;
+      }
+      100% {
+        --gradient-angle: 360deg;
+      }
+    }
+
+    .animated-border-box {
+      position: relative;
+      background: #111622;
+      border-radius: 1rem;
+    }
+
+    .animated-border-box::before,
+    .animated-border-box::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      z-index: -1;
+      background: conic-gradient(
+        from var(--gradient-angle),
+        #C5A059 0%,
+        #3B82F6 25%,
+        #E7CE8F 50%,
+        #9333EA 75%,
+        #C5A059 100%
+      );
+      border-radius: inherit;
+      animation: rotate-gradient 4s linear infinite;
+    }
+
+    .animated-border-box::after {
+      filter: blur(12px);
+      opacity: 0.55;
+    }
+
+    .animated-border-gold {
+      position: relative;
+      background: #161D2D;
+      border-radius: 1rem;
+    }
+
+    .animated-border-gold::before,
+    .animated-border-gold::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      z-index: -1;
+      background: conic-gradient(
+        from var(--gradient-angle),
+        #C5A059,
+        #FFF2B2,
+        #8C6239,
+        #E7CE8F,
+        #C5A059
+      );
+      border-radius: inherit;
+      animation: rotate-gradient 3.5s linear infinite;
+    }
+
+    .animated-border-gold::after {
+      filter: blur(14px);
+      opacity: 0.45;
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF0C2 0%, #C5A059 50%, #99732B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-gradient-bg {
+      background: linear-gradient(135deg, #C5A059 0%, #E7CE8F 50%, #99732B 100%);
+    }
+
+    /* Custom Glassmorphism */
+    .glass-nav {
+      background: rgba(10, 13, 20, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+    }
+
+    .glass-card {
+      background: rgba(22, 29, 45, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(197, 160, 89, 0.12);
+    }
+  </style>
+</head>
+
+<body class="bg-karina-dark text-slate-200 font-sans antialiased selection:bg-karina-gold selection:text-karina-dark overflow-x-hidden">
+
+  <!-- ========================================================================= -->
+  <!-- 1. TOP BAR & NAVBAR -->
+  <!-- ========================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="mainHeader">
+    <!-- Top Announcement Bar -->
+    <div class="hidden md:flex justify-between items-center px-6 lg:px-12 py-2 bg-karina-dark/95 border-b border-karina-border/60 text-xs text-slate-400">
+      <div class="flex items-center space-x-6">
+        <span class="flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5 text-karina-gold"></i> +58 (281) 500-KARIÑA</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5 text-karina-gold"></i> reservas@hotelkarina.com</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-karina-gold"></i> Sedes Principales en Venezuela</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-karina-goldLight font-medium">✨ Tarifa corporativa disponible</span>
+        <div class="flex items-center space-x-3 text-slate-300">
+          <a href="#" class="hover:text-karina-gold transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-3.5 h-3.5"></i></a>
+          <a href="#" class="hover:text-karina-gold transition-colors" aria-label="Facebook"><i data-lucide="facebook" class="w-3.5 h-3.5"></i></a>
+          <a href="#" class="hover:text-karina-gold transition-colors" aria-label="Linkedin"><i data-lucide="linkedin" class="w-3.5 h-3.5"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <nav class="glass-nav px-6 lg:px-12 py-3.5 transition-all duration-300" id="navbar">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-full border border-karina-gold/50 flex items-center justify-center bg-karina-surface shadow-lg shadow-karina-gold/10 group-hover:border-karina-gold transition-all duration-300">
+            <span class="font-serif font-bold text-karina-gold text-lg">K</span>
+          </div>
+          <div>
+            <span class="block font-serif text-lg lg:text-xl font-bold tracking-widest text-white group-hover:text-karina-goldLight transition-colors">HOTEL KARIÑA</span>
+            <span class="block text-[9px] uppercase tracking-[0.25em] text-karina-gold">Luxury & Executive Suites</span>
+          </div>
+        </a>
+
+        <!-- Desktop Menu Links -->
+        <div class="hidden lg:flex items-center space-x-8 text-sm font-medium">
+          <a href="#hero" class="text-slate-200 hover:text-karina-gold transition-colors">Inicio</a>
+          <a href="#sedes" class="text-slate-300 hover:text-karina-gold transition-colors">Sedes</a>
+          <a href="#suites" class="text-slate-300 hover:text-karina-gold transition-colors">Suites</a>
+          <a href="#business" class="text-slate-300 hover:text-karina-gold transition-colors flex items-center gap-1">
+            Business
+            <span class="px-1.5 py-0.5 text-[10px] rounded bg-karina-gold/20 text-karina-gold font-semibold">PRO</span>
+          </a>
+          <a href="#experiencias" class="text-slate-300 hover:text-karina-gold transition-colors">Experiencias</a>
+          <a href="#fundacion" class="text-slate-300 hover:text-karina-gold transition-colors">Fundación</a>
+          <a href="#faqs" class="text-slate-300 hover:text-karina-gold transition-colors">FAQs</a>
+        </div>
+
+        <!-- Action CTA Buttons -->
+        <div class="hidden sm:flex items-center space-x-4">
+          <button onclick="openBookingModal()" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-lg shadow-karina-gold/20">
+            <span class="w-full h-full bg-gradient-to-br from-karina-gold via-karina-goldLight to-karina-goldDark absolute"></span>
+            <span class="relative px-5 py-2 transition-all ease-out bg-karina-dark rounded-full group hover:bg-opacity-0 font-medium text-xs md:text-sm text-karina-gold hover:text-karina-dark">
+              Reservar Ahora
+            </span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2 text-slate-300 hover:text-karina-gold focus:outline-none" aria-label="Abrir Menú">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-6 px-4 space-y-3 bg-karina-surface/98 border-t border-karina-border/60 mt-3 rounded-b-2xl shadow-2xl">
+        <a href="#hero" class="block py-2 text-slate-200 hover:text-karina-gold transition-colors mobile-link">Inicio</a>
+        <a href="#sedes" class="block py-2 text-slate-300 hover:text-karina-gold transition-colors mobile-link">Sedes</a>
+        <a href="#suites" class="block py-2 text-slate-300 hover:text-karina-gold transition-colors mobile-link">Suites & Habitaciones</a>
+        <a href="#business" class="block py-2 text-slate-300 hover:text-karina-gold transition-colors mobile-link">Business Center & Eventos</a>
+        <a href="#experiencias" class="block py-2 text-slate-300 hover:text-karina-gold transition-colors mobile-link">Experiencias & Bento</a>
+        <a href="#fundacion" class="block py-2 text-slate-300 hover:text-karina-gold transition-colors mobile-link">Fundación Kariña</a>
+        <a href="#faqs" class="block py-2 text-slate-300 hover:text-karina-gold transition-colors mobile-link">Preguntas Frecuentes</a>
+        <div class="pt-2">
+          <button onclick="openBookingModal()" class="w-full py-3 gold-gradient-bg text-karina-dark font-bold rounded-xl text-center shadow-lg">
+            Reservar Ahora
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 2. HERO SECTION -->
+  <!-- ========================================================================= -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-6 lg:px-12 overflow-hidden">
+    <!-- Atmospheric Background Layers -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=2000&q=80"
+        alt="Hotel Kariña Luxury Ambience"
+        class="w-full h-full object-cover object-center brightness-[0.32] scale-105 transform duration-1000 ease-out"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-karina-dark via-karina-dark/60 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-karina-dark/80 via-transparent to-karina-dark/80"></div>
+    </div>
+
+    <!-- Decorative Glow Elements -->
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-karina-gold/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto text-center">
+      <!-- Tag / Badge -->
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-karina-surface/80 border border-karina-gold/30 text-xs font-semibold text-karina-goldLight mb-6 backdrop-blur-md">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-karina-gold"></i>
+        <span>Hospitalidad de Excelencia & Prestigio Ejecutivo</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-white leading-[1.1] mb-6">
+        Donde la Elegancia Ancestral <br />
+        <span class="gold-gradient-text">Encuentra el Lujo Moderno</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 font-light leading-relaxed mb-10">
+        Disfruta de una experiencia inigualable en nuestras sedes exclusivas. Suites de categoría internacional, alta gastronomía, centro de negocios con tecnología de vanguardia y atención personalizada 24/7.
+      </p>
+
+      <!-- CTA Action Group -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 gold-gradient-bg text-karina-dark font-bold text-sm uppercase tracking-wider rounded-xl shadow-xl shadow-karina-gold/25 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+          Reservar Habitación
+        </button>
+        <a href="#business" class="w-full sm:w-auto px-8 py-4 bg-karina-card/80 hover:bg-karina-card border border-karina-border/80 text-white font-medium text-sm rounded-xl backdrop-blur-md hover:border-karina-gold/50 transition-all duration-300 flex items-center justify-center gap-2">
+          <i data-lucide="briefcase" class="w-4 h-4 text-karina-gold"></i>
+          Servicios Corporativos
+        </a>
+      </div>
+
+      <!-- Quick Booking Search Bar -->
+      <div class="glass-card p-4 sm:p-6 rounded-2xl max-w-4xl mx-auto shadow-2xl border border-karina-gold/20">
+        <form id="heroBookingForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left" onsubmit="handleHeroSearch(event)">
+          <!-- Select Sede -->
+          <div>
+            <label class="block text-xs font-semibold text-karina-gold uppercase tracking-wider mb-1 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Sede
+            </label>
+            <select id="heroSede" class="w-full bg-karina-dark/80 border border-karina-border rounded-lg px-3 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-karina-gold transition-colors">
+              <option value="lecheria">Sede Puerto La Cruz / Lechería</option>
+              <option value="maturin">Sede Maturín</option>
+              <option value="caracas">Sede Caracas (Lounge)</option>
+            </select>
+          </div>
+
+          <!-- Check-in Date -->
+          <div>
+            <label class="block text-xs font-semibold text-karina-gold uppercase tracking-wider mb-1 flex items-center gap-1">
+              <i data-lucide="calendar" class="w-3 h-3"></i> Check-in
+            </label>
+            <input type="date" id="heroCheckIn" class="w-full bg-karina-dark/80 border border-karina-border rounded-lg px-3 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-karina-gold transition-colors" />
+          </div>
+
+          <!-- Check-out Date -->
+          <div>
+            <label class="block text-xs font-semibold text-karina-gold uppercase tracking-wider mb-1 flex items-center gap-1">
+              <i data-lucide="calendar-check" class="w-3 h-3"></i> Check-out
+            </label>
+            <input type="date" id="heroCheckOut" class="w-full bg-karina-dark/80 border border-karina-border rounded-lg px-3 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-karina-gold transition-colors" />
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex items-end">
+            <button type="submit" class="w-full py-2.5 gold-gradient-bg text-karina-dark font-bold text-sm rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="search" class="w-4 h-4"></i> Consultar
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-xs text-slate-400">
+        <div class="flex items-center justify-center gap-2">
+          <i data-lucide="shield-check" class="w-4 h-4 text-karina-gold"></i>
+          <span>Reserva 100% Garantizada</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i data-lucide="wifi" class="w-4 h-4 text-karina-gold"></i>
+          <span>Fibra Óptica Dedicada</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i data-lucide="utensils" class="w-4 h-4 text-karina-gold"></i>
+          <span>Room Service 24/7</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i data-lucide="zap" class="w-4 h-4 text-karina-gold"></i>
+          <span>Planta Eléctrica Total</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 3. SEDES SECTION -->
+  <!-- ========================================================================= -->
+  <section id="sedes" class="py-24 px-6 lg:px-12 bg-karina-surface relative">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.3em] text-karina-gold font-bold">Nuestra Presencia</span>
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-2 mb-4">Sedes Estratégicas</h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Ubicaciones privilegiadas pensadas para el descanso placentero y los negocios de alto impacto corporativo.
+        </p>
+      </div>
+
+      <!-- Grid of Sedes -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Sede 1: Puerto La Cruz / Lechería -->
+        <div class="group bg-karina-card rounded-2xl overflow-hidden border border-karina-border hover:border-karina-gold/50 transition-all duration-500 hover:-translate-y-1.5 shadow-xl">
+          <div class="relative h-64 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
+              alt="Sede Lechería / Puerto La Cruz"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div class="absolute top-4 right-4 bg-karina-dark/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-karina-gold border border-karina-gold/30">
+              Sede Principal & Resort
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-karina-card via-transparent to-transparent"></div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-serif font-bold text-white mb-2 group-hover:text-karina-gold transition-colors">Sede Puerto La Cruz & Lechería</h3>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+              Frente a la bahía más codiciada del oriente. Acceso directo a marinas, suites con vista al mar, piscina infinity y salones ejecutivos para conferencias.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 text-[11px] rounded-md bg-karina-dark text-slate-300 border border-karina-border">Infinity Pool</span>
+              <span class="px-2.5 py-1 text-[11px] rounded-md bg-karina-dark text-slate-300 border border-karina-border">Marina VIP</span>
+              <span class="px-2.5 py-1 text-[11px] rounded-md bg-karina-dark text-slate-300 border border-karina-border">Spa & Sauna</span>
+            </div>
+            <div class="pt-4 border-t border-karina-border flex items-center justify-between">
+              <span class="text-xs text-slate-400">Anzoátegui, Venezuela</span>
+              <button onclick="openBookingModal('Sede Puerto La Cruz / Lechería')" class="text-xs font-semibold text-karina-gold hover:text-karina-goldLight flex items-center gap-1">
+                Explorar & Reservar <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sede 2: Maturín -->
+        <div class="group bg-karina-card rounded-2xl overflow-hidden border border-karina-border hover:border-karina-gold/50 transition-all duration-500 hover:-translate-y-1.5 shadow-xl">
+          <div class="relative h-64 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80"
+              alt="Sede Maturín Corporativa"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div class="absolute top-4 right-4 bg-karina-dark/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-karina-gold border border-karina-gold/30">
+              Hub Corporativo
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-karina-card via-transparent to-transparent"></div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-serif font-bold text-white mb-2 group-hover:text-karina-gold transition-colors">Sede Maturín Executive</h3>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+              El epicentro de negocios del estado Monagas. Diseñada para delegaciones diplomáticas y ejecutivos de la industria energética con Business Center de última generación.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 text-[11px] rounded-md bg-karina-dark text-slate-300 border border-karina-border">Auditorio High-Tech</span>
+              <span class="px-2.5 py-1 text-[11px] rounded-md bg-karina-dark text-slate-300 border border-karina-border">Helipuerto</span>
+              <span class="px-2.5 py-1 text-[11px] rounded-md bg-karina-dark text-slate-300 border border-karina-border">Seguridad 24/7</span>
+            </div>
+            <div class="pt-4 border-t border-karina-border flex items-center justify-between">
+              <span class="text-xs text-slate-400">Monagas, Venezuela</span>
+              <button onclick="openBookingModal('Sede Maturín Executive')" class="text-xs font-semibold text-karina-gold hover:text-karina-goldLight flex items-center gap-1">
+                Explorar & Reservar <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sede 3: Caracas / VIP Lounge -->
+        <div class="group bg-karina-card rounded-2xl overflow-hidden border border-karina-border hover:border-karina-gold/50 transition-all duration-500 hover:-translate-y-1.5 shadow-xl">
+          <div class="relative h-64 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80"
+              alt="Sede Caracas Suites"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div class="absolute top-4 right-4 bg-karina-dark/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-karina-gold border border-karina-gold/30">
+              Boutique & Lounge
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-karina-card via-transparent to-transparent"></div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-serif font-bold text-white mb-2 group-hover:text-karina-gold transition-colors">Sede Caracas Boutique</h3>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+              Ubicación privilegiada en la capital con vistas panorámicas al majestuoso Ávila. Suites exclusivas, restaurante gourmet de autor y servicio de concierge diplomático.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 text-[11px] rounded-md bg-karina-dark text-slate-300 border border-karina-border">Sky Bar Ávila</span>
+              <span class="px-2.5 py-1 text-[11px] rounded-md bg-karina-dark text-slate-300 border border-karina-border">Cata de Vinos</span>
+              <span class="px-2.5 py-1 text-[11px] rounded-md bg-karina-dark text-slate-300 border border-karina-border">Concierge VIP</span>
+            </div>
+            <div class="pt-4 border-t border-karina-border flex items-center justify-between">
+              <span class="text-xs text-slate-400">Distrito Capital, Venezuela</span>
+              <button onclick="openBookingModal('Sede Caracas Boutique')" class="text-xs font-semibold text-karina-gold hover:text-karina-goldLight flex items-center gap-1">
+                Explorar & Reservar <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. SUITES & HABITACIONES -->
+  <!-- ========================================================================= -->
+  <section id="suites" class="py-24 px-6 lg:px-12 bg-karina-dark relative">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-xs uppercase tracking-[0.3em] text-karina-gold font-bold">Confort Supremo</span>
+          <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-2">Suites & Habitaciones</h2>
+        </div>
+        <!-- Category Filter Buttons -->
+        <div class="mt-6 md:mt-0 flex flex-wrap gap-2">
+          <button onclick="filterSuites('all')" class="suite-tab-btn active px-4 py-2 text-xs font-semibold rounded-full bg-karina-gold text-karina-dark transition-all">Todas</button>
+          <button onclick="filterSuites('presidencial')" class="suite-tab-btn px-4 py-2 text-xs font-semibold rounded-full bg-karina-surface text-slate-300 hover:text-white border border-karina-border transition-all">Presidenciales</button>
+          <button onclick="filterSuites('ejecutiva')" class="suite-tab-btn px-4 py-2 text-xs font-semibold rounded-full bg-karina-surface text-slate-300 hover:text-white border border-karina-border transition-all">Ejecutivas</button>
+          <button onclick="filterSuites('junior')" class="suite-tab-btn px-4 py-2 text-xs font-semibold rounded-full bg-karina-surface text-slate-300 hover:text-white border border-karina-border transition-all">Junior Deluxe</button>
+        </div>
+      </div>
+
+      <!-- Suites Showcase Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="suitesGrid">
+        <!-- Suite 1: Presidencial Kariña -->
+        <div class="suite-item presidencial bg-karina-card rounded-2xl overflow-hidden border border-karina-border hover:border-karina-gold/40 transition-all duration-300 flex flex-col">
+          <div class="relative h-64">
+            <img
+              src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"
+              alt="Gran Suite Presidencial Kariña"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute bottom-4 left-4 bg-karina-dark/90 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-semibold text-karina-gold">
+              Master Suite · 120 m²
+            </div>
+            <div class="absolute top-4 right-4 bg-karina-gold text-karina-dark text-xs font-bold px-3 py-1 rounded-full">
+              Exclusiva
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-serif font-bold text-white">Gran Suite Presidencial</h3>
+                <span class="text-karina-gold font-bold text-lg">$280<span class="text-xs text-slate-400 font-normal">/noche</span></span>
+              </div>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+                El máximo esplendor. Cama King Size imperial, jacuzzi privado con vista panorámica, sala de estar independiente, bar privado y mayordomo personal.
+              </p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-300 mb-6">
+                <span class="flex items-center gap-1.5"><i data-lucide="users" class="w-3.5 h-3.5 text-karina-gold"></i> Hasta 3 Huéspedes</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="bath" class="w-3.5 h-3.5 text-karina-gold"></i> Jacuzzi Hidromasaje</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="tv" class="w-3.5 h-3.5 text-karina-gold"></i> Smart Cinema 75"</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="coffee" class="w-3.5 h-3.5 text-karina-gold"></i> Cava & Espresso Bar</span>
+              </div>
+            </div>
+            <button onclick="openBookingModal('Gran Suite Presidencial')" class="w-full py-3 bg-karina-surface hover:bg-karina-gold hover:text-karina-dark border border-karina-border hover:border-karina-gold text-white font-semibold text-xs rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
+              Reservar Suite
+            </button>
+          </div>
+        </div>
+
+        <!-- Suite 2: Executive Business -->
+        <div class="suite-item ejecutiva bg-karina-card rounded-2xl overflow-hidden border border-karina-border hover:border-karina-gold/40 transition-all duration-300 flex flex-col">
+          <div class="relative h-64">
+            <img
+              src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80"
+              alt="Suite Ejecutiva Platinum"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute bottom-4 left-4 bg-karina-dark/90 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-semibold text-karina-gold">
+              Executive · 65 m²
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-serif font-bold text-white">Suite Ejecutiva Platinum</h3>
+                <span class="text-karina-gold font-bold text-lg">$160<span class="text-xs text-slate-400 font-normal">/noche</span></span>
+              </div>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+                Diseñada para el viajero de negocios. Estación de trabajo ergonómica Herman Miller, conexión de ultra alta velocidad, aislamiento acústico y sala de reuniones mini.
+              </p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-300 mb-6">
+                <span class="flex items-center gap-1.5"><i data-lucide="laptop" class="w-3.5 h-3.5 text-karina-gold"></i> Escritorio Ergonómico</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="wifi" class="w-3.5 h-3.5 text-karina-gold"></i> WiFi 1 Gbps</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="printer" class="w-3.5 h-3.5 text-karina-gold"></i> Impresión Inalámbrica</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="moon" class="w-3.5 h-3.5 text-karina-gold"></i> Soundproof 100%</span>
+              </div>
+            </div>
+            <button onclick="openBookingModal('Suite Ejecutiva Platinum')" class="w-full py-3 bg-karina-surface hover:bg-karina-gold hover:text-karina-dark border border-karina-border hover:border-karina-gold text-white font-semibold text-xs rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
+              Reservar Suite
+            </button>
+          </div>
+        </div>
+
+        <!-- Suite 3: Junior Deluxe -->
+        <div class="suite-item junior bg-karina-card rounded-2xl overflow-hidden border border-karina-border hover:border-karina-gold/40 transition-all duration-300 flex flex-col">
+          <div class="relative h-64">
+            <img
+              src="https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=800&q=80"
+              alt="Junior Suite Deluxe"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute bottom-4 left-4 bg-karina-dark/90 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-semibold text-karina-gold">
+              Junior · 45 m²
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-serif font-bold text-white">Junior Suite Deluxe</h3>
+                <span class="text-karina-gold font-bold text-lg">$110<span class="text-xs text-slate-400 font-normal">/noche</span></span>
+              </div>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+                El equilibrio ideal entre confort y sofisticación. Cama Queen Size de almohadas de pluma, baño de mármol con ducha lluvia y balcón privado.
+              </p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-300 mb-6">
+                <span class="flex items-center gap-1.5"><i data-lucide="sun" class="w-3.5 h-3.5 text-karina-gold"></i> Balcón Privado</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="feather" class="w-3.5 h-3.5 text-karina-gold"></i> Menú de Almohadas</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="shield" class="w-3.5 h-3.5 text-karina-gold"></i> Caja Fuerte Digital</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="heart" class="w-3.5 h-3.5 text-karina-gold"></i> Amenities Orgánicos</span>
+              </div>
+            </div>
+            <button onclick="openBookingModal('Junior Suite Deluxe')" class="w-full py-3 bg-karina-surface hover:bg-karina-gold hover:text-karina-dark border border-karina-border hover:border-karina-gold text-white font-semibold text-xs rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
+              Reservar Suite
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. BUSINESS & EVENTOS (CON BORDES ANIMADOS) -->
+  <!-- ========================================================================= -->
+  <section id="business" class="py-24 px-6 lg:px-12 bg-karina-surface relative overflow-hidden">
+    <!-- Ambient glow behind business section -->
+    <div class="absolute top-1/2 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[150px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-karina-gold/10 rounded-full blur-[150px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.3em] text-karina-gold font-bold">Tecnología & Alta Gama</span>
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-2 mb-4">
+          Business Center & Eventos
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Espacios corporativos inteligentes con conectividad redundante, streaming 4K y servicio de catering de alta cocina para conferencias, foros y juntas de directorio.
+        </p>
+      </div>
+
+      <!-- Feature Highlight with Glowing Animated Border -->
+      <div class="animated-border-box p-8 lg:p-12 mb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold mb-4">
+              <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+              Infraestructura Corporativa 360°
+            </div>
+            <h3 class="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">
+              Salas de Directorio & Convenciones de Nivel Internacional
+            </h3>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+              Equipadas con pantallas interactivas táctiles, sistemas de audio Bose profesional, traducción simultánea, y respaldo energético ininterrumpido 24/7 con doble planta eléctrica.
+            </p>
+            <div class="grid grid-cols-2 gap-4 text-xs sm:text-sm text-slate-300 mb-8">
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-karina-gold"></i>
+                <span>Streaming & Broadcast 4K</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-karina-gold"></i>
+                <span>Fibra Óptica Simétrica</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-karina-gold"></i>
+                <span>Coffee Break Gourmet</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-karina-gold"></i>
+                <span>Cabinas Privadas de Trabajo</span>
+              </div>
+            </div>
+            <button onclick="openBookingModal('Cotización Corporativa Business')" class="px-6 py-3.5 gold-gradient-bg text-karina-dark font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg hover:scale-105 transition-all">
+              Solicitar Cotización de Evento
+            </button>
+          </div>
+          <div class="relative rounded-xl overflow-hidden shadow-2xl border border-karina-border">
+            <img
+              src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80"
+              alt="Sala de Directorio Hotel Kariña"
+              class="w-full h-80 lg:h-96 object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-karina-dark/90 via-transparent to-transparent flex items-end p-6">
+              <div class="text-white">
+                <p class="font-serif font-bold text-lg">Sala Magna Kariña</p>
+                <p class="text-xs text-karina-gold">Capacidad hasta 350 personas · Configuración Modular</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Business Service Cards with Animated Golden Border -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="animated-border-gold p-6">
+          <div class="w-12 h-12 rounded-xl bg-karina-surface flex items-center justify-center text-karina-gold mb-4 border border-karina-border">
+            <i data-lucide="monitor-speaker" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-lg font-serif font-bold text-white mb-2">Salas de Directorio VIP</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Mesas de nogal, videoconferencia Polycom integrada, privacidad acústica total y servicio de café de cortesía continuo.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="animated-border-gold p-6">
+          <div class="w-12 h-12 rounded-xl bg-karina-surface flex items-center justify-center text-karina-gold mb-4 border border-karina-border">
+            <i data-lucide="users" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-lg font-serif font-bold text-white mb-2">Salón de Banquetes & Galas</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Ambiente sofisticado para lanzamientos de marca, congresos médicos, cócteles de negocios y celebraciones institucionales.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="animated-border-gold p-6">
+          <div class="w-12 h-12 rounded-xl bg-karina-surface flex items-center justify-center text-karina-gold mb-4 border border-karina-border">
+            <i data-lucide="utensils-crossed" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-lg font-serif font-bold text-white mb-2">Catering Ejecutivo de Autor</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Menús personalizados diseñados por nuestros chefs ejecutivos, estaciones de café espresso y bocadillos gourmet internacionales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. BENTO GRID (EXPERIENCIAS & AMENITIES) -->
+  <!-- ========================================================================= -->
+  <section id="experiencias" class="py-24 px-6 lg:px-12 bg-karina-dark relative">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.3em] text-karina-gold font-bold">Universo Kariña</span>
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-2 mb-4">
+          Experiencias & Amenidades
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Cada rincón está concebido para superar las expectativas de los huéspedes más exigentes.
+        </p>
+      </div>
+
+      <!-- Modern Bento Grid Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[220px]">
+        <!-- Bento 1: Gastronomía de Autor (2 cols, 2 rows) -->
+        <div class="md:col-span-2 md:row-span-2 group relative rounded-2xl overflow-hidden border border-karina-border bg-karina-surface shadow-xl flex flex-col justify-end p-8">
+          <img
+            src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
+            alt="Restaurante Kariña Gastronomía"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.4]"
+          />
+          <div class="relative z-10">
+            <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-karina-gold text-karina-dark inline-block mb-3">Alta Cocina</span>
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">Restaurante Kariña Gourmet</h3>
+            <p class="text-slate-300 text-xs sm:text-sm max-w-lg mb-4">
+              Fusión de la rica herencia gastronómica venezolana con técnicas de vanguardia internacional. Ingredientes frescos del mar Caribe y carnes maduradas premium.
+            </p>
+            <a href="#hero" class="text-xs font-semibold text-karina-gold hover:text-karina-goldLight flex items-center gap-1">
+              Ver Carta & Reservar Mesa <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento 2: Rooftop & Infinity Pool (1 col, 2 rows) -->
+        <div class="md:col-span-1 lg:col-span-2 md:row-span-1 group relative rounded-2xl overflow-hidden border border-karina-border bg-karina-surface shadow-xl p-6 flex flex-col justify-end">
+          <img
+            src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80"
+            alt="Infinity Pool & Sky Bar"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.38]"
+          />
+          <div class="relative z-10">
+            <span class="text-karina-gold text-xs font-bold uppercase tracking-wider">Panorámica</span>
+            <h4 class="text-xl font-serif font-bold text-white">Infinity Pool & Sky Lounge</h4>
+            <p class="text-slate-300 text-xs">Vistas al atardecer, coctelería de autor y camas balinesas.</p>
+          </div>
+        </div>
+
+        <!-- Bento 3: Spa & Wellness -->
+        <div class="group relative rounded-2xl overflow-hidden border border-karina-border bg-karina-surface shadow-xl p-6 flex flex-col justify-end">
+          <img
+            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80"
+            alt="Spa & Masajes Kariña"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.38]"
+          />
+          <div class="relative z-10">
+            <i data-lucide="sparkles" class="w-6 h-6 text-karina-gold mb-2"></i>
+            <h4 class="text-lg font-serif font-bold text-white">Spa & Bienestar</h4>
+            <p class="text-slate-300 text-xs">Rituales holísticos, sauna seco y vapor.</p>
+          </div>
+        </div>
+
+        <!-- Bento 4: Helipuerto & Movilidad VIP -->
+        <div class="group relative rounded-2xl overflow-hidden border border-karina-border bg-karina-surface shadow-xl p-6 flex flex-col justify-end">
+          <img
+            src="https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=800&q=80"
+            alt="Transporte Privado y Helipuerto"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.38]"
+          />
+          <div class="relative z-10">
+            <i data-lucide="plane" class="w-6 h-6 text-karina-gold mb-2"></i>
+            <h4 class="text-lg font-serif font-bold text-white">Traslados & Helipuerto</h4>
+            <p class="text-slate-300 text-xs">Flota ejecutiva blindada y helipad certificado.</p>
+          </div>
+        </div>
+
+        <!-- Bento 5: Cava de Ron & Sommelier (2 cols, 1 row) -->
+        <div class="md:col-span-2 lg:col-span-2 group relative rounded-2xl overflow-hidden border border-karina-border bg-karina-surface shadow-xl p-6 flex flex-col justify-end">
+          <img
+            src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80"
+            alt="Cava de Rones Exclusivos"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.35]"
+          />
+          <div class="relative z-10">
+            <span class="text-karina-gold text-xs font-bold uppercase tracking-wider">Cultura & Sabor</span>
+            <h4 class="text-xl font-serif font-bold text-white">Cava de Rones Premium & Catas Guiadas</h4>
+            <p class="text-slate-300 text-xs">Degustación de las reservas más laureadas de Venezuela y el mundo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. FUNDACIÓN KARIÑA (COMPROMISO SOCIAL) -->
+  <!-- ========================================================================= -->
+  <section id="fundacion" class="py-24 px-6 lg:px-12 bg-karina-surface relative border-t border-b border-karina-border">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-karina-gold/10 border border-karina-gold/30 text-karina-gold text-xs font-semibold mb-4">
+            <i data-lucide="heart" class="w-3.5 h-3.5"></i>
+            Responsabilidad Social & Patrimonio Ancestral
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mb-6">
+            Fundación Kariña: <br />
+            <span class="gold-gradient-text">Honrando Nuestras Raíces</span>
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+            El nombre <strong class="text-karina-gold">Kariña</strong> rinde tributo al valiente pueblo originario del oriente venezolano. A través de nuestra fundación, destinamos un porcentaje de cada reserva hotelera a programas de educación comunitaria, preservación del arte textil y sustentabilidad ambiental.
+          </p>
+          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-8">
+            Impulsamos talleres artesanales de cestería, becas para jóvenes talentos locales y jornadas médicas en comunidades indígenas aliadas.
+          </p>
+
+          <!-- Impact Numbers -->
+          <div class="grid grid-cols-3 gap-4 text-center border-t border-b border-karina-border/60 py-6 mb-8">
+            <div>
+              <span class="block text-2xl sm:text-4xl font-serif font-bold text-karina-gold">+1,500</span>
+              <span class="text-[11px] text-slate-400 uppercase tracking-wider">Familias Apoyadas</span>
+            </div>
+            <div>
+              <span class="block text-2xl sm:text-4xl font-serif font-bold text-karina-gold">100%</span>
+              <span class="text-[11px] text-slate-400 uppercase tracking-wider">Arte Local en Suites</span>
+            </div>
+            <div>
+              <span class="block text-2xl sm:text-4xl font-serif font-bold text-karina-gold">24</span>
+              <span class="text-[11px] text-slate-400 uppercase tracking-wider">Proyectos Sostenibles</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/584120000000?text=Hola,%20deseo%20conocer%20m%C3%A1s%20sobre%20la%20Fundaci%C3%B3n%20Kari%C3%B1a" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-karina-card hover:bg-karina-gold hover:text-karina-dark border border-karina-gold/40 text-karina-gold font-semibold text-xs rounded-xl transition-all duration-300 shadow-md">
+            <span>Conoce los Proyectos de la Fundación</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Right Side Image Composition -->
+        <div class="relative">
+          <div class="rounded-2xl overflow-hidden border border-karina-gold/20 shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
+              alt="Artesanía y Cultura Fundación Kariña"
+              class="w-full h-[450px] object-cover"
+            />
+          </div>
+          <!-- Floating badge card -->
+          <div class="absolute -bottom-6 -left-6 bg-karina-dark/95 backdrop-blur-md p-5 rounded-2xl border border-karina-gold/40 shadow-2xl max-w-xs hidden sm:block">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-karina-gold/20 flex items-center justify-center text-karina-gold">
+                <i data-lucide="award" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-white">Sello de Impacto Social</p>
+                <p class="text-[10px] text-slate-400">Turismo Responsable y Ético</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 8. PREGUNTAS FRECUENTES (FAQs) -->
+  <!-- ========================================================================= -->
+  <section id="faqs" class="py-24 px-6 lg:px-12 bg-karina-dark relative">
+    <div class="max-w-4xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase tracking-[0.3em] text-karina-gold font-bold">Claridad & Confianza</span>
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-2 mb-4">
+          Preguntas Frecuentes
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Todo lo que necesitas saber antes de tu estancia en Hotel Kariña.
+        </p>
+      </div>
+
+      <!-- FAQs Accordion List -->
+      <div class="space-y-4" id="faqAccordion">
+        <!-- FAQ 1 -->
+        <div class="faq-item bg-karina-surface rounded-xl border border-karina-border overflow-hidden transition-colors">
+          <button class="faq-btn w-full p-5 text-left flex items-center justify-between text-white font-medium text-sm sm:text-base hover:text-karina-gold transition-colors focus:outline-none">
+            <span>¿Cuáles son los horarios de Check-in y Check-out?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-karina-gold transform transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs sm:text-sm text-slate-400 border-t border-karina-border/40 pt-4 leading-relaxed">
+            El horario de Check-in es a partir de las 3:00 PM y el Check-out hasta las 12:00 PM (mediodía). Ofrecemos servicios de Early Check-in y Late Check-out bajo solicitud y sujeto a disponibilidad para miembros ejecutivos y huéspedes VIP.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item bg-karina-surface rounded-xl border border-karina-border overflow-hidden transition-colors">
+          <button class="faq-btn w-full p-5 text-left flex items-center justify-between text-white font-medium text-sm sm:text-base hover:text-karina-gold transition-colors focus:outline-none">
+            <span>¿Qué métodos de pago son aceptados?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-karina-gold transform transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs sm:text-sm text-slate-400 border-t border-karina-border/40 pt-4 leading-relaxed">
+            Aceptamos transferencias Zelle, Tarjetas de Crédito y Débito Internacionales (Visa, Mastercard, Amex), Pago Móvil y transferencias bancarias en bolívares a tasa oficial BCV, depósitos en divisas en cuentas nacionales custodias, y criptomonedas estables (USDT/USDC).
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item bg-karina-surface rounded-xl border border-karina-border overflow-hidden transition-colors">
+          <button class="faq-btn w-full p-5 text-left flex items-center justify-between text-white font-medium text-sm sm:text-base hover:text-karina-gold transition-colors focus:outline-none">
+            <span>¿Cuentan con servicio de transporte o traslado desde el aeropuerto?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-karina-gold transform transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs sm:text-sm text-slate-400 border-t border-karina-border/40 pt-4 leading-relaxed">
+            Sí, disponemos de una flota de vehículos ejecutivos y camionetas blindadas con chofer privado para traslados desde los principales aeropuertos (Barcelona BLA, Maturín MUN, Maiquetía CCS) hasta nuestras instalaciones. Puedes coordinarlo al momento de tu reserva.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item bg-karina-surface rounded-xl border border-karina-border overflow-hidden transition-colors">
+          <button class="faq-btn w-full p-5 text-left flex items-center justify-between text-white font-medium text-sm sm:text-base hover:text-karina-gold transition-colors focus:outline-none">
+            <span>¿Qué garantía hay de electricidad e internet continuo?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-karina-gold transform transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs sm:text-sm text-slate-400 border-t border-karina-border/40 pt-4 leading-relaxed">
+            Nuestras sedes cuentan con sistema de respaldo eléctrico total mediante generadores diésel de conmutación instantánea (100% de cobertura de aires acondicionados, elevadores y enchufes), y conexión a internet simétrica redundante de múltiples proveedores de fibra óptica y Starlink.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item bg-karina-surface rounded-xl border border-karina-border overflow-hidden transition-colors">
+          <button class="faq-btn w-full p-5 text-left flex items-center justify-between text-white font-medium text-sm sm:text-base hover:text-karina-gold transition-colors focus:outline-none">
+            <span>¿Cómo cotizar salones para eventos corporativos o bodas?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-karina-gold transform transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs sm:text-sm text-slate-400 border-t border-karina-border/40 pt-4 leading-relaxed">
+            Puedes hacer clic en el botón "Servicios Corporativos" o comunicarte directamente a través de nuestro botón de WhatsApp. Nuestro equipo de Eventos & Protocolo te enviará un dossier con planos, capacidades, paquetes audiovisuales y propuestas gastronómicas a medida.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 9. FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="bg-karina-surface border-t border-karina-border pt-16 pb-12 px-6 lg:px-12 text-slate-400 text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+      <!-- Col 1: Brand Info (2 cols wide) -->
+      <div class="lg:col-span-2">
+        <a href="#hero" class="flex items-center space-x-3 mb-4">
+          <div class="w-10 h-10 rounded-full border border-karina-gold flex items-center justify-center bg-karina-dark">
+            <span class="font-serif font-bold text-karina-gold text-lg">K</span>
+          </div>
+          <div>
+            <span class="block font-serif text-lg font-bold tracking-widest text-white">HOTEL KARIÑA</span>
+            <span class="block text-[9px] uppercase tracking-[0.25em] text-karina-gold">Luxury & Executive Hospitality</span>
+          </div>
+        </a>
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6 max-w-sm">
+          Excelencia hotelera, hospitalidad de estándar internacional y confort incomparable en los destinos estratégicos de Venezuela.
+        </p>
+        <div class="flex items-center space-x-3 text-slate-300">
+          <a href="#" class="w-8 h-8 rounded-lg bg-karina-card border border-karina-border flex items-center justify-center hover:text-karina-gold hover:border-karina-gold transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+          <a href="#" class="w-8 h-8 rounded-lg bg-karina-card border border-karina-border flex items-center justify-center hover:text-karina-gold hover:border-karina-gold transition-colors" aria-label="Facebook"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+          <a href="#" class="w-8 h-8 rounded-lg bg-karina-card border border-karina-border flex items-center justify-center hover:text-karina-gold hover:border-karina-gold transition-colors" aria-label="Linkedin"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+          <a href="#" class="w-8 h-8 rounded-lg bg-karina-card border border-karina-border flex items-center justify-center hover:text-karina-gold hover:border-karina-gold transition-colors" aria-label="Twitter"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+
+      <!-- Col 2: Enlaces Rápidos -->
+      <div>
+        <h4 class="text-white font-serif font-bold text-sm mb-4">Navegación</h4>
+        <ul class="space-y-2.5 text-xs">
+          <li><a href="#hero" class="hover:text-karina-gold transition-colors">Inicio</a></li>
+          <li><a href="#sedes" class="hover:text-karina-gold transition-colors">Nuestras Sedes</a></li>
+          <li><a href="#suites" class="hover:text-karina-gold transition-colors">Suites & Habitaciones</a></li>
+          <li><a href="#business" class="hover:text-karina-gold transition-colors">Centro de Negocios</a></li>
+          <li><a href="#experiencias" class="hover:text-karina-gold transition-colors">Restaurante & Spa</a></li>
+          <li><a href="#fundacion" class="hover:text-karina-gold transition-colors">Fundación Kariña</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Sedes & Contacto -->
+      <div>
+        <h4 class="text-white font-serif font-bold text-sm mb-4">Sedes</h4>
+        <ul class="space-y-2.5 text-xs">
+          <li><a href="#sedes" class="hover:text-karina-gold transition-colors">Sede Puerto La Cruz / Lechería</a></li>
+          <li><a href="#sedes" class="hover:text-karina-gold transition-colors">Sede Maturín Executive</a></li>
+          <li><a href="#sedes" class="hover:text-karina-gold transition-colors">Sede Caracas Boutique Lounge</a></li>
+          <li class="pt-2 text-karina-gold font-semibold">Central de Reservas:</li>
+          <li>+58 (281) 500-KARIÑA</li>
+          <li>reservas@hotelkarina.com</li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Newsletter & Club VIP -->
+      <div>
+        <h4 class="text-white font-serif font-bold text-sm mb-4">Club Kariña VIP</h4>
+        <p class="text-xs text-slate-400 mb-3">
+          Recibe promociones exclusivas, tarifas preferenciales y noticias de la fundación.
+        </p>
+        <form onsubmit="handleNewsletter(event)" class="space-y-2">
+          <input
+            type="email"
+            placeholder="Ingresa tu correo electrónico"
+            required
+            class="w-full bg-karina-dark border border-karina-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-karina-gold"
+          />
+          <button type="submit" class="w-full py-2 gold-gradient-bg text-karina-dark font-bold text-xs rounded-lg hover:brightness-110 transition-all">
+            Suscribirme
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-8 border-t border-karina-border/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+      <p>© 2026 Hotel Kariña C.A. Todos los derechos reservados.</p>
+      <div class="flex space-x-6 mt-4 sm:mt-0">
+        <a href="#" class="hover:text-slate-400 transition-colors">Términos y Condiciones</a>
+        <a href="#" class="hover:text-slate-400 transition-colors">Políticas de Privacidad</a>
+        <a href="#" class="hover:text-slate-400 transition-colors">Vercel Deployment Ready</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 10. MODAL DE RESERVACIÓN INTERACTIVO -->
+  <!-- ========================================================================= -->
+  <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-karina-dark/80 backdrop-blur-md">
+    <div class="relative w-full max-w-lg bg-karina-card border border-karina-gold/40 rounded-2xl p-6 sm:p-8 shadow-2xl transform transition-all duration-300 scale-95 opacity-0" id="bookingModalContent">
+      <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2" aria-label="Cerrar Modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-6">
+        <div class="w-10 h-10 rounded-full bg-karina-gold/20 flex items-center justify-center text-karina-gold mb-3">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-white" id="modalTitle">Solicitar Reservación</h3>
+        <p class="text-xs text-slate-400 mt-1">Completa los datos y nuestro concierge te confirmará de inmediato.</p>
+      </div>
+
+      <form id="reservationForm" onsubmit="handleReservationSubmit(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Nombre Completo</label>
+          <input type="text" id="resName" required placeholder="Ej: Dr. Alejandro Rivas" class="w-full bg-karina-dark border border-karina-border rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-karina-gold" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Teléfono / WhatsApp</label>
+            <input type="tel" id="resPhone" required placeholder="+58 412 1234567" class="w-full bg-karina-dark border border-karina-border rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-karina-gold" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Correo Electrónico</label>
+            <input type="email" id="resEmail" required placeholder="correo@ejemplo.com" class="w-full bg-karina-dark border border-karina-border rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-karina-gold" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Sede o Suite de Preferencia</label>
+          <select id="resSedeSuite" class="w-full bg-karina-dark border border-karina-border rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-karina-gold">
+            <option value="Gran Suite Presidencial">Gran Suite Presidencial (Lechería / Maturín / Caracas)</option>
+            <option value="Suite Ejecutiva Platinum">Suite Ejecutiva Platinum</option>
+            <option value="Junior Suite Deluxe">Junior Suite Deluxe</option>
+            <option value="Salón de Eventos / Business Center">Salón de Eventos / Business Center</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Fecha de Llegada</label>
+            <input type="date" id="resDateIn" required class="w-full bg-karina-dark border border-karina-border rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-karina-gold" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Fecha de Salida</label>
+            <input type="date" id="resDateOut" required class="w-full bg-karina-dark border border-karina-border rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-karina-gold" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Requerimientos Especiales (Opcional)</label>
+          <textarea id="resNotes" rows="2" placeholder="Traslado desde aeropuerto, cuna, dieta especial, etc." class="w-full bg-karina-dark border border-karina-border rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-karina-gold"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 gold-gradient-bg text-karina-dark font-bold text-sm rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg shadow-karina-gold/20">
+          <i data-lucide="send" class="w-4 h-4"></i> Enviar Solicitud de Reserva
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Quick Button -->
+  <a
+    href="https://wa.me/584120000000?text=Hola%20Hotel%20Kari%C3%B1a,%20deseo%20consultar%20disponibilidad%20y%20tarifas."
+    target="_blank"
+    class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 border-2 border-white/20"
+    aria-label="Contactar por WhatsApp"
+  >
+    <i data-lucide="message-circle" class="w-7 h-7"></i>
+  </a>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT LOGIC -->
+  <!-- ========================================================================= -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Sticky Navbar Glass Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('py-2.5', 'shadow-2xl');
+        navbar.classList.remove('py-3.5');
+      } else {
+        navbar.classList.add('py-3.5');
+        navbar.classList.remove('py-2.5', 'shadow-2xl');
+      }
+    });
+
+    // Suite Category Filtering
+    function filterSuites(category) {
+      const buttons = document.querySelectorAll('.suite-tab-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-karina-gold', 'text-karina-dark', 'active');
+        btn.classList.add('bg-karina-surface', 'text-slate-300');
+      });
+      event.target.classList.add('bg-karina-gold', 'text-karina-dark', 'active');
+      event.target.classList.remove('bg-karina-surface', 'text-slate-300');
+
+      const items = document.querySelectorAll('.suite-item');
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // FAQ Accordion Toggle
+    const faqButtons = document.querySelectorAll('.faq-btn');
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('.faq-icon');
+        const isOpen = !content.classList.contains('hidden');
+
+        // Close all others
+        document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+        document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+
+        if (!isOpen) {
+          content.classList.remove('hidden');
+          icon.classList.add('rotate-180');
+        }
+      });
+    });
+
+    // Booking Modal Handling
+    const bookingModal = document.getElementById('bookingModal');
+    const modalContent = document.getElementById('bookingModalContent');
+    const resSedeSuite = document.getElementById('resSedeSuite');
+
+    function openBookingModal(preselectedItem = '') {
+      if (preselectedItem) {
+        // Set option if matching or note
+        for (let i = 0; i < resSedeSuite.options.length; i++) {
+          if (resSedeSuite.options[i].text.includes(preselectedItem) || resSedeSuite.options[i].value.includes(preselectedItem)) {
+            resSedeSuite.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      bookingModal.classList.remove('hidden');
+      bookingModal.classList.add('flex');
+      setTimeout(() => {
+        modalContent.classList.remove('scale-95', 'opacity-0');
+        modalContent.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeBookingModal() {
+      modalContent.classList.remove('scale-100', 'opacity-100');
+      modalContent.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        bookingModal.classList.add('hidden');
+        bookingModal.classList.remove('flex');
+      }, 200);
+    }
+
+    // Close modal on click outside
+    bookingModal.addEventListener('click', (e) => {
+      if (e.target === bookingModal) {
+        closeBookingModal();
+      }
+    });
+
+    // Handle Hero Search Form
+    function handleHeroSearch(e) {
+      e.preventDefault();
+      const sede = document.getElementById('heroSede').value;
+      const checkIn = document.getElementById('heroCheckIn').value;
+      const checkOut = document.getElementById('heroCheckOut').value;
+
+      let msg = `Hola Hotel Kariña, deseo consultar disponibilidad para la sede ${sede}`;
+      if (checkIn) msg += ` desde ${checkIn}`;
+      if (checkOut) msg += ` hasta ${checkOut}`;
+
+      window.open(`https://wa.me/584120000000?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // Handle Reservation Form Submit
+    function handleReservationSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('resName').value;
+      const phone = document.getElementById('resPhone').value;
+      const email = document.getElementById('resEmail').value;
+      const item = document.getElementById('resSedeSuite').value;
+      const dateIn = document.getElementById('resDateIn').value;
+      const dateOut = document.getElementById('resDateOut').value;
+      const notes = document.getElementById('resNotes').value;
+
+      const whatsappText = `¡Hola Hotel Kariña! Solicito una reserva:\n\n👤 *Huésped:* ${name}\n📞 *Teléfono:* ${phone}\n✉️ *Correo:* ${email}\n🏨 *Selección:* ${item}\n📅 *Llegada:* ${dateIn}\n📅 *Salida:* ${dateOut}\n📝 *Notas:* ${notes || 'Ninguna'}`;
+
+      window.open(`https://wa.me/584120000000?text=${encodeURIComponent(whatsappText)}`, '_blank');
+      closeBookingModal();
+      alert('¡Gracias! Te estamos redirigiendo a nuestro canal de WhatsApp para confirmar tu reserva de inmediato.');
+    }
+
+    // Handle Newsletter
+    function handleNewsletter(e) {
+      e.preventDefault();
+      alert('¡Gracias por suscribirte al Club Kariña VIP! Recibirás nuestras novedades y promociones.');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
