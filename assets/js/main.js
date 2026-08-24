@@ -97,14 +97,14 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: 'Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.',
       quote: '"Un santuario de descanso pensado para el viajero moderno."',
       price: '$120',
-      img: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80'
+      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Doble-Model.jpg'
     },
     'dos-ambientes': {
       title: 'Suite Ejecutiva Dúplex',
       desc: 'Espacio ampliado con sala de reuniones privada, lencería de alta gama y área de descanso independiente.',
       quote: '"La combinación perfecta entre productividad y bienestar de alto nivel."',
       price: '$170',
-      img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80'
+      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-2.jpg'
     }
   };
 
