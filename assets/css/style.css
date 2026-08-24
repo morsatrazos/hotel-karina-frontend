@@ -31,31 +31,72 @@ body {
 }
 
 /* ===================================================
-   HEADER & NAVBAR ANIMADO SUTIL
+   MORPHING FLOATING ISLAND NAVBAR
    =================================================== */
-.animated-header-gradient {
-  background: linear-gradient(
-    120deg,
-    rgba(255, 246, 234, 0.98) 0%,
-    rgba(255, 238, 204, 0.92) 30%,
-    rgba(255, 246, 234, 0.98) 60%,
-    rgba(255, 232, 186, 0.90) 85%,
-    rgba(255, 246, 234, 0.98) 100%
-  );
-  background-size: 250% 250%;
-  animation: subtleHeaderFlow 10s ease-in-out infinite;
+#main-navbar {
+  transition: 
+    top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    max-width 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s ease,
+    box-shadow 0.5s ease,
+    border-color 0.4s ease;
+  will-change: top, max-width, border-radius, background-color, box-shadow;
 }
 
-@keyframes subtleHeaderFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* Estado normal (anclado arriba) */
+#main-navbar.navbar-default {
+  top: 0;
+  max-width: 100%;
+  border-radius: 0;
+  background-color: var(--karina-cream);
+  border-bottom: 1px solid rgba(52, 52, 52, 0.1);
+  box-shadow: none;
+}
+
+/* Estado activo: Isla Flotante */
+#main-navbar.navbar-scrolled {
+  top: 1.25rem !important; /* Separación de 20px del borde superior */
+  max-width: 1080px !important; /* Ancho cápsula centrado */
+  border-radius: 9999px !important; /* Redondeado completo */
+  background-color: rgba(255, 246, 234, 0.88) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 
+    0 16px 36px -6px rgba(52, 52, 52, 0.12),
+    0 4px 16px -2px rgba(240, 168, 0, 0.15);
+  border: 1px solid rgba(240, 168, 0, 0.25) !important;
+}
+
+#main-navbar .nav-inner {
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+}
+
+#main-navbar.navbar-scrolled .nav-inner {
+  height: 4rem !important; /* 64px de altura compacta */
+  padding-left: 1.75rem !important;
+  padding-right: 1.75rem !important;
+}
+
+/* Brillo sutil en el botón de reserva */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: rotate(25deg);
+  animation: shimmerMove 4.5s infinite;
+}
+@keyframes shimmerMove {
+  0%, 70% { left: -150%; }
+  100% { left: 200%; }
 }
 
 /* ===================================================

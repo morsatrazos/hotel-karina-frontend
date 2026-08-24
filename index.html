@@ -46,15 +46,16 @@
 <body class="bg-karina-charcoal text-karina-charcoal font-manrope antialiased selection:bg-karina-mustard selection:text-karina-charcoal">
 
   <!-- ========================================== -->
-  <!-- 1. NAVBAR OFICIAL HOTEL KARIÑA             -->
+  <!-- 1. NAVBAR OFICIAL CON ISLA FLOTANTE       -->
   <!-- ========================================== -->
-  <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 animated-header-gradient transition-all duration-300 ease-in-out border-b border-[#343434]/10 shadow-sm">
-    <div class="max-w-[1440px] mx-auto px-6 sm:px-12 h-20 flex items-center justify-between">
+  <header id="main-navbar" class="fixed top-0 inset-x-0 mx-auto w-full z-50 navbar-default">
+    <div class="nav-inner max-w-[1440px] mx-auto px-6 sm:px-12 h-20 flex items-center justify-between">
       
+      <!-- LADO IZQUIERDO: Menú + Logo -->
       <div class="flex items-center gap-6">
         <button id="open-menu-btn" class="flex items-center gap-3 group focus:outline-none" aria-label="Abrir menú">
           <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Ícono Menú Kariña" class="h-6 w-auto object-contain group-hover:scale-105 transition-transform">
-          <span class="text-sm font-light text-[#343434] group-hover:text-[#F0A800] transition-colors">Menú</span>
+          <span class="text-sm font-semibold text-[#343434] group-hover:text-[#F0A800] transition-colors">Menú</span>
         </button>
 
         <div class="h-8 w-[1px] bg-[#343434]/20 hidden sm:block"></div>
@@ -64,17 +65,19 @@
         </a>
       </div>
 
-      <nav class="hidden lg:flex items-center gap-8 text-[13px] font-light text-[#343434]">
-        <a href="#sedes" class="hover:text-[#F0A800] transition-colors font-light">Sedes</a>
-        <a href="#suites" class="hover:text-[#F0A800] transition-colors font-light">Catálogo de suites</a>
-        <a href="#experiencias" class="hover:text-[#F0A800] transition-colors font-light">¡Vive Kariña!</a>
-        <a href="#corporativo" class="hover:text-[#F0A800] transition-colors font-light">Corporativo</a>
-        <a href="#fundacion" class="hover:text-[#F0A800] transition-colors font-light">Fundación</a>
+      <!-- CENTRO: Enlaces -->
+      <nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium text-[#343434]">
+        <a href="#sedes" class="hover:text-[#F0A800] transition-colors">Sedes</a>
+        <a href="#suites" class="hover:text-[#F0A800] transition-colors">Catálogo de suites</a>
+        <a href="#experiencias" class="hover:text-[#F0A800] transition-colors">¡Vive Kariña!</a>
+        <a href="#corporativo" class="hover:text-[#F0A800] transition-colors">Corporativo</a>
+        <a href="#fundacion" class="hover:text-[#F0A800] transition-colors">Fundación</a>
       </nav>
 
-      <div class="flex items-center gap-6">
-        <button class="text-xs font-light text-[#343434] hover:text-[#2680BD] transition-colors">ES/EN</button>
-        <a href="#suites" class="bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+      <!-- LADO DERECHO: Idioma + Botón Reserva -->
+      <div class="flex items-center gap-5">
+        <button class="text-xs font-bold text-[#343434] hover:text-[#2680BD] transition-colors">ES/EN</button>
+        <a href="#suites" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
           <span>Reserva</span>
           <i class="fa-solid fa-sparkles text-[10px]"></i>
         </a>

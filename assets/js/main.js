@@ -1,18 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
-  // 1. NAVBAR SCROLL STICKY
+  // 1. NAVBAR MORPHING FLOATING ISLAND
   // ==========================================
   const navbar = document.getElementById('main-navbar');
+  
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
-      navbar.classList.add('bg-[#FFF6EA]/95', 'backdrop-blur-md', 'shadow-sm', 'h-16');
-      navbar.classList.remove('h-20');
+    if (window.scrollY > 45) {
+      navbar.classList.remove('navbar-default');
+      navbar.classList.add('navbar-scrolled');
     } else {
-      navbar.classList.remove('bg-[#FFF6EA]/95', 'backdrop-blur-md', 'shadow-sm', 'h-16');
-      navbar.classList.add('h-20');
+      navbar.classList.remove('navbar-scrolled');
+      navbar.classList.add('navbar-default');
     }
-  });
+  }, { passive: true });
 
   // ==========================================
   // 2. MENÚ INMERSIVO (100% OVERLAY)
