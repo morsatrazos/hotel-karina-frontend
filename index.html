@@ -180,14 +180,22 @@
   <!-- ========================================== -->
   <section class="relative min-h-[92vh] sm:min-h-screen flex items-end justify-start pb-16 sm:pb-20 px-6 sm:px-16 bg-[#FFF6EA] overflow-hidden">
     
-    <!-- Imagen de Fondo Nítida (Posicionada Arriba) -->
-    <div class="absolute inset-0 z-0 pointer-events-none">
-      <img src="https://uploads.onecompiler.io/44s48z3dm/1787540023484/Banner-Sample-Kari%C3%B1a.png" 
-           alt="Equipo Hotel Kariña" 
-           class="w-full h-full object-cover object-[center_top] scale-105 transform -translate-y-2 sm:-translate-y-4">
+    <!-- Video de Fondo Nítido (Autoplay & Loop) -->
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      <video 
+        autoplay 
+        loop 
+        muted 
+        playsinline 
+        preload="auto"
+        poster="https://uploads.onecompiler.io/44s48z3dm/1787540023484/Banner-Sample-Kari%C3%B1a.png"
+        class="w-full h-full object-cover object-center scale-105"
+      >
+        <source src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Video-Hero-Section.mp4" type="video/mp4">
+      </video>
       
       <!-- Degradado Suave Exclusivamente en la Base (Último 25%) -->
-      <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent via-65% to-[#FFF6EA]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent via-65% to-[#FFF6EA]"></div>
     </div>
 
     <!-- Contenido Inferior Izquierdo (Titular + Trigger IA) -->
