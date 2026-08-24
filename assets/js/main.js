@@ -139,13 +139,56 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 5. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQS)
+  // 5. ACORDEÓN DE PREGUNTAS FRECUENTES (EDITORIAL)
   // ==========================================
-  window.toggleFaq = function(button) {
-    const content = button.nextElementSibling;
-    const icon = button.querySelector('i');
-    content.classList.toggle('hidden');
-    icon.classList.toggle('rotate-45');
+  window.toggleEditorialFaq = function(item) {
+    const wrapper = item.querySelector('.faq-wrapper');
+    const isOpen = wrapper.classList.contains('is-open');
+
+    // Cerrar los demás ítems para mantener orden visual
+    document.querySelectorAll('.faq-line-item').forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove('is-active');
+        otherItem.querySelector('.faq-wrapper').classList.remove('is-open');
+      }
+    });
+
+    if (isOpen) {
+      item.classList.remove('is-active');
+      wrapper.classList.remove('is-open');
+    } else {
+      item.classList.add('is-active');
+      wrapper.classList.add('is-open');
+    }
+  };
+
+  // Filtros por Categoría de FAQs
+  window.filterFaq = function(category, clickedBtn) {
+    document.querySelectorAll('.filter-tab').forEach(btn => {
+      btn.className = 'filter-tab px-4 py-1.5 rounded-full text-xs font-semibold text-[#343434]/70 hover:text-[#343434] bg-white/40 hover:bg-white/80 border border-[#343434]/10';
+    });
+
+    clickedBtn.className = 'filter-tab px-4 py-1.5 rounded-full text-xs font-bold bg-[#343434] text-white shadow-sm';
+
+    const items = document.querySelectorAll('.faq-line-item');
+    items.forEach(item => {
+      item.classList.remove('is-active');
+      item.querySelector('.faq-wrapper').classList.remove('is-open');
+
+      if (category === 'all' || item.classList.contains('faq-item-' + category)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  };
+
+  // Botón Volver Arriba (Scroll to Top)
+  window.scrollToTop = function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   // ==========================================
