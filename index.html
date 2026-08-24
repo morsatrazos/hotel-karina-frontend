@@ -175,20 +175,20 @@
   <!-- ========================================== -->
   <!-- 3. HERO SECTION (GRADIENTE Y ROSTROS OK)    -->
   <!-- ========================================== -->
-  <section class="relative min-h-[92vh] flex items-center justify-start pt-24 pb-12 px-6 sm:px-16 bg-[#FFF6EA] overflow-hidden">
+  <section class="relative min-h-[92vh] flex items-end justify-start pt-24 pb-14 sm:pb-20 px-6 sm:px-16 bg-[#FFF6EA] overflow-hidden">
     
-    <!-- Imagen de Fondo Nítida (Rostros Arriba) -->
+    <!-- Imagen de Fondo Nítida (Sujetos 20% más arriba) -->
     <div class="absolute inset-0 z-0">
       <img src="https://uploads.onecompiler.io/44s48z3dm/1787540023484/Banner-Sample-Kari%C3%B1a.png" 
            alt="Equipo Hotel Kariña" 
-           class="w-full h-full object-cover object-[50%_15%]">
+           class="w-full h-full object-cover object-[50%_0%]">
       
       <!-- Degradado Suave Exclusivamente Inferior -->
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FFF6EA]"></div>
     </div>
 
     <!-- Contenido Flotante del Hero (Animación Reveal) -->
-    <div class="relative z-10 max-w-2xl mt-32 sm:mt-40 reveal">
+    <div class="relative z-10 max-w-xl mb-2 sm:mb-4 reveal">
       <h1 class="text-3xl sm:text-5xl md:text-6xl font-light text-white leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] mb-8">
         +50.000 Huéspedes alojados con nosotros
       </h1>
@@ -214,7 +214,13 @@
       <div class="reveal">
         <h2 class="text-3xl sm:text-5xl font-light tracking-tight text-[#343434]">Nuestras Sedes</h2>
         <p class="text-sm text-[#343434]/70 mt-2 font-normal">Oriente es Territorio Kariña.</p>
-        <div class="w-32 h-1 bg-[#FFD573] mx-auto mt-2 rounded-full mb-8"></div>
+        
+        <!-- Trazo curvo orgánico estilo dedo / pincelada -->
+        <div class="w-36 h-4 mx-auto mt-2.5 mb-8 text-[#FFD573] flex justify-center">
+          <svg viewBox="0 0 160 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-36 h-4 overflow-visible">
+            <path d="M4 11.5C36 4.2 92 3.1 156 7.8C126 12.4 64 14.2 4 11.5Z" fill="currentColor" opacity="0.95" />
+          </svg>
+        </div>
       </div>
 
       <!-- Controles Carrusel Interactivos -->
