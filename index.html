@@ -173,37 +173,38 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- 3. HERO SECTION (ENCUADRE FIEL IMAGEN 2)   -->
+  <!-- 3. HERO SECTION                           -->
   <!-- ========================================== -->
-  <section class="relative min-h-[92vh] flex items-center justify-start pt-20 pb-12 px-6 sm:px-16 overflow-hidden">
+  <section class="relative min-h-[92vh] flex items-center justify-start pt-20 pb-16 px-6 sm:px-16 bg-[#FFF6EA] overflow-hidden">
     
-    <!-- Imagen de Fondo (Sujetos a la derecha con torsos y rostros nítidos) -->
+    <!-- Imagen de Fondo (Subida más arriba y desplazada a la derecha) -->
     <div class="absolute inset-0 z-0">
       <img src="https://uploads.onecompiler.io/44s48z3dm/1787540023484/Banner-Sample-Kari%C3%B1a.png" 
            alt="Equipo Hotel Kariña" 
-           class="w-full h-full object-cover object-[72%_18%] sm:object-[68%_15%]">
+           class="w-full h-full object-cover object-[75%_0%] sm:object-[72%_0%]">
       
-      <!-- Degradado suave lateral y viñeta inferior -->
-      <div class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+      <!-- Degradado lateral sutil para contraste del texto blanco -->
+      <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent pointer-events-none"></div>
+
+      <!-- Degradado crema inferior que difumina suavemente el cuerpo y conecta con Nuestras Sedes -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#FFF6EA] via-[#FFF6EA]/80 via-30% to-transparent pointer-events-none"></div>
     </div>
 
-    <!-- Contenido Flotante del Hero (Tipografía Light & Sin Colisión) -->
+    <!-- Contenido Flotante del Hero (Máximo 2 líneas, tipografía light) -->
     <div class="relative z-10 max-w-xl my-auto reveal">
-      <h1 class="text-4xl sm:text-6xl md:text-[68px] font-extralight text-white leading-[1.12] drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] mb-8 tracking-tight font-manrope">
-        +50.000 Huéspedes<br />
-        alojados con nosotros
+      <h1 class="text-3xl sm:text-5xl lg:text-[58px] font-light text-white leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] mb-8 tracking-tight font-manrope">
+        <span class="block whitespace-nowrap">+50.000 Huéspedes</span>
+        <span class="block whitespace-nowrap">alojados con nosotros</span>
       </h1>
       
-      <div class="inline-flex items-center gap-3.5 bg-[#EFE9E2]/90 hover:bg-white backdrop-blur-md px-5 py-2.5 rounded-full shadow-2xl border border-white/50 cursor-pointer hover:scale-105 transition-all group">
+      <div class="inline-flex items-center gap-3.5 bg-white/90 hover:bg-white backdrop-blur-md px-5 py-2.5 rounded-full shadow-xl border border-white/60 cursor-pointer hover:scale-105 transition-all group">
         <div class="w-8 h-8 rounded-full bg-[#FFD573] flex items-center justify-center text-[#343434] shadow-sm">
-          <i class="fa-solid fa-robot text-xs"></i>
+          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
         </div>
         <div class="text-left pr-2">
-          <p class="text-xs font-semibold text-[#343434] leading-tight">Consulta disponibilidad y tarifas</p>
-          <p class="text-[11px] font-light text-[#343434]/70">con Arimiña-IA</p>
+          <p class="text-xs font-bold text-[#343434] leading-tight">Consulta disponibilidad y tarifas</p>
+          <p class="text-[11px] font-light text-[#343434]/70">con Arimiña-IA →</p>
         </div>
-        <i class="fa-solid fa-arrow-right text-xs text-[#343434]/70 group-hover:translate-x-1 transition-transform ml-1"></i>
       </div>
     </div>
   </section>
