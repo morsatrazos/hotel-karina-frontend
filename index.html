@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotel Kariña ★★★★ | Experiencia 4 Estrellas</title>
   
-  <!-- Tipografía Manrope -->
+  <!-- Tipografía Oficial Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Tailwind CSS CDN con configuración embebida -->
+  <!-- Tailwind CSS Engine -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -33,66 +33,14 @@
           },
           fontFamily: {
             manrope: ['Manrope', 'sans-serif']
-          },
-          borderRadius: {
-            'pebble': '32px 32px 120px 32px',
-            'pebble-inv': '120px 32px 32px 32px'
           }
         }
       }
     }
   </script>
 
-  <style>
-    /* Efecto de borde de luz que recorre las tarjetas en Business */
-    .glowing-box {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      background: #343434;
-      padding: 1.5px;
-    }
-    .glowing-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(transparent, transparent, #F0A800, transparent);
-      animation: rotateBorder 4s linear infinite;
-    }
-    .glowing-content {
-      position: relative;
-      background: #2D2D2D;
-      border-radius: 23px;
-      z-index: 1;
-    }
-    @keyframes rotateBorder {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Animaciones de entrada y scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Ocultar barra de scroll en scrollbars horizontales */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-  </style>
+  <!-- Hoja de Estilos Personalizada y Modular -->
+  <link rel="stylesheet" href="style/css/style.css">
 </head>
 
 <body class="bg-karina-charcoal text-karina-charcoal font-manrope antialiased selection:bg-karina-mustard selection:text-karina-charcoal">
@@ -103,7 +51,6 @@
   <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 bg-[#FFF6EA] transition-all duration-300 ease-in-out border-b border-[#343434]/10">
     <div class="max-w-[1440px] mx-auto px-6 sm:px-12 h-20 flex items-center justify-between">
       
-      <!-- LADO IZQUIERDO: Botón Menú + Divisor + Logotipo Oficial -->
       <div class="flex items-center gap-6">
         <button id="open-menu-btn" class="flex items-center gap-3 group focus:outline-none" aria-label="Abrir menú">
           <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Ícono Menú Kariña" class="h-6 w-auto object-contain group-hover:scale-105 transition-transform">
@@ -117,36 +64,19 @@
         </a>
       </div>
 
-      <!-- CENTRO: Enlaces de Navegación -->
       <nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium text-[#343434]">
-        <a href="#sedes" class="relative py-1 transition-colors duration-200 hover:text-[#F0A800] after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#F0A800] hover:after:w-full after:transition-all after:duration-300">
-          Sedes
-        </a>
-        <a href="#suites" class="relative py-1 transition-colors duration-200 hover:text-[#F0A800] after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#F0A800] hover:after:w-full after:transition-all after:duration-300">
-          Catálogo de suites
-        </a>
-        <a href="#experiencias" class="relative py-1 transition-colors duration-200 hover:text-[#F0A800] after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#F0A800] hover:after:w-full after:transition-all after:duration-300">
-          ¡Vive Kariña!
-        </a>
-        <a href="#corporativo" class="relative py-1 transition-colors duration-200 hover:text-[#F0A800] after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#F0A800] hover:after:w-full after:transition-all after:duration-300">
-          Corporativo
-        </a>
-        <a href="#fundacion" class="relative py-1 transition-colors duration-200 hover:text-[#F0A800] after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#F0A800] hover:after:w-full after:transition-all after:duration-300">
-          Fundación
-        </a>
+        <a href="#sedes" class="hover:text-[#F0A800] transition-colors">Sedes</a>
+        <a href="#suites" class="hover:text-[#F0A800] transition-colors">Catálogo de suites</a>
+        <a href="#experiencias" class="hover:text-[#F0A800] transition-colors">¡Vive Kariña!</a>
+        <a href="#corporativo" class="hover:text-[#F0A800] transition-colors">Corporativo</a>
+        <a href="#fundacion" class="hover:text-[#F0A800] transition-colors">Fundación</a>
       </nav>
 
-      <!-- LADO DERECHO: Selector de Idioma + Botón Píldora "Reserva ✨" -->
       <div class="flex items-center gap-6">
-        <button class="text-xs font-bold text-[#343434] tracking-wider hover:text-[#2680BD] transition-colors focus:outline-none">
-          ES/EN
-        </button>
-
-        <a href="#suites" class="bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all duration-200 hover:shadow-md active:scale-95 shadow-sm">
+        <button class="text-xs font-bold text-[#343434] hover:text-[#2680BD] transition-colors">ES/EN</button>
+        <a href="#suites" class="bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
           <span>Reserva</span>
-          <svg class="w-3.5 h-3.5 text-[#343434]" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L14.2 8.3L20.5 10.5L14.2 12.7L12 19L9.8 12.7L3.5 10.5L9.8 8.3L12 2Z" />
-          </svg>
+          <i class="fa-solid fa-sparkles text-[10px]"></i>
         </a>
       </div>
 
@@ -154,22 +84,17 @@
   </header>
 
   <!-- ========================================== -->
-  <!-- 2. MENÚ INMERSIVO (OVERLAY 100% PANTALLA)  -->
+  <!-- 2. MENÚ INMERSIVO OVERLAY                  -->
   <!-- ========================================== -->
   <div id="immersive-menu" class="fixed inset-0 z-[100] bg-[#2E2E2E] text-white opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
-    <!-- Header del Overlay -->
     <div class="flex items-center justify-between max-w-5xl mx-auto w-full border-b border-white/10 pb-6">
-      <a href="index.html" class="flex items-center">
-        <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Hotel Kariña" class="h-8 sm:h-10 w-auto object-contain">
-      </a>
-      <button id="close-menu-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/80 hover:text-white hover:border-white transition-colors" aria-label="Cerrar menú">
+      <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Hotel Kariña" class="h-8 sm:h-10 w-auto object-contain">
+      <button id="close-menu-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors" aria-label="Cerrar menú">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
     </div>
 
-    <!-- Lista Editorial del Menú -->
     <div class="max-w-xl mx-auto w-full py-8 space-y-4 text-left">
-      <!-- 01 Sedes con Acordeón -->
       <div class="border-b border-white/10 pb-4">
         <button id="toggle-sedes-sub" class="w-full flex items-center justify-between text-left group">
           <div class="flex items-baseline gap-4">
@@ -179,107 +104,100 @@
           <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
         </button>
         <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
-          <a href="#sedes" class="block hover:text-karina-mustard transition-colors" onclick="closeImmersiveMenu()">Maturín (Hotel & Club)</a>
-          <a href="#sedes" class="block hover:text-karina-mustard transition-colors" onclick="closeImmersiveMenu()">Punta de Mata (Executive)</a>
-          <a href="#sedes" class="block hover:text-karina-mustard transition-colors" onclick="closeImmersiveMenu()">El Tigre (Business & Events)</a>
+          <a href="#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Maturín (Hotel & Club)</a>
+          <a href="#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Punta de Mata (Executive)</a>
+          <a href="#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">El Tigre (Business & Events)</a>
         </div>
       </div>
 
       <div class="border-b border-white/10 pb-4">
-        <a href="#suites" onclick="closeImmersiveMenu()" class="flex items-baseline gap-4 group">
+        <a href="#suites" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">02</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Suites</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
-        <a href="#corporativo" onclick="closeImmersiveMenu()" class="flex items-baseline gap-4 group">
+        <a href="#corporativo" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">03</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Business</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
-        <a href="#suites" onclick="closeImmersiveMenu()" class="flex items-baseline gap-4 group">
+        <a href="#experiencias" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">04</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería de Suites</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
-        <a href="#experiencias" onclick="closeImmersiveMenu()" class="flex items-baseline gap-4 group">
+        <a href="#experiencias" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">05</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
-        <a href="#fundacion" onclick="closeImmersiveMenu()" class="flex items-baseline gap-4 group">
+        <a href="#fundacion" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">06</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Fundación</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
-        <a href="#faqs" onclick="closeImmersiveMenu()" class="flex items-baseline gap-4 group">
+        <a href="#faqs" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">07</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Preguntas Frecuentes</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
-        <a href="#footer" onclick="closeImmersiveMenu()" class="flex items-baseline gap-4 group">
+        <a href="#footer" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">08</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Contacto y Ubicaciones</span>
         </a>
       </div>
     </div>
 
-    <!-- Botones de Acción / Auth del Menú -->
     <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
-      <div class="flex items-center justify-between mb-2">
-        <div class="bg-black/30 p-1 rounded-full flex gap-2 text-xs font-bold px-3">
-          <span class="text-white">ES</span>
-          <span class="text-white/40">EN</span>
-        </div>
-        <a href="https://wa.me/584140000000" target="_blank" class="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg">
-          <i class="fa-brands fa-whatsapp text-sm"></i>
-        </a>
-      </div>
       <button class="w-full py-3 px-6 rounded-full border border-white/20 hover:border-karina-mustard text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
         <i class="fa-regular fa-user"></i>
         <span>Mi Cuenta / Iniciar Sesión</span>
       </button>
       <button class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
-        <span>✨ Hablar con Arimiña-IA</span>
+        <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
+        <span>Hablar con Arimiña-IA</span>
       </button>
     </div>
   </div>
 
   <!-- ========================================== -->
-  <!-- 3. HERO SECTION CON SAMPLE BANNER          -->
+  <!-- 3. HERO SECTION (GRADIENTE Y ROSTROS OK)    -->
   <!-- ========================================== -->
-  <section class="relative min-h-[90vh] flex items-end justify-start pt-28 pb-16 px-6 sm:px-12 bg-karina-charcoal overflow-hidden">
-    <!-- Imagen de fondo Banner Sample -->
+  <section class="relative min-h-[92vh] flex items-center justify-start pt-24 pb-12 px-6 sm:px-16 bg-[#FFF6EA] overflow-hidden">
+    
+    <!-- Imagen de Fondo Nítida (Rostros Arriba) -->
     <div class="absolute inset-0 z-0">
       <img src="https://uploads.onecompiler.io/44s48z3dm/1787540023484/Banner-Sample-Kari%C3%B1a.png" 
            alt="Equipo Hotel Kariña" 
-           class="w-full h-full object-cover object-top filter brightness-[0.9]">
-      <!-- Degradado suave hacia el pie del Hero -->
-      <div class="absolute inset-0 bg-gradient-to-t from-[#FFF6EA] via-transparent to-transparent"></div>
+           class="w-full h-full object-cover object-[50%_15%]">
+      
+      <!-- Degradado Suave Exclusivamente Inferior -->
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FFF6EA]"></div>
     </div>
 
-    <!-- Contenido Flotante del Hero -->
-    <div class="relative z-10 max-w-2xl mb-4">
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-light text-white leading-tight drop-shadow-md mb-6">
+    <!-- Contenido Flotante del Hero (Animación Reveal) -->
+    <div class="relative z-10 max-w-2xl mt-32 sm:mt-40 reveal">
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-light text-white leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] mb-8">
         +50.000 Huéspedes alojados con nosotros
       </h1>
       
-      <div class="inline-flex items-center gap-3 bg-white/80 backdrop-blur-md px-5 py-3 rounded-full shadow-xl border border-white/40 cursor-pointer hover:bg-white transition-all">
-        <div class="w-7 h-7 rounded-full bg-[#FFD573] flex items-center justify-center text-[#343434]">
+      <div class="inline-flex items-center gap-3 bg-white/90 backdrop-blur-md px-5 py-3 rounded-full shadow-2xl border border-white/60 cursor-pointer hover:bg-white hover:scale-105 transition-all">
+        <div class="w-8 h-8 rounded-full bg-[#FFD573] flex items-center justify-center text-[#343434] shadow-sm">
           <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
         </div>
-        <div class="text-left">
+        <div class="text-left pr-2">
           <p class="text-xs font-bold text-[#343434] leading-tight">Consulta disponibilidad y tarifas</p>
           <p class="text-[11px] text-[#343434]/70">con Arimiña-IA →</p>
         </div>
@@ -288,36 +206,38 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 4. SECCIÓN NUESTRAS SEDES (CAROUSEL / GRID)-->
+  <!-- 4. SECCIÓN NUESTRAS SEDES (CAROUSEL JS)    -->
   <!-- ========================================== -->
   <section id="sedes" class="py-24 px-6 sm:px-12 bg-[#FFF6EA] text-karina-charcoal">
     <div class="max-w-7xl mx-auto text-center">
       
-      <h2 class="text-3xl sm:text-5xl font-light tracking-tight text-[#343434]">Nuestras Sedes</h2>
-      <p class="text-sm text-[#343434]/70 mt-2 font-normal">Oriente es Territorio Kariña.</p>
-      <div class="w-32 h-1 bg-[#FFD573] mx-auto mt-2 rounded-full mb-8"></div>
+      <div class="reveal">
+        <h2 class="text-3xl sm:text-5xl font-light tracking-tight text-[#343434]">Nuestras Sedes</h2>
+        <p class="text-sm text-[#343434]/70 mt-2 font-normal">Oriente es Territorio Kariña.</p>
+        <div class="w-32 h-1 bg-[#FFD573] mx-auto mt-2 rounded-full mb-8"></div>
+      </div>
 
-      <!-- Controles Carrusel -->
-      <div class="flex items-center justify-center gap-4 mb-12">
-        <button id="prev-sede-btn" class="w-9 h-9 rounded-full border border-[#343434]/20 flex items-center justify-center hover:bg-[#343434] hover:text-white transition-colors">
+      <!-- Controles Carrusel Interactivos -->
+      <div class="flex items-center justify-center gap-4 mb-12 reveal reveal-delay-1">
+        <button id="prev-sede-btn" class="w-10 h-10 rounded-full border border-[#343434]/20 flex items-center justify-center hover:bg-[#343434] hover:text-white transition-all active:scale-95" aria-label="Sede anterior">
           <i class="fa-solid fa-chevron-left text-xs"></i>
         </button>
-        <div class="flex items-center gap-1.5 text-xs text-[#343434]/60 font-mono">
-          <span class="w-2 h-2 rounded-full bg-[#343434]"></span>
-          <span class="w-2 h-2 rounded-full bg-[#343434]/30"></span>
-          <span class="w-2 h-2 rounded-full bg-[#343434]/30"></span>
-          <span class="ml-2">01 - 03</span>
+        <div class="flex items-center gap-2 text-xs text-[#343434]/70 font-mono font-bold">
+          <span class="sede-dot w-2.5 h-2.5 rounded-full bg-[#343434] transition-all"></span>
+          <span class="sede-dot w-2 h-2 rounded-full bg-[#343434]/30 transition-all"></span>
+          <span class="sede-dot w-2 h-2 rounded-full bg-[#343434]/30 transition-all"></span>
+          <span id="sede-counter" class="ml-2">01 - 03</span>
         </div>
-        <button id="next-sede-btn" class="w-9 h-9 rounded-full border border-[#343434]/20 flex items-center justify-center hover:bg-[#343434] hover:text-white transition-colors">
+        <button id="next-sede-btn" class="w-10 h-10 rounded-full border border-[#343434]/20 flex items-center justify-center hover:bg-[#343434] hover:text-white transition-all active:scale-95" aria-label="Siguiente sede">
           <i class="fa-solid fa-chevron-right text-xs"></i>
         </button>
       </div>
 
-      <!-- 3 Tarjetas Asimétricas de Sedes -->
+      <!-- 3 Tarjetas de Sedes -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
         
         <!-- Sede Maturín -->
-        <div class="group cursor-pointer">
+        <div class="sede-card group cursor-pointer transition-all duration-300 reveal reveal-delay-1">
           <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-4 border border-black/5">
             <img src="https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg" 
                  alt="Hotel Kariña Maturín" 
@@ -334,7 +254,7 @@
         </div>
 
         <!-- Sede Punta de Mata -->
-        <div class="group cursor-pointer">
+        <div class="sede-card group cursor-pointer transition-all duration-300 reveal reveal-delay-2">
           <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-4 border border-black/5">
             <img src="https://uploads.onecompiler.io/44s48z3dm/1787540097635/Fachada-Aerea.2.jpg" 
                  alt="Hotel Kariña Punta de Mata" 
@@ -351,7 +271,7 @@
         </div>
 
         <!-- Sede El Tigre -->
-        <div class="group cursor-pointer">
+        <div class="sede-card group cursor-pointer transition-all duration-300 reveal reveal-delay-3">
           <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-4 border border-black/5">
             <img src="https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png" 
                  alt="Hotel Kariña El Tigre" 
@@ -373,13 +293,12 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 5. SECCIÓN SUITES CON FILTROS DINÁMICOS    -->
+  <!-- 5. SECCIÓN SUITES (LIMPIA SIN BOTÓN EN FOTO)-->
   <!-- ========================================== -->
   <section id="suites" class="py-20 px-6 sm:px-12 bg-[#FFF6EA] text-karina-charcoal">
     <div class="max-w-7xl mx-auto">
       
-      <!-- Filtros Píldora -->
-      <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="flex items-center justify-center gap-3 mb-4 reveal">
         <button id="btn-un-ambiente" onclick="switchSuite('un-ambiente')" class="px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434] bg-[#343434] text-white transition-all shadow-sm">
           Un ambiente
         </button>
@@ -388,14 +307,13 @@
         </button>
       </div>
       
-      <p class="text-center text-[10px] tracking-[0.2em] font-semibold text-[#343434]/60 uppercase mb-12">
+      <p class="text-center text-[10px] tracking-[0.2em] font-semibold text-[#343434]/60 uppercase mb-12 reveal">
         Escoge entre dos tipos de suites — Reserva desde $120
       </p>
 
-      <!-- Ficha Interactiva de Suite -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <div class="lg:col-span-6 space-y-6">
+        <div class="lg:col-span-6 space-y-6 reveal">
           <h2 id="suite-title" class="text-4xl sm:text-5xl font-light text-[#343434] tracking-tight uppercase">
             Suite Premium
           </h2>
@@ -418,7 +336,6 @@
             </div>
           </div>
 
-          <!-- Cita inspiracional con borde amarillo -->
           <div class="border-l-2 border-[#F0A800] pl-4 py-1">
             <p id="suite-quote" class="text-xs text-[#343434]/70 italic">
               "Un santuario de descanso pensado para el viajero moderno."
@@ -426,30 +343,23 @@
           </div>
 
           <div class="pt-4">
-            <a href="suites.html" class="text-xs font-bold text-[#F0A800] hover:text-[#343434] transition-colors flex items-center gap-1.5">
+            <a href="#suites" class="text-xs font-bold text-[#F0A800] hover:text-[#343434] transition-colors flex items-center gap-1.5">
               <span>Ver Galería Completa</span>
               <span>→</span>
             </a>
           </div>
         </div>
 
-        <!-- Imagen Asimétrica con Badge de Precio Blindado -->
-        <div class="lg:col-span-6 relative">
+        <div class="lg:col-span-6 relative reveal reveal-delay-1">
           <div class="relative rounded-pebble overflow-hidden shadow-2xl bg-black/5">
             <img id="suite-img" 
                  src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80" 
                  alt="Suite Hotel Kariña" 
                  class="w-full h-[420px] object-cover transition-opacity duration-300">
             
-            <!-- Badge de precio con z-index superior -->
             <div class="absolute top-6 right-6 z-20 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full shadow-md text-xs font-bold text-[#343434]">
               <span id="suite-price">$120</span> / noche
             </div>
-
-            <!-- Botón flotante amarillo -->
-            <a href="reservas.html" class="absolute bottom-6 right-6 z-20 w-12 h-12 rounded-full bg-[#F0A800] hover:bg-[#FFD573] text-[#343434] flex items-center justify-center shadow-lg transition-transform hover:scale-105">
-              <i class="fa-solid fa-arrow-right text-sm"></i>
-            </a>
           </div>
         </div>
 
@@ -459,17 +369,16 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 6. SECCIÓN BUSINESS (CORPORATIVO CON LUZ)   -->
+  <!-- 6. SECCIÓN BUSINESS (LUCES ANIMADAS)       -->
   <!-- ========================================== -->
   <section id="corporativo" class="py-24 px-6 sm:px-12 bg-karina-charcoal text-white relative overflow-hidden">
     
-    <!-- Luz amarilla radial de fondo -->
     <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#F0A800]/15 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <div class="lg:col-span-6 space-y-6">
+        <div class="lg:col-span-6 space-y-6 reveal">
           <span class="text-xs font-bold tracking-[0.2em] text-[#F0A800] uppercase">CORPORATIVO</span>
           <h2 class="text-4xl sm:text-5xl font-light leading-tight">
             Productividad en el Paraíso
@@ -478,7 +387,6 @@
             Con más de 10 años albergando clientes corporativos de alto perfil, combinamos la quietud de un resort con la eficiencia de un centro de negocios de clase mundial.
           </p>
 
-          <!-- 3 Tarjetas con bordes de luz animados -->
           <div class="space-y-4 pt-4">
             
             <div class="glowing-box">
@@ -520,21 +428,19 @@
           </div>
 
           <div class="pt-4">
-            <a href="business.html" class="inline-flex items-center gap-2 bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-extrabold text-xs uppercase px-8 py-3.5 rounded-full transition-all shadow-md">
+            <a href="#corporativo" class="inline-flex items-center gap-2 bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-extrabold text-xs uppercase px-8 py-3.5 rounded-full transition-all shadow-md">
               <span>SOLICITAR TARIFAS CORPORATIVAS</span>
               <i class="fa-solid fa-arrow-right text-xs"></i>
             </a>
           </div>
         </div>
 
-        <!-- Imagen Corporativa con Tarjeta Flotante -->
-        <div class="lg:col-span-6 relative">
+        <div class="lg:col-span-6 relative reveal reveal-delay-1">
           <div class="relative rounded-pebble overflow-hidden shadow-2xl">
             <img src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80" 
                  alt="Reunión Business Hotel Kariña" 
                  class="w-full h-[520px] object-cover">
             
-            <!-- Badge flotante Premium Service -->
             <div class="absolute bottom-6 left-6 max-w-xs bg-[#343434]/90 backdrop-blur-md p-4 rounded-2xl border border-white/10 shadow-xl text-left">
               <div class="flex items-center gap-2 text-[#F0A800] text-xs font-bold mb-1">
                 <i class="fa-solid fa-circle-check"></i>
@@ -555,12 +461,13 @@
   <section id="experiencias" class="py-24 px-6 sm:px-12 bg-karina-charcoal text-white text-center">
     <div class="max-w-7xl mx-auto">
       
-      <h2 class="text-3xl sm:text-5xl font-light mb-12">Vive Kariña</h2>
+      <div class="reveal">
+        <h2 class="text-3xl sm:text-5xl font-light mb-12">Vive Kariña</h2>
+      </div>
 
-      <!-- Bento Grid (3 Filas con layout asimétrico) -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-left">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-left reveal">
         
-        <!-- Fila 1 & 2 Izquierda: Piscina Resort (Grande) -->
+        <!-- Fila 1 & 2 Izquierda: Piscina Resort -->
         <div onclick="openLightbox(this)" class="lg:col-span-6 lg:row-span-2 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[340px]">
           <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" 
                alt="Piscina Resort" 
@@ -619,13 +526,13 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 8. SECCIÓN FUNDACIÓN KARIÑA                -->
+  <!-- 8. SECCIÓN FUNDACIÓN KARIÑA (IMAGEN REAL)  -->
   <!-- ========================================== -->
   <section id="fundacion" class="py-20 px-6 sm:px-12 bg-[#FFF6EA] text-karina-charcoal">
     <div class="max-w-7xl mx-auto">
       
-      <!-- Cabecera Fundación con Isotipo Oficial -->
-      <div class="flex items-center gap-6 mb-12">
+      <!-- Cabecera Oficial -->
+      <div class="flex items-center gap-6 mb-12 reveal">
         <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Fundación Kariña" class="h-14 w-auto object-contain">
         <div>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-[#343434]">Somos Turismo, Cultura y Servicio</h2>
@@ -635,11 +542,11 @@
         </div>
       </div>
 
-      <!-- Tarjeta Principal con Curvas Asimétricas -->
-      <div class="relative rounded-pebble overflow-hidden shadow-2xl min-h-[460px] flex items-end">
-        <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1600&q=80" 
+      <!-- Tarjeta Principal con Curva Asimétrica y Foto Real de la Comunidad -->
+      <div class="relative rounded-pebble overflow-hidden shadow-2xl min-h-[460px] flex items-end reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1600&q=80" 
              alt="Comunidad Indígena Fundación Kariña" 
-             class="absolute inset-0 w-full h-full object-cover">
+             class="absolute inset-0 w-full h-full object-cover object-center">
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
         <div class="relative z-10 p-8 sm:p-12 text-white max-w-3xl">
@@ -667,7 +574,7 @@
           </div>
         </div>
 
-        <a href="fundacion.html" class="absolute bottom-8 right-8 z-20 w-12 h-12 rounded-full bg-[#F0A800] hover:bg-[#FFD573] text-[#343434] flex items-center justify-center shadow-lg transition-transform hover:scale-105">
+        <a href="#fundacion" class="absolute bottom-8 right-8 z-20 w-12 h-12 rounded-full bg-[#F0A800] hover:bg-[#FFD573] text-[#343434] flex items-center justify-center shadow-lg transition-transform hover:scale-105">
           <i class="fa-solid fa-arrow-right text-sm"></i>
         </a>
       </div>
@@ -681,9 +588,11 @@
   <section id="faqs" class="py-24 px-6 sm:px-12 bg-[#FFF6EA] text-karina-charcoal">
     <div class="max-w-4xl mx-auto">
       
-      <h2 class="text-3xl sm:text-4xl font-light text-center mb-12">Preguntas Frecuentes</h2>
+      <div class="reveal">
+        <h2 class="text-3xl sm:text-4xl font-light text-center mb-12">Preguntas Frecuentes</h2>
+      </div>
 
-      <div class="space-y-4">
+      <div class="space-y-4 reveal reveal-delay-1">
         
         <div class="border-b border-[#343434]/15 pb-4">
           <button class="w-full flex items-center justify-between text-left text-sm font-semibold py-2" onclick="toggleFaq(this)">
@@ -727,8 +636,8 @@
 
       </div>
 
-      <div class="text-center mt-8">
-        <a href="faq.html" class="text-[11px] font-bold tracking-widest text-[#F0A800] uppercase hover:underline">
+      <div class="text-center mt-8 reveal">
+        <a href="#faqs" class="text-[11px] font-bold tracking-widest text-[#F0A800] uppercase hover:underline">
           VER TODAS LAS PREGUNTAS →
         </a>
       </div>
@@ -742,7 +651,6 @@
   <footer id="footer" class="bg-[#242424] text-white pt-20 pb-12 px-6 sm:px-12 border-t border-white/10">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
       
-      <!-- Columna 1: Marca y Manifiesto -->
       <div class="lg:col-span-4 space-y-4">
         <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Grupo Kariña" class="h-8 w-auto object-contain">
         <p class="text-xs text-white/60 leading-relaxed max-w-sm">
@@ -750,7 +658,6 @@
         </p>
       </div>
 
-      <!-- Columna 2: Sedes -->
       <div class="lg:col-span-2 space-y-3">
         <span class="text-xs font-extrabold text-[#F0A800] uppercase tracking-wider block">Nuestras Sedes</span>
         <ul class="space-y-2 text-xs text-white/70">
@@ -760,7 +667,6 @@
         </ul>
       </div>
 
-      <!-- Columna 3: Nosotros -->
       <div class="lg:col-span-2 space-y-3">
         <span class="text-xs font-extrabold text-[#92CEF7] uppercase tracking-wider block">Nosotros</span>
         <ul class="space-y-2 text-xs text-white/70">
@@ -770,7 +676,6 @@
         </ul>
       </div>
 
-      <!-- Columna 4: 4 Instagrams Oficiales -->
       <div class="lg:col-span-4 space-y-3">
         <span class="text-xs font-extrabold text-[#EB8C84] uppercase tracking-wider block">Síguenos en Instagram</span>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -809,106 +714,14 @@
   <!-- 11. LIGHTBOX MODAL PARA IMÁGENES           -->
   <!-- ========================================== -->
   <div id="lightbox-modal" class="fixed inset-0 z-[150] bg-black/90 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
-    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-2xl">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-2xl" aria-label="Cerrar vista previa">
       <i class="fa-solid fa-xmark"></i>
     </button>
     <img id="lightbox-img" src="" alt="Vista Ampliada" class="max-h-[85vh] max-w-[90vw] object-contain rounded-2xl shadow-2xl">
   </div>
 
-  <!-- ========================================== -->
-  <!-- 12. SCRIPTS DE INTERACTIVIDAD VANILLA JS    -->
-  <!-- ========================================== -->
-  <script>
-    // Control del Menú Inmersivo
-    const immersiveMenu = document.getElementById('immersive-menu');
-    const openMenuBtn = document.getElementById('open-menu-btn');
-    const closeMenuBtn = document.getElementById('close-menu-btn');
-
-    function openImmersiveMenu() {
-      immersiveMenu.classList.remove('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeImmersiveMenu() {
-      immersiveMenu.classList.add('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = '';
-    }
-
-    openMenuBtn.addEventListener('click', openImmersiveMenu);
-    closeMenuBtn.addEventListener('click', closeImmersiveMenu);
-
-    // Acordeón de Sedes en el Menú
-    const toggleSedesBtn = document.getElementById('toggle-sedes-sub');
-    const sedesSubMenu = document.getElementById('sedes-sub-menu');
-    const sedesChevron = document.getElementById('sedes-chevron');
-
-    toggleSedesBtn.addEventListener('click', () => {
-      sedesSubMenu.classList.toggle('hidden');
-      sedesChevron.classList.toggle('rotate-180');
-    });
-
-    // Píldoras de Filtro de Suites
-    const suiteData = {
-      'un-ambiente': {
-        title: 'Suite Premium',
-        desc: 'Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.',
-        quote: '"Un santuario de descanso pensado para el viajero moderno."',
-        price: '$120',
-        img: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80'
-      },
-      'dos-ambientes': {
-        title: 'Suite Ejecutiva Dúplex',
-        desc: 'Espacio ampliado con sala de reuniones privada, baño principal de lujo y área de descanso independiente.',
-        quote: '"La combinación perfecta entre productividad y bienestar de alto nivel."',
-        price: '$170',
-        img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80'
-      }
-    };
-
-    function switchSuite(type) {
-      const btnUn = document.getElementById('btn-un-ambiente');
-      const btnDos = document.getElementById('btn-dos-ambientes');
-      const title = document.getElementById('suite-title');
-      const desc = document.getElementById('suite-desc');
-      const quote = document.getElementById('suite-quote');
-      const price = document.getElementById('suite-price');
-      const img = document.getElementById('suite-img');
-
-      if (type === 'un-ambiente') {
-        btnUn.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434] bg-[#343434] text-white transition-all shadow-sm';
-        btnDos.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434]/30 bg-transparent text-[#343434] hover:border-[#343434] transition-all';
-      } else {
-        btnDos.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434] bg-[#343434] text-white transition-all shadow-sm';
-        btnUn.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434]/30 bg-transparent text-[#343434] hover:border-[#343434] transition-all';
-      }
-
-      title.textContent = suiteData[type].title;
-      desc.textContent = suiteData[type].desc;
-      quote.textContent = suiteData[type].quote;
-      price.textContent = suiteData[type].price;
-      img.src = suiteData[type].img;
-    }
-
-    // Acordeón de FAQs
-    function toggleFaq(button) {
-      const content = button.nextElementSibling;
-      const icon = button.querySelector('i');
-      content.classList.toggle('hidden');
-      icon.classList.toggle('rotate-45');
-    }
-
-    // Modal Lightbox para la Bento Grid
-    function openLightbox(el) {
-      const img = el.querySelector('img');
-      if (!img) return;
-      document.getElementById('lightbox-img').src = img.src;
-      document.getElementById('lightbox-modal').classList.remove('opacity-0', 'pointer-events-none');
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox-modal').classList.add('opacity-0', 'pointer-events-none');
-    }
-  </script>
+  <!-- JavaScript Modular -->
+  <script src="js/main.js"></script>
 
 </body>
 </html>
