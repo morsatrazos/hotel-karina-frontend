@@ -234,3 +234,83 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px -4px rgba(240, 168, 0, 0.4);
 }
+
+/* ===================================================
+   ESTILOS Y ANIMACIONES SECCIÓN SEDES & MODAL INMERSIVO
+   =================================================== */
+
+/* Formas Asimétricas Orgánicas Kariña */
+.rounded-pebble {
+  border-radius: 32px 32px 110px 32px !important;
+}
+
+/* Modal Display Animation */
+#sede-modal {
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#sede-modal-container {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), opacity 400ms ease;
+}
+
+#sede-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#sede-modal.is-open #sede-modal-container {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+#sede-modal:not(.is-open) #sede-modal-container {
+  transform: scale(0.96) translateY(16px);
+  opacity: 0;
+}
+
+/* Luz Ambiental Dorada Expansiva */
+@keyframes ambientPulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(1.35);
+  }
+}
+
+.animate-ambient-glow {
+  animation: ambientPulse 6.5s ease-in-out infinite alternate;
+}
+
+/* Miniaturas de Galería */
+.thumb-btn {
+  transition: all 250ms ease;
+  opacity: 0.55;
+}
+.thumb-btn:hover {
+  opacity: 0.85;
+}
+.thumb-btn.is-active-thumb {
+  opacity: 1;
+  border-color: #F0A800;
+  box-shadow: 0 0 0 2px rgba(240, 168, 0, 0.35);
+}
+
+/* Card Hover Motion */
+.sede-card {
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sede-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Transición Suave de Cambio entre Sedes en el Modal */
+.modal-content-fade {
+  transition: opacity 220ms ease-in-out, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-content-fade.is-switching {
+  opacity: 0.15;
+  transform: translateY(4px);
+}

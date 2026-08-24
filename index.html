@@ -218,96 +218,114 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 4. SECCIÓN NUESTRAS SEDES (CAROUSEL JS)    -->
+  <!-- 4. SECCIÓN DE NUESTRAS SEDES               -->
   <!-- ========================================== -->
-  <section id="sedes" class="py-24 px-6 sm:px-12 bg-[#FFF6EA] text-karina-charcoal">
-    <div class="max-w-7xl mx-auto text-center">
+  <section id="sedes" class="max-w-7xl mx-auto space-y-8 text-center py-20 px-6 sm:px-12 bg-[#FFF6EA]">
+
+    <!-- CABECERA CON CURVA ORGÁNICA -->
+    <div class="space-y-2">
+      <h2 class="text-3xl sm:text-5xl font-light text-karina-charcoal tracking-tight">
+        Nuestras Sedes
+      </h2>
+      <p class="text-xs sm:text-sm text-karina-charcoal/70 max-w-md mx-auto font-light">
+        Oriente es Territorio Kariña.
+      </p>
+
+      <!-- LÍNEA AMARILLA CURVA DE TRAZO SUAVE (SVG CURVED STROKE) -->
+      <div class="flex justify-center pt-1">
+        <svg width="104" height="10" viewBox="0 0 104 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-karina-mustard-light">
+          <path d="M3 7C30 2.5 74 2.5 101 7" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- CONTROLES FLECHA DE SECCIÓN -->
+    <div class="flex items-center justify-center gap-4 pt-1">
+      <button id="prev-sede-btn" 
+              onclick="navigateSede(-1)" 
+              class="w-10 h-10 rounded-full border border-karina-charcoal/20 bg-white/60 hover:bg-karina-charcoal hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95" 
+              aria-label="Sede anterior">
+        <i class="fa-solid fa-chevron-left text-xs"></i>
+      </button>
+
+      <!-- Dots e Indicador Numérico Light -->
+      <div class="flex items-center gap-2 text-xs text-karina-charcoal/70 font-mono font-normal px-2">
+        <span class="sede-dot w-2.5 h-2.5 rounded-full bg-karina-charcoal transition-all"></span>
+        <span class="sede-dot w-2 h-2 rounded-full bg-karina-charcoal/30 transition-all"></span>
+        <span class="sede-dot w-2 h-2 rounded-full bg-karina-charcoal/30 transition-all"></span>
+        <span id="sede-counter" class="ml-2 font-normal">01 - 03</span>
+      </div>
+
+      <button id="next-sede-btn" 
+              onclick="navigateSede(1)" 
+              class="w-10 h-10 rounded-full border border-karina-charcoal/20 bg-white/60 hover:bg-karina-charcoal hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95" 
+              aria-label="Siguiente sede">
+        <i class="fa-solid fa-chevron-right text-xs"></i>
+      </button>
+    </div>
+
+    <!-- TARJETAS CON DISEÑO ASIMÉTRICO Y TIPOGRAFÍA LIGHT EDITORIAL -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left pt-4">
       
-      <div class="reveal">
-        <h2 class="text-3xl sm:text-5xl font-light tracking-tight text-[#343434]">Nuestras Sedes</h2>
-        <p class="text-sm text-[#343434]/70 mt-2 font-light">Oriente es Territorio Kariña.</p>
-        
-        <!-- Trazo curvo orgánico con extremos redondeados (stroke-linecap round) -->
-        <div class="w-36 h-4 mx-auto mt-2 mb-8 text-[#FFD573] flex justify-center">
-          <svg viewBox="0 0 160 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-36 h-4 overflow-visible">
-            <path d="M8 11 C45 3.5, 115 3.5, 152 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
-          </svg>
+      <!-- Sede 0: Maturín -->
+      <div id="sede-card-0" 
+           onclick="openSedeModal(0)" 
+           class="sede-card group cursor-pointer">
+        <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-3 border border-black/5 bg-black/5">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg" 
+               alt="Hotel Kariña Maturín" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          
+          <div class="absolute bottom-6 left-6 text-white space-y-1">
+            <h3 class="text-2xl font-light tracking-tight text-white">Maturín</h3>
+          </div>
         </div>
+        <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light px-1">
+          Etapa II, Macroparcela MC-30 de La Urbanización Palma Real.
+        </p>
       </div>
 
-      <!-- Controles Carrusel Interactivos -->
-      <div class="flex items-center justify-center gap-4 mb-12 reveal reveal-delay-1">
-        <button id="prev-sede-btn" class="w-10 h-10 rounded-full border border-[#343434]/20 flex items-center justify-center hover:bg-[#343434] hover:text-white transition-all active:scale-95" aria-label="Sede anterior">
-          <i class="fa-solid fa-chevron-left text-xs"></i>
-        </button>
-        <div class="flex items-center gap-2 text-xs text-[#343434]/70 font-mono font-bold">
-          <span class="sede-dot w-2.5 h-2.5 rounded-full bg-[#343434] transition-all"></span>
-          <span class="sede-dot w-2 h-2 rounded-full bg-[#343434]/30 transition-all"></span>
-          <span class="sede-dot w-2 h-2 rounded-full bg-[#343434]/30 transition-all"></span>
-          <span id="sede-counter" class="ml-2">01 - 03</span>
+      <!-- Sede 1: Punta de Mata -->
+      <div id="sede-card-1" 
+           onclick="openSedeModal(1)" 
+           class="sede-card group cursor-pointer">
+        <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-3 border border-black/5 bg-black/5">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787540097635/Fachada-Aerea.2.jpg" 
+               alt="Hotel Kariña Punta de Mata" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          
+          <div class="absolute bottom-6 left-6 text-white space-y-1">
+            <h3 class="text-2xl font-light tracking-tight text-white">Punta de Mata</h3>
+          </div>
         </div>
-        <button id="next-sede-btn" class="w-10 h-10 rounded-full border border-[#343434]/20 flex items-center justify-center hover:bg-[#343434] hover:text-white transition-all active:scale-95" aria-label="Siguiente sede">
-          <i class="fa-solid fa-chevron-right text-xs"></i>
-        </button>
+        <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light px-1">
+          Sector Zona Industrial, Ramal 7, al lado del Depósito Empresas Polar.
+        </p>
       </div>
 
-      <!-- 3 Tarjetas de Sedes -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-        
-        <!-- Sede Maturín -->
-        <div class="sede-card group cursor-pointer transition-all duration-300 reveal reveal-delay-1">
-          <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-4 border border-black/5">
-            <img src="https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg" 
-                 alt="Hotel Kariña Maturín" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <div class="absolute bottom-6 left-6 text-white">
-              <span class="text-[10px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full mb-2 inline-block border border-white/10">Hotel & Club</span>
-              <h3 class="text-2xl font-extrabold">Maturín</h3>
-            </div>
+      <!-- Sede 2: El Tigre -->
+      <div id="sede-card-2" 
+           onclick="openSedeModal(2)" 
+           class="sede-card group cursor-pointer">
+        <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-3 border border-black/5 bg-black/5">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png" 
+               alt="Hotel Kariña El Tigre" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          
+          <div class="absolute bottom-6 left-6 text-white space-y-1">
+            <h3 class="text-2xl font-light tracking-tight text-white">El Tigre</h3>
           </div>
-          <p class="text-xs text-[#343434]/70 leading-relaxed">
-            Etapa II, Macroparcela MC-30 de La Urbanización Palma Real.
-          </p>
         </div>
-
-        <!-- Sede Punta de Mata -->
-        <div class="sede-card group cursor-pointer transition-all duration-300 reveal reveal-delay-2">
-          <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-4 border border-black/5">
-            <img src="https://uploads.onecompiler.io/44s48z3dm/1787540097635/Fachada-Aerea.2.jpg" 
-                 alt="Hotel Kariña Punta de Mata" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <div class="absolute bottom-6 left-6 text-white">
-              <span class="text-[10px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full mb-2 inline-block border border-white/10">Executive & Relax</span>
-              <h3 class="text-2xl font-extrabold">Punta de Mata</h3>
-            </div>
-          </div>
-          <p class="text-xs text-[#343434]/70 leading-relaxed">
-            Sector Zona Industrial, Ramal 7, al lado del Depósito Empresas Polar.
-          </p>
-        </div>
-
-        <!-- Sede El Tigre -->
-        <div class="sede-card group cursor-pointer transition-all duration-300 reveal reveal-delay-3">
-          <div class="relative h-[380px] w-full rounded-pebble overflow-hidden shadow-lg mb-4 border border-black/5">
-            <img src="https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png" 
-                 alt="Hotel Kariña El Tigre" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <div class="absolute bottom-6 left-6 text-white">
-              <span class="text-[10px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full mb-2 inline-block border border-white/10">Business & Events</span>
-              <h3 class="text-2xl font-extrabold">El Tigre</h3>
-            </div>
-          </div>
-          <p class="text-xs text-[#343434]/70 leading-relaxed">
-            A 100mts del Balancín Tricolor, Avenida Ruiz Pineda, cruce con Calle 23 de Enero.
-          </p>
-        </div>
-
+        <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light px-1">
+          A 100mts del Balancín Tricolor, Avenida Ruiz Pineda, cruce con Calle 23 de Enero.
+        </p>
       </div>
 
     </div>
+
   </section>
 
   <!-- ========================================== -->
@@ -859,6 +877,181 @@
       </button>
     </div>
   </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL INMERSIVO ESPACIOSO & REFRESCADO     -->
+  <!-- ========================================== -->
+  <div id="sede-modal" 
+       class="fixed inset-0 z-[200] opacity-0 pointer-events-none bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 select-none"
+       onclick="closeSedeModalOnBackdrop(event)">
+    
+    <!-- LUZ AMBIENTAL VISIBLE EN BACKDROP -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] bg-karina-mustard/35 rounded-full blur-3xl pointer-events-none animate-ambient-glow"></div>
+
+    <!-- FLECHA FLOTANTE IZQUIERDA -->
+    <button onclick="navigateSedeInModal(-1)" 
+            class="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-black/50 hover:bg-karina-mustard hover:text-karina-charcoal text-white items-center justify-center transition-all backdrop-blur-md shadow-xl active:scale-95 border border-white/20"
+            title="Sede anterior">
+      <i class="fa-solid fa-chevron-left text-sm"></i>
+    </button>
+
+    <!-- FLECHA FLOTANTE DERECHA -->
+    <button onclick="navigateSedeInModal(1)" 
+            class="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-black/50 hover:bg-karina-mustard hover:text-karina-charcoal text-white items-center justify-center transition-all backdrop-blur-md shadow-xl active:scale-95 border border-white/20"
+            title="Siguiente sede">
+      <i class="fa-solid fa-chevron-right text-sm"></i>
+    </button>
+
+    <!-- CONTENEDOR PRINCIPAL DEL MODAL -->
+    <div id="sede-modal-container" 
+         class="relative w-full max-w-3xl min-h-[580px] max-h-[92vh] bg-karina-cream rounded-[36px] overflow-hidden shadow-2xl border border-black/10 text-karina-charcoal my-auto flex flex-col justify-between">
+      
+      <div id="modal-content-wrapper" class="grid grid-cols-1 md:grid-cols-12 h-full overflow-y-auto modal-content-fade">
+        
+        <!-- VISOR DE IMAGEN (IZQUIERDA: EXTENDIDA VERTICALMENTE) -->
+        <div class="md:col-span-5 p-6 sm:p-7 flex flex-col justify-between bg-white/40 border-r border-black/5 space-y-4">
+          
+          <!-- Imagen Principal Formato Vertical Asimétrico -->
+          <div class="relative w-full h-[280px] sm:h-[320px] rounded-pebble overflow-hidden shadow-md bg-black/10 shrink-0">
+            <img id="modal-main-image" 
+                 src="" 
+                 alt="Sede Vista" 
+                 class="w-full h-full object-cover transition-all duration-300">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            
+            <span id="modal-image-caption" class="absolute bottom-3.5 left-3.5 text-[11px] font-normal text-white drop-shadow tracking-wide">
+              Fachada Principal
+            </span>
+          </div>
+
+          <!-- Miniaturas de Galería (4 Fotos) -->
+          <div class="grid grid-cols-4 gap-2.5 pt-1">
+            <button onclick="setModalImage(0)" class="thumb-btn is-active-thumb aspect-square rounded-xl overflow-hidden border-2 border-transparent">
+              <img id="thumb-0" src="" class="w-full h-full object-cover" alt="Vista 1">
+            </button>
+            <button onclick="setModalImage(1)" class="thumb-btn aspect-square rounded-xl overflow-hidden border-2 border-transparent">
+              <img id="thumb-1" src="" class="w-full h-full object-cover" alt="Vista 2">
+            </button>
+            <button onclick="setModalImage(2)" class="thumb-btn aspect-square rounded-xl overflow-hidden border-2 border-transparent">
+              <img id="thumb-2" src="" class="w-full h-full object-cover" alt="Vista 3">
+            </button>
+            <button onclick="setModalImage(3)" class="thumb-btn aspect-square rounded-xl overflow-hidden border-2 border-transparent">
+              <img id="thumb-3" src="" class="w-full h-full object-cover" alt="Vista 4">
+            </button>
+          </div>
+
+        </div>
+
+        <!-- INFORMACIÓN EDITORIAL ESPACIOSA (DERECHA) -->
+        <div class="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6 text-left">
+          
+          <div class="space-y-6">
+            
+            <!-- CONTROLES SUPERIORES NÚMEROS Y BOTÓN X -->
+            <div class="flex items-center justify-end gap-5">
+              
+              <!-- Paginador Limpio Light -->
+              <div class="flex items-center gap-2 text-xs font-mono font-normal text-karina-charcoal/70">
+                <button onclick="navigateSedeInModal(-1)" class="hover:text-karina-mustard transition-colors px-1 py-1" title="Anterior">
+                  <i class="fa-solid fa-chevron-left text-xs"></i>
+                </button>
+                <span id="modal-counter-text" class="text-[12px] font-normal px-1">01 / 03</span>
+                <button onclick="navigateSedeInModal(1)" class="hover:text-karina-mustard transition-colors px-1 py-1" title="Siguiente">
+                  <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+              </div>
+
+              <!-- Botón Cerrar (✕) Directo Sin Fondo -->
+              <button onclick="closeSedeModal()" 
+                      class="text-karina-charcoal/60 hover:text-karina-charcoal text-lg p-1 transition-colors leading-none" 
+                      aria-label="Cerrar vista previa">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <!-- Titular de la Sede -->
+            <div class="space-y-2">
+              <h3 id="modal-title" class="text-2xl sm:text-3xl font-light text-karina-charcoal leading-tight">
+                Hotel Kariña Maturín
+              </h3>
+              <p id="modal-tagline" class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed pt-1">
+                El resort insignia del oriente venezolano con parque acuático, gastronomía de autor y salones corporativos.
+              </p>
+            </div>
+
+            <!-- Features / Bondades Rápidas -->
+            <div class="grid grid-cols-2 gap-3.5 text-xs font-normal text-karina-charcoal/80 pt-1">
+              <div class="flex items-center gap-2.5">
+                <i class="fa-regular fa-circle-check text-karina-mustard text-xs"></i>
+                <span>Piscina & Áreas Verdes</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <i class="fa-regular fa-circle-check text-karina-mustard text-xs"></i>
+                <span>WiFi Fibra Óptica</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <i class="fa-regular fa-circle-check text-karina-mustard text-xs"></i>
+                <span>Restaurante & Bar 24h</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <i class="fa-regular fa-circle-check text-karina-mustard text-xs"></i>
+                <span>Estacionamiento Vigilado</span>
+              </div>
+            </div>
+
+            <!-- Ubicación en Google Maps y Teléfono -->
+            <div class="space-y-3 text-xs text-karina-charcoal/80 pt-4 border-t border-karina-charcoal/10">
+              <div class="flex items-start gap-2.5">
+                <i class="fa-solid fa-location-dot text-karina-mustard text-xs mt-0.5"></i>
+                <a id="modal-maps-link" 
+                   href="#" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="text-xs leading-relaxed text-karina-charcoal/80 font-light hover:text-karina-mustard hover:underline transition-colors flex items-center gap-1.5 group">
+                  <span id="modal-address">Urbanización Palma Real, Etapa II, Macroparcela MC-30, Maturín, Edo. Monagas.</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-60 group-hover:opacity-100 shrink-0"></i>
+                </a>
+              </div>
+
+              <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-phone text-karina-mustard text-xs"></i>
+                <span class="font-normal text-karina-charcoal text-xs">Recepción Directa:</span>
+                <a id="modal-phone-link" href="tel:+5804249169601" class="text-xs font-medium text-karina-charcoal hover:text-karina-mustard transition-colors">
+                  +58 0424-9169601
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- BOTONES PRINCIPALES UNIFORMES (ARIMIÑA-IA & CATALOGO) -->
+          <div class="pt-4 space-y-2.5">
+            
+            <button onclick="closeSedeModal(); alert('Iniciando consulta con Arimiña-IA...');" 
+                    class="w-full py-3 px-5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95 group">
+              <span class="w-5 h-5 rounded-full bg-karina-mustard text-karina-charcoal flex items-center justify-center text-[10px] shrink-0">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </span>
+              <span>Consultar Tarifas & Disponibilidad con <strong>Arimiña-IA</strong></span>
+              <i class="fa-solid fa-arrow-right text-[10px] text-white/60 group-hover:translate-x-1 transition-transform ml-1"></i>
+            </button>
+
+            <!-- Ver Suites -->
+            <a href="#suites" 
+               onclick="closeSedeModal()" 
+               class="w-full py-3 px-5 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-semibold flex items-center justify-center gap-2 border border-karina-charcoal/15 transition-all active:scale-95">
+              <span>Ver Catálogo de Suites</span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- ========================================== -->
   <!-- 11. LIGHTBOX MODAL PARA IMÁGENES           -->

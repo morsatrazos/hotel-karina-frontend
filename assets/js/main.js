@@ -48,44 +48,203 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 3. CARRUSEL INTERACTIVO DE SEDES
+  // 3. CONTROLADORES SECCIÓN SEDES & MODAL INMERSIVO
   // ==========================================
-  const sedesCards = document.querySelectorAll('.sede-card');
-  const prevSedeBtn = document.getElementById('prev-sede-btn');
-  const nextSedeBtn = document.getElementById('next-sede-btn');
-  const sedeCounter = document.getElementById('sede-counter');
-  const dots = document.querySelectorAll('.sede-dot');
-  let currentSedeIndex = 0;
+  const sedesData = [
+    {
+      id: 0,
+      title: "Hotel Kariña Maturín",
+      tagline: "El resort insignia del oriente venezolano con parque acuático, gastronomía de autor y salones corporativos.",
+      address: "Urbanización Palma Real, Etapa II, Macroparcela MC-30, Maturín, Edo. Monagas.",
+      mapsUrl: "https://maps.google.com/?cid=370127326196523800",
+      phone: "+58 0424-9169601",
+      images: [
+        { src: "https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg", caption: "Fachada Principal Maturín" },
+        { src: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80", caption: "Piscina Resort & Parque Acuático" },
+        { src: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80", caption: "Suites Premium & Equipamiento" },
+        { src: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80", caption: "Restaurante Moriche & Gastronomía" }
+      ]
+    },
+    {
+      id: 1,
+      title: "Kariña Punta de Mata",
+      tagline: "Un oasis de privacidad estratégica y tranquilidad rodeado de áreas verdes, perfecto para ejecutivos.",
+      address: "Sector Zona Industrial, Ramal 7, al lado del Depósito Empresas Polar, Punta de Mata, Edo. Monagas.",
+      mapsUrl: "https://maps.google.com/?cid=9643206305083018040",
+      phone: "+58 0424-9169602",
+      images: [
+        { src: "https://uploads.onecompiler.io/44s48z3dm/1787540097635/Fachada-Aerea.2.jpg", caption: "Vista Aérea Punta de Mata" },
+        { src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80", caption: "Piscina Central Executive" },
+        { src: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80", caption: "Centro de Negocios Corporativo" },
+        { src: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80", caption: "Juice & Coffee Bar Executive" }
+      ]
+    },
+    {
+      id: 2,
+      title: "Hotel Kariña El Tigre",
+      tagline: "Centro neurálgico para eventos corporativos, banquetes y alojamiento de alta gama en la Mesa de Guanipa.",
+      address: "Avenida Ruiz Pineda, a 100mts del Balancín Tricolor, cruce con Calle 23 de Enero, El Tigre, Edo. Anzoátegui.",
+      mapsUrl: "https://maps.google.com/?cid=12057092587787417265",
+      phone: "+58 0424-9169603",
+      images: [
+        { src: "https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png", caption: "Piscina & Caney El Tigre" },
+        { src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80", caption: "Salones de Eventos Corporativos" },
+        { src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80", caption: "Canchas Deportivas & Gimnasio" },
+        { src: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80", caption: "Suites Dúplex de Alto Nivel" }
+      ]
+    }
+  ];
 
-  function updateSedeView(index) {
-    currentSedeIndex = (index + sedesCards.length) % sedesCards.length;
+  let currentActiveSede = 0;
+  let currentModalSede = 0;
+
+  window.navigateSede = function(direction) {
+    const total = sedesData.length;
+    currentActiveSede = (currentActiveSede + direction + total) % total;
+    updateCarouselCounter();
+    openSedeModal(currentActiveSede);
+  };
+
+  window.navigateSedeInModal = function(direction) {
+    const total = sedesData.length;
+    currentModalSede = (currentModalSede + direction + total) % total;
+    currentActiveSede = currentModalSede;
     
-    sedesCards.forEach((card, idx) => {
-      if (idx === currentSedeIndex) {
-        card.classList.add('ring-2', 'ring-[#F0A800]', 'scale-[1.02]');
-        card.classList.remove('opacity-60');
-      } else {
-        card.classList.remove('ring-2', 'ring-[#F0A800]', 'scale-[1.02]');
-        card.classList.add('opacity-60');
-      }
-    });
+    updateCarouselCounter();
+
+    const wrapper = document.getElementById('modal-content-wrapper');
+    if (wrapper) wrapper.classList.add('is-switching');
+
+    setTimeout(() => {
+      populateModalData(currentModalSede);
+      if (wrapper) wrapper.classList.remove('is-switching');
+    }, 140);
+  };
+
+  function updateCarouselCounter() {
+    const dots = document.querySelectorAll('.sede-dot');
+    const counter = document.getElementById('sede-counter');
 
     dots.forEach((dot, idx) => {
-      if (idx === currentSedeIndex) {
-        dot.className = 'sede-dot w-2.5 h-2.5 rounded-full bg-[#343434] transition-all';
+      if (idx === currentActiveSede) {
+        dot.className = 'sede-dot w-2.5 h-2.5 rounded-full bg-karina-charcoal transition-all';
       } else {
-        dot.className = 'sede-dot w-2 h-2 rounded-full bg-[#343434]/30 transition-all';
+        dot.className = 'sede-dot w-2 h-2 rounded-full bg-karina-charcoal/30 transition-all';
       }
     });
 
-    if (sedeCounter) {
-      sedeCounter.textContent = `0${currentSedeIndex + 1} - 03`;
+    if (counter) {
+      counter.textContent = `0${currentActiveSede + 1} - 03`;
     }
   }
 
-  if (prevSedeBtn && nextSedeBtn) {
-    prevSedeBtn.addEventListener('click', () => updateSedeView(currentSedeIndex - 1));
-    nextSedeBtn.addEventListener('click', () => updateSedeView(currentSedeIndex + 1));
+  function populateModalData(index) {
+    const sede = sedesData[index];
+    const modalTitle = document.getElementById('modal-title');
+    const modalTagline = document.getElementById('modal-tagline');
+    const modalAddress = document.getElementById('modal-address');
+    const modalMapsLink = document.getElementById('modal-maps-link');
+    const modalCounterText = document.getElementById('modal-counter-text');
+    const phoneLink = document.getElementById('modal-phone-link');
+
+    if (modalTitle) modalTitle.textContent = sede.title;
+    if (modalTagline) modalTagline.textContent = sede.tagline;
+    if (modalAddress) modalAddress.textContent = sede.address;
+    if (modalMapsLink) modalMapsLink.href = sede.mapsUrl;
+    if (modalCounterText) modalCounterText.textContent = `0${index + 1} / 03`;
+    
+    if (phoneLink) {
+      phoneLink.textContent = sede.phone;
+      phoneLink.href = `tel:${sede.phone.replace(/[^0-9+]/g, '')}`;
+    }
+
+    for (let i = 0; i < 4; i++) {
+      const thumb = document.getElementById(`thumb-${i}`);
+      if (thumb && sede.images[i]) {
+        thumb.src = sede.images[i].src;
+      }
+    }
+
+    setModalImage(0);
+  }
+
+  window.openSedeModal = function(index) {
+    currentModalSede = index;
+    currentActiveSede = index;
+    updateCarouselCounter();
+    populateModalData(index);
+
+    const modal = document.getElementById('sede-modal');
+    if (modal) {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.setModalImage = function(imgIndex) {
+    const sede = sedesData[currentModalSede];
+    const mainImg = document.getElementById('modal-main-image');
+    const caption = document.getElementById('modal-image-caption');
+    const thumbs = document.querySelectorAll('.thumb-btn');
+
+    if (mainImg && sede.images[imgIndex]) {
+      mainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        mainImg.src = sede.images[imgIndex].src;
+        if (caption) caption.textContent = sede.images[imgIndex].caption;
+        mainImg.style.opacity = '1';
+      }, 100);
+    }
+
+    thumbs.forEach((t, i) => {
+      if (i === imgIndex) {
+        t.classList.add('is-active-thumb');
+      } else {
+        t.classList.remove('is-active-thumb');
+      }
+    });
+  };
+
+  window.closeSedeModal = function() {
+    const modal = document.getElementById('sede-modal');
+    if (modal) {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.closeSedeModalOnBackdrop = function(e) {
+    if (e.target.id === 'sede-modal') {
+      closeSedeModal();
+    }
+  };
+
+  // Escuchador de teclado (ESC y Flechas Lateral)
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('sede-modal');
+    if (!modal || !modal.classList.contains('is-open')) return;
+
+    if (e.key === 'Escape') closeSedeModal();
+    if (e.key === 'ArrowLeft') navigateSedeInModal(-1);
+    if (e.key === 'ArrowRight') navigateSedeInModal(1);
+  });
+
+  // Soporte Gestual Táctil (Swipe en Móviles)
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const modalContainer = document.getElementById('sede-modal-container');
+  if (modalContainer) {
+    modalContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    modalContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeDistance = touchEndX - touchStartX;
+      if (swipeDistance > 45) navigateSedeInModal(-1);
+      else if (swipeDistance < -45) navigateSedeInModal(1);
+    }, { passive: true });
   }
 
   // ==========================================
