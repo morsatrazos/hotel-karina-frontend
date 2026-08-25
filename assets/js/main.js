@@ -158,6 +158,29 @@ document.addEventListener('DOMContentLoaded', () => {
       phoneLink.href = `tel:${sede.phone.replace(/[^0-9+]/g, '')}`;
     }
 
+    // Botón de acción Sede / Catálogo Suites
+    const exploreBtn = document.getElementById('modal-explore-sede-link') || document.querySelector('#sede-modal a[href="#suites"], #sede-modal a[href="el-tigre.html"]');
+    const exploreText = document.getElementById('modal-explore-sede-text');
+    if (exploreBtn) {
+      if (index === 2) {
+        exploreBtn.href = "el-tigre.html";
+        exploreBtn.removeAttribute('onclick');
+        if (exploreText) {
+          exploreText.innerHTML = `Explorar Sede El Tigre <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        } else {
+          exploreBtn.innerHTML = `<span>Explorar Sede El Tigre</span> <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        }
+      } else {
+        exploreBtn.href = "#suites";
+        exploreBtn.setAttribute('onclick', 'closeSedeModal()');
+        if (exploreText) {
+          exploreText.textContent = "Ver Catálogo de Suites";
+        } else {
+          exploreBtn.innerHTML = `<span>Ver Catálogo de Suites</span>`;
+        }
+      }
+    }
+
     for (let i = 0; i < 4; i++) {
       const thumb = document.getElementById(`thumb-${i}`);
       if (thumb && sede.images[i]) {

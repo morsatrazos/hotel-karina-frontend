@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Kariña — Sede El Tigre</title>
+
+  <!-- Google Fonts: Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            karina: {
+              cream: '#FFF6EA',
+              charcoal: '#343434',
+              'charcoal-dark': '#242424',
+              mustard: '#F0A800',
+              'mustard-light': '#FFD573',
+              blue: '#2680BD',
+              'blue-light': '#92CEF7',
+              terracotta: '#C7473B',
+              coral: '#EB8C84'
+            }
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Formas Asimétricas Orgánicas Kariña */
+    .rounded-pebble {
+      border-radius: 32px 32px 110px 32px !important;
+    }
+    .rounded-pebble-reverse {
+      border-radius: 110px 32px 32px 32px !important;
+    }
+
+    /* Modal Display Animation */
+    #suite-modal {
+      transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #suite-modal-container {
+      transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), opacity 400ms ease;
+    }
+    #suite-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #suite-modal.is-open #suite-modal-container {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+    #suite-modal:not(.is-open) #suite-modal-container {
+      transform: scale(0.96) translateY(16px);
+      opacity: 0;
+    }
+
+    /* Micro-animations for Gastronomy and Services */
+    .service-card-anim {
+      transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-card-anim:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px -8px rgba(240, 168, 0, 0.25);
+    }
+
+    /* Curated Amenities Slow Floating Animations */
+    @keyframes floatPebble1 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(1deg); }
+    }
+    @keyframes floatPebble2 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(-1deg); }
+    }
+    @keyframes floatPebble3 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(0.8deg); }
+    }
+
+    .animate-float-1 { animation: floatPebble1 6s ease-in-out infinite; }
+    .animate-float-2 { animation: floatPebble2 7s ease-in-out infinite 1s; }
+    .animate-float-3 { animation: floatPebble3 6.5s ease-in-out infinite 0.5s; }
+
+    /* Footer Insta Pills Hover Effect */
+    .footer-insta-pill {
+      transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .footer-insta-pill:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+      border-color: rgba(240, 168, 0, 0.4);
+      transform: translateX(4px);
+    }
+
+    /* Ambient Glow for Suite Modal */
+    @keyframes ambientPulse {
+      0%, 100% {
+        opacity: 0.35;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        opacity: 0.65;
+        transform: translate(-50%, -50%) scale(1.35);
+      }
+    }
+    .animate-ambient-glow {
+      animation: ambientPulse 6.5s ease-in-out infinite alternate;
+    }
+
+    /* Suite Display Transition */
+    .suite-fade {
+      transition: opacity 250ms ease-in-out, transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .suite-fade.changing {
+      opacity: 0.2;
+      transform: translateY(6px);
+    }
+  </style>
+</head>
+<body class="bg-karina-cream text-karina-charcoal font-sans antialiased min-h-screen selection:bg-karina-mustard selection:text-karina-charcoal">
+
+  <!-- ========================================== -->
+  <!-- 1. HEADER & MORPHING ISLAND NAVBAR         -->
+  <!-- ========================================== -->
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div id="header-container" class="max-w-7xl mx-auto px-6 sm:px-12 h-20 flex items-center justify-between transition-all duration-300">
+      
+      <!-- Logo & Trigger de Menú -->
+      <div class="flex items-center gap-4 sm:gap-6">
+        <button id="menu-toggle-btn" class="flex items-center gap-2.5 py-1.5 px-3 rounded-full hover:bg-black/5 transition-colors group focus:outline-none" aria-label="Abrir menú">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Kariña" class="h-7 w-auto transition-transform group-hover:scale-105">
+          <span class="text-xs font-bold text-karina-charcoal group-hover:text-karina-mustard transition-colors">Menú</span>
+        </button>
+
+        <div class="h-5 w-[1px] bg-karina-charcoal/20 hidden sm:block"></div>
+
+        <a href="index.html" class="flex items-center">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1786371092035/Kari%C3%B1a-PNG-.png" alt="Grupo Kariña Logo" class="h-8 sm:h-9 w-auto">
+        </a>
+      </div>
+
+      <!-- Links Centrales -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold text-karina-charcoal/80">
+        <a href="#galeria-bento" class="hover:text-karina-mustard transition-colors">Galería</a>
+        <a href="#suites-sede" class="hover:text-karina-mustard transition-colors">Suites</a>
+        <a href="#amenities" class="hover:text-karina-mustard transition-colors">Amenidades</a>
+        <a href="#gastronomia" class="hover:text-karina-mustard transition-colors">Gastronomía</a>
+        <a href="#servicios" class="hover:text-karina-mustard transition-colors">Servicios</a>
+      </nav>
+
+      <!-- Acción Derecha -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <span class="text-xs font-extrabold text-karina-charcoal/80 hidden sm:inline">EL TIGRE</span>
+        <button onclick="alert('Consultando disponibilidad para Sede El Tigre con Arimiña-IA...')" class="px-5 py-2.5 rounded-full bg-karina-mustard-light hover:bg-karina-mustard text-karina-charcoal text-xs font-bold shadow-sm transition-all active:scale-95 flex items-center gap-2">
+          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          <span>Reserva ✨</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- OVERLAY DE MENÚ INMERSIVO PANTALLA COMPLETA -->
+  <div id="immersive-menu" class="fixed inset-0 z-[150] opacity-0 pointer-events-none transition-opacity duration-300 bg-karina-charcoal/95 backdrop-blur-xl text-white flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+    <div class="flex items-center justify-between">
+      <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Grupo Kariña" class="h-10 w-auto">
+      <button id="close-menu-btn" class="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 text-white transition-colors" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div class="max-w-4xl mx-auto w-full py-10 space-y-6 text-center">
+      <a href="index.html" class="block text-2xl sm:text-4xl font-light hover:text-karina-mustard transition-colors">Inicio General</a>
+      <a href="#galeria-bento" onclick="toggleImmersiveMenu(false)" class="block text-2xl sm:text-4xl font-light hover:text-karina-mustard transition-colors">Galería El Tigre</a>
+      <a href="#suites-sede" onclick="toggleImmersiveMenu(false)" class="block text-2xl sm:text-4xl font-light hover:text-karina-mustard transition-colors">Suites & Comodidades</a>
+      <a href="#gastronomia" onclick="toggleImmersiveMenu(false)" class="block text-2xl sm:text-4xl font-light hover:text-karina-mustard transition-colors">Restaurante Moriche</a>
+      <a href="#servicios" onclick="toggleImmersiveMenu(false)" class="block text-2xl sm:text-4xl font-light hover:text-karina-mustard transition-colors">Servicios Ejecutivos</a>
+    </div>
+
+    <div class="text-center text-xs text-white/50">
+      <p>© 2026 Grupo Kariña — Hotel Kariña El Tigre, Anzoátegui</p>
+    </div>
+  </div>
+
+  <main class="pt-28 pb-16 space-y-20">
+
+    <!-- ========================================== -->
+    <!-- 2. CABECERA & GALERÍA BENTO FILTRABLE      -->
+    <!-- ========================================== -->
+    <section id="galeria-bento" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-10 text-center">
+      
+      <!-- Titular Editorial -->
+      <div class="space-y-4 max-w-3xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl font-light text-karina-charcoal tracking-tight leading-tight">
+          ¡Vive Kariña El Tigre!
+        </h1>
+        <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed max-w-2xl mx-auto">
+          Una atmósfera visual de momentos extraordinarios. Sumérgete en la esencia de nuestro refugio donde la arquitectura orgánica se encuentra con el confort curado.
+        </p>
+
+        <!-- SVG Line Accents - Trazo Curvo Extendido -->
+        <div class="flex justify-center pt-2">
+          <svg width="220" height="12" viewBox="0 0 220 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-karina-mustard-light">
+            <path d="M4 8C60 2.5 160 2.5 216 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Filtros Categoría (Tabs Minimalistas Editorial) -->
+      <div class="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+        <button onclick="filterBentoGallery('all', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all">
+          Todas
+        </button>
+        <button onclick="filterBentoGallery('piscinas', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
+          Piscinas
+        </button>
+        <button onclick="filterBentoGallery('gastronomia', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
+          Gastronomía
+        </button>
+        <button onclick="filterBentoGallery('padel', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
+          Pádel & Deporte
+        </button>
+        <button onclick="filterBentoGallery('eventos', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
+          Eventos
+        </button>
+      </div>
+
+      <!-- Grilla Bento Asimétrica -->
+      <div id="bento-container" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch pt-4 text-left">
+        
+        <!-- Foto 1: Principal Grande -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png" alt="Piscina El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 text-white space-y-1">
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Piscina Resort & Caney</span>
+            <h3 class="text-xl font-light text-white">Ambiente Tropical Guañipa</h3>
+          </div>
+        </div>
+
+        <!-- Foto 2: Forma Óval / Asimétrica Reversa -->
+        <div class="bento-card bento-item-all bento-item-eventos md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80" alt="Sala Ejecutiva El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 text-white space-y-1">
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Salones Ejecutivos</span>
+            <h3 class="text-xl font-light text-white">Reuniones de Alto Nivel</h3>
+          </div>
+        </div>
+
+        <!-- Foto 3: Jardines -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-4 h-[240px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Jardines" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Jardines & Caminerías</span>
+        </div>
+
+        <!-- Foto 4: Restaurante -->
+        <div class="bento-card bento-item-all bento-item-gastronomia bento-item-eventos md:col-span-8 h-[240px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Restaurante" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Restaurante Moriche — Especialidades Culinarias</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. SECCIÓN DE SUITES DE LA SEDE            -->
+    <!-- ========================================== -->
+    <section id="suites-sede" class="max-w-7xl mx-auto px-6 sm:px-12 py-10">
+      
+      <!-- Subtítulo e Indicador Editorial -->
+      <div class="text-center space-y-4 mb-10">
+        
+        <!-- Filter Switcher (Píldoras Arriba) -->
+        <div class="flex justify-center gap-3">
+          <button id="suite-pill-1" onclick="switchSuiteView(1)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all">
+            Suite Premium
+          </button>
+          <button id="suite-pill-2" onclick="switchSuiteView(2)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all">
+            Suite Estándar
+          </button>
+        </div>
+
+        <!-- Texto Guía Abajo -->
+        <span class="text-[11px] font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest block pt-1">
+          ESCOGE ENTRE DOS TIPOS DE SUITES — EL TIGRE, ANZOÁTEGUI
+        </span>
+
+      </div>
+
+      <!-- Tarjeta Contenedora de Suite Display -->
+      <div id="suite-display-container" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white/60 rounded-[36px] p-6 sm:p-10 border border-black/5 shadow-sm suite-fade">
+        
+        <!-- Info Izquierda -->
+        <div class="lg:col-span-6 space-y-6 text-left">
+          <h3 id="suite-title" class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+            SUITE PREMIUM
+          </h3>
+
+          <p id="suite-desc" class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+            Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.
+          </p>
+
+          <!-- Checklist Bondades -->
+          <div class="space-y-2.5 text-xs font-normal text-karina-charcoal/80">
+            <div class="flex items-center gap-3">
+              <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
+              <span>Cama King Size con lencería de 400 hilos</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
+              <span>Wi-Fi dedicado por fibra óptica</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
+              <span>Servicio a la habitación 24 horas</span>
+            </div>
+          </div>
+
+          <!-- Cita Elegante -->
+          <p id="suite-quote" class="text-xs text-karina-charcoal/60 font-light italic border-l-2 border-karina-mustard pl-3 py-0.5">
+            "Un santuario de descanso pensado para el viajero moderno."
+          </p>
+
+          <!-- Acciones: Modal de Detalles Amplios + Arimiña-IA -->
+          <div class="pt-2 flex flex-wrap items-center gap-3">
+            <button onclick="openSuiteDetailModal()" class="px-5 py-3 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-semibold border border-karina-charcoal/15 transition-all active:scale-95 shadow-sm flex items-center gap-2">
+              <i class="fa-solid fa-circle-info text-xs text-karina-mustard"></i>
+              <span>Ver Detalles de la Suite</span>
+            </button>
+
+            <button onclick="alert('Consultando disponibilidad para Suite en El Tigre con Arimiña-IA...')" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group">
+              <span class="w-5 h-5 rounded-full bg-karina-mustard text-karina-charcoal flex items-center justify-center text-[10px] shrink-0">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </span>
+              <span>Reserva con <strong>Arimiña-IA</strong></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Visor de Imagen Derecha -->
+        <div class="lg:col-span-6">
+          <div class="relative h-[320px] sm:h-[380px] w-full rounded-pebble overflow-hidden shadow-lg bg-black/10 cursor-pointer group" onclick="openSuiteDetailModal()">
+            <img id="suite-image" 
+                 src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" 
+                 alt="Suite El Tigre" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            
+            <div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full text-white text-[10px] font-mono flex items-center gap-1.5">
+              <span>★ 4.9 Superhost Comfort</span>
+              <span class="text-white/60">• Clic para ver fotos y video</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 4. SECCIÓN CURATED AMENITIES ANIMADOS      -->
+    <!-- ========================================== -->
+    <section id="amenities" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-10 text-center py-6">
+      
+      <div class="space-y-2">
+        <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+          Curated Amenities
+        </h2>
+        <p class="text-xs text-karina-charcoal/60 font-mono uppercase tracking-widest">
+          Diseñados para descanso, productividad y calma
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-5xl mx-auto pt-4">
+        
+        <!-- Amenity 1: WiFi (Azul) -->
+        <div class="animate-float-1 bg-[#92CEF7]/35 p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-blue text-lg shadow-sm">
+            <i class="fa-solid fa-wifi"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-xl font-bold text-karina-charcoal">Wi-Fi Dedicado</h3>
+            <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+              Conexión simétrica por fibra óptica de alta velocidad disponible en todas las habitaciones y áreas resort.
+            </p>
+          </div>
+        </div>
+
+        <!-- Amenity 2: Planta Eléctrica (Amarillo Mostaza) -->
+        <div class="animate-float-2 bg-karina-mustard-light/50 p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shadow-sm">
+            <i class="fa-solid fa-bolt text-karina-mustard"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-xl font-bold text-karina-charcoal">Planta Eléctrica 24/7</h3>
+            <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+              Respaldo energético automático al 100% en toda la infraestructura hotelera para tu total tranquilidad.
+            </p>
+          </div>
+        </div>
+
+        <!-- Amenity 3: Reserva Hídrica (Ícono Azul Ajustado) -->
+        <div class="animate-float-3 bg-[#EB8C84]/35 p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-blue text-lg shadow-sm">
+            <i class="fa-solid fa-droplet text-karina-blue"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-xl font-bold text-karina-charcoal">Reserva Hídrica</h3>
+            <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+              Sistema continuo de tratamiento y almacenamiento de agua potable con presión constante las 24 horas.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 5. SECCIÓN GASTRONÓMICA CON MICRO-MOTION   -->
+    <!-- ========================================== -->
+    <section id="gastronomia" class="max-w-7xl mx-auto px-6 sm:px-12 py-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-white/40 rounded-[40px] p-8 border border-black/5 shadow-sm">
+        
+        <!-- Texto Izquierda -->
+        <div class="lg:col-span-6 space-y-6 text-left">
+          <span class="text-xs font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest">
+            EXPERIENCIA CULINARIA EN EL TIGRE
+          </span>
+
+          <h2 class="text-3xl sm:text-5xl font-light text-karina-charcoal tracking-tight leading-tight">
+            ¡Gastronomía que fascina!
+          </h2>
+
+          <p class="text-xs sm:text-sm text-karina-charcoal/75 font-light leading-relaxed">
+            Nuestro equipo de chefs fusiona la tradición oriental con técnicas contemporáneas. Disfruta de desayunos buffet, cortes seleccionados y coctelería de autor en un ambiente inolvidable.
+          </p>
+
+          <div class="pt-2">
+            <button onclick="alert('Consultando menú del Restaurante Moriche con Arimiña-IA...')" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal text-white hover:bg-black text-xs font-bold transition-all shadow-md group">
+              <i class="fa-solid fa-utensils text-karina-mustard"></i>
+              <span>Consultar menú gastronómico con Arimiña-IA</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Foto Orgánica Derecha con Micro-animación Zoom & Float -->
+        <div class="lg:col-span-6">
+          <div class="relative h-[340px] sm:h-[400px] w-full rounded-pebble overflow-hidden shadow-xl bg-black/10 group cursor-pointer border border-karina-mustard/20">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" 
+                 alt="Gastronomía Hotel Kariña" 
+                 class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
+            <span class="absolute bottom-5 left-6 text-xs font-light text-white tracking-wide flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-karina-mustard animate-pulse"></span>
+              Restaurante Moriche — Especialidades del Chef
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. SERVICIOS DESTACADOS                    -->
+    <!-- ========================================== -->
+    <section id="servicios" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-10 text-center py-6">
+      <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+        Servicios Destacados
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+        
+        <!-- Servicio 1: Lavandería -->
+        <div class="service-card-anim bg-karina-mustard-light/60 hover:bg-karina-mustard-light/90 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm">
+          <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shrink-0 shadow-sm">
+            <i class="fa-solid fa-shirt"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-karina-charcoal">Servicio de Lavandería Express</h3>
+            <p class="text-xs text-karina-charcoal/70 font-normal">Atención impecable en 24 horas para prendas ejecutivas y delicadas.</p>
+          </div>
+        </div>
+
+        <!-- Servicio 2: Renta de Vehículos -->
+        <div class="service-card-anim bg-karina-mustard-light/60 hover:bg-karina-mustard-light/90 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm">
+          <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shrink-0 shadow-sm">
+            <i class="fa-solid fa-car"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-karina-charcoal">Renta de Vehículos & Transfers</h3>
+            <p class="text-xs text-karina-charcoal/70 font-normal">Asistencia en movilidad corporativa y traslados privados a aeropuertos.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 7. MASTER FOOTER MULTISEDE                 -->
+  <!-- ========================================== -->
+  <footer id="footer" class="bg-[#262626] text-white pt-20 pb-12 px-6 sm:px-12 border-t border-white/10">
+    <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10">
+      
+      <!-- Columna 1: Brand & Slogan -->
+      <div class="lg:col-span-3 space-y-5">
+        <a href="index.html" class="block">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Grupo Kariña Logo Blanco" class="h-12 sm:h-14 w-auto object-contain">
+        </a>
+        <p class="text-xs text-white/65 leading-relaxed max-w-xs font-normal">
+          Una estadía que te abraza. Confort, hospitalidad ejecutiva y cultura viva en el oriente venezolano.
+        </p>
+      </div>
+
+      <!-- Columna 2: SEDES -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#F0A800] block">Nuestras Sedes</span>
+        <ul class="space-y-2 text-xs text-white/75 font-normal">
+          <li><a href="index.html#sedes" class="hover:text-white transition-colors">Maturín</a></li>
+          <li><a href="index.html#sedes" class="hover:text-white transition-colors">Punta de Mata</a></li>
+          <li><a href="#galeria-bento" class="hover:text-white transition-colors">El Tigre (Página Actual)</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: EXPERIENCIAS -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#2680BD] block">Experiencias</span>
+        <ul class="space-y-2 text-xs text-white/75 font-normal">
+          <li><a href="#gastronomia" class="hover:text-white transition-colors">Restaurante Moriche</a></li>
+          <li><a href="#amenities" class="hover:text-white transition-colors">Amenidades</a></li>
+          <li><a href="#servicios" class="hover:text-white transition-colors">Servicios Ejecutivos</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: CONTACTO -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-white/90 block">Recepción El Tigre</span>
+        <div class="space-y-2.5 text-xs text-white/75">
+          <p class="text-[11px]">Av. Ruiz Pineda, cruce con Calle 23 de Enero, El Tigre.</p>
+          <p class="font-bold text-white">+58 0424-9169603</p>
+        </div>
+      </div>
+
+      <!-- Columna 5: INSTAGRAM -->
+      <div class="lg:col-span-3 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#EB8C84] block">Síguenos en Instagram</span>
+        <div class="flex flex-col gap-2">
+          <a href="https://instagram.com/hotelkarina.eltigre" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#FFD573]"></i>
+            <span>@hotelkarina.eltigre</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-[1440px] mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/50 gap-4">
+      <p>© 2026 Grupo Kariña — Sede El Tigre</p>
+      <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="w-10 h-10 rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-karina-mustard hover:text-karina-charcoal transition-all">
+        <i class="fa-solid fa-arrow-up text-xs"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL DE DETALLES DE SUITE (INMERSIVO CON NAVEGACIÓN DIRECTA Y 6 MEDIAS) -->
+  <!-- ========================================== -->
+  <div id="suite-modal" 
+       class="fixed inset-0 z-[200] opacity-0 pointer-events-none bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 select-none"
+       onclick="closeSuiteModalOnBackdrop(event)">
+    
+    <!-- Ambient Light Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-karina-mustard/35 rounded-full blur-3xl pointer-events-none animate-ambient-glow"></div>
+
+    <!-- Flecha Lateral Flotante Izquierda -->
+    <button onclick="navigateSuiteInModal(-1)" class="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-black/50 hover:bg-karina-mustard hover:text-karina-charcoal text-white items-center justify-center transition-all border border-white/20 shadow-xl active:scale-95" title="Suite Anterior">
+      <i class="fa-solid fa-chevron-left text-sm"></i>
+    </button>
+
+    <!-- Flecha Lateral Flotante Derecha -->
+    <button onclick="navigateSuiteInModal(1)" class="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-black/50 hover:bg-karina-mustard hover:text-karina-charcoal text-white items-center justify-center transition-all border border-white/20 shadow-xl active:scale-95" title="Siguiente Suite">
+      <i class="fa-solid fa-chevron-right text-sm"></i>
+    </button>
+
+    <div id="suite-modal-container" 
+         class="relative w-full max-w-4xl min-h-[580px] max-h-[92vh] bg-karina-cream rounded-[36px] overflow-hidden shadow-2xl border border-black/10 text-karina-charcoal my-auto flex flex-col justify-between">
+      
+      <div id="suite-modal-wrapper" class="grid grid-cols-1 md:grid-cols-12 h-full overflow-y-auto p-6 sm:p-8 gap-8 transition-opacity duration-200">
+        
+        <!-- Visor Izquierda con Galería de 6 Fotos/Video -->
+        <div class="md:col-span-6 space-y-4">
+          <div class="relative w-full h-[280px] sm:h-[320px] rounded-pebble overflow-hidden shadow-md bg-black/10">
+            <img id="suite-modal-main-img" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            <span id="suite-modal-tag" class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-white text-[11px]">Vista Principal</span>
+          </div>
+
+          <!-- Miniaturas 6 Slots (Fotos + Video) -->
+          <div class="grid grid-cols-6 gap-2">
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', 'Cama Principal King Size')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', 'Baño Privado & Amenidades')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', 'Área Ejecutiva & Escritorio')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80', 'Barra & Minibar')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80', 'Vista a la Piscina')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80', 'Recorrido en Video HD')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard relative group">
+              <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-xs">
+                <i class="fa-solid fa-play"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Info Derecha con Paginador Directo -->
+        <div class="md:col-span-6 space-y-6 flex flex-col justify-between text-left">
+          <div class="space-y-4">
+            
+            <!-- Barra Superior Limpia con Flechas Directas < 01 / 02 > -->
+            <div class="flex items-center justify-end gap-5">
+              <div class="flex items-center gap-2 text-xs font-mono font-normal text-karina-charcoal/70">
+                <button onclick="navigateSuiteInModal(-1)" class="hover:text-karina-mustard transition-colors px-1" title="Anterior">
+                  <i class="fa-solid fa-chevron-left text-xs"></i>
+                </button>
+                <span id="suite-modal-counter" class="px-1">01 / 02</span>
+                <button onclick="navigateSuiteInModal(1)" class="hover:text-karina-mustard transition-colors px-1" title="Siguiente">
+                  <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+              </div>
+
+              <button onclick="closeSuiteModal()" class="text-karina-charcoal/60 hover:text-karina-charcoal text-lg p-1 transition-colors leading-none" aria-label="Cerrar modal">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <h3 id="suite-modal-title" class="text-3xl font-light text-karina-charcoal">Suite Premium</h3>
+            <p id="suite-modal-desc" class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+              Espacios amplios diseñados con materiales nobles, iluminación cálida graduada y lencería hipoalergénica de alta densidad.
+            </p>
+
+            <div class="space-y-2 pt-2 text-xs text-karina-charcoal/80">
+              <p class="font-bold">Equipamiento Incluido:</p>
+              <div class="grid grid-cols-2 gap-2">
+                <div class="flex items-center gap-2"><i class="fa-solid fa-bed text-karina-mustard"></i> Cama King Size</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-wifi text-karina-mustard"></i> Fibra Óptica 100M</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-tv text-karina-mustard"></i> Smart TV 55"</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-snowflake text-karina-mustard"></i> A/C Autónomo</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-vault text-karina-mustard"></i> Caja de Seguridad</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-mug-hot text-karina-mustard"></i> Bar & Cafetera</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 space-y-2 border-t border-black/10">
+            <button onclick="closeSuiteModal(); alert('Consultando disponibilidad de suite con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95">
+              <i class="fa-solid fa-wand-magic-sparkles text-karina-mustard"></i>
+              <span>Consultar Tarifas & Reservar con <strong>Arimiña-IA</strong></span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- CONTROLADORES JAVASCRIPT                   -->
+  <!-- ========================================== -->
+  <script>
+    // 1. Sticky Navigation Blur
+    const header = document.getElementById('site-header');
+    const headerContainer = document.getElementById('header-container');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('bg-karina-cream/95', 'backdrop-blur-md', 'shadow-md');
+        headerContainer.classList.remove('h-20');
+        headerContainer.classList.add('h-16');
+      } else {
+        header.classList.remove('bg-karina-cream/95', 'backdrop-blur-md', 'shadow-md');
+        headerContainer.classList.remove('h-16');
+        headerContainer.classList.add('h-20');
+      }
+    });
+
+    // 2. Fullscreen Menu Toggle
+    const menuBtn = document.getElementById('menu-toggle-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const immersiveMenu = document.getElementById('immersive-menu');
+
+    function toggleImmersiveMenu(show) {
+      if (show) {
+        immersiveMenu.classList.remove('opacity-0', 'pointer-events-none');
+        immersiveMenu.classList.add('opacity-100', 'pointer-events-auto');
+        document.body.style.overflow = 'hidden';
+      } else {
+        immersiveMenu.classList.remove('opacity-100', 'pointer-events-auto');
+        immersiveMenu.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+      }
+    }
+
+    menuBtn.addEventListener('click', () => toggleImmersiveMenu(true));
+    closeMenuBtn.addEventListener('click', () => toggleImmersiveMenu(false));
+
+    // 3. Bento Gallery Filtering
+    function filterBentoGallery(category, clickedBtn) {
+      const tabs = document.querySelectorAll('.bento-tab');
+      tabs.forEach(tab => {
+        tab.className = "bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all";
+      });
+      clickedBtn.className = "bento-tab px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+
+      const cards = document.querySelectorAll('.bento-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains('bento-item-' + category)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 4. Suite Filter Switcher & Modal Controls
+    const suitePill1 = document.getElementById('suite-pill-1');
+    const suitePill2 = document.getElementById('suite-pill-2');
+    const suiteContainer = document.getElementById('suite-display-container');
+
+    const suiteTitle = document.getElementById('suite-title');
+    const suiteDesc = document.getElementById('suite-desc');
+    const suiteQuote = document.getElementById('suite-quote');
+    const suiteImage = document.getElementById('suite-image');
+
+    const suitesData = {
+      1: {
+        title: "SUITE PREMIUM",
+        desc: "Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.",
+        quote: '"Un santuario de descanso pensado para el viajero moderno."',
+        image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"
+      },
+      2: {
+        title: "SUITE ESTÁNDAR",
+        desc: "Dos ambientes independientes combinando sala ejecutiva y habitación principal para máxima privacidad y estadías prolongadas.",
+        quote: '"Espacio expansivo ideal para directivos y ejecutivos de alto nivel."',
+        image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80"
+      }
+    };
+
+    let currentSuiteType = 1;
+
+    function switchSuiteView(type) {
+      currentSuiteType = type;
+      suiteContainer.classList.add('changing');
+
+      setTimeout(() => {
+        const data = suitesData[type];
+        suiteTitle.textContent = data.title;
+        suiteDesc.textContent = data.desc;
+        suiteQuote.textContent = data.quote;
+        suiteImage.src = data.image;
+
+        if (type === 1) {
+          suitePill1.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+          suitePill2.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all";
+        } else {
+          suitePill2.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+          suitePill1.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all";
+        }
+
+        suiteContainer.classList.remove('changing');
+      }, 150);
+    }
+
+    // Modal Inner Navigation
+    function navigateSuiteInModal(dir) {
+      currentSuiteType = currentSuiteType === 1 ? 2 : 1;
+      switchSuiteView(currentSuiteType);
+      
+      const wrapper = document.getElementById('suite-modal-wrapper');
+      wrapper.style.opacity = '0.3';
+
+      setTimeout(() => {
+        const data = suitesData[currentSuiteType];
+        document.getElementById('suite-modal-title').textContent = data.title;
+        document.getElementById('suite-modal-desc').textContent = data.desc;
+        document.getElementById('suite-modal-main-img').src = data.image;
+        document.getElementById('suite-modal-counter').textContent = `0${currentSuiteType} / 02`;
+        wrapper.style.opacity = '1';
+      }, 120);
+    }
+
+    function openSuiteDetailModal() {
+      const modal = document.getElementById('suite-modal');
+      const data = suitesData[currentSuiteType];
+      document.getElementById('suite-modal-title').textContent = data.title;
+      document.getElementById('suite-modal-desc').textContent = data.desc;
+      document.getElementById('suite-modal-main-img').src = data.image;
+      document.getElementById('suite-modal-counter').textContent = `0${currentSuiteType} / 02`;
+
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSuiteModal() {
+      const modal = document.getElementById('suite-modal');
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    function closeSuiteModalOnBackdrop(e) {
+      if (e.target.id === 'suite-modal') {
+        closeSuiteModal();
+      }
+    }
+
+    function setSuiteModalImg(src, tagText) {
+      document.getElementById('suite-modal-main-img').src = src;
+      if (tagText) document.getElementById('suite-modal-tag').textContent = tagText;
+    }
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSuiteModal();
+        toggleImmersiveMenu(false);
+      }
+      if (e.key === 'ArrowLeft') navigateSuiteInModal(-1);
+      if (e.key === 'ArrowRight') navigateSuiteInModal(1);
+    });
+  </script>
+</body>
+</html>

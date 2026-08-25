@@ -109,7 +109,7 @@
         <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
           <a href="#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Maturín (Hotel & Club)</a>
           <a href="#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Punta de Mata (Executive)</a>
-          <a href="#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">El Tigre (Business & Events)</a>
+          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Business & Events)</a>
         </div>
       </div>
 
@@ -779,7 +779,7 @@
         <ul class="space-y-2 text-xs text-white/75 font-normal">
           <li><a href="#sedes" class="hover:text-white transition-colors">Hotel Kariña Maturín</a></li>
           <li><a href="#sedes" class="hover:text-white transition-colors">Hotel Kariña Punta de Mata</a></li>
-          <li><a href="#sedes" class="hover:text-white transition-colors">Hotel Kariña El Tigre</a></li>
+          <li><a href="el-tigre.html" class="hover:text-white transition-colors">Hotel Kariña El Tigre</a></li>
           <li><a href="#suites" class="hover:text-white transition-colors">Catálogo de Suites & Tarifas</a></li>
         </ul>
       </div>
@@ -1038,11 +1038,12 @@
               <i class="fa-solid fa-arrow-right text-[10px] text-white/60 group-hover:translate-x-1 transition-transform ml-1"></i>
             </button>
 
-            <!-- Ver Suites -->
-            <a href="#suites" 
+            <!-- Ver Suites / Explorar Sede -->
+            <a id="modal-explore-sede-link"
+               href="#suites" 
                onclick="closeSedeModal()" 
                class="w-full py-3 px-5 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-semibold flex items-center justify-center gap-2 border border-karina-charcoal/15 transition-all active:scale-95">
-              <span>Ver Catálogo de Suites</span>
+              <span id="modal-explore-sede-text">Ver Catálogo de Suites</span>
             </a>
 
           </div>
