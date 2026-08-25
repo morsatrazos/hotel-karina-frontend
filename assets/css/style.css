@@ -358,3 +358,42 @@ body {
   box-shadow: 0 20px 40px -12px rgba(52, 52, 52, 0.1);
 }
 
+/* ===================================================
+   9. ESTILOS DEDICADOS PÁGINA VIVE KARIÑA & DAY PASS
+   =================================================== */
+
+/* Animación de Entrada para la Grilla Bento */
+.vive-item {
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), opacity 350ms ease;
+}
+.vive-item:hover {
+  transform: translateY(-4px);
+}
+
+/* Modal Lightbox Active */
+#vive-lightbox-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Day Pass Modal Display */
+#daypass-modal {
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+#daypass-modal-container {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), opacity 400ms ease;
+}
+#daypass-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+#daypass-modal.is-open #daypass-modal-container {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+#daypass-modal:not(.is-open) #daypass-modal-container {
+  transform: scale(0.96) translateY(16px);
+  opacity: 0;
+}
+
+

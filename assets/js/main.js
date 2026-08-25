@@ -252,6 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (sedeModal && sedeModal.classList.contains('is-open')) closeSedeModal();
       const suiteModal = document.getElementById('suite-modal');
       if (suiteModal && suiteModal.classList.contains('is-open')) closeSuiteModal();
+      const viveModal = document.getElementById('vive-lightbox-modal');
+      if (viveModal && viveModal.classList.contains('is-open')) closeViveLightbox();
+      const dpModal = document.getElementById('daypass-modal');
+      if (dpModal && dpModal.classList.contains('is-open')) closeDayPassModal();
     }
     const sedeModal = document.getElementById('sede-modal');
     if (sedeModal && sedeModal.classList.contains('is-open')) {
@@ -549,6 +553,137 @@ document.addEventListener('DOMContentLoaded', () => {
   window.inquireSuiteWithAI = function() {
     closeSuiteModal();
     alert('Iniciando consulta de disponibilidad y tarifas con Arimiña-IA...');
+  };
+
+  // ==========================================
+  // 9. CONTROLADORES PÁGINA VIVE KARIÑA & DAY PASS
+  // ==========================================
+  const dayPassData = [
+    {
+      title: "Hotel Kariña Maturín",
+      desc: "Disfruta de un día de sol con acceso libre a las piscinas familiares, parque acuático infantil con toboganes, tumbonas de descanso y vestidores de 10:00 AM a 6:00 PM.",
+      tag: "Piscina Resort & Toboganes",
+      price: "$25",
+      img: "https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg"
+    },
+    {
+      title: "Kariña Punta de Mata",
+      desc: "Un día completo de paz corporativa rodeado de jardines tropicales, acceso a piscina ejecutiva, toallas y consumo acreditado en restaurante.",
+      tag: "Piscina Executive & Jardines",
+      price: "$20",
+      img: "https://uploads.onecompiler.io/44s48z3dm/1787540097635/Fachada-Aerea.2.jpg"
+    },
+    {
+      title: "Hotel Kariña El Tigre",
+      desc: "Sumergete en la refrescante piscina resort de Guañipa, área de caneyes, canchas deportivas y ambiente familiar único en la Mesa de Guanipa.",
+      tag: "Piscina Guañipa & Caney",
+      price: "$22",
+      img: "https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png"
+    }
+  ];
+
+  let currentDayPassSedeIdx = 0;
+
+  window.filterViveGallery = function(category, clickedBtn) {
+    const tabs = document.querySelectorAll('.vive-tab');
+    tabs.forEach(tab => {
+      tab.className = "vive-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-black/10 transition-all";
+    });
+    if (clickedBtn) clickedBtn.className = "vive-tab px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+
+    const items = document.querySelectorAll('.vive-item');
+    items.forEach(item => {
+      if (category === 'all' || item.classList.contains('vive-cat-' + category)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  };
+
+  window.openViveLightbox = function(src, caption, type, sede) {
+    const modal = document.getElementById('vive-lightbox-modal');
+    const imgEl = document.getElementById('lightbox-img');
+    const captionEl = document.getElementById('lightbox-caption');
+    const sedeEl = document.getElementById('lightbox-sede');
+
+    if (imgEl) imgEl.src = src;
+    if (captionEl) captionEl.textContent = caption;
+    if (sedeEl) sedeEl.textContent = sede || 'Kariña';
+
+    if (modal) modal.classList.add('is-open');
+  };
+
+  window.closeViveLightbox = function() {
+    const modal = document.getElementById('vive-lightbox-modal');
+    if (modal) modal.classList.remove('is-open');
+  };
+
+  window.closeViveLightboxOnBackdrop = function(e) {
+    if (e.target.id === 'vive-lightbox-modal') closeViveLightbox();
+  };
+
+  window.openDayPassModal = function(sedeIndex) {
+    currentDayPassSedeIdx = sedeIndex || 0;
+    selectDayPassSede(currentDayPassSedeIdx);
+
+    const modal = document.getElementById('daypass-modal');
+    if (modal) {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.selectDayPassSede = function(index) {
+    currentDayPassSedeIdx = index;
+    const data = dayPassData[index];
+    if (!data) return;
+
+    for (let i = 0; i < 3; i++) {
+      const tab = document.getElementById(`dp-tab-${i}`);
+      if (tab) {
+        if (i === index) {
+          tab.className = "dp-tab-btn py-2.5 px-3 rounded-2xl text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all text-center";
+        } else {
+          tab.className = "dp-tab-btn py-2.5 px-3 rounded-2xl text-xs font-semibold text-karina-charcoal/70 bg-white/60 hover:bg-white border border-black/10 transition-all text-center";
+        }
+      }
+    }
+
+    const wrapper = document.getElementById('daypass-detail-wrapper');
+    if (wrapper) wrapper.style.opacity = '0.3';
+
+    setTimeout(() => {
+      const titleEl = document.getElementById('dp-sede-title');
+      const descEl = document.getElementById('dp-sede-desc');
+      const tagEl = document.getElementById('dp-sede-tag');
+      const priceEl = document.getElementById('dp-sede-price');
+      const imgEl = document.getElementById('dp-sede-img');
+
+      if (titleEl) titleEl.textContent = data.title;
+      if (descEl) descEl.textContent = data.desc;
+      if (tagEl) tagEl.textContent = data.tag;
+      if (priceEl) priceEl.innerHTML = `${data.price} <span class="text-xs font-light text-karina-charcoal/60">/ persona</span>`;
+      if (imgEl) imgEl.src = data.img;
+
+      if (wrapper) wrapper.style.opacity = '1';
+    }, 120);
+  };
+
+  window.closeDayPassModal = function() {
+    const modal = document.getElementById('daypass-modal');
+    if (modal) {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.closeDayPassModalOnBackdrop = function(e) {
+    if (e.target.id === 'daypass-modal') closeDayPassModal();
+  };
+
+  window.loadMoreViveMoments = function() {
+    console.log('Cargando más momentos en la galería ¡Vive Kariña!...');
   };
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
