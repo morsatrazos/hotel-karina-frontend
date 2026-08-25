@@ -244,10 +244,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Escuchador de teclado (ESC y Flechas Lateral)
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (immersiveMenu && !immersiveMenu.classList.contains('opacity-0')) {
+        closeMenu();
+      }
+      const modal = document.getElementById('sede-modal');
+      if (modal && modal.classList.contains('is-open')) closeSedeModal();
+    }
     const modal = document.getElementById('sede-modal');
     if (!modal || !modal.classList.contains('is-open')) return;
 
-    if (e.key === 'Escape') closeSedeModal();
     if (e.key === 'ArrowLeft') navigateSedeInModal(-1);
     if (e.key === 'ArrowRight') navigateSedeInModal(1);
   });

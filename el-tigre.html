@@ -13,7 +13,7 @@
   <!-- FontAwesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS Engine -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -33,12 +33,16 @@
             }
           },
           fontFamily: {
+            manrope: ['Manrope', 'sans-serif'],
             sans: ['Manrope', 'sans-serif']
           }
         }
       }
     }
   </script>
+
+  <!-- Hoja de Estilos Oficial y Modular -->
+  <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
     /* Formas Asimétricas Orgánicas Kariña */
@@ -131,68 +135,137 @@
     }
   </style>
 </head>
-<body class="bg-karina-cream text-karina-charcoal font-sans antialiased min-h-screen selection:bg-karina-mustard selection:text-karina-charcoal">
+<body class="bg-karina-cream text-karina-charcoal font-manrope antialiased min-h-screen selection:bg-karina-mustard selection:text-karina-charcoal">
 
   <!-- ========================================== -->
-  <!-- 1. HEADER & MORPHING ISLAND NAVBAR         -->
+  <!-- 1. NAVBAR OFICIAL CON ISLA FLOTANTE       -->
   <!-- ========================================== -->
-  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <div id="header-container" class="max-w-7xl mx-auto px-6 sm:px-12 h-20 flex items-center justify-between transition-all duration-300">
+  <header id="main-navbar" class="fixed top-0 inset-x-0 mx-auto w-full z-50 navbar-default">
+    <div class="nav-inner max-w-[1440px] mx-auto px-6 sm:px-12 h-20 flex items-center justify-between">
       
-      <!-- Logo & Trigger de Menú -->
-      <div class="flex items-center gap-4 sm:gap-6">
-        <button id="menu-toggle-btn" class="flex items-center gap-2.5 py-1.5 px-3 rounded-full hover:bg-black/5 transition-colors group focus:outline-none" aria-label="Abrir menú">
-          <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Kariña" class="h-7 w-auto transition-transform group-hover:scale-105">
-          <span class="text-xs font-bold text-karina-charcoal group-hover:text-karina-mustard transition-colors">Menú</span>
+      <!-- LADO IZQUIERDO: Menú + Logo -->
+      <div class="flex items-center gap-6">
+        <button id="open-menu-btn" class="flex items-center gap-3 group focus:outline-none" aria-label="Abrir menú">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Ícono Menú Kariña" class="h-6 w-auto object-contain group-hover:scale-105 transition-transform">
+          <span class="text-sm font-semibold text-[#343434] group-hover:text-[#F0A800] transition-colors">Menú</span>
         </button>
 
-        <div class="h-5 w-[1px] bg-karina-charcoal/20 hidden sm:block"></div>
+        <div class="h-8 w-[1px] bg-[#343434]/20 hidden sm:block"></div>
 
         <a href="index.html" class="flex items-center">
-          <img src="https://uploads.onecompiler.io/44s48z3dm/1786371092035/Kari%C3%B1a-PNG-.png" alt="Grupo Kariña Logo" class="h-8 sm:h-9 w-auto">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1786371092035/Kari%C3%B1a-PNG-.png" alt="Grupo Kariña Venezuela" class="h-8 sm:h-9 w-auto object-contain">
         </a>
       </div>
 
-      <!-- Links Centrales -->
-      <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold text-karina-charcoal/80">
-        <a href="#galeria-bento" class="hover:text-karina-mustard transition-colors">Galería</a>
-        <a href="#suites-sede" class="hover:text-karina-mustard transition-colors">Suites</a>
-        <a href="#amenities" class="hover:text-karina-mustard transition-colors">Amenidades</a>
-        <a href="#gastronomia" class="hover:text-karina-mustard transition-colors">Gastronomía</a>
-        <a href="#servicios" class="hover:text-karina-mustard transition-colors">Servicios</a>
+      <!-- CENTRO: Enlaces -->
+      <nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium text-[#343434]">
+        <a href="#galeria-bento" class="hover:text-[#F0A800] transition-colors">Galería</a>
+        <a href="#suites-sede" class="hover:text-[#F0A800] transition-colors">Suites</a>
+        <a href="#amenities" class="hover:text-[#F0A800] transition-colors">Amenidades</a>
+        <a href="#gastronomia" class="hover:text-[#F0A800] transition-colors">Gastronomía</a>
+        <a href="#servicios" class="hover:text-[#F0A800] transition-colors">Servicios</a>
       </nav>
 
-      <!-- Acción Derecha -->
-      <div class="flex items-center gap-3 sm:gap-4">
-        <span class="text-xs font-extrabold text-karina-charcoal/80 hidden sm:inline">EL TIGRE</span>
-        <button onclick="alert('Consultando disponibilidad para Sede El Tigre con Arimiña-IA...')" class="px-5 py-2.5 rounded-full bg-karina-mustard-light hover:bg-karina-mustard text-karina-charcoal text-xs font-bold shadow-sm transition-all active:scale-95 flex items-center gap-2">
-          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
-          <span>Reserva ✨</span>
+      <!-- LADO DERECHO: Indicador Sede + Botón Reserva Shimmer -->
+      <div class="flex items-center gap-4">
+        <span class="text-xs font-extrabold text-[#343434]/80 hidden sm:inline tracking-wider">EL TIGRE</span>
+        <button onclick="alert('Consultando disponibilidad para Sede El Tigre con Arimiña-IA...')" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+          <span>Reserva</span>
+          <i class="fa-solid fa-sparkles text-[10px]"></i>
         </button>
       </div>
 
     </div>
   </header>
 
-  <!-- OVERLAY DE MENÚ INMERSIVO PANTALLA COMPLETA -->
-  <div id="immersive-menu" class="fixed inset-0 z-[150] opacity-0 pointer-events-none transition-opacity duration-300 bg-karina-charcoal/95 backdrop-blur-xl text-white flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
-    <div class="flex items-center justify-between">
-      <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Grupo Kariña" class="h-10 w-auto">
-      <button id="close-menu-btn" class="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 text-white transition-colors" aria-label="Cerrar menú">
+  <!-- ========================================== -->
+  <!-- 2. MENÚ INMERSIVO OVERLAY                  -->
+  <!-- ========================================== -->
+  <div id="immersive-menu" class="fixed inset-0 z-[100] bg-[#2E2E2E] text-white opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+    <div class="flex items-center justify-between max-w-5xl mx-auto w-full border-b border-white/10 pb-6">
+      <a href="index.html">
+        <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Hotel Kariña" class="h-8 sm:h-10 w-auto object-contain">
+      </a>
+      <button id="close-menu-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors" aria-label="Cerrar menú">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
     </div>
 
-    <div class="max-w-4xl mx-auto w-full py-10 space-y-6 text-center">
-      <a href="index.html" class="block text-2xl sm:text-4xl font-light hover:text-karina-mustard transition-colors">Inicio General</a>
-      <a href="#galeria-bento" onclick="toggleImmersiveMenu(false)" class="block text-2xl sm:text-4xl font-light hover:text-karina-mustard transition-colors">Galería El Tigre</a>
-      <a href="#suites-sede" onclick="toggleImmersiveMenu(false)" class="block text-2xl sm:text-4xl font-light hover:text-karina-mustard transition-colors">Suites & Comodidades</a>
-      <a href="#gastronomia" onclick="toggleImmersiveMenu(false)" class="block text-2xl sm:text-4xl font-light hover:text-karina-mustard transition-colors">Restaurante Moriche</a>
-      <a href="#servicios" onclick="toggleImmersiveMenu(false)" class="block text-2xl sm:text-4xl font-light hover:text-karina-mustard transition-colors">Servicios Ejecutivos</a>
+    <div class="max-w-xl mx-auto w-full py-8 space-y-4 text-left">
+      <div class="border-b border-white/10 pb-4">
+        <button id="toggle-sedes-sub" class="w-full flex items-center justify-between text-left group">
+          <div class="flex items-baseline gap-4">
+            <span class="text-xs font-mono text-white/40">01</span>
+            <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Sedes</span>
+          </div>
+          <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
+        </button>
+        <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
+          <a href="index.html#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Maturín (Hotel & Club)</a>
+          <a href="index.html#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Punta de Mata (Executive)</a>
+          <a href="el-tigre.html" class="block text-karina-mustard font-medium transition-colors">El Tigre (Business & Events)</a>
+        </div>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="#suites-sede" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">02</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Suites</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="index.html#corporativo" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">03</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Business</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="#galeria-bento" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">04</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería El Tigre</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="index.html#experiencias" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">05</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="index.html#fundacion" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">06</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Fundación</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="index.html#faqs" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">07</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Preguntas Frecuentes</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="#footer" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">08</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Contacto y Ubicaciones</span>
+        </a>
+      </div>
     </div>
 
-    <div class="text-center text-xs text-white/50">
-      <p>© 2026 Grupo Kariña — Hotel Kariña El Tigre, Anzoátegui</p>
+    <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
+      <button class="w-full py-3 px-6 rounded-full border border-white/20 hover:border-karina-mustard text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
+        <i class="fa-regular fa-user"></i>
+        <span>Mi Cuenta / Iniciar Sesión</span>
+      </button>
+      <button onclick="alert('Iniciando chat con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+        <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
+        <span>Hablar con Arimiña-IA</span>
+      </button>
     </div>
   </div>
 
@@ -695,41 +768,53 @@
   <!-- CONTROLADORES JAVASCRIPT                   -->
   <!-- ========================================== -->
   <script>
-    // 1. Sticky Navigation Blur
-    const header = document.getElementById('site-header');
-    const headerContainer = document.getElementById('header-container');
+    // 1. NAVBAR MORPHING FLOATING ISLAND (ANIMACIÓN EXACTA FIGMA)
+    const navbar = document.getElementById('main-navbar');
+    if (navbar) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 45) {
+          navbar.classList.remove('navbar-default');
+          navbar.classList.add('navbar-scrolled');
+        } else {
+          navbar.classList.remove('navbar-scrolled');
+          navbar.classList.add('navbar-default');
+        }
+      }, { passive: true });
+    }
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header.classList.add('bg-karina-cream/95', 'backdrop-blur-md', 'shadow-md');
-        headerContainer.classList.remove('h-20');
-        headerContainer.classList.add('h-16');
-      } else {
-        header.classList.remove('bg-karina-cream/95', 'backdrop-blur-md', 'shadow-md');
-        headerContainer.classList.remove('h-16');
-        headerContainer.classList.add('h-20');
-      }
-    });
-
-    // 2. Fullscreen Menu Toggle
-    const menuBtn = document.getElementById('menu-toggle-btn');
-    const closeMenuBtn = document.getElementById('close-menu-btn');
+    // 2. MENÚ INMERSIVO (100% OVERLAY FULLSCREEN)
     const immersiveMenu = document.getElementById('immersive-menu');
+    const openMenuBtn = document.getElementById('open-menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
 
-    function toggleImmersiveMenu(show) {
-      if (show) {
+    function openMenu() {
+      if (immersiveMenu) {
         immersiveMenu.classList.remove('opacity-0', 'pointer-events-none');
-        immersiveMenu.classList.add('opacity-100', 'pointer-events-auto');
         document.body.style.overflow = 'hidden';
-      } else {
-        immersiveMenu.classList.remove('opacity-100', 'pointer-events-auto');
+      }
+    }
+
+    function closeMenu() {
+      if (immersiveMenu) {
         immersiveMenu.classList.add('opacity-0', 'pointer-events-none');
         document.body.style.overflow = '';
       }
     }
 
-    menuBtn.addEventListener('click', () => toggleImmersiveMenu(true));
-    closeMenuBtn.addEventListener('click', () => toggleImmersiveMenu(false));
+    if (openMenuBtn) openMenuBtn.addEventListener('click', openMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+
+    // Acordeón de Sedes dentro del menú
+    const toggleSedesBtn = document.getElementById('toggle-sedes-sub');
+    const sedesSubMenu = document.getElementById('sedes-sub-menu');
+    const sedesChevron = document.getElementById('sedes-chevron');
+
+    if (toggleSedesBtn && sedesSubMenu && sedesChevron) {
+      toggleSedesBtn.addEventListener('click', () => {
+        sedesSubMenu.classList.toggle('hidden');
+        sedesChevron.classList.toggle('rotate-180');
+      });
+    }
 
     // 3. Bento Gallery Filtering
     function filterBentoGallery(category, clickedBtn) {
@@ -778,24 +863,24 @@
 
     function switchSuiteView(type) {
       currentSuiteType = type;
-      suiteContainer.classList.add('changing');
+      if (suiteContainer) suiteContainer.classList.add('changing');
 
       setTimeout(() => {
         const data = suitesData[type];
-        suiteTitle.textContent = data.title;
-        suiteDesc.textContent = data.desc;
-        suiteQuote.textContent = data.quote;
-        suiteImage.src = data.image;
+        if (suiteTitle) suiteTitle.textContent = data.title;
+        if (suiteDesc) suiteDesc.textContent = data.desc;
+        if (suiteQuote) suiteQuote.textContent = data.quote;
+        if (suiteImage) suiteImage.src = data.image;
 
         if (type === 1) {
-          suitePill1.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
-          suitePill2.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all";
+          if (suitePill1) suitePill1.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+          if (suitePill2) suitePill2.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all";
         } else {
-          suitePill2.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
-          suitePill1.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all";
+          if (suitePill2) suitePill2.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+          if (suitePill1) suitePill1.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all";
         }
 
-        suiteContainer.classList.remove('changing');
+        if (suiteContainer) suiteContainer.classList.remove('changing');
       }, 150);
     }
 
@@ -805,34 +890,48 @@
       switchSuiteView(currentSuiteType);
       
       const wrapper = document.getElementById('suite-modal-wrapper');
-      wrapper.style.opacity = '0.3';
+      if (wrapper) wrapper.style.opacity = '0.3';
 
       setTimeout(() => {
         const data = suitesData[currentSuiteType];
-        document.getElementById('suite-modal-title').textContent = data.title;
-        document.getElementById('suite-modal-desc').textContent = data.desc;
-        document.getElementById('suite-modal-main-img').src = data.image;
-        document.getElementById('suite-modal-counter').textContent = `0${currentSuiteType} / 02`;
-        wrapper.style.opacity = '1';
+        const titleEl = document.getElementById('suite-modal-title');
+        const descEl = document.getElementById('suite-modal-desc');
+        const imgEl = document.getElementById('suite-modal-main-img');
+        const counterEl = document.getElementById('suite-modal-counter');
+
+        if (titleEl) titleEl.textContent = data.title;
+        if (descEl) descEl.textContent = data.desc;
+        if (imgEl) imgEl.src = data.image;
+        if (counterEl) counterEl.textContent = `0${currentSuiteType} / 02`;
+        if (wrapper) wrapper.style.opacity = '1';
       }, 120);
     }
 
     function openSuiteDetailModal() {
       const modal = document.getElementById('suite-modal');
       const data = suitesData[currentSuiteType];
-      document.getElementById('suite-modal-title').textContent = data.title;
-      document.getElementById('suite-modal-desc').textContent = data.desc;
-      document.getElementById('suite-modal-main-img').src = data.image;
-      document.getElementById('suite-modal-counter').textContent = `0${currentSuiteType} / 02`;
+      const titleEl = document.getElementById('suite-modal-title');
+      const descEl = document.getElementById('suite-modal-desc');
+      const imgEl = document.getElementById('suite-modal-main-img');
+      const counterEl = document.getElementById('suite-modal-counter');
 
-      modal.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
+      if (titleEl) titleEl.textContent = data.title;
+      if (descEl) descEl.textContent = data.desc;
+      if (imgEl) imgEl.src = data.image;
+      if (counterEl) counterEl.textContent = `0${currentSuiteType} / 02`;
+
+      if (modal) {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
     }
 
     function closeSuiteModal() {
       const modal = document.getElementById('suite-modal');
-      modal.classList.remove('is-open');
-      document.body.style.overflow = '';
+      if (modal) {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
     }
 
     function closeSuiteModalOnBackdrop(e) {
@@ -842,15 +941,17 @@
     }
 
     function setSuiteModalImg(src, tagText) {
-      document.getElementById('suite-modal-main-img').src = src;
-      if (tagText) document.getElementById('suite-modal-tag').textContent = tagText;
+      const mainImg = document.getElementById('suite-modal-main-img');
+      const tag = document.getElementById('suite-modal-tag');
+      if (mainImg) mainImg.src = src;
+      if (tag && tagText) tag.textContent = tagText;
     }
 
     // Keyboard controls
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeSuiteModal();
-        toggleImmersiveMenu(false);
+        closeMenu();
       }
       if (e.key === 'ArrowLeft') navigateSuiteInModal(-1);
       if (e.key === 'ArrowRight') navigateSuiteInModal(1);
