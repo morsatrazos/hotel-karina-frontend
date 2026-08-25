@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Kariña — Servicios Corporativos & Business Hub</title>
+
+  <!-- Google Fonts: Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            karina: {
+              cream: '#FFF6EA',
+              charcoal: '#343434',
+              'charcoal-dark': '#242424',
+              mustard: '#F0A800',
+              'mustard-light': '#FFD573',
+              blue: '#2680BD',
+              'blue-light': '#92CEF7',
+              terracotta: '#C7473B',
+              coral: '#EB8C84'
+            }
+          },
+          fontFamily: {
+            manrope: ['Manrope', 'sans-serif'],
+            sans: ['Manrope', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Hoja de Estilos Oficial y Modular -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-karina-cream text-karina-charcoal font-manrope antialiased min-h-screen selection:bg-karina-mustard selection:text-karina-charcoal">
+
+  <!-- ========================================== -->
+  <!-- 1. NAVBAR OFICIAL CON ISLA FLOTANTE       -->
+  <!-- ========================================== -->
+  <header id="main-navbar" class="fixed top-0 inset-x-0 mx-auto w-full z-50 navbar-default">
+    <div class="nav-inner max-w-[1440px] mx-auto px-6 sm:px-12 h-20 flex items-center justify-between">
+      
+      <!-- LADO IZQUIERDO: Menú + Logo -->
+      <div class="flex items-center gap-6">
+        <button id="open-menu-btn" class="flex items-center gap-3 group focus:outline-none" aria-label="Abrir menú">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Ícono Menú Kariña" class="h-6 w-auto object-contain group-hover:scale-105 transition-transform">
+          <span class="text-sm font-semibold text-[#343434] group-hover:text-[#F0A800] transition-colors">Menú</span>
+        </button>
+
+        <div class="h-8 w-[1px] bg-[#343434]/20 hidden sm:block"></div>
+
+        <a href="index.html" class="flex items-center">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1786371092035/Kari%C3%B1a-PNG-.png" alt="Grupo Kariña Venezuela" class="h-8 sm:h-9 w-auto object-contain">
+        </a>
+      </div>
+
+      <!-- CENTRO: Enlaces -->
+      <nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium text-[#343434]">
+        <a href="index.html#sedes" class="hover:text-[#F0A800] transition-colors">Sedes</a>
+        <a href="suites.html" class="hover:text-[#F0A800] transition-colors">Catálogo de suites</a>
+        <a href="vive-karina.html" class="hover:text-[#F0A800] transition-colors">¡Vive Kariña!</a>
+        <a href="business.html" class="text-karina-mustard font-bold transition-colors">Corporativo</a>
+        <a href="index.html#fundacion" class="hover:text-[#F0A800] transition-colors">Fundación</a>
+      </nav>
+
+      <!-- LADO DERECHO: Idioma + Botón Reserva Shimmer -->
+      <div class="flex items-center gap-5">
+        <button class="text-xs font-bold text-[#343434] hover:text-[#2680BD] transition-colors">ES/EN</button>
+        <a href="#cotizacion" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+          <span>Convenio B2B</span>
+          <i class="fa-solid fa-sparkles text-[10px]"></i>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 2. MENÚ INMERSIVO OVERLAY                  -->
+  <!-- ========================================== -->
+  <div id="immersive-menu" class="fixed inset-0 z-[100] bg-[#2E2E2E] text-white opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+    <div class="flex items-center justify-between max-w-5xl mx-auto w-full border-b border-white/10 pb-6">
+      <a href="index.html">
+        <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Hotel Kariña" class="h-8 sm:h-10 w-auto object-contain">
+      </a>
+      <button id="close-menu-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full py-8 space-y-4 text-left">
+      <div class="border-b border-white/10 pb-4">
+        <button id="toggle-sedes-sub" class="w-full flex items-center justify-between text-left group">
+          <div class="flex items-baseline gap-4">
+            <span class="text-xs font-mono text-white/40">01</span>
+            <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Sedes</span>
+          </div>
+          <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
+        </button>
+        <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
+          <a href="index.html#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Maturín (Hotel & Club)</a>
+          <a href="index.html#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Punta de Mata (Executive)</a>
+          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Business & Events)</a>
+        </div>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="suites.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">02</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Suites</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="business.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">03</span>
+          <span class="text-2xl sm:text-3xl font-light text-karina-mustard transition-colors">Business</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="suites.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">04</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería de Suites</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="vive-karina.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">05</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="index.html#fundacion" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">06</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Fundación</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="faqs.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">07</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Preguntas Frecuentes</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="contacto.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">08</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Contacto y Ubicaciones</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
+      <button class="w-full py-3 px-6 rounded-full border border-white/20 hover:border-karina-mustard text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
+        <i class="fa-regular fa-user"></i>
+        <span>Mi Cuenta / Iniciar Sesión</span>
+      </button>
+      <button onclick="alert('Iniciando chat con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+        <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
+        <span>Hablar con Arimiña-IA</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 3. MAIN CONTENT: BUSINESS HUB              -->
+  <!-- ========================================== -->
+  <main class="pt-28 pb-20 space-y-16">
+
+    <!-- HERO CORPORATE HUB -->
+    <section class="relative min-h-[440px] sm:min-h-[500px] flex items-center bg-karina-charcoal rounded-[36px] overflow-hidden shadow-xl mx-6 sm:mx-12 mt-4 p-8 sm:p-14 lg:p-20 text-white">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80" alt="Corporate Hub Kariña" class="absolute inset-0 w-full h-full object-cover opacity-35">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-transparent"></div>
+      
+      <div class="relative z-10 max-w-2xl space-y-5 text-left">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-mono tracking-widest uppercase text-karina-mustard-light">
+          CORPORATE HUB
+        </span>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight">
+          Infraestructura de Clase Ejecutiva
+        </h1>
+
+        <p class="text-xs sm:text-sm text-white/80 font-light leading-relaxed max-w-xl">
+          Diseñada para el liderazgo corporativo y optimizada para una productividad ininterrumpida. Nuestras instalaciones B2B combinan lujo orgánico con resiliencia operacional incondicional.
+        </p>
+
+        <div class="pt-2 flex flex-wrap items-center gap-4">
+          <a href="#cotizacion" class="px-7 py-3 rounded-full bg-karina-mustard hover:bg-karina-mustard-light text-karina-charcoal text-xs font-bold shadow-md transition-all active:scale-95 flex items-center gap-2">
+            <span>Solicitar Presupuesto</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+          <a href="https://wa.me/5804249169601" target="_blank" class="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-md transition-all flex items-center gap-2">
+            <i class="fa-solid fa-phone text-xs text-karina-mustard"></i>
+            <span>Atención Directa</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPACIDADES TÉCNICAS -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-12 pt-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <div class="lg:col-span-4 space-y-3 text-left">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-[2px] bg-karina-mustard"></span>
+            <span class="text-[10px] font-mono tracking-widest uppercase font-bold text-karina-mustard">EQUIPAMIENTO B2B</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+            Capacidades técnicas
+          </h2>
+          <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+            Diseñadas para respaldar operaciones globales sin interrupciones, rodeadas por la calidez de nuestro ambiente boutique.
+          </p>
+        </div>
+
+        <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+          
+          <!-- Capacidad 1 -->
+          <div class="bg-white/60 p-6 rounded-3xl border border-black/5 shadow-sm space-y-3 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 rounded-2xl bg-karina-cream flex items-center justify-center text-karina-charcoal text-base">
+              <i class="fa-solid fa-bolt text-karina-mustard"></i>
+            </div>
+            <h3 class="text-base font-bold text-karina-charcoal">24/7 Energía eléctrica</h3>
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+              Sistemas de generación con triple redundancia que garantizan cero tiempo de inactividad operativa para sus equipos.
+            </p>
+          </div>
+
+          <!-- Capacidad 2 -->
+          <div class="bg-white/60 p-6 rounded-3xl border border-black/5 shadow-sm space-y-3 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 rounded-2xl bg-karina-cream flex items-center justify-center text-karina-blue text-base">
+              <i class="fa-solid fa-wifi"></i>
+            </div>
+            <h3 class="text-base font-bold text-karina-charcoal">Internet Fibra Óptica / WiFi</h3>
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+              Conectividad simétrica dedicada de nivel empresarial con conmutación por error entre múltiples proveedores.
+            </p>
+          </div>
+
+          <!-- Capacidad 3 -->
+          <div class="bg-white/60 p-6 rounded-3xl border border-black/5 shadow-sm space-y-3 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 rounded-2xl bg-karina-cream flex items-center justify-center text-karina-charcoal text-base">
+              <i class="fa-solid fa-users-rectangle text-karina-mustard"></i>
+            </div>
+            <h3 class="text-base font-bold text-karina-charcoal">Salón de conferencias</h3>
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+              Espacios acondicionados acústicamente equipados con telepresencia 4K y asientos ergonómicos de lujo.
+            </p>
+          </div>
+
+          <!-- Capacidad 4 -->
+          <div class="bg-white/60 p-6 rounded-3xl border border-black/5 shadow-sm space-y-3 hover:shadow-md transition-shadow">
+            <div class="w-10 h-10 rounded-2xl bg-karina-cream flex items-center justify-center text-karina-charcoal text-base">
+              <i class="fa-solid fa-briefcase text-karina-mustard"></i>
+            </div>
+            <h3 class="text-base font-bold text-karina-charcoal">Business Center</h3>
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+              Facturación corporativa simplificada y conforme con las normativas fiscales locales para una contabilidad fluida.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FORMULARIO DE SOLICITUD DE PRESUPUESTO -->
+    <section id="cotizacion" class="max-w-7xl mx-auto px-6 sm:px-12 pt-6 pb-6 flex justify-center">
+      <div class="relative w-full max-w-2xl bg-karina-charcoal p-8 sm:p-12 rounded-[36px] border border-white/10 text-white text-center space-y-6 shadow-2xl overflow-hidden">
+        <div class="absolute top-0 right-0 w-80 h-80 bg-karina-mustard/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 space-y-2">
+          <span class="text-[10px] font-mono tracking-widest uppercase text-karina-mustard block">CONVENIOS CORPORATIVOS</span>
+          <h3 class="text-2xl sm:text-4xl font-light text-white tracking-tight">Solicitud de presupuesto</h3>
+          <p class="text-xs text-white/70 font-light max-w-md mx-auto">Soluciones corporativas a la medida para sus equipos ejecutivos y eventos empresariales.</p>
+        </div>
+
+        <form id="quote-form" onsubmit="handleQuoteSubmit(event)" class="relative z-10 space-y-4 text-left">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1">
+              <label class="text-[10px] font-mono uppercase tracking-wider text-white/60">Compañía</label>
+              <input type="text" required placeholder="Ej. Acme Corp" class="w-full bg-white/10 border border-white/20 rounded-xl px-3.5 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-karina-mustard">
+            </div>
+            <div class="space-y-1">
+              <label class="text-[10px] font-mono uppercase tracking-wider text-white/60">Nombre</label>
+              <input type="text" required placeholder="Ej. Jane Doe" class="w-full bg-white/10 border border-white/20 rounded-xl px-3.5 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-karina-mustard">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1">
+              <label class="text-[10px] font-mono uppercase tracking-wider text-white/60">Email</label>
+              <input type="email" required placeholder="jane@acme.com" class="w-full bg-white/10 border border-white/20 rounded-xl px-3.5 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-karina-mustard">
+            </div>
+            <div class="space-y-1">
+              <label class="text-[10px] font-mono uppercase tracking-wider text-white/60">Cantidad</label>
+              <select class="w-full bg-karina-charcoal border border-white/20 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-karina-mustard cursor-pointer">
+                <option>1-10 Ejecutivos</option>
+                <option>11-30 Ejecutivos</option>
+                <option>31+ Convención</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <label class="text-[10px] font-mono uppercase tracking-wider text-white/60">Requerimientos Específicos</label>
+            <textarea rows="3" placeholder="Cuéntenos sobre sus necesidades operativas..." class="w-full bg-white/10 border border-white/20 rounded-xl px-3.5 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-karina-mustard resize-none"></textarea>
+          </div>
+
+          <div id="quote-success-banner" class="hidden p-3 rounded-xl bg-karina-mustard/20 border border-karina-mustard/40 text-center text-xs text-karina-mustard-light">
+            <i class="fa-solid fa-circle-check mr-1.5"></i> Solicitud enviada con éxito a Arimiña-IA. Nos comunicaremos a la brevedad.
+          </div>
+
+          <div class="pt-2 text-center">
+            <button type="submit" class="px-8 py-3 rounded-full bg-white hover:bg-karina-mustard text-karina-charcoal text-xs font-bold transition-all shadow-md active:scale-95">
+              Enviar Ahora
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 4. MASTER FOOTER (DISEÑO FIDELIZADO)       -->
+  <!-- ========================================== -->
+  <footer id="footer" class="bg-[#262626] text-white pt-20 pb-12 px-6 sm:px-12 border-t border-white/10">
+    <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10">
+      
+      <!-- Columna 1: Brand & Slogan -->
+      <div class="lg:col-span-3 space-y-5">
+        <a href="index.html" class="inline-block">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/KARINA-LOGO-VERTICAL.png" alt="Grupo Kariña Logo Blanco" class="h-28 sm:h-32 md:h-36 w-auto object-contain">
+        </a>
+        <p class="text-xs text-white/70 leading-relaxed max-w-xs font-normal">
+          Una estadía que te abraza. Confort, hospitalidad ejecutiva y cultura viva en el oriente venezolano.
+        </p>
+      </div>
+
+      <!-- Columna 2: NUESTRAS SEDES (Dorado #F0A800) -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#F0A800] block">Nuestras Sedes</span>
+        <ul class="space-y-2 text-xs text-white/75 font-normal">
+          <li><a href="index.html#sedes" class="hover:text-white transition-colors">Hotel Kariña Maturín</a></li>
+          <li><a href="index.html#sedes" class="hover:text-white transition-colors">Hotel Kariña Punta de Mata</a></li>
+          <li><a href="el-tigre.html" class="hover:text-white transition-colors">Hotel Kariña El Tigre</a></li>
+          <li><a href="suites.html" class="hover:text-white transition-colors">Catálogo de Suites & Tarifas</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: EXPERIENCIAS (Azul #2680BD) -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#2680BD] block">Experiencias</span>
+        <ul class="space-y-2 text-xs text-white/75 font-normal">
+          <li><a href="vive-karina.html" class="hover:text-white transition-colors">Club y piscina</a></li>
+          <li><a href="business.html" class="hover:text-white transition-colors">Centro de negocios</a></li>
+          <li><a href="vive-karina.html" class="hover:text-white transition-colors">Salones de Eventos</a></li>
+          <li><a href="index.html#fundacion" class="hover:text-white transition-colors">Fundación Kariña</a></li>
+          <li><a href="faqs.html" class="hover:text-white transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: CONTACTO & RECEPCIÓN -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-white/90 block">Contacto & Recepción</span>
+        
+        <div class="space-y-2.5 text-xs text-white/75">
+          <div class="flex items-start gap-2.5">
+            <i class="fa-solid fa-location-dot text-[#F0A800] text-sm mt-0.5"></i>
+            <div>
+              <p class="font-bold text-white">Maturín</p>
+              <p class="text-[11px] text-white/60">Urb. Palma Real</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-phone text-[#92CEF7] text-xs"></i>
+            <a href="tel:+5804249169601" class="hover:text-white transition-colors">+58 0424-9169601</a>
+          </div>
+
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-envelope text-[#FFD573] text-xs"></i>
+            <a href="mailto:karina@grupokarina.com" class="hover:text-white transition-colors text-[11px]">karina@grupokarina.com</a>
+          </div>
+        </div>
+
+        <!-- Botón Central WhatsApp -->
+        <div class="pt-2">
+          <a href="https://wa.me/5804249169601" target="_blank" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#2680BD] hover:bg-[#2680BD]/90 text-white font-bold text-xs shadow-md transition-all">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Central WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna 5: SÍGUENOS EN INSTAGRAM (Coral #EB8C84 + Íconos) -->
+      <div class="lg:col-span-3 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#EB8C84] block">Síguenos en Instagram</span>
+        
+        <div class="flex flex-col gap-2">
+          <a href="https://instagram.com/hoteleskarina" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#F0A800]"></i>
+            <span>@hoteleskarina</span>
+          </a>
+
+          <a href="https://instagram.com/hotelkarina.maturin" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#92CEF7]"></i>
+            <span>@hotelkarina.maturin</span>
+          </a>
+
+          <a href="https://instagram.com/hotelkarina.ptamata" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#EB8C84]"></i>
+            <span>@hotelkarina.ptamata</span>
+          </a>
+
+          <a href="https://instagram.com/hotelkarina.eltigre" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#FFD573]"></i>
+            <span>@hotelkarina.eltigre</span>
+          </a>
+
+          <a href="https://instagram.com/fundacionkarina" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#F0A800]"></i>
+            <span>@fundacionkarina</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Barra Inferior Legal + Botón Back-to-Top -->
+    <div class="max-w-[1440px] mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/50 gap-4">
+      <div class="flex flex-wrap items-center gap-6">
+        <p>© 2026 Grupo Kariña</p>
+        <a href="faqs.html" class="hover:text-white transition-colors">Términos</a>
+        <a href="faqs.html" class="hover:text-white transition-colors">Privacidad</a>
+        <a href="faqs.html" class="hover:text-white transition-colors">Cancelaciones</a>
+        <a href="faqs.html" class="hover:text-white transition-colors">Libro de Reclamaciones</a>
+      </div>
+
+      <!-- Botón Volver Arriba Circular -->
+      <button onclick="scrollToTop()" class="back-to-top-btn w-10 h-10 rounded-full border border-white/20 text-white flex items-center justify-center focus:outline-none" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up text-xs"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- JavaScript Modular Global -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

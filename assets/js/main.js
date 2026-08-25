@@ -686,5 +686,154 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Cargando más momentos en la galería ¡Vive Kariña!...');
   };
 
+  // ===================================================
+  // 10. LÓGICA JAVASCRIPT: BUSINESS, FAQS Y CONTACTO
+  // ===================================================
+
+  // 1. Acordeón de FAQs
+  window.toggleFaqAccordion = function(element) {
+    const wrapper = element.querySelector('.faq-accordion-wrapper');
+    if (!wrapper) return;
+    const isOpen = wrapper.classList.contains('is-open');
+
+    // Cerrar otros acordeones
+    document.querySelectorAll('.faq-item-card').forEach(card => {
+      card.classList.remove('is-open');
+      const otherWrapper = card.querySelector('.faq-accordion-wrapper');
+      if (otherWrapper) otherWrapper.classList.remove('is-open');
+    });
+
+    if (!isOpen) {
+      element.classList.add('is-open');
+      wrapper.classList.add('is-open');
+    }
+  };
+
+  // Búsqueda de FAQs
+  window.searchFaqs = function() {
+    const searchInput = document.getElementById('faq-search-input');
+    if (!searchInput) return;
+    const input = searchInput.value.toLowerCase();
+    const cards = document.querySelectorAll('.faq-item-card');
+
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      if (text.includes(input)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  };
+
+  window.filterFaqByTag = function(tag) {
+    const input = document.getElementById('faq-search-input');
+    if (input) {
+      input.value = tag;
+      window.searchFaqs();
+    }
+  };
+
+  // 2. Selector de Sede en Página de Contacto
+  const contactoSedesData = [
+    {
+      title: "Sede Maturín",
+      address: "Urbanización Palma Real, Etapa II, Macroparcela MC-30, Maturín, Edo. Monagas.",
+      phone: "+58 (0291) 640-1234",
+      ws: "+58 (0424) 916-9601",
+      mapsUrl: "https://maps.google.com/?cid=370127326196523800",
+      img: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80",
+      badge: "Maturín"
+    },
+    {
+      title: "Sede Punta de Mata",
+      address: "Sector Zona Industrial, Ramal 7, al lado del Depósito Empresas Polar, Punta de Mata, Edo. Monagas.",
+      phone: "+58 (0292) 331-5678",
+      ws: "+58 (0424) 916-9602",
+      mapsUrl: "https://maps.google.com/?cid=9643206305083018040",
+      img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+      badge: "Punta de Mata"
+    },
+    {
+      title: "Sede El Tigre",
+      address: "Avenida Ruiz Pineda, a 100mts del Balancín Tricolor, cruce con Calle 23 de Enero, El Tigre, Edo. Anzoátegui.",
+      phone: "+58 (0283) 241-9012",
+      ws: "+58 (0424) 916-9603",
+      mapsUrl: "https://maps.google.com/?cid=12057092587787417265",
+      img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+      badge: "El Tigre"
+    }
+  ];
+
+  window.switchContactoSede = function(index) {
+    const data = contactoSedesData[index];
+    if (!data) return;
+
+    for (let i = 0; i < 3; i++) {
+      const tab = document.getElementById(`contacto-tab-${i}`);
+      if (tab) {
+        if (i === index) {
+          tab.className = "contacto-tab-btn px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+        } else {
+          tab.className = "contacto-tab-btn px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 border border-black/10 transition-all";
+        }
+      }
+    }
+
+    const wrapper = document.getElementById('contacto-sede-wrapper');
+    if (wrapper) wrapper.classList.add('is-changing');
+
+    setTimeout(() => {
+      const titleEl = document.getElementById('contacto-sede-title');
+      const addrEl = document.getElementById('contacto-sede-address');
+      const phoneEl = document.getElementById('contacto-sede-phone');
+      const wsEl = document.getElementById('contacto-sede-ws');
+      const badgeEl = document.getElementById('contacto-map-badge');
+      const addrShortEl = document.getElementById('contacto-map-address-short');
+      const mapImgEl = document.getElementById('contacto-map-img');
+      const mapLinkEl = document.getElementById('contacto-map-direct-link');
+      const btnDirEl = document.getElementById('contacto-btn-directions');
+
+      if (titleEl) titleEl.textContent = data.title;
+      if (addrEl) addrEl.textContent = data.address;
+      if (phoneEl) phoneEl.textContent = data.phone;
+      if (wsEl) wsEl.textContent = data.ws;
+      if (badgeEl) badgeEl.textContent = data.badge;
+      if (addrShortEl) addrShortEl.textContent = data.address;
+      if (mapImgEl) mapImgEl.src = data.img;
+      if (mapLinkEl) mapLinkEl.href = data.mapsUrl;
+      if (btnDirEl) btnDirEl.href = data.mapsUrl;
+
+      if (wrapper) wrapper.classList.remove('is-changing');
+    }, 120);
+  };
+
+  // Handlers para formularios
+  window.handleQuoteSubmit = function(e) {
+    e.preventDefault();
+    const banner = document.getElementById('quote-success-banner');
+    if (banner) {
+      banner.classList.remove('hidden');
+      setTimeout(() => {
+        banner.classList.add('hidden');
+        const form = document.getElementById('quote-form');
+        if (form) form.reset();
+      }, 4000);
+    }
+  };
+
+  window.handleContactSubmit = function(e) {
+    e.preventDefault();
+    const banner = document.getElementById('contact-success-banner');
+    if (banner) {
+      banner.classList.remove('hidden');
+      setTimeout(() => {
+        banner.classList.add('hidden');
+        const form = document.getElementById('contact-general-form');
+        if (form) form.reset();
+      }, 4000);
+    }
+  };
+
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 });

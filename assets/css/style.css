@@ -396,4 +396,40 @@ body {
   opacity: 0;
 }
 
+/* ===================================================
+   10. ESTILOS DEDICADOS: BUSINESS, FAQS Y CONTACTO
+   =================================================== */
+
+/* Accordion Grid Animation */
+.faq-accordion-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-accordion-wrapper.is-open {
+  grid-template-rows: 1fr;
+}
+.faq-accordion-inner {
+  overflow: hidden;
+}
+
+/* Chevron Rotation */
+.faq-chevron {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-item-card.is-open .faq-chevron {
+  transform: rotate(180deg);
+  color: #F0A800;
+}
+
+/* Sede Details Transition */
+.sede-detail-fade {
+  transition: opacity 250ms ease-in-out, transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sede-detail-fade.is-changing {
+  opacity: 0.2;
+  transform: translateY(6px);
+}
+
+
 
