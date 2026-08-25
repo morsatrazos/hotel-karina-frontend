@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Kariña — Catálogo de Suites</title>
+
+  <!-- Google Fonts: Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            karina: {
+              cream: '#FFF6EA',
+              charcoal: '#343434',
+              'charcoal-dark': '#242424',
+              mustard: '#F0A800',
+              'mustard-light': '#FFD573',
+              blue: '#2680BD',
+              'blue-light': '#92CEF7',
+              terracotta: '#C7473B',
+              coral: '#EB8C84'
+            }
+          },
+          fontFamily: {
+            manrope: ['Manrope', 'sans-serif'],
+            sans: ['Manrope', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Hoja de Estilos Oficial y Modular -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-karina-cream text-karina-charcoal font-manrope antialiased min-h-screen selection:bg-karina-mustard selection:text-karina-charcoal">
+
+  <!-- ========================================== -->
+  <!-- 1. NAVBAR OFICIAL CON ISLA FLOTANTE       -->
+  <!-- ========================================== -->
+  <header id="main-navbar" class="fixed top-0 inset-x-0 mx-auto w-full z-50 navbar-default">
+    <div class="nav-inner max-w-[1440px] mx-auto px-6 sm:px-12 h-20 flex items-center justify-between">
+      
+      <!-- LADO IZQUIERDO: Menú + Logo -->
+      <div class="flex items-center gap-6">
+        <button id="open-menu-btn" class="flex items-center gap-3 group focus:outline-none" aria-label="Abrir menú">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Ícono Menú Kariña" class="h-6 w-auto object-contain group-hover:scale-105 transition-transform">
+          <span class="text-sm font-semibold text-[#343434] group-hover:text-[#F0A800] transition-colors">Menú</span>
+        </button>
+
+        <div class="h-8 w-[1px] bg-[#343434]/20 hidden sm:block"></div>
+
+        <a href="index.html" class="flex items-center">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1786371092035/Kari%C3%B1a-PNG-.png" alt="Grupo Kariña Venezuela" class="h-8 sm:h-9 w-auto object-contain">
+        </a>
+      </div>
+
+      <!-- CENTRO: Enlaces -->
+      <nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium text-[#343434]">
+        <a href="index.html#sedes" class="hover:text-[#F0A800] transition-colors">Sedes</a>
+        <a href="suites.html" class="text-karina-mustard font-bold transition-colors">Catálogo de suites</a>
+        <a href="index.html#experiencias" class="hover:text-[#F0A800] transition-colors">¡Vive Kariña!</a>
+        <a href="index.html#corporativo" class="hover:text-[#F0A800] transition-colors">Corporativo</a>
+        <a href="index.html#fundacion" class="hover:text-[#F0A800] transition-colors">Fundación</a>
+      </nav>
+
+      <!-- LADO DERECHO: Idioma + Botón Reserva Shimmer -->
+      <div class="flex items-center gap-5">
+        <button class="text-xs font-bold text-[#343434] hover:text-[#2680BD] transition-colors">ES/EN</button>
+        <button onclick="inquireSuiteWithAI()" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+          <span>Reserva</span>
+          <i class="fa-solid fa-sparkles text-[10px]"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 2. MENÚ INMERSIVO OVERLAY                  -->
+  <!-- ========================================== -->
+  <div id="immersive-menu" class="fixed inset-0 z-[100] bg-[#2E2E2E] text-white opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+    <div class="flex items-center justify-between max-w-5xl mx-auto w-full border-b border-white/10 pb-6">
+      <a href="index.html">
+        <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Hotel Kariña" class="h-8 sm:h-10 w-auto object-contain">
+      </a>
+      <button id="close-menu-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full py-8 space-y-4 text-left">
+      <div class="border-b border-white/10 pb-4">
+        <button id="toggle-sedes-sub" class="w-full flex items-center justify-between text-left group">
+          <div class="flex items-baseline gap-4">
+            <span class="text-xs font-mono text-white/40">01</span>
+            <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Sedes</span>
+          </div>
+          <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
+        </button>
+        <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
+          <a href="index.html#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Maturín (Hotel & Club)</a>
+          <a href="index.html#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Punta de Mata (Executive)</a>
+          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Business & Events)</a>
+        </div>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="suites.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">02</span>
+          <span class="text-2xl sm:text-3xl font-light text-karina-mustard transition-colors">Suites</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="index.html#corporativo" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">03</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Business</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="index.html#experiencias" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">04</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería de Suites</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="index.html#experiencias" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">05</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="index.html#fundacion" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">06</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Fundación</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="index.html#faqs" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">07</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Preguntas Frecuentes</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="#footer" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">08</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Contacto y Ubicaciones</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
+      <button class="w-full py-3 px-6 rounded-full border border-white/20 hover:border-karina-mustard text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
+        <i class="fa-regular fa-user"></i>
+        <span>Mi Cuenta / Iniciar Sesión</span>
+      </button>
+      <button onclick="inquireSuiteWithAI()" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+        <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
+        <span>Hablar con Arimiña-IA</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 3. MAIN: CATÁLOGO DE SUITES Y FILTROS      -->
+  <!-- ========================================== -->
+  <main class="pt-28 pb-20 space-y-16">
+
+    <!-- HERO / CABECERA EDITORIAL Y FILTROS -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-12 space-y-6 text-left pt-4">
+      <div class="max-w-3xl space-y-3">
+        <h1 class="text-4xl sm:text-6xl font-light text-karina-charcoal tracking-tight leading-tight">
+          Catálogo de Suites
+        </h1>
+        <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+          Descubra el equilibrio perfecto entre confort moderno y elegancia terrenal. Nuestras suites están diseñadas para ofrecer un refugio de tranquilidad, equipadas con amenidades premium para una estancia inolvidable.
+        </p>
+      </div>
+
+      <!-- BARRA DE FILTROS & ORDENAMIENTO -->
+      <div class="bg-white/60 rounded-full p-2 border border-black/5 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        
+        <!-- Filtros Izquierda -->
+        <div class="flex flex-wrap items-center gap-3 text-xs">
+          <span class="text-karina-charcoal/50 font-mono text-[11px] uppercase tracking-wider pl-3 hidden sm:inline">Filtrar por:</span>
+
+          <!-- Dropdown Sede -->
+          <div class="relative">
+            <select id="filter-sede" onchange="applySuiteFilters()" class="appearance-none bg-white hover:bg-karina-cream text-karina-charcoal font-semibold py-2 pl-4 pr-9 rounded-full border border-black/10 text-xs focus:outline-none focus:ring-1 focus:ring-karina-mustard cursor-pointer transition-colors">
+              <option value="all">Todas las Sedes</option>
+              <option value="maturin">Maturín</option>
+              <option value="punta-de-mata">Punta de Mata</option>
+              <option value="el-tigre">El Tigre</option>
+            </select>
+            <i class="fa-solid fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] text-karina-charcoal/60 pointer-events-none"></i>
+          </div>
+
+          <!-- Dropdown Capacidad -->
+          <div class="relative">
+            <select id="filter-capacity" onchange="applySuiteFilters()" class="appearance-none bg-white hover:bg-karina-cream text-karina-charcoal font-semibold py-2 pl-4 pr-9 rounded-full border border-black/10 text-xs focus:outline-none focus:ring-1 focus:ring-karina-mustard cursor-pointer transition-colors">
+              <option value="all">Capacidad</option>
+              <option value="2">Hasta 2 Huéspedes</option>
+              <option value="4">Hasta 4 Huéspedes</option>
+            </select>
+            <i class="fa-solid fa-users absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] text-karina-charcoal/60 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- Ordenamiento Derecha -->
+        <div class="relative pr-2">
+          <select id="sort-suites" onchange="applySuiteFilters()" class="appearance-none bg-transparent hover:bg-white text-karina-charcoal/80 font-semibold py-1.5 pl-3 pr-8 rounded-full text-xs focus:outline-none cursor-pointer transition-colors">
+            <option value="recommended">Recomendados</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a Menor</option>
+          </select>
+          <i class="fa-solid fa-sliders absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] text-karina-mustard pointer-events-none"></i>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMPARATIVA EDITORIAL DE CATEGORÍAS -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- Columna 1: Suite Estándar -->
+        <div class="bg-white/40 rounded-3xl p-6 sm:p-8 border border-black/5 space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-[2px] bg-karina-charcoal"></span>
+              <span class="text-[10px] font-mono tracking-widest uppercase font-bold text-karina-charcoal/70">SUITE ESTÁNDAR</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-light text-karina-charcoal tracking-tight">
+              Confort Ejecutivo y Funcionalidad
+            </h2>
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+              Un espacio refinado diseñado para el viajero moderno que busca eficiencia sin comprometer la elegancia. En nuestras sedes, estas suites destacan por su distribución optimizada, área de trabajo independiente y descanso absoluto.
+            </p>
+          </div>
+          <div class="h-56 rounded-pebble overflow-hidden shadow-sm relative group cursor-pointer" onclick="openSuiteModalById('estandar-maturin')">
+            <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80" alt="Suite Estándar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <span class="absolute bottom-4 left-4 text-white text-xs font-light">Vista Ejecutiva Estándar</span>
+          </div>
+        </div>
+
+        <!-- Columna 2: Suite Premium -->
+        <div class="bg-white/40 rounded-3xl p-6 sm:p-8 border border-black/5 space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-[2px] bg-karina-mustard"></span>
+              <span class="text-[10px] font-mono tracking-widest uppercase font-bold text-karina-mustard">SUITE PREMIUM</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-light text-karina-charcoal tracking-tight">
+              Lujo Orgánico y Amplitud
+            </h2>
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+              El santuario definitivo de Kariña. Definidas por acabados de alta gama, materiales naturales y vistas expandidas que integran el entorno. Espacios de planta abierta ofreciendo una experiencia de inmersión total en el lujo contemporáneo.
+            </p>
+          </div>
+          <div class="h-56 rounded-pebble overflow-hidden shadow-sm relative group cursor-pointer" onclick="openSuiteModalById('premium-maturin')">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Suite Premium" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <span class="absolute bottom-4 left-4 text-white text-xs font-light">Vista Suite Premium & Lounge</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GRILLA CATÁLOGO DE SUITES ASIMÉTRICA -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-8">
+      
+      <div id="suites-grid-container" class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- CARD 1: FEATURING PRINCIPAL (SUITE PREMIUM MATURÍN - 7 COLS) -->
+        <div class="suite-card suite-item-maturin suite-item-premium md:col-span-7 bg-white/70 rounded-[32px] p-6 border border-black/5 shadow-sm space-y-5 flex flex-col justify-between suite-card-hover">
+          <div class="space-y-4">
+            
+            <div class="relative h-[300px] sm:h-[340px] w-full rounded-pebble overflow-hidden bg-black/5 group cursor-pointer" onclick="openSuiteModalById('premium-maturin')">
+              <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Suite Premium Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              
+              <span class="absolute top-4 left-4 bg-karina-charcoal/80 backdrop-blur-md text-white text-[10px] font-mono px-3 py-1 rounded-full uppercase tracking-wider">
+                Maturín
+              </span>
+
+              <button class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/80 hover:bg-white text-karina-charcoal flex items-center justify-center transition-transform active:scale-90" title="Guardar en favoritos">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+            </div>
+
+            <div class="space-y-2 text-left">
+              <div class="flex items-center gap-2">
+                <h3 class="text-2xl font-light text-karina-charcoal tracking-tight">Suite Premium</h3>
+              </div>
+              
+              <div class="flex flex-wrap items-center gap-2 text-[11px] font-mono text-karina-charcoal/70">
+                <span class="bg-karina-cream px-2.5 py-1 rounded-md border border-black/5"><i class="fa-solid fa-bed text-karina-mustard mr-1"></i> 1 King</span>
+                <span class="bg-karina-cream px-2.5 py-1 rounded-md border border-black/5"><i class="fa-solid fa-user-group text-karina-mustard mr-1"></i> Máx. 2</span>
+                <span class="bg-karina-cream px-2.5 py-1 rounded-md border border-black/5"><i class="fa-solid fa-expand text-karina-mustard mr-1"></i> 85 m²</span>
+              </div>
+
+              <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed pt-1">
+                Nuestra suite insignia ofrece vistas panorámicas y un diseño de planta abierta que integra un área de descanso independiente y equipamiento ejecutivo de alto nivel.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="flex items-center justify-between pt-4 border-t border-black/5">
+            <div>
+              <span class="text-[10px] font-mono text-karina-charcoal/50 uppercase block">Desde</span>
+              <p class="text-2xl font-bold text-karina-charcoal">$180 <span class="text-xs font-light text-karina-charcoal/60">/ noche</span></p>
+            </div>
+
+            <button onclick="openSuiteModalById('premium-maturin')" class="px-6 py-3 rounded-full bg-karina-mustard hover:bg-karina-mustard-light text-karina-charcoal text-xs font-bold shadow-sm transition-all active:scale-95 flex items-center gap-2">
+              <span>Reservar</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- CARD 2: SUITE ESTÁNDAR EL TIGRE (5 COLS) -->
+        <div class="suite-card suite-item-el-tigre suite-item-estandar md:col-span-5 bg-white/70 rounded-[32px] p-6 border border-black/5 shadow-sm space-y-5 flex flex-col justify-between suite-card-hover">
+          <div class="space-y-4">
+            
+            <div class="relative h-[300px] sm:h-[340px] w-full rounded-pebble-reverse overflow-hidden bg-black/5 group cursor-pointer" onclick="openSuiteModalById('estandar-eltigre')">
+              <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80" alt="Suite Estándar El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              
+              <span class="absolute top-4 left-4 bg-karina-charcoal/80 backdrop-blur-md text-white text-[10px] font-mono px-3 py-1 rounded-full uppercase tracking-wider">
+                El Tigre
+              </span>
+            </div>
+
+            <div class="space-y-2 text-left">
+              <h3 class="text-2xl font-light text-karina-charcoal tracking-tight">Suite Estándar</h3>
+
+              <div class="flex flex-wrap items-center gap-2 text-[11px] font-mono text-karina-charcoal/70">
+                <span class="bg-karina-cream px-2.5 py-1 rounded-md border border-black/5"><i class="fa-solid fa-bed text-karina-mustard mr-1"></i> 1 Queen</span>
+                <span class="bg-karina-cream px-2.5 py-1 rounded-md border border-black/5"><i class="fa-solid fa-wifi text-karina-mustard mr-1"></i> Fibra Óptica</span>
+              </div>
+
+              <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed pt-1">
+                Perfecta para viajes ejecutivos o estadías de descanso eficientes. Confort acolchado con climatización independiente.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="flex items-center justify-between pt-4 border-t border-black/5">
+            <div>
+              <span class="text-[10px] font-mono text-karina-charcoal/50 uppercase block">Desde</span>
+              <p class="text-xl font-bold text-karina-charcoal">$130 <span class="text-xs font-light text-karina-charcoal/60">/ noche</span></p>
+            </div>
+
+            <button onclick="openSuiteModalById('estandar-eltigre')" class="px-5 py-2.5 rounded-full bg-white hover:bg-karina-cream text-karina-charcoal text-xs font-semibold border border-black/15 transition-all active:scale-95">
+              Ver Detalles
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 3: SUITE PREMIUM PUNTA DE MATA (6 COLS) -->
+        <div class="suite-card suite-item-punta-de-mata suite-item-premium md:col-span-6 bg-white/70 rounded-[32px] p-6 border border-black/5 shadow-sm space-y-5 flex flex-col justify-between suite-card-hover">
+          <div class="space-y-4">
+            
+            <div class="relative h-[240px] w-full rounded-3xl overflow-hidden bg-black/5 group cursor-pointer" onclick="openSuiteModalById('premium-ptamata')">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Suite Premium Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              
+              <span class="absolute top-4 left-4 bg-karina-charcoal/80 backdrop-blur-md text-white text-[10px] font-mono px-3 py-1 rounded-full uppercase tracking-wider">
+                Punta de Mata
+              </span>
+            </div>
+
+            <div class="space-y-2 text-left">
+              <h3 class="text-xl font-light text-karina-charcoal tracking-tight">Suite Premium Executive</h3>
+              <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+                Espacio generoso diseñado para directivos o ejecutivos con zona de trabajo ampliada y tranquilidad absoluta.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="flex items-center justify-between pt-4 border-t border-black/5">
+            <div class="flex items-center gap-3 text-xs text-karina-charcoal/70 font-mono">
+              <span><i class="fa-solid fa-bed text-karina-mustard"></i> x1 King</span>
+              <span><i class="fa-solid fa-user-group text-karina-mustard"></i> x2</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span class="text-lg font-bold text-karina-charcoal">$150 <span class="text-xs font-light">/noche</span></span>
+              <button onclick="openSuiteModalById('premium-ptamata')" class="w-9 h-9 rounded-full bg-karina-charcoal text-white flex items-center justify-center hover:bg-black transition-transform active:scale-90">
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: SUITE DÚPLEX MATURÍN (6 COLS) -->
+        <div class="suite-card suite-item-maturin suite-item-duplex suite-item-premium md:col-span-6 bg-white/70 rounded-[32px] p-6 border border-black/5 shadow-sm space-y-5 flex flex-col justify-between suite-card-hover">
+          <div class="space-y-4">
+            
+            <div class="relative h-[240px] w-full rounded-3xl overflow-hidden bg-black/5 group cursor-pointer" onclick="openSuiteModalById('duplex-maturin')">
+              <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80" alt="Suite Dúplex Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              
+              <span class="absolute top-4 left-4 bg-karina-charcoal/80 backdrop-blur-md text-white text-[10px] font-mono px-3 py-1 rounded-full uppercase tracking-wider">
+                Maturín
+              </span>
+            </div>
+
+            <div class="space-y-2 text-left">
+              <h3 class="text-xl font-light text-karina-charcoal tracking-tight">Suite Dúplex / Dos Ambientes</h3>
+              <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+                Dos niveles independientes combinando sala ejecutiva de reuniones y habitación máster para máxima privacidad.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="flex items-center justify-between pt-4 border-t border-black/5">
+            <div class="flex items-center gap-3 text-xs text-karina-charcoal/70 font-mono">
+              <span><i class="fa-solid fa-bed text-karina-mustard"></i> x2 King</span>
+              <span><i class="fa-solid fa-user-group text-karina-mustard"></i> x4</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span class="text-lg font-bold text-karina-charcoal">$240 <span class="text-xs font-light">/noche</span></span>
+              <button onclick="openSuiteModalById('duplex-maturin')" class="w-9 h-9 rounded-full bg-karina-charcoal text-white flex items-center justify-center hover:bg-black transition-transform active:scale-90">
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BOTÓN CARGAR MÁS SUITES -->
+      <div class="text-center pt-8">
+        <button onclick="loadMoreCatalogSuites()" class="px-8 py-3 rounded-full bg-white hover:bg-white/80 text-karina-charcoal text-xs font-bold border border-black/10 shadow-sm transition-all active:scale-95 flex items-center gap-2 mx-auto">
+          <span>Cargar Más Suites</span>
+          <i class="fa-solid fa-chevron-down text-[10px]"></i>
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 4. MASTER FOOTER MULTISEDE                 -->
+  <!-- ========================================== -->
+  <footer id="footer" class="bg-[#262626] text-white pt-20 pb-12 px-6 sm:px-12 border-t border-white/10">
+    <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10">
+      
+      <!-- Columna 1: Brand & Slogan -->
+      <div class="lg:col-span-3 space-y-5">
+        <a href="index.html" class="block">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Grupo Kariña Logo Blanco" class="h-12 sm:h-14 w-auto object-contain">
+        </a>
+        <p class="text-xs text-white/65 leading-relaxed max-w-xs font-normal">
+          Una estadía que te abraza. Confort, hospitalidad ejecutiva y cultura viva en el oriente venezolano.
+        </p>
+      </div>
+
+      <!-- Columna 2: SEDES -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#F0A800] block">Nuestras Sedes</span>
+        <ul class="space-y-2 text-xs text-white/75 font-normal">
+          <li><a href="index.html#sedes" class="hover:text-white transition-colors">Maturín</a></li>
+          <li><a href="index.html#sedes" class="hover:text-white transition-colors">Punta de Mata</a></li>
+          <li><a href="el-tigre.html" class="hover:text-white transition-colors">El Tigre</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: EXPERIENCIAS -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#2680BD] block">Experiencias</span>
+        <ul class="space-y-2 text-xs text-white/75 font-normal">
+          <li><a href="index.html#experiencias" class="hover:text-white transition-colors">Piscinas & Resort</a></li>
+          <li><a href="index.html#corporativo" class="hover:text-white transition-colors">Servicios Corporativos</a></li>
+          <li><a href="index.html#fundacion" class="hover:text-white transition-colors">Fundación Kariña</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: CONTACTO -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-white/90 block">Recepción Central</span>
+        <div class="space-y-2.5 text-xs text-white/75">
+          <p class="text-[11px]">Oriente venezolano: Monagas & Anzoátegui</p>
+          <p class="font-bold text-white">+58 0424-9169601</p>
+        </div>
+      </div>
+
+      <!-- Columna 5: INSTAGRAM -->
+      <div class="lg:col-span-3 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#EB8C84] block">Síguenos en Instagram</span>
+        <div class="flex flex-col gap-2">
+          <a href="https://instagram.com/hoteleskarina" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#F0A800]"></i>
+            <span>@hoteleskarina</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-[1440px] mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/50 gap-4">
+      <p>© 2026 Grupo Kariña — Catálogo Oficial de Suites</p>
+      <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="w-10 h-10 rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-karina-mustard hover:text-karina-charcoal transition-all">
+        <i class="fa-solid fa-arrow-up text-xs"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- 5. MODAL DE DETALLES DE SUITE (INMERSIVO)  -->
+  <!-- ========================================== -->
+  <div id="suite-modal" 
+       class="fixed inset-0 z-[200] opacity-0 pointer-events-none bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 select-none"
+       onclick="closeSuiteModalOnBackdrop(event)">
+    
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-karina-mustard/35 rounded-full blur-3xl pointer-events-none animate-ambient-glow"></div>
+
+    <button onclick="navigateSuiteInModal(-1)" class="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-black/50 hover:bg-karina-mustard hover:text-karina-charcoal text-white items-center justify-center transition-all border border-white/20 shadow-xl active:scale-95" title="Anterior">
+      <i class="fa-solid fa-chevron-left text-sm"></i>
+    </button>
+
+    <button onclick="navigateSuiteInModal(1)" class="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-black/50 hover:bg-karina-mustard hover:text-karina-charcoal text-white items-center justify-center transition-all border border-white/20 shadow-xl active:scale-95" title="Siguiente">
+      <i class="fa-solid fa-chevron-right text-sm"></i>
+    </button>
+
+    <div id="suite-modal-container" 
+         class="relative w-full max-w-4xl min-h-[580px] max-h-[92vh] bg-karina-cream rounded-[36px] overflow-hidden shadow-2xl border border-black/10 text-karina-charcoal my-auto flex flex-col justify-between">
+      
+      <div id="suite-modal-wrapper" class="grid grid-cols-1 md:grid-cols-12 h-full overflow-y-auto p-6 sm:p-8 gap-8 transition-opacity duration-200">
+        
+        <!-- Visor Izquierda -->
+        <div class="md:col-span-6 space-y-4">
+          <div class="relative w-full h-[280px] sm:h-[320px] rounded-pebble overflow-hidden shadow-md bg-black/10">
+            <img id="suite-modal-main-img" src="" class="w-full h-full object-cover">
+            <span id="suite-modal-tag" class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-white text-[11px]">Vista Principal</span>
+          </div>
+
+          <!-- Miniaturas -->
+          <div class="grid grid-cols-4 gap-2">
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', 'Cama Principal King Size')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', 'Baño Privado')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', 'Área Ejecutiva')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            </button>
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80', 'Minibar & Vista')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            </button>
+          </div>
+        </div>
+
+        <!-- Info Derecha -->
+        <div class="md:col-span-6 space-y-6 flex flex-col justify-between text-left">
+          <div class="space-y-4">
+            
+            <div class="flex items-center justify-end gap-5">
+              <div class="flex items-center gap-2 text-xs font-mono font-normal text-karina-charcoal/70">
+                <button onclick="navigateSuiteInModal(-1)" class="hover:text-karina-mustard transition-colors px-1"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                <span id="suite-modal-counter" class="px-1">01 / 04</span>
+                <button onclick="navigateSuiteInModal(1)" class="hover:text-karina-mustard transition-colors px-1"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+              </div>
+
+              <button onclick="closeSuiteModal()" class="text-karina-charcoal/60 hover:text-karina-charcoal text-lg p-1 transition-colors leading-none" aria-label="Cerrar modal">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <h3 id="suite-modal-title" class="text-3xl font-light text-karina-charcoal">Suite Premium</h3>
+            <p id="suite-modal-desc" class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+              Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.
+            </p>
+
+            <div class="space-y-2 pt-2 text-xs text-karina-charcoal/80">
+              <p class="font-bold">Equipamiento Incluido:</p>
+              <div class="grid grid-cols-2 gap-2">
+                <div class="flex items-center gap-2"><i class="fa-solid fa-bed text-karina-mustard"></i> Cama King Size</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-wifi text-karina-mustard"></i> Fibra Óptica 100M</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-tv text-karina-mustard"></i> Smart TV 55"</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-snowflake text-karina-mustard"></i> A/C Autónomo</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 space-y-2 border-t border-black/10">
+            <button onclick="inquireSuiteWithAI()" class="w-full py-3.5 px-6 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95">
+              <i class="fa-solid fa-wand-magic-sparkles text-karina-mustard"></i>
+              <span>Consultar Tarifas & Reservar con <strong>Arimiña-IA</strong></span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modular Global -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

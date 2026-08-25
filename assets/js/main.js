@@ -248,14 +248,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (immersiveMenu && !immersiveMenu.classList.contains('opacity-0')) {
         closeMenu();
       }
-      const modal = document.getElementById('sede-modal');
-      if (modal && modal.classList.contains('is-open')) closeSedeModal();
+      const sedeModal = document.getElementById('sede-modal');
+      if (sedeModal && sedeModal.classList.contains('is-open')) closeSedeModal();
+      const suiteModal = document.getElementById('suite-modal');
+      if (suiteModal && suiteModal.classList.contains('is-open')) closeSuiteModal();
     }
-    const modal = document.getElementById('sede-modal');
-    if (!modal || !modal.classList.contains('is-open')) return;
-
-    if (e.key === 'ArrowLeft') navigateSedeInModal(-1);
-    if (e.key === 'ArrowRight') navigateSedeInModal(1);
+    const sedeModal = document.getElementById('sede-modal');
+    if (sedeModal && sedeModal.classList.contains('is-open')) {
+      if (e.key === 'ArrowLeft') navigateSedeInModal(-1);
+      if (e.key === 'ArrowRight') navigateSedeInModal(1);
+    }
+    const suiteModal = document.getElementById('suite-modal');
+    if (suiteModal && suiteModal.classList.contains('is-open')) {
+      if (e.key === 'ArrowLeft') navigateSuiteInModal(-1);
+      if (e.key === 'ArrowRight') navigateSuiteInModal(1);
+    }
   });
 
   // Soporte Gestual Táctil (Swipe en Móviles)
@@ -414,6 +421,135 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, observerOptions);
+
+  // ==========================================
+  // 8. CONTROLADORES CATÁLOGO DE SUITES Y MODAL
+  // ==========================================
+  const catalogSuitesData = [
+    {
+      id: 'premium-maturin',
+      title: 'Suite Premium Maturín',
+      desc: 'Nuestra suite insignia en la Sede Maturín ofrece vistas panorámicas al resort, lounge independiente y equipamiento ejecutivo de alta densidad.',
+      image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 'estandar-eltigre',
+      title: 'Suite Estándar El Tigre',
+      desc: 'Excelente distribución ejecutiva orientada al descanso silencioso en la Mesa de Guanipa, con acceso ilimitado a áreas de piscina.',
+      image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 'premium-ptamata',
+      title: 'Suite Premium Punta de Mata',
+      desc: 'Santuario corporativo rodeado de jardines tropicales en la Zona Industrial de Punta de Mata.',
+      image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 'duplex-maturin',
+      title: 'Suite Dúplex / Dos Ambientes',
+      desc: 'Espacio expansivo de dos niveles combinando sala de juntas privada y habitación principal para directivos.',
+      image: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 'estandar-maturin',
+      title: 'Suite Estándar Maturín',
+      desc: 'Un espacio refinado diseñado para el viajero moderno que busca eficiencia sin comprometer la elegancia y confort.',
+      image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80'
+    }
+  ];
+
+  let currentCatalogSuiteIdx = 0;
+
+  window.applySuiteFilters = function() {
+    const filterSedeEl = document.getElementById('filter-sede');
+    const filterCapEl = document.getElementById('filter-capacity');
+    if (!filterSedeEl || !filterCapEl) return;
+    
+    const sede = filterSedeEl.value;
+    const capacity = filterCapEl.value;
+    const cards = document.querySelectorAll('.suite-card');
+
+    cards.forEach(card => {
+      let matchSede = (sede === 'all') || card.classList.contains('suite-item-' + sede);
+      let matchCapacity = true;
+
+      if (capacity === '2') {
+        matchCapacity = !card.classList.contains('suite-item-duplex');
+      }
+
+      if (matchSede && matchCapacity) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  };
+
+  window.openSuiteModalById = function(id) {
+    const idx = catalogSuitesData.findIndex(s => s.id === id);
+    currentCatalogSuiteIdx = idx !== -1 ? idx : 0;
+    updateSuiteModalData();
+
+    const modal = document.getElementById('suite-modal');
+    if (modal) {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  function updateSuiteModalData() {
+    const suite = catalogSuitesData[currentCatalogSuiteIdx];
+    if (!suite) return;
+    const titleEl = document.getElementById('suite-modal-title');
+    const descEl = document.getElementById('suite-modal-desc');
+    const imgEl = document.getElementById('suite-modal-main-img');
+    const counterEl = document.getElementById('suite-modal-counter');
+
+    if (titleEl) titleEl.textContent = suite.title;
+    if (descEl) descEl.textContent = suite.desc;
+    if (imgEl) imgEl.src = suite.image;
+    if (counterEl) counterEl.textContent = `0${currentCatalogSuiteIdx + 1} / 04`;
+  }
+
+  window.navigateSuiteInModal = function(dir) {
+    const total = catalogSuitesData.length;
+    currentCatalogSuiteIdx = (currentCatalogSuiteIdx + dir + total) % total;
+    
+    const wrapper = document.getElementById('suite-modal-wrapper');
+    if (wrapper) wrapper.style.opacity = '0.3';
+    setTimeout(() => {
+      updateSuiteModalData();
+      if (wrapper) wrapper.style.opacity = '1';
+    }, 120);
+  };
+
+  window.setSuiteModalImg = function(src, tag) {
+    const imgEl = document.getElementById('suite-modal-main-img');
+    const tagEl = document.getElementById('suite-modal-tag');
+    if (imgEl) imgEl.src = src;
+    if (tagEl && tag) tagEl.textContent = tag;
+  };
+
+  window.closeSuiteModal = function() {
+    const modal = document.getElementById('suite-modal');
+    if (modal) {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.closeSuiteModalOnBackdrop = function(e) {
+    if (e.target.id === 'suite-modal') closeSuiteModal();
+  };
+
+  window.loadMoreCatalogSuites = function() {
+    console.log('Cargando más habitaciones...');
+  };
+
+  window.inquireSuiteWithAI = function() {
+    closeSuiteModal();
+    alert('Iniciando consulta de disponibilidad y tarifas con Arimiña-IA...');
+  };
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 });
