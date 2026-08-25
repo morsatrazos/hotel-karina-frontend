@@ -256,6 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (viveModal && viveModal.classList.contains('is-open')) closeViveLightbox();
       const dpModal = document.getElementById('daypass-modal');
       if (dpModal && dpModal.classList.contains('is-open')) closeDayPassModal();
+      const cartDrawer = document.getElementById('cart-drawer');
+      if (cartDrawer && !cartDrawer.classList.contains('translate-x-full')) toggleCartDrawer(false);
     }
     const sedeModal = document.getElementById('sede-modal');
     if (sedeModal && sedeModal.classList.contains('is-open')) {
@@ -833,6 +835,187 @@ document.addEventListener('DOMContentLoaded', () => {
         if (form) form.reset();
       }, 4000);
     }
+  };
+
+  // ===================================================
+  // 11. LÓGICA JAVASCRIPT: GASTRONOMÍA, PELUQUERÍA & SERVICIOS
+  // ===================================================
+
+  const menuData = {
+    'desayuno': {
+      title: "Desayunos & Mañanas",
+      desc: "Opciones criollas e internacionales para iniciar el día con vitalidad.",
+      dishes: [
+        { name: "Desayuno Criollo Kariña", desc: "Arepitas de maíz, carne mechada sazonada, queso telita, perico y caraotas negras refinadas.", price: 16, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=200&q=80", tag: "Insignia" },
+        { name: "Pancakes de Avena & Frutos del Bosque", desc: "Servidos con sirope de arce orgánico y fruta fresca de temporada.", price: 14, img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=200&q=80", tag: "Saludable" }
+      ]
+    },
+    'almuerzo-cena': {
+      title: "Almuerzo y Cena",
+      desc: "Creaciones de autor que honran los ingredientes locales con técnicas de vanguardia.",
+      dishes: [
+        { name: "Asado Negro de Larga Cocción", desc: "Corte de res braseado por 12 horas en reducción de vino tinto y papelón, puré de apio.", price: 38, img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=200&q=80", tag: "Sin Gluten" },
+        { name: "Carpaccio de Remolacha Orgánica", desc: "Finas láminas de remolacha asada, crema de cashew fermentado, polvo de pistachos.", price: 22, img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=200&q=80", tag: "Vegano" },
+        { name: "Lomo de Rótalo en Mantequilla de Ají", desc: "Pesca del día a la plancha, emulsión tibia de ají dulce, risotto cremoso de coco.", price: 32, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=200&q=80", tag: "Especialidad" }
+      ]
+    },
+    'postres': {
+      title: "Postres & Dulce Final",
+      desc: "Delicias artesanales diseñadas por nuestra repostería de autor.",
+      dishes: [
+        { name: "Marquesa de Chocolate & Nuez", desc: "Capas de galleta crujiente y mousse de cacao venezolano al 70%.", price: 10, img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=200&q=80", tag: "Cacao 70%" },
+        { name: "Quesillo Tradicional de Coco", desc: "Acompañado de crujiente de coco tostado y caramelo de ron añejo.", price: 8, img: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=200&q=80", tag: "Artesanal" }
+      ]
+    },
+    'vinos-cocteles': {
+      title: "Vinos & Coctelería de Autor",
+      desc: "Selección curada por nuestra sommelier e infusiones tropicales.",
+      dishes: [
+        { name: "Margarita de Ají Dulce & Cocuy", desc: "Cocuy artesanal, zumo de parchita fresco y ribete de sal aromatizada.", price: 14, img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=200&q=80", tag: "Cóctel Autor" },
+        { name: "Copa Malbec Reserva Mendoza", desc: "Notas profundas de ciruela, vainilla y roble.", price: 12, img: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=200&q=80", tag: "Copas" }
+      ]
+    }
+  };
+
+  // Selector de Categoría
+  window.selectCategory = function(catKey, clickedBtn) {
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+      btn.classList.remove('is-active');
+      const arrow = btn.querySelector('.cat-arrow');
+      if (arrow) {
+        arrow.classList.remove('opacity-100', 'translate-x-0');
+        arrow.classList.add('opacity-0', '-translate-x-2');
+      }
+    });
+
+    if (clickedBtn) {
+      clickedBtn.classList.add('is-active');
+      const activeArrow = clickedBtn.querySelector('.cat-arrow');
+      if (activeArrow) {
+        activeArrow.classList.remove('opacity-0', '-translate-x-2');
+        activeArrow.classList.add('opacity-100', 'translate-x-0');
+      }
+    }
+
+    const data = menuData[catKey];
+    if (!data) return;
+
+    const titleEl = document.getElementById('category-title');
+    const descEl = document.getElementById('category-desc');
+    if (titleEl) titleEl.textContent = data.title;
+    if (descEl) descEl.textContent = data.desc;
+
+    const container = document.getElementById('dishes-container');
+    if (container) {
+      container.innerHTML = data.dishes.map(d => `
+        <div class="dish-card dish-card-hover bg-white/70 p-5 rounded-3xl border border-black/5 flex flex-col sm:flex-row items-center justify-between gap-5">
+          <div class="flex items-center gap-4 w-full sm:w-auto">
+            <img src="${d.img}" alt="${d.name}" class="w-20 h-20 rounded-2xl object-cover shrink-0">
+            <div class="space-y-1 text-left">
+              <div class="flex items-center gap-2">
+                <h3 class="text-base font-bold text-karina-charcoal">${d.name}</h3>
+                <span class="bg-karina-cream text-karina-charcoal text-[9px] font-mono px-2 py-0.5 rounded-full border border-black/5">${d.tag}</span>
+              </div>
+              <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">${d.desc}</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-between w-full sm:w-auto sm:justify-end gap-4 border-t sm:border-t-0 pt-3 sm:pt-0 border-black/5 shrink-0">
+            <span class="text-lg font-bold text-karina-charcoal">$${d.price}</span>
+            <button onclick="addToOrder('${d.name}', ${d.price}, '${d.img}')" class="w-9 h-9 rounded-full bg-karina-cream hover:bg-karina-mustard text-karina-charcoal flex items-center justify-center transition-all active:scale-90" title="Añadir a la orden">
+              <i class="fa-solid fa-plus text-xs"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+  };
+
+  // Carrito / Estado de Selección
+  let cart = [];
+
+  window.addToOrder = function(name, price, img) {
+    const existing = cart.find(i => i.name === name);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ name, price, img, qty: 1 });
+    }
+    updateCartUI();
+    toggleCartDrawer(true);
+  };
+
+  function updateCartUI() {
+    const badge = document.getElementById('cart-badge');
+    const list = document.getElementById('cart-items-list');
+    const totalEl = document.getElementById('cart-total-price');
+
+    const totalQty = cart.reduce((acc, i) => acc + i.qty, 0);
+    const totalPrice = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+
+    if (badge) badge.textContent = totalQty;
+    if (totalEl) totalEl.textContent = `$${totalPrice}`;
+
+    if (!list) return;
+
+    if (cart.length === 0) {
+      list.innerHTML = `<p class="text-xs text-karina-charcoal/50 font-light text-center py-10">Tu selección está vacía. Añade tus opciones preferidas.</p>`;
+      return;
+    }
+
+    list.innerHTML = cart.map(item => `
+      <div class="flex items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-black/5 shadow-xs">
+        <div class="flex items-center gap-3">
+          <img src="${item.img}" class="w-12 h-12 rounded-xl object-cover">
+          <div>
+            <p class="text-xs font-bold text-karina-charcoal">${item.name}</p>
+            <p class="text-[11px] text-karina-charcoal/60">$${item.price} x ${item.qty}</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold text-karina-charcoal">$${item.price * item.qty}</span>
+          <button onclick="removeFromOrder('${item.name}')" class="text-xs text-red-400 hover:text-red-600 p-1" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  window.removeFromOrder = function(name) {
+    cart = cart.filter(i => i.name !== name);
+    updateCartUI();
+  };
+
+  window.toggleCartDrawer = function(open) {
+    const drawer = document.getElementById('cart-drawer');
+    const backdrop = document.getElementById('cart-backdrop');
+
+    if (!drawer || !backdrop) return;
+
+    if (open) {
+      drawer.classList.remove('translate-x-full');
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+    } else {
+      drawer.classList.add('translate-x-full');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.submitOrderToAI = function() {
+    if (cart.length === 0) {
+      alert('Por favor, añade al menos un platillo o servicio a tu selección.');
+      return;
+    }
+
+    const orderSummary = cart.map(i => `• ${i.name} (x${i.qty}) - $${i.price * i.qty}`).join('%0A');
+    const total = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+    const text = `Hola Arimiña-IA, deseo realizar la siguiente reserva/pedido:%0A%0A${orderSummary}%0A%0ATotal Estimado: $${total}`;
+
+    window.open(`https://wa.me/5804249169601?text=${text}`, '_blank');
+  };
+
+  window.consultAIAssistant = function() {
+    alert('Arimiña-IA: Te sugiero acompañar tus elecciones gastronómicas con nuestra selección de vinos tintos Reserva o solicitar una cita personalizada para nuestros servicios de estilismo.');
   };
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
