@@ -1062,5 +1062,39 @@ document.addEventListener('DOMContentLoaded', () => {
     openModal('modal-lightbox');
   };
 
+  // ===================================================
+  // 13. CONTROLADORES: PÁGINAS LEGALES & RESCATE 404
+  // ===================================================
+
+  window.askAIForHelp404 = function() {
+    const message = "Hola Arimiña-IA, me he perdido en el sitio web de Hoteles Kariña. ¿Podrías orientarme con las suites disponibles o servicios?";
+    window.open(`https://wa.me/5804249169601?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
+  // Observador para resaltar la sección activa en el TOC de Términos y Privacidad
+  const legalSections = document.querySelectorAll('article section[id]');
+  const tocLinks = document.querySelectorAll('.toc-link');
+
+  if (legalSections.length > 0 && tocLinks.length > 0) {
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          tocLinks.forEach(link => {
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('is-active');
+            } else {
+              link.classList.remove('is-active');
+            }
+          });
+        }
+      });
+    }, {
+      rootMargin: '-20% 0px -70% 0px'
+    });
+
+    legalSections.forEach(section => tocObserver.observe(section));
+  }
+
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 });

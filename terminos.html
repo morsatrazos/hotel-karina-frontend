@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel Kariña — Restaurante 283 & Gastronomía de Autor</title>
+  <title>Términos y Condiciones — Hoteles Kariña</title>
 
   <!-- Google Fonts: Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,18 +75,13 @@
         <a href="fundacion.html" class="hover:text-[#F0A800] transition-colors">Fundación</a>
       </nav>
 
-      <!-- LADO DERECHO: Carrito Drawer + Botón Reserva Shimmer -->
-      <div class="flex items-center gap-4">
-        <!-- Botón Ver Pedido Flotante -->
-        <button onclick="toggleCartDrawer(true)" class="relative p-2.5 rounded-full bg-white/80 hover:bg-white text-karina-charcoal border border-black/10 transition-all active:scale-95 shadow-sm" title="Ver mi selección">
-          <i class="fa-solid fa-basket-shopping text-sm"></i>
-          <span id="cart-badge" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-karina-mustard text-karina-charcoal text-[10px] font-extrabold flex items-center justify-center shadow-xs">0</span>
-        </button>
-
-        <button onclick="inquireSuiteWithAI()" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
-          <span>Reservar Mesa</span>
-          <i class="fa-solid fa-utensils text-[10px]"></i>
-        </button>
+      <!-- LADO DERECHO: Idioma + Botón Reserva Shimmer -->
+      <div class="flex items-center gap-5">
+        <button class="text-xs font-bold text-[#343434] hover:text-[#2680BD] transition-colors">ES/EN</button>
+        <a href="suites.html" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+          <span>Reserva</span>
+          <i class="fa-solid fa-sparkles text-[10px]"></i>
+        </a>
       </div>
 
     </div>
@@ -184,194 +179,187 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- 3. MAIN CONTENT: RESTAURANTE & MENÚ        -->
+  <!-- 3. MAIN CONTENT: TÉRMINOS Y CONDICIONES   -->
   <!-- ========================================== -->
-  <main class="pt-28 pb-20 max-w-7xl mx-auto px-6 sm:px-12 space-y-16 text-left">
+  <main class="pt-28 pb-24 max-w-7xl mx-auto px-6 sm:px-12 text-left">
 
-    <!-- HERO SPOTLIGHT: SUGERENCIA DEL CHEF / ESPECIALIDAD -->
-    <section id="hero-spotlight" class="relative w-full min-h-[460px] sm:min-h-[520px] rounded-[40px] overflow-hidden bg-white/40 border border-black/5 shadow-sm p-6 sm:p-10 flex items-center">
+    <!-- CABECERA & BREADCRUMB EDITORIAL -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/5 pb-6 mb-12">
+      <nav class="flex items-center gap-2 text-xs font-mono text-karina-charcoal/60">
+        <a href="index.html" class="hover:text-karina-charcoal transition-colors">Inicio</a>
+        <span>›</span>
+        <span class="text-karina-charcoal/40">Legal</span>
+        <span>›</span>
+        <span class="text-karina-charcoal font-semibold">Términos y Condiciones</span>
+      </nav>
+      <span class="text-[11px] font-mono text-karina-charcoal/50">
+        Última actualización: 15 Octubre 2026
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
       
-      <!-- Fondo Asimétrico Derecho con Foto Platillo / Servicio Principal -->
-      <div class="absolute top-0 right-0 w-full lg:w-3/5 h-full overflow-hidden rounded-pebble-reverse">
-        <img id="spotlight-img"
-             src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" 
-             alt="Especialidad Destacada" 
-             class="w-full h-full object-cover filter brightness-[0.95] hover:scale-105 transition-transform duration-1000">
-        <div class="absolute inset-0 bg-gradient-to-r from-karina-cream via-karina-cream/40 to-transparent lg:block hidden"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden"></div>
-      </div>
-
-      <!-- Tarjeta Glassmorphism Solapada Izquierda -->
-      <div class="relative z-10 max-w-xl bg-white/85 backdrop-blur-xl p-8 sm:p-10 rounded-[32px] border border-white/60 shadow-xl space-y-5 text-left my-auto">
-        <span id="spotlight-badge" class="inline-block bg-karina-cream border border-karina-mustard/40 text-karina-charcoal text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-          Sugerencia de Autor
-        </span>
-
-        <div class="space-y-2">
-          <h1 id="spotlight-title" class="text-3xl sm:text-5xl font-light text-karina-charcoal tracking-tight leading-tight">
-            Arepa de Langosta Caribeña
-          </h1>
-          <p id="spotlight-desc" class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
-            Nuestra interpretación de un clásico. Masa de maíz pilado, langosta fresca del Caribe, emulsión de aguacate y un toque de ají dulce margariteño.
-          </p>
-        </div>
-
-        <div class="pt-2 flex items-center justify-between border-t border-black/5">
-          <span id="spotlight-price" class="text-2xl sm:text-3xl font-bold text-karina-charcoal">$45</span>
-
-          <button id="spotlight-btn-add"
-                  onclick="addToOrder('Arepa de Langosta Caribeña', 45, 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80')" 
-                  class="px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold shadow-md transition-all active:scale-95 flex items-center gap-2">
-            <span>Añadir al Pedido</span>
-            <i class="fa-solid fa-plus text-[10px] text-karina-mustard"></i>
-          </button>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- NAVEGACIÓN CATEGORÍAS + CATÁLOGO Y ASISTENTE ARIMIÑA-IA -->
-    <section id="menu-section" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start text-left">
-      
-      <!-- COLUMNA IZQUIERDA: CATEGORÍAS + WIDGET ARIMIÑA-IA (4 COLS) -->
-      <div class="lg:col-span-4 space-y-8 sticky top-24">
+      <!-- COLUMNA IZQUIERDA: ÍNDICE STICKY & CONTACTO LEGAL (4 Cols) -->
+      <aside class="lg:col-span-4 space-y-8 lg:sticky lg:top-28">
         
-        <div class="space-y-4">
-          <span class="text-xs font-mono font-bold uppercase tracking-widest text-karina-charcoal/50 block">CATEGORÍAS</span>
+        <!-- Tabla de Contenidos -->
+        <div class="bg-white/50 rounded-3xl p-6 border border-black/5 space-y-4">
+          <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-karina-charcoal/50 block">
+            CONTENIDO
+          </span>
           
-          <nav id="category-nav-list" class="flex flex-col space-y-3 text-sm">
-            <button onclick="selectCategory('desayuno', this)" class="cat-btn py-2 text-left flex items-center justify-between text-karina-charcoal/60 hover:text-karina-charcoal group">
-              <span>Desayuno</span>
-              <i class="fa-solid fa-arrow-right text-xs text-karina-mustard opacity-0 -translate-x-2 cat-arrow transition-all"></i>
-            </button>
-
-            <button onclick="selectCategory('almuerzo-cena', this)" class="cat-btn is-active py-2 text-left flex items-center justify-between text-karina-charcoal group">
-              <span>Almuerzo y Cena</span>
-              <i class="fa-solid fa-arrow-right text-xs text-karina-mustard opacity-100 translate-x-0 cat-arrow transition-all"></i>
-            </button>
-
-            <button onclick="selectCategory('postres', this)" class="cat-btn py-2 text-left flex items-center justify-between text-karina-charcoal/60 hover:text-karina-charcoal group">
-              <span>Postres & Dulce</span>
-              <i class="fa-solid fa-arrow-right text-xs text-karina-mustard opacity-0 -translate-x-2 cat-arrow transition-all"></i>
-            </button>
-
-            <button onclick="selectCategory('vinos-cocteles', this)" class="cat-btn py-2 text-left flex items-center justify-between text-karina-charcoal/60 hover:text-karina-charcoal group">
-              <span>Vinos & Cócteles</span>
-              <i class="fa-solid fa-arrow-right text-xs text-karina-mustard opacity-0 -translate-x-2 cat-arrow transition-all"></i>
-            </button>
+          <nav class="flex flex-col space-y-2.5 text-xs text-karina-charcoal/70 font-light">
+            <a href="#reservas-pagos" class="toc-link hover:text-karina-charcoal py-1 transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-karina-mustard opacity-0 toc-dot transition-opacity"></span>
+              <span>1. Reservas y Pagos</span>
+            </a>
+            <a href="#politicas-cancelacion" class="toc-link hover:text-karina-charcoal py-1 transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-karina-mustard opacity-0 toc-dot transition-opacity"></span>
+              <span>2. Políticas de Cancelación</span>
+            </a>
+            <a href="#checkin-checkout" class="toc-link hover:text-karina-charcoal py-1 transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-karina-mustard opacity-0 toc-dot transition-opacity"></span>
+              <span>3. Check-in y Check-out</span>
+            </a>
+            <a href="#club-karina" class="toc-link hover:text-karina-charcoal py-1 transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-karina-mustard opacity-0 toc-dot transition-opacity"></span>
+              <span>4. Club Kariña y Day Pass</span>
+            </a>
+            <a href="#responsabilidad" class="toc-link hover:text-karina-charcoal py-1 transition-colors flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-karina-mustard opacity-0 toc-dot transition-opacity"></span>
+              <span>5. Responsabilidad y Normas</span>
+            </a>
           </nav>
         </div>
 
-        <!-- TARJETA ARIMIÑA-IA ASISTENTE DE SERVICIO -->
-        <div class="bg-white/80 p-6 rounded-pebble border border-karina-mustard/30 space-y-4 shadow-sm animate-ai-glow">
-          <div class="flex items-center gap-2 text-xs font-bold text-karina-charcoal">
-            <div class="w-7 h-7 rounded-full bg-karina-mustard/20 flex items-center justify-center text-karina-charcoal">
-              <i class="fa-solid fa-wand-magic-sparkles text-karina-mustard text-xs"></i>
-            </div>
-            <span id="ai-assistant-title">Arimiña-IA Sommelier</span>
+        <!-- Tarjeta Asistencia Legal -->
+        <div class="bg-white/80 p-6 rounded-pebble border border-black/5 space-y-3 shadow-sm">
+          <div class="w-8 h-8 rounded-full bg-karina-cream flex items-center justify-center text-karina-charcoal text-xs">
+            <i class="fa-solid fa-scale-balanced text-karina-mustard"></i>
           </div>
-
-          <p id="ai-suggestion-text" class="text-xs text-karina-charcoal/80 font-light leading-relaxed italic">
-            "Para el Asado Negro de Larga Cocción, te sugiero un Malbec Reserva. Sus notas de ciruela complementarán perfectamente el dulzor del papelón."
-          </p>
-
-          <button onclick="consultAIAssistant()" class="w-full py-2.5 px-4 rounded-full bg-karina-cream hover:bg-white text-karina-charcoal text-[11px] font-bold border border-black/10 transition-all flex items-center justify-center gap-2">
-            <span>Consultar Recomendaciones Arimiña-IA</span>
-            <i class="fa-solid fa-sparkles text-karina-mustard text-[10px]"></i>
-          </button>
+          <div class="space-y-1">
+            <h4 class="text-xs font-bold text-karina-charcoal">¿Dudas legales?</h4>
+            <p class="text-[11px] text-karina-charcoal/70 leading-relaxed font-light">
+              Contacte a nuestro equipo de atención y soporte jurídico al huésped.
+            </p>
+          </div>
+          <a href="mailto:legal@hoteleskarina.com" class="text-xs font-bold text-karina-charcoal hover:text-karina-blue transition-colors flex items-center gap-1.5 pt-1">
+            <span>legal@hoteleskarina.com</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
         </div>
 
-      </div>
+      </aside>
 
-      <!-- COLUMNA DERECHA: GRILLA DE PLATILLOS (8 COLS) -->
-      <div class="lg:col-span-8 space-y-8">
+      <!-- COLUMNA DERECHA: DOCUMENTO COMPLETO EDITORIAL (8 Cols) -->
+      <article class="lg:col-span-8 space-y-12 text-karina-charcoal">
         
-        <div class="space-y-2 border-b border-black/5 pb-4">
-          <h2 id="category-title" class="text-3xl font-light text-karina-charcoal tracking-tight">
-            Almuerzo y Cena
-          </h2>
-          <p id="category-desc" class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
-            Creaciones de autor que honran los ingredientes locales con técnicas de vanguardia.
+        <!-- Título de la Página -->
+        <div class="space-y-4">
+          <h1 class="text-3xl sm:text-5xl font-light tracking-tight text-karina-charcoal">
+            Términos y<br>Condiciones
+          </h1>
+          <p class="text-xs sm:text-sm text-karina-charcoal/80 font-light leading-relaxed">
+            Bienvenido a Hoteles Kariña. Estos términos y condiciones establecen las reglas y regulaciones para el uso de nuestras instalaciones, servicios hoteleros, club de piscina y plataforma web. Al realizar una reserva o utilizar nuestros servicios, usted acepta estos términos en su totalidad.
           </p>
         </div>
 
-        <!-- PLATILLOS CONTAINER -->
-        <div id="dishes-container" class="space-y-4">
-          
-          <!-- Platillo 1 -->
-          <div class="dish-card dish-card-hover bg-white/70 p-5 rounded-3xl border border-black/5 flex flex-col sm:flex-row items-center justify-between gap-5">
-            <div class="flex items-center gap-4 w-full sm:w-auto">
-              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=200&q=80" alt="Asado Negro" class="w-20 h-20 rounded-2xl object-cover shrink-0">
-              <div class="space-y-1 text-left">
-                <div class="flex items-center gap-2">
-                  <h3 class="text-base font-bold text-karina-charcoal">Asado Negro de Larga Cocción</h3>
-                  <span class="bg-karina-cream text-karina-charcoal text-[9px] font-mono px-2 py-0.5 rounded-full border border-black/5">Sin Gluten</span>
-                </div>
-                <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
-                  Corte de res braseado por 12 horas en reducción de vino tinto y papelón, acompañado de puré rústico de apio y vegetales bebé confitados.
-                </p>
-              </div>
-            </div>
+        <!-- SECCIÓN 1: RESERVAS Y PAGOS -->
+        <section id="reservas-pagos" class="space-y-4 scroll-mt-28 border-t border-black/5 pt-8">
+          <h2 class="text-xl sm:text-2xl font-light text-karina-charcoal">
+            1. Reservas y Pagos
+          </h2>
+          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+            Todas las reservas están sujetas a disponibilidad y confirmación por parte del Hotel Kariña. Para garantizar una reserva, se requiere el depósito o tarjeta de crédito válida según la tarifa seleccionada.
+          </p>
 
-            <div class="flex items-center justify-between w-full sm:w-auto sm:justify-end gap-4 border-t sm:border-t-0 pt-3 sm:pt-0 border-black/5 shrink-0">
-              <span class="text-lg font-bold text-karina-charcoal">$38</span>
-              <button onclick="addToOrder('Asado Negro de Larga Cocción', 38, 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=200&q=80')" class="w-9 h-9 rounded-full bg-karina-cream hover:bg-karina-mustard text-karina-charcoal flex items-center justify-center transition-all active:scale-90" title="Añadir a la orden">
-                <i class="fa-solid fa-plus text-xs"></i>
-              </button>
+          <ul class="space-y-2 text-xs text-karina-charcoal/75 font-light list-disc pl-5 leading-relaxed">
+            <li>El titular del método de pago utilizado para la reserva debe estar presente al momento del check-in o suministrar una autorización firmada previa.</li>
+            <li>Las tarifas publicadas están expresadas en moneda local y divisas (USD), sujetas a impuestos y cargos aplicables según la legislación nacional vigente.</li>
+            <li>Los pagos pueden realizarse en efectivo, tarjeta de débito/crédito internacional, Pago Móvil, Zelle o transferencias bancarias aprobadas previamente.</li>
+          </ul>
+
+          <!-- Nota Aclaratoria Estilo Imagen Referencia -->
+          <div class="bg-karina-mustard-light/35 p-5 rounded-2xl border border-karina-mustard/30 space-y-2 text-xs text-karina-charcoal">
+            <div class="flex items-center gap-2 font-bold text-xs">
+              <i class="fa-solid fa-circle-info text-karina-mustard"></i>
+              <span>Condiciones para Grupos & Corporativo</span>
+            </div>
+            <p class="text-xs text-karina-charcoal/80 font-light leading-relaxed italic">
+              "Para reservas de grupos (más de 5 habitaciones) o eventos corporativos, se aplicarán condiciones especiales de depósito y cancelación que serán comunicadas al momento de la cotización."
+            </p>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 2: POLÍTICAS DE CANCELACIÓN -->
+        <section id="politicas-cancelacion" class="space-y-4 scroll-mt-28 border-t border-black/5 pt-8">
+          <h2 class="text-xl sm:text-2xl font-light text-karina-charcoal">
+            2. Políticas de Cancelación
+          </h2>
+          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+            Entendemos que los planes pueden cambiar. Nuestra política de cancelación estándar busca ofrecer flexibilidad mientras asegura la disponibilidad para otros huéspedes.
+          </p>
+
+          <div class="space-y-3 text-xs text-karina-charcoal/80 font-light leading-relaxed">
+            <p>• <strong>Temporada Baja:</strong> Las cancelaciones realizadas con 48 horas o más de anticipación al check-in no tendrán cargos adicionales.</p>
+            <p>• <strong>Temporada Alta y Días Festivos:</strong> Se requiere un aviso de 7 días continuos para cancelaciones sin penalización.</p>
+            <p>• <strong>No-Show:</strong> Las cancelaciones fuera de plazo o incomparecencias resultarán en el cargo equivalente al 100% de la primera noche de estadía.</p>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 3: CHECK-IN Y CHECK-OUT -->
+        <section id="checkin-checkout" class="space-y-4 scroll-mt-28 border-t border-black/5 pt-8">
+          <h2 class="text-xl sm:text-2xl font-light text-karina-charcoal">
+            3. Check-in y Check-out
+          </h2>
+          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+            Para asegurar la preparación impecable de nuestras suites, los horarios establecidos son los siguientes:
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+            <div class="bg-white/60 p-4 rounded-2xl border border-black/5 text-xs">
+              <span class="text-[10px] font-mono uppercase text-karina-charcoal/50 block">Ingreso</span>
+              <p class="font-bold text-sm text-karina-charcoal mt-0.5">Hora de Check-in: 3:00 PM</p>
+            </div>
+            <div class="bg-white/60 p-4 rounded-2xl border border-black/5 text-xs">
+              <span class="text-[10px] font-mono uppercase text-karina-charcoal/50 block">Salida</span>
+              <p class="font-bold text-sm text-karina-charcoal mt-0.5">Hora de Check-out: 12:00 PM (Mediodía)</p>
             </div>
           </div>
 
-          <!-- Platillo 2 -->
-          <div class="dish-card dish-card-hover bg-white/70 p-5 rounded-3xl border border-black/5 flex flex-col sm:flex-row items-center justify-between gap-5">
-            <div class="flex items-center gap-4 w-full sm:w-auto">
-              <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=200&q=80" alt="Carpaccio de Remolacha" class="w-20 h-20 rounded-2xl object-cover shrink-0">
-              <div class="space-y-1 text-left">
-                <div class="flex items-center gap-2">
-                  <h3 class="text-base font-bold text-karina-charcoal">Carpaccio de Remolacha Orgánica</h3>
-                  <span class="bg-emerald-100 text-emerald-800 text-[9px] font-mono px-2 py-0.5 rounded-full">Vegano</span>
-                </div>
-                <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
-                  Finas láminas de remolacha asada, crema de cashew fermentado, polvo de pistachos, brotes tiernos y vinagreta de parchita.
-                </p>
-              </div>
-            </div>
+          <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+            Solicitudes de Early Check-in o Late Check-out están sujetas a disponibilidad previa y pueden incurrir en cargos adicionales. Los huéspedes deben presentar identificación oficial con fotografía (Pasaporte o Cédula de Identidad) al momento del registro.
+          </p>
+        </section>
 
-            <div class="flex items-center justify-between w-full sm:w-auto sm:justify-end gap-4 border-t sm:border-t-0 pt-3 sm:pt-0 border-black/5 shrink-0">
-              <span class="text-lg font-bold text-karina-charcoal">$22</span>
-              <button onclick="addToOrder('Carpaccio de Remolacha Orgánica', 22, 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=200&q=80')" class="w-9 h-9 rounded-full bg-karina-cream hover:bg-karina-mustard text-karina-charcoal flex items-center justify-center transition-all active:scale-90" title="Añadir a la orden">
-                <i class="fa-solid fa-plus text-xs"></i>
-              </button>
-            </div>
-          </div>
+        <!-- SECCIÓN 4: CLUB KARIÑA Y DAY PASS -->
+        <section id="club-karina" class="space-y-4 scroll-mt-28 border-t border-black/5 pt-8">
+          <h2 class="text-xl sm:text-2xl font-light text-karina-charcoal">
+            4. Club Kariña y Experiencia Day Pass
+          </h2>
+          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+            El acceso a las instalaciones de piscinas, caneyes y áreas recreativas mediante la modalidad de <strong>Day Pass</strong> está regulado por el aforo máximo de cada sede (Maturín, Punta de Mata, El Tigre) para preservar el confort y la exclusividad.
+          </p>
+          <ul class="space-y-2 text-xs text-karina-charcoal/75 font-light list-disc pl-5 leading-relaxed">
+            <li>El pase diario tiene validez exclusiva para el día y la sede seleccionada en el horario de 10:00 AM a 6:00 PM.</li>
+            <li>No se permite el ingreso de alimentos ni bebidas externas al área del resort y restaurante.</li>
+            <li>El uso de vestidores, tumbonas y toallas está sujeto a las normativas de higiene y convivencia del hotel.</li>
+          </ul>
+        </section>
 
-          <!-- Platillo 3 -->
-          <div class="dish-card dish-card-hover bg-white/70 p-5 rounded-3xl border border-black/5 flex flex-col sm:flex-row items-center justify-between gap-5">
-            <div class="flex items-center gap-4 w-full sm:w-auto">
-              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=200&q=80" alt="Lomo de Rótalo" class="w-20 h-20 rounded-2xl object-cover shrink-0">
-              <div class="space-y-1 text-left">
-                <div class="flex items-center gap-2">
-                  <h3 class="text-base font-bold text-karina-charcoal">Lomo de Rótalo en Mantequilla de Ají</h3>
-                  <span class="bg-karina-cream text-karina-charcoal text-[9px] font-mono px-2 py-0.5 rounded-full border border-black/5">Especialidad</span>
-                </div>
-                <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
-                  Pesca del día a la plancha, bañada en emulsión tibia de ají dulce, sobre risotto cremoso de coco y topocho.
-                </p>
-              </div>
-            </div>
+        <!-- SECCIÓN 5: RESPONSABILIDAD -->
+        <section id="responsabilidad" class="space-y-4 scroll-mt-28 border-t border-black/5 pt-8">
+          <h2 class="text-xl sm:text-2xl font-light text-karina-charcoal">
+            5. Responsabilidad y Normas de Convivencia
+          </h2>
+          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+            Hoteles Kariña se compromete a brindar un entorno seguro y de máxima tranquilidad. El huésped es responsable de mantener una conducta respetuosa hacia las instalaciones, el personal y los demás visitantes. Se prohíbe fumar en habitaciones cerradas y áreas no designadas.
+          </p>
+        </section>
 
-            <div class="flex items-center justify-between w-full sm:w-auto sm:justify-end gap-4 border-t sm:border-t-0 pt-3 sm:pt-0 border-black/5 shrink-0">
-              <span class="text-lg font-bold text-karina-charcoal">$32</span>
-              <button onclick="addToOrder('Lomo de Rótalo en Mantequilla de Ají', 32, 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=200&q=80')" class="w-9 h-9 rounded-full bg-karina-cream hover:bg-karina-mustard text-karina-charcoal flex items-center justify-center transition-all active:scale-90" title="Añadir a la orden">
-                <i class="fa-solid fa-plus text-xs"></i>
-              </button>
-            </div>
-          </div>
+      </article>
 
-        </div>
-
-      </div>
-
-    </section>
+    </div>
 
   </main>
 
@@ -408,7 +396,7 @@
         <ul class="space-y-2 text-xs text-white/75 font-normal">
           <li><a href="vive-karina.html" class="hover:text-white transition-colors">Club y piscina</a></li>
           <li><a href="business.html" class="hover:text-white transition-colors">Centro de negocios</a></li>
-          <li><a href="restaurante.html" class="text-karina-mustard font-bold transition-colors">Restaurante 283</a></li>
+          <li><a href="restaurante.html" class="hover:text-white transition-colors">Restaurante 283</a></li>
           <li><a href="fundacion.html" class="hover:text-white transition-colors">Fundación Kariña</a></li>
           <li><a href="faqs.html" class="hover:text-white transition-colors">FAQ</a></li>
         </ul>
@@ -485,7 +473,7 @@
     <div class="max-w-[1440px] mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/50 gap-4">
       <div class="flex flex-wrap items-center gap-6">
         <p>© 2026 Grupo Kariña</p>
-        <a href="terminos.html" class="hover:text-white transition-colors">Términos</a>
+        <a href="terminos.html" class="text-white font-semibold transition-colors">Términos</a>
         <a href="privacidad.html" class="hover:text-white transition-colors">Privacidad</a>
         <a href="faqs.html" class="hover:text-white transition-colors">Cancelaciones</a>
         <a href="faqs.html" class="hover:text-white transition-colors">Libro de Reclamaciones</a>
@@ -497,43 +485,6 @@
       </button>
     </div>
   </footer>
-
-  <!-- ========================================== -->
-  <!-- 5. DRAWER LATERAL FLOTANTE DE PEDIDO/RESERVA-->
-  <!-- ========================================== -->
-  <div id="cart-backdrop" class="fixed inset-0 z-[200] bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCartDrawer(false)"></div>
-
-  <aside id="cart-drawer" class="fixed top-0 right-0 z-[210] w-full max-w-md h-full bg-karina-cream shadow-2xl translate-x-full flex flex-col justify-between p-6 sm:p-8 text-left">
-    
-    <div class="space-y-6 overflow-y-auto">
-      <div class="flex items-center justify-between border-b border-black/10 pb-4">
-        <div>
-          <span id="drawer-service-tag" class="text-[10px] font-mono uppercase tracking-widest text-karina-charcoal/60 block">RESTAURANTE 283</span>
-          <h3 id="drawer-title" class="text-2xl font-light text-karina-charcoal">Resumen de tu Selección</h3>
-        </div>
-        <button onclick="toggleCartDrawer(false)" class="text-karina-charcoal/60 hover:text-karina-charcoal text-lg p-2 transition-colors" aria-label="Cerrar selección">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-
-      <div id="cart-items-list" class="space-y-4">
-        <p class="text-xs text-karina-charcoal/50 font-light text-center py-10">Tu selección está vacía. Añade tus opciones preferidas.</p>
-      </div>
-    </div>
-
-    <div class="pt-6 border-t border-black/10 space-y-4">
-      <div class="flex items-center justify-between text-sm font-bold text-karina-charcoal">
-        <span>Total Estimado:</span>
-        <span id="cart-total-price" class="text-xl">$0</span>
-      </div>
-
-      <button onclick="submitOrderToAI()" class="w-full py-3.5 px-6 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95">
-        <i class="fa-solid fa-wand-magic-sparkles text-karina-mustard"></i>
-        <span>Enviar Selección a <strong>Arimiña-IA</strong></span>
-      </button>
-    </div>
-
-  </aside>
 
   <!-- JavaScript Modular Global -->
   <script src="assets/js/main.js"></script>
