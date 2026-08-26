@@ -519,6 +519,40 @@ body {
   opacity: 1 !important;
 }
 
+/* ===================================================
+   14. ESTILOS EXCLUSIVOS: DROPDOWNS CREATIVOS DEL NAVBAR
+   =================================================== */
+
+/* Animación de Entrada Suave del Panel Desplegable */
+.nav-dropdown-panel {
+  box-shadow: 0 24px 54px -12px rgba(52, 52, 52, 0.18),
+              0 6px 18px -4px rgba(240, 168, 0, 0.12),
+              0 0 0 1px rgba(240, 168, 0, 0.22);
+  will-change: transform, opacity;
+}
+
+/* Micro-animación en las tarjetas internas del Dropdown */
+.dropdown-item-card {
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dropdown-item-card:hover {
+  transform: translateY(-2px);
+  background-color: #FFFFFF !important;
+}
+
+/* Puente invisible para evitar que el menú se cierre al mover el mouse */
+.dropdown-hover-bridge {
+  pointer-events: auto;
+}
+
+/* Soporte para que los dropdowns se adapten perfectamente al navbar comprimido en scroll */
+#main-navbar.navbar-scrolled .nav-dropdown-panel {
+  top: calc(100% + 12px) !important;
+  border-radius: 28px !important;
+}
+
+
 
 
 

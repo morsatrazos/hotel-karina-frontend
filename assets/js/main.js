@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const immersiveMenu = document.getElementById('immersive-menu');
   const openMenuBtn = document.getElementById('open-menu-btn');
+  const menuToggleBtn = document.getElementById('menu-toggle-btn');
   const closeMenuBtn = document.getElementById('close-menu-btn');
 
   function openMenu() {
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (openMenuBtn) openMenuBtn.addEventListener('click', openMenu);
+  if (menuToggleBtn) menuToggleBtn.addEventListener('click', openMenu);
   if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
 
   // Acordeón interno de Sedes dentro del menú
@@ -1095,6 +1097,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     legalSections.forEach(section => tocObserver.observe(section));
   }
+
+  // ===================================================
+  // 14. CONTROLADORES: NAVEGACIÓN Y MENÚS DESPLEGABLES
+  // ===================================================
+  const dropdownWrappers = document.querySelectorAll('.nav-dropdown-wrapper');
+
+  dropdownWrappers.forEach(wrapper => {
+    const trigger = wrapper.querySelector('.nav-link-item');
+    const panel = wrapper.querySelector('.nav-dropdown-panel');
+
+    if (!trigger || !panel) return;
+
+    // Abrir/Cerrar con Enter o Espacio para accesibilidad
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const isOpen = panel.classList.contains('is-keyboard-open');
+        
+        dropdownWrappers.forEach(w => {
+          const p = w.querySelector('.nav-dropdown-panel');
+          if (p) p.classList.remove('is-keyboard-open', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+        });
+
+        if (!isOpen) {
+          panel.classList.add('is-keyboard-open', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+        }
+      } else if (e.key === 'Escape') {
+        panel.classList.remove('is-keyboard-open', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+        trigger.focus();
+      }
+    });
+  });
+
+  // Cerrar al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown-wrapper')) {
+      document.querySelectorAll('.nav-dropdown-panel').forEach(panel => {
+        panel.classList.remove('is-keyboard-open', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+      });
+    }
+  });
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 });
