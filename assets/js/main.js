@@ -1141,3 +1141,128 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 });
+
+// ===================================================
+// 15. CONTROLADORES: AUTENTICACIÓN & DASHBOARD DEL HUÉSPED
+// ===================================================
+
+let currentAuthMode = 'register';
+let currentLightLevel = 4;
+
+// 1. Alternar modo entre Iniciar Sesión y Registro
+function switchAuthMode(mode) {
+  currentAuthMode = mode;
+  const tabLogin = document.getElementById('tab-login');
+  const tabRegister = document.getElementById('tab-register');
+  const fieldName = document.getElementById('field-fullname');
+  const fieldPhone = document.getElementById('field-whatsapp');
+  const title = document.getElementById('auth-title');
+  const subtitle = document.getElementById('auth-subtitle');
+  const submitBtn = document.getElementById('auth-submit-btn');
+
+  if (!tabLogin || !tabRegister) return;
+
+  if (mode === 'login') {
+    tabLogin.className = 'auth-segment-btn is-active flex-1 py-2 rounded-full text-xs font-bold bg-white text-karina-charcoal shadow-sm transition-all';
+    tabRegister.className = 'auth-segment-btn flex-1 py-2 rounded-full text-xs font-semibold text-karina-charcoal/60 hover:text-karina-charcoal transition-all';
+
+    if (fieldName) fieldName.style.display = 'none';
+    if (fieldPhone) fieldPhone.style.display = 'none';
+    if (title) title.textContent = 'Iniciar Sesión';
+    if (subtitle) subtitle.textContent = 'Ingresa tus credenciales para acceder a tu suite y reservas.';
+    if (submitBtn) submitBtn.textContent = 'ENTRAR A MI CUENTA';
+  } else {
+    tabRegister.className = 'auth-segment-btn is-active flex-1 py-2 rounded-full text-xs font-bold bg-white text-karina-charcoal shadow-sm transition-all';
+    tabLogin.className = 'auth-segment-btn flex-1 py-2 rounded-full text-xs font-semibold text-karina-charcoal/60 hover:text-karina-charcoal transition-all';
+
+    if (fieldName) fieldName.style.display = 'block';
+    if (fieldPhone) fieldPhone.style.display = 'block';
+    if (title) title.textContent = 'Bienvenido';
+    if (subtitle) subtitle.textContent = 'Accede a tu cuenta o únete a Kariña Club.';
+    if (submitBtn) submitBtn.textContent = 'REGISTRARME';
+  }
+}
+
+// 2. Enviar formulario con bypass directo a Dashboard (Modo Desarrollo)
+function handleAuthSubmit(event) {
+  event.preventDefault();
+  const nameInput = document.getElementById('input-name');
+  const userName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'Alejandro';
+
+  localStorage.setItem('karina_user_name', userName);
+  window.location.href = 'dashboard.html';
+}
+
+function bypassToDashboard(socialName) {
+  localStorage.setItem('karina_user_name', socialName || 'Alejandro');
+  window.location.href = 'dashboard.html';
+}
+
+// 3. Inicialización del Dashboard
+document.addEventListener('DOMContentLoaded', () => {
+  const userNameElem = document.getElementById('dash-user-name');
+  if (userNameElem) {
+    const savedName = localStorage.getItem('karina_user_name');
+    if (savedName) userNameElem.textContent = savedName;
+  }
+});
+
+// 4. Control domótico de Suite
+function toggleSuiteFeature(featureName, isChecked) {
+  const statusElem = document.getElementById('dash-ai-status');
+  if (statusElem) {
+    statusElem.textContent = `${featureName} ha sido ${isChecked ? 'activado' : 'desactivado'} con éxito para tu suite.`;
+  }
+}
+
+function adjustLightLevel(delta) {
+  currentLightLevel = Math.max(1, Math.min(6, currentLightLevel + delta));
+  const levelElem = document.getElementById('light-level');
+  if (levelElem) levelElem.textContent = currentLightLevel;
+
+  const statusElem = document.getElementById('dash-ai-status');
+  if (statusElem) {
+    statusElem.textContent = `Nivel de iluminación ajustado a escena ${currentLightLevel}/6.`;
+  }
+}
+
+// 5. Interacción con Arimiña-IA en el Dashboard
+function handleDashboardAISubmit(event) {
+  event.preventDefault();
+  const input = document.getElementById('dash-ai-input');
+  const statusElem = document.getElementById('dash-ai-status');
+  if (!input || !input.value.trim()) return;
+
+  const query = input.value.trim();
+  input.value = '';
+
+  if (statusElem) {
+    statusElem.textContent = `Arimiña-IA procesando: "${query}"... Solicitud enviada a la conserjería de tu sede.`;
+  }
+}
+
+function requestItineraryChange() {
+  const statusElem = document.getElementById('dash-ai-status');
+  if (statusElem) {
+    statusElem.textContent = 'Arimiña-IA: Te he abierto el canal de WhatsApp para reprogramar tu masaje o cena de hoy.';
+  }
+  window.open('https://wa.me/5804249169601?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reprogramar%20mi%20itinerario%20de%20hoy%20en%20la%20suite%20403', '_blank');
+}
+
+function triggerQuickAction(actionName) {
+  const statusElem = document.getElementById('dash-ai-status');
+  if (statusElem) {
+    statusElem.textContent = `Solicitud de "${actionName}" enviada a recepción. Un conserje atenderá tu suite a la brevedad.`;
+  }
+}
+
+// Exportación a objeto window para llamadas inline
+window.switchAuthMode = switchAuthMode;
+window.handleAuthSubmit = handleAuthSubmit;
+window.bypassToDashboard = bypassToDashboard;
+window.toggleSuiteFeature = toggleSuiteFeature;
+window.adjustLightLevel = adjustLightLevel;
+window.handleDashboardAISubmit = handleDashboardAISubmit;
+window.requestItineraryChange = requestItineraryChange;
+window.triggerQuickAction = triggerQuickAction;
+
