@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundación Kariña — Raíces Profundas, Futuro Compartido</title>
+
+  <!-- Google Fonts: Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            karina: {
+              cream: '#FFF6EA',
+              charcoal: '#343434',
+              'charcoal-dark': '#242424',
+              mustard: '#F0A800',
+              'mustard-light': '#FFD573',
+              blue: '#2680BD',
+              'blue-light': '#92CEF7',
+              terracotta: '#C7473B',
+              coral: '#EB8C84'
+            }
+          },
+          fontFamily: {
+            manrope: ['Manrope', 'sans-serif'],
+            sans: ['Manrope', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Hoja de Estilos Oficial y Modular -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-karina-cream text-karina-charcoal font-manrope antialiased min-h-screen selection:bg-karina-mustard selection:text-karina-charcoal">
+
+  <!-- ========================================== -->
+  <!-- 1. NAVBAR OFICIAL CON ISLA FLOTANTE       -->
+  <!-- ========================================== -->
+  <header id="main-navbar" class="fixed top-0 inset-x-0 mx-auto w-full z-50 navbar-default">
+    <div class="nav-inner max-w-[1440px] mx-auto px-6 sm:px-12 h-20 flex items-center justify-between">
+      
+      <!-- LADO IZQUIERDO: Menú + Logo -->
+      <div class="flex items-center gap-6">
+        <button id="open-menu-btn" class="flex items-center gap-3 group focus:outline-none" aria-label="Abrir menú">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Ícono Menú Kariña" class="h-6 w-auto object-contain group-hover:scale-105 transition-transform">
+          <span class="text-sm font-semibold text-[#343434] group-hover:text-[#F0A800] transition-colors">Menú</span>
+        </button>
+
+        <div class="h-8 w-[1px] bg-[#343434]/20 hidden sm:block"></div>
+
+        <a href="index.html" class="flex items-center">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1786371092035/Kari%C3%B1a-PNG-.png" alt="Grupo Kariña Venezuela" class="h-8 sm:h-9 w-auto object-contain">
+        </a>
+      </div>
+
+      <!-- CENTRO: Enlaces -->
+      <nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium text-[#343434]">
+        <a href="index.html#sedes" class="hover:text-[#F0A800] transition-colors">Sedes</a>
+        <a href="suites.html" class="hover:text-[#F0A800] transition-colors">Catálogo de suites</a>
+        <a href="vive-karina.html" class="hover:text-[#F0A800] transition-colors">¡Vive Kariña!</a>
+        <a href="business.html" class="hover:text-[#F0A800] transition-colors">Corporativo</a>
+        <a href="fundacion.html" class="text-karina-mustard font-bold transition-colors">Fundación</a>
+      </nav>
+
+      <!-- LADO DERECHO: Idioma + Botón Colaborar Shimmer -->
+      <div class="flex items-center gap-5">
+        <button class="text-xs font-bold text-[#343434] hover:text-[#2680BD] transition-colors">ES/EN</button>
+        <button onclick="openModal('modal-colaborar')" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+          <span>Colaborar</span>
+          <i class="fa-solid fa-heart text-karina-terracotta text-[10px]"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 2. MENÚ INMERSIVO OVERLAY                  -->
+  <!-- ========================================== -->
+  <div id="immersive-menu" class="fixed inset-0 z-[100] bg-[#2E2E2E] text-white opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+    <div class="flex items-center justify-between max-w-5xl mx-auto w-full border-b border-white/10 pb-6">
+      <a href="index.html">
+        <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Hotel Kariña" class="h-8 sm:h-10 w-auto object-contain">
+      </a>
+      <button id="close-menu-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full py-8 space-y-4 text-left">
+      <div class="border-b border-white/10 pb-4">
+        <button id="toggle-sedes-sub" class="w-full flex items-center justify-between text-left group">
+          <div class="flex items-baseline gap-4">
+            <span class="text-xs font-mono text-white/40">01</span>
+            <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Sedes</span>
+          </div>
+          <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
+        </button>
+        <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
+          <a href="index.html#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Maturín (Hotel & Club)</a>
+          <a href="index.html#sedes" class="block hover:text-karina-mustard transition-colors" onclick="document.getElementById('close-menu-btn').click()">Punta de Mata (Executive)</a>
+          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Business & Events)</a>
+        </div>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="suites.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">02</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Suites</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="business.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">03</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Business</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="suites.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">04</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería de Suites</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="vive-karina.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">05</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="fundacion.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">06</span>
+          <span class="text-2xl sm:text-3xl font-light text-karina-mustard transition-colors">Fundación</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="faqs.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">07</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Preguntas Frecuentes</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="contacto.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">08</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Contacto y Ubicaciones</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
+      <button class="w-full py-3 px-6 rounded-full border border-white/20 hover:border-karina-mustard text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
+        <i class="fa-regular fa-user"></i>
+        <span>Mi Cuenta / Iniciar Sesión</span>
+      </button>
+      <button onclick="alert('Iniciando chat con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+        <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
+        <span>Hablar con Arimiña-IA</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 3. MAIN CONTENT: FUNDACIÓN KARIÑA          -->
+  <!-- ========================================== -->
+  <main class="pt-28 pb-20 space-y-24">
+
+    <!-- ========================================== -->
+    <!-- 1. HERO SECTION                            -->
+    <!-- ========================================== -->
+    <section id="hero" class="max-w-7xl mx-auto px-6 sm:px-12 pt-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Columna Izquierda: Texto e Impacto -->
+        <div class="lg:col-span-6 space-y-6 text-left">
+          
+          <!-- Titular Principal con Tipografía Light Editorial y Trazo de Pincel -->
+          <div class="space-y-3">
+            <h1 class="text-4xl sm:text-6xl font-light text-karina-charcoal tracking-tight leading-[1.08]">
+              Raíces<br>
+              Profundas,<br>
+              Futuro<br>
+              Compartido.
+            </h1>
+
+            <!-- Trazo Curvo Sutil Orgánico -->
+            <div class="pt-1">
+              <svg width="220" height="12" viewBox="0 0 220 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-karina-mustard-light">
+                <path d="M4 8C60 2.5 160 2.5 216 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Párrafo Descriptivo -->
+          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed max-w-xl">
+            La Fundación Kariña se dedica a la preservación del patrimonio cultural indígena y al desarrollo sostenible de las comunidades locales en Venezuela, tejiendo historias de resiliencia y esperanza.
+          </p>
+
+          <!-- Botones de Acción -->
+          <div class="pt-2 flex flex-wrap items-center gap-4">
+            <a href="#impacto" class="px-7 py-3.5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold shadow-md transition-all active:scale-95 flex items-center gap-2.5">
+              <span>Conoce el Impacto</span>
+              <i class="fa-solid fa-arrow-down text-xs text-karina-mustard"></i>
+            </a>
+
+            <button onclick="openModal('modal-video')" class="px-6 py-3.5 rounded-full bg-white hover:bg-karina-cream text-karina-charcoal text-xs font-semibold border border-black/15 shadow-sm transition-all active:scale-95 flex items-center gap-2">
+              <i class="fa-solid fa-circle-play text-karina-blue"></i>
+              <span>Ver Documental</span>
+            </button>
+          </div>
+
+          <!-- Respaldo Hoteles Kariña -->
+          <div class="pt-4 flex items-center gap-3 text-xs text-karina-charcoal/60 border-t border-black/5 font-light">
+            <i class="fa-solid fa-shield-halved text-karina-mustard text-sm shrink-0"></i>
+            <span>Iniciativa respaldada por <strong>Hoteles Kariña</strong> dentro de su programa de responsabilidad cultural y sostenible.</span>
+          </div>
+
+        </div>
+
+        <!-- Columna Derecha: Foto Asimétrica con Marco Orgánico + Tarjeta Solapada -->
+        <div class="lg:col-span-6 relative">
+          
+          <!-- Contenedor de Foto con Forma Pebble Asimétrica Reversa -->
+          <div class="relative w-full h-[420px] sm:h-[500px] rounded-pebble-reverse overflow-hidden shadow-2xl bg-black/10 border-4 border-white group">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Comunidad Indígena Kariña" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+            <!-- Disparador de Video en Centro -->
+            <button onclick="openModal('modal-video')" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-white cursor-pointer group-hover:bg-black/20 transition-all">
+              <div class="w-16 h-16 rounded-full bg-white/90 text-karina-blue flex items-center justify-center shadow-2xl mb-3 transform group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-lg ml-1"></i>
+              </div>
+              <span class="text-[10px] font-mono font-bold uppercase tracking-widest bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
+                Ver Testimonios & Documental
+              </span>
+            </button>
+          </div>
+
+          <!-- Tarjeta Solapada Glassmorphism -->
+          <div class="absolute -bottom-6 sm:-bottom-8 -left-2 sm:-left-6 max-w-xs sm:max-w-sm bg-white/85 backdrop-blur-xl p-5 sm:p-6 rounded-[28px] border border-white/80 shadow-2xl space-y-2 text-left z-20">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-karina-mustard-light/70 flex items-center justify-center text-karina-charcoal text-base shrink-0">
+                <i class="fa-solid fa-people-hold text-karina-charcoal"></i>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-karina-charcoal">Comunidades</h3>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-blue font-semibold">Monagas, Anzoátegui & Oriente</span>
+              </div>
+            </div>
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed pt-1">
+              Apoyando a más de 12 asentamientos en la región oriental venezolana con programas educativos y culturales.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 2. EL SENTIDO DE URGENCIA & DATOS CLAVE    -->
+    <!-- ========================================== -->
+    <section id="impacto" class="max-w-7xl mx-auto px-6 sm:px-12 py-10">
+      <div class="bg-white/40 rounded-[44px] p-8 sm:p-14 border border-black/5 shadow-sm space-y-10">
+        
+        <div class="max-w-3xl space-y-3 text-left">
+          <div class="flex items-center gap-2 text-karina-terracotta">
+            <i class="fa-solid fa-hourglass-half text-xs"></i>
+            <span class="text-xs font-mono font-bold uppercase tracking-widest">EL TIEMPO ES AHORA</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+            Una lengua que necesita de todos nosotros para seguir viva
+          </h2>
+          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+            Estudios antropológicos demuestran una preocupante disminución de hablantes nativos en las últimas décadas.
+          </p>
+        </div>
+
+        <!-- Cards con Geometría Asimétrica Kariña -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left items-stretch">
+          
+          <!-- Card 1: 1978 -->
+          <div class="rounded-pebble bg-white/80 p-7 sm:p-8 border border-black/5 shadow-sm space-y-5 flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono uppercase tracking-wider font-semibold text-karina-charcoal/50 block">AÑO 1978 — ANTR. JORGE MOSONYI</span>
+              <p class="text-4xl font-light text-karina-charcoal tracking-tight">~11.000</p>
+              <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+                Personas hablaban fluidamente la lengua Kariña según la 1ra edición del Diccionario Básico del Idioma Kariña.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-black/5 flex items-center gap-2 text-[11px] font-mono text-karina-charcoal/70">
+              <i class="fa-solid fa-book-bookmark text-karina-blue"></i>
+              <span>Registro Histórico</span>
+            </div>
+          </div>
+
+          <!-- Card 2: 2008 -->
+          <div class="rounded-pebble-reverse bg-[#EB8C84]/15 p-7 sm:p-8 border border-karina-terracotta/25 shadow-sm space-y-5 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden">
+            <div class="space-y-3 relative z-10">
+              <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-karina-terracotta block">AÑO 2008 — ANTR. JOSÉ ÁLVAREZ</span>
+              <p class="text-4xl font-light text-karina-terracotta tracking-tight">4.451</p>
+              <p class="text-xs text-karina-charcoal/80 font-light leading-relaxed">
+                Censo que reveló una reducción de más del 55% de hablantes en tres décadas debido a la asimilación lingüística.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-karina-terracotta/20 flex items-center gap-2 text-[11px] font-mono text-karina-terracotta font-bold relative z-10">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span>Estado de Alerta Lingüística</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Presente -->
+          <div class="rounded-pebble bg-karina-blue text-white p-7 sm:p-8 border border-karina-blue/30 shadow-lg space-y-5 flex flex-col justify-between hover:shadow-xl transition-shadow">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-white/70 block">NUESTRA MISIÓN ACTUAL</span>
+              <p class="text-2xl sm:text-3xl font-light text-white tracking-tight">Educación Bilingüe</p>
+              <p class="text-xs text-white/90 font-light leading-relaxed">
+                Formar y apoyar a <strong>docentes Kariña</strong> en escuelas locales para enseñar y extender la lengua materna a las nuevas generaciones.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-white/20 flex items-center gap-2 text-[11px] font-mono text-karina-mustard-light font-bold">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Docentes + Aulas Comunitarias</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. EJES DE ACCIÓN CULTURAL                 -->
+    <!-- ========================================== -->
+    <section id="ejes" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-12 text-center">
+      
+      <div class="space-y-2 max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+          ¿Cómo Protegemos Nuestra Herencia?
+        </h2>
+        <p class="text-xs sm:text-sm text-karina-charcoal/60 font-mono uppercase tracking-widest">
+          La lengua es la llave, pero la identidad la componen sus saberes
+        </p>
+      </div>
+
+      <!-- 4 Cards Asimétricas con Formas Pebble y Animación de Levitación Flotante -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 text-left items-stretch pt-2">
+        
+        <!-- Eje 1: Escuelas Bilingües (Azul Suave) -->
+        <div class="animate-float-1 bg-[#92CEF7]/35 p-7 sm:p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-full bg-white/85 flex items-center justify-center text-karina-blue text-lg shadow-sm">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-karina-charcoal tracking-tight">Escuelas Bilingües</h3>
+              <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+                Incentivo y formación a maestros indígenas certificados para impartir clases en lengua Kariña y castellano dentro de sus comunidades.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eje 2: Artesanía Ancestral (Amarillo Mostaza Suave) -->
+        <div class="animate-float-2 bg-karina-mustard-light/50 p-7 sm:p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-full bg-white/85 flex items-center justify-center text-karina-mustard text-lg shadow-sm">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-karina-charcoal tracking-tight">Artesanía Ancestral</h3>
+              <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+                Respaldo y difusión a las maestras tejedoras, alfareras y artesanos que transforman la fibra vegetal del moriche en arte vivo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eje 3: Gastronomía & Saberes (Coral/Terracota Suave) -->
+        <div class="animate-float-3 bg-[#EB8C84]/35 p-7 sm:p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-full bg-white/85 flex items-center justify-center text-karina-terracotta text-lg shadow-sm">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-karina-charcoal tracking-tight">Gastronomía & Saberes</h3>
+              <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+                Documentación y preservación de recetas ancestrales como el casabe, platos autóctonos y el respeto sagrado hacia la tierra.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eje 4: Censo & Diagnóstico (Arena/Carbón Suave) -->
+        <div class="animate-float-4 bg-white/70 p-7 sm:p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-full bg-karina-cream flex items-center justify-center text-karina-charcoal text-lg shadow-sm border border-black/5">
+              <i class="fa-solid fa-clipboard-list"></i>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-karina-charcoal tracking-tight">Censo y Diagnóstico</h3>
+              <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+                Levantamiento continuo de necesidades comunitarias en salud básica, dotación de material escolar e infraestructura educativa.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 4. GALERÍA DE MANIFESTACIONES             -->
+    <!-- ========================================== -->
+    <section id="galeria" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-8">
+      
+      <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-black/5 pb-4 text-left">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-karina-blue block">NUESTRA GENTE & SABERES</span>
+          <h2 class="text-3xl font-light text-karina-charcoal tracking-tight">Galería de Manifestaciones</h2>
+        </div>
+        <span class="text-xs text-karina-charcoal/50 font-light">Haz clic en cada imagen para ampliar detalles</span>
+      </div>
+
+      <!-- Grilla Bento Asimétrica -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 text-left">
+        
+        <!-- Foto 1 -->
+        <div onclick="openLightbox('https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80', 'Rostros de la Tradición', 'Mujeres y ancianas sabias que conservan los cantos e historias orales en las comunidades de Monagas.')" 
+             class="md:col-span-6 h-[320px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Tradición Kariña" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-6 text-white space-y-0.5">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-karina-mustard-light font-bold">Memoria Viva</span>
+            <h3 class="text-lg font-light text-white">Rostros de la Tradición</h3>
+          </div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div onclick="openLightbox('https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&w=1200&q=80', 'Cestería y Fibras Naturales', 'El arte milenario del tejido de moriche y fibras vegetales característico de las manos Kariña.')" 
+             class="md:col-span-6 h-[320px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&w=800&q=80" alt="Artesanía Kariña" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-6 text-white space-y-0.5">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-karina-mustard-light font-bold">Artesanía</span>
+            <h3 class="text-lg font-light text-white">Cestería y Fibras Naturales</h3>
+          </div>
+        </div>
+
+        <!-- Foto 3 -->
+        <div onclick="openLightbox('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80', 'El Relevo Generacional', 'Aulas bilingües donde los niños aprenden a escribir y cantar en su lengua materna.')" 
+             class="md:col-span-7 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Educación Bilingüe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-6 text-white space-y-0.5">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-karina-mustard-light font-bold">Educación</span>
+            <h3 class="text-lg font-light text-white">El Relevo Generacional</h3>
+          </div>
+        </div>
+
+        <!-- Foto 4 -->
+        <div onclick="openLightbox('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80', 'Tierra y Naturaleza', 'El paisaje oriental donde converge la naturaleza venezolana con el desarrollo de la región.')" 
+             class="md:col-span-5 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Territorio y Paisaje" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-6 text-white space-y-0.5">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-karina-mustard-light font-bold">Territorio</span>
+            <h3 class="text-lg font-light text-white">Tierra y Naturaleza</h3>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 5. BANNER DE ACCIÓN Y COLABORACIÓN         -->
+    <!-- ========================================== -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-12">
+      <div class="relative rounded-[40px] overflow-hidden bg-karina-charcoal text-white p-8 sm:p-14 text-center space-y-6 shadow-2xl">
+        
+        <div class="w-12 h-12 mx-auto rounded-full bg-karina-mustard text-karina-charcoal flex items-center justify-center text-lg font-bold shadow-md">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+        </div>
+
+        <div class="space-y-2 max-w-2xl mx-auto">
+          <h2 class="text-3xl sm:text-4xl font-light text-white tracking-tight">
+            Ayudemos a Proteger la Cultura Kariña
+          </h2>
+          <p class="text-xs sm:text-sm text-white/80 font-light leading-relaxed">
+            Colabora con la Fundación Kariña y contribuye directamente a preservar la lengua, artesanía y los maestros bilingües en nuestras escuelas comunitarias.
+          </p>
+        </div>
+
+        <div class="pt-2 flex flex-wrap justify-center gap-4">
+          <button onclick="openModal('modal-colaborar')" class="px-8 py-3.5 rounded-full bg-karina-blue hover:bg-sky-600 text-white font-bold text-xs shadow-lg transition-all active:scale-95 flex items-center gap-2">
+            <i class="fa-solid fa-heart text-karina-mustard-light text-xs"></i>
+            <span>Quiero Colaborar</span>
+          </button>
+
+          <a href="https://instagram.com/fundacionkarina" target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition-all flex items-center gap-2">
+            <i class="fa-brands fa-instagram text-pink-400 text-xs"></i>
+            <span>Seguir en Instagram</span>
+          </a>
+        </div>
+
+        <p class="text-[11px] text-white/50 font-mono pt-2">
+          Fundación sin fines de lucro • RIF e información institucional disponible para convenios corporativos.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 4. MASTER FOOTER (DISEÑO FIDELIZADO)       -->
+  <!-- ========================================== -->
+  <footer id="footer" class="bg-[#262626] text-white pt-20 pb-12 px-6 sm:px-12 border-t border-white/10">
+    <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10">
+      
+      <!-- Columna 1: Brand & Slogan -->
+      <div class="lg:col-span-3 space-y-5">
+        <a href="index.html" class="inline-block">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/KARINA-LOGO-VERTICAL.png" alt="Grupo Kariña Logo Blanco" class="h-28 sm:h-32 md:h-36 w-auto object-contain">
+        </a>
+        <p class="text-xs text-white/70 leading-relaxed max-w-xs font-normal">
+          Una estadía que te abraza. Confort, hospitalidad ejecutiva y cultura viva en el oriente venezolano.
+        </p>
+      </div>
+
+      <!-- Columna 2: NUESTRAS SEDES (Dorado #F0A800) -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#F0A800] block">Nuestras Sedes</span>
+        <ul class="space-y-2 text-xs text-white/75 font-normal">
+          <li><a href="index.html#sedes" class="hover:text-white transition-colors">Hotel Kariña Maturín</a></li>
+          <li><a href="index.html#sedes" class="hover:text-white transition-colors">Hotel Kariña Punta de Mata</a></li>
+          <li><a href="el-tigre.html" class="hover:text-white transition-colors">Hotel Kariña El Tigre</a></li>
+          <li><a href="suites.html" class="hover:text-white transition-colors">Catálogo de Suites & Tarifas</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: EXPERIENCIAS (Azul #2680BD) -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#2680BD] block">Experiencias</span>
+        <ul class="space-y-2 text-xs text-white/75 font-normal">
+          <li><a href="vive-karina.html" class="hover:text-white transition-colors">Club y piscina</a></li>
+          <li><a href="business.html" class="hover:text-white transition-colors">Centro de negocios</a></li>
+          <li><a href="restaurante.html" class="hover:text-white transition-colors">Restaurante 283</a></li>
+          <li><a href="fundacion.html" class="text-karina-mustard font-bold transition-colors">Fundación Kariña</a></li>
+          <li><a href="faqs.html" class="hover:text-white transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: CONTACTO & RECEPCIÓN -->
+      <div class="lg:col-span-2 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-white/90 block">Contacto & Recepción</span>
+        
+        <div class="space-y-2.5 text-xs text-white/75">
+          <div class="flex items-start gap-2.5">
+            <i class="fa-solid fa-location-dot text-[#F0A800] text-sm mt-0.5"></i>
+            <div>
+              <p class="font-bold text-white">Maturín</p>
+              <p class="text-[11px] text-white/60">Urb. Palma Real</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-phone text-[#92CEF7] text-xs"></i>
+            <a href="tel:+5804249169601" class="hover:text-white transition-colors">+58 0424-9169601</a>
+          </div>
+
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-envelope text-[#FFD573] text-xs"></i>
+            <a href="mailto:karina@grupokarina.com" class="hover:text-white transition-colors text-[11px]">karina@grupokarina.com</a>
+          </div>
+        </div>
+
+        <!-- Botón Central WhatsApp -->
+        <div class="pt-2">
+          <a href="https://wa.me/5804249169601" target="_blank" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#2680BD] hover:bg-[#2680BD]/90 text-white font-bold text-xs shadow-md transition-all">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Central WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna 5: SÍGUENOS EN INSTAGRAM (Coral #EB8C84 + Íconos) -->
+      <div class="lg:col-span-3 space-y-3.5">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#EB8C84] block">Síguenos en Instagram</span>
+        
+        <div class="flex flex-col gap-2">
+          <a href="https://instagram.com/hoteleskarina" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#F0A800]"></i>
+            <span>@hoteleskarina</span>
+          </a>
+
+          <a href="https://instagram.com/hotelkarina.maturin" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#92CEF7]"></i>
+            <span>@hotelkarina.maturin</span>
+          </a>
+
+          <a href="https://instagram.com/hotelkarina.ptamata" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#EB8C84]"></i>
+            <span>@hotelkarina.ptamata</span>
+          </a>
+
+          <a href="https://instagram.com/hotelkarina.eltigre" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#FFD573]"></i>
+            <span>@hotelkarina.eltigre</span>
+          </a>
+
+          <a href="https://instagram.com/fundacionkarina" target="_blank" class="footer-insta-pill flex items-center gap-2.5 py-2 px-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80">
+            <i class="fa-brands fa-instagram text-[#F0A800]"></i>
+            <span>@fundacionkarina</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Barra Inferior Legal + Botón Back-to-Top -->
+    <div class="max-w-[1440px] mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/50 gap-4">
+      <div class="flex flex-wrap items-center gap-6">
+        <p>© 2026 Grupo Kariña</p>
+        <a href="faqs.html" class="hover:text-white transition-colors">Términos</a>
+        <a href="faqs.html" class="hover:text-white transition-colors">Privacidad</a>
+        <a href="faqs.html" class="hover:text-white transition-colors">Cancelaciones</a>
+        <a href="faqs.html" class="hover:text-white transition-colors">Libro de Reclamaciones</a>
+      </div>
+
+      <!-- Botón Volver Arriba Circular -->
+      <button onclick="scrollToTop()" class="back-to-top-btn w-10 h-10 rounded-full border border-white/20 text-white flex items-center justify-center focus:outline-none" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up text-xs"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODALES DE LA FUNDACIÓN                   -->
+  <!-- ========================================== -->
+
+  <!-- MODAL: VIDEO DOCUMENTAL -->
+  <div id="modal-video" class="fixed inset-0 z-[200] hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative bg-karina-charcoal rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-white/10 text-white">
+      
+      <div class="flex items-center justify-between p-5 border-b border-white/10">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+          <span class="text-xs font-mono uppercase tracking-wider text-white/80">Documental: La Voz de los Ancestros</span>
+        </div>
+        <button onclick="closeModal('modal-video')" class="p-1 rounded-full hover:bg-white/10 text-white/80 hover:text-white transition" aria-label="Cerrar modal video">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="relative aspect-video bg-black flex items-center justify-center text-center p-6">
+        <div class="space-y-3">
+          <div class="w-16 h-16 rounded-full bg-karina-blue mx-auto flex items-center justify-center animate-pulse">
+            <i class="fa-solid fa-play text-xl text-white ml-1"></i>
+          </div>
+          <p class="text-sm font-semibold">Video Documental en Producción</p>
+          <p class="text-xs text-white/60 max-w-md mx-auto">Aquí se reproducirá el material audiovisual de testimonios de comunidades de Monagas y el trabajo en escuelas bilingües.</p>
+        </div>
+      </div>
+
+      <div class="p-4 bg-black/40 text-xs text-white/70 flex items-center justify-between">
+        <span>Duración estimada: 4:30 min</span>
+        <button onclick="closeModal('modal-video')" class="text-karina-mustard font-bold hover:underline">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: COLABORAR / CONTACTO -->
+  <div id="modal-colaborar" class="fixed inset-0 z-[200] hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative bg-karina-cream rounded-[36px] max-w-lg w-full overflow-hidden shadow-2xl border border-black/10 p-6 sm:p-8 text-karina-charcoal text-left space-y-5">
+      
+      <button onclick="closeModal('modal-colaborar')" class="absolute top-5 right-5 text-karina-charcoal/60 hover:text-karina-charcoal text-lg p-1 transition-colors" aria-label="Cerrar modal colaborar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="space-y-2">
+        <div class="w-10 h-10 rounded-2xl bg-karina-blue/15 text-karina-blue flex items-center justify-center font-bold">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+        </div>
+        <h3 class="text-2xl font-light text-karina-charcoal">Súmate a la Fundación Kariña</h3>
+        <p class="text-xs text-karina-charcoal/70 font-light">Elige cómo deseas participar en el rescate cultural y educativo.</p>
+      </div>
+
+      <div class="space-y-3">
+        <a href="https://instagram.com/fundacionkarina" target="_blank" class="flex items-center justify-between p-4 rounded-2xl bg-white border border-black/5 hover:border-karina-blue transition group">
+          <div class="flex items-center gap-3">
+            <i class="fa-brands fa-instagram text-pink-600 text-lg"></i>
+            <div>
+              <p class="text-xs font-bold text-karina-charcoal">Contacto por Instagram</p>
+              <p class="text-[11px] text-karina-charcoal/60">@fundacionkarina • Mensajes directos</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs text-karina-charcoal/40 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+
+        <a href="mailto:fundacion@grupokvzla.com?subject=Colaboracion%20Fundacion%20Karina" class="flex items-center justify-between p-4 rounded-2xl bg-white border border-black/5 hover:border-karina-blue transition group">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-envelope text-karina-blue text-base"></i>
+            <div>
+              <p class="text-xs font-bold text-karina-charcoal">Alianzas Corporativas e Institucionales</p>
+              <p class="text-[11px] text-karina-charcoal/60">fundacion@grupokvzla.com</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs text-karina-charcoal/40 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+
+        <div class="p-4 rounded-2xl bg-karina-mustard-light/40 border border-karina-mustard/30 text-xs text-karina-charcoal leading-relaxed font-light">
+          ✨ <strong>¿Eres huésped de Hoteles Kariña?</strong> Pregunta en recepción cómo tus estancias frecuentes aportan directamente al material didáctico de las escuelas bilingües.
+        </div>
+      </div>
+
+      <button onclick="closeModal('modal-colaborar')" class="w-full py-3.5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold transition">
+        Entendido, gracias
+      </button>
+
+    </div>
+  </div>
+
+  <!-- MODAL: LIGHTBOX FOTOGRÁFICO -->
+  <div id="modal-lightbox" class="fixed inset-0 z-[210] hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeModal('modal-lightbox')">
+    <div class="relative max-w-4xl w-full text-white" onclick="event.stopPropagation()">
+      <button onclick="closeModal('modal-lightbox')" class="absolute -top-10 right-0 text-white/80 hover:text-white p-2" aria-label="Cerrar visor">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <div class="rounded-3xl overflow-hidden bg-karina-charcoal border border-white/10 shadow-2xl">
+        <img id="lightbox-img" src="" alt="Imagen ampliada" class="w-full max-h-[70vh] object-contain bg-black">
+        <div class="p-5 bg-black/40 text-left">
+          <h4 id="lightbox-title" class="text-base font-light text-white"></h4>
+          <p id="lightbox-desc" class="text-xs text-white/70 font-light mt-1"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modular Global -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

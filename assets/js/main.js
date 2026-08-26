@@ -258,6 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (dpModal && dpModal.classList.contains('is-open')) closeDayPassModal();
       const cartDrawer = document.getElementById('cart-drawer');
       if (cartDrawer && !cartDrawer.classList.contains('translate-x-full')) toggleCartDrawer(false);
+      closeModal('modal-video');
+      closeModal('modal-colaborar');
+      closeModal('modal-lightbox');
     }
     const sedeModal = document.getElementById('sede-modal');
     if (sedeModal && sedeModal.classList.contains('is-open')) {
@@ -1016,6 +1019,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.consultAIAssistant = function() {
     alert('Arimiña-IA: Te sugiero acompañar tus elecciones gastronómicas con nuestra selección de vinos tintos Reserva o solicitar una cita personalizada para nuestros servicios de estilismo.');
+  };
+
+  // ===================================================
+  // 12. CONTROLADORES: FUNDACIÓN KARIÑA (MODALES Y LIGHTBOX)
+  // ===================================================
+
+  window.openModal = function(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeModal = function(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  };
+
+  // Lightbox específico para Fundación Kariña y adaptativo para imágenes de otras páginas
+  const originalOpenLightbox = window.openLightbox;
+  window.openLightbox = function(srcOrEl, title, desc) {
+    if (srcOrEl && typeof srcOrEl === 'object' && srcOrEl.querySelector) {
+      if (typeof originalOpenLightbox === 'function') {
+        originalOpenLightbox(srcOrEl);
+        return;
+      }
+    }
+
+    const img = document.getElementById('lightbox-img');
+    const titleEl = document.getElementById('lightbox-title');
+    const descEl = document.getElementById('lightbox-desc');
+
+    if (img) img.src = (typeof srcOrEl === 'string') ? srcOrEl : '';
+    if (titleEl && title) titleEl.textContent = title;
+    if (descEl && desc) descEl.textContent = desc;
+
+    openModal('modal-lightbox');
   };
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
