@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard del Huésped | Hotel Kariña</title>
+  <title>Check-in Digital Express | Hotel Kariña</title>
   
   <!-- Tipografía Oficial Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -228,15 +228,11 @@
 
       </nav>
 
-      <!-- BLOQUE DERECHO: Acceso Huésped + Salir -->
+      <!-- BLOQUE DERECHO: Acceso Huésped + Dashboard -->
       <div class="flex items-center gap-3 sm:gap-4">
         <a href="dashboard.html" class="flex items-center gap-2 py-1.5 px-3 rounded-full bg-karina-charcoal text-white text-xs font-bold shadow-xs">
           <i class="fa-regular fa-user text-karina-mustard text-xs"></i>
-          <span class="hidden sm:inline">Suite 401</span>
-        </a>
-        <a href="auth.html" onclick="localStorage.removeItem('karina_user_name')" class="text-xs font-bold text-karina-charcoal/60 hover:text-karina-terracotta transition-colors flex items-center gap-1.5 py-1 px-2.5 rounded-full hover:bg-black/5" title="Cerrar sesión">
-          <span>Salir</span>
-          <i class="fa-solid fa-arrow-right-from-bracket text-[11px]"></i>
+          <span>Mi Cuenta</span>
         </a>
       </div>
 
@@ -335,106 +331,187 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- 3. DASHBOARD DEL HUÉSPED                   -->
+  <!-- 3. CONTENIDO: CHECK-IN DIGITAL EXPRESS     -->
   <!-- ========================================== -->
   <main class="min-h-screen bg-[#FAF6F0] text-[#1E1E1E] pt-28 pb-20 px-4 sm:px-6 lg:px-8 flex-1">
-    <div class="max-w-6xl mx-auto space-y-10">
+    <div class="max-w-5xl mx-auto space-y-10">
       
-      <!-- Header del Dashboard -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-[#E8DFC8] text-left">
+      <!-- Encabezado y Stepper -->
+      <div class="space-y-6 text-left">
         <div class="space-y-1">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="text-xs uppercase tracking-widest text-[#2680BD] font-bold">Sede Maturín • Suite 401</span>
-          </div>
-          <h1 class="text-3xl sm:text-4xl font-light tracking-tight text-[#1E1E1E]">
-            Disfruta tu estancia, <span class="font-medium text-[#343434]"><span id="dash-user-name">Alejandro</span></span>
+          <h1 class="text-3xl sm:text-5xl font-light tracking-tight text-[#1E1E1E]">
+            Bienvenido, <span class="font-medium text-[#343434]">Alejandro</span>
           </h1>
+          <p class="text-sm text-[#726B63]">Tu llegada está casi lista. Completa tu ficha de ingreso para Odoo PMS.</p>
         </div>
 
-        <!-- Widget de Clima Exterior de la Ciudad -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E8DFC8] shadow-sm text-xs font-semibold text-[#1E1E1E]">
-          <span>☀️</span>
-          <span>28°C Maturín</span>
+        <!-- Stepper Indicator -->
+        <div class="flex items-center gap-4 text-xs font-semibold text-[#726B63] overflow-x-auto pb-2">
+          <div class="flex items-center gap-2 text-[#1E1E1E] font-bold shrink-0">
+            <span class="w-6 h-6 rounded-full bg-[#1E1E1E] text-white flex items-center justify-center text-[11px]">1</span>
+            <span>Identidad</span>
+          </div>
+          <div class="w-8 h-[1px] bg-[#E8DFC8] shrink-0"></div>
+          <div class="flex items-center gap-2 text-[#1E1E1E] font-bold shrink-0">
+            <span class="w-6 h-6 rounded-full bg-[#1E1E1E] text-white flex items-center justify-center text-[11px]">2</span>
+            <span>Detalles de Llegada</span>
+          </div>
+          <div class="w-8 h-[1px] bg-[#E8DFC8] shrink-0"></div>
+          <div class="flex items-center gap-2 text-[#726B63] shrink-0">
+            <span class="w-6 h-6 rounded-full bg-[#E8DFC8] text-[#726B63] flex items-center justify-center text-[11px]">3</span>
+            <span>Pase Express de Tarjeta</span>
+          </div>
         </div>
       </div>
 
-      <!-- Layout Superior: Arimiña-IA & Itinerario -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-left">
+      <!-- Layout Dividido Formulario / Ficha de Recepción -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
         
-        <!-- Asistente Arimiña-IA -->
-        <div class="lg:col-span-5 bg-white p-6 sm:p-8 rounded-[2rem] border border-[#E8DFC8] shadow-sm flex flex-col justify-between space-y-6">
-          <div class="space-y-3">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-[#1E1E1E] text-white flex items-center justify-center font-serif text-sm">A</div>
+        <!-- Columna Principal: Pasos del Check-in -->
+        <div class="lg:col-span-7 space-y-8">
+          
+          <!-- Bloque 1: Identidad -->
+          <div class="bg-white p-6 sm:p-8 rounded-[2rem] border border-[#E8DFC8] space-y-4 shadow-xs">
+            <div class="flex items-center justify-between">
+              <h3 class="text-base font-bold text-[#1E1E1E]">1. Verificación de Identidad</h3>
+              <span class="text-[11px] font-bold bg-[#FAF6F0] text-[#2680BD] px-3 py-1 rounded-full border border-[#E8DFC8]">Huésped Principal</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <h3 class="text-sm font-bold text-[#1E1E1E]">Arimiña-IA Concierge</h3>
-                <p class="text-[11px] text-[#726B63]">En línea para asistirte</p>
+                <label class="block text-[11px] font-bold uppercase text-[#726B63] mb-1">Tipo de Documento</label>
+                <select id="doc-tipo" class="w-full bg-[#FAF6F0] border border-[#E8DFC8] rounded-xl px-3.5 py-2.5 text-xs text-[#1E1E1E] focus:outline-none focus:border-[#2680BD]">
+                  <option>Cédula de Identidad (V)</option>
+                  <option>Cédula de Identidad (E)</option>
+                  <option>Pasaporte</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-[#726B63] mb-1">Número de Documento</label>
+                <input type="text" id="doc-numero" value="18.942.105" class="w-full bg-[#FAF6F0] border border-[#E8DFC8] rounded-xl px-3.5 py-2.5 text-xs text-[#1E1E1E] focus:outline-none focus:border-[#2680BD]">
               </div>
             </div>
-            <p class="text-xs text-[#726B63] bg-[#FAF6F0] p-4 rounded-xl border border-[#E8DFC8] leading-relaxed">
-              "Hola Alejandro, tu mesa en Restaurante 283 está sugerida para las 20:00. ¿Deseas confirmar o solicitar servicio de peluquería?"
-            </p>
+
+            <div class="p-4 bg-[#FAF6F0] rounded-xl border border-[#E8DFC8] flex items-center justify-between text-xs">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-[#2680BD]/10 text-[#2680BD] flex items-center justify-center font-bold">✓</div>
+                <div>
+                  <p class="font-bold text-[#1E1E1E]">Documento Verificado</p>
+                  <p class="text-[11px] text-[#726B63]">Ficha precargada desde Odoo PMS</p>
+                </div>
+              </div>
+              <span class="text-[11px] text-[#726B63] font-mono">Token: KD-78291</span>
+            </div>
           </div>
 
-          <div class="relative">
-            <input type="text" id="arimina-input" placeholder="Escribe tu solicitud aquí..." class="w-full bg-[#FAF6F0] border border-[#E8DFC8] rounded-full px-4 py-2.5 text-xs text-[#1E1E1E] focus:outline-none focus:border-[#2680BD] pr-10">
-            <button onclick="enviarAriminaDashboard()" class="absolute right-1.5 top-1.5 w-7 h-7 rounded-full bg-[#1E1E1E] text-white text-xs flex items-center justify-center hover:bg-[#343434] transition" aria-label="Enviar a Arimiña-IA">➔</button>
+          <!-- Bloque 2: Detalles de Llegada -->
+          <div class="bg-white p-6 sm:p-8 rounded-[2rem] border border-[#E8DFC8] space-y-5 shadow-xs">
+            <h3 class="text-base font-bold text-[#1E1E1E]">2. Horario Estimado de Arribo</h3>
+            
+            <div class="flex flex-wrap gap-3">
+              <button type="button" onclick="seleccionarHora(this)" class="hora-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#1E1E1E] text-white transition">14:00 - 15:00</button>
+              <button type="button" onclick="seleccionarHora(this)" class="hora-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#FAF6F0] border border-[#E8DFC8] text-[#1E1E1E] hover:bg-white transition">15:00 - 18:00</button>
+              <button type="button" onclick="seleccionarHora(this)" class="hora-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#FAF6F0] border border-[#E8DFC8] text-[#1E1E1E] hover:bg-white transition">Después de 18:00</button>
+            </div>
+
+            <!-- Servicios de Recepción -->
+            <div class="space-y-3 pt-2">
+              <div class="flex items-center justify-between p-3.5 rounded-xl bg-[#FAF6F0] border border-[#E8DFC8]">
+                <div>
+                  <p class="text-xs font-bold text-[#1E1E1E]">Late Check-out Solicitado</p>
+                  <p class="text-[11px] text-[#726B63]">Sujeto a disponibilidad del PMS</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" id="check-late" class="sr-only peer">
+                  <div class="w-9 h-5 bg-[#E8DFC8] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#2680BD]"></div>
+                </label>
+              </div>
+
+              <div class="flex items-center justify-between p-3.5 rounded-xl bg-[#FAF6F0] border border-[#E8DFC8]">
+                <div>
+                  <p class="text-xs font-bold text-[#1E1E1E]">Custodia de Equipaje en Lobby</p>
+                  <p class="text-[11px] text-[#726B63]">Preparación de maletas en recepción</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" id="check-equipaje" checked class="sr-only peer">
+                  <div class="w-9 h-5 bg-[#E8DFC8] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#2680BD]"></div>
+                </label>
+              </div>
+            </div>
           </div>
+
+          <!-- Botón Confirmar -->
+          <button onclick="completarCheckin()" class="w-full py-4 rounded-full bg-[#F0A800] hover:bg-[#d99700] text-[#1E1E1E] font-bold text-sm transition shadow-sm active:scale-95">
+            Confirmar Check-in y Generar Pase Express
+          </button>
+
         </div>
 
-        <!-- Itinerario de Hoy -->
-        <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-[2rem] border border-[#E8DFC8] shadow-sm space-y-6">
-          <div class="flex items-center justify-between">
-            <h3 class="text-base font-bold text-[#1E1E1E]">Itinerario Confirmado</h3>
-            <span class="text-xs text-[#2680BD] font-semibold">Reserva Odoo Activa</span>
-          </div>
-
-          <div class="space-y-4">
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-[#FAF6F0] border border-[#E8DFC8]">
-              <span class="text-xs font-bold font-mono text-[#726B63] pt-0.5">16:00</span>
-              <div class="space-y-0.5">
-                <p class="text-xs font-bold text-[#1E1E1E]">Sesión de Cuidado & Peluquería</p>
-                <p class="text-[11px] text-[#726B63]">Salón Boutique Sede Maturín</p>
+        <!-- Columna Derecha: Tarjeta de Retiro Express de Tarjeta Física -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <div class="bg-white p-6 rounded-[2.5rem] border border-[#E8DFC8] shadow-sm space-y-6">
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#1E1E1E]">
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Lobby Hotel Kariña" class="w-full h-full object-cover opacity-80">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5 text-white">
+                <span class="text-[10px] uppercase font-bold text-[#F0A800]">Retiro en Mostrador</span>
+                <p class="text-sm font-bold">Tarjeta de Proximidad Física (RFID)</p>
               </div>
             </div>
 
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-[#FAF6F0] border border-[#E8DFC8]">
-              <span class="text-xs font-bold font-mono text-[#726B63] pt-0.5">20:00</span>
-              <div class="space-y-0.5">
-                <p class="text-xs font-bold text-[#1E1E1E]">Cena de Degustación</p>
-                <p class="text-[11px] text-[#726B63]">Restaurante 283</p>
+            <div class="space-y-3 text-xs">
+              <div class="flex justify-between py-2 border-b border-[#E8DFC8]">
+                <span class="text-[#726B63]">Sede Asignada:</span>
+                <span class="font-bold text-[#1E1E1E]" id="res-sede">Maturín</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-[#E8DFC8]">
+                <span class="text-[#726B63]">Suite Tipo:</span>
+                <span class="font-bold text-[#1E1E1E]">Suite Ejecutiva 401</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-[#E8DFC8]">
+                <span class="text-[#726B63]">Entrega de Llave:</span>
+                <span class="font-bold text-[#2680BD]">Recepción Express</span>
               </div>
             </div>
+
+            <div class="p-4 rounded-xl bg-[#FAF6F0] border border-[#E8DFC8] text-[11px] text-[#726B63] leading-relaxed">
+              💡 Al llegar al lobby, muestra tu <strong>Token Odoo (KD-78291)</strong> en recepción y retira inmediatamente tu tarjeta física programada.
+            </div>
           </div>
+
         </div>
 
       </div>
 
-      <!-- Acciones Rápidas del Huésped -->
-      <div class="space-y-4 text-left">
-        <h3 class="text-base font-bold text-[#1E1E1E]">Acciones Rápidas</h3>
-        
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <button onclick="accionRapida('Room Service')" class="p-5 rounded-2xl bg-white border border-[#E8DFC8] hover:border-[#2680BD] transition text-center space-y-2 group shadow-sm active:scale-95">
-            <div class="w-10 h-10 mx-auto rounded-full bg-[#FAF6F0] group-hover:bg-[#2680BD]/10 text-[#1E1E1E] group-hover:text-[#2680BD] flex items-center justify-center font-bold">🍽️</div>
-            <p class="text-xs font-bold text-[#1E1E1E]">Room Service</p>
-          </button>
+      <!-- Modal Pase Express Completado -->
+      <div id="modal-pase-express" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-[2.5rem] max-w-md w-full p-8 text-center space-y-6 border border-[#E8DFC8] relative shadow-2xl">
+          <div class="w-16 h-16 rounded-full bg-[#2680BD]/10 text-[#2680BD] mx-auto flex items-center justify-center text-2xl font-bold">
+            ✓
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs uppercase tracking-widest text-[#2680BD] font-bold">Registro Completado</span>
+            <h3 class="text-2xl font-bold text-[#1E1E1E]">Pase Express Listo</h3>
+            <p class="text-xs text-[#726B63]">Tus datos fueron sincronizados con el PMS de Hoteles Kariña.</p>
+          </div>
 
-          <button onclick="accionRapida('Solicitar Traslado')" class="p-5 rounded-2xl bg-white border border-[#E8DFC8] hover:border-[#2680BD] transition text-center space-y-2 group shadow-sm active:scale-95">
-            <div class="w-10 h-10 mx-auto rounded-full bg-[#FAF6F0] group-hover:bg-[#2680BD]/10 text-[#1E1E1E] group-hover:text-[#2680BD] flex items-center justify-center font-bold">🚗</div>
-            <p class="text-xs font-bold text-[#1E1E1E]">Traslado</p>
-          </button>
+          <div class="p-4 bg-[#FAF6F0] rounded-2xl border border-[#E8DFC8] font-mono text-center space-y-1">
+            <span class="text-[10px] text-[#726B63] uppercase">Token de Retiro</span>
+            <p class="text-xl font-bold text-[#1E1E1E]">KD-78291</p>
+          </div>
 
-          <button onclick="accionRapida('Canchas de Pádel')" class="p-5 rounded-2xl bg-white border border-[#E8DFC8] hover:border-[#2680BD] transition text-center space-y-2 group shadow-sm active:scale-95">
-            <div class="w-10 h-10 mx-auto rounded-full bg-[#FAF6F0] group-hover:bg-[#2680BD]/10 text-[#1E1E1E] group-hover:text-[#2680BD] flex items-center justify-center font-bold">🎾</div>
-            <p class="text-xs font-bold text-[#1E1E1E]">Turno Pádel</p>
-          </button>
+          <div class="text-xs text-[#726B63]">
+            Tu tarjeta física RFID estará lista en recepción a partir de tu horario estimado.
+          </div>
 
-          <button onclick="accionRapida('Limpieza de Habitación')" class="p-5 rounded-2xl bg-white border border-[#E8DFC8] hover:border-[#2680BD] transition text-center space-y-2 group shadow-sm active:scale-95">
-            <div class="w-10 h-10 mx-auto rounded-full bg-[#FAF6F0] group-hover:bg-[#2680BD]/10 text-[#1E1E1E] group-hover:text-[#2680BD] flex items-center justify-center font-bold">🧹</div>
-            <p class="text-xs font-bold text-[#1E1E1E]">Limpieza</p>
-          </button>
+          <div class="space-y-2.5">
+            <a href="dashboard.html" class="block w-full py-3.5 rounded-full bg-[#1E1E1E] hover:bg-[#343434] text-white font-bold text-xs transition active:scale-95">
+              Ir a Mi Dashboard
+            </a>
+            <button onclick="cerrarModalPaseExpress()" class="text-xs text-[#726B63] hover:text-[#1E1E1E] font-medium transition">
+              Cerrar ventana
+            </button>
+          </div>
         </div>
       </div>
 

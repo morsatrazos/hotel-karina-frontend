@@ -1266,3 +1266,62 @@ window.handleDashboardAISubmit = handleDashboardAISubmit;
 window.requestItineraryChange = requestItineraryChange;
 window.triggerQuickAction = triggerQuickAction;
 
+/* ==========================================================
+   16. CONTROLADORES: PRE-CHECKIN & CHECKIN CONTROLLER
+   ========================================================== */
+
+function solicitarServicio(servicio) {
+  const token = document.getElementById('display-token')?.textContent || 'KD-78291';
+  const mensaje = `Hola Arimiña-IA, deseo solicitar el servicio de *${servicio}* para mi reserva con Token Odoo: *${token}*.`;
+  window.open(`https://wa.me/5804249169601?text=${encodeURIComponent(mensaje)}`, '_blank');
+}
+
+function seleccionarHora(btn) {
+  document.querySelectorAll('.hora-btn').forEach(b => {
+    b.classList.remove('bg-[#1E1E1E]', 'text-white');
+    b.classList.add('bg-[#FAF6F0]', 'text-[#1E1E1E]', 'border', 'border-[#E8DFC8]');
+  });
+  btn.classList.add('bg-[#1E1E1E]', 'text-white');
+  btn.classList.remove('bg-[#FAF6F0]', 'border', 'border-[#E8DFC8]');
+}
+
+function completarCheckin() {
+  const modal = document.getElementById('modal-pase-express');
+  if (modal) {
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function cerrarModalPaseExpress() {
+  const modal = document.getElementById('modal-pase-express');
+  if (modal) {
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+function enviarAriminaDashboard() {
+  const input = document.getElementById('arimina-input');
+  if (input && input.value.trim() !== '') {
+    const query = input.value.trim();
+    const token = 'KD-78291';
+    window.open(`https://wa.me/5804249169601?text=${encodeURIComponent(`[Token Odoo: ${token}] Solicitud Huésped: ${query}`)}`, '_blank');
+    input.value = '';
+  }
+}
+
+function accionRapida(accion) {
+  const token = 'KD-78291';
+  window.open(`https://wa.me/5804249169601?text=${encodeURIComponent(`[Token: ${token}] Solicitud rápida: ${accion}`)}`, '_blank');
+}
+
+// Exportación a objeto window para llamadas inline
+window.solicitarServicio = solicitarServicio;
+window.seleccionarHora = seleccionarHora;
+window.completarCheckin = completarCheckin;
+window.cerrarModalPaseExpress = cerrarModalPaseExpress;
+window.enviarAriminaDashboard = enviarAriminaDashboard;
+window.accionRapida = accionRapida;
+
+
