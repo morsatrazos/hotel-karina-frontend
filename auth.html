@@ -471,14 +471,25 @@
             </button>
           </div>
 
-          <!-- Acceso Directo de Desarrollo / Modo Demostración -->
-          <div class="pt-2 border-t border-black/5 space-y-1.5">
-            <a href="dashboard.html" class="block text-[11px] font-mono text-karina-blue hover:text-karina-charcoal transition-colors underline underline-offset-4">
-              ⚡ Entrar directamente al Dashboard (Modo Demo) →
-            </a>
-            <a href="pre-checkin.html" class="block text-[11px] font-mono text-karina-charcoal/70 hover:text-karina-charcoal transition-colors">
-              📋 Ver Flujo Pre-Check-in & Check-in (Token Odoo) →
-            </a>
+          <!-- Barra de Acceso Rápido / Flujos de Demostración -->
+          <div class="pt-3 border-t border-black/5 space-y-2.5 text-center">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-karina-charcoal/50 font-bold block">
+              Accesos Rápidos de Demostración
+            </span>
+            <div class="flex flex-wrap items-center justify-center gap-2">
+              <a href="pre-checkin.html" class="px-3 py-1.5 rounded-full bg-karina-cream hover:bg-black/5 border border-black/10 text-[11px] font-semibold text-karina-charcoal flex items-center gap-1.5 transition-all active:scale-95 shadow-2xs">
+                <i class="fa-solid fa-clipboard-list text-karina-blue text-[10px]"></i>
+                <span>Pre-Check-in</span>
+              </a>
+              <a href="checkin.html" class="px-3 py-1.5 rounded-full bg-karina-cream hover:bg-black/5 border border-black/10 text-[11px] font-semibold text-karina-charcoal flex items-center gap-1.5 transition-all active:scale-95 shadow-2xs">
+                <i class="fa-solid fa-id-card text-karina-mustard text-[10px]"></i>
+                <span>Check-in Express</span>
+              </a>
+              <a href="dashboard.html" class="px-3 py-1.5 rounded-full bg-karina-charcoal hover:bg-black text-[11px] font-semibold text-white flex items-center gap-1.5 transition-all active:scale-95 shadow-2xs">
+                <i class="fa-solid fa-gauge-high text-karina-mustard text-[10px]"></i>
+                <span>Dashboard</span>
+              </a>
+            </div>
           </div>
 
         </div>
