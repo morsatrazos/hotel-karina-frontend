@@ -161,24 +161,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Botón de acción Sede / Catálogo Suites
-    const exploreBtn = document.getElementById('modal-explore-sede-link') || document.querySelector('#sede-modal a[href="#suites"], #sede-modal a[href="el-tigre.html"]');
+    const exploreBtn = document.getElementById('modal-explore-sede-link') || document.querySelector('#sede-modal a[href="#suites"], #sede-modal a[href="el-tigre.html"], #sede-modal a[href="maturin.html"], #sede-modal a[href="punta-de-mata.html"]');
     const exploreText = document.getElementById('modal-explore-sede-text');
     if (exploreBtn) {
-      if (index === 2) {
+      exploreBtn.removeAttribute('onclick');
+      if (index === 0) {
+        exploreBtn.href = "maturin.html";
+        if (exploreText) {
+          exploreText.innerHTML = `Explorar Sede Maturín <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        } else {
+          exploreBtn.innerHTML = `<span>Explorar Sede Maturín</span> <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        }
+      } else if (index === 1) {
+        exploreBtn.href = "punta-de-mata.html";
+        if (exploreText) {
+          exploreText.innerHTML = `Explorar Sede Punta de Mata <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        } else {
+          exploreBtn.innerHTML = `<span>Explorar Sede Punta de Mata</span> <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        }
+      } else if (index === 2) {
         exploreBtn.href = "el-tigre.html";
-        exploreBtn.removeAttribute('onclick');
         if (exploreText) {
           exploreText.innerHTML = `Explorar Sede El Tigre <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
         } else {
           exploreBtn.innerHTML = `<span>Explorar Sede El Tigre</span> <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
-        }
-      } else {
-        exploreBtn.href = "#suites";
-        exploreBtn.setAttribute('onclick', 'closeSedeModal()');
-        if (exploreText) {
-          exploreText.textContent = "Ver Catálogo de Suites";
-        } else {
-          exploreBtn.innerHTML = `<span>Ver Catálogo de Suites</span>`;
         }
       }
     }

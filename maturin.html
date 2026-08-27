@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel Kariña — Sede El Tigre</title>
+  <title>Hotel Kariña Maturín — Resort, Parque Acuático & Suites</title>
 
   <!-- Google Fonts: Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -184,13 +184,14 @@
             </div>
 
             <div class="space-y-2">
-              <!-- Opción 1: Maturín -->
-              <a href="maturin.html" class="dropdown-item-card flex items-center gap-3.5 p-2.5 rounded-2xl bg-white/70 hover:bg-white border border-black/5 hover:border-karina-mustard/40 transition-all group/item shadow-xs hover:shadow-md">
+              <!-- Opción 1: Maturín (Página Actual) -->
+              <a href="maturin.html" 
+                 class="dropdown-item-card flex items-center gap-3.5 p-2.5 rounded-2xl bg-white border border-karina-mustard/40 transition-all group/item shadow-xs hover:shadow-md">
                 <img src="https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg" alt="Sede Maturín" class="w-14 h-14 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between">
-                    <h4 class="text-xs font-bold text-karina-charcoal group-hover/item:text-karina-mustard transition-colors">Hotel Kariña Maturín</h4>
-                    <span class="text-[9px] font-mono bg-karina-cream px-2 py-0.5 rounded-full text-karina-charcoal/70 border border-black/5">Resort & Piscina</span>
+                    <h4 class="text-xs font-bold text-karina-mustard">Hotel Kariña Maturín</h4>
+                    <span class="text-[9px] font-mono bg-karina-mustard-light/50 text-karina-charcoal px-2 py-0.5 rounded-full font-bold">Página Dedicada ✨</span>
                   </div>
                   <p class="text-[11px] text-karina-charcoal/65 truncate font-light mt-0.5">Urb. Palma Real • Parque acuático y salones</p>
                 </div>
@@ -198,7 +199,8 @@
               </a>
 
               <!-- Opción 2: Punta de Mata -->
-              <a href="punta-de-mata.html" class="dropdown-item-card flex items-center gap-3.5 p-2.5 rounded-2xl bg-white/70 hover:bg-white border border-black/5 hover:border-karina-mustard/40 transition-all group/item shadow-xs hover:shadow-md">
+              <a href="punta-de-mata.html" 
+                 class="dropdown-item-card flex items-center gap-3.5 p-2.5 rounded-2xl bg-white/70 hover:bg-white border border-black/5 hover:border-karina-mustard/40 transition-all group/item shadow-xs hover:shadow-md">
                 <img src="https://uploads.onecompiler.io/44s48z3dm/1787540097635/Fachada-Aerea.2.jpg" alt="Sede Punta de Mata" class="w-14 h-14 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between">
@@ -217,7 +219,7 @@
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between">
                     <h4 class="text-xs font-bold text-karina-charcoal group-hover/item:text-karina-mustard transition-colors">Hotel Kariña El Tigre</h4>
-                    <span class="text-[9px] font-mono bg-karina-mustard-light/50 text-karina-charcoal px-2 py-0.5 rounded-full font-bold">Página Dedicada ✨</span>
+                    <span class="text-[9px] font-mono bg-karina-cream px-2 py-0.5 rounded-full text-karina-charcoal/70 border border-black/5">Business & Events</span>
                   </div>
                   <p class="text-[11px] text-karina-charcoal/65 truncate font-light mt-0.5">Av. Ruiz Pineda • Salón Guañipa y Canchas</p>
                 </div>
@@ -318,14 +320,13 @@
 
       </nav>
 
-      <!-- BLOQUE DERECHO: Indicador Sede + Selector de Idioma + Botón Reserva Shimmer -->
-      <div class="flex items-center gap-3 sm:gap-5">
-        <span class="text-xs font-extrabold text-[#343434]/80 hidden sm:inline tracking-wider">EL TIGRE</span>
+      <!-- BLOQUE DERECHO: Idioma + Botón Contacto Shimmer -->
+      <div class="flex items-center gap-4 sm:gap-5">
         <button class="text-xs font-bold text-[#343434] hover:text-[#2680BD] transition-colors">ES/EN</button>
-        <button onclick="alert('Consultando disponibilidad para Sede El Tigre con Arimiña-IA...')" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
-          <span>Reserva</span>
-          <i class="fa-solid fa-sparkles text-[10px]"></i>
-        </button>
+        <a href="contacto.html" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+          <span>Contacto</span>
+          <i class="fa-solid fa-envelope text-[10px]"></i>
+        </a>
       </div>
 
     </div>
@@ -354,37 +355,37 @@
           <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
         </button>
         <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
-          <a href="maturin.html" class="block hover:text-karina-mustard transition-colors">Maturín (Hotel & Club)</a>
-          <a href="punta-de-mata.html" class="block hover:text-karina-mustard transition-colors">Punta de Mata (Executive)</a>
-          <a href="el-tigre.html" class="block text-karina-mustard font-medium transition-colors">El Tigre (Business & Events)</a>
+          <a href="maturin.html" class="block text-karina-mustard font-medium transition-colors">Maturín (Resort & Parque Acuático)</a>
+          <a href="punta-de-mata.html" class="block hover:text-karina-mustard transition-colors">Punta de Mata (Hub Ejecutivo)</a>
+          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Business & Events)</a>
         </div>
       </div>
 
       <div class="border-b border-white/10 pb-4">
         <a href="#suites-sede" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">02</span>
-          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Suites</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Suites Maturín</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
         <a href="business.html" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">03</span>
-          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Business</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Centro de Convenciones</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
         <a href="#galeria-bento" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">04</span>
-          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería El Tigre</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería Maturín</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
         <a href="vive-karina.html" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">05</span>
-          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Day Pass & Piscinas</span>
         </a>
       </div>
 
@@ -415,10 +416,10 @@
         <i class="fa-regular fa-user"></i>
         <span>Mi Cuenta / Iniciar Sesión</span>
       </a>
-      <button onclick="alert('Iniciando chat con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+      <a href="https://wa.me/5804249169601?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20consultar%20disponibilidad%20en%20Sede%20Maturin" target="_blank" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
         <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
         <span>Hablar con Arimiña-IA</span>
-      </button>
+      </a>
     </div>
   </div>
 
@@ -431,11 +432,16 @@
       
       <!-- Titular Editorial -->
       <div class="space-y-4 max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-karina-mustard/20 border border-karina-mustard/40 text-[11px] font-mono font-bold text-karina-charcoal uppercase tracking-wider">
+          <i class="fa-solid fa-water-ladder text-karina-mustard text-xs"></i>
+          <span>SEDE PRINCIPAL & RESORT • MATURÍN, MONAGAS</span>
+        </div>
+
         <h1 class="text-4xl sm:text-6xl font-light text-karina-charcoal tracking-tight leading-tight">
-          ¡Vive Kariña El Tigre!
+          ¡Vive Kariña Maturín!
         </h1>
         <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed max-w-2xl mx-auto">
-          Una atmósfera visual de momentos extraordinarios. Sumérgete en la esencia de nuestro refugio donde la arquitectura orgánica se encuentra con el confort curado.
+          El resort insignia del oriente venezolano. Un oasis tropical con parque acuático, club deportivo de pádel, alta gastronomía en Restaurante 283 y salones corporativos en la exclusiva Urbanización Palma Real.
         </p>
 
         <!-- SVG Line Accents - Trazo Curvo Extendido -->
@@ -452,54 +458,54 @@
           Todas
         </button>
         <button onclick="filterBentoGallery('piscinas', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Piscinas
+          Parque Acuático & Piscinas
         </button>
         <button onclick="filterBentoGallery('gastronomia', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Gastronomía
+          Restaurante 283
         </button>
         <button onclick="filterBentoGallery('padel', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Pádel & Deporte
+          Pádel & Tenis
         </button>
         <button onclick="filterBentoGallery('eventos', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Eventos
+          Convenciones & Salones
         </button>
       </div>
 
       <!-- Grilla Bento Asimétrica -->
       <div id="bento-container" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch pt-4 text-left">
         
-        <!-- Foto 1: Principal Grande -->
+        <!-- Foto 1: Principal Grande (Fachada y Resort) -->
         <div class="bento-card bento-item-all bento-item-piscinas md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png" alt="Piscina El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <img src="https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg" alt="Fachada Resort Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Piscina Resort & Caney</span>
-            <h3 class="text-xl font-light text-white">Ambiente Tropical Guañipa</h3>
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Sede Insignia Monagas</span>
+            <h3 class="text-xl font-light text-white">Complejo Hotelero & Club Palma Real</h3>
           </div>
         </div>
 
-        <!-- Foto 2: Forma Óval / Asimétrica Reversa -->
-        <div class="bento-card bento-item-all bento-item-eventos md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80" alt="Sala Ejecutiva El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <!-- Foto 2: Forma Óval / Asimétrica Reversa (Parque Acuático) -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" alt="Parque Acuático y Piscinas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Salones Ejecutivos</span>
-            <h3 class="text-xl font-light text-white">Reuniones de Alto Nivel</h3>
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Parque Acuático & Caney</span>
+            <h3 class="text-xl font-light text-white">Toboganes & Piscinas Recreativas</h3>
           </div>
         </div>
 
-        <!-- Foto 3: Jardines -->
-        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-4 h-[240px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Jardines" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <!-- Foto 3: Club de Pádel -->
+        <div class="bento-card bento-item-all bento-item-padel md:col-span-4 h-[240px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80" alt="Canchas de Pádel Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Jardines & Caminerías</span>
+          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Club de Pádel & Canchas Profesionales</span>
         </div>
 
-        <!-- Foto 4: Restaurante -->
+        <!-- Foto 4: Restaurante 283 -->
         <div class="bento-card bento-item-all bento-item-gastronomia bento-item-eventos md:col-span-8 h-[240px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Restaurante" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Restaurante 283 Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Restaurante Moriche — Especialidades Culinarias</span>
+          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Restaurante 283 — Fusión Criolla e Internacional</span>
         </div>
 
       </div>
@@ -517,16 +523,16 @@
         <!-- Filter Switcher (Píldoras Arriba) -->
         <div class="flex justify-center gap-3">
           <button id="suite-pill-1" onclick="switchSuiteView(1)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all">
-            Suite Premium
+            Suite Premium Resort
           </button>
           <button id="suite-pill-2" onclick="switchSuiteView(2)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all">
-            Suite Estándar
+            Suite Dúplex Dos Ambientes
           </button>
         </div>
 
         <!-- Texto Guía Abajo -->
         <span class="text-[11px] font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest block pt-1">
-          ESCOGE ENTRE DOS TIPOS DE SUITES — EL TIGRE, ANZOÁTEGUI
+          CONFORT CURADO Y ESPACIOS AMPLIOS — MATURÍN, MONAGAS
         </span>
 
       </div>
@@ -537,32 +543,32 @@
         <!-- Info Izquierda -->
         <div class="lg:col-span-6 space-y-6 text-left">
           <h3 id="suite-title" class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
-            SUITE PREMIUM
+            SUITE PREMIUM RESORT
           </h3>
 
           <p id="suite-desc" class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
-            Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.
+            Nuestra habitación insignia con 85 m² de superficie, cama King Size, jacuzzi de relajación y balcón privado con vista directa al complejo de piscinas y áreas verdes.
           </p>
 
           <!-- Checklist Bondades -->
           <div class="space-y-2.5 text-xs font-normal text-karina-charcoal/80">
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
-              <span>Cama King Size con lencería de 400 hilos</span>
+              <span>Cama King Size con lencería de 400 hilos y menú de almohadas</span>
             </div>
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
-              <span>Wi-Fi dedicado por fibra óptica</span>
+              <span>Wi-Fi dedicado por fibra óptica simétrica 100M</span>
             </div>
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
-              <span>Servicio a la habitación 24 horas</span>
+              <span>Acceso ilimitado al parque acuático y desayuno buffet incluido</span>
             </div>
           </div>
 
           <!-- Cita Elegante -->
           <p id="suite-quote" class="text-xs text-karina-charcoal/60 font-light italic border-l-2 border-karina-mustard pl-3 py-0.5">
-            "Un santuario de descanso pensado para el viajero moderno."
+            "El balance perfecto entre el descanso de lujo y la diversión familiar."
           </p>
 
           <!-- Acciones: Modal de Detalles Amplios + Arimiña-IA -->
@@ -572,12 +578,12 @@
               <span>Ver Detalles de la Suite</span>
             </button>
 
-            <button onclick="alert('Consultando disponibilidad para Suite en El Tigre con Arimiña-IA...')" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group">
+            <a href="https://wa.me/5804249169601?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reservar%20una%20Suite%20en%20Sede%20Maturin" target="_blank" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group">
               <span class="w-5 h-5 rounded-full bg-karina-mustard text-karina-charcoal flex items-center justify-center text-[10px] shrink-0">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
               </span>
               <span>Reserva con <strong>Arimiña-IA</strong></span>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -586,12 +592,12 @@
           <div class="relative h-[320px] sm:h-[380px] w-full rounded-pebble overflow-hidden shadow-lg bg-black/10 cursor-pointer group" onclick="openSuiteDetailModal()">
             <img id="suite-image" 
                  src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" 
-                 alt="Suite El Tigre" 
+                 alt="Suite Maturín" 
                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
             
             <div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full text-white text-[10px] font-mono flex items-center gap-1.5">
-              <span>★ 4.9 Superhost Comfort</span>
-              <span class="text-white/60">• Clic para ver fotos y video</span>
+              <span>★ 4.9 Superhost Resort</span>
+              <span class="text-white/60">• Clic para ver fotos y detalles</span>
             </div>
           </div>
         </div>
@@ -610,7 +616,7 @@
           Curated Amenities
         </h2>
         <p class="text-xs text-karina-charcoal/60 font-mono uppercase tracking-widest">
-          Diseñados para descanso, productividad y calma
+          Infraestructura de alta confiabilidad en Maturín
         </p>
       </div>
 
@@ -622,9 +628,9 @@
             <i class="fa-solid fa-wifi"></i>
           </div>
           <div class="space-y-1">
-            <h3 class="text-xl font-bold text-karina-charcoal">Wi-Fi Dedicado</h3>
+            <h3 class="text-xl font-bold text-karina-charcoal">Fibra Óptica 100M</h3>
             <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
-              Conexión simétrica por fibra óptica de alta velocidad disponible en todas las habitaciones y áreas resort.
+              Ancho de banda dedicado simétrico en habitaciones, centro de convenciones y áreas de piscina.
             </p>
           </div>
         </div>
@@ -637,20 +643,20 @@
           <div class="space-y-1">
             <h3 class="text-xl font-bold text-karina-charcoal">Planta Eléctrica 24/7</h3>
             <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
-              Respaldo energético automático al 100% en toda la infraestructura hotelera para tu total tranquilidad.
+              Respaldo total continuo al 100% que alimenta iluminación, aire acondicionado y sistemas hidroneumáticos.
             </p>
           </div>
         </div>
 
-        <!-- Amenity 3: Reserva Hídrica (Ícono Azul Ajustado) -->
+        <!-- Amenity 3: Reserva Hídrica (Coral) -->
         <div class="animate-float-3 bg-[#EB8C84]/35 p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
           <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-blue text-lg shadow-sm">
             <i class="fa-solid fa-droplet text-karina-blue"></i>
           </div>
           <div class="space-y-1">
-            <h3 class="text-xl font-bold text-karina-charcoal">Reserva Hídrica</h3>
+            <h3 class="text-xl font-bold text-karina-charcoal">Pozo Propio & Filtrado</h3>
             <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
-              Sistema continuo de tratamiento y almacenamiento de agua potable con presión constante las 24 horas.
+              Abastecimiento autónomo de agua potable con sistema de cloración y presión hidroneumática constante.
             </p>
           </div>
         </div>
@@ -660,7 +666,7 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 5. SECCIÓN GASTRONÓMICA: RESTAURANTE MORICHE-->
+    <!-- 5. SECCIÓN GASTRONÓMICA: RESTAURANTE 283   -->
     <!-- ========================================== -->
     <section id="gastronomia" class="max-w-7xl mx-auto px-6 sm:px-12 py-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white/70 rounded-[44px] p-8 sm:p-12 border border-black/5 shadow-sm">
@@ -668,15 +674,15 @@
         <!-- Texto Izquierda -->
         <div class="lg:col-span-6 space-y-6 text-left">
           <span class="text-[11px] font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest block">
-            EXPERIENCIA CULINARIA EN EL TIGRE
+            EXPERIENCIA CULINARIA EN MATURÍN
           </span>
 
           <h2 class="text-3xl sm:text-5xl font-light text-karina-charcoal tracking-tight leading-tight">
-            ¡Gastronomía que fascina!
+            Restaurante 283 & Terraza
           </h2>
 
           <p class="text-xs sm:text-sm text-karina-charcoal/75 font-light leading-relaxed">
-            Nuestro equipo de chefs fusiona la tradición oriental con técnicas contemporáneas. Disfruta de desayunos buffet, cortes seleccionados y coctelería de autor en un ambiente inolvidable.
+            Ubicado frente al caney principal, Restaurante 283 combina los mejores sabores de la cocina criolla venezolana con cortes de carne seleccionados, pescados frescos y coctelería internacional de autor.
           </p>
 
           <div class="pt-2">
@@ -692,12 +698,12 @@
         <div class="lg:col-span-6">
           <div class="relative h-[320px] sm:h-[400px] w-full rounded-[36px] overflow-hidden shadow-xl bg-black/10 group cursor-pointer border border-black/5">
             <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" 
-                 alt="Restaurante Moriche El Tigre" 
+                 alt="Restaurante 283 Maturín" 
                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-85"></div>
             <div class="absolute bottom-6 left-6 text-xs text-white/95 font-light flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-karina-mustard shadow-sm"></span>
-              <span>Restaurante Moriche — Especialidades del Chef</span>
+              <span>Restaurante 283 — Desayunos Buffet & Cenas de Autor</span>
             </div>
           </div>
         </div>
@@ -710,32 +716,32 @@
     <!-- ========================================== -->
     <section id="servicios" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-10 text-center py-6">
       <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
-        Servicios Destacados
+        Servicios e Instalaciones Insignia
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
         
-        <!-- Servicio 1: Lavandería -->
-        <div class="service-card-anim bg-karina-mustard-light/60 hover:bg-karina-mustard-light/90 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm">
+        <!-- Servicio 1: Day Pass & Parque Acuático -->
+        <a href="vive-karina.html" class="service-card-anim bg-karina-mustard-light/60 hover:bg-karina-mustard-light/90 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm block">
           <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shrink-0 shadow-sm">
-            <i class="fa-solid fa-shirt"></i>
+            <i class="fa-solid fa-umbrella-beach text-karina-mustard"></i>
           </div>
           <div>
-            <h3 class="text-base font-bold text-karina-charcoal">Servicio de Lavandería Express</h3>
-            <p class="text-xs text-karina-charcoal/70 font-normal">Atención impecable en 24 horas para prendas ejecutivas y delicadas.</p>
+            <h3 class="text-base font-bold text-karina-charcoal">Day Pass Familiar & Parque Acuático</h3>
+            <p class="text-xs text-karina-charcoal/70 font-normal">Pase de un día completo para disfrutar de piscinas, toboganes, caney y reposeras.</p>
           </div>
-        </div>
+        </a>
 
-        <!-- Servicio 2: Renta de Vehículos -->
-        <div class="service-card-anim bg-karina-mustard-light/60 hover:bg-karina-mustard-light/90 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm">
+        <!-- Servicio 2: Salones Corporativos -->
+        <a href="business.html" class="service-card-anim bg-karina-mustard-light/60 hover:bg-karina-mustard-light/90 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm block">
           <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shrink-0 shadow-sm">
-            <i class="fa-solid fa-car"></i>
+            <i class="fa-solid fa-briefcase text-karina-charcoal"></i>
           </div>
           <div>
-            <h3 class="text-base font-bold text-karina-charcoal">Renta de Vehículos & Transfers</h3>
-            <p class="text-xs text-karina-charcoal/70 font-normal">Asistencia en movilidad corporativa y traslados privados a aeropuertos.</p>
+            <h3 class="text-base font-bold text-karina-charcoal">Gran Salón de Convenciones Palma Real</h3>
+            <p class="text-xs text-karina-charcoal/70 font-normal">Capacidad para hasta 400 asistentes con sonido profesional y catering integrado.</p>
           </div>
-        </div>
+        </a>
 
       </div>
     </section>
@@ -746,7 +752,7 @@
   <!-- 7. MASTER FOOTER (DISEÑO FIDELIZADO)       -->
   <!-- ========================================== -->
   <footer id="footer" class="bg-[#262626] text-white pt-20 pb-12 px-6 sm:px-12 border-t border-white/10">
-    <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10">
+    <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10 text-left">
       
       <!-- Columna 1: Brand & Slogan -->
       <div class="lg:col-span-3 space-y-5">
@@ -762,7 +768,7 @@
       <div class="lg:col-span-2 space-y-3.5">
         <span class="text-xs font-extrabold uppercase tracking-widest text-[#F0A800] block">Nuestras Sedes</span>
         <ul class="space-y-2 text-xs text-white/75 font-normal">
-          <li><a href="maturin.html" class="hover:text-white transition-colors">Hotel Kariña Maturín</a></li>
+          <li><a href="maturin.html" class="hover:text-white transition-colors font-semibold text-white">Hotel Kariña Maturín</a></li>
           <li><a href="punta-de-mata.html" class="hover:text-white transition-colors">Hotel Kariña Punta de Mata</a></li>
           <li><a href="el-tigre.html" class="hover:text-white transition-colors">Hotel Kariña El Tigre</a></li>
           <li><a href="suites.html" class="hover:text-white transition-colors">Catálogo de Suites & Tarifas</a></li>
@@ -866,7 +872,7 @@
   </footer>
 
   <!-- ========================================== -->
-  <!-- MODAL DE DETALLES DE SUITE (INMERSIVO CON NAVEGACIÓN DIRECTA Y 6 MEDIAS) -->
+  <!-- MODAL DE DETALLES DE SUITE MATURÍN         -->
   <!-- ========================================== -->
   <div id="suite-modal" 
        class="fixed inset-0 z-[200] opacity-0 pointer-events-none bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 select-none"
@@ -894,27 +900,27 @@
         <div class="md:col-span-6 space-y-4">
           <div class="relative w-full h-[280px] sm:h-[320px] rounded-pebble overflow-hidden shadow-md bg-black/10">
             <img id="suite-modal-main-img" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
-            <span id="suite-modal-tag" class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-white text-[11px]">Vista Principal</span>
+            <span id="suite-modal-tag" class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-white text-[11px]">Vista Principal Suite</span>
           </div>
 
           <!-- Miniaturas 6 Slots (Fotos + Video) -->
           <div class="grid grid-cols-6 gap-2">
-            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', 'Cama Principal King Size')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', 'Cama King Size & Sala')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
               <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
             </button>
-            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', 'Baño Privado & Amenidades')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', 'Jacuzzi & Baño Privado')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
               <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
             </button>
-            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', 'Área Ejecutiva & Escritorio')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', 'Área de Estar & Trabajo')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
               <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
             </button>
-            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80', 'Barra & Minibar')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80', 'Terraza Vista a Piscinas')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
               <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
             </button>
-            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80', 'Vista a la Piscina')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
-              <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80', 'Acceso Parque Acuático')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
             </button>
-            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80', 'Recorrido en Video HD')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard relative group">
+            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80', 'Video Tour HD')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard relative group">
               <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-xs">
                 <i class="fa-solid fa-play"></i>
@@ -944,9 +950,9 @@
               </button>
             </div>
 
-            <h3 id="suite-modal-title" class="text-3xl font-light text-karina-charcoal">Suite Premium</h3>
+            <h3 id="suite-modal-title" class="text-3xl font-light text-karina-charcoal">Suite Premium Resort</h3>
             <p id="suite-modal-desc" class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
-              Espacios amplios diseñados con materiales nobles, iluminación cálida graduada y lencería hipoalergénica de alta densidad.
+              Nuestra habitación insignia con 85 m² de superficie, cama King Size, jacuzzi de relajación y balcón privado con vista directa al complejo de piscinas.
             </p>
 
             <div class="space-y-2 pt-2 text-xs text-karina-charcoal/80">
@@ -956,17 +962,17 @@
                 <div class="flex items-center gap-2"><i class="fa-solid fa-wifi text-karina-mustard"></i> Fibra Óptica 100M</div>
                 <div class="flex items-center gap-2"><i class="fa-solid fa-tv text-karina-mustard"></i> Smart TV 55"</div>
                 <div class="flex items-center gap-2"><i class="fa-solid fa-snowflake text-karina-mustard"></i> A/C Autónomo</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-vault text-karina-mustard"></i> Caja de Seguridad</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-mug-hot text-karina-mustard"></i> Bar & Cafetera</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-hot-tub-person text-karina-mustard"></i> Jacuzzi Privado</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-mug-hot text-karina-mustard"></i> Desayuno Buffet</div>
               </div>
             </div>
           </div>
 
           <div class="pt-4 space-y-2 border-t border-black/10">
-            <button onclick="closeSuiteModal(); alert('Consultando disponibilidad de suite con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95">
+            <a href="https://wa.me/5804249169601?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reservar%20esta%20suite%20en%20Hotel%20Kari%C3%B1a%20Maturin" target="_blank" class="w-full py-3.5 px-6 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95">
               <i class="fa-solid fa-wand-magic-sparkles text-karina-mustard"></i>
               <span>Consultar Tarifas & Reservar con <strong>Arimiña-IA</strong></span>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -978,7 +984,7 @@
   <!-- CONTROLADORES JAVASCRIPT                   -->
   <!-- ========================================== -->
   <script>
-    // 1. NAVBAR MORPHING FLOATING ISLAND (ANIMACIÓN EXACTA FIGMA)
+    // 1. NAVBAR MORPHING FLOATING ISLAND
     const navbar = document.getElementById('main-navbar');
     if (navbar) {
       window.addEventListener('scroll', () => {
@@ -1044,7 +1050,7 @@
       });
     }
 
-    // 4. Suite Filter Switcher & Modal Controls
+    // 4. Suite Filter Switcher & Modal Controls (Maturín)
     const suitePill1 = document.getElementById('suite-pill-1');
     const suitePill2 = document.getElementById('suite-pill-2');
     const suiteContainer = document.getElementById('suite-display-container');
@@ -1056,16 +1062,16 @@
 
     const suitesData = {
       1: {
-        title: "SUITE PREMIUM",
-        desc: "Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.",
-        quote: '"Un santuario de descanso pensado para el viajero moderno."',
+        title: "SUITE PREMIUM RESORT",
+        desc: "Nuestra habitación insignia con 85 m² de superficie, cama King Size, jacuzzi de relajación y balcón privado con vista directa al complejo de piscinas y áreas verdes.",
+        quote: '"El balance perfecto entre el descanso de lujo y la diversión familiar."',
         image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"
       },
       2: {
-        title: "SUITE ESTÁNDAR",
-        desc: "Dos ambientes independientes combinando sala ejecutiva y habitación principal para máxima privacidad y estadías prolongadas.",
-        quote: '"Espacio expansivo ideal para directivos y ejecutivos de alto nivel."',
-        image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80"
+        title: "SUITE DÚPLEX DOS AMBIENTES",
+        desc: "Dos niveles independientes combinando sala VIP y habitación master en planta alta. Espacio exclusivo diseñado para estancias prolongadas o viajes familiares de alto confort.",
+        quote: '"Amplitud residencial con todas las ventajas de un resort cuatro estrellas."',
+        image: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80"
       }
     };
 
@@ -1166,6 +1172,10 @@
       if (e.key === 'ArrowLeft') navigateSuiteInModal(-1);
       if (e.key === 'ArrowRight') navigateSuiteInModal(1);
     });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   </script>
 </body>
 </html>
