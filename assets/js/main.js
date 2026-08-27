@@ -1330,4 +1330,21 @@ window.cerrarModalPaseExpress = cerrarModalPaseExpress;
 window.enviarAriminaDashboard = enviarAriminaDashboard;
 window.accionRapida = accionRapida;
 
+// ==========================================
+// 17. CONTROLADOR DE CAMBIO DE IDIOMA (BOTÓN FLOTANTE DISCRETO)
+// ==========================================
+function toggleLanguage() {
+  const btns = document.querySelectorAll('#floating-lang-btn, .floating-lang-toggle');
+  btns.forEach(btn => {
+    const span = btn.querySelector('span') || btn;
+    if (span.textContent.trim().toUpperCase() === 'ES/EN') {
+      span.textContent = 'EN/ES';
+    } else {
+      span.textContent = 'ES/EN';
+    }
+  });
+}
+window.toggleLanguage = toggleLanguage;
+
+
 

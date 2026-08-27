@@ -74,7 +74,7 @@
 
         <!-- DROPDOWN 1: SEDES -->
         <div class="nav-dropdown-wrapper relative group py-3">
-          <a href="index.html#sedes" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 flex items-center gap-1.5 transition-all text-karina-charcoal group-hover:text-karina-mustard">
+          <a href="index.html#sedes" class="nav-link-item px-3 py-2 flex items-center gap-1.5 transition-all text-karina-charcoal group-hover:text-karina-mustard">
             <span>Sedes</span>
             <i class="fa-solid fa-chevron-down text-[9px] opacity-50 group-hover:opacity-100 group-hover:rotate-180 transition-transform duration-300"></i>
           </a>
@@ -147,7 +147,7 @@
 
         <!-- DROPDOWN 2: CATÁLOGO DE SUITES -->
         <div class="nav-dropdown-wrapper relative group py-3">
-          <a href="suites.html" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 flex items-center gap-1.5 transition-all text-karina-charcoal group-hover:text-karina-mustard">
+          <a href="suites.html" class="nav-link-item px-3 py-2 flex items-center gap-1.5 transition-all text-karina-charcoal group-hover:text-karina-mustard">
             <span>Catálogo de suites</span>
             <i class="fa-solid fa-chevron-down text-[9px] opacity-50 group-hover:opacity-100 group-hover:rotate-180 transition-transform duration-300"></i>
           </a>
@@ -223,16 +223,15 @@
         </div>
 
         <!-- ENLACES DIRECTOS RESTANTES -->
-        <a href="vive-karina.html" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 transition-colors">¡Vive Kariña!</a>
-        <a href="restaurante.html" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 transition-colors">Gastronomía</a>
-        <a href="business.html" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 transition-colors text-karina-mustard font-bold">Corporativo</a>
-        <a href="fundacion.html" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 transition-colors">Fundación</a>
+        <a href="vive-karina.html" class="nav-link-item px-3 py-2 transition-colors">¡Vive Kariña!</a>
+        <a href="restaurante.html" class="nav-link-item px-3 py-2 transition-colors">Gastronomía</a>
+        <a href="business.html" class="nav-link-item px-3 py-2 transition-colors text-karina-mustard font-bold">Corporativo</a>
+        <a href="fundacion.html" class="nav-link-item px-3 py-2 transition-colors">Fundación</a>
 
       </nav>
 
       <!-- BLOQUE DERECHO: Selector de Idioma + Botón Píldora Shimmer -->
       <div class="flex items-center gap-4 sm:gap-5">
-        <button class="text-xs font-bold text-[#343434] hover:text-[#2680BD] transition-colors">ES/EN</button>
         <a href="#cotizacion" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
           <span>Convenio B2B</span>
           <i class="fa-solid fa-sparkles text-[10px]"></i>
@@ -344,9 +343,14 @@
       <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-transparent"></div>
       
       <div class="relative z-10 max-w-2xl space-y-5 text-left">
-        <span class="inline-block px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-mono tracking-widest uppercase text-karina-mustard-light">
-          CORPORATE HUB
-        </span>
+        <div class="space-y-1.5 text-left">
+          <span class="text-xs font-mono tracking-[0.25em] uppercase font-bold text-karina-mustard-light block">
+            CORPORATE HUB
+          </span>
+          <svg width="48" height="6" viewBox="0 0 48 6" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-karina-mustard">
+            <path d="M2 4C14 1.5 34 1.5 46 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
 
         <h1 class="text-3xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight">
           Infraestructura de Clase Ejecutiva
@@ -388,48 +392,56 @@
 
         <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
           
-          <!-- Capacidad 1 -->
-          <div class="bg-white/60 p-6 rounded-3xl border border-black/5 shadow-sm space-y-3 hover:shadow-md transition-shadow">
-            <div class="w-10 h-10 rounded-2xl bg-karina-cream flex items-center justify-center text-karina-charcoal text-base">
+          <!-- Capacidad 1: Mostaza Suave #FEF9E7 + Float 1 -->
+          <div class="animate-float-1 bg-[#FEF9E7] p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shadow-xs">
               <i class="fa-solid fa-bolt text-karina-mustard"></i>
             </div>
-            <h3 class="text-base font-bold text-karina-charcoal">24/7 Energía eléctrica</h3>
-            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
-              Sistemas de generación con triple redundancia que garantizan cero tiempo de inactividad operativa para sus equipos.
-            </p>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-karina-charcoal">24/7 Energía eléctrica</h3>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Sistemas de generación con triple redundancia que garantizan cero tiempo de inactividad operativa para sus equipos.
+              </p>
+            </div>
           </div>
 
-          <!-- Capacidad 2 -->
-          <div class="bg-white/60 p-6 rounded-3xl border border-black/5 shadow-sm space-y-3 hover:shadow-md transition-shadow">
-            <div class="w-10 h-10 rounded-2xl bg-karina-cream flex items-center justify-center text-karina-blue text-base">
-              <i class="fa-solid fa-wifi"></i>
+          <!-- Capacidad 2: Azul Tenue #EBF5FB + Float 2 -->
+          <div class="animate-float-2 bg-[#EBF5FB] p-8 rounded-pebble-reverse border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-karina-blue text-lg shadow-xs">
+              <i class="fa-solid fa-wifi text-karina-blue"></i>
             </div>
-            <h3 class="text-base font-bold text-karina-charcoal">Internet Fibra Óptica / WiFi</h3>
-            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
-              Conectividad simétrica dedicada de nivel empresarial con conmutación por error entre múltiples proveedores.
-            </p>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-karina-charcoal">Internet Fibra Óptica / WiFi</h3>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Conectividad simétrica dedicada de nivel empresarial con conmutación por error entre múltiples proveedores.
+              </p>
+            </div>
           </div>
 
-          <!-- Capacidad 3 -->
-          <div class="bg-white/60 p-6 rounded-3xl border border-black/5 shadow-sm space-y-3 hover:shadow-md transition-shadow">
-            <div class="w-10 h-10 rounded-2xl bg-karina-cream flex items-center justify-center text-karina-charcoal text-base">
-              <i class="fa-solid fa-users-rectangle text-karina-mustard"></i>
+          <!-- Capacidad 3: Terracota Pastel #FDF2E9 + Float 3 -->
+          <div class="animate-float-3 bg-[#FDF2E9] p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-karina-terracotta text-lg shadow-xs">
+              <i class="fa-solid fa-users-rectangle text-karina-terracotta"></i>
             </div>
-            <h3 class="text-base font-bold text-karina-charcoal">Salón de conferencias</h3>
-            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
-              Espacios acondicionados acústicamente equipados con telepresencia 4K y asientos ergonómicos de lujo.
-            </p>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-karina-charcoal">Salón de conferencias</h3>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Espacios acondicionados acústicamente equipados con telepresencia 4K y asientos ergonómicos de lujo.
+              </p>
+            </div>
           </div>
 
-          <!-- Capacidad 4 -->
-          <div class="bg-white/60 p-6 rounded-3xl border border-black/5 shadow-sm space-y-3 hover:shadow-md transition-shadow">
-            <div class="w-10 h-10 rounded-2xl bg-karina-cream flex items-center justify-center text-karina-charcoal text-base">
-              <i class="fa-solid fa-briefcase text-karina-mustard"></i>
+          <!-- Capacidad 4: Arena #FAF6F0 + Float 4 -->
+          <div class="animate-float-4 bg-[#FAF6F0] p-8 rounded-pebble-reverse border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shadow-xs">
+              <i class="fa-solid fa-briefcase text-karina-charcoal"></i>
             </div>
-            <h3 class="text-base font-bold text-karina-charcoal">Business Center</h3>
-            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
-              Facturación corporativa simplificada y conforme con las normativas fiscales locales para una contabilidad fluida.
-            </p>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-karina-charcoal">Business Center</h3>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Facturación corporativa simplificada y conforme con las normativas fiscales locales para una contabilidad fluida.
+              </p>
+            </div>
           </div>
 
         </div>
@@ -621,5 +633,9 @@
   <!-- JavaScript Modular Global -->
   <script src="assets/js/main.js"></script>
 
+  <!-- Botón Flotante Discreto de Idioma -->
+  <button id="floating-lang-btn" onclick="if(window.toggleLanguage) toggleLanguage()" class="fixed bottom-6 right-6 z-40 bg-white/80 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] text-xs font-bold text-[#1E1E1E] shadow-md hover:shadow-lg transition-all active:scale-95" aria-label="Cambiar idioma">
+    <span>ES/EN</span>
+  </button>
 </body>
 </html>

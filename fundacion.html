@@ -74,7 +74,7 @@
 
         <!-- DROPDOWN 1: SEDES -->
         <div class="nav-dropdown-wrapper relative group py-3">
-          <a href="index.html#sedes" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 flex items-center gap-1.5 transition-all text-karina-charcoal group-hover:text-karina-mustard">
+          <a href="index.html#sedes" class="nav-link-item px-3 py-2 flex items-center gap-1.5 transition-all text-karina-charcoal group-hover:text-karina-mustard">
             <span>Sedes</span>
             <i class="fa-solid fa-chevron-down text-[9px] opacity-50 group-hover:opacity-100 group-hover:rotate-180 transition-transform duration-300"></i>
           </a>
@@ -147,7 +147,7 @@
 
         <!-- DROPDOWN 2: CATÁLOGO DE SUITES -->
         <div class="nav-dropdown-wrapper relative group py-3">
-          <a href="suites.html" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 flex items-center gap-1.5 transition-all text-karina-charcoal group-hover:text-karina-mustard">
+          <a href="suites.html" class="nav-link-item px-3 py-2 flex items-center gap-1.5 transition-all text-karina-charcoal group-hover:text-karina-mustard">
             <span>Catálogo de suites</span>
             <i class="fa-solid fa-chevron-down text-[9px] opacity-50 group-hover:opacity-100 group-hover:rotate-180 transition-transform duration-300"></i>
           </a>
@@ -223,16 +223,15 @@
         </div>
 
         <!-- ENLACES DIRECTOS RESTANTES -->
-        <a href="vive-karina.html" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 transition-colors">¡Vive Kariña!</a>
-        <a href="restaurante.html" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 transition-colors">Gastronomía</a>
-        <a href="business.html" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 transition-colors">Corporativo</a>
-        <a href="fundacion.html" class="nav-link-item px-3.5 py-2 rounded-full hover:bg-white/60 transition-colors text-karina-mustard font-bold">Fundación</a>
+        <a href="vive-karina.html" class="nav-link-item px-3 py-2 transition-colors">¡Vive Kariña!</a>
+        <a href="restaurante.html" class="nav-link-item px-3 py-2 transition-colors">Gastronomía</a>
+        <a href="business.html" class="nav-link-item px-3 py-2 transition-colors">Corporativo</a>
+        <a href="fundacion.html" class="nav-link-item px-3 py-2 transition-colors text-karina-mustard font-bold">Fundación</a>
 
       </nav>
 
       <!-- BLOQUE DERECHO: Idioma + Botón Colaborar Shimmer -->
       <div class="flex items-center gap-4 sm:gap-5">
-        <button class="text-xs font-bold text-[#343434] hover:text-[#2680BD] transition-colors">ES/EN</button>
         <button onclick="openModal('modal-colaborar')" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
           <span>Colaborar</span>
           <i class="fa-solid fa-heart text-karina-terracotta text-[10px]"></i>
@@ -371,9 +370,8 @@
 
           <!-- Botones de Acción -->
           <div class="pt-2 flex flex-wrap items-center gap-4">
-            <a href="#impacto" class="px-7 py-3.5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold shadow-md transition-all active:scale-95 flex items-center gap-2.5">
+            <a href="#impacto" class="px-7 py-3.5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold shadow-md transition-all active:scale-95 flex items-center justify-center">
               <span>Conoce el Impacto</span>
-              <i class="fa-solid fa-arrow-down text-xs text-karina-mustard"></i>
             </a>
 
             <button onclick="openModal('modal-video')" class="px-6 py-3.5 rounded-full bg-white hover:bg-karina-cream text-karina-charcoal text-xs font-semibold border border-black/15 shadow-sm transition-all active:scale-95 flex items-center gap-2">
@@ -440,7 +438,6 @@
         
         <div class="max-w-3xl space-y-3 text-left">
           <div class="flex items-center gap-2 text-karina-terracotta">
-            <i class="fa-solid fa-hourglass-half text-xs"></i>
             <span class="text-xs font-mono font-bold uppercase tracking-widest">EL TIEMPO ES AHORA</span>
           </div>
           <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
@@ -918,5 +915,9 @@
   <!-- JavaScript Modular Global -->
   <script src="assets/js/main.js"></script>
 
+  <!-- Botón Flotante Discreto de Idioma -->
+  <button id="floating-lang-btn" onclick="if(window.toggleLanguage) toggleLanguage()" class="fixed bottom-6 right-6 z-40 bg-white/80 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] text-xs font-bold text-[#1E1E1E] shadow-md hover:shadow-lg transition-all active:scale-95" aria-label="Cambiar idioma">
+    <span>ES/EN</span>
+  </button>
 </body>
 </html>
