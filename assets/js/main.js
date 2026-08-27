@@ -1358,12 +1358,12 @@ window.accionRapida = accionRapida;
 // 17. CONTROLADOR DE CAMBIO DE IDIOMA (BOTÓN FLOTANTE DISCRETO)
 // ==========================================
 function toggleLanguage() {
-  const btns = document.querySelectorAll('#floating-lang-btn, .floating-lang-toggle');
+  const btns = document.querySelectorAll('#floating-lang-btn, .floating-lang-toggle, .fixed button');
   btns.forEach(btn => {
     const span = btn.querySelector('span') || btn;
     if (span.textContent.trim().toUpperCase() === 'ES/EN') {
       span.textContent = 'EN/ES';
-    } else {
+    } else if (span.textContent.trim().toUpperCase() === 'EN/ES') {
       span.textContent = 'ES/EN';
     }
   });

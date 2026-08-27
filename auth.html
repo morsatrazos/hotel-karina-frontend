@@ -77,15 +77,11 @@
 
           <div class="dropdown-hover-bridge absolute top-full left-0 w-full h-3"></div>
 
-          <!-- Panel Desplegable Asimétrico Orgánico Sedes -->
-          <div class="nav-dropdown-panel absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[440px] bg-[#FAF6F0]/95 backdrop-blur-xl rounded-pebble p-5 shadow-2xl border border-[#E8DFC8] opacity-0 pointer-events-none translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 text-left z-50">
+                    <!-- Panel Desplegable Asimétrico Orgánico Sedes -->
+          <div class="nav-dropdown-panel absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[440px] bg-[#FAF6F0]/95 backdrop-blur-xl rounded-pebble p-6 pt-6 shadow-2xl border border-[#E8DFC8] overflow-hidden opacity-0 pointer-events-none translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 text-left z-50">
             
-            <div class="flex items-center justify-between pb-2 mb-2 border-b border-[#E8DFC8]/60">
+            <div class="flex items-center pb-2.5 mb-2 border-b border-[#E8DFC8]/60">
               <span class="text-[11px] font-mono tracking-wider text-[#726B63] font-bold uppercase">Sedes Kariña</span>
-              <a href="index.html#sedes" class="text-[11px] font-bold text-[#2680BD] hover:text-[#1E1E1E] transition-colors flex items-center gap-1">
-                <span>Ver mapa</span>
-                <i class="fa-solid fa-arrow-right text-[9px]"></i>
-              </a>
             </div>
 
             <div class="space-y-1">
@@ -132,10 +128,10 @@
 
           <div class="dropdown-hover-bridge absolute top-full left-0 w-full h-3"></div>
 
-          <!-- Panel Desplegable Asimétrico Orgánico Suites -->
-          <div class="nav-dropdown-panel absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[460px] bg-[#FAF6F0]/95 backdrop-blur-xl rounded-pebble-reverse p-5 shadow-2xl border border-[#E8DFC8] opacity-0 pointer-events-none translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 text-left z-50">
+                    <!-- Panel Desplegable Asimétrico Orgánico Suites con Suficiente Padding Superior y Overflow Hidden -->
+          <div class="nav-dropdown-panel absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[470px] bg-[#FAF6F0]/95 backdrop-blur-xl rounded-pebble-reverse px-6 pt-7 pb-5 shadow-2xl border border-[#E8DFC8] overflow-hidden opacity-0 pointer-events-none translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 text-left z-50">
             
-            <div class="flex items-center justify-between pb-2 mb-2 border-b border-[#E8DFC8]/60">
+            <div class="flex items-center justify-between pb-2.5 mb-2 border-b border-[#E8DFC8]/60">
               <span class="text-[11px] font-mono tracking-wider text-[#726B63] font-bold uppercase">Suites Kariña</span>
               <a href="suites.html" class="text-[11px] font-bold text-[#2680BD] hover:text-[#1E1E1E] transition-colors flex items-center gap-1">
                 <span>Ver catálogo completo</span>
@@ -207,6 +203,10 @@
 
       <!-- BLOQUE DERECHO: Idioma + Botón Contacto Shimmer -->
       <div class="flex items-center gap-4 sm:gap-5">
+                <a href="auth.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#1E1E1E] hover:text-[#2680BD] px-3 py-2 rounded-full hover:bg-[#E8DFC8]/40 transition">
+          <i class="fa-regular fa-user text-xs text-[#726B63]" data-lucide="user"></i>
+          <span>Mi Cuenta</span>
+        </a>
         <a href="contacto.html" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
           <span>Contacto</span>
           <i class="fa-solid fa-envelope text-[10px]"></i>
@@ -574,10 +574,13 @@
 
   <!-- JavaScript Modular Global -->
   <script src="assets/js/main.js"></script>
-
-  <!-- Botón Flotante Discreto de Idioma -->
-  <button id="floating-lang-btn" onclick="if(window.toggleLanguage) toggleLanguage()" class="fixed bottom-6 right-6 z-40 bg-white/80 hover:bg-white backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] text-xs font-bold text-[#1E1E1E] shadow-md hover:shadow-lg transition-all active:scale-95" aria-label="Cambiar idioma">
-    <span>ES/EN</span>
-  </button>
+  <!-- Cápsula Flotante Discreta: Cuenta + Idioma -->
+  <div class="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
+    <a href="auth.html" class="flex items-center gap-1 text-[#1E1E1E] hover:text-[#2680BD] transition pr-2 border-r border-[#E8DFC8]">
+      <i class="fa-regular fa-user text-[11px] text-[#726B63]" data-lucide="user"></i>
+      <span>Cuenta</span>
+    </a>
+    <button onclick="if(window.toggleLanguage) toggleLanguage()" class="text-[#726B63] hover:text-[#1E1E1E] transition font-semibold"><span>ES/EN</span></button>
+  </div>
 </body>
 </html>
