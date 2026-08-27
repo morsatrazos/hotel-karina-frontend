@@ -88,6 +88,24 @@ body {
   padding-right: 1.75rem !important;
 }
 
+/* Botón de cuenta: prevenir wrapping y adaptar a modo cápsula */
+.nav-account-btn {
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 1 !important;
+}
+
+#main-navbar.navbar-scrolled .nav-account-text {
+  display: none !important;
+}
+
+#main-navbar.navbar-scrolled .nav-account-btn {
+  padding: 0.5rem !important;
+  border-radius: 9999px !important;
+  background-color: rgba(232, 223, 200, 0.4) !important;
+}
+
 /* Brillo sutil en el botón de reserva */
 .shimmer-btn {
   position: relative;
