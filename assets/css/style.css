@@ -30,6 +30,16 @@ body {
   border-radius: 120px 32px 32px 32px !important;
 }
 
+/* Transición Cruzada Fluida de Suites */
+.suite-fade {
+  transition: opacity 260ms cubic-bezier(0.16, 1, 0.3, 1), transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.suite-fade.changing {
+  opacity: 0.15;
+  transform: translateY(6px);
+}
+
 /* ===================================================
    MORPHING FLOATING ISLAND NAVBAR
    =================================================== */
@@ -572,13 +582,13 @@ body {
 }
 
 /* Micro-animación en las tarjetas internas del Dropdown */
-.dropdown-item-card {
-  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+/* Micro-animación en las opciones del Dropdown */
+.dropdown-item-row {
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.dropdown-item-card:hover {
-  transform: translateY(-2px);
-  background-color: #FFFFFF !important;
+.dropdown-item-row:hover {
+  transform: translateX(3px);
 }
 
 /* Puente invisible para evitar que el menú se cierre al mover el mouse */
@@ -589,7 +599,6 @@ body {
 /* Soporte para que los dropdowns se adapten perfectamente al navbar comprimido en scroll */
 #main-navbar.navbar-scrolled .nav-dropdown-panel {
   top: calc(100% + 12px) !important;
-  border-radius: 28px !important;
 }
 
 /* ===================================================

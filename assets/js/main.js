@@ -309,25 +309,37 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: 'Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.',
       quote: '"Un santuario de descanso pensado para el viajero moderno."',
       price: '$120',
-      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Doble-Model.jpg'
+      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Doble-Model.jpg',
+      amenities: [
+        'WiFi Alta Velocidad 100M',
+        'Minibar Premium',
+        'Desayuno incluido'
+      ]
     },
     'dos-ambientes': {
       title: 'Suite Ejecutiva Dúplex',
-      desc: 'Espacio ampliado con sala de reuniones privada, lencería de alta gama y área de descanso independiente.',
+      desc: 'Espacio ampliado con sala de reuniones privada, lencería de alta gama y área de descanso independiente en dos niveles.',
       quote: '"La combinación perfecta entre productividad y bienestar de alto nivel."',
       price: '$170',
-      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-2.jpg'
+      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-2.jpg',
+      amenities: [
+        '2 Niveles y Sala VIP de Estar',
+        'Smart TV 55" & Fibra Óptica',
+        'Desayuno Buffet y Acceso Club'
+      ]
     }
   };
 
   window.switchSuite = function(type) {
     const btnUn = document.getElementById('btn-un-ambiente');
     const btnDos = document.getElementById('btn-dos-ambientes');
+    const container = document.getElementById('home-suite-container') || document.querySelector('#suites .grid');
     const title = document.getElementById('suite-title');
     const desc = document.getElementById('suite-desc');
     const quote = document.getElementById('suite-quote');
     const price = document.getElementById('suite-price');
     const img = document.getElementById('suite-img');
+    const amenitiesList = document.getElementById('suite-amenities');
 
     if (!btnUn || !btnDos) return;
 
@@ -339,15 +351,27 @@ document.addEventListener('DOMContentLoaded', () => {
       btnUn.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434]/30 bg-transparent text-[#343434] hover:border-[#343434] transition-all';
     }
 
-    img.style.opacity = '0';
+    if (container) container.classList.add('changing');
+
     setTimeout(() => {
-      title.textContent = suiteData[type].title;
-      desc.textContent = suiteData[type].desc;
-      quote.textContent = suiteData[type].quote;
-      price.textContent = suiteData[type].price;
-      img.src = suiteData[type].img;
-      img.style.opacity = '1';
-    }, 200);
+      const data = suiteData[type];
+      if (title) title.textContent = data.title;
+      if (desc) desc.textContent = data.desc;
+      if (quote) quote.textContent = data.quote;
+      if (price) price.textContent = data.price;
+      if (img) img.src = data.img;
+
+      if (amenitiesList && data.amenities) {
+        amenitiesList.innerHTML = data.amenities.map(a => `
+          <div class="flex items-center gap-3 text-xs font-semibold text-[#343434]">
+            <i class="fa-regular fa-circle-check text-[#F0A800]"></i>
+            <span>${a}</span>
+          </div>
+        `).join('');
+      }
+
+      if (container) container.classList.remove('changing');
+    }, 150);
   };
 
   // ==========================================
