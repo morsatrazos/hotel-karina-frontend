@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
       mapsUrl: "https://maps.google.com/?cid=12057092587787417265",
       phone: "+58 0424-9169603",
       images: [
-        { src: "https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png", caption: "Piscina & Caney El Tigre" },
-        { src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80", caption: "Salones de Eventos Corporativos" },
-        { src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80", caption: "Canchas Deportivas & Gimnasio" },
-        { src: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80", caption: "Suites Dúplex de Alto Nivel" }
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-3.webp", caption: "Piscina Resort & Caney Tropical" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-1.webp", caption: "Lobby Principal & Recepción" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Business-Center--El-Tigre.webp", caption: "Business Center & Espacios Corporativos" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp", caption: "Gastronomía de Autor & Restaurante Moriche" }
       ]
     }
   ];
@@ -656,7 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: "Sumergete en la refrescante piscina resort de Guañipa, área de caneyes, canchas deportivas y ambiente familiar único en la Mesa de Guanipa.",
       tag: "Piscina Guañipa & Caney",
       price: "$22",
-      img: "https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png"
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-3.webp"
     }
   ];
 

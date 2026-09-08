@@ -430,54 +430,127 @@
           Todas
         </button>
         <button onclick="filterBentoGallery('piscinas', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Piscinas
+          Piscinas & Caney
         </button>
         <button onclick="filterBentoGallery('gastronomia', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Gastronomía
+          Gastronomía Moriche
         </button>
-        <button onclick="filterBentoGallery('padel', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Pádel & Deporte
-        </button>
-        <button onclick="filterBentoGallery('eventos', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Eventos
+        <button onclick="filterBentoGallery('lobby', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
+          Lobby & Business Center
         </button>
       </div>
 
-      <!-- Grilla Bento Asimétrica -->
+      <!-- Grilla Bento Asimétrica Dinámica -->
       <div id="bento-container" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch pt-4 text-left">
         
-        <!-- Foto 1: Principal Grande -->
+        <!-- Foto 1: Piscina Principal Grande (7 cols) -->
         <div class="bento-card bento-item-all bento-item-piscinas md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://uploads.onecompiler.io/44s48z3dm/1787540085674/Guanipa-Piscina-Kari%C3%B1a.png" alt="Piscina El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-3.webp" alt="Piscina El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
             <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Piscina Resort & Caney</span>
             <h3 class="text-xl font-light text-white">Ambiente Tropical Guañipa</h3>
           </div>
         </div>
 
-        <!-- Foto 2: Forma Óval / Asimétrica Reversa -->
-        <div class="bento-card bento-item-all bento-item-eventos md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80" alt="Sala Ejecutiva El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        <!-- Foto 2: Lobby Principal (5 cols) -->
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-1.webp" alt="Lobby El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Salones Ejecutivos</span>
-            <h3 class="text-xl font-light text-white">Reuniones de Alto Nivel</h3>
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Lobby & Recepción</span>
+            <h3 class="text-xl font-light text-white">Bienvenida Cálida y Exclusiva</h3>
           </div>
         </div>
 
-        <!-- Foto 3: Jardines -->
-        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-4 h-[240px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Jardines" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Jardines & Caminerías</span>
+        <!-- Foto 3: Carpaccio Gourmet (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[280px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Carpaccio-En-El-Tigre.webp" alt="Carpaccio El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Gastronomía de Autor</span>
+            <h4 class="text-base font-light text-white">Carpaccio Gourmet Moriche</h4>
+          </div>
         </div>
 
-        <!-- Foto 4: Restaurante -->
-        <div class="bento-card bento-item-all bento-item-gastronomia bento-item-eventos md:col-span-8 h-[240px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Restaurante" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Restaurante Moriche — Especialidades Culinarias</span>
+        <!-- Foto 4: Paella Marinera Grande (8 cols) -->
+        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-8 h-[280px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp" alt="Paella en El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-karina-mustard/90 text-karina-charcoal font-bold px-2 py-0.5 rounded-full">Especialidad de la Casa</span>
+            <h4 class="text-lg font-light text-white">Paella Marinera Tradición Kariña</h4>
+          </div>
+        </div>
+
+        <!-- Foto 5: Business Center & Coworking (6 cols) -->
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-6 h-[300px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Business-Center--El-Tigre.webp" alt="Business Center El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Business Center</span>
+            <h4 class="text-base font-light text-white">Espacios de Trabajo y Conectividad Alta Densidad</h4>
+          </div>
+        </div>
+
+        <!-- Foto 6: Deck & Solárium (6 cols) -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-6 h-[300px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-4.webp" alt="Deck Piscina El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Áreas de Solárium</span>
+            <h4 class="text-base font-light text-white">Deck & Reposeras al Aire Libre</h4>
+          </div>
+        </div>
+
+        <!-- Foto 7: Pasticho Tradicional (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Pasticho-en-el-Tigre.webp" alt="Pasticho El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Menú Tradicional</span>
+            <h4 class="text-sm font-light text-white">Pasticho Artesanal Moriche</h4>
+          </div>
+        </div>
+
+        <!-- Foto 8: Lounge de Espera (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-2.webp" alt="Lounge Lobby El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Lounge de Espera</span>
+            <h4 class="text-sm font-light text-white">Confort y Diseño Contemporáneo</h4>
+          </div>
+        </div>
+
+        <!-- Foto 9: Piscina Atardecer (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-2.webp" alt="Piscina Atardecer El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Experiencia Nocturna</span>
+            <h4 class="text-sm font-light text-white">Piscina Iluminada & Atardeceres</h4>
+          </div>
+        </div>
+
+        <!-- Foto 10: Caney Tropical (6 cols) -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-6 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-5.webp" alt="Caney El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Caney Tropical</span>
+            <h4 class="text-sm font-light text-white">Zonas de Sombra y Relajación</h4>
+          </div>
+        </div>
+
+        <!-- Foto 11: Hall Central Interior (6 cols) -->
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-6 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre.webp" alt="Interiores Lobby El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Interiores Kariña</span>
+            <h4 class="text-sm font-light text-white">Hospitalidad y Calidez</h4>
+          </div>
         </div>
 
       </div>
@@ -669,7 +742,7 @@
         <!-- Foto Orgánica Derecha -->
         <div class="lg:col-span-6">
           <div class="relative h-[320px] sm:h-[400px] w-full rounded-[36px] overflow-hidden shadow-xl bg-black/10 group cursor-pointer border border-black/5">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" 
+            <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp" 
                  alt="Restaurante Moriche El Tigre" 
                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-85"></div>
