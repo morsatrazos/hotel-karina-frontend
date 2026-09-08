@@ -480,6 +480,19 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
+      id: 'premium-eltigre',
+      title: 'Suite Premium El Tigre',
+      desc: 'Santuario de calma y amplitud superior en la Mesa de Guanipa, con acabados nobles, lounge independiente y atención personalizada.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp',
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp', tag: 'Vista Principal' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20PremiumEl%20Tigre.webp', tag: 'Dormitorio King Size' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite-Premium%20El%20Tigre.webp', tag: 'Lounge & Confort' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite-Premium-2.webp', tag: 'Área de Estar' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite-Premium-3-El-Tigre.webp', tag: 'Detalles & Acabados' }
+      ]
+    },
+    {
       id: 'estandar-eltigre',
       title: 'Suite Estándar El Tigre',
       desc: 'Excelente distribución ejecutiva orientada al descanso silencioso en la Mesa de Guanipa, con acceso ilimitado a áreas de piscina.',
