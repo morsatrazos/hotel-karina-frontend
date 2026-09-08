@@ -471,13 +471,28 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'premium-maturin',
       title: 'Suite Premium Maturín',
       desc: 'Nuestra suite insignia en la Sede Maturín ofrece vistas panorámicas al resort, lounge independiente y equipamiento ejecutivo de alta densidad.',
-      image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80',
+      gallery: [
+        { src: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', tag: 'Cama Principal King Size' },
+        { src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', tag: 'Baño Privado' },
+        { src: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', tag: 'Área Ejecutiva' },
+        { src: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80', tag: 'Minibar & Vista' }
+      ]
     },
     {
       id: 'estandar-eltigre',
       title: 'Suite Estándar El Tigre',
       desc: 'Excelente distribución ejecutiva orientada al descanso silencioso en la Mesa de Guanipa, con acceso ilimitado a áreas de piscina.',
-      image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80'
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp', tag: 'Vista Principal' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-2.webp', tag: 'Dormitorio & Cama' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-3.webp', tag: 'Área de Confort' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-4.webp', tag: 'Ambiente Integrado' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-5.webp', tag: 'Espacio de Descanso' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-6.webp', tag: 'Baño & Acabados' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-7.webp', tag: 'Perspectiva General' }
+      ]
     },
     {
       id: 'premium-ptamata',
@@ -544,12 +559,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleEl = document.getElementById('suite-modal-title');
     const descEl = document.getElementById('suite-modal-desc');
     const imgEl = document.getElementById('suite-modal-main-img');
+    const tagEl = document.getElementById('suite-modal-tag');
     const counterEl = document.getElementById('suite-modal-counter');
+    const thumbContainer = document.getElementById('suite-modal-thumbnails');
 
     if (titleEl) titleEl.textContent = suite.title;
     if (descEl) descEl.textContent = suite.desc;
     if (imgEl) imgEl.src = suite.image;
-    if (counterEl) counterEl.textContent = `0${currentCatalogSuiteIdx + 1} / 04`;
+    if (tagEl) tagEl.textContent = 'Vista Principal';
+    if (counterEl) counterEl.textContent = `0${currentCatalogSuiteIdx + 1} / 05`;
+
+    if (thumbContainer && suite.gallery && suite.gallery.length > 0) {
+      const cols = suite.gallery.length >= 7 ? 7 : (suite.gallery.length > 4 ? 6 : 4);
+      thumbContainer.className = `grid grid-cols-${cols} gap-2`;
+      thumbContainer.innerHTML = suite.gallery.map(item => `
+        <button onclick="setSuiteModalImg('${item.src}', '${item.tag}')" class="h-14 sm:h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard transition-transform active:scale-95 group" title="${item.tag}">
+          <img src="${item.src}" alt="${item.tag}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        </button>
+      `).join('');
+    }
   }
 
   window.navigateSuiteInModal = function(dir) {

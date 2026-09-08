@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -247,7 +247,7 @@
 
               <!-- Suite 2: Estándar Ejecutiva -->
               <a href="suites.html#catalogo" class="dropdown-item-row flex items-center gap-3.5 p-2 rounded-2xl hover:bg-[#E8DFC8]/30 transition-all group/item">
-                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=200&q=80" alt="Suite Estándar" class="w-12 h-12 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
+                <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp" alt="Suite Estándar" class="w-12 h-12 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between">
                     <h4 class="text-xs font-bold text-[#1E1E1E] group-hover/item:text-karina-mustard transition-colors">Suite Estándar Ejecutiva</h4>
@@ -875,16 +875,16 @@
             <span id="suite-modal-tag" class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-white text-[11px]">Vista Principal</span>
           </div>
 
-          <!-- Miniaturas 6 Slots (Fotos + Video) -->
-          <div class="grid grid-cols-6 gap-2">
+          <!-- Miniaturas Dinámicas -->
+          <div id="suite-modal-thumbnails" class="grid grid-cols-6 gap-2">
             <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', 'Cama Principal King Size')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
               <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
             </button>
             <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', 'Baño Privado & Amenidades')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
               <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
             </button>
-            <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', 'Área Ejecutiva & Escritorio')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
-              <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            <button onclick="setSuiteModalImg('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp', 'Área Ejecutiva & Escritorio')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
+              <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp" class="w-full h-full object-cover">
             </button>
             <button onclick="setSuiteModalImg('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80', 'Barra & Minibar')" class="h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard">
               <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
@@ -1037,17 +1037,47 @@
         title: "SUITE PREMIUM",
         desc: "Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.",
         quote: '"Un santuario de descanso pensado para el viajero moderno."',
-        image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"
+        image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80",
+        gallery: [
+          { src: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80", tag: "Cama Principal King Size" },
+          { src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80", tag: "Baño Privado & Amenidades" },
+          { src: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80", tag: "Área Ejecutiva & Escritorio" },
+          { src: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80", tag: "Barra & Minibar" },
+          { src: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80", tag: "Vista a la Piscina" },
+          { src: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80", tag: "Recorrido en Video HD" }
+        ]
       },
       2: {
         title: "SUITE ESTÁNDAR",
         desc: "Dos ambientes independientes combinando sala ejecutiva y habitación principal para máxima privacidad y estadías prolongadas.",
         quote: '"Espacio expansivo ideal para directivos y ejecutivos de alto nivel."',
-        image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80"
+        image: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp",
+        gallery: [
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp", tag: "Vista Principal" },
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-2.webp", tag: "Dormitorio & Cama" },
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-3.webp", tag: "Área de Confort" },
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-4.webp", tag: "Ambiente Integrado" },
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-5.webp", tag: "Espacio de Descanso" },
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-6.webp", tag: "Baño & Acabados" },
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-7.webp", tag: "Perspectiva General" }
+        ]
       }
     };
 
     let currentSuiteType = 1;
+
+    function renderSuiteModalThumbnails(type) {
+      const container = document.getElementById('suite-modal-thumbnails');
+      if (!container) return;
+      const gallery = suitesData[type]?.gallery || [];
+      const cols = gallery.length >= 7 ? 7 : (gallery.length || 6);
+      container.className = `grid grid-cols-${cols} gap-2`;
+      container.innerHTML = gallery.map(item => `
+        <button onclick="setSuiteModalImg('${item.src}', '${item.tag}')" class="h-14 sm:h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard transition-transform active:scale-95 group" title="${item.tag}">
+          <img src="${item.src}" alt="${item.tag}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        </button>
+      `).join('');
+    }
 
     function switchSuiteView(type) {
       currentSuiteType = type;
@@ -1085,12 +1115,15 @@
         const titleEl = document.getElementById('suite-modal-title');
         const descEl = document.getElementById('suite-modal-desc');
         const imgEl = document.getElementById('suite-modal-main-img');
+        const tagEl = document.getElementById('suite-modal-tag');
         const counterEl = document.getElementById('suite-modal-counter');
 
         if (titleEl) titleEl.textContent = data.title;
         if (descEl) descEl.textContent = data.desc;
         if (imgEl) imgEl.src = data.image;
+        if (tagEl) tagEl.textContent = 'Vista Principal';
         if (counterEl) counterEl.textContent = `0${currentSuiteType} / 02`;
+        renderSuiteModalThumbnails(currentSuiteType);
         if (wrapper) wrapper.style.opacity = '1';
       }, 120);
     }
@@ -1101,12 +1134,15 @@
       const titleEl = document.getElementById('suite-modal-title');
       const descEl = document.getElementById('suite-modal-desc');
       const imgEl = document.getElementById('suite-modal-main-img');
+      const tagEl = document.getElementById('suite-modal-tag');
       const counterEl = document.getElementById('suite-modal-counter');
 
       if (titleEl) titleEl.textContent = data.title;
       if (descEl) descEl.textContent = data.desc;
       if (imgEl) imgEl.src = data.image;
+      if (tagEl) tagEl.textContent = 'Vista Principal';
       if (counterEl) counterEl.textContent = `0${currentSuiteType} / 02`;
+      renderSuiteModalThumbnails(currentSuiteType);
 
       if (modal) {
         modal.classList.add('is-open');
