@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mapsUrl: "https://maps.google.com/?cid=9643206305083018040",
       phone: "+58 0424-9169602",
       images: [
-        { src: "https://uploads.onecompiler.io/44s48z3dm/1787540097635/Fachada-Aerea.2.jpg", caption: "Vista Aérea Punta de Mata" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp", caption: "Fachada Principal Punta de Mata" },
         { src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80", caption: "Piscina Central Executive" },
         { src: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80", caption: "Centro de Negocios Corporativo" },
         { src: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80", caption: "Juice & Coffee Bar Executive" }
@@ -510,8 +510,27 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'premium-ptamata',
       title: 'Suite Premium Punta de Mata',
-      desc: 'Santuario corporativo rodeado de jardines tropicales en la Zona Industrial de Punta de Mata.',
-      image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80'
+      desc: 'Santuario corporativo de máxima amplitud y privacidad en la Zona Industrial de Punta de Mata, con cama King Size, estación de trabajo ergonómica y atmósfera insonorizada.',
+      image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
+      gallery: [
+        { src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', tag: 'Vista Principal' },
+        { src: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', tag: 'Cama King & Trabajo' },
+        { src: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', tag: 'Lounge Ejecutivo' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp', tag: 'Fachada Punta de Mata' }
+      ]
+    },
+    {
+      id: 'estandar-ptamata',
+      title: 'Suite Estándar Punta de Mata',
+      desc: 'Confort acústico, conectividad dedicada de alta velocidad y descanso superior para directivos y profesionales en misiones operativas.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp', tag: 'Vista Principal / Dormitorio' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/Suite-Estandar-PuntadeMata_resultado.webp', tag: 'Dormitorio & Confort' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-estandar-ptmata-2.webp', tag: 'Área de Descanso' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-estandar-ptmata-.webp', tag: 'Espacio Integrado' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp', tag: 'Fachada Sede Punta de Mata' }
+      ]
     },
     {
       id: 'duplex-maturin',
@@ -588,7 +607,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (descEl) descEl.textContent = suite.desc;
     if (imgEl) imgEl.src = suite.image;
     if (tagEl) tagEl.textContent = 'Vista Principal';
-    if (counterEl) counterEl.textContent = `0${currentCatalogSuiteIdx + 1} / 05`;
+    if (counterEl) counterEl.textContent = `0${currentCatalogSuiteIdx + 1} / 0${catalogSuitesData.length}`;
 
     if (thumbContainer && suite.gallery && suite.gallery.length > 0) {
       const cols = suite.gallery.length >= 7 ? 7 : (suite.gallery.length > 4 ? 6 : 4);
@@ -657,7 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: "Un día completo de paz corporativa rodeado de jardines tropicales, acceso a piscina ejecutiva, toallas y consumo acreditado en restaurante.",
       tag: "Piscina Executive & Jardines",
       price: "$20",
-      img: "https://uploads.onecompiler.io/44s48z3dm/1787540097635/Fachada-Aerea.2.jpg"
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp"
     },
     {
       title: "Hotel Kariña El Tigre",
