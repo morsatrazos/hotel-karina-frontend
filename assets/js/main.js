@@ -76,9 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
       phone: "+58 0424-9169602",
       images: [
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp", caption: "Fachada Principal Punta de Mata" },
-        { src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80", caption: "Piscina Central Executive" },
-        { src: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80", caption: "Centro de Negocios Corporativo" },
-        { src: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80", caption: "Juice & Coffee Bar Executive" }
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp", caption: "Lobby Principal & Recepción VIP" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp", caption: "Restaurante El Caney & Gastronomía" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp", caption: "Jardines & Fachadas Interiores" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata-2.webp", caption: "Lounge Ejecutivo & Área de Espera" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-2ptamata.webp", caption: "Acceso Frontal & Estacionamiento" }
       ]
     },
     {
@@ -189,10 +191,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    for (let i = 0; i < 4; i++) {
-      const thumb = document.getElementById(`thumb-${i}`);
-      if (thumb && sede.images[i]) {
-        thumb.src = sede.images[i].src;
+    const thumbContainer = document.getElementById('modal-thumbnails-container');
+    if (thumbContainer && sede.images) {
+      const cols = sede.images.length >= 6 ? 6 : (sede.images.length >= 4 ? sede.images.length : 4);
+      thumbContainer.className = `grid grid-cols-${cols} gap-2 pt-1`;
+      thumbContainer.innerHTML = sede.images.map((img, i) => `
+        <button onclick="setModalImage(${i})" class="thumb-btn ${i === 0 ? 'is-active-thumb' : ''} aspect-square rounded-xl overflow-hidden border-2 border-transparent focus:ring-1 focus:ring-karina-blue">
+          <img id="thumb-${i}" src="${img.src}" class="w-full h-full object-cover" alt="${img.caption}">
+        </button>
+      `).join('');
+    } else {
+      for (let i = 0; i < 4; i++) {
+        const thumb = document.getElementById(`thumb-${i}`);
+        if (thumb && sede.images[i]) {
+          thumb.src = sede.images[i].src;
+        }
       }
     }
 
@@ -515,7 +528,9 @@ document.addEventListener('DOMContentLoaded', () => {
       gallery: [
         { src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', tag: 'Vista Principal' },
         { src: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', tag: 'Cama King & Trabajo' },
-        { src: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', tag: 'Lounge Ejecutivo' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp', tag: 'Lobby & Recepción VIP' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp', tag: 'Restaurante El Caney' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp', tag: 'Jardines & Fachadas Interiores' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp', tag: 'Fachada Punta de Mata' }
       ]
     },
