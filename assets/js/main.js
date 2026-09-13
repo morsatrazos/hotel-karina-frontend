@@ -441,23 +441,89 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 6. LIGHTBOX MODAL PARA IMÁGENES
+  // 6. LIGHTBOX MODAL UNIVERSAL PARA IMÁGENES
   // ==========================================
-  const lightboxModal = document.getElementById('lightbox-modal');
-  const lightboxImg = document.getElementById('lightbox-img');
+  window.openLightbox = function(srcOrEl, title = '', desc = '') {
+    let src = '';
+    let captionText = '';
 
-  window.openLightbox = function(el) {
-    const img = el.querySelector('img');
-    if (!img) return;
-    lightboxImg.src = img.src;
-    lightboxModal.classList.remove('opacity-0', 'pointer-events-none');
-    document.body.style.overflow = 'hidden';
+    if (typeof srcOrEl === 'string') {
+      src = srcOrEl;
+      captionText = title ? (desc ? `${title} — ${desc}` : title) : '';
+    } else if (srcOrEl && srcOrEl.tagName === 'IMG') {
+      src = srcOrEl.src;
+      captionText = title || srcOrEl.alt || '';
+    } else if (srcOrEl && srcOrEl.querySelector) {
+      const img = srcOrEl.querySelector('img');
+      if (img) {
+        src = img.src;
+        captionText = title || img.alt || '';
+      }
+    }
+
+    if (!src) return;
+
+    // Caso A: Modal moderno con transiciones (lightbox-modal)
+    const modernModal = document.getElementById('lightbox-modal');
+    if (modernModal) {
+      const imgEl = modernModal.querySelector('#lightbox-img') || document.getElementById('lightbox-img');
+      const captionEl = modernModal.querySelector('#lightbox-caption') || document.getElementById('lightbox-caption');
+      
+      if (imgEl) imgEl.src = src;
+      if (captionEl) {
+        captionEl.textContent = captionText;
+        if (captionText) {
+          captionEl.classList.remove('hidden');
+        } else {
+          captionEl.classList.add('hidden');
+        }
+      }
+
+      modernModal.classList.remove('opacity-0', 'pointer-events-none');
+      modernModal.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+      return;
+    }
+
+    // Caso B: Modal Fundación (modal-lightbox)
+    const fundacionModal = document.getElementById('modal-lightbox');
+    if (fundacionModal) {
+      const img = fundacionModal.querySelector('#lightbox-img') || document.getElementById('lightbox-img');
+      const titleEl = fundacionModal.querySelector('#lightbox-title') || document.getElementById('lightbox-title');
+      const descEl = fundacionModal.querySelector('#lightbox-desc') || document.getElementById('lightbox-desc');
+
+      if (img) img.src = src;
+      if (titleEl) titleEl.textContent = title || '';
+      if (descEl) descEl.textContent = desc || '';
+
+      if (typeof window.openModal === 'function') {
+        window.openModal('modal-lightbox');
+      } else {
+        fundacionModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
   };
 
   window.closeLightbox = function() {
-    lightboxModal.classList.add('opacity-0', 'pointer-events-none');
+    const modernModal = document.getElementById('lightbox-modal');
+    if (modernModal) {
+      modernModal.classList.add('opacity-0', 'pointer-events-none');
+      modernModal.classList.remove('opacity-100');
+    }
+
+    const fundacionModal = document.getElementById('modal-lightbox');
+    if (fundacionModal) {
+      if (typeof window.closeModal === 'function') {
+        window.closeModal('modal-lightbox');
+      } else {
+        fundacionModal.classList.add('hidden');
+      }
+    }
+
     document.body.style.overflow = '';
   };
+
 
   // ==========================================
   // 7. MOTOR INTERSECTION OBSERVER (ANIMACIONES)
@@ -1283,12 +1349,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Cerrar modal al presionar Escape
+  // Cerrar modales al presionar Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       window.closeGastronomiaMenu();
+      window.closeLightbox();
     }
   });
+
 
   // 4. Asistente Arimiña-IA Sommelier
   window.consultGastronomiaAI = function() {
@@ -1406,26 +1474,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Lightbox específico para Fundación Kariña y adaptativo para imágenes de otras páginas
-  const originalOpenLightbox = window.openLightbox;
-  window.openLightbox = function(srcOrEl, title, desc) {
-    if (srcOrEl && typeof srcOrEl === 'object' && srcOrEl.querySelector) {
-      if (typeof originalOpenLightbox === 'function') {
-        originalOpenLightbox(srcOrEl);
-        return;
-      }
-    }
 
-    const img = document.getElementById('lightbox-img');
-    const titleEl = document.getElementById('lightbox-title');
-    const descEl = document.getElementById('lightbox-desc');
-
-    if (img) img.src = (typeof srcOrEl === 'string') ? srcOrEl : '';
-    if (titleEl && title) titleEl.textContent = title;
-    if (descEl && desc) descEl.textContent = desc;
-
-    openModal('modal-lightbox');
-  };
 
   // ===================================================
   // 13. CONTROLADORES: PÁGINAS LEGALES & RESCATE 404
