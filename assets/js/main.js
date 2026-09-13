@@ -1362,12 +1362,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // 4. Carrusel de Propuestas Aliadas Club Palma Real
+  // 4. Carrusel de Propuestas Aliadas Club Palma Real (Touch & Mouse Drag)
   window.scrollPalmaRealCarousel = function(direction) {
     const track = document.getElementById('palma-real-carousel-track');
     if (!track) return;
     const card = track.querySelector('.snap-start');
-    const cardWidth = card ? card.offsetWidth + 16 : 360;
+    const cardWidth = card ? card.offsetWidth + 16 : 320;
     track.scrollBy({ left: cardWidth * direction, behavior: 'smooth' });
   };
 
@@ -1375,36 +1375,63 @@ document.addEventListener('DOMContentLoaded', () => {
   const setupPalmaRealCarousel = () => {
     const track = document.getElementById('palma-real-carousel-track');
     const dots = document.querySelectorAll('.palma-dot');
-    if (!track || !dots.length) return;
+    if (!track) return;
 
-    track.addEventListener('scroll', () => {
+    // Sincronización de dots con scroll táctil
+    const updateDots = () => {
+      if (!dots.length) return;
       const scrollLeft = track.scrollLeft;
       const card = track.querySelector('.snap-start');
-      const cardWidth = card ? card.offsetWidth + 16 : 360;
+      const cardWidth = card ? card.offsetWidth + 16 : 320;
       const activeIndex = Math.min(dots.length - 1, Math.max(0, Math.round(scrollLeft / cardWidth)));
       dots.forEach((dot, idx) => {
         if (idx === activeIndex) {
-          dot.className = 'palma-dot w-5 h-2 rounded-full bg-karina-charcoal transition-all cursor-pointer';
+          dot.className = 'palma-dot w-5 h-1.5 rounded-full bg-karina-charcoal transition-all cursor-pointer';
         } else {
-          dot.className = 'palma-dot w-2 h-2 rounded-full bg-karina-charcoal/20 transition-all cursor-pointer';
+          dot.className = 'palma-dot w-1.5 h-1.5 rounded-full bg-karina-charcoal/20 transition-all cursor-pointer';
         }
       });
-    }, { passive: true });
+    };
+
+    track.addEventListener('scroll', updateDots, { passive: true });
 
     dots.forEach((dot, idx) => {
       dot.addEventListener('click', () => {
         const card = track.querySelector('.snap-start');
-        const cardWidth = card ? card.offsetWidth + 16 : 360;
+        const cardWidth = card ? card.offsetWidth + 16 : 320;
         track.scrollTo({ left: cardWidth * idx, behavior: 'smooth' });
       });
     });
+
+    // Soporte para arrastre con ratón en desktop además de touch nativo en mobile
+    let isDown = false;
+    let startX = 0;
+    let scrollLeftPos = 0;
+
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - track.offsetLeft;
+      scrollLeftPos = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+
+    track.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      track.scrollLeft = scrollLeftPos - walk;
+    });
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupPalmaRealCarousel);
-  } else {
-    setupPalmaRealCarousel();
-  }
+  setupPalmaRealCarousel();
 
   // Cerrar modales al presionar Escape
   document.addEventListener('keydown', (e) => {
