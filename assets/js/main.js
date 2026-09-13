@@ -1234,8 +1234,8 @@ document.addEventListener('DOMContentLoaded', () => {
       btnEl.classList.add('is-active', 'bg-karina-charcoal', 'text-white', 'font-bold', 'shadow-md');
     }
 
-    // Filtrar tarjetas
-    const cards = document.querySelectorAll('.gastronomia-card');
+    // Filtrar tarjetas y sección de aliados
+    const cards = document.querySelectorAll('.gastronomia-card, #section-club-palma-real');
     let visibleCount = 0;
 
     cards.forEach(card => {
@@ -1415,10 +1415,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // 5. Asistente Arimiña-IA Sommelier
-  window.consultGastronomiaAI = function() {
-    alert('Arimiña-IA Sommelier:\n\n"Para nuestras carnes y cortes a la brasa en Restaurante 283 te sugiero un Malbec Reserva. Si prefieres nuestro Lomo de Rótalo en Moriche Restaurant, un Sauvignon Blanc realzará los toques cítricos del ají dulce oriental."');
-  };
+
 
   // ===================================================
   // 11B. SELECCIÓN DE PLATOS / CARRITO RÁPIDO (COMPATIBILIDAD)

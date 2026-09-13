@@ -819,249 +819,248 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- PROPUESTAS ALIADAS: CIRCUITO GASTRONÓMICO CLUB PALMA REAL (CARRUSEL) -->
+    <!-- PROPUESTAS ALIADAS: CIRCUITO GASTRONÓMICO CLUB PALMA REAL (CARRUSEL LIGERO) -->
     <!-- ======================================================== -->
-    <section id="section-club-palma-real" data-sede="maturin" class="gastronomia-card bg-gradient-to-br from-[#FDFBF7] to-[#F7F4EE] rounded-[36px] border border-black/5 p-6 sm:p-10 shadow-sm transition-all space-y-6">
+    <section id="section-club-palma-real" data-sede="maturin" class="space-y-6 pt-4 pb-8 transition-all">
       
-      <!-- Encabezado de la Sección con Menor Prioridad / Curaduría de Aliados -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-black/5 pb-6">
-        <div class="space-y-2 max-w-2xl">
-          <div class="flex items-center gap-2">
-            <span class="bg-karina-mustard/25 text-karina-charcoal text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border border-karina-mustard/40">
+      <!-- Encabezado Minimalista Integrado (Sin contenedor de Card) -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-black/10 pb-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-[10px] font-extrabold uppercase tracking-widest text-karina-mustard bg-karina-charcoal px-2.5 py-0.5 rounded-full">
               Propuestas Aliadas
             </span>
-            <span class="text-xs text-karina-charcoal/60 font-medium">Maturín • Complejo Palma Real</span>
+            <span class="text-xs text-karina-charcoal/60 font-medium">Club Palma Real • Maturín</span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-light text-karina-charcoal tracking-tight">
-            Restaurantes & Espacios del <span class="font-bold">Club Palma Real</span>
+          <h2 class="text-xl sm:text-2xl font-light text-karina-charcoal">
+            Espacios Gastronómicos del <span class="font-bold">Club Palma Real</span>
           </h2>
-          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
-            Descubre las propuestas culinarias aliadas ubicadas dentro de las exclusivas instalaciones del club: parrillas al aire libre, sushi bar, snacks de piscina y cafetería tropical.
+          <p class="text-xs text-karina-charcoal/60 font-light mt-0.5">
+            Opciones complementarias para disfrutar durante tu estancia en el club.
           </p>
         </div>
 
         <!-- Controles de Navegación del Carrusel -->
-        <div class="flex items-center gap-2 self-start md:self-end">
+        <div class="flex items-center gap-2 self-end sm:self-auto">
           <button onclick="scrollPalmaRealCarousel(-1)" 
-                  class="w-10 h-10 rounded-full bg-white hover:bg-karina-mustard text-karina-charcoal border border-black/10 shadow-xs flex items-center justify-center transition-all active:scale-90 focus:outline-none" 
-                  aria-label="Anterior propuesta"
+                  class="w-9 h-9 rounded-full bg-white hover:bg-karina-mustard text-karina-charcoal border border-black/10 shadow-xs flex items-center justify-center transition-all active:scale-90 focus:outline-none" 
+                  aria-label="Anterior propuesta" 
                   title="Anterior propuesta">
             <i class="fa-solid fa-chevron-left text-xs"></i>
           </button>
           <button onclick="scrollPalmaRealCarousel(1)" 
-                  class="w-10 h-10 rounded-full bg-white hover:bg-karina-mustard text-karina-charcoal border border-black/10 shadow-xs flex items-center justify-center transition-all active:scale-90 focus:outline-none" 
-                  aria-label="Siguiente propuesta"
+                  class="w-9 h-9 rounded-full bg-white hover:bg-karina-mustard text-karina-charcoal border border-black/10 shadow-xs flex items-center justify-center transition-all active:scale-90 focus:outline-none" 
+                  aria-label="Siguiente propuesta" 
                   title="Siguiente propuesta">
             <i class="fa-solid fa-chevron-right text-xs"></i>
           </button>
         </div>
       </div>
 
-      <!-- CARRUSEL CONTENEDOR (Swipe fluido en mobile + scroll adaptable) -->
-      <div id="palma-real-carousel-track" class="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 pt-1 scroll-smooth">
+      <!-- CARRUSEL TIPO REEL VISUAL LIGERO (Sin cajas de card pesadas) -->
+      <div id="palma-real-carousel-track" class="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-3 pt-1 scroll-smooth">
         
-        <!-- SLIDE 1: Caney & Parrillera al Aire Libre -->
-        <div class="snap-start shrink-0 w-[85%] sm:w-[340px] lg:w-[360px] bg-white rounded-3xl border border-black/5 p-4 sm:p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-4 group">
-          <div class="space-y-3">
-            <div onclick="openLightbox('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80', 'Caney & Parrillera al Aire Libre — Club Palma Real', 'Cortes a la brasa y parrillada mixta familiar')" 
-                 class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer"
+        <!-- ITEM 1: Caney & Parrillera -->
+        <div class="snap-start shrink-0 w-[80%] sm:w-[300px] lg:w-[320px] flex flex-col justify-between gap-3 group">
+          <div class="space-y-2.5">
+            <!-- Imagen con badge integrado y click para Lightbox -->
+            <div onclick="openLightbox('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80', 'Caney & Parrillera al Aire Libre — Club Palma Real', 'Cortes a la brasa y parrilladas')" 
+                 class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer shadow-sm" 
                  title="Toca para ampliar imagen">
               <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" 
-                   alt="Parrillera al Aire Libre Club Palma Real" 
+                   alt="Caney y Parrillera Palma Real" 
                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-2.5 left-2.5 bg-black/70 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
-                Parrillas & Caney
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              
+              <!-- Badge Categoría -->
+              <span class="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+                Parrillas & Carnes
               </span>
-              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80', 'Caney & Parrillera al Aire Libre — Club Palma Real', 'Cortes a la brasa y parrillada mixta familiar')" 
-                      class="absolute bottom-2.5 right-2.5 w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 hover:scale-110 shadow-sm"
-                      aria-label="Ampliar imagen"
-                      title="Ampliar imagen">
+              
+              <!-- Nombre sobre la imagen -->
+              <div class="absolute bottom-2.5 left-3 right-3 text-white">
+                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Caney & Parrillera</h3>
+                <p class="text-[11px] text-white/80 font-light flex items-center gap-1 mt-0.5">
+                  <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
+                  11:30 AM – 9:00 PM
+                </p>
+              </div>
+
+              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80', 'Caney & Parrillera al Aire Libre — Club Palma Real', 'Cortes a la brasa y parrilladas')" 
+                      class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition-all" 
+                      aria-label="Ampliar imagen">
                 <i class="fa-solid fa-expand text-[10px]"></i>
               </button>
             </div>
-            <div>
-              <div class="flex items-center justify-between gap-2">
-                <h3 class="text-base sm:text-lg font-bold text-karina-charcoal">Caney & Parrillera</h3>
-                <span class="text-[11px] text-karina-charcoal/70 font-semibold flex items-center gap-1 shrink-0">
-                  <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
-                  11:30 AM – 9:00 PM
-                </span>
-              </div>
-              <p class="text-xs text-karina-charcoal/65 font-light mt-1.5 leading-relaxed">
-                Punta trasera, solomo de cuerito, parrillada mixta familiar, hamburguesas al carbón y costillitas glaseadas.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-1">
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Brasas</span>
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Cortes Premium</span>
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Familiar</span>
-            </div>
+
+            <!-- Resumen corto -->
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed line-clamp-2">
+              Cortes de punta trasera y solomo, parrillada mixta familiar y hamburguesas al carbón.
+            </p>
           </div>
-          <!-- CTAs del Slide 1 -->
-          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-black/5">
-            <button onclick="openGastronomiaMenu('club-palma-real', 'parrilla')" class="py-2.5 px-2 rounded-full bg-karina-cream hover:bg-white text-karina-charcoal border border-black/10 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95">
-              <i class="fa-solid fa-book-open text-karina-mustard text-[10px]"></i>
-              <span>Ver Menú</span>
+
+          <!-- CTAs en píldoras compactas -->
+          <div class="flex items-center gap-2 pt-1">
+            <button onclick="openGastronomiaMenu('club-palma-real', 'parrilla')" class="flex-1 py-2 px-3 rounded-full bg-white hover:bg-karina-cream text-karina-charcoal border border-black/15 font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs">
+              <i class="fa-solid fa-book-open text-karina-mustard text-[11px]"></i>
+              <span>Menú</span>
             </button>
             <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20disponibilidad%20en%20el%20Caney%20y%20Parrillera" 
                target="_blank" 
-               class="py-2.5 px-2 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-xs">
+               class="flex-1 py-2 px-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs">
               <i class="fa-brands fa-whatsapp text-xs"></i>
               <span>WhatsApp</span>
             </a>
           </div>
         </div>
 
-        <!-- SLIDE 2: Sushi Bar Aliado -->
-        <div class="snap-start shrink-0 w-[85%] sm:w-[340px] lg:w-[360px] bg-white rounded-3xl border border-black/5 p-4 sm:p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-4 group">
-          <div class="space-y-3">
-            <div onclick="openLightbox('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=80', 'Sushi Bar Aliado — Club Palma Real', 'Rolls de autor, tempuras y poke bowls')" 
-                 class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer"
+        <!-- ITEM 2: Sushi Bar Aliado -->
+        <div class="snap-start shrink-0 w-[80%] sm:w-[300px] lg:w-[320px] flex flex-col justify-between gap-3 group">
+          <div class="space-y-2.5">
+            <!-- Imagen con badge integrado y click para Lightbox -->
+            <div onclick="openLightbox('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=80', 'Sushi Bar Aliado — Club Palma Real', 'Rolls de autor, sushi fresco y poke bowls')" 
+                 class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer shadow-sm" 
                  title="Toca para ampliar imagen">
               <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80" 
-                   alt="Sushi Bar Aliado Club Palma Real" 
+                   alt="Sushi Bar Aliado Palma Real" 
                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-2.5 left-2.5 bg-black/70 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              
+              <span class="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
                 Sushi Bar
               </span>
-              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=80', 'Sushi Bar Aliado — Club Palma Real', 'Rolls de autor, tempuras y poke bowls')" 
-                      class="absolute bottom-2.5 right-2.5 w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 hover:scale-110 shadow-sm"
-                      aria-label="Ampliar imagen"
-                      title="Ampliar imagen">
+
+              <div class="absolute bottom-2.5 left-3 right-3 text-white">
+                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Sushi Bar Aliado</h3>
+                <p class="text-[11px] text-white/80 font-light flex items-center gap-1 mt-0.5">
+                  <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
+                  12:00 PM – 10:00 PM
+                </p>
+              </div>
+
+              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=80', 'Sushi Bar Aliado — Club Palma Real', 'Rolls de autor, sushi fresco y poke bowls')" 
+                      class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition-all" 
+                      aria-label="Ampliar imagen">
                 <i class="fa-solid fa-expand text-[10px]"></i>
               </button>
             </div>
-            <div>
-              <div class="flex items-center justify-between gap-2">
-                <h3 class="text-base sm:text-lg font-bold text-karina-charcoal">Sushi Bar Aliado</h3>
-                <span class="text-[11px] text-karina-charcoal/70 font-semibold flex items-center gap-1 shrink-0">
-                  <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
-                  12:00 PM – 10:00 PM
-                </span>
-              </div>
-              <p class="text-xs text-karina-charcoal/65 font-light mt-1.5 leading-relaxed">
-                Spicy tuna rolls, ebi tempura crujiente con plátano maduro, sashimis frescos y poke bowls hawaianos.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-1">
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Sushi Fresco</span>
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Poke Bowls</span>
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Tempura</span>
-            </div>
+
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed line-clamp-2">
+              Rolls especiales, poke bowls de salmón fresco, tempuras crocantes y sabores asiáticos.
+            </p>
           </div>
-          <!-- CTAs del Slide 2 -->
-          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-black/5">
-            <button onclick="openGastronomiaMenu('club-palma-real', 'sushi')" class="py-2.5 px-2 rounded-full bg-karina-cream hover:bg-white text-karina-charcoal border border-black/10 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95">
-              <i class="fa-solid fa-book-open text-karina-mustard text-[10px]"></i>
-              <span>Ver Menú</span>
+
+          <!-- CTAs -->
+          <div class="flex items-center gap-2 pt-1">
+            <button onclick="openGastronomiaMenu('club-palma-real', 'sushi')" class="flex-1 py-2 px-3 rounded-full bg-white hover:bg-karina-cream text-karina-charcoal border border-black/15 font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs">
+              <i class="fa-solid fa-book-open text-karina-mustard text-[11px]"></i>
+              <span>Menú</span>
             </button>
             <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20men%C3%BA%20y%20pedidos%20en%20el%20Sushi%20Bar%20Aliado" 
                target="_blank" 
-               class="py-2.5 px-2 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-xs">
+               class="flex-1 py-2 px-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs">
               <i class="fa-brands fa-whatsapp text-xs"></i>
               <span>WhatsApp</span>
             </a>
           </div>
         </div>
 
-        <!-- SLIDE 3: Snack Bar & Parque Acuático -->
-        <div class="snap-start shrink-0 w-[85%] sm:w-[340px] lg:w-[360px] bg-white rounded-3xl border border-black/5 p-4 sm:p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-4 group">
-          <div class="space-y-3">
-            <div onclick="openLightbox('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80', 'Snack Bar & Parque Acuático — Club Palma Real', 'Bocados playeros, tequeños y bebidas al borde de piscina')" 
-                 class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer"
+        <!-- ITEM 3: Snack Bar & Piscina -->
+        <div class="snap-start shrink-0 w-[80%] sm:w-[300px] lg:w-[320px] flex flex-col justify-between gap-3 group">
+          <div class="space-y-2.5">
+            <!-- Imagen con badge integrado y click para Lightbox -->
+            <div onclick="openLightbox('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80', 'Snack Bar & Parque Acuático — Club Palma Real', 'Tequeños playeros, finger food y heladería')" 
+                 class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer shadow-sm" 
                  title="Toca para ampliar imagen">
               <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" 
-                   alt="Snacks de Piscina Club Palma Real" 
+                   alt="Snack Bar Palma Real" 
                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-2.5 left-2.5 bg-black/70 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              
+              <span class="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
                 Snacks & Piscina
               </span>
-              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80', 'Snack Bar & Parque Acuático — Club Palma Real', 'Bocados playeros, tequeños y bebidas al borde de piscina')" 
-                      class="absolute bottom-2.5 right-2.5 w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 hover:scale-110 shadow-sm"
-                      aria-label="Ampliar imagen"
-                      title="Ampliar imagen">
+
+              <div class="absolute bottom-2.5 left-3 right-3 text-white">
+                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Snacks & Piscina</h3>
+                <p class="text-[11px] text-white/80 font-light flex items-center gap-1 mt-0.5">
+                  <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
+                  9:00 AM – 7:00 PM
+                </p>
+              </div>
+
+              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80', 'Snack Bar & Parque Acuático — Club Palma Real', 'Tequeños playeros, finger food y heladería')" 
+                      class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition-all" 
+                      aria-label="Ampliar imagen">
                 <i class="fa-solid fa-expand text-[10px]"></i>
               </button>
             </div>
-            <div>
-              <div class="flex items-center justify-between gap-2">
-                <h3 class="text-base sm:text-lg font-bold text-karina-charcoal">Snack Bar & Piscina</h3>
-                <span class="text-[11px] text-karina-charcoal/70 font-semibold flex items-center gap-1 shrink-0">
-                  <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
-                  9:00 AM – 7:00 PM
-                </span>
-              </div>
-              <p class="text-xs text-karina-charcoal/65 font-light mt-1.5 leading-relaxed">
-                Tequeños playeros con salsas especiales, papas rústicas con cheddar y bacon, y helados artesanales para toda la familia.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-1">
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Tequeños</span>
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Finger Food</span>
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Heladería</span>
-            </div>
+
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed line-clamp-2">
+              Tequeños crujientes, papas rústicas con cheddar, finger food y helados al borde de piscina.
+            </p>
           </div>
-          <!-- CTAs del Slide 3 -->
-          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-black/5">
-            <button onclick="openGastronomiaMenu('club-palma-real', 'piscina')" class="py-2.5 px-2 rounded-full bg-karina-cream hover:bg-white text-karina-charcoal border border-black/10 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95">
-              <i class="fa-solid fa-book-open text-karina-mustard text-[10px]"></i>
-              <span>Ver Menú</span>
+
+          <!-- CTAs -->
+          <div class="flex items-center gap-2 pt-1">
+            <button onclick="openGastronomiaMenu('club-palma-real', 'piscina')" class="flex-1 py-2 px-3 rounded-full bg-white hover:bg-karina-cream text-karina-charcoal border border-black/15 font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs">
+              <i class="fa-solid fa-book-open text-karina-mustard text-[11px]"></i>
+              <span>Menú</span>
             </button>
             <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20opciones%20de%20snacks%20y%20servicio%20de%20piscina" 
                target="_blank" 
-               class="py-2.5 px-2 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-xs">
+               class="flex-1 py-2 px-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs">
               <i class="fa-brands fa-whatsapp text-xs"></i>
               <span>WhatsApp</span>
             </a>
           </div>
         </div>
 
-        <!-- SLIDE 4: Cafetería & Coctelería Tropical -->
-        <div class="snap-start shrink-0 w-[85%] sm:w-[340px] lg:w-[360px] bg-white rounded-3xl border border-black/5 p-4 sm:p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-4 group">
-          <div class="space-y-3">
-            <div onclick="openLightbox('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80', 'Cafetería & Coctelería Tropical — Club Palma Real', 'Batidos frappé naturales, café de especialidad y cócteles tropicales')" 
-                 class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer"
+        <!-- ITEM 4: Café & Coctelería -->
+        <div class="snap-start shrink-0 w-[80%] sm:w-[300px] lg:w-[320px] flex flex-col justify-between gap-3 group">
+          <div class="space-y-2.5">
+            <!-- Imagen con badge integrado y click para Lightbox -->
+            <div onclick="openLightbox('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80', 'Cafetería & Coctelería Tropical — Club Palma Real', 'Batidos frappé, café de autor y cócteles')" 
+                 class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer shadow-sm" 
                  title="Toca para ampliar imagen">
               <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80" 
-                   alt="Cafetería y Coctelería Club Palma Real" 
+                   alt="Cafetería y Coctelería Palma Real" 
                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-2.5 left-2.5 bg-black/70 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
-                Café & Bar Tropical
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              
+              <span class="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+                Café & Cócteles
               </span>
-              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80', 'Cafetería & Coctelería Tropical — Club Palma Real', 'Batidos frappé naturales, café de especialidad y cócteles tropicales')" 
-                      class="absolute bottom-2.5 right-2.5 w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 hover:scale-110 shadow-sm"
-                      aria-label="Ampliar imagen"
-                      title="Ampliar imagen">
+
+              <div class="absolute bottom-2.5 left-3 right-3 text-white">
+                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Café & Coctelería</h3>
+                <p class="text-[11px] text-white/80 font-light flex items-center gap-1 mt-0.5">
+                  <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
+                  8:00 AM – 8:00 PM
+                </p>
+              </div>
+
+              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80', 'Cafetería & Coctelería Tropical — Club Palma Real', 'Batidos frappé, café de autor y cócteles')" 
+                      class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition-all" 
+                      aria-label="Ampliar imagen">
                 <i class="fa-solid fa-expand text-[10px]"></i>
               </button>
             </div>
-            <div>
-              <div class="flex items-center justify-between gap-2">
-                <h3 class="text-base sm:text-lg font-bold text-karina-charcoal">Café & Coctelería</h3>
-                <span class="text-[11px] text-karina-charcoal/70 font-semibold flex items-center gap-1 shrink-0">
-                  <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
-                  8:00 AM – 8:00 PM
-                </span>
-              </div>
-              <p class="text-xs text-karina-charcoal/65 font-light mt-1.5 leading-relaxed">
-                Batidos y frappés de frutas naturales, café espresso de autor, piña colada y coctelería refrescante de verano.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-1">
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Batidos Frappé</span>
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Café de Autor</span>
-              <span class="text-[10px] font-medium bg-karina-cream px-2 py-0.5 rounded-md text-karina-charcoal/80">Cócteles</span>
-            </div>
+
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed line-clamp-2">
+              Batidos de frutas naturales, frappés granizados, café espresso y coctelería caribeña.
+            </p>
           </div>
-          <!-- CTAs del Slide 4 -->
-          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-black/5">
-            <button onclick="openGastronomiaMenu('club-palma-real', 'bebidas')" class="py-2.5 px-2 rounded-full bg-karina-cream hover:bg-white text-karina-charcoal border border-black/10 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95">
-              <i class="fa-solid fa-book-open text-karina-mustard text-[10px]"></i>
-              <span>Ver Menú</span>
+
+          <!-- CTAs -->
+          <div class="flex items-center gap-2 pt-1">
+            <button onclick="openGastronomiaMenu('club-palma-real', 'bebidas')" class="flex-1 py-2 px-3 rounded-full bg-white hover:bg-karina-cream text-karina-charcoal border border-black/15 font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs">
+              <i class="fa-solid fa-book-open text-karina-mustard text-[11px]"></i>
+              <span>Menú</span>
             </button>
             <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20la%20carta%20de%20caf%C3%A9%20y%20cocteler%C3%ADa%20tropical" 
                target="_blank" 
-               class="py-2.5 px-2 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-xs">
+               class="flex-1 py-2 px-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs">
               <i class="fa-brands fa-whatsapp text-xs"></i>
               <span>WhatsApp</span>
             </a>
@@ -1071,45 +1070,13 @@
       </div>
 
       <!-- Indicadores de Progreso / Dots para Mobile -->
-      <div class="flex items-center justify-center gap-1.5 pt-1 sm:hidden">
-        <span class="palma-dot w-5 h-2 rounded-full bg-karina-charcoal transition-all cursor-pointer" data-slide="0"></span>
-        <span class="palma-dot w-2 h-2 rounded-full bg-karina-charcoal/20 transition-all cursor-pointer" data-slide="1"></span>
-        <span class="palma-dot w-2 h-2 rounded-full bg-karina-charcoal/20 transition-all cursor-pointer" data-slide="2"></span>
-        <span class="palma-dot w-2 h-2 rounded-full bg-karina-charcoal/20 transition-all cursor-pointer" data-slide="3"></span>
+      <div class="flex items-center justify-center gap-1.5 pt-0.5 sm:hidden">
+        <span class="palma-dot w-5 h-1.5 rounded-full bg-karina-charcoal transition-all cursor-pointer" data-slide="0"></span>
+        <span class="palma-dot w-1.5 h-1.5 rounded-full bg-karina-charcoal/20 transition-all cursor-pointer" data-slide="1"></span>
+        <span class="palma-dot w-1.5 h-1.5 rounded-full bg-karina-charcoal/20 transition-all cursor-pointer" data-slide="2"></span>
+        <span class="palma-dot w-1.5 h-1.5 rounded-full bg-karina-charcoal/20 transition-all cursor-pointer" data-slide="3"></span>
       </div>
 
-    </section>
-
-    <!-- BANNER SPOTLIGHT: ARIMIÑA-IA SOMMELIER & RECOMENDACIONES -->
-    <section class="relative bg-[#262626] text-white rounded-[36px] p-6 sm:p-10 border border-white/10 overflow-hidden shadow-xl">
-      <div class="absolute -top-24 -right-24 w-72 h-72 bg-karina-mustard/15 rounded-full blur-3xl pointer-events-none"></div>
-      
-      <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-left">
-        <div class="space-y-3 max-w-xl">
-          <div class="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full border border-white/10">
-            <i class="fa-solid fa-wand-magic-sparkles text-karina-mustard text-xs"></i>
-            <span class="text-[11px] font-mono uppercase tracking-wider text-white/90">Asistente Sommelier Kariña</span>
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-light tracking-tight text-white">
-            ¿Deseas una recomendación de maridaje personalizada?
-          </h3>
-          <p class="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
-            Nuestra IA Sommelier te orienta sobre los mejores cortes de Restaurante 283, la pesca del día en Moriche o la coctelería de autor en Oh My Bar.
-          </p>
-        </div>
-
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 w-full md:w-auto">
-          <button onclick="consultGastronomiaAI()" class="px-6 py-3.5 rounded-full bg-karina-mustard hover:bg-karina-mustard-light text-karina-charcoal font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all active:scale-95">
-            <i class="fa-solid fa-sparkles text-xs"></i>
-            <span>Consultar Maridaje IA</span>
-          </button>
-          
-          <a href="https://wa.me/5804249169601?text=Hola%20Arimi%C3%B1a-IA%2C%20deseo%20consultar%20recomendaciones%20gastron%C3%B3micas%20para%20mi%20visita" target="_blank" class="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 flex items-center justify-center gap-2 transition-all active:scale-95">
-            <i class="fa-brands fa-whatsapp text-sm text-[#25D366]"></i>
-            <span>Chatear por WhatsApp</span>
-          </a>
-        </div>
-      </div>
     </section>
 
   </main>
