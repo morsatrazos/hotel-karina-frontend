@@ -1296,19 +1296,14 @@ function switchAuthMode(mode) {
   }
 }
 
-// 2. Enviar formulario con bypass directo a Dashboard (Modo Desarrollo)
+// 2. Enviar formulario con bypass directo a Home (Módulo usuario temporalmente inactivo)
 function handleAuthSubmit(event) {
-  event.preventDefault();
-  const nameInput = document.getElementById('input-name');
-  const userName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'Alejandro';
-
-  localStorage.setItem('karina_user_name', userName);
-  window.location.href = 'dashboard.html';
+  if (event) event.preventDefault();
+  window.location.replace('index.html');
 }
 
 function bypassToDashboard(socialName) {
-  localStorage.setItem('karina_user_name', socialName || 'Alejandro');
-  window.location.href = 'dashboard.html';
+  window.location.replace('index.html');
 }
 
 // 3. Inicialización del Dashboard

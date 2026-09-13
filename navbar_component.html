@@ -156,13 +156,8 @@
 
     </nav>
 
-    <!-- BLOQUE DERECHO: Acceso Mi Cuenta (Single line / Scrolled Icon) + Botón Shimmer -->
+    <!-- BLOQUE DERECHO: Botón Shimmer -->
     <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-      <a href="auth.html" class="nav-account-btn whitespace-nowrap flex items-center gap-1.5 leading-none text-xs font-bold text-[#1E1E1E] hover:text-[#2680BD] px-3 py-2 rounded-full hover:bg-[#E8DFC8]/40 transition shrink-0" title="Mi Cuenta">
-        <i class="fa-regular fa-user text-xs text-[#726B63]" data-lucide="user"></i>
-        <span class="nav-account-text">Mi Cuenta</span>
-      </a>
-
       <a href="suites.html" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-karina-charcoal font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm shrink-0">
         <span>Reserva</span>
         <i class="fa-solid fa-sparkles text-[10px]"></i>
@@ -172,11 +167,7 @@
   </div>
 </header>
 
-<!-- 2. CÁPSULA FLOTANTE FIJA DISCRETA: CUENTA + IDIOMA (ESQUINA INFERIOR DERECHA) -->
-<div class="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
-  <a href="auth.html" class="flex items-center gap-1 text-[#1E1E1E] hover:text-[#2680BD] transition pr-2 border-r border-[#E8DFC8]">
-    <i class="fa-regular fa-user text-[11px] text-[#726B63]" data-lucide="user"></i>
-    <span>Cuenta</span>
-  </a>
+<!-- 2. CÁPSULA FLOTANTE FIJA DISCRETA: IDIOMA (ESQUINA INFERIOR DERECHA) -->
+<div class="fixed bottom-6 right-6 z-40 flex items-center bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
   <button onclick="if(window.toggleLanguage) toggleLanguage()" class="text-[#726B63] hover:text-[#1E1E1E] transition font-semibold"><span>ES/EN</span></button>
 </div>

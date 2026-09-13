@@ -207,10 +207,6 @@
 
       <!-- BLOQUE DERECHO: Selector de Idioma + Botón Píldora Shimmer -->
       <div class="flex items-center gap-4 sm:gap-5">
-                <a href="auth.html" class="nav-account-btn whitespace-nowrap flex items-center gap-1.5 leading-none text-xs font-bold text-[#1E1E1E] hover:text-[#2680BD] px-3 py-2 rounded-full hover:bg-[#E8DFC8]/40 transition shrink-0" title="Mi Cuenta">
-          <i class="fa-regular fa-user text-xs text-[#726B63]" data-lucide="user"></i>
-          <span class="nav-account-text">Mi Cuenta</span>
-        </a>
         <a href="#cotizacion" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
           <span>Convenio B2B</span>
           <i class="fa-solid fa-sparkles text-[10px]"></i>
@@ -264,46 +260,35 @@
       </div>
 
       <div class="border-b border-white/10 pb-4">
-        <a href="suites.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
-          <span class="text-xs font-mono text-white/40">04</span>
-          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería de Suites</span>
-        </a>
-      </div>
-
-      <div class="border-b border-white/10 pb-4">
         <a href="vive-karina.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
-          <span class="text-xs font-mono text-white/40">05</span>
+          <span class="text-xs font-mono text-white/40">04</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
         <a href="fundacion.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
-          <span class="text-xs font-mono text-white/40">06</span>
+          <span class="text-xs font-mono text-white/40">05</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Fundación</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
         <a href="faqs.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
-          <span class="text-xs font-mono text-white/40">07</span>
+          <span class="text-xs font-mono text-white/40">06</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Preguntas Frecuentes</span>
         </a>
       </div>
 
       <div class="border-b border-white/10 pb-4">
         <a href="contacto.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
-          <span class="text-xs font-mono text-white/40">08</span>
+          <span class="text-xs font-mono text-white/40">07</span>
           <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Contacto y Ubicaciones</span>
         </a>
       </div>
     </div>
 
     <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
-      <a href="auth.html" class="w-full py-3 px-6 rounded-full border border-white/20 hover:border-karina-mustard text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
-        <i class="fa-regular fa-user"></i>
-        <span>Mi Cuenta / Iniciar Sesión</span>
-      </a>
       <button onclick="alert('Iniciando chat con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
         <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
         <span>Hablar con Arimiña-IA</span>
@@ -611,12 +596,8 @@
 
   <!-- JavaScript Modular Global -->
   <script src="assets/js/main.js"></script>
-  <!-- Cápsula Flotante Discreta: Cuenta + Idioma -->
-  <div class="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
-    <a href="auth.html" class="flex items-center gap-1 text-[#1E1E1E] hover:text-[#2680BD] transition pr-2 border-r border-[#E8DFC8]">
-      <i class="fa-regular fa-user text-[11px] text-[#726B63]" data-lucide="user"></i>
-      <span>Cuenta</span>
-    </a>
+  <!-- Cápsula Flotante Discreta: Idioma -->
+  <div class="fixed bottom-6 right-6 z-40 flex items-center bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
     <button onclick="if(window.toggleLanguage) toggleLanguage()" class="text-[#726B63] hover:text-[#1E1E1E] transition font-semibold"><span>ES/EN</span></button>
   </div>
 </body>

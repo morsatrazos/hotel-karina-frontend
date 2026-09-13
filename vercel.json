@@ -1,4 +1,14 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/auth", "destination": "/", "permanent": false },
+    { "source": "/auth.html", "destination": "/", "permanent": false },
+    { "source": "/dashboard", "destination": "/", "permanent": false },
+    { "source": "/dashboard.html", "destination": "/", "permanent": false },
+    { "source": "/checkin", "destination": "/", "permanent": false },
+    { "source": "/checkin.html", "destination": "/", "permanent": false },
+    { "source": "/pre-checkin", "destination": "/", "permanent": false },
+    { "source": "/pre-checkin.html", "destination": "/", "permanent": false }
+  ]
 }
