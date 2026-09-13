@@ -956,99 +956,348 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ===================================================
-  // 11. LÓGICA JAVASCRIPT: GASTRONOMÍA, PELUQUERÍA & SERVICIOS
+  // 11. LÓGICA JAVASCRIPT: GASTRONOMÍA, RESTAURANTES & MENÚS
   // ===================================================
 
-  const menuData = {
-    'desayuno': {
-      title: "Desayunos & Mañanas",
-      desc: "Opciones criollas e internacionales para iniciar el día con vitalidad.",
-      dishes: [
-        { name: "Desayuno Criollo Kariña", desc: "Arepitas de maíz, carne mechada sazonada, queso telita, perico y caraotas negras refinadas.", price: 16, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=200&q=80", tag: "Insignia" },
-        { name: "Pancakes de Avena & Frutos del Bosque", desc: "Servidos con sirope de arce orgánico y fruta fresca de temporada.", price: 14, img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=200&q=80", tag: "Saludable" }
+  // Base de datos de menús digitales por establecimiento
+  const gastronomiaMenusData = {
+    'restaurante-283': {
+      name: "Restaurante 283",
+      sede: "Hotel Kariña El Tigre",
+      schedule: "Lun a Dom • 7:00 AM – 10:30 PM",
+      phone: "5804249169603",
+      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp",
+      categories: [
+        {
+          name: "Entradas & Tapas",
+          items: [
+            { name: "Carpaccio de Solomo con Parmesano", desc: "Finas láminas de solomo sellado, emulsión de alcaparras, rúgula y lascas de parmesano reggiano.", price: "$14", tag: "Recomendado" },
+            { name: "Ceviche Tropical Guanipa", desc: "Pesca fresca del día marinada en lima, mango verde, ají dulce y maíz crocante.", price: "$16", tag: "Fresco" },
+            { name: "Tequeños de Autor con Melao de Papelón", desc: "6 unidades de masa hojaldrada rellenos de queso llanero premium con reducción de ají.", price: "$10", tag: "Tradición" }
+          ]
+        },
+        {
+          name: "Platos Fuertes & Brasas",
+          items: [
+            { name: "Paella Valenciana de Mariscos 283", desc: "Nuestra especialidad con calamares, camarones, mejillones y toque de azafrán español (para compartir o individual).", price: "$28", tag: "Especialidad" },
+            { name: "Ribeye Angus a la Brasa (400g)", desc: "Corte selecto asado a término perfecto con vegetales confitados y puré rústico de apio.", price: "$34", tag: "Premium" },
+            { name: "Lomo de Salmón en Reducción de Cítricos", desc: "Salmón a la plancha sobre cama de espárragos y arroz jazmín aromatizado.", price: "$26", tag: "Mar" }
+          ]
+        },
+        {
+          name: "Postres & Dulce Final",
+          items: [
+            { name: "Marquesa de Cacao de Caripito", desc: "Capas crujientes con ganache de chocolate 70% y crocante de nueces.", price: "$8", tag: "Cacao 70%" },
+            { name: "Pie de Limón Criollo & Merengue", desc: "Base de galleta artesanal, crema ácida de limón y merengue tostado.", price: "$7", tag: "Artesanal" }
+          ]
+        },
+        {
+          name: "Coctelería & Vinos",
+          items: [
+            { name: "Sangría de Autor 283 (Jarra)", desc: "Receta secreta con vino tinto español, frutas maceradas y licor de naranja.", price: "$22", tag: "Para Compartir" },
+            { name: "Smoked Old Fashioned", desc: "Bourbon premium ahumado con madera de roble y bíter artesanal.", price: "$14", tag: "Cóctel Autor" }
+          ]
+        }
       ]
     },
-    'almuerzo-cena': {
-      title: "Almuerzo y Cena",
-      desc: "Creaciones de autor que honran los ingredientes locales con técnicas de vanguardia.",
-      dishes: [
-        { name: "Asado Negro de Larga Cocción", desc: "Corte de res braseado por 12 horas en reducción de vino tinto y papelón, puré de apio.", price: 38, img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=200&q=80", tag: "Sin Gluten" },
-        { name: "Carpaccio de Remolacha Orgánica", desc: "Finas láminas de remolacha asada, crema de cashew fermentado, polvo de pistachos.", price: 22, img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=200&q=80", tag: "Vegano" },
-        { name: "Lomo de Rótalo en Mantequilla de Ají", desc: "Pesca del día a la plancha, emulsión tibia de ají dulce, risotto cremoso de coco.", price: 32, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=200&q=80", tag: "Especialidad" }
+    'tu-chef': {
+      name: "Tu Chef Restaurante",
+      sede: "Hotel Kariña Punta de Mata",
+      schedule: "Lun a Dom • 6:30 AM – 10:00 PM",
+      phone: "5804249169602",
+      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
+      categories: [
+        {
+          name: "Desayunos Ejecutivos & Criollos",
+          items: [
+            { name: "Desayuno Criollo Tu Chef", desc: "Arepas asadas al momento, carne mechada de res, huevos perico, queso telita y caraotas negras refritas.", price: "$12", tag: "Insignia" },
+            { name: "Omelette Fit de Claras & Aguacate", desc: "Omelette con espinacas baby, queso blanco pasteurizado y tostadas integrales.", price: "$10", tag: "Saludable" },
+            { name: "Pancakes Clásicos con Miel y Frutas", desc: "Pancakes esponjosos con frutas frescas de estación y mantequilla artesanal.", price: "$9", tag: "Dulce Mañana" }
+          ]
+        },
+        {
+          name: "Almuerzos & Menú Ejecutivo",
+          items: [
+            { name: "Asado Negro Tradicional", desc: "Corte de res cocinado lentamente en caramelo de papelón y especias, arroz blanco y plátano horneado.", price: "$18", tag: "Favorito" },
+            { name: "Pollo a la Plancha en Finas Hierbas", desc: "Pechuga marinada con romero fresco, ensalada verde y puré de papas trufado.", price: "$15", tag: "Ligero" },
+            { name: "Pastel de Chucho Oriental", desc: "Capas de pescado guisado con ají dulce, plátano maduro frito y queso blanco gratinado.", price: "$16", tag: "Oriental" }
+          ]
+        },
+        {
+          name: "Cenas & Opciones Rápidas",
+          items: [
+            { name: "Club House Tu Chef", desc: "Triple piso con pollo desmechado, tocineta crocante, queso gouda, huevo y papas fritas.", price: "$14", tag: "Clásico" },
+            { name: "Ensalada César con Suprema de Pollo", desc: "Lechuga romana fresca, aderezo César artesanal, crutones de ajo y parmesano.", price: "$11", tag: "Fresco" }
+          ]
+        },
+        {
+          name: "Bebidas & Cafetería",
+          items: [
+            { name: "Jugos Naturales Tropicales (Parchita / Guanábana)", desc: "100% fruta natural recién exprimida.", price: "$4", tag: "Natural" },
+            { name: "Café Espresso & Cappuccino Kariña", desc: "Granos seleccionados tostados artesanalmente.", price: "$3", tag: "Especialidad" }
+          ]
+        }
       ]
     },
-    'postres': {
-      title: "Postres & Dulce Final",
-      desc: "Delicias artesanales diseñadas por nuestra repostería de autor.",
-      dishes: [
-        { name: "Marquesa de Chocolate & Nuez", desc: "Capas de galleta crujiente y mousse de cacao venezolano al 70%.", price: 10, img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=200&q=80", tag: "Cacao 70%" },
-        { name: "Quesillo Tradicional de Coco", desc: "Acompañado de crujiente de coco tostado y caramelo de ron añejo.", price: 8, img: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=200&q=80", tag: "Artesanal" }
+    'moriche-restaurant': {
+      name: "Moriche Restaurant",
+      sede: "Hotel Kariña Maturín",
+      schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
+      phone: "5804249169601",
+      heroImg: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+      categories: [
+        {
+          name: "Entradas de Alta Cocina",
+          items: [
+            { name: "Arepa de Langosta Caribeña", desc: "Masa de maíz pilado, langosta fresca del Caribe, emulsión de aguacate y ají dulce margariteño.", price: "$18", tag: "Plato Insignia" },
+            { name: "Carpaccio de Remolacha & Cashew Fermentado", desc: "Finas láminas de remolacha asada, crema de nuez fermentada, brotes orgánicos y pistacho.", price: "$14", tag: "Vegano" },
+            { name: "Tartar de Atún Rojo & Sésamo Tostado", desc: "Atún fresco en cubos, aderezo de soya cítrica, aguacate y chips de plátano verde.", price: "$16", tag: "Del Mar" }
+          ]
+        },
+        {
+          name: "Platos Fuertes & Especialidades",
+          items: [
+            { name: "Lomo de Rótalo en Mantequilla de Ají Dulce", desc: "Pesca del día a la plancha sobre risotto cremoso de coco y chips de topocho.", price: "$28", tag: "Recomendación Chef" },
+            { name: "Asado Negro Braseado 12 Horas", desc: "Corte de res braseado en reducción de vino tinto y papelón con puré rústico de apio criollo.", price: "$26", tag: "Sin Gluten" },
+            { name: "Risotto Negro con Calamares Salteados", desc: "Arroz arborio en tinta de calamar, chipirones sellados y alioli suave de ajo asado.", price: "$24", tag: "Mediterráneo" }
+          ]
+        },
+        {
+          name: "Postres de Autor",
+          items: [
+            { name: "Texturas de Cacao de Caripito 70%", desc: "Mousse aireado, bizcocho húmedo, tierra de cacao y gelée de frutos rojos.", price: "$10", tag: "Cacao Monagas" },
+            { name: "Quesillo Tradicional al Caramelo de Ron Añejo", desc: "Suave textura con reducción de ron añejo venezolano y crocante de coco.", price: "$8", tag: "Artesanal" }
+          ]
+        },
+        {
+          name: "Cava de Vinos & Copas",
+          items: [
+            { name: "Copa Malbec Reserva Mendoza", desc: "Notas profundas de ciruela, vainilla y roble.", price: "$12", tag: "Por Copa" },
+            { name: "Botella Sauvignon Blanc Chileno", desc: "Notas cítricas minerales ideales para pescados y mariscos.", price: "$32", tag: "Botella" }
+          ]
+        }
       ]
     },
-    'vinos-cocteles': {
-      title: "Vinos & Coctelería de Autor",
-      desc: "Selección curada por nuestra sommelier e infusiones tropicales.",
-      dishes: [
-        { name: "Margarita de Ají Dulce & Cocuy", desc: "Cocuy artesanal, zumo de parchita fresco y ribete de sal aromatizada.", price: 14, img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=200&q=80", tag: "Cóctel Autor" },
-        { name: "Copa Malbec Reserva Mendoza", desc: "Notas profundas de ciruela, vainilla y roble.", price: 12, img: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=200&q=80", tag: "Copas" }
+    'oh-my-bar': {
+      name: "Oh My Bar",
+      sede: "Hotel Kariña Maturín",
+      schedule: "Mié a Dom • 5:00 PM – 2:00 AM",
+      phone: "5804249169601",
+      heroImg: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80",
+      categories: [
+        {
+          name: "Mixología & Cócteles de Autor",
+          items: [
+            { name: "Margarita de Ají Dulce & Cocuy", desc: "Cocuy larense artesanal, reducción de ají dulce oriental, zumo de parchita y borde de sal aromatizada.", price: "$12", tag: "Insignia OMB" },
+            { name: "Smoked Old Fashioned Kariña", desc: "Ron añejo venezolano, bíter aromático, ahumado en campana con madera de barrica.", price: "$14", tag: "Ahumado" },
+            { name: "Gin Tonic Pasión Botánica", desc: "Gin premium infusionado con bayas de enebro, pepino fresco, pimienta rosa y tónica premium.", price: "$12", tag: "Refrescante" },
+            { name: "Mojito de Parchita & Hierbabuena", desc: "Ron blanco, pulpa fresca de maracuyá, menta macerada y soda efervescente.", price: "$10", tag: "Tropical" }
+          ]
+        },
+        {
+          name: "Tapas Gourmet & Piqueos",
+          items: [
+            { name: "Mini Angus Burgers (3 unidades)", desc: "Pan brioche artesanal, carne angus smash, queso cheddar madurado y cebolla caramelizada.", price: "$14", tag: "Para Picar" },
+            { name: "Tabla de Quesos Madurados & Embutidos", desc: "Selección de jamón serrano, salami, queso manchego, gouda viejo, frutos secos y focaccia.", price: "$18", tag: "Para Compartir" },
+            { name: "Tacos de Pescado Crocante", desc: "Tortillas de maíz nixtamalizado, pescado crujiente, pico de gallo de mango y mayonesa de sriracha.", price: "$13", tag: "Crujiente" },
+            { name: "Tequeñotes Gourmet con Chutney de Mango", desc: "Dedos gigantes rellenos de abundante queso blanco con dip agridulce.", price: "$9", tag: "Favorito" }
+          ]
+        },
+        {
+          name: "Licores & Cervezas",
+          items: [
+            { name: "Cervezas Nacionales e Importadas", desc: "Variedad de rubias, negras y artesanales bien frías.", price: "$4 - $6", tag: "Frías" },
+            { name: "Servicio de Whisky / Ron Premium (Botella)", desc: "Incluye hielo, mezcladores y servicio en mesa con frutos secos.", price: "$65 - $130", tag: "Servicio VIP" }
+          ]
+        }
+      ]
+    },
+    'club-palma-real': {
+      name: "Propuestas Aliadas Complejo Palma Real",
+      sede: "Maturín • Complejo Palma Real",
+      schedule: "Mar a Dom • 8:00 AM – 9:00 PM",
+      phone: "5804249169601",
+      heroImg: "https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg",
+      categories: [
+        {
+          name: "Parrilla & Caney al Aire Libre",
+          items: [
+            { name: "Parrillada Mixta Familiar Palma Real", desc: "Punta trasera, solomo, chorizo artesanal, chinchurria, yuca frita, guasacaca y ensalada rayada.", price: "$32", tag: "Familiar" },
+            { name: "Hamburguesa Monster Club House", desc: "Doble carne a la brasa, queso fundido, tocineta ahumada, huevo frito y papas rústicas.", price: "$14", tag: "Favorito" },
+            { name: "Costillitas BBQ Glaseadas", desc: "Costillas de cerdo en cocción lenta bañadas en salsa barbacoa de miel y ají.", price: "$18", tag: "Brasas" }
+          ]
+        },
+        {
+          name: "Sushi Bar Aliado Palma Real",
+          items: [
+            { name: "Spicy Tuna Roll (10 piezas)", desc: "Atún fresco marinado en salsa picante, aguacate, sésamo y topping de wakame.", price: "$14", tag: "Sushi" },
+            { name: "Ebi Tempura Roll (10 piezas)", desc: "Langostino crocante tempurizado, queso crema, plátano maduro y salsa fuji dulce.", price: "$15", tag: "Tempura" },
+            { name: "Poke Bowl Tropical de Salmón", desc: "Base de arroz de sushi, salmón fresco, edamames, mango, aguacate y aderezo ponzu.", price: "$16", tag: "Bowl Fit" }
+          ]
+        },
+        {
+          name: "Snacks de Piscina & Caney",
+          items: [
+            { name: "Tequeños Playeros Palma Real (8 und)", desc: "Crujientes dedos de queso servidos al borde de la piscina con salsas de la casa.", price: "$8", tag: "Piscina" },
+            { name: "Papas Rústicas con Queso Cheddar & Bacon", desc: "Papas con piel crocantes bañadas en salsa de queso fundido y tocineta picada.", price: "$7", tag: "Snack" },
+            { name: "Helados & Paletas Artesanales", desc: "Sabores frutales y cremosos ideales para refrescar la tarde.", price: "$4 - $6", tag: "Postre" }
+          ]
+        },
+        {
+          name: "Cafetería, Batidos & Cócteles",
+          items: [
+            { name: "Batidos Naturales & Frappés de Fruta", desc: "Fresas, parchita, mango, piña o melón bien granizados.", price: "$4", tag: "Granizado" },
+            { name: "Piña Colada & Coco Loco del Club", desc: "Servidos en copa alta con sombrillita y licor de coco tropical.", price: "$9", tag: "Tropical" }
+          ]
+        }
       ]
     }
   };
 
-  // Selector de Categoría
-  window.selectCategory = function(catKey, clickedBtn) {
-    document.querySelectorAll('.cat-btn').forEach(btn => {
-      btn.classList.remove('is-active');
-      const arrow = btn.querySelector('.cat-arrow');
-      if (arrow) {
-        arrow.classList.remove('opacity-100', 'translate-x-0');
-        arrow.classList.add('opacity-0', '-translate-x-2');
-      }
+  // 1. Filtrado de Tarjetas de Gastronomía por Sede
+  window.filterGastronomiaBySede = function(sedeKey, btnEl) {
+    // Actualizar estados visuales de las pills
+    const pills = document.querySelectorAll('.sede-filter-pill');
+    pills.forEach(pill => {
+      pill.classList.remove('is-active', 'bg-karina-charcoal', 'text-white', 'font-bold', 'shadow-md');
+      pill.classList.add('bg-white/80', 'text-karina-charcoal/80', 'border-black/5');
     });
 
-    if (clickedBtn) {
-      clickedBtn.classList.add('is-active');
-      const activeArrow = clickedBtn.querySelector('.cat-arrow');
-      if (activeArrow) {
-        activeArrow.classList.remove('opacity-0', '-translate-x-2');
-        activeArrow.classList.add('opacity-100', 'translate-x-0');
-      }
+    if (btnEl) {
+      btnEl.classList.remove('bg-white/80', 'text-karina-charcoal/80', 'border-black/5');
+      btnEl.classList.add('is-active', 'bg-karina-charcoal', 'text-white', 'font-bold', 'shadow-md');
     }
 
-    const data = menuData[catKey];
+    // Filtrar tarjetas
+    const cards = document.querySelectorAll('.gastronomia-card');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const cardSede = card.getAttribute('data-sede');
+      if (sedeKey === 'all' || cardSede === sedeKey) {
+        card.classList.remove('hidden');
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+          card.style.transition = 'all 320ms cubic-bezier(0.16, 1, 0.3, 1)';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 30 * visibleCount);
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  };
+
+  // 2. Intercambio de Foto Principal con Transición Suave
+  window.changeRestaurantPhoto = function(restaurantId, newSrc, clickedThumb) {
+    const mainImg = document.getElementById('main-photo-' + restaurantId);
+    if (!mainImg) return;
+
+    // Aplicar clase de swap (fade out / scale down)
+    mainImg.classList.add('is-swapping');
+
+    setTimeout(() => {
+      mainImg.src = newSrc;
+      mainImg.classList.remove('is-swapping');
+    }, 180);
+
+    // Actualizar borde activo en la fila de miniaturas
+    if (clickedThumb) {
+      const parentRow = clickedThumb.closest('.thumbs-row');
+      if (parentRow) {
+        parentRow.querySelectorAll('.restaurant-thumb').forEach(thumb => {
+          thumb.classList.remove('is-active', 'border-karina-mustard', 'ring-2', 'ring-karina-mustard/40', 'opacity-100');
+          thumb.classList.add('border-transparent', 'opacity-70');
+        });
+        clickedThumb.classList.remove('border-transparent', 'opacity-70');
+        clickedThumb.classList.add('is-active', 'border-karina-mustard', 'ring-2', 'ring-karina-mustard/40', 'opacity-100');
+      }
+    }
+  };
+
+  // 3. Modal de Menú Digital
+  window.openGastronomiaMenu = function(restaurantId) {
+    const data = gastronomiaMenusData[restaurantId];
     if (!data) return;
 
-    const titleEl = document.getElementById('category-title');
-    const descEl = document.getElementById('category-desc');
-    if (titleEl) titleEl.textContent = data.title;
-    if (descEl) descEl.textContent = data.desc;
+    const modal = document.getElementById('gastronomia-menu-modal');
+    const titleEl = document.getElementById('modal-menu-title');
+    const subtitleEl = document.getElementById('modal-menu-subtitle');
+    const scheduleEl = document.getElementById('modal-menu-schedule');
+    const contentEl = document.getElementById('modal-menu-categories');
+    const whatsappBtn = document.getElementById('modal-menu-whatsapp-btn');
 
-    const container = document.getElementById('dishes-container');
-    if (container) {
-      container.innerHTML = data.dishes.map(d => `
-        <div class="dish-card dish-card-hover bg-white/70 p-5 rounded-3xl border border-black/5 flex flex-col sm:flex-row items-center justify-between gap-5">
-          <div class="flex items-center gap-4 w-full sm:w-auto">
-            <img src="${d.img}" alt="${d.name}" class="w-20 h-20 rounded-2xl object-cover shrink-0">
-            <div class="space-y-1 text-left">
-              <div class="flex items-center gap-2">
-                <h3 class="text-base font-bold text-karina-charcoal">${d.name}</h3>
-                <span class="bg-karina-cream text-karina-charcoal text-[9px] font-mono px-2 py-0.5 rounded-full border border-black/5">${d.tag}</span>
-              </div>
-              <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">${d.desc}</p>
-            </div>
+    if (titleEl) titleEl.textContent = data.name;
+    if (subtitleEl) subtitleEl.textContent = data.sede;
+    if (scheduleEl) scheduleEl.innerHTML = `<i class="fa-regular fa-clock mr-1.5 text-karina-mustard"></i>${data.schedule}`;
+
+    if (whatsappBtn) {
+      const message = encodeURIComponent(`Hola ${data.name} (${data.sede}), deseo consultar la disponibilidad y realizar una reserva/pedido de su menú.`);
+      whatsappBtn.href = `https://wa.me/${data.phone}?text=${message}`;
+    }
+
+    if (contentEl) {
+      contentEl.innerHTML = data.categories.map(cat => `
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 border-b border-black/10 pb-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-karina-mustard"></span>
+            <h4 class="text-sm sm:text-base font-bold text-karina-charcoal tracking-wide uppercase">${cat.name}</h4>
           </div>
-          <div class="flex items-center justify-between w-full sm:w-auto sm:justify-end gap-4 border-t sm:border-t-0 pt-3 sm:pt-0 border-black/5 shrink-0">
-            <span class="text-lg font-bold text-karina-charcoal">$${d.price}</span>
-            <button onclick="addToOrder('${d.name}', ${d.price}, '${d.img}')" class="w-9 h-9 rounded-full bg-karina-cream hover:bg-karina-mustard text-karina-charcoal flex items-center justify-center transition-all active:scale-90" title="Añadir a la orden">
-              <i class="fa-solid fa-plus text-xs"></i>
-            </button>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            ${cat.items.map(item => `
+              <div class="bg-white/80 p-3.5 sm:p-4 rounded-2xl border border-black/5 flex flex-col justify-between gap-2 shadow-xs hover:border-karina-mustard/50 transition-colors">
+                <div class="space-y-1 text-left">
+                  <div class="flex items-start justify-between gap-2">
+                    <h5 class="text-xs sm:text-sm font-bold text-karina-charcoal leading-snug">${item.name}</h5>
+                    <span class="text-xs sm:text-sm font-bold text-karina-charcoal shrink-0 font-mono">${item.price}</span>
+                  </div>
+                  <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">${item.desc}</p>
+                </div>
+                <div class="flex items-center justify-between pt-1 border-t border-black/5">
+                  <span class="tag-pill text-[9px]">${item.tag}</span>
+                  <a href="https://wa.me/${data.phone}?text=${encodeURIComponent(`Hola ${data.name}, me interesa ordenar: ${item.name} (${item.price})`)}" target="_blank" class="text-[10px] font-bold text-karina-blue hover:text-karina-charcoal flex items-center gap-1 transition-colors">
+                    <span>Pedir por WhatsApp</span>
+                    <i class="fa-brands fa-whatsapp text-xs text-[#25D366]"></i>
+                  </a>
+                </div>
+              </div>
+            `).join('')}
           </div>
         </div>
       `).join('');
     }
+
+    if (modal) {
+      modal.classList.remove('is-hidden');
+      document.body.style.overflow = 'hidden';
+    }
   };
 
-  // Carrito / Estado de Selección
+  window.closeGastronomiaMenu = function() {
+    const modal = document.getElementById('gastronomia-menu-modal');
+    if (modal) {
+      modal.classList.add('is-hidden');
+      document.body.style.overflow = '';
+    }
+  };
+
+  // Cerrar modal al presionar Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      window.closeGastronomiaMenu();
+    }
+  });
+
+  // 4. Asistente Arimiña-IA Sommelier
+  window.consultGastronomiaAI = function() {
+    alert('Arimiña-IA Sommelier:\n\n"Para nuestras carnes y cortes a la brasa en Restaurante 283 te sugiero un Malbec Reserva. Si prefieres nuestro Lomo de Rótalo en Moriche Restaurant, un Sauvignon Blanc realzará los toques cítricos del ají dulce oriental."');
+  };
+
+  // ===================================================
+  // 11B. SELECCIÓN DE PLATOS / CARRITO RÁPIDO (COMPATIBILIDAD)
+  // ===================================================
   let cart = [];
 
   window.addToOrder = function(name, price, img) {
@@ -1135,6 +1384,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.consultAIAssistant = function() {
     alert('Arimiña-IA: Te sugiero acompañar tus elecciones gastronómicas con nuestra selección de vinos tintos Reserva o solicitar una cita personalizada para nuestros servicios de estilismo.');
   };
+
 
   // ===================================================
   // 12. CONTROLADORES: FUNDACIÓN KARIÑA (MODALES Y LIGHTBOX)

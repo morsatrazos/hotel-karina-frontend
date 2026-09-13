@@ -679,6 +679,92 @@ input:checked + .slider-round:before {
   border-color: rgba(240, 168, 0, 0.35);
 }
 
+/* ===================================================
+   16. GASTRONOMÍA & RESTAURANTES: MOBILE-FIRST UX
+   =================================================== */
+
+/* Transición suave de foto principal en tarjetas de restaurante */
+.restaurant-main-img {
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.restaurant-main-img.is-swapping {
+  opacity: 0.2;
+  transform: scale(0.97);
+}
+
+/* Miniaturas de fotos de restaurante */
+.restaurant-thumb {
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.restaurant-thumb:hover {
+  opacity: 1 !important;
+  transform: translateY(-2px);
+}
+
+.restaurant-thumb.is-active {
+  border-color: #F0A800 !important;
+  box-shadow: 0 0 0 2px rgba(240, 168, 0, 0.4) !important;
+  opacity: 1 !important;
+  transform: scale(1.02);
+}
+
+/* Pills de filtrado por Sede */
+.sede-filter-pill {
+  transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sede-filter-pill:active {
+  transform: scale(0.95);
+}
+
+.sede-filter-pill.is-active {
+  background-color: #343434 !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+  border-color: #343434 !important;
+}
+
+/* Tag pills */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background-color: rgba(52, 52, 52, 0.06);
+  color: #343434;
+  letter-spacing: 0.02em;
+}
+
+/* Modal de Menú Digital */
+#gastronomia-menu-modal {
+  transition: opacity 280ms cubic-bezier(0.16, 1, 0.3, 1), visibility 280ms;
+}
+
+#gastronomia-menu-modal .modal-panel {
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#gastronomia-menu-modal.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#gastronomia-menu-modal.is-hidden .modal-panel {
+  transform: scale(0.95) translateY(12px);
+  opacity: 0;
+}
+
+
 
 
 
