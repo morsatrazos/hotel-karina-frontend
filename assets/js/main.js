@@ -1284,7 +1284,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // 3. Modal de Menú Digital
-  window.openGastronomiaMenu = function(restaurantId) {
+  window.openGastronomiaMenu = function(restaurantId, categoryKeyword = '') {
     const data = gastronomiaMenusData[restaurantId];
     if (!data) return;
 
@@ -1304,8 +1304,19 @@ document.addEventListener('DOMContentLoaded', () => {
       whatsappBtn.href = `https://wa.me/${data.phone}?text=${message}`;
     }
 
+    let categoriesToShow = data.categories;
+    if (categoryKeyword) {
+      const matched = data.categories.filter(cat => 
+        cat.name.toLowerCase().includes(categoryKeyword.toLowerCase())
+      );
+      if (matched.length > 0) {
+        const others = data.categories.filter(cat => !matched.includes(cat));
+        categoriesToShow = [...matched, ...others];
+      }
+    }
+
     if (contentEl) {
-      contentEl.innerHTML = data.categories.map(cat => `
+      contentEl.innerHTML = categoriesToShow.map(cat => `
         <div class="space-y-4">
           <div class="flex items-center gap-3 border-b border-black/10 pb-2">
             <span class="w-2.5 h-2.5 rounded-full bg-karina-mustard"></span>
@@ -1338,6 +1349,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) {
       modal.classList.remove('is-hidden');
       document.body.style.overflow = 'hidden';
+      const modalScroll = modal.querySelector('.overflow-y-auto');
+      if (modalScroll) modalScroll.scrollTop = 0;
     }
   };
 
@@ -1349,6 +1362,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // 4. Carrusel de Propuestas Aliadas Club Palma Real
+  window.scrollPalmaRealCarousel = function(direction) {
+    const track = document.getElementById('palma-real-carousel-track');
+    if (!track) return;
+    const card = track.querySelector('.snap-start');
+    const cardWidth = card ? card.offsetWidth + 16 : 360;
+    track.scrollBy({ left: cardWidth * direction, behavior: 'smooth' });
+  };
+
+  // Inicializar observador y dots del carrusel de Club Palma Real
+  const setupPalmaRealCarousel = () => {
+    const track = document.getElementById('palma-real-carousel-track');
+    const dots = document.querySelectorAll('.palma-dot');
+    if (!track || !dots.length) return;
+
+    track.addEventListener('scroll', () => {
+      const scrollLeft = track.scrollLeft;
+      const card = track.querySelector('.snap-start');
+      const cardWidth = card ? card.offsetWidth + 16 : 360;
+      const activeIndex = Math.min(dots.length - 1, Math.max(0, Math.round(scrollLeft / cardWidth)));
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.className = 'palma-dot w-5 h-2 rounded-full bg-karina-charcoal transition-all cursor-pointer';
+        } else {
+          dot.className = 'palma-dot w-2 h-2 rounded-full bg-karina-charcoal/20 transition-all cursor-pointer';
+        }
+      });
+    }, { passive: true });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        const card = track.querySelector('.snap-start');
+        const cardWidth = card ? card.offsetWidth + 16 : 360;
+        track.scrollTo({ left: cardWidth * idx, behavior: 'smooth' });
+      });
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupPalmaRealCarousel);
+  } else {
+    setupPalmaRealCarousel();
+  }
+
   // Cerrar modales al presionar Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -1358,7 +1415,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // 4. Asistente Arimiña-IA Sommelier
+  // 5. Asistente Arimiña-IA Sommelier
   window.consultGastronomiaAI = function() {
     alert('Arimiña-IA Sommelier:\n\n"Para nuestras carnes y cortes a la brasa en Restaurante 283 te sugiero un Malbec Reserva. Si prefieres nuestro Lomo de Rótalo en Moriche Restaurant, un Sauvignon Blanc realzará los toques cítricos del ají dulce oriental."');
   };
