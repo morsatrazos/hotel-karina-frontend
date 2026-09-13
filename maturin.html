@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel Kariña Maturín — Resort, Parque Acuático & Suites</title>
+  <title>Hotel Kariña Maturín — Resort, Piscinas & Suites</title>
 
   <!-- Google Fonts: Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -327,7 +327,7 @@
           <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
         </button>
         <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
-          <a href="maturin.html" class="block text-karina-mustard font-medium transition-colors">Maturín (Resort & Parque Acuático)</a>
+          <a href="maturin.html" class="block text-karina-mustard font-medium transition-colors">Maturín (Hotel & Club Palma Real)</a>
           <a href="punta-de-mata.html" class="block hover:text-karina-mustard transition-colors">Punta de Mata (Hub Ejecutivo)</a>
           <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Business & Events)</a>
         </div>
@@ -408,7 +408,7 @@
           ¡Vive Kariña Maturín!
         </h1>
         <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed max-w-2xl mx-auto">
-          El resort insignia del oriente venezolano. Un oasis tropical con parque acuático, club deportivo de pádel, alta gastronomía en Restaurante 283 y salones corporativos en la exclusiva Urbanización Palma Real.
+          El resort insignia del oriente venezolano. Un oasis tropical con complejo de piscinas, club deportivo Master Pádel, alta gastronomía en Moriche Restaurant y Oh My Bar, y salones corporativos en la exclusiva Urbanización Palma Real.
         </p>
 
         <!-- SVG Line Accents - Trazo Curvo Extendido -->
@@ -425,16 +425,16 @@
           Todas
         </button>
         <button onclick="filterBentoGallery('piscinas', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Parque Acuático & Piscinas
+          Piscina & Day Pass
         </button>
-        <button onclick="filterBentoGallery('gastronomia', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Restaurante 283
+        <button onclick="filterBentoGallery('restaurantes', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
+          Restaurantes
         </button>
         <button onclick="filterBentoGallery('padel', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
           Pádel & Tenis
         </button>
         <button onclick="filterBentoGallery('eventos', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Convenciones & Salones
+          Salón de Eventos
         </button>
       </div>
 
@@ -442,7 +442,7 @@
       <div id="bento-container" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch pt-4 text-left">
         
         <!-- Foto 1: Principal Grande (Fachada y Resort) -->
-        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg', 'Hotel Kariña Maturín — Fachada Principal y Resort')">
           <img src="https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg" alt="Fachada Resort Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
@@ -451,28 +451,58 @@
           </div>
         </div>
 
-        <!-- Foto 2: Forma Óval / Asimétrica Reversa (Parque Acuático) -->
-        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" alt="Parque Acuático y Piscinas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <!-- Foto 2: Forma Asimétrica Reversa (Piscinas & Day Pass) -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80', 'Complejo de Piscinas & Day Pass — Hotel Kariña Maturín')">
+          <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" alt="Piscinas y Áreas Recreativas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Parque Acuático & Caney</span>
-            <h3 class="text-xl font-light text-white">Toboganes & Piscinas Recreativas</h3>
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Piscina & Day Pass</span>
+            <h3 class="text-xl font-light text-white">Piscinas Recreativas & Caney Tropical</h3>
           </div>
         </div>
 
-        <!-- Foto 3: Club de Pádel -->
-        <div class="bento-card bento-item-all bento-item-padel md:col-span-4 h-[240px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80" alt="Canchas de Pádel Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Club de Pádel & Canchas Profesionales</span>
+        <!-- Foto 3: Moriche Restaurant -->
+        <div class="bento-card bento-item-all bento-item-restaurantes md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80', 'Moriche Restaurant — Alta Gastronomía de Autor Maturín')">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Moriche Restaurant Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-karina-mustard text-karina-charcoal font-bold px-2 py-0.5 rounded-full">Restaurante Insignia</span>
+            <h4 class="text-sm font-bold text-white">Moriche Restaurant</h4>
+            <p class="text-[11px] text-white/80 font-light">Alta Cocina de Autor & Desayunos Buffet</p>
+          </div>
         </div>
 
-        <!-- Foto 4: Restaurante 283 -->
-        <div class="bento-card bento-item-all bento-item-gastronomia bento-item-eventos md:col-span-8 h-[240px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Restaurante 283 Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Restaurante 283 — Fusión Criolla e Internacional</span>
+        <!-- Foto 4: Oh My Bar -->
+        <div class="bento-card bento-item-all bento-item-restaurantes md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80', 'Oh My Bar — Mixología de Vanguardia & Lounge')">
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80" alt="Oh My Bar Lounge Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Lounge & Mixología</span>
+            <h4 class="text-sm font-bold text-white">Oh My Bar</h4>
+            <p class="text-[11px] text-white/80 font-light">Cócteles Tropicales, Tapas & Música</p>
+          </div>
+        </div>
+
+        <!-- Foto 5: Master Pádel & Tenis -->
+        <div class="bento-card bento-item-all bento-item-padel md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=1200&q=80', 'Master Pádel — Canchas Profesionales de Pádel & Tenis Maturín')">
+          <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80" alt="Master Pádel Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Club Deportivo</span>
+            <h4 class="text-sm font-bold text-white">Master Pádel</h4>
+            <p class="text-[11px] text-white/80 font-light">Canchas Profesionales de Pádel & Tenis</p>
+          </div>
+        </div>
+
+        <!-- Foto 6: Salón Arimiña (Convenciones & Eventos) -->
+        <div class="bento-card bento-item-all bento-item-eventos md:col-span-12 h-[260px] sm:h-[300px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80', 'Salón Arimiña — Centro de Convenciones y Eventos Maturín')">
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80" alt="Salón Arimiña Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 text-white space-y-1">
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Eventos & Convenciones</span>
+            <h3 class="text-xl font-bold text-white">Salón Arimiña — Centro de Convenciones y Eventos</h3>
+            <p class="text-xs text-white/80 font-light max-w-xl">Capacidad para hasta 400 asistentes con sonido profesional, climatización integral y banquetes corporativos.</p>
+          </div>
         </div>
 
       </div>
@@ -529,7 +559,7 @@
             </div>
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
-              <span>Acceso ilimitado al parque acuático y desayuno buffet incluido</span>
+              <span>Acceso ilimitado al complejo de piscinas y desayuno buffet incluido</span>
             </div>
           </div>
 
@@ -633,82 +663,236 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 5. SECCIÓN GASTRONÓMICA: RESTAURANTE 283   -->
+    <!-- 5. GASTRONOMÍA DE AUTOR & MASTER PÁDEL     -->
     <!-- ========================================== -->
-    <section id="gastronomia" class="max-w-7xl mx-auto px-6 sm:px-12 py-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white/70 rounded-[44px] p-8 sm:p-12 border border-black/5 shadow-sm">
+    <section id="gastronomia-deportes" class="max-w-7xl mx-auto px-6 sm:px-12 py-10 space-y-8">
+      <div class="text-center space-y-2 max-w-2xl mx-auto">
+        <span class="text-[11px] font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest block">
+          EXPERIENCIAS & DEPORTE EN MATURÍN
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+          Gastronomía de Autor & <span class="font-bold">Master Pádel</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+          Disfruta de nuestros espacios gastronómicos insignia y las instalaciones deportivas profesionales del complejo.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-left">
         
-        <!-- Texto Izquierda -->
-        <div class="lg:col-span-6 space-y-6 text-left">
-          <span class="text-[11px] font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest block">
-            EXPERIENCIA CULINARIA EN MATURÍN
-          </span>
-
-          <h2 class="text-3xl sm:text-5xl font-light text-karina-charcoal tracking-tight leading-tight">
-            Restaurante 283 & Terraza
-          </h2>
-
-          <p class="text-xs sm:text-sm text-karina-charcoal/75 font-light leading-relaxed">
-            Ubicado frente al caney principal, Restaurante 283 combina los mejores sabores de la cocina criolla venezolana con cortes de carne seleccionados, pescados frescos y coctelería internacional de autor.
-          </p>
-
-          <div class="pt-2">
-            <a href="restaurante.html" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold transition-all shadow-md active:scale-95 group">
-              <i class="fa-solid fa-utensils text-karina-mustard"></i>
-              <span>Consultar menú gastronómico con Arimiña-IA</span>
-              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Foto Orgánica Derecha -->
-        <div class="lg:col-span-6">
-          <div class="relative h-[320px] sm:h-[400px] w-full rounded-[36px] overflow-hidden shadow-xl bg-black/10 group cursor-pointer border border-black/5">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" 
-                 alt="Restaurante 283 Maturín" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-85"></div>
-            <div class="absolute bottom-6 left-6 text-xs text-white/95 font-light flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-karina-mustard shadow-sm"></span>
-              <span>Restaurante 283 — Desayunos Buffet & Cenas de Autor</span>
+        <!-- Card 1: Moriche Restaurant -->
+        <article class="bg-white/85 rounded-[32px] p-5 sm:p-6 border border-black/5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-5 group">
+          <div class="space-y-4">
+            <div class="relative h-48 sm:h-52 rounded-2xl overflow-hidden bg-black/10 cursor-pointer shadow-inner" onclick="openLightbox('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80', 'Moriche Restaurant — Hotel Kariña Maturín')">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Moriche Restaurant Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                Alta Cocina de Autor
+              </span>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold text-karina-charcoal">Moriche Restaurant</h3>
+                <span class="text-[11px] text-karina-charcoal/60 font-mono">7:00 AM – 11:00 PM</span>
+              </div>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Nuestra propuesta insigne de alta cocina donde los sabores tradicionales del oriente venezolano se reinventan con técnicas contemporáneas y maridajes de autor.
+              </p>
             </div>
           </div>
-        </div>
+
+          <div class="grid grid-cols-2 gap-2.5 pt-2 border-t border-black/5">
+            <a href="restaurante.html#card-moriche-restaurant" class="py-2.5 px-3 rounded-full bg-karina-cream hover:bg-white text-karina-charcoal border border-black/15 font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-2xs">
+              <i class="fa-solid fa-book-open text-karina-mustard text-xs"></i>
+              <span>Ver Menú</span>
+            </a>
+            <a href="https://wa.me/5804249169601?text=Hola%20Hotel%20Kari%C3%B1a%20Matur%C3%ADn%2C%20deseo%20reservar%20una%20mesa%20en%20Moriche%20Restaurant" target="_blank" class="py-2.5 px-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-2xs">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Reservar</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2: Oh My Bar -->
+        <article class="bg-white/85 rounded-[32px] p-5 sm:p-6 border border-black/5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-5 group">
+          <div class="space-y-4">
+            <div class="relative h-48 sm:h-52 rounded-2xl overflow-hidden bg-black/10 cursor-pointer shadow-inner" onclick="openLightbox('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80', 'Oh My Bar Lounge — Hotel Kariña Maturín')">
+              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80" alt="Oh My Bar Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3 left-3 bg-karina-mustard text-karina-charcoal text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full">
+                Mixología & Lounge
+              </span>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold text-karina-charcoal">Oh My Bar</h3>
+                <span class="text-[11px] text-karina-charcoal/60 font-mono">5:00 PM – 2:00 AM</span>
+              </div>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Vibrante espacio de coctelería contemporánea, mixología tropical de autor, tapas gourmet y música en vivo en la mejor atmósfera nocturna de la ciudad.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 pt-2 border-t border-black/5">
+            <a href="restaurante.html#card-oh-my-bar" class="py-2.5 px-3 rounded-full bg-karina-cream hover:bg-white text-karina-charcoal border border-black/15 font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-2xs">
+              <i class="fa-solid fa-book-open text-karina-mustard text-xs"></i>
+              <span>Ver Menú</span>
+            </a>
+            <a href="https://wa.me/5804249169601?text=Hola%20Hotel%20Kari%C3%B1a%20Matur%C3%ADn%2C%20deseo%20reservar%20en%20Oh%20My%20Bar%20Lounge" target="_blank" class="py-2.5 px-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-2xs">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Reservar</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3: Master Pádel -->
+        <article class="bg-white/85 rounded-[32px] p-5 sm:p-6 border border-black/5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-5 group">
+          <div class="space-y-4">
+            <div class="relative h-48 sm:h-52 rounded-2xl overflow-hidden bg-black/10 cursor-pointer shadow-inner" onclick="openLightbox('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=1200&q=80', 'Master Pádel & Tenis — Club Palma Real Maturín')">
+              <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80" alt="Master Pádel Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3 left-3 bg-[#2680BD] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                Club Deportivo
+              </span>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold text-karina-charcoal">Master Pádel</h3>
+                <span class="text-[11px] text-karina-charcoal/60 font-mono">6:00 AM – 11:00 PM</span>
+              </div>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Canchas profesionales de pádel y tenis con iluminación panorámica nocturna, clínicas formativas, alquiler de equipos y torneos en el Club Palma Real.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 pt-2 border-t border-black/5">
+            <a href="https://wa.me/5804249169601?text=Hola%20Hotel%20Kari%C3%B1a%20Matur%C3%ADn%2C%20deseo%20informaci%C3%B3n%20sobre%20las%20canchas%20de%20Master%20P%C3%A1del" target="_blank" class="py-2.5 px-3 rounded-full bg-karina-cream hover:bg-white text-karina-charcoal border border-black/15 font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-2xs">
+              <i class="fa-solid fa-table-tennis-paddle-ball text-karina-mustard text-xs"></i>
+              <span>Tarifas</span>
+            </a>
+            <a href="https://wa.me/5804249169601?text=Hola%20Hotel%20Kari%C3%B1a%20Matur%C3%ADn%2C%20deseo%20reservar%20una%20cancha%20en%20Master%20P%C3%A1del" target="_blank" class="py-2.5 px-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-2xs">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Reservar</span>
+            </a>
+          </div>
+        </article>
 
       </div>
     </section>
 
     <!-- ========================================== -->
-    <!-- 6. SERVICIOS DESTACADOS                    -->
+    <!-- 6. SERVICIOS E INSTALACIONES INSIGNIA      -->
     <!-- ========================================== -->
-    <section id="servicios" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-10 text-center py-6">
-      <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
-        Servicios e Instalaciones Insignia
-      </h2>
+    <section id="servicios" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-10 text-center py-8">
+      <div class="space-y-2 max-w-2xl mx-auto">
+        <span class="text-[11px] font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest block">
+          COMODIDADES & BIENESTAR
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+          Servicios e Instalaciones <span class="font-bold">Insignia</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+          Diseñados para garantizar una estadía integral de confort, descanso y productividad en Maturín.
+        </p>
+      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 max-w-6xl mx-auto text-left">
         
-        <!-- Servicio 1: Day Pass & Parque Acuático -->
-        <a href="vive-karina.html" class="service-card-anim bg-karina-mustard-light/60 hover:bg-karina-mustard-light/90 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm block">
-          <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shrink-0 shadow-sm">
-            <i class="fa-solid fa-umbrella-beach text-karina-mustard"></i>
+        <!-- 1. Piscina -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl border border-black/5 shadow-xs flex flex-col justify-between gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-sky-50 text-[#2680BD] flex items-center justify-center text-base shadow-2xs">
+            <i class="fa-solid fa-person-swimming"></i>
           </div>
-          <div>
-            <h3 class="text-base font-bold text-karina-charcoal">Day Pass Familiar & Parque Acuático</h3>
-            <p class="text-xs text-karina-charcoal/70 font-normal">Pase de un día completo para disfrutar de piscinas, toboganes, caney y reposeras.</p>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Piscina Resort & Relax</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">
+              Complejo de piscinas al aire libre rodeado de jardines tropicales, reposeras y caney de bebidas.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Day Pass -->
+        <a href="vive-karina.html" class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl border border-black/5 shadow-xs flex flex-col justify-between gap-3 block group">
+          <div class="w-11 h-11 rounded-2xl bg-amber-50 text-[#F0A800] flex items-center justify-center text-base shadow-2xs group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-sun"></i>
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-karina-charcoal group-hover:text-karina-mustard transition-colors">Day Pass</h3>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-40"></i>
+            </div>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">
+              Pase de un día completo para disfrutar de las piscinas, áreas verdes y gastronomía del resort.
+            </p>
           </div>
         </a>
 
-        <!-- Servicio 2: Salones Corporativos -->
-        <a href="business.html" class="service-card-anim bg-karina-mustard-light/60 hover:bg-karina-mustard-light/90 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm block">
-          <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shrink-0 shadow-sm">
-            <i class="fa-solid fa-briefcase text-karina-charcoal"></i>
+        <!-- 3. Salón de Eventos Arimiña -->
+        <a href="business.html" class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl border border-black/5 shadow-xs flex flex-col justify-between gap-3 block group">
+          <div class="w-11 h-11 rounded-2xl bg-amber-50 text-[#F0A800] flex items-center justify-center text-base shadow-2xs group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-champagne-glasses"></i>
           </div>
-          <div>
-            <h3 class="text-base font-bold text-karina-charcoal">Gran Salón de Convenciones Palma Real</h3>
-            <p class="text-xs text-karina-charcoal/70 font-normal">Capacidad para hasta 400 asistentes con sonido profesional y catering integrado.</p>
+          <div class="space-y-1">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-karina-charcoal group-hover:text-karina-mustard transition-colors">Salón de Eventos Arimiña</h3>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-40"></i>
+            </div>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">
+              Gran salón de convenciones y eventos para bodas, congresos y celebraciones de hasta 400 invitados.
+            </p>
           </div>
         </a>
+
+        <!-- 4. Gimnasio -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl border border-black/5 shadow-xs flex flex-col justify-between gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-neutral-100 text-karina-charcoal flex items-center justify-center text-base shadow-2xs">
+            <i class="fa-solid fa-dumbbell"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Gimnasio Equipado</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">
+              Espacio fitness con máquinas cardiovasculares, pesas libres y área para entrenamiento funcional.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5. Peluquería -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl border border-black/5 shadow-xs flex flex-col justify-between gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-rose-50 text-[#C7473B] flex items-center justify-center text-base shadow-2xs">
+            <i class="fa-solid fa-scissors"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Peluquería & Estilismo</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">
+              Servicios de peluquería, barbería y cuidado estético para ocasiones especiales y bienestar diario.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6. Tienda de Snacks -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl border border-black/5 shadow-xs flex flex-col justify-between gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-amber-50 text-[#F0A800] flex items-center justify-center text-base shadow-2xs">
+            <i class="fa-solid fa-store"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Tienda de Snacks</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">
+              Punto de conveniencia con bebidas refrescantes, confitería, snacks variados y artículos esenciales.
+            </p>
+          </div>
+        </div>
+
+        <!-- 7. Alquiler de Vehículos -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl border border-black/5 shadow-xs flex flex-col justify-between gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-sky-50 text-[#2680BD] flex items-center justify-center text-base shadow-2xs">
+            <i class="fa-solid fa-car-side"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Alquiler de Vehículos</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">
+              Coordinación y gestión de renta de vehículos y traslados privados para ejecutivos y familias.
+            </p>
+          </div>
+        </div>
 
       </div>
     </section>
@@ -748,7 +932,7 @@
         <ul class="space-y-2 text-xs text-white/75 font-normal">
           <li><a href="vive-karina.html" class="hover:text-white transition-colors">Club y piscina</a></li>
           <li><a href="business.html" class="hover:text-white transition-colors">Centro de negocios</a></li>
-          <li><a href="restaurante.html" class="hover:text-white transition-colors">Restaurante 283</a></li>
+          <li><a href="restaurante.html" class="hover:text-white transition-colors">Gastronomía & Restaurantes</a></li>
           <li><a href="fundacion.html" class="hover:text-white transition-colors">Fundación Kariña</a></li>
           <li><a href="faqs.html" class="hover:text-white transition-colors">FAQ</a></li>
         </ul>
@@ -1157,6 +1341,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
+
+  <!-- Script Oficial Global -->
+  <script src="assets/js/main.js"></script>
+
   <!-- Cápsula Flotante Discreta: Idioma -->
   <div class="fixed bottom-6 right-6 z-40 flex items-center bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
     <button onclick="if(window.toggleLanguage) toggleLanguage()" class="text-[#726B63] hover:text-[#1E1E1E] transition font-semibold"><span>ES/EN</span></button>
