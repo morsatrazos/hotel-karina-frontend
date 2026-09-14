@@ -1047,11 +1047,14 @@
       
       <div id="suite-modal-wrapper" class="grid grid-cols-1 md:grid-cols-12 h-full overflow-y-auto p-6 sm:p-8 gap-8 transition-opacity duration-200">
         
-        <!-- Visor Izquierda con Galería de 6 Fotos/Video -->
+        <!-- Visor Izquierda con Galería de Fotos -->
         <div class="md:col-span-6 space-y-4">
-          <div class="relative w-full h-[280px] sm:h-[320px] rounded-pebble overflow-hidden shadow-md bg-black/10">
-            <img id="suite-modal-main-img" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+          <div class="relative w-full h-[280px] sm:h-[320px] rounded-pebble overflow-hidden shadow-md bg-black/10 cursor-pointer group" onclick="openSuiteModalMainLightbox()" title="Clic para ampliar imagen">
+            <img id="suite-modal-main-img" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <span id="suite-modal-tag" class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-white text-[11px]">Vista Principal Suite</span>
+            <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
           </div>
 
           <!-- Miniaturas Dinámicas de la Suite -->

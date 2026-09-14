@@ -886,9 +886,12 @@
         
           <!-- Visor Izquierda con Galería Dinámica -->
         <div class="md:col-span-6 space-y-4">
-          <div class="relative w-full h-[280px] sm:h-[320px] rounded-pebble overflow-hidden shadow-md bg-black/10">
-            <img id="suite-modal-main-img" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+          <div class="relative w-full h-[280px] sm:h-[320px] rounded-pebble overflow-hidden shadow-md bg-black/10 cursor-pointer group" onclick="openSuiteModalMainLightbox()" title="Clic para ampliar imagen">
+            <img id="suite-modal-main-img" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <span id="suite-modal-tag" class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-white text-[11px]">Vista Principal</span>
+            <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
           </div>
 
           <!-- Miniaturas Dinámicas Generadas por JS -->
@@ -1176,7 +1179,38 @@
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    function openSuiteModalMainLightbox() {
+      const imgEl = document.getElementById('suite-modal-main-img');
+      const titleEl = document.getElementById('suite-modal-title');
+      const tagEl = document.getElementById('suite-modal-tag');
+      if (imgEl && imgEl.src && typeof window.openLightbox === 'function') {
+        window.openLightbox(imgEl.src, titleEl ? titleEl.textContent : 'Suite Kariña', tagEl ? tagEl.textContent : '');
+      }
+    }
   </script>
+
+  <!-- Script Oficial Global -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- ========================================== -->
+  <!-- LIGHTBOX MODAL UNIVERSAL PARA IMÁGENES     -->
+  <!-- ========================================== -->
+  <div id="lightbox-modal" class="fixed inset-0 z-[300] bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col items-center justify-center p-4 sm:p-8" onclick="closeLightbox()">
+    
+    <!-- Botón Cerrar Superior -->
+    <button onclick="closeLightbox()" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all z-20 focus:outline-none" aria-label="Cerrar visor">
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+
+    <!-- Contenedor Imagen + Caption -->
+    <div class="relative max-w-5xl max-h-[85vh] flex flex-col items-center justify-center space-y-3" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="Vista ampliada" class="max-h-[78vh] max-w-[92vw] sm:max-w-[85vw] object-contain rounded-2xl shadow-2xl border border-white/10 select-none">
+      <p id="lightbox-caption" class="text-xs sm:text-sm text-white/90 font-light text-center px-4 max-w-xl hidden"></p>
+    </div>
+
+  </div>
+
   <!-- Cápsula Flotante Discreta: Idioma -->
   <div class="fixed bottom-6 right-6 z-40 flex items-center bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
     <button onclick="if(window.toggleLanguage) toggleLanguage()" class="text-[#726B63] hover:text-[#1E1E1E] transition font-semibold"><span>ES/EN</span></button>
