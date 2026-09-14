@@ -179,7 +179,7 @@
             <div class="space-y-1">
               <!-- Opción 1: Maturín -->
               <a href="maturin.html" class="dropdown-item-row flex items-center gap-3.5 p-2 rounded-2xl hover:bg-[#E8DFC8]/30 transition-all group/item">
-                <img src="https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg" alt="Sede Maturín" class="w-12 h-12 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
+                <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp" alt="Sede Maturín" class="w-12 h-12 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
                 <div class="flex-1 min-w-0">
                   <h4 class="text-xs font-bold text-[#1E1E1E] group-hover/item:text-karina-mustard transition-colors">Hotel Kariña Maturín</h4>
                   <p class="text-[11px] text-[#726B63] truncate font-light mt-0.5">Urb. Palma Real • Piscina, salones y gastronomía</p>
@@ -428,59 +428,104 @@
       <!-- Grilla Bento Asimétrica -->
       <div id="bento-container" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch pt-4 text-left">
         
-        <!-- Foto 1: Principal Grande (Fachada Principal) -->
-        <div class="bento-card bento-item-all bento-item-jardines md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer">
+        <!-- Foto 1: Principal Grande (Fachada Principal) (7 cols) -->
+        <div class="bento-card bento-item-all bento-item-jardines md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp', 'Fachada Principal — Kariña Punta de Mata')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp" alt="Fachada Principal Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
             <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Perímetro Seguro y Reservado</span>
             <h3 class="text-xl font-light text-white">Privacidad Estratégica en Monagas Oeste</h3>
           </div>
         </div>
 
-        <!-- Foto 2: Forma Óval / Asimétrica Reversa (Lobby Principal) -->
-        <div class="bento-card bento-item-all bento-item-lobby md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer">
+        <!-- Foto 2: Forma Óval / Asimétrica Reversa (Lobby Principal) (5 cols) -->
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp', 'Lobby y Recepción VIP — Kariña Punta de Mata')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp" alt="Lobby Principal Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
             <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Recepción VIP y Atención 24/7</span>
             <h3 class="text-xl font-light text-white">Lobby Principal de Bienvenida</h3>
           </div>
         </div>
 
-        <!-- Foto 3: Restaurante El Caney -->
-        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp" alt="Restaurante El Caney Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Restaurante El Caney — Desayunos y Cenas Ejecutivas</span>
+        <!-- Foto 3: Piscina Central y Solárium (6 cols) -->
+        <div class="bento-card bento-item-all bento-item-piscina md:col-span-6 h-[280px] sm:h-[320px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-en-Punta-de-Mata.webp', 'Piscina Central y Solárium — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-en-Punta-de-Mata.webp" alt="Piscina Central Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5 text-white space-y-1">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Piscina y Relax</span>
+            <h4 class="text-base font-light text-white">Piscina Central y Solárium</h4>
+          </div>
         </div>
 
-        <!-- Foto 4: Fachadas Interiores & Corredores -->
-        <div class="bento-card bento-item-all bento-item-jardines md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <!-- Foto 4: Piscina Familiar y Day Pass (6 cols) -->
+        <div class="bento-card bento-item-all bento-item-piscina md:col-span-6 h-[280px] sm:h-[320px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-Familiar-Punta-de-Mata.webp', 'Piscina Familiar y Day Pass — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-Familiar-Punta-de-Mata.webp" alt="Piscina Familiar Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5 text-white space-y-1">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Piscina y Day Pass</span>
+            <h4 class="text-base font-light text-white">Piscina Familiar y Áreas de Descanso</h4>
+          </div>
+        </div>
+
+        <!-- Foto 5: Cliente Corporativo y Coworking (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Cliente-Corporativo.webp', 'Atención Corporativa y Coworking — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Cliente-Corporativo.webp" alt="Cliente Corporativo Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Centro Corporativo</span>
+            <h4 class="text-sm font-light text-white">Confort y Productividad Ejecutiva</h4>
+          </div>
+        </div>
+
+        <!-- Foto 6: Restaurante El Caney (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp', 'Restaurante El Caney — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp" alt="Restaurante El Caney Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Gastronomía</span>
+            <h4 class="text-sm font-light text-white">Restaurante El Caney</h4>
+          </div>
+        </div>
+
+        <!-- Foto 7: Hamburguesa Gourmet El Caney (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurante-Hamburguesa-Puntade-Mata.webp', 'Hamburguesa Artesanal El Caney — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurante-Hamburguesa-Puntade-Mata.webp" alt="Hamburguesa Artesanal Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-karina-mustard text-karina-charcoal font-bold px-2 py-0.5 rounded-full">Especialidad</span>
+            <h4 class="text-sm font-bold text-white">Hamburguesa Gourmet El Caney</h4>
+          </div>
+        </div>
+
+        <!-- Foto 8: Fachadas Interiores y Jardines (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-jardines md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp', 'Jardines Tropicales y Fachadas Interiores — Kariña Punta de Mata')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp" alt="Fachadas Interiores Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Jardines Tropicales y Corredores Interiores</span>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Jardines</span>
+            <h4 class="text-sm font-light text-white">Corredores y Áreas Verdes</h4>
+          </div>
         </div>
 
-        <!-- Foto 5: Lounge de Espera / Lobby 2 -->
-        <div class="bento-card bento-item-all bento-item-lobby md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <!-- Foto 9: Lounge de Espera / Lobby 2 (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata-2.webp', 'Lounge Ejecutivo y Sala de Espera — Kariña Punta de Mata')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata-2.webp" alt="Lounge de Espera Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Lounge Ejecutivo y Área de Espera</span>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Lounge</span>
+            <h4 class="text-sm font-light text-white">Lounge Ejecutivo y Espera</h4>
+          </div>
         </div>
 
-        <!-- Foto 6: Fachada Frontal y Accesos -->
-        <div class="bento-card bento-item-all bento-item-jardines md:col-span-6 h-[280px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <!-- Foto 10: Fachada Frontal y Accesos (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-jardines md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-2ptamata.webp', 'Acceso Frontal y Estacionamiento Privado — Kariña Punta de Mata')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-2ptamata.webp" alt="Fachada y Accesos Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Acceso Frontal y Estacionamiento Privado</span>
-        </div>
-
-        <!-- Foto 7: Piscina Central & Solárium -->
-        <div class="bento-card bento-item-all bento-item-piscina md:col-span-6 h-[280px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Piscina Central Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-light text-white">Piscina Central y Day Pass</span>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Accesos</span>
+            <h4 class="text-sm font-light text-white">Estacionamiento y Accesos</h4>
+          </div>
         </div>
 
       </div>
