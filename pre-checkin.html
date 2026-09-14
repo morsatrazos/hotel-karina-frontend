@@ -48,7 +48,7 @@
 <body class="bg-[#FAF6F0] text-[#1E1E1E] font-manrope antialiased min-h-screen selection:bg-karina-mustard selection:text-karina-charcoal flex flex-col justify-between">
 
   <!-- ========================================== -->
-  <!-- 1. NAVBAR OFICIAL CON ISLA FLOTANTE & DROPDOWNS CREATIVOS -->
+  <!-- 1. NAVBAR OFICIAL CON ISLA FLOTANTE Y DROPDOWNS CREATIVOS -->
   <!-- ========================================== -->
   <header id="main-navbar" class="fixed top-0 inset-x-0 mx-auto w-full z-50 navbar-default">
     <div class="nav-inner max-w-[1440px] mx-auto px-4 sm:px-12 h-20 flex items-center justify-between">
@@ -130,7 +130,7 @@
 
           <div class="dropdown-hover-bridge absolute top-full left-0 w-full h-3"></div>
 
-                              <!-- Panel Desplegable Asimétrico Orgánico Suites con pt-8 pb-6 px-7, margen interno y overflow hidden -->
+          <!-- Panel Desplegable Asimétrico Orgánico Suites -->
           <div class="nav-dropdown-panel absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[470px] bg-[#FAF6F0]/95 backdrop-blur-xl rounded-pebble-reverse pt-8 pb-6 px-7 shadow-2xl border border-[#E8DFC8] overflow-hidden opacity-0 pointer-events-none translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 text-left z-50">
             
             <div class="flex items-center justify-between pb-2.5 mb-2.5 border-b border-[#E8DFC8]/60 mt-1 px-1">
@@ -144,7 +144,7 @@
             <div class="space-y-1">
               <!-- Suite 1: Premium -->
               <a href="suites.html#catalogo" class="dropdown-item-row flex items-center gap-3.5 p-2 rounded-2xl hover:bg-[#E8DFC8]/30 transition-all group/item">
-                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=200&q=80" alt="Suite Premium" class="w-12 h-12 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
+                <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp" alt="Suite Premium" class="w-12 h-12 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between">
                     <h4 class="text-xs font-bold text-[#1E1E1E] group-hover/item:text-karina-mustard transition-colors">Suite Premium</h4>
@@ -157,26 +157,13 @@
 
               <!-- Suite 2: Estándar -->
               <a href="suites.html#catalogo" class="dropdown-item-row flex items-center gap-3.5 p-2 rounded-2xl hover:bg-[#E8DFC8]/30 transition-all group/item">
-                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=200&q=80" alt="Suite Estándar" class="w-12 h-12 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
+                <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp" alt="Suite Estándar" class="w-12 h-12 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between">
                     <h4 class="text-xs font-bold text-[#1E1E1E] group-hover/item:text-karina-mustard transition-colors">Suite Estándar</h4>
                     <span class="text-xs font-bold text-[#1E1E1E]">Desde $130</span>
                   </div>
                   <p class="text-[11px] text-[#726B63] truncate font-light mt-0.5">1 Cama Queen • Área de trabajo • Fibra óptica 100M</p>
-                </div>
-                <i class="fa-solid fa-chevron-right text-[10px] text-[#726B63]/40 group-hover/item:text-[#1E1E1E] group-hover/item:translate-x-0.5 transition-all pr-1"></i>
-              </a>
-
-              <!-- Suite 3: Dúplex Dos Ambientes -->
-              <a href="suites.html#catalogo" class="dropdown-item-row flex items-center gap-3.5 p-2 rounded-2xl hover:bg-[#E8DFC8]/30 transition-all group/item">
-                <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=200&q=80" alt="Suite Dúplex" class="w-12 h-12 rounded-xl object-cover shrink-0 group-hover/item:scale-105 transition-transform duration-300">
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center justify-between">
-                    <h4 class="text-xs font-bold text-[#1E1E1E] group-hover/item:text-karina-mustard transition-colors">Suite Dúplex (Dos Ambientes)</h4>
-                    <span class="text-xs font-bold text-[#1E1E1E]">Desde $240</span>
-                  </div>
-                  <p class="text-[11px] text-[#726B63] truncate font-light mt-0.5">2 Niveles independientes • Sala VIP y Master King</p>
                 </div>
                 <i class="fa-solid fa-chevron-right text-[10px] text-[#726B63]/40 group-hover/item:text-[#1E1E1E] group-hover/item:translate-x-0.5 transition-all pr-1"></i>
               </a>
@@ -237,9 +224,9 @@
           <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
         </button>
         <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
-          <a href="maturin.html" class="block hover:text-karina-mustard transition-colors">Maturín (Hotel & Club)</a>
-          <a href="punta-de-mata.html" class="block hover:text-karina-mustard transition-colors">Punta de Mata (Executive)</a>
-          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Business & Events)</a>
+          <a href="maturin.html" class="block hover:text-karina-mustard transition-colors">Maturín (Hotel y Club Palma Real)</a>
+          <a href="punta-de-mata.html" class="block hover:text-karina-mustard transition-colors">Punta de Mata (Sede Ejecutiva)</a>
+          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Negocios y Eventos)</a>
         </div>
       </div>
 
@@ -260,7 +247,7 @@
       <div class="border-b border-white/10 pb-4">
         <a href="restaurante.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">04</span>
-          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Gastronomía & Salón</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Gastronomía y Salón</span>
         </a>
       </div>
 
@@ -344,7 +331,7 @@
         <div class="md:col-span-7 relative group rounded-[2.5rem] overflow-hidden bg-[#1E1E1E] min-h-[260px] shadow-sm flex flex-col justify-end p-8 text-white border border-[#E8DFC8]">
           <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=900&q=80" alt="Traslado Ejecutivo" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700">
           <div class="relative z-10 space-y-2 max-w-md">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-white/20 px-2.5 py-1 rounded-full backdrop-blur-sm">Movilidad & Aeropuerto</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-white/20 px-2.5 py-1 rounded-full backdrop-blur-sm">Movilidad y Aeropuerto</span>
             <h3 class="text-2xl font-bold">Traslado VIP</h3>
             <p class="text-xs text-white/80 leading-relaxed">Coordinamos tu recepción en aeropuerto o traslados ejecutivos entre sedes (Maturín, Punta de Mata, El Tigre).</p>
             <div class="pt-2">
@@ -355,12 +342,12 @@
           </div>
         </div>
 
-        <!-- Bienestar & Peluquería -->
+        <!-- Bienestar y Peluquería -->
         <div class="md:col-span-5 relative group rounded-[2.5rem] overflow-hidden bg-[#1E1E1E] min-h-[260px] shadow-sm flex flex-col justify-end p-8 text-white border border-[#E8DFC8]">
           <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Spa y Peluquería" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700">
           <div class="relative z-10 space-y-2">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-white/20 px-2.5 py-1 rounded-full backdrop-blur-sm">Cuidado & Belleza</span>
-            <h3 class="text-xl font-bold">Peluquería & Spa</h3>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-white/20 px-2.5 py-1 rounded-full backdrop-blur-sm">Cuidado y Belleza</span>
+            <h3 class="text-xl font-bold">Peluquería y Spa</h3>
             <p class="text-xs text-white/80">Agenda turnos previos en nuestro salón boutique o cabinas de masaje.</p>
             <div class="pt-2">
               <button onclick="solicitarServicio('Peluquería y Spa')" class="px-4 py-2 rounded-full bg-white text-[#1E1E1E] font-bold text-xs hover:bg-[#FAF6F0] transition active:scale-95">
@@ -383,7 +370,7 @@
           </div>
         </div>
 
-        <!-- Pádel & Recreación -->
+        <!-- Pádel y Recreación -->
         <div class="md:col-span-6 relative group rounded-[2.5rem] overflow-hidden bg-[#1E1E1E] min-h-[220px] shadow-sm flex flex-col justify-end p-8 text-white border border-[#E8DFC8]">
           <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80" alt="Canchas de Pádel" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700">
           <div class="relative z-10 space-y-1.5">
@@ -431,27 +418,27 @@
       <div class="space-y-3">
         <h4 class="text-xs font-mono uppercase tracking-widest text-[#F0A800] font-bold">Nuestras Sedes</h4>
         <ul class="space-y-2 text-xs text-white/70 font-light">
-          <li><a href="index.html#sedes" class="hover:text-white transition-colors">Sede Maturín (Hotel & Club)</a></li>
-          <li><a href="index.html#sedes" class="hover:text-white transition-colors">Sede Punta de Mata (Ejecutiva)</a></li>
-          <li><a href="el-tigre.html" class="hover:text-[#F0A800] transition-colors font-medium">Sede El Tigre (Catálogo Exclusivo)</a></li>
+          <li><a href="maturin.html" class="hover:text-white transition-colors">Hotel Kariña Maturín</a></li>
+          <li><a href="punta-de-mata.html" class="hover:text-white transition-colors">Hotel Kariña Punta de Mata</a></li>
+          <li><a href="el-tigre.html" class="hover:text-[#F0A800] transition-colors font-medium">Hotel Kariña El Tigre</a></li>
         </ul>
       </div>
 
-      <!-- Columna 3: Experiencias & Servicios -->
+      <!-- Columna 3: Experiencias y Servicios -->
       <div class="space-y-3">
         <h4 class="text-xs font-mono uppercase tracking-widest text-[#F0A800] font-bold">Experiencias</h4>
         <ul class="space-y-2 text-xs text-white/70 font-light">
-          <li><a href="suites.html" class="hover:text-white transition-colors">Catálogo de Suites</a></li>
-          <li><a href="vive-karina.html" class="hover:text-white transition-colors">Day Pass & Piscinas</a></li>
+          <li><a href="suites.html" class="hover:text-white transition-colors">Catálogo de Suites y Tarifas</a></li>
+          <li><a href="vive-karina.html" class="hover:text-white transition-colors">Day Pass y Piscinas</a></li>
           <li><a href="restaurante.html" class="hover:text-white transition-colors">Gastronomía 283</a></li>
           <li><a href="business.html" class="hover:text-white transition-colors">Centro de Convenciones B2B</a></li>
           <li><a href="fundacion.html" class="hover:text-white transition-colors">Fundación Kariña</a></li>
         </ul>
       </div>
 
-      <!-- Columna 4: Asistencia & Contacto -->
+      <!-- Columna 4: Asistencia y Contacto -->
       <div class="space-y-3">
-        <h4 class="text-xs font-mono uppercase tracking-widest text-[#F0A800] font-bold">Contacto & Ayuda</h4>
+        <h4 class="text-xs font-mono uppercase tracking-widest text-[#F0A800] font-bold">Contacto y Ayuda</h4>
         <ul class="space-y-2 text-xs text-white/70 font-light">
           <li><a href="faqs.html" class="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
           <li><a href="contacto.html" class="hover:text-white transition-colors">Atención al Cliente</a></li>

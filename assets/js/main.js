@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 3. CONTROLADORES SECCIÓN SEDES & MODAL INMERSIVO
+  // 3. CONTROLADORES SECCIÓN SEDES Y MODAL INMERSIVO
   // ==========================================
   const sedesData = [
     {
@@ -551,13 +551,28 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'premium-maturin',
       title: 'Suite Premium Maturín',
-      desc: 'Nuestra suite insignia en la Sede Maturín ofrece vistas panorámicas al resort, lounge independiente y equipamiento ejecutivo de alta densidad.',
-      image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80',
+      desc: 'Nuestra suite insignia en la Sede Maturín ofrece dos ambientes amplios, acabados contemporáneos, lencería de lujo y acceso directo a todas las bondades del hotel.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp',
       gallery: [
-        { src: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', tag: 'Cama Principal King Size' },
-        { src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', tag: 'Baño Privado' },
-        { src: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', tag: 'Área Ejecutiva' },
-        { src: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80', tag: 'Minibar y Vista' }
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp', tag: 'Sala de Estar y Comedor' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor-2.webp', tag: 'Sala y Comedor' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp', tag: 'Dormitorio Principal' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Comedor.webp', tag: 'Área de Comedor' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-3.webp', tag: 'Ambiente Integrado' }
+      ]
+    },
+    {
+      id: 'estandar-maturin',
+      title: 'Suite Estándar Maturín',
+      desc: 'Un espacio refinado diseñado para el viajero moderno que busca eficiencia sin comprometer la elegancia y confort, con sala-comedor integrada y climatización de vanguardia.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp',
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp', tag: 'Vista Principal / Dormitorio' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Comedor.webp', tag: 'Área de Comedor' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-3.webp', tag: 'Ambiente Integrado' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-maturin-2.webp', tag: 'Espacio de Descanso' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor-2.webp', tag: 'Sala y Comedor' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp', tag: 'Sala de Estar Integrada' }
       ]
     },
     {
@@ -614,26 +629,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-estandar-ptmata-.webp', tag: 'Espacio Integrado' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp', tag: 'Fachada Sede Punta de Mata' }
       ]
-    },
-    {
-      id: 'duplex-maturin',
-      title: 'Suite Dúplex / Dos Ambientes',
-      desc: 'Espacio expansivo de dos niveles combinando sala de juntas privada y habitación principal para directivos.',
-      image: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: 'estandar-maturin',
-      title: 'Suite Estándar Maturín',
-      desc: 'Un espacio refinado diseñado para el viajero moderno que busca eficiencia sin comprometer la elegancia y confort, con sala-comedor integrada y climatización de vanguardia.',
-      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp',
-      gallery: [
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp', tag: 'Vista Principal / Dormitorio' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Comedor.webp', tag: 'Área de Comedor' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-3.webp', tag: 'Ambiente Integrado' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-maturin-2.webp', tag: 'Espacio de Descanso' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor-2.webp', tag: 'Sala y Comedor' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp', tag: 'Sala de Estar Integrada' }
-      ]
     }
   ];
 
@@ -653,7 +648,9 @@ document.addEventListener('DOMContentLoaded', () => {
       let matchCapacity = true;
 
       if (capacity === '2') {
-        matchCapacity = !card.classList.contains('suite-item-duplex');
+        matchCapacity = card.classList.contains('suite-item-estandar');
+      } else if (capacity === '4') {
+        matchCapacity = card.classList.contains('suite-item-premium');
       }
 
       if (matchSede && matchCapacity) {
@@ -755,27 +752,27 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 9. CONTROLADORES PÁGINA VIVE KARIÑA & DAY PASS
+  // 9. CONTROLADORES PÁGINA VIVE KARIÑA Y DAY PASS
   // ==========================================
   const dayPassData = [
     {
       title: "Hotel Kariña Maturín",
       desc: "Disfruta de un día de sol con acceso libre a las piscinas familiares, parque acuático infantil con toboganes, tumbonas de descanso y vestidores de 10:00 AM a 6:00 PM.",
-      tag: "Piscina Resort & Toboganes",
+      tag: "Piscina Resort y Toboganes",
       price: "$25",
       img: "https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg"
     },
     {
       title: "Kariña Punta de Mata",
       desc: "Un día completo de paz corporativa rodeado de jardines tropicales, acceso a piscina ejecutiva, toallas y consumo acreditado en restaurante.",
-      tag: "Piscina Executive & Jardines",
+      tag: "Piscina Ejecutiva y Jardines",
       price: "$20",
-      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp"
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptmata.webp"
     },
     {
       title: "Hotel Kariña El Tigre",
       desc: "Sumergete en la refrescante piscina resort de Guañipa, área de caneyes, canchas deportivas y ambiente familiar único en la Mesa de Guanipa.",
-      tag: "Piscina Guañipa & Caney",
+      tag: "Piscina Guanipa y Caney",
       price: "$22",
       img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-3.webp"
     }
@@ -1035,7 +1032,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ===================================================
-  // 11. LÓGICA JAVASCRIPT: GASTRONOMÍA, RESTAURANTES & MENÚS
+  // 11. LÓGICA JAVASCRIPT: GASTRONOMÍA, RESTAURANTES Y MENÚS
   // ===================================================
 
   // Base de datos de menús digitales por establecimiento
@@ -1048,7 +1045,7 @@ document.addEventListener('DOMContentLoaded', () => {
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp",
       categories: [
         {
-          name: "Entradas & Tapas",
+          name: "Entradas y Tapas",
           items: [
             { name: "Carpaccio de Solomo con Parmesano", desc: "Finas láminas de solomo sellado, emulsión de alcaparras, rúgula y lascas de parmesano reggiano.", price: "$14", tag: "Recomendado" },
             { name: "Ceviche Tropical Guanipa", desc: "Pesca fresca del día marinada en lima, mango verde, ají dulce y maíz crocante.", price: "$16", tag: "Fresco" },
@@ -1056,7 +1053,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ]
         },
         {
-          name: "Platos Fuertes & Brasas",
+          name: "Platos Fuertes y Brasas",
           items: [
             { name: "Paella Valenciana de Mariscos 283", desc: "Nuestra especialidad con calamares, camarones, mejillones y toque de azafrán español (para compartir o individual).", price: "$28", tag: "Especialidad" },
             { name: "Ribeye Angus a la Brasa (400g)", desc: "Corte selecto asado a término perfecto con vegetales confitados y puré rústico de apio.", price: "$34", tag: "Premium" },
@@ -1064,14 +1061,14 @@ document.addEventListener('DOMContentLoaded', () => {
           ]
         },
         {
-          name: "Postres & Dulce Final",
+          name: "Postres y Dulce Final",
           items: [
             { name: "Marquesa de Cacao de Caripito", desc: "Capas crujientes con ganache de chocolate 70% y crocante de nueces.", price: "$8", tag: "Cacao 70%" },
-            { name: "Pie de Limón Criollo & Merengue", desc: "Base de galleta artesanal, crema ácida de limón y merengue tostado.", price: "$7", tag: "Artesanal" }
+            { name: "Pie de Limón Criollo y Merengue", desc: "Base de galleta artesanal, crema ácida de limón y merengue tostado.", price: "$7", tag: "Artesanal" }
           ]
         },
         {
-          name: "Coctelería & Vinos",
+          name: "Coctelería y Vinos",
           items: [
             { name: "Sangría de Autor 283 (Jarra)", desc: "Receta secreta con vino tinto español, frutas maceradas y licor de naranja.", price: "$22", tag: "Para Compartir" },
             { name: "Smoked Old Fashioned", desc: "Bourbon premium ahumado con madera de roble y bíter artesanal.", price: "$14", tag: "Cóctel Autor" }
@@ -1087,15 +1084,15 @@ document.addEventListener('DOMContentLoaded', () => {
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
       categories: [
         {
-          name: "Desayunos Ejecutivos & Criollos",
+          name: "Desayunos Ejecutivos y Criollos",
           items: [
             { name: "Desayuno Criollo Tu Chef", desc: "Arepas asadas al momento, carne mechada de res, huevos perico, queso telita y caraotas negras refritas.", price: "$12", tag: "Insignia" },
-            { name: "Omelette Fit de Claras & Aguacate", desc: "Omelette con espinacas baby, queso blanco pasteurizado y tostadas integrales.", price: "$10", tag: "Saludable" },
+            { name: "Omelette Fit de Claras y Aguacate", desc: "Omelette con espinacas baby, queso blanco pasteurizado y tostadas integrales.", price: "$10", tag: "Saludable" },
             { name: "Pancakes Clásicos con Miel y Frutas", desc: "Pancakes esponjosos con frutas frescas de estación y mantequilla artesanal.", price: "$9", tag: "Dulce Mañana" }
           ]
         },
         {
-          name: "Almuerzos & Menú Ejecutivo",
+          name: "Almuerzos y Menú Ejecutivo",
           items: [
             { name: "Asado Negro Tradicional", desc: "Corte de res cocinado lentamente en caramelo de papelón y especias, arroz blanco y plátano horneado.", price: "$18", tag: "Favorito" },
             { name: "Pollo a la Plancha en Finas Hierbas", desc: "Pechuga marinada con romero fresco, ensalada verde y puré de papas trufado.", price: "$15", tag: "Ligero" },
@@ -1103,17 +1100,17 @@ document.addEventListener('DOMContentLoaded', () => {
           ]
         },
         {
-          name: "Cenas & Opciones Rápidas",
+          name: "Cenas y Opciones Rápidas",
           items: [
             { name: "Club House Tu Chef", desc: "Triple piso con pollo desmechado, tocineta crocante, queso gouda, huevo y papas fritas.", price: "$14", tag: "Clásico" },
             { name: "Ensalada César con Suprema de Pollo", desc: "Lechuga romana fresca, aderezo César artesanal, crutones de ajo y parmesano.", price: "$11", tag: "Fresco" }
           ]
         },
         {
-          name: "Bebidas & Cafetería",
+          name: "Bebidas y Cafetería",
           items: [
             { name: "Jugos Naturales Tropicales (Parchita / Guanábana)", desc: "100% fruta natural recién exprimida.", price: "$4", tag: "Natural" },
-            { name: "Café Espresso & Cappuccino Kariña", desc: "Granos seleccionados tostados artesanalmente.", price: "$3", tag: "Especialidad" }
+            { name: "Café Espresso y Cappuccino Kariña", desc: "Granos seleccionados tostados artesanalmente.", price: "$3", tag: "Especialidad" }
           ]
         }
       ]
@@ -1129,12 +1126,12 @@ document.addEventListener('DOMContentLoaded', () => {
           name: "Entradas de Alta Cocina",
           items: [
             { name: "Arepa de Langosta Caribeña", desc: "Masa de maíz pilado, langosta fresca del Caribe, emulsión de aguacate y ají dulce margariteño.", price: "$18", tag: "Plato Insignia" },
-            { name: "Carpaccio de Remolacha & Cashew Fermentado", desc: "Finas láminas de remolacha asada, crema de nuez fermentada, brotes orgánicos y pistacho.", price: "$14", tag: "Vegano" },
-            { name: "Tartar de Atún Rojo & Sésamo Tostado", desc: "Atún fresco en cubos, aderezo de soya cítrica, aguacate y chips de plátano verde.", price: "$16", tag: "Del Mar" }
+            { name: "Carpaccio de Remolacha y Anacardo Fermentado", desc: "Finas láminas de remolacha asada, crema de anacardos fermentada, brotes orgánicos y pistacho.", price: "$14", tag: "Vegano" },
+            { name: "Tartar de Atún Rojo y Sésamo Tostado", desc: "Atún fresco en cubos, aderezo de soya cítrica, aguacate y chips de plátano verde.", price: "$16", tag: "Del Mar" }
           ]
         },
         {
-          name: "Platos Fuertes & Especialidades",
+          name: "Platos Fuertes y Especialidades",
           items: [
             { name: "Lomo de Rótalo en Mantequilla de Ají Dulce", desc: "Pesca del día a la plancha sobre risotto cremoso de coco y chips de topocho.", price: "$28", tag: "Recomendación Chef" },
             { name: "Asado Negro Braseado 12 Horas", desc: "Corte de res braseado en reducción de vino tinto y papelón con puré rústico de apio criollo.", price: "$26", tag: "Sin Gluten" },
@@ -1149,7 +1146,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ]
         },
         {
-          name: "Cava de Vinos & Copas",
+          name: "Cava de Vinos y Copas",
           items: [
             { name: "Copa Malbec Reserva Mendoza", desc: "Notas profundas de ciruela, vainilla y roble.", price: "$12", tag: "Por Copa" },
             { name: "Botella Sauvignon Blanc Chileno", desc: "Notas cítricas minerales ideales para pescados y mariscos.", price: "$32", tag: "Botella" }
@@ -1165,25 +1162,25 @@ document.addEventListener('DOMContentLoaded', () => {
       heroImg: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80",
       categories: [
         {
-          name: "Mixología & Cócteles de Autor",
+          name: "Mixología y Cócteles de Autor",
           items: [
-            { name: "Margarita de Ají Dulce & Cocuy", desc: "Cocuy larense artesanal, reducción de ají dulce oriental, zumo de parchita y borde de sal aromatizada.", price: "$12", tag: "Insignia OMB" },
+            { name: "Margarita de Ají Dulce y Cocuy", desc: "Cocuy larense artesanal, reducción de ají dulce oriental, zumo de parchita y borde de sal aromatizada.", price: "$12", tag: "Insignia OMB" },
             { name: "Smoked Old Fashioned Kariña", desc: "Ron añejo venezolano, bíter aromático, ahumado en campana con madera de barrica.", price: "$14", tag: "Ahumado" },
             { name: "Gin Tonic Pasión Botánica", desc: "Gin premium infusionado con bayas de enebro, pepino fresco, pimienta rosa y tónica premium.", price: "$12", tag: "Refrescante" },
-            { name: "Mojito de Parchita & Hierbabuena", desc: "Ron blanco, pulpa fresca de maracuyá, menta macerada y soda efervescente.", price: "$10", tag: "Tropical" }
+            { name: "Mojito de Parchita y Hierbabuena", desc: "Ron blanco, pulpa fresca de maracuyá, menta macerada y soda efervescente.", price: "$10", tag: "Tropical" }
           ]
         },
         {
-          name: "Tapas Gourmet & Piqueos",
+          name: "Tapas Gourmet y Piqueos",
           items: [
             { name: "Mini Angus Burgers (3 unidades)", desc: "Pan brioche artesanal, carne angus smash, queso cheddar madurado y cebolla caramelizada.", price: "$14", tag: "Para Picar" },
-            { name: "Tabla de Quesos Madurados & Embutidos", desc: "Selección de jamón serrano, salami, queso manchego, gouda viejo, frutos secos y focaccia.", price: "$18", tag: "Para Compartir" },
+            { name: "Tabla de Quesos Madurados y Embutidos", desc: "Selección de jamón serrano, salami, queso manchego, gouda viejo, frutos secos y focaccia.", price: "$18", tag: "Para Compartir" },
             { name: "Tacos de Pescado Crocante", desc: "Tortillas de maíz nixtamalizado, pescado crujiente, pico de gallo de mango y mayonesa de sriracha.", price: "$13", tag: "Crujiente" },
             { name: "Tequeñotes Gourmet con Chutney de Mango", desc: "Dedos gigantes rellenos de abundante queso blanco con dip agridulce.", price: "$9", tag: "Favorito" }
           ]
         },
         {
-          name: "Licores & Cervezas",
+          name: "Licores y Cervezas",
           items: [
             { name: "Cervezas Nacionales e Importadas", desc: "Variedad de rubias, negras y artesanales bien frías.", price: "$4 - $6", tag: "Frías" },
             { name: "Servicio de Whisky / Ron Premium (Botella)", desc: "Incluye hielo, mezcladores y servicio en mesa con frutos secos.", price: "$65 - $130", tag: "Servicio VIP" }
@@ -1199,7 +1196,7 @@ document.addEventListener('DOMContentLoaded', () => {
       heroImg: "https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg",
       categories: [
         {
-          name: "Parrilla & Caney al Aire Libre",
+          name: "Parrilla y Caney al Aire Libre",
           items: [
             { name: "Parrillada Mixta Familiar Palma Real", desc: "Punta trasera, solomo, chorizo artesanal, chinchurria, yuca frita, guasacaca y ensalada rayada.", price: "$32", tag: "Familiar" },
             { name: "Hamburguesa Monster Club House", desc: "Doble carne a la brasa, queso fundido, tocineta ahumada, huevo frito y papas rústicas.", price: "$14", tag: "Favorito" },
@@ -1215,18 +1212,18 @@ document.addEventListener('DOMContentLoaded', () => {
           ]
         },
         {
-          name: "Snacks de Piscina & Caney",
+          name: "Snacks de Piscina y Caney",
           items: [
             { name: "Tequeños Playeros Palma Real (8 und)", desc: "Crujientes dedos de queso servidos al borde de la piscina con salsas de la casa.", price: "$8", tag: "Piscina" },
-            { name: "Papas Rústicas con Queso Cheddar & Bacon", desc: "Papas con piel crocantes bañadas en salsa de queso fundido y tocineta picada.", price: "$7", tag: "Snack" },
-            { name: "Helados & Paletas Artesanales", desc: "Sabores frutales y cremosos ideales para refrescar la tarde.", price: "$4 - $6", tag: "Postre" }
+            { name: "Papas Rústicas con Queso Cheddar y Tocineta", desc: "Papas con piel crocantes bañadas en salsa de queso fundido y tocineta picada.", price: "$7", tag: "Snack" },
+            { name: "Helados y Paletas Artesanales", desc: "Sabores frutales y cremosos ideales para refrescar la tarde.", price: "$4 - $6", tag: "Postre" }
           ]
         },
         {
-          name: "Cafetería, Batidos & Cócteles",
+          name: "Cafetería, Batidos y Cócteles",
           items: [
-            { name: "Batidos Naturales & Frappés de Fruta", desc: "Fresas, parchita, mango, piña o melón bien granizados.", price: "$4", tag: "Granizado" },
-            { name: "Piña Colada & Coco Loco del Club", desc: "Servidos en copa alta con sombrillita y licor de coco tropical.", price: "$9", tag: "Tropical" }
+            { name: "Batidos Naturales y Frappés de Fruta", desc: "Fresas, parchita, mango, piña o melón bien granizados.", price: "$4", tag: "Granizado" },
+            { name: "Piña Colada y Coco Loco del Club", desc: "Servidos en copa alta con sombrillita y licor de coco tropical.", price: "$9", tag: "Tropical" }
           ]
         }
       ]
@@ -1571,7 +1568,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ===================================================
-  // 13. CONTROLADORES: PÁGINAS LEGALES & RESCATE 404
+  // 13. CONTROLADORES: PÁGINAS LEGALES Y RESCATE 404
   // ===================================================
 
   window.askAIForHelp404 = function() {
@@ -1649,7 +1646,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===================================================
-// 15. CONTROLADORES: AUTENTICACIÓN & DASHBOARD DEL HUÉSPED
+// 15. CONTROLADORES: AUTENTICACIÓN Y DASHBOARD DEL HUÉSPED
 // ===================================================
 
 let currentAuthMode = 'register';
@@ -1768,7 +1765,7 @@ window.requestItineraryChange = requestItineraryChange;
 window.triggerQuickAction = triggerQuickAction;
 
 /* ==========================================================
-   16. CONTROLADORES: PRE-CHECKIN & CHECKIN CONTROLLER
+   16. CONTROLADORES: PRE-CHECKIN Y CHECKIN CONTROLLER
    ========================================================== */
 
 function solicitarServicio(servicio) {
