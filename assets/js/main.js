@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
       mapsUrl: "https://maps.google.com/?cid=370127326196523800",
       phone: "+58 0424-9169601",
       images: [
-        { src: "https://uploads.onecompiler.io/44s48z3dm/1787540075587/fachada_maturin.jpg", caption: "Fachada Principal Maturín" },
-        { src: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80", caption: "Piscina Resort & Parque Acuático" },
-        { src: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80", caption: "Suites Premium & Equipamiento" },
-        { src: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80", caption: "Restaurante Moriche & Gastronomía" }
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Fachada-Maturin.webp", caption: "Fachada Principal Maturín" },
+        { src: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80", caption: "Piscina Resort y Parque Acuático" },
+        { src: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80", caption: "Suites Premium y Equipamiento" },
+        { src: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80", caption: "Restaurante Moriche y Gastronomía" }
       ]
     },
     {
@@ -75,12 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
       mapsUrl: "https://maps.google.com/?cid=9643206305083018040",
       phone: "+58 0424-9169602",
       images: [
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp", caption: "Fachada Principal Punta de Mata" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp", caption: "Lobby Principal & Recepción VIP" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp", caption: "Restaurante El Caney & Gastronomía" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp", caption: "Jardines & Fachadas Interiores" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata-2.webp", caption: "Lounge Ejecutivo & Área de Espera" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-2ptamata.webp", caption: "Acceso Frontal & Estacionamiento" }
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/FACHADA-PRINCIPAL-PUNTADEMATA.webp", caption: "Fachada Principal Punta de Mata" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp", caption: "Lobby Principal y Recepción VIP" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp", caption: "Restaurante El Caney y Gastronomía" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp", caption: "Jardines y Fachadas Interiores" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata-2.webp", caption: "Lounge Ejecutivo y Área de Espera" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-2ptamata.webp", caption: "Acceso Frontal y Estacionamiento" }
       ]
     },
     {
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mapsUrl: "https://maps.google.com/?cid=12057092587787417265",
       phone: "+58 0424-9169603",
       images: [
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-3.webp", caption: "Piscina" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Piscina-Principal-El-Tigre.webp", caption: "Piscina Principal" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-1.webp", caption: "Lobby Principal y Recepción" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Business-Center--El-Tigre.webp", caption: "Centro de Negocios y Espacios Corporativos" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp", caption: "Gastronomía de Autor y 283 Restaurante" }
@@ -318,26 +318,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const suiteData = {
     'un-ambiente': {
-      title: 'Suite Premium',
+      title: 'Suite Estándar',
       desc: 'Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.',
       quote: '"Un santuario de descanso pensado para el viajero moderno."',
       price: '$120',
-      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Doble-Model.jpg',
+      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
       amenities: [
         'WiFi Alta Velocidad 100M',
-        'Minibar Premium',
+        'Minibar y Cafetera',
         'Desayuno incluido'
       ]
     },
     'dos-ambientes': {
-      title: 'Suite Ejecutiva Dúplex',
+      title: 'Suite Premium',
       desc: 'Espacio ampliado con sala de reuniones privada, lencería de alta gama y área de descanso independiente en dos niveles.',
       quote: '"La combinación perfecta entre productividad y bienestar de alto nivel."',
       price: '$170',
-      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-2.jpg',
+      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp',
       amenities: [
-        '2 Niveles y Sala VIP de Estar',
-        'Smart TV 55" & Fibra Óptica',
+        '2 Ambientes y Sala VIP de Estar',
+        'Smart TV 55" y Fibra Óptica',
         'Desayuno Buffet y Acceso Club'
       ]
     }
