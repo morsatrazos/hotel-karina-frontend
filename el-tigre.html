@@ -296,10 +296,10 @@
       <!-- BLOQUE DERECHO: Indicador Sede + Selector de Idioma + Botón Reserva Shimmer -->
       <div class="flex items-center gap-3 sm:gap-5">
         <span class="text-xs font-extrabold text-[#343434]/80 hidden sm:inline tracking-wider">EL TIGRE</span>
-        <button onclick="alert('Consultando disponibilidad para Sede El Tigre con Arimiña-IA...')" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+        <a href="https://wa.me/5804249169603?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20consultar%20disponibilidad%20en%20Sede%20El%20Tigre" target="_blank" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
           <span>Reserva</span>
           <i class="fa-solid fa-sparkles text-[10px]"></i>
-        </button>
+        </a>
       </div>
 
     </div>
@@ -385,10 +385,10 @@
     </div>
 
     <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
-      <button onclick="alert('Iniciando chat con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+      <a href="https://wa.me/5804249169603?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20consultar%20disponibilidad%20en%20Sede%20El%20Tigre" target="_blank" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
         <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
         <span>Hablar con Arimiña-IA</span>
-      </button>
+      </a>
     </div>
   </div>
 
@@ -400,12 +400,16 @@
     <section id="galeria-bento" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-10 text-center">
       
       <!-- Titular Editorial -->
-      <div class="space-y-4 max-w-3xl mx-auto">
+      <div class="space-y-3 max-w-3xl mx-auto">
+        <span class="text-xs font-mono tracking-[0.2em] uppercase font-bold text-karina-charcoal/60 block">
+          Av. Ruiz Pineda • El Tigre, Anzoátegui
+        </span>
+
         <h1 class="text-4xl sm:text-6xl font-light text-karina-charcoal tracking-tight leading-tight">
           ¡Vive Kariña El Tigre!
         </h1>
         <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed max-w-2xl mx-auto">
-          Una atmósfera visual de momentos extraordinarios. Sumérgete en la esencia de nuestro refugio donde la arquitectura orgánica se encuentra con el confort curado.
+          El punto de encuentro corporativo y social más prestigioso de la Mesa de Guanipa. Relájate en nuestra piscina resort, disfruta de la alta cocina en Restaurante 283, y celebra tus grandes eventos en el Salón de Conferencias Guañipa.
         </p>
 
         <!-- SVG Line Accents - Trazo Curvo Extendido -->
@@ -422,10 +426,10 @@
           Todas
         </button>
         <button onclick="filterBentoGallery('piscinas', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Piscinas & Caney
+          Piscina
         </button>
         <button onclick="filterBentoGallery('gastronomia', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Gastronomía Moriche
+          Restaurante 283
         </button>
         <button onclick="filterBentoGallery('lobby', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
           Lobby & Business Center
@@ -436,17 +440,17 @@
       <div id="bento-container" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch pt-4 text-left">
         
         <!-- Foto 1: Piscina Principal Grande (7 cols) -->
-        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-3.webp', 'Piscina Resort & Solárium — Hotel Kariña El Tigre')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-3.webp" alt="Piscina El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Piscina Resort & Caney</span>
-            <h3 class="text-xl font-light text-white">Ambiente Tropical Guañipa</h3>
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Piscina Resort</span>
+            <h3 class="text-xl font-light text-white">Ambiente Tropical Guanipa</h3>
           </div>
         </div>
 
         <!-- Foto 2: Lobby Principal (5 cols) -->
-        <div class="bento-card bento-item-all bento-item-lobby md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-1.webp', 'Lobby Principal & Recepción — Hotel Kariña El Tigre')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-1.webp" alt="Lobby El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
@@ -456,27 +460,27 @@
         </div>
 
         <!-- Foto 3: Carpaccio Gourmet (4 cols) -->
-        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[280px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[280px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Carpaccio-En-El-Tigre.webp', 'Carpaccio Gourmet — Restaurante 283 El Tigre')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Carpaccio-En-El-Tigre.webp" alt="Carpaccio El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-5 left-5 text-white space-y-0.5">
-            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Gastronomía de Autor</span>
-            <h4 class="text-base font-light text-white">Carpaccio Gourmet Moriche</h4>
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Restaurante 283</span>
+            <h4 class="text-base font-light text-white">Carpaccio Gourmet 283</h4>
           </div>
         </div>
 
         <!-- Foto 4: Paella Marinera Grande (8 cols) -->
-        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-8 h-[280px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-8 h-[280px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp', 'Paella Marinera Valenciana — Restaurante 283 El Tigre')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp" alt="Paella en El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
           <div class="absolute bottom-5 left-5 text-white space-y-0.5">
             <span class="text-[9px] font-mono tracking-widest uppercase bg-karina-mustard/90 text-karina-charcoal font-bold px-2 py-0.5 rounded-full">Especialidad de la Casa</span>
-            <h4 class="text-lg font-light text-white">Paella Marinera Tradición Kariña</h4>
+            <h4 class="text-lg font-light text-white">Paella Marinera Tradición 283</h4>
           </div>
         </div>
 
         <!-- Foto 5: Business Center & Coworking (6 cols) -->
-        <div class="bento-card bento-item-all bento-item-lobby md:col-span-6 h-[300px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-6 h-[300px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Business-Center--El-Tigre.webp', 'Business Center & Coworking — Hotel Kariña El Tigre')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Business-Center--El-Tigre.webp" alt="Business Center El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-5 left-5 text-white space-y-0.5">
@@ -486,7 +490,7 @@
         </div>
 
         <!-- Foto 6: Deck & Solárium (6 cols) -->
-        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-6 h-[300px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-6 h-[300px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-4.webp', 'Deck & Solárium al Aire Libre — Hotel Kariña El Tigre')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-4.webp" alt="Deck Piscina El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-5 left-5 text-white space-y-0.5">
@@ -496,17 +500,17 @@
         </div>
 
         <!-- Foto 7: Pasticho Tradicional (4 cols) -->
-        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Pasticho-en-el-Tigre.webp', 'Pasticho Artesanal — Restaurante 283 El Tigre')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Pasticho-en-el-Tigre.webp" alt="Pasticho El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 text-white space-y-0.5">
             <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Menú Tradicional</span>
-            <h4 class="text-sm font-light text-white">Pasticho Artesanal Moriche</h4>
+            <h4 class="text-sm font-light text-white">Pasticho Artesanal 283</h4>
           </div>
         </div>
 
         <!-- Foto 8: Lounge de Espera (4 cols) -->
-        <div class="bento-card bento-item-all bento-item-lobby md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-2.webp', 'Lounge de Espera — Hotel Kariña El Tigre')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-2.webp" alt="Lounge Lobby El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 text-white space-y-0.5">
@@ -516,7 +520,7 @@
         </div>
 
         <!-- Foto 9: Piscina Atardecer (4 cols) -->
-        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-2.webp', 'Piscina Iluminada & Atardeceres — Hotel Kariña El Tigre')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-2.webp" alt="Piscina Atardecer El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 text-white space-y-0.5">
@@ -525,18 +529,18 @@
           </div>
         </div>
 
-        <!-- Foto 10: Caney Tropical (6 cols) -->
-        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-6 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
-          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-5.webp" alt="Caney El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <!-- Foto 10: Espacios al Aire Libre (6 cols) -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-6 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-5.webp', 'Áreas de Relajación al Aire Libre — Hotel Kariña El Tigre')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-5.webp" alt="Áreas de Relajación El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 text-white space-y-0.5">
-            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Caney Tropical</span>
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Espacios al Aire Libre</span>
             <h4 class="text-sm font-light text-white">Zonas de Sombra y Relajación</h4>
           </div>
         </div>
 
         <!-- Foto 11: Hall Central Interior (6 cols) -->
-        <div class="bento-card bento-item-all bento-item-lobby md:col-span-6 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer">
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-6 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre.webp', 'Interiores y Hospitalidad — Hotel Kariña El Tigre')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre.webp" alt="Interiores Lobby El Tigre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 text-white space-y-0.5">
@@ -615,12 +619,12 @@
               <span>Ver Detalles de la Suite</span>
             </button>
 
-            <button onclick="alert('Consultando disponibilidad para Suite en El Tigre con Arimiña-IA...')" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group">
+            <a href="https://wa.me/5804249169603?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reservar%20una%20Suite%20en%20Sede%20El%20Tigre" target="_blank" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group">
               <span class="w-5 h-5 rounded-full bg-karina-mustard text-karina-charcoal flex items-center justify-center text-[10px] shrink-0">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
               </span>
               <span>Reserva con <strong>Arimiña-IA</strong></span>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -703,7 +707,7 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 5. SECCIÓN GASTRONÓMICA: RESTAURANTE MORICHE-->
+    <!-- 5. SECCIÓN GASTRONÓMICA: RESTAURANTE 283   -->
     <!-- ========================================== -->
     <section id="gastronomia" class="max-w-7xl mx-auto px-6 sm:px-12 py-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white/70 rounded-[44px] p-8 sm:p-12 border border-black/5 shadow-sm">
@@ -715,32 +719,41 @@
           </span>
 
           <h2 class="text-3xl sm:text-5xl font-light text-karina-charcoal tracking-tight leading-tight">
-            ¡Gastronomía que fascina!
+            Restaurante 283 & <span class="font-bold">Terraza</span>
           </h2>
 
           <p class="text-xs sm:text-sm text-karina-charcoal/75 font-light leading-relaxed">
-            Nuestro equipo de chefs fusiona la tradición oriental con técnicas contemporáneas. Disfruta de desayunos buffet, cortes seleccionados y coctelería de autor en un ambiente inolvidable.
+            Nuestra propuesta gastronómica insigne en la Mesa de Guanipa. Especialistas en auténticas paellas valencianas, cortes de carne a las brasas, carpaccios gourmet, desayunos buffet diarios y coctelería internacional en una atmósfera sofisticada.
           </p>
 
-          <div class="pt-2">
-            <a href="restaurante.html" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold transition-all shadow-md active:scale-95 group">
-              <i class="fa-solid fa-utensils text-karina-mustard"></i>
-              <span>Consultar menú gastronómico con Arimiña-IA</span>
-              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+          <div class="flex items-center gap-4 text-xs text-karina-charcoal/70 font-mono">
+            <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-karina-mustard"></i> 7:00 AM – 11:00 PM</span>
+            <span>•</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-karina-blue"></i> Salón Principal & Terraza</span>
+          </div>
+
+          <div class="pt-2 flex flex-wrap items-center gap-3">
+            <a href="restaurante.html#card-restaurante-283" class="py-3 px-6 rounded-full bg-karina-cream hover:bg-white text-karina-charcoal border border-black/15 font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm active:scale-95">
+              <i class="fa-solid fa-book-open text-karina-mustard text-xs"></i>
+              <span>Ver Menú Digital</span>
+            </a>
+            <a href="https://wa.me/5804249169603?text=Hola%20Hotel%20Kari%C3%B1a%20El%20Tigre%2C%20deseo%20reservar%20una%20mesa%20en%20Restaurante%20283" target="_blank" class="py-3 px-6 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm active:scale-95">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Reservar Mesa</span>
             </a>
           </div>
         </div>
 
         <!-- Foto Orgánica Derecha -->
         <div class="lg:col-span-6">
-          <div class="relative h-[320px] sm:h-[400px] w-full rounded-[36px] overflow-hidden shadow-xl bg-black/10 group cursor-pointer border border-black/5">
+          <div class="relative h-[320px] sm:h-[400px] w-full rounded-[36px] overflow-hidden shadow-xl bg-black/10 group cursor-pointer border border-black/5" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp', 'Restaurante 283 — Paella & Cocina de Autor El Tigre')">
             <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp" 
-                 alt="Restaurante Moriche El Tigre" 
+                 alt="Restaurante 283 El Tigre" 
                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-85"></div>
             <div class="absolute bottom-6 left-6 text-xs text-white/95 font-light flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-karina-mustard shadow-sm"></span>
-              <span>Restaurante Moriche — Especialidades del Chef</span>
+              <span>Restaurante 283 — Especialidades del Chef</span>
             </div>
           </div>
         </div>
@@ -749,34 +762,86 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 6. SERVICIOS DESTACADOS                    -->
+    <!-- 6. SERVICIOS E INSTALACIONES INSIGNIA      -->
     <!-- ========================================== -->
-    <section id="servicios" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-10 text-center py-6">
-      <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
-        Servicios Destacados
-      </h2>
+    <section id="servicios" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-10 text-center py-8">
+      <div class="space-y-2 max-w-2xl mx-auto">
+        <span class="text-[11px] font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest block">
+          COMODIDADES & BIENESTAR
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+          Servicios e Instalaciones <span class="font-bold">Insignia</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+          Diseñados para garantizar una estadía integral de confort, descanso y alta productividad corporativa en El Tigre.
+        </p>
+      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto text-left">
         
-        <!-- Servicio 1: Lavandería -->
-        <div class="service-card-anim bg-karina-mustard-light/60 hover:bg-karina-mustard-light/90 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm">
-          <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shrink-0 shadow-sm">
-            <i class="fa-solid fa-shirt"></i>
+        <!-- 1. Piscina Resort & Solárium -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl flex items-start gap-4 border border-black/5 shadow-sm transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-[#92CEF7]/30 flex items-center justify-center text-karina-blue text-lg shrink-0 group-hover:bg-karina-blue group-hover:text-white transition-colors shadow-2xs">
+            <i class="fa-solid fa-water-ladder"></i>
           </div>
-          <div>
-            <h3 class="text-base font-bold text-karina-charcoal">Servicio de Lavandería Express</h3>
-            <p class="text-xs text-karina-charcoal/70 font-normal">Atención impecable en 24 horas para prendas ejecutivas y delicadas.</p>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Piscina Resort & Solárium</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">Piscina al aire libre con deck de reposeras, solárium y ambiente de relajación tropical.</p>
           </div>
         </div>
 
-        <!-- Servicio 2: Renta de Vehículos -->
-        <div class="service-card-anim bg-karina-mustard-light/60 hover:bg-karina-mustard-light/90 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm">
-          <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shrink-0 shadow-sm">
+        <!-- 2. Servicio de Lavandería Express -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl flex items-start gap-4 border border-black/5 shadow-sm transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-karina-mustard-light/40 flex items-center justify-center text-karina-charcoal text-lg shrink-0 group-hover:bg-karina-mustard group-hover:text-karina-charcoal transition-colors shadow-2xs">
+            <i class="fa-solid fa-shirt"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Servicio de Lavandería Express</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">Lavado y planchado impecable en 24 horas para prendas ejecutivas y delicadas.</p>
+          </div>
+        </div>
+
+        <!-- 3. Renta de Vehículos & Transfers -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl flex items-start gap-4 border border-black/5 shadow-sm transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-[#EB8C84]/30 flex items-center justify-center text-karina-terracotta text-lg shrink-0 group-hover:bg-karina-terracotta group-hover:text-white transition-colors shadow-2xs">
             <i class="fa-solid fa-car"></i>
           </div>
-          <div>
-            <h3 class="text-base font-bold text-karina-charcoal">Renta de Vehículos & Transfers</h3>
-            <p class="text-xs text-karina-charcoal/70 font-normal">Asistencia en movilidad corporativa y traslados privados a aeropuertos.</p>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Renta de Vehículos & Transfers</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">Movilidad corporativa, alquiler de flotas y traslados privados a aeropuertos.</p>
+          </div>
+        </div>
+
+        <!-- 4. Gimnasio Equipado -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl flex items-start gap-4 border border-black/5 shadow-sm transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-karina-mustard-light/40 flex items-center justify-center text-karina-charcoal text-lg shrink-0 group-hover:bg-karina-mustard group-hover:text-karina-charcoal transition-colors shadow-2xs">
+            <i class="fa-solid fa-dumbbell"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Gimnasio Equipado</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">Área fitness completa con máquinas cardiovasculares, pesas y entrenamiento funcional.</p>
+          </div>
+        </div>
+
+        <!-- 5. Salón de Conferencias Guañipa -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl flex items-start gap-4 border border-black/5 shadow-sm transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-[#92CEF7]/30 flex items-center justify-center text-karina-blue text-lg shrink-0 group-hover:bg-karina-blue group-hover:text-white transition-colors shadow-2xs">
+            <i class="fa-solid fa-users-rectangle"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Salón de Conferencias Guañipa</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">Espacio corporativo modular para convenciones, congresos y banquetes para hasta 300 personas.</p>
+          </div>
+        </div>
+
+        <!-- 6. Espacios Sociales & Business Center -->
+        <div class="service-card-anim bg-white/80 hover:bg-white p-5 rounded-3xl flex items-start gap-4 border border-black/5 shadow-sm transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-[#EB8C84]/30 flex items-center justify-center text-karina-charcoal text-lg shrink-0 group-hover:bg-karina-coral group-hover:text-karina-charcoal transition-colors shadow-2xs">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-karina-charcoal">Espacios Sociales & Business Center</h3>
+            <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">Lounges ejecutivos, áreas de coworking y zonas sociales con conectividad simétrica.</p>
           </div>
         </div>
 
@@ -1000,10 +1065,10 @@
           </div>
 
           <div class="pt-4 space-y-2 border-t border-black/10">
-            <button onclick="closeSuiteModal(); alert('Consultando disponibilidad de suite con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95">
+            <a href="https://wa.me/5804249169603?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20consultar%20disponibilidad%20y%20tarifas%20de%20suites%20en%20Sede%20El%20Tigre" target="_blank" class="w-full py-3.5 px-6 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95">
               <i class="fa-solid fa-wand-magic-sparkles text-karina-mustard"></i>
               <span>Consultar Tarifas & Reservar con <strong>Arimiña-IA</strong></span>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -1238,7 +1303,15 @@
       if (e.key === 'ArrowLeft') navigateSuiteInModal(-1);
       if (e.key === 'ArrowRight') navigateSuiteInModal(1);
     });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   </script>
+
+  <!-- Script Oficial Global -->
+  <script src="assets/js/main.js"></script>
+
   <!-- Cápsula Flotante Discreta: Idioma -->
   <div class="fixed bottom-6 right-6 z-40 flex items-center bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
     <button onclick="if(window.toggleLanguage) toggleLanguage()" class="text-[#726B63] hover:text-[#1E1E1E] transition font-semibold"><span>ES/EN</span></button>
