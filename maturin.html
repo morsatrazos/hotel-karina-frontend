@@ -408,61 +408,74 @@
 
       <!-- Filtros Categoría (Tabs Minimalistas Editorial) -->
       <div class="flex flex-wrap items-center justify-center gap-2.5 pt-2">
-        <button onclick="filterBentoGallery('all', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all">
+        <button onclick="filterBentoGallery('all', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all cursor-pointer">
           Todas
         </button>
-        <button onclick="filterBentoGallery('piscinas', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Piscina y Day Pass
+        <button onclick="filterBentoGallery('piscinas', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all cursor-pointer">
+          Piscinas y Resort
         </button>
-        <button onclick="filterBentoGallery('restaurantes', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Restaurantes
+        <button onclick="filterBentoGallery('restaurantes', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all cursor-pointer">
+          Gastronomía y Bares
         </button>
-        <button onclick="filterBentoGallery('padel', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Pádel y Tenis
+        <button onclick="filterBentoGallery('deportes', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all cursor-pointer">
+          Pádel, Tenis y Fitness
         </button>
-        <button onclick="filterBentoGallery('eventos', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
-          Salón de Eventos
+        <button onclick="filterBentoGallery('club', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all cursor-pointer">
+          Club Palma Real
         </button>
       </div>
 
       <!-- Grilla Bento Asimétrica -->
       <div id="bento-container" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch pt-4 text-left">
         
-        <!-- Foto 1: Principal Grande (Fachada y Resort) -->
-        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp', 'Hotel Kariña Maturín — Fachada Principal y Resort')">
-          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp" alt="Fachada Resort Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        <!-- Foto 1: Piscina Principal Resort -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-8 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-Main.webp', 'Piscina Principal Resort — Hotel Kariña Maturín', 'Oasis tropical con amplias piscinas, solárium y caney de bebidas')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-Main.webp" alt="Piscina Principal Resort Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Sede Insignia Monagas</span>
-            <h3 class="text-xl font-light text-white">Complejo Hotelero y Club Palma Real</h3>
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-[#F0A800] text-[#343434] font-bold px-2.5 py-1 rounded-full">Piscina Principal</span>
+            <h3 class="text-xl sm:text-2xl font-light text-white">Piscina Resort y Relajación</h3>
+            <p class="text-xs text-white/80 font-light max-w-lg">Oasis tropical con amplias piscinas, solárium y caney de bebidas.</p>
           </div>
         </div>
 
-        <!-- Foto 2: Forma Asimétrica Reversa (Piscinas y Day Pass) -->
-        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80', 'Complejo de Piscinas y Day Pass — Hotel Kariña Maturín')">
-          <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" alt="Piscinas y Áreas Recreativas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        <!-- Foto 2: Complejo de Piscinas y Palmeras -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-4 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-2.webp', 'Complejo de Piscinas y Palmeras — Hotel Kariña Maturín', 'Ambiente tropical y áreas verdes')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-2.webp" alt="Piscinas y Áreas Verdes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Piscina y Day Pass</span>
-            <h3 class="text-xl font-light text-white">Piscinas Recreativas y Caney Tropical</h3>
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Piscinas & Day Pass</span>
+            <h3 class="text-lg sm:text-xl font-light text-white">Área Recreativa y Palmeras</h3>
+            <p class="text-xs text-white/80 font-light">Ambiente tropical bajo el sol monaguense.</p>
           </div>
         </div>
 
-        <!-- Foto 3: Moriche Restaurant -->
-        <div class="bento-card bento-item-all bento-item-restaurantes md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80', 'Moriche Restaurant — Alta Gastronomía de Autor Maturín')">
-          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Moriche Restaurant Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        <!-- Foto 3: Piscina Familiar y Caney -->
+        <div class="bento-card bento-item-all bento-item-piscinas md:col-span-4 h-[270px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-1.webp', 'Piscina Familiar y Caney — Hotel Kariña Maturín', 'Diversión y descanso para todas las edades')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-1.webp" alt="Piscina Familiar Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 text-white space-y-0.5">
-            <span class="text-[9px] font-mono uppercase bg-karina-mustard text-karina-charcoal font-bold px-2 py-0.5 rounded-full">Restaurante Insignia</span>
+            <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Ambiente Familiar</span>
+            <h4 class="text-sm font-bold text-white">Complejo Acuático Maturín</h4>
+            <p class="text-[11px] text-white/80 font-light">Diversión y descanso continuo para la familia</p>
+          </div>
+        </div>
+
+        <!-- Foto 4: Moriche Restaurant -->
+        <div class="bento-card bento-item-all bento-item-restaurantes md:col-span-4 h-[270px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp', 'Moriche Restaurant — Hotel Kariña Maturín', 'Restaurante principal de alta gastronomía de autor y desayunos buffet')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp" alt="Moriche Restaurant Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-[#F0A800] text-[#343434] font-bold px-2 py-0.5 rounded-full">Restaurante Insignia Kariña</span>
             <h4 class="text-sm font-bold text-white">Moriche Restaurant</h4>
             <p class="text-[11px] text-white/80 font-light">Alta Cocina de Autor y Desayunos Buffet</p>
           </div>
         </div>
 
-        <!-- Foto 4: Oh My Bar -->
-        <div class="bento-card bento-item-all bento-item-restaurantes md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp', 'Oh My Bar — Mixología de Vanguardia y Lounge Maturín')">
+        <!-- Foto 5: Oh My Bar -->
+        <div class="bento-card bento-item-all bento-item-restaurantes md:col-span-4 h-[270px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp', 'Oh My Bar Lounge — Hotel Kariña Maturín', 'Mixología de autor, cócteles tropicales y lounge')">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp" alt="Oh My Bar Lounge Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 text-white space-y-0.5">
             <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Lounge y Mixología</span>
             <h4 class="text-sm font-bold text-white">Oh My Bar</h4>
@@ -470,25 +483,146 @@
           </div>
         </div>
 
-        <!-- Foto 5: Master Pádel y Cervezas Social -->
-        <div class="bento-card bento-item-all bento-item-padel md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Cervezas-En-Maturin-Padel.webp', 'Master Pádel — Ambiente Social y Cervezas Maturín')">
-          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Cervezas-En-Maturin-Padel.webp" alt="Master Pádel Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        <!-- Foto 6: La Palmera Restobar -->
+        <div class="bento-card bento-item-all bento-item-restaurantes bento-item-club md:col-span-6 h-[290px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp', 'La Palmera Restobar — Club Palma Real', 'Restaurante del club con gastronomía selecta y coctelería')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp" alt="La Palmera Restobar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 text-white space-y-0.5">
-            <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Club Deportivo y Social</span>
-            <h4 class="text-sm font-bold text-white">Master Pádel</h4>
-            <p class="text-[11px] text-white/80 font-light">Canchas Profesionales y Área Lounge</p>
+            <span class="text-[9px] font-mono uppercase bg-[#2680BD] text-white font-bold px-2 py-0.5 rounded-full">Restaurante del Club</span>
+            <h4 class="text-base font-bold text-white">La Palmera Restobar</h4>
+            <p class="text-xs text-white/80 font-light">Gastronomía selecta, coctelería y ambiente al aire libre en Club Palma Real</p>
           </div>
         </div>
 
-        <!-- Foto 6: Salón Arimiña (Convenciones y Eventos) -->
-        <div class="bento-card bento-item-all bento-item-eventos md:col-span-12 h-[260px] sm:h-[300px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80', 'Salón Arimiña — Centro de Convenciones y Eventos Maturín')">
-          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80" alt="Salón Arimiña Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <!-- Foto 7: Lagos Restaurant -->
+        <div class="bento-card bento-item-all bento-item-restaurantes bento-item-club md:col-span-6 h-[290px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp', 'Lagos Restaurant — Club Palma Real', 'Experiencia gastronómica frente a la laguna natural')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp" alt="Lagos Restaurant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Club Palma Real</span>
+            <h4 class="text-base font-bold text-white">Lagos Restaurant</h4>
+            <p class="text-xs text-white/80 font-light">Experiencia culinaria frente a la laguna natural con vista panorámica</p>
+          </div>
+        </div>
+
+        <!-- Foto 8: Brûlée Pastelería -->
+        <div class="bento-card bento-item-all bento-item-restaurantes bento-item-club md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria.webp', 'Brûlée Pastelería — Club Palma Real', 'Pastelería fina y café artesanal')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria.webp" alt="Brûlée Pastelería" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-[#EB8C84] text-white font-bold px-2 py-0.5 rounded-full">Pastelería & Café</span>
+            <h4 class="text-sm font-bold text-white">Brûlée Pastelería</h4>
+            <p class="text-[11px] text-white/80 font-light">Repostería fina y café artesanal de especialidad</p>
+          </div>
+        </div>
+
+        <!-- Foto 9: Palma Bites -->
+        <div class="bento-card bento-item-all bento-item-restaurantes bento-item-club md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Palma-Bites.webp', 'Palma Bites — Club Palma Real', 'Tienda de snacks, bebidas y conveniencia')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Palma-Bites.webp" alt="Palma Bites" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Tienda de Snacks</span>
+            <h4 class="text-sm font-bold text-white">Palma Bites</h4>
+            <p class="text-[11px] text-white/80 font-light">Snacks rápidos, bebidas y conveniencia en el club</p>
+          </div>
+        </div>
+
+        <!-- Foto 10: Laguna Natural -->
+        <div class="bento-card bento-item-all bento-item-club md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Laguna-Maturin-2.webp', 'Laguna Palma Real — Hotel Kariña Maturín', 'Espacios naturales y senderos en Club Palma Real')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Laguna-Maturin-2.webp" alt="Laguna Palma Real" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full">Espacio Natural</span>
+            <h4 class="text-sm font-bold text-white">Laguna Palma Real</h4>
+            <p class="text-[11px] text-white/80 font-light">Senderos ecológicos y biodiversidad oriental</p>
+          </div>
+        </div>
+
+        <!-- Foto 11: Master Pádel y Ambiente Social -->
+        <div class="bento-card bento-item-all bento-item-deportes md:col-span-6 h-[280px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Cervezas-En-Maturin-Padel.webp', 'Master Pádel — Club Palma Real Maturín', 'Canchas profesionales y ambiente social deportivo')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Cervezas-En-Maturin-Padel.webp" alt="Master Pádel Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-[#2680BD] text-white font-bold px-2 py-0.5 rounded-full">Club Deportivo</span>
+            <h4 class="text-base font-bold text-white">Master Pádel</h4>
+            <p class="text-xs text-white/80 font-light">Canchas profesionales panorámicas, alquiler de palas y tercer tiempo</p>
+          </div>
+        </div>
+
+        <!-- Foto 12: Canchas de Tenis -->
+        <div class="bento-card bento-item-all bento-item-deportes md:col-span-6 h-[280px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Tenis-Maturin.webp', 'Canchas de Tenis — Club Palma Real Maturín', 'Canchas profesionales iluminadas para entrenamiento y juego libre')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Tenis-Maturin.webp" alt="Tenis Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-[#F0A800] text-[#343434] font-bold px-2 py-0.5 rounded-full">Tenis Profesional</span>
+            <h4 class="text-base font-bold text-white">Canchas de Tenis</h4>
+            <p class="text-xs text-white/80 font-light">Canchas iluminadas de estándar competitivo para entrenamiento y partidos</p>
+          </div>
+        </div>
+
+        <!-- Foto 13: Gimnasio Cardio -->
+        <div class="bento-card bento-item-all bento-item-deportes md:col-span-3 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Gimnasio-1.webp', 'Gimnasio Palma Real — Zona Cardio', 'Equipos cardiovasculares y entrenamiento')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Gimnasio-1.webp" alt="Gimnasio Zona Cardio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Cardio</span>
+            <h4 class="text-xs font-bold text-white">Gimnasio — Cardio</h4>
+            <p class="text-[10px] text-white/80 font-light">Caminadoras y bicicletas</p>
+          </div>
+        </div>
+
+        <!-- Foto 14: Gimnasio Musculación -->
+        <div class="bento-card bento-item-all bento-item-deportes md:col-span-3 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Gimnasio-2.webp', 'Gimnasio Palma Real — Musculación', 'Pesas libres, mancuernas y máquinas de fuerza')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Gimnasio-2.webp" alt="Gimnasio Zona Musculación" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Fuerza</span>
+            <h4 class="text-xs font-bold text-white">Gimnasio — Fuerza</h4>
+            <p class="text-[10px] text-white/80 font-light">Pesas libres y guiadas</p>
+          </div>
+        </div>
+
+        <!-- Foto 15: Holo Pilates -->
+        <div class="bento-card bento-item-all bento-item-deportes bento-item-club md:col-span-6 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Holo-Pilates-Maturin.webp', 'Holo Pilates Studio — Club Palma Real', 'Estudio de Pilates Reformer, elongación y fortalecimiento postural')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Holo-Pilates-Maturin.webp" alt="Holo Pilates Studio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-[#FFD573] text-[#343434] font-bold px-2 py-0.5 rounded-full">Pilates Reformer</span>
+            <h4 class="text-base font-bold text-white">Holo Pilates Studio</h4>
+            <p class="text-xs text-white/80 font-light">Reformers de última generación, fortalecimiento postural y bienestar</p>
+          </div>
+        </div>
+
+        <!-- Foto 16: Parque Master Pádel -->
+        <div class="bento-card bento-item-all bento-item-club md:col-span-6 h-[270px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Parque-Master-Padel.webp', 'Parque Infantil Master Pádel — Maturín', 'Juegos infantiles y entretenimiento familiar seguro')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Parque-Master-Padel.webp" alt="Parque Master Pádel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Área Infantil</span>
+            <h4 class="text-base font-bold text-white">Parque Infantil Master Pádel</h4>
+            <p class="text-xs text-white/80 font-light">Atracciones infantiles y esparcimiento seguro al aire libre</p>
+          </div>
+        </div>
+
+        <!-- Foto 17: Parque Club Palma Real -->
+        <div class="bento-card bento-item-all bento-item-club md:col-span-6 h-[270px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Parque-Club-Palma-Real.webp', 'Parque Club Palma Real — Maturín', 'Áreas de juegos recreativos infantiles en el club')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Parque-Club-Palma-Real.webp" alt="Parque Club Palma Real" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono uppercase bg-white/25 backdrop-blur-md text-white font-bold px-2 py-0.5 rounded-full">Recreación Familiar</span>
+            <h4 class="text-base font-bold text-white">Parque Infantil Club Palma Real</h4>
+            <p class="text-xs text-white/80 font-light">Espacios verdes de recreación y juegos para los más pequeños</p>
+          </div>
+        </div>
+
+        <!-- Foto 18: Fachada y Complejo Hotelero Maturín -->
+        <div class="bento-card bento-item-all bento-item-piscinas bento-item-club md:col-span-12 h-[260px] sm:h-[300px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp', 'Hotel Kariña Maturín — Fachada Principal y Resort', 'Complejo hotelero de 4 estrellas en la exclusiva Urbanización Palma Real')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp" alt="Fachada Hotel Kariña Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Eventos y Convenciones</span>
-            <h3 class="text-xl font-bold text-white">Salón Arimiña — Centro de Convenciones y Eventos</h3>
-            <p class="text-xs text-white/80 font-light max-w-xl">Capacidad para hasta 400 asistentes con sonido profesional, climatización integral y banquetes corporativos.</p>
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Sede Insignia Monagas</span>
+            <h3 class="text-xl font-bold text-white">Complejo Hotelero Kariña Maturín y Club Palma Real</h3>
+            <p class="text-xs text-white/80 font-light max-w-2xl">Resort 4 estrellas con parque acuático, gastronomía de autor, centro de convenciones y club deportivo en la Urbanización Palma Real.</p>
           </div>
         </div>
 
@@ -669,8 +803,8 @@
         <!-- Card 1: Moriche Restaurant -->
         <article class="bg-white/85 rounded-[32px] p-5 sm:p-6 border border-black/5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-5 group">
           <div class="space-y-4">
-            <div class="relative h-48 sm:h-52 rounded-2xl overflow-hidden bg-black/10 cursor-pointer shadow-inner" onclick="openLightbox('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80', 'Moriche Restaurant — Hotel Kariña Maturín')">
-              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Moriche Restaurant Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="relative h-48 sm:h-52 rounded-2xl overflow-hidden bg-black/10 cursor-pointer shadow-inner" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp', 'Moriche Restaurant — Hotel Kariña Maturín', 'Restaurante principal de alta cocina y desayunos buffet')">
+              <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp" alt="Moriche Restaurant Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
               <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                 Alta Cocina de Autor
               </span>
@@ -733,8 +867,8 @@
         <!-- Card 3: Master Pádel -->
         <article class="bg-white/85 rounded-[32px] p-5 sm:p-6 border border-black/5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-5 group">
           <div class="space-y-4">
-            <div class="relative h-48 sm:h-52 rounded-2xl overflow-hidden bg-black/10 cursor-pointer shadow-inner" onclick="openLightbox('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=1200&q=80', 'Master Pádel y Tenis — Club Palma Real Maturín')">
-              <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80" alt="Master Pádel Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="relative h-48 sm:h-52 rounded-2xl overflow-hidden bg-black/10 cursor-pointer shadow-inner" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Cervezas-En-Maturin-Padel.webp', 'Master Pádel y Tenis — Club Palma Real Maturín', 'Canchas profesionales panorámicas y tercer tiempo')">
+              <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Cervezas-En-Maturin-Padel.webp" alt="Master Pádel Maturín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
               <span class="absolute top-3 left-3 bg-[#2680BD] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                 Club Deportivo
               </span>

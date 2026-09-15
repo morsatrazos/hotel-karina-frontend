@@ -596,7 +596,7 @@
                class="relative w-full h-56 sm:h-72 rounded-pebble overflow-hidden bg-black/5 shadow-inner cursor-pointer group" 
                title="Toca para ver en pantalla completa">
             <img id="main-photo-moriche" 
-                 src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" 
+                 src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp" 
                  alt="Moriche Restaurant Maturín" 
                  class="restaurant-main-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
             
@@ -864,52 +864,47 @@
       <!-- CARRUSEL TIPO REEL VISUAL LIGERO (Touch-friendly y Swipe fluido) -->
       <div id="palma-real-carousel-track" class="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-3 pt-1 scroll-smooth touch-pan-x select-none">
 
-        <!-- ITEM 1: Caney y Parrillera -->
+        <!-- ITEM 1: La Palmera Restobar -->
         <div class="snap-start shrink-0 w-[75vw] sm:w-[300px] lg:w-[320px] flex flex-col justify-between gap-3 group">
           <div class="space-y-2.5">
-            <!-- Imagen con badge integrado y click para Lightbox -->
-            <div onclick="openLightbox('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80', 'Caney y Parrillera al Aire Libre — Club Palma Real', 'Cortes a la brasa y parrilladas')" 
+            <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp', 'La Palmera Restobar — Club Palma Real', 'Restaurante del club con gastronomía selecta y coctelería')" 
                  class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer shadow-sm" 
                  title="Toca para ampliar imagen">
-              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" 
-                   alt="Caney y Parrillera Palma Real" 
+              <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp" 
+                   alt="La Palmera Restobar Palma Real" 
                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
               
-              <!-- Badge Categoría -->
-              <span class="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
-                Parrillas y Carnes
+              <span class="absolute top-2.5 left-2.5 bg-[#2680BD] backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+                Restobar del Club
               </span>
               
-              <!-- Nombre sobre la imagen -->
               <div class="absolute bottom-2.5 left-3 right-3 text-white">
-                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Caney y Parrillera</h3>
+                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">La Palmera Restobar</h3>
                 <p class="text-[11px] text-white/80 font-light flex items-center gap-1 mt-0.5">
                   <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
-                  11:30 AM – 9:00 PM
+                  11:30 AM – 10:00 PM
                 </p>
               </div>
 
-              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80', 'Caney y Parrillera al Aire Libre — Club Palma Real', 'Cortes a la brasa y parrilladas')" 
+              <button onclick="event.stopPropagation(); openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp', 'La Palmera Restobar — Club Palma Real', 'Restaurante del club con gastronomía selecta y coctelería')" 
                       class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition-all" 
                       aria-label="Ampliar imagen">
                 <i class="fa-solid fa-expand text-[10px]"></i>
               </button>
             </div>
 
-            <!-- Resumen corto -->
             <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed line-clamp-2">
-              Cortes de punta trasera y solomo, parrillada mixta familiar y hamburguesas al carbón.
+              Gastronomía selecta, coctelería tropical y ambiente social al aire libre en Club Palma Real.
             </p>
           </div>
 
-          <!-- CTAs en estilo secundario unificado -->
           <div class="flex items-center gap-2 pt-1">
-            <button onclick="openGastronomiaMenu('club-palma-real', 'parrilla')" class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-karina-mustard">
+            <button onclick="openGastronomiaMenu('club-palma-real', 'palmera')" class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-karina-mustard">
               <i class="fa-solid fa-book-open text-karina-mustard text-[11px]"></i>
               <span>Menú</span>
             </button>
-            <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20disponibilidad%20en%20el%20Caney%20y%20Parrillera" 
+            <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20disponibilidad%20en%20La%20Palmera%20Restobar" 
                target="_blank" 
                class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-[#25D366]/40 hover:text-[#25D366]">
               <i class="fa-brands fa-whatsapp text-xs text-[#25D366]"></i>
@@ -918,31 +913,30 @@
           </div>
         </div>
 
-        <!-- ITEM 2: Sushi Bar Aliado -->
+        <!-- ITEM 2: Lagos Restaurant -->
         <div class="snap-start shrink-0 w-[75vw] sm:w-[300px] lg:w-[320px] flex flex-col justify-between gap-3 group">
           <div class="space-y-2.5">
-            <!-- Imagen con badge integrado y click para Lightbox -->
-            <div onclick="openLightbox('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=80', 'Sushi Bar Aliado — Club Palma Real', 'Rolls de autor, sushi fresco y poke bowls')" 
+            <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp', 'Lagos Restaurant — Club Palma Real', 'Experiencia culinaria frente a la laguna natural')" 
                  class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer shadow-sm" 
                  title="Toca para ampliar imagen">
-              <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80" 
-                   alt="Sushi Bar Aliado Palma Real" 
+              <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp" 
+                   alt="Lagos Restaurant Palma Real" 
                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
               
               <span class="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
-                Sushi Bar
+                Vista a la Laguna
               </span>
 
               <div class="absolute bottom-2.5 left-3 right-3 text-white">
-                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Sushi Bar Aliado</h3>
+                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Lagos Restaurant</h3>
                 <p class="text-[11px] text-white/80 font-light flex items-center gap-1 mt-0.5">
                   <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
                   12:00 PM – 10:00 PM
                 </p>
               </div>
 
-              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=80', 'Sushi Bar Aliado — Club Palma Real', 'Rolls de autor, sushi fresco y poke bowls')" 
+              <button onclick="event.stopPropagation(); openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp', 'Lagos Restaurant — Club Palma Real', 'Experiencia culinaria frente a la laguna natural')" 
                       class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition-all" 
                       aria-label="Ampliar imagen">
                 <i class="fa-solid fa-expand text-[10px]"></i>
@@ -950,17 +944,16 @@
             </div>
 
             <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed line-clamp-2">
-              Rolls especiales, poke bowls de salmón fresco, tempuras crocantes y sabores asiáticos.
+              Propuesta gastronómica con hermosa vista panorámica a la laguna natural del complejo.
             </p>
           </div>
 
-          <!-- CTAs en estilo secundario unificado -->
           <div class="flex items-center gap-2 pt-1">
-            <button onclick="openGastronomiaMenu('club-palma-real', 'sushi')" class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-karina-mustard">
+            <button onclick="openGastronomiaMenu('club-palma-real', 'lagos')" class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-karina-mustard">
               <i class="fa-solid fa-book-open text-karina-mustard text-[11px]"></i>
               <span>Menú</span>
             </button>
-            <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20men%C3%BA%20y%20pedidos%20en%20el%20Sushi%20Bar%20Aliado" 
+            <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20disponibilidad%20en%20Lagos%20Restaurant" 
                target="_blank" 
                class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-[#25D366]/40 hover:text-[#25D366]">
               <i class="fa-brands fa-whatsapp text-xs text-[#25D366]"></i>
@@ -969,31 +962,30 @@
           </div>
         </div>
 
-        <!-- ITEM 3: Snack Bar y Piscina -->
+        <!-- ITEM 3: Palma Bites -->
         <div class="snap-start shrink-0 w-[75vw] sm:w-[300px] lg:w-[320px] flex flex-col justify-between gap-3 group">
           <div class="space-y-2.5">
-            <!-- Imagen con badge integrado y click para Lightbox -->
-            <div onclick="openLightbox('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80', 'Snack Bar y Parque Acuático — Club Palma Real', 'Tequeños playeros, finger food y heladería')" 
+            <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Palma-Bites.webp', 'Palma Bites — Club Palma Real', 'Tienda de snacks, bebidas y conveniencia')" 
                  class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer shadow-sm" 
                  title="Toca para ampliar imagen">
-              <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" 
-                   alt="Snack Bar Palma Real" 
+              <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Palma-Bites.webp" 
+                   alt="Palma Bites Club Palma Real" 
                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
               
               <span class="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
-                Snacks y Piscina
+                Tienda de Snacks
               </span>
 
               <div class="absolute bottom-2.5 left-3 right-3 text-white">
-                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Snacks y Piscina</h3>
+                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Palma Bites</h3>
                 <p class="text-[11px] text-white/80 font-light flex items-center gap-1 mt-0.5">
                   <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
-                  9:00 AM – 7:00 PM
+                  8:00 AM – 9:00 PM
                 </p>
               </div>
 
-              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80', 'Snack Bar y Parque Acuático — Club Palma Real', 'Tequeños playeros, finger food y heladería')" 
+              <button onclick="event.stopPropagation(); openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Palma-Bites.webp', 'Palma Bites — Club Palma Real', 'Tienda de snacks, bebidas y conveniencia')" 
                       class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition-all" 
                       aria-label="Ampliar imagen">
                 <i class="fa-solid fa-expand text-[10px]"></i>
@@ -1001,17 +993,16 @@
             </div>
 
             <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed line-clamp-2">
-              Tequeños crujientes, papas rústicas con cheddar, finger food y helados al borde de piscina.
+              Snacks rápidos, bebidas hidratantes, helados y café para deportistas y socios del club.
             </p>
           </div>
 
-          <!-- CTAs en estilo secundario unificado -->
           <div class="flex items-center gap-2 pt-1">
-            <button onclick="openGastronomiaMenu('club-palma-real', 'piscina')" class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-karina-mustard">
+            <button onclick="openGastronomiaMenu('club-palma-real', 'palma-bites')" class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-karina-mustard">
               <i class="fa-solid fa-book-open text-karina-mustard text-[11px]"></i>
               <span>Menú</span>
             </button>
-            <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20opciones%20de%20snacks%20y%20servicio%20de%20piscina" 
+            <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20Palma%20Bites" 
                target="_blank" 
                class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-[#25D366]/40 hover:text-[#25D366]">
               <i class="fa-brands fa-whatsapp text-xs text-[#25D366]"></i>
@@ -1020,31 +1011,30 @@
           </div>
         </div>
 
-        <!-- ITEM 4: Café y Coctelería -->
+        <!-- ITEM 4: Brûlée Pastelería -->
         <div class="snap-start shrink-0 w-[75vw] sm:w-[300px] lg:w-[320px] flex flex-col justify-between gap-3 group">
           <div class="space-y-2.5">
-            <!-- Imagen con badge integrado y click para Lightbox -->
-            <div onclick="openLightbox('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80', 'Cafetería y Coctelería Tropical — Club Palma Real', 'Batidos frappé, café de autor y cócteles')" 
+            <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria.webp', 'Brûlée Pastelería — Club Palma Real', 'Pastelería fina y café artesanal')" 
                  class="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-black/5 cursor-pointer shadow-sm" 
                  title="Toca para ampliar imagen">
-              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80" 
-                   alt="Cafetería y Coctelería Palma Real" 
+              <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria.webp" 
+                   alt="Brûlée Pastelería Palma Real" 
                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
               
-              <span class="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
-                Café y Cócteles
+              <span class="absolute top-2.5 left-2.5 bg-[#EB8C84] backdrop-blur-xs text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+                Pastelería & Café
               </span>
 
               <div class="absolute bottom-2.5 left-3 right-3 text-white">
-                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Café y Coctelería</h3>
+                <h3 class="text-sm sm:text-base font-bold leading-tight drop-shadow-xs">Brûlée Pastelería</h3>
                 <p class="text-[11px] text-white/80 font-light flex items-center gap-1 mt-0.5">
                   <i class="fa-regular fa-clock text-karina-mustard text-[10px]"></i>
                   8:00 AM – 8:00 PM
                 </p>
               </div>
 
-              <button onclick="event.stopPropagation(); openLightbox('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80', 'Cafetería y Coctelería Tropical — Club Palma Real', 'Batidos frappé, café de autor y cócteles')" 
+              <button onclick="event.stopPropagation(); openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria.webp', 'Brûlée Pastelería — Club Palma Real', 'Pastelería fina y café artesanal')" 
                       class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition-all" 
                       aria-label="Ampliar imagen">
                 <i class="fa-solid fa-expand text-[10px]"></i>
@@ -1052,17 +1042,16 @@
             </div>
 
             <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed line-clamp-2">
-              Batidos de frutas naturales, frappés granizados, café espresso y coctelería caribeña.
+              Repostería fina, tortas de autor, café de especialidad y desayunos dulces en Club Palma Real.
             </p>
           </div>
 
-          <!-- CTAs en estilo secundario unificado -->
           <div class="flex items-center gap-2 pt-1">
-            <button onclick="openGastronomiaMenu('club-palma-real', 'bebidas')" class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-karina-mustard">
+            <button onclick="openGastronomiaMenu('club-palma-real', 'brulee')" class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-karina-mustard">
               <i class="fa-solid fa-book-open text-karina-mustard text-[11px]"></i>
               <span>Menú</span>
             </button>
-            <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20la%20carta%20de%20caf%C3%A9%20y%20cocteler%C3%ADa%20tropical" 
+            <a href="https://wa.me/5804249169601?text=Hola%20Club%20Palma%20Real%20Matur%C3%ADn%2C%20deseo%20consultar%20Br%C3%BBl%C3%A9e%20Pasteler%C3%ADa" 
                target="_blank" 
                class="flex-1 py-2 px-3 rounded-full bg-white/90 hover:bg-white text-karina-charcoal border border-black/15 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:border-[#25D366]/40 hover:text-[#25D366]">
               <i class="fa-brands fa-whatsapp text-xs text-[#25D366]"></i>

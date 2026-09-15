@@ -124,10 +124,21 @@ document.addEventListener('DOMContentLoaded', () => {
       phone: "+58 0424-9169601",
       images: [
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp", caption: "Área y Fachada Principal Maturín" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-Main.webp", caption: "Piscina Principal Resort Maturín" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-2.webp", caption: "Complejo de Piscinas y Palmeras" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp", caption: "Moriche Restaurant — Cocina de Autor" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp", caption: "Oh My Bar Lounge y Mixología" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp", caption: "La Palmera Restobar — Club Palma Real" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp", caption: "Lagos Restaurant — Vista a la Laguna" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria.webp", caption: "Brûlée Pastelería Fina" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Palma-Bites.webp", caption: "Palma Bites — Tienda de Snacks" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Cervezas-En-Maturin-Padel.webp", caption: "Master Pádel y Ambiente Social" },
-        { src: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80", caption: "Piscina Resort y Parque Acuático" },
-        { src: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80", caption: "Suites Premium y Equipamiento" }
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Tenis-Maturin.webp", caption: "Canchas de Tenis Profesionales" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Gimnasio-1.webp", caption: "Gimnasio Equipado Palma Real" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Holo-Pilates-Maturin.webp", caption: "Holo Pilates Studio" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Laguna-Maturin-2.webp", caption: "Laguna Natural Club Palma Real" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Parque-Master-Padel.webp", caption: "Parque Infantil Master Pádel" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Parque-Club-Palma-Real.webp", caption: "Parque Infantil Club Palma Real" }
       ]
     },
     {
