@@ -1,6 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
+  // 0. CONTROL DE AUDIO HERO VIDEO
+  // ==========================================
+  const heroVideo = document.getElementById('hero-video');
+  const heroAudioBtn = document.getElementById('hero-audio-btn');
+  const heroAudioIcon = document.getElementById('hero-audio-icon');
+  const heroAudioText = document.getElementById('hero-audio-text');
+
+  if (heroVideo) {
+    heroVideo.muted = false;
+
+    const updateHeroAudioUI = (isMuted) => {
+      if (heroAudioIcon && heroAudioText) {
+        if (isMuted) {
+          heroAudioIcon.className = 'fa-solid fa-volume-xmark text-white/70';
+          heroAudioText.textContent = 'Silenciado';
+        } else {
+          heroAudioIcon.className = 'fa-solid fa-volume-high text-[#FFD573]';
+          heroAudioText.textContent = 'Audio activo';
+        }
+      }
+    };
+
+    // Intentar reproducir con audio desmuteado
+    const playPromise = heroVideo.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          updateHeroAudioUI(heroVideo.muted);
+        })
+        .catch(() => {
+          // Si el navegador restringe autoplay con sonido, iniciar en mute y activar al primer gesto
+          heroVideo.muted = true;
+          heroVideo.play().catch(() => {});
+          updateHeroAudioUI(true);
+
+          const enableAudioOnGesture = () => {
+            heroVideo.muted = false;
+            updateHeroAudioUI(false);
+            window.removeEventListener('click', enableAudioOnGesture);
+            window.removeEventListener('touchstart', enableAudioOnGesture);
+            window.removeEventListener('keydown', enableAudioOnGesture);
+          };
+
+          window.addEventListener('click', enableAudioOnGesture, { once: true });
+          window.addEventListener('touchstart', enableAudioOnGesture, { once: true });
+          window.addEventListener('keydown', enableAudioOnGesture, { once: true });
+        });
+    }
+
+    if (heroAudioBtn) {
+      heroAudioBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        heroVideo.muted = !heroVideo.muted;
+        if (!heroVideo.muted) {
+          heroVideo.play().catch(() => {});
+        }
+        updateHeroAudioUI(heroVideo.muted);
+      });
+    }
+  }
+
+  // ==========================================
   // 1. NAVBAR MORPHING FLOATING ISLAND
   // ==========================================
   const navbar = document.getElementById('main-navbar');
