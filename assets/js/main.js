@@ -626,15 +626,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const catalogSuitesData = [
     {
       id: 'premium-maturin',
-      title: 'Suite Premium Maturín',
-      desc: 'Nuestra suite insignia en la Sede Maturín ofrece dos ambientes amplios, acabados contemporáneos, lencería de lujo y acceso directo a todas las bondades del hotel.',
-      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp',
+      title: 'Suite Premium (Doble) Maturín',
+      desc: 'Nuestra suite insignia en la Sede Maturín ofrece dos ambientes amplios, camas confortables, acabados contemporáneos, lencería de lujo de 400 hilos y acceso directo a todas las bondades y piscinas del hotel.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-Main.webp',
       gallery: [
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp', tag: 'Sala de Estar y Comedor' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor-2.webp', tag: 'Sala y Comedor' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp', tag: 'Dormitorio Principal' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Comedor.webp', tag: 'Área de Comedor' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-3.webp', tag: 'Ambiente Integrado' }
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-Main.webp', tag: 'Vista Principal / Dormitorio Doble' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-2.webp', tag: 'Camas y Lencería Premium' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium3.webp', tag: 'Ambiente y Confort' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium5.webp', tag: 'Espacio de Descanso' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-6.webp', tag: 'Detalles y Acabados' }
       ]
     },
     {
