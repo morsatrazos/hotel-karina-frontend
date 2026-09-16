@@ -391,79 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // ==========================================
-  // 4. SUITES TABS / SWITCHER
-  // ==========================================
-  const suiteData = {
-    'un-ambiente': {
-      title: 'Suite Estándar',
-      desc: 'Diseñadas bajo una geometría orgánica fluida, nuestras suites ofrecen un refugio de minimalismo editorial y confort curado.',
-      quote: '"Un santuario de descanso pensado para el viajero moderno."',
-      price: '$120',
-      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
-      amenities: [
-        'WiFi Alta Velocidad 100M',
-        'Minibar y Cafetera',
-        'Desayuno incluido'
-      ]
-    },
-    'dos-ambientes': {
-      title: 'Suite Premium',
-      desc: 'Espacio ampliado con sala de reuniones privada, lencería de alta gama y área de descanso independiente en dos niveles.',
-      quote: '"La combinación perfecta entre productividad y bienestar de alto nivel."',
-      price: '$170',
-      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp',
-      amenities: [
-        '2 Ambientes y Sala VIP de Estar',
-        'Smart TV 55" y Fibra Óptica',
-        'Desayuno Buffet y Acceso Club'
-      ]
-    }
-  };
 
-  window.switchSuite = function(type) {
-    const btnUn = document.getElementById('btn-un-ambiente');
-    const btnDos = document.getElementById('btn-dos-ambientes');
-    const container = document.getElementById('home-suite-container') || document.querySelector('#suites .grid');
-    const title = document.getElementById('suite-title');
-    const desc = document.getElementById('suite-desc');
-    const quote = document.getElementById('suite-quote');
-    const price = document.getElementById('suite-price');
-    const img = document.getElementById('suite-img');
-    const amenitiesList = document.getElementById('suite-amenities');
-
-    if (!btnUn || !btnDos) return;
-
-    if (type === 'un-ambiente') {
-      btnUn.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434] bg-[#343434] text-white transition-all shadow-sm';
-      btnDos.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434]/30 bg-transparent text-[#343434] hover:border-[#343434] transition-all';
-    } else {
-      btnDos.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434] bg-[#343434] text-white transition-all shadow-sm';
-      btnUn.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434]/30 bg-transparent text-[#343434] hover:border-[#343434] transition-all';
-    }
-
-    if (container) container.classList.add('changing');
-
-    setTimeout(() => {
-      const data = suiteData[type];
-      if (title) title.textContent = data.title;
-      if (desc) desc.textContent = data.desc;
-      if (quote) quote.textContent = data.quote;
-      if (price) price.textContent = data.price;
-      if (img) img.src = data.img;
-
-      if (amenitiesList && data.amenities) {
-        amenitiesList.innerHTML = data.amenities.map(a => `
-          <div class="flex items-center gap-3 text-xs font-semibold text-[#343434]">
-            <i class="fa-regular fa-circle-check text-[#F0A800]"></i>
-            <span>${a}</span>
-          </div>
-        `).join('');
-      }
-
-      if (container) container.classList.remove('changing');
-    }, 150);
-  };
 
   // ==========================================
   // 5. ACORDEÓN DE PREGUNTAS FRECUENTES (EDITORIAL)
@@ -621,19 +549,93 @@ document.addEventListener('DOMContentLoaded', () => {
   }, observerOptions);
 
   // ==========================================
+  // 4. SUITES TABS / SWITCHER
+  // ==========================================
+  const suiteData = {
+    'un-ambiente': {
+      title: 'Suite Estándar',
+      desc: 'Suite con una cama matrimonial equipada con cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería, fibra óptica y aire acondicionado autónomo.',
+      quote: '"Un santuario de descanso pensado para el confort y la comodidad."',
+      price: '$120',
+      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+      amenities: [
+        '1 Cama Matrimonial (Máx. 2)',
+        'Smart TV 32" y Fibra Óptica',
+        'Cocina Kitchenette, Nevera 15P y Microondas'
+      ]
+    },
+    'dos-ambientes': {
+      title: 'Suite Premium',
+      desc: 'Suite con dos camas matrimoniales equipada con cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, amplio clóset para ropa, estantería, A/C autónomo y fibra óptica.',
+      quote: '"La combinación perfecta entre amplitud, descanso y equipamiento superior."',
+      price: '$170',
+      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+      amenities: [
+        '2 Camas Matrimoniales (Máx. 4)',
+        'Smart TV 32" y Fibra Óptica',
+        'Cocina Kitchenette, Nevera 15P y Microondas'
+      ]
+    }
+  };
+
+  window.switchSuite = function(type) {
+    const btnUn = document.getElementById('btn-un-ambiente');
+    const btnDos = document.getElementById('btn-dos-ambientes');
+    const container = document.getElementById('home-suite-container') || document.querySelector('#suites .grid');
+    const title = document.getElementById('suite-title');
+    const desc = document.getElementById('suite-desc');
+    const quote = document.getElementById('suite-quote');
+    const price = document.getElementById('suite-price');
+    const img = document.getElementById('suite-img');
+    const amenitiesList = document.getElementById('suite-amenities');
+
+    if (!btnUn || !btnDos) return;
+
+    if (type === 'un-ambiente') {
+      btnUn.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434] bg-[#343434] text-white transition-all shadow-sm';
+      btnDos.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434]/30 bg-transparent text-[#343434] hover:border-[#343434] transition-all';
+    } else {
+      btnDos.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434] bg-[#343434] text-white transition-all shadow-sm';
+      btnUn.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434]/30 bg-transparent text-[#343434] hover:border-[#343434] transition-all';
+    }
+
+    if (container) container.classList.add('changing');
+
+    setTimeout(() => {
+      const data = suiteData[type];
+      if (title) title.textContent = data.title;
+      if (desc) desc.textContent = data.desc;
+      if (quote) quote.textContent = data.quote;
+      if (price) price.textContent = data.price;
+      if (img) img.src = data.img;
+
+      if (amenitiesList && data.amenities) {
+        amenitiesList.innerHTML = data.amenities.map(a => `
+          <div class="flex items-center gap-3 text-xs font-semibold text-[#343434]">
+            <i class="fa-regular fa-circle-check text-[#F0A800]"></i>
+            <span>${a}</span>
+          </div>
+        `).join('');
+      }
+
+      if (container) container.classList.remove('changing');
+    }, 150);
+  };
+
+  // ==========================================
   // 8. CONTROLADORES CATÁLOGO DE SUITES Y MODAL
   // ==========================================
   const catalogSuitesData = [
     {
       id: 'premium-maturin',
-      title: 'Suite Premium (Doble) Maturín',
-      desc: 'Nuestra suite insignia en la Sede Maturín ofrece dos ambientes amplios, camas confortables, acabados contemporáneos, lencería de lujo de 400 hilos y acceso directo a todas las bondades y piscinas del hotel.',
+      title: 'Suite Premium',
+      desc: 'Suite con dos camas matrimoniales en Maturín con cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería, aire acondicionado autónomo y fibra óptica.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
       gallery: [
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp', tag: 'Vista Principal / Dormitorio Doble' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-Doble-Maturin.webp', tag: 'Dormitorio Doble Premium' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp', tag: 'Vista Principal' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-Doble-Maturin.webp', tag: 'Dormitorio Doble Matrimonial' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-Main.webp', tag: 'Vista Panorámica de la Suite' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-2.webp', tag: 'Camas y Lencería Premium' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-2.webp', tag: 'Camas y Lencería' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium3.webp', tag: 'Ambiente y Confort' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium5.webp', tag: 'Espacio de Descanso' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-6.webp', tag: 'Detalles y Acabados' }
@@ -641,8 +643,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'estandar-maturin',
-      title: 'Suite Estándar Maturín',
-      desc: 'Un espacio refinado diseñado para el viajero moderno que busca eficiencia sin comprometer la elegancia y confort, con sala-comedor integrada y climatización de vanguardia.',
+      title: 'Suite Estándar',
+      desc: 'Confortable suite con una cama matrimonial en Maturín con cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, estantería, clóset para la ropa, A/C autónomo y fibra óptica.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp',
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp', tag: 'Vista Principal / Dormitorio' },
@@ -655,12 +657,12 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'premium-eltigre',
-      title: 'Suite Premium El Tigre',
-      desc: 'Santuario de calma y amplitud superior en la Mesa de Guanipa, con acabados nobles, lounge independiente y atención personalizada.',
+      title: 'Suite Premium',
+      desc: 'Suite de 36 m² con dos camas matrimoniales en El Tigre, cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería, A/C autónomo y fibra óptica.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp',
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp', tag: 'Vista Principal' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20PremiumEl%20Tigre.webp', tag: 'Dormitorio King Size' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20PremiumEl%20Tigre.webp', tag: 'Dormitorio Matrimonial' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite-Premium%20El%20Tigre.webp', tag: 'Lounge y Confort' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite-Premium-2.webp', tag: 'Área de Estar' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite-Premium-3-El-Tigre.webp', tag: 'Detalles y Acabados' }
@@ -668,12 +670,12 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'estandar-eltigre',
-      title: 'Suite Estándar El Tigre',
-      desc: 'Excelente distribución ejecutiva orientada al descanso silencioso en la Mesa de Guanipa, con acceso ilimitado a áreas de piscina.',
+      title: 'Suite Estándar',
+      desc: 'Excelente distribución de 36 m² con una cama matrimonial en El Tigre, cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería y fibra óptica.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp', tag: 'Vista Principal' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-2.webp', tag: 'Dormitorio y Cama' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-2.webp', tag: 'Dormitorio Matrimonial' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-3.webp', tag: 'Área de Confort' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-4.webp', tag: 'Ambiente Integrado' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-5.webp', tag: 'Espacio de Descanso' },
@@ -683,24 +685,24 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'premium-ptamata',
-      title: 'Suite Premium (Doble) Punta de Mata',
-      desc: 'Santuario corporativo de máxima amplitud y privacidad en la Zona Industrial de Punta de Mata, con camas confortables ortopédicas, estación de trabajo ergonómica y atmósfera insonorizada.',
+      title: 'Suite Premium',
+      desc: 'Santuario corporativo de 36 m² con dos camas matrimoniales en Punta de Mata, cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, estantería, clóset para la ropa, A/C autónomo y fibra óptica.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-2.webp',
       gallery: [
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-2.webp', tag: 'Vista Principal / Dormitorio Doble' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-3.webp', tag: 'Dormitorio Doble y Confort' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Punta-de-mata-5.jpg', tag: 'Camas y Lencería Premium' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-2.webp', tag: 'Vista Principal' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-3.webp', tag: 'Dormitorio Doble Matrimonial' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Punta-de-mata-5.jpg', tag: 'Camas y Lencería' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Premium-Doble-5.webp', tag: 'Detalles y Acabados' }
       ]
     },
     {
       id: 'estandar-ptamata',
-      title: 'Suite Estándar Punta de Mata',
-      desc: 'Confort acústico, conectividad dedicada de alta velocidad y descanso superior para directivos y profesionales en misiones operativas.',
+      title: 'Suite Estándar',
+      desc: 'Confort acústico de 36 m² con una cama matrimonial en Punta de Mata, cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería, A/C autónomo y fibra óptica.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp', tag: 'Vista Principal / Dormitorio' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/Suite-Estandar-PuntadeMata_resultado.webp', tag: 'Dormitorio y Confort' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/Suite-Estandar-PuntadeMata_resultado.webp', tag: 'Dormitorio Matrimonial' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-estandar-ptmata-2.webp', tag: 'Área de Descanso' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-estandar-ptmata-.webp', tag: 'Espacio Integrado' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp', tag: 'Fachada Sede Punta de Mata' }
