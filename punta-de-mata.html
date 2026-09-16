@@ -562,27 +562,30 @@
         
         <!-- Info Izquierda -->
         <div class="lg:col-span-6 space-y-6 text-left">
-          <h3 id="suite-title" class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
-            SUITE PREMIUM
-          </h3>
+          <div class="space-y-1">
+            <span id="suite-meta" class="text-[11px] font-mono uppercase tracking-widest text-karina-blue font-bold block">36 m² • 2 Camas Matrimoniales</span>
+            <h3 id="suite-title" class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+              Suite Premium
+            </h3>
+          </div>
 
           <p id="suite-desc" class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
-            Santuario corporativo de 36 m² con dos camas matrimoniales en Punta de Mata, cocina tipo kitchenette, nevera de 15 pies, microondas, estantería, clóset para la ropa, Smart TV de 32 pulgadas, aire acondicionado autónomo e internet por fibra óptica.
+            La máxima expresión de exclusividad y confort, combinando áreas de estar independientes con equipamiento premium para estadías de distinción.
           </p>
 
           <!-- Checklist Bondades -->
-          <div class="space-y-2.5 text-xs font-normal text-karina-charcoal/80">
+          <div id="suite-card-amenities" class="space-y-2.5 text-xs font-normal text-karina-charcoal/80">
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-blue text-sm"></i>
-              <span>2 Camas Matrimoniales y área de 36 m²</span>
+              <span>2 Camas Matrimoniales</span>
             </div>
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-blue text-sm"></i>
-              <span>Cocina tipo kitchenette equipada, nevera de 15 pies y microondas</span>
+              <span>Estación de Trabajo & TV 32"</span>
             </div>
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-blue text-sm"></i>
-              <span>Smart TV 32", fibra óptica, A/C autónomo, estantería y clóset</span>
+              <span>Kitchenette & Nevera 15'</span>
             </div>
           </div>
 
@@ -597,7 +600,7 @@
               <span>Ver Detalles de la Suite</span>
             </button>
 
-            <a href="https://wa.me/5804249169602?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reservar%20en%20Sede%20Punta%20de%20Mata" target="_blank" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group">
+            <a id="suite-wa-btn" href="https://wa.me/5804249169602?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reservar%20una%20Suite%20Premium%20en%20Sede%20Punta%20de%20Mata" target="_blank" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group">
               <span class="w-5 h-5 rounded-full bg-karina-blue text-white flex items-center justify-center text-[10px] shrink-0">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
               </span>
@@ -955,17 +958,10 @@
               Santuario corporativo de 36 m² en Punta de Mata con dos camas matrimoniales confortables, cocina tipo kitchenette, nevera de 15 pies, microondas, estantería, clóset para la ropa, Smart TV de 32", aire acondicionado autónomo y fibra óptica.
             </p>
 
-            <div class="space-y-2 pt-2 text-xs text-karina-charcoal/80">
-              <p class="font-bold">Equipamiento Incluido:</p>
-              <div class="grid grid-cols-2 gap-2">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-bed text-karina-blue"></i> 2 Camas Matrimoniales</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-maximize text-karina-blue"></i> Área de 36 m²</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-tv text-karina-blue"></i> Smart TV 32"</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-network-wired text-karina-blue"></i> Fibra Óptica</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-kitchen-set text-karina-blue"></i> Kitchenette Equipado</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-temperature-arrow-down text-karina-blue"></i> Nevera 15 Pies</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-wave-square text-karina-blue"></i> Microondas</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-door-closed text-karina-blue"></i> Clóset y Estantería</div>
+            <div class="space-y-2.5 pt-2 text-xs text-karina-charcoal/80">
+              <p class="font-bold text-[11px] uppercase tracking-widest text-karina-charcoal/70">Equipamiento Incluido:</p>
+              <div id="suite-modal-features" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <!-- Renderizado dinámicamente vía JavaScript -->
               </div>
             </div>
           </div>
@@ -1064,10 +1060,28 @@
 
     const suitesData = {
       1: {
-        title: "SUITE PREMIUM",
-        desc: "Santuario corporativo de 36 m² con dos camas matrimoniales en Punta de Mata, cocina tipo kitchenette, nevera de 15 pies, microondas, estantería, clóset para la ropa, Smart TV de 32 pulgadas, aire acondicionado autónomo e internet por fibra óptica.",
+        title: "Suite Premium",
+        meta: "36 m² • 2 Camas Matrimoniales",
+        desc: "La máxima expresión de exclusividad y confort, combinando áreas de estar independientes con equipamiento premium para estadías de distinción.",
         quote: '"El refugio silencioso donde la mente ejecutiva recarga su máxima energía."',
         image: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-2.webp",
+        cardAmenities: [
+          "2 Camas Matrimoniales",
+          "Estación de Trabajo & TV 32\"",
+          "Kitchenette & Nevera 15'"
+        ],
+        amenities: [
+          "2 Camas Matrimoniales",
+          "Mesa de noche",
+          "Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32\"",
+          "Internet por Fibra Óptica de Alta Velocidad",
+          "Aire Acondicionado Autónomo",
+          "Cocina equipada tipo Kitchenette",
+          "Nevera de 15 pies",
+          "Horno Microondas y Estantería",
+          "Guardarropa",
+          "Distribución espacial integral (36 m²)"
+        ],
         gallery: [
           { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-2.webp", tag: "Vista Principal / Dormitorio Doble" },
           { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-3.webp", tag: "Dormitorio Doble Matrimonial" },
@@ -1076,10 +1090,28 @@
         ]
       },
       2: {
-        title: "SUITE ESTÁNDAR",
-        desc: "Confort acústico de 36 m² con una cama matrimonial en Punta de Mata, cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería, aire acondicionado autónomo y fibra óptica.",
+        title: "Suite Estándar",
+        meta: "36 m² • 1 Cama Matrimonial",
+        desc: "Un oasis de calma con arquitectura de vanguardia, optimizado para el confort del viajero corporativo que busca privacidad y descanso reparador.",
         quote: '"Eficiencia, silencio y confort para profesionales en campo."',
         image: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp",
+        cardAmenities: [
+          "1 Cama Matrimonial",
+          "Estación de Trabajo & TV 32\"",
+          "Kitchenette & Nevera 15'"
+        ],
+        amenities: [
+          "1 Cama Matrimonial",
+          "Mesa de noche",
+          "Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32\"",
+          "Internet por Fibra Óptica de Alta Velocidad",
+          "Aire Acondicionado Autónomo",
+          "Cocina equipada tipo Kitchenette",
+          "Nevera de 15 pies",
+          "Horno Microondas y Estantería",
+          "Guardarropa",
+          "Distribución espacial integral (36 m²)"
+        ],
         gallery: [
           { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp", tag: "Vista Principal / Dormitorio" },
           { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/Suite-Estandar-PuntadeMata_resultado.webp", tag: "Dormitorio Matrimonial" },
@@ -1105,6 +1137,18 @@
       `).join('');
     }
 
+    function renderSuiteModalAmenities(type) {
+      const container = document.getElementById('suite-modal-features');
+      if (!container) return;
+      const amenities = suitesData[type]?.amenities || [];
+      container.innerHTML = amenities.map(item => `
+        <div class="flex items-start gap-2 text-xs text-karina-charcoal/80">
+          <i class="fa-regular fa-circle-check text-karina-blue text-xs shrink-0 mt-0.5"></i>
+          <span class="leading-tight">${item}</span>
+        </div>
+      `).join('');
+    }
+
     function switchSuiteView(type) {
       currentSuiteType = type;
       if (suiteContainer) suiteContainer.classList.add('changing');
@@ -1115,6 +1159,24 @@
         if (suiteDesc) suiteDesc.textContent = data.desc;
         if (suiteQuote) suiteQuote.textContent = data.quote;
         if (suiteImage) suiteImage.src = data.image;
+
+        const metaEl = document.getElementById('suite-meta');
+        if (metaEl && data.meta) metaEl.textContent = data.meta;
+
+        const cardAmenitiesEl = document.getElementById('suite-card-amenities');
+        if (cardAmenitiesEl && data.cardAmenities) {
+          cardAmenitiesEl.innerHTML = data.cardAmenities.map(item => `
+            <div class="flex items-center gap-3">
+              <i class="fa-regular fa-circle-check text-karina-blue text-sm"></i>
+              <span>${item}</span>
+            </div>
+          `).join('');
+        }
+
+        const waBtn = document.getElementById('suite-wa-btn');
+        if (waBtn) {
+          waBtn.href = `https://wa.me/5804249169602?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reservar%20una%20${encodeURIComponent(data.title)}%20en%20Sede%20Punta%20de%20Mata`;
+        }
 
         if (type === 1) {
           if (suitePill1) suitePill1.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
@@ -1150,6 +1212,7 @@
         if (tagEl) tagEl.textContent = data.gallery?.[0]?.tag || 'Vista Principal';
         if (counterEl) counterEl.textContent = `0${currentSuiteType} / 02`;
         renderSuiteModalThumbnails(currentSuiteType);
+        renderSuiteModalAmenities(currentSuiteType);
         if (wrapper) wrapper.style.opacity = '1';
       }, 120);
     }
@@ -1169,6 +1232,7 @@
       if (tagEl) tagEl.textContent = data.gallery?.[0]?.tag || 'Vista Principal';
       if (counterEl) counterEl.textContent = `0${currentSuiteType} / 02`;
       renderSuiteModalThumbnails(currentSuiteType);
+      renderSuiteModalAmenities(currentSuiteType);
 
       if (modal) {
         modal.classList.add('is-open');

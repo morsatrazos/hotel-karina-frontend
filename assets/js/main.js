@@ -554,26 +554,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const suiteData = {
     'un-ambiente': {
       title: 'Suite Estándar',
-      desc: 'Suite con una cama matrimonial equipada con cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería, fibra óptica y aire acondicionado autónomo.',
+      desc: 'Un refugio de diseño contemporáneo y confort absoluto, pensado para garantizar un descanso impecable y alta conectividad en todo momento.',
       quote: '"Un santuario de descanso pensado para el confort y la comodidad."',
       price: '$120',
       img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
       amenities: [
-        '1 Cama Matrimonial (Máx. 2)',
-        'Smart TV 32" y Fibra Óptica',
-        'Cocina Kitchenette, Nevera 15P y Microondas'
+        '1 Cama Matrimonial',
+        'Estación de Trabajo & TV 32"',
+        'Kitchenette & Nevera 15\''
       ]
     },
     'dos-ambientes': {
       title: 'Suite Premium',
-      desc: 'Suite con dos camas matrimoniales equipada con cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, amplio clóset para ropa, estantería, A/C autónomo y fibra óptica.',
+      desc: 'Santuario de amplitud superior y estética sutil, donde la calidez del lujo contemporáneo se integra armoniosamente con las vistas al complejo.',
       quote: '"La combinación perfecta entre amplitud, descanso y equipamiento superior."',
       price: '$170',
       img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
       amenities: [
-        '2 Camas Matrimoniales (Máx. 4)',
-        'Smart TV 32" y Fibra Óptica',
-        'Cocina Kitchenette, Nevera 15P y Microondas'
+        '2 Camas Matrimoniales',
+        'Estación de Trabajo & TV 32"',
+        'Kitchenette & Nevera 15\''
       ]
     }
   };
@@ -629,8 +629,20 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'premium-maturin',
       title: 'Suite Premium',
-      desc: 'Suite con dos camas matrimoniales en Maturín con cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería, aire acondicionado autónomo y fibra óptica.',
+      desc: 'Santuario de amplitud superior y estética sutil, donde la calidez del lujo contemporáneo se integra armoniosamente con las vistas al complejo.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+      amenities: [
+        '2 Camas Matrimoniales',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa',
+        'Dos ambientes independientes: Sala-comedor y habitación con baño separado (50 m²)'
+      ],
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp', tag: 'Vista Principal' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-Doble-Maturin.webp', tag: 'Dormitorio Doble Matrimonial' },
@@ -644,8 +656,20 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'estandar-maturin',
       title: 'Suite Estándar',
-      desc: 'Confortable suite con una cama matrimonial en Maturín con cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, estantería, clóset para la ropa, A/C autónomo y fibra óptica.',
+      desc: 'Un refugio de diseño contemporáneo y confort absoluto, pensado para garantizar un descanso impecable y alta conectividad en todo momento.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp',
+      amenities: [
+        '1 Cama Matrimonial',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa',
+        'Dos ambientes independientes: Sala-comedor y habitación con baño separado (48 m²)'
+      ],
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp', tag: 'Vista Principal / Dormitorio' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Comedor.webp', tag: 'Área de Comedor' },
@@ -658,8 +682,19 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'premium-eltigre',
       title: 'Suite Premium',
-      desc: 'Suite de 36 m² con dos camas matrimoniales en El Tigre, cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería, A/C autónomo y fibra óptica.',
+      desc: 'Una experiencia de inmersión en el lujo boutique, destacada por sus acabados de alta gama, espacialidad fluida y un ambiente de serenidad absoluta.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp',
+      amenities: [
+        '2 Camas Matrimoniales',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa'
+      ],
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp', tag: 'Vista Principal' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20PremiumEl%20Tigre.webp', tag: 'Dormitorio Matrimonial' },
@@ -671,8 +706,19 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'estandar-eltigre',
       title: 'Suite Estándar',
-      desc: 'Excelente distribución de 36 m² con una cama matrimonial en El Tigre, cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería y fibra óptica.',
+      desc: 'El equilibrio perfecto entre eficiencia ejecutiva y confort, diseñado para ofrecer privacidad absoluta y un reconfortante descanso contemporáneo.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
+      amenities: [
+        '1 Cama Matrimonial',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa'
+      ],
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp', tag: 'Vista Principal' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-2.webp', tag: 'Dormitorio Matrimonial' },
@@ -686,8 +732,19 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'premium-ptamata',
       title: 'Suite Premium',
-      desc: 'Santuario corporativo de 36 m² con dos camas matrimoniales en Punta de Mata, cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, estantería, clóset para la ropa, A/C autónomo y fibra óptica.',
+      desc: 'La máxima expresión de exclusividad y confort, combinando áreas de estar independientes con equipamiento premium para estadías de distinción.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-2.webp',
+      amenities: [
+        '2 Camas Matrimoniales',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa'
+      ],
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-2.webp', tag: 'Vista Principal' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-3.webp', tag: 'Dormitorio Doble Matrimonial' },
@@ -698,8 +755,19 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'estandar-ptamata',
       title: 'Suite Estándar',
-      desc: 'Confort acústico de 36 m² con una cama matrimonial en Punta de Mata, cocina tipo kitchenette, nevera de 15 pies, microondas, Smart TV de 32 pulgadas, clóset para la ropa, estantería, A/C autónomo y fibra óptica.',
+      desc: 'Un oasis de calma con arquitectura de vanguardia, optimizado para el confort del viajero corporativo que busca privacidad y descanso reparador.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+      amenities: [
+        '1 Cama Matrimonial',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa'
+      ],
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp', tag: 'Vista Principal / Dormitorio' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/Suite-Estandar-PuntadeMata_resultado.webp', tag: 'Dormitorio Matrimonial' },
@@ -760,12 +828,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const tagEl = document.getElementById('suite-modal-tag');
     const counterEl = document.getElementById('suite-modal-counter');
     const thumbContainer = document.getElementById('suite-modal-thumbnails');
+    const amenitiesEl = document.getElementById('suite-modal-amenities');
 
     if (titleEl) titleEl.textContent = suite.title;
     if (descEl) descEl.textContent = suite.desc;
     if (imgEl) imgEl.src = suite.image;
     if (tagEl) tagEl.textContent = 'Vista Principal';
     if (counterEl) counterEl.textContent = `0${currentCatalogSuiteIdx + 1} / 0${catalogSuitesData.length}`;
+
+    if (amenitiesEl && suite.amenities) {
+      amenitiesEl.innerHTML = suite.amenities.map(a => `
+        <div class="flex items-start gap-2 text-xs text-karina-charcoal/80">
+          <i class="fa-regular fa-circle-check text-karina-mustard text-xs mt-0.5 shrink-0"></i>
+          <span>${a}</span>
+        </div>
+      `).join('');
+    }
 
     if (thumbContainer && suite.gallery && suite.gallery.length > 0) {
       const cols = suite.gallery.length >= 7 ? 7 : (suite.gallery.length > 4 ? 6 : 4);
@@ -1314,11 +1392,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const pills = document.querySelectorAll('.sede-filter-pill');
     pills.forEach(pill => {
       pill.classList.remove('is-active', 'bg-karina-charcoal', 'text-white', 'font-bold', 'shadow-md');
-      pill.classList.add('bg-white/80', 'text-karina-charcoal/80', 'border-black/5');
+      pill.classList.add('bg-white/80', 'text-karina-charcoal/80', 'border-black/10');
     });
 
     if (btnEl) {
-      btnEl.classList.remove('bg-white/80', 'text-karina-charcoal/80', 'border-black/5');
+      btnEl.classList.remove('bg-white/80', 'text-karina-charcoal/80', 'border-black/10');
       btnEl.classList.add('is-active', 'bg-karina-charcoal', 'text-white', 'font-bold', 'shadow-md');
     }
 
