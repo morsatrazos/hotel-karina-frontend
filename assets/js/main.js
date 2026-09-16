@@ -628,6 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const catalogSuitesData = [
     {
       id: 'premium-maturin',
+      sede: 'maturin',
       title: 'Suite Premium',
       desc: 'Santuario de amplitud superior y estética sutil, donde la calidez del lujo contemporáneo se integra armoniosamente con las vistas al complejo.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
@@ -655,6 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'estandar-maturin',
+      sede: 'maturin',
       title: 'Suite Estándar',
       desc: 'Un refugio de diseño contemporáneo y confort absoluto, pensado para garantizar un descanso impecable y alta conectividad en todo momento.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp',
@@ -674,13 +676,14 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp', tag: 'Vista Principal / Dormitorio' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Comedor.webp', tag: 'Área de Comedor' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-3.webp', tag: 'Ambiente Integrado' },
-        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-maturin-2.webp', tag: 'Espacio de Descanso' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-maturin-2.webp', tag: 'Espacio de Descanso' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor-2.webp', tag: 'Sala y Comedor' },
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp', tag: 'Sala de Estar Integrada' }
       ]
     },
     {
       id: 'premium-eltigre',
+      sede: 'el-tigre',
       title: 'Suite Premium',
       desc: 'Una experiencia de inmersión en el lujo boutique, destacada por sus acabados de alta gama, espacialidad fluida y un ambiente de serenidad absoluta.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp',
@@ -693,7 +696,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Cocina equipada tipo Kitchenette',
         'Nevera de 15 pies',
         'Horno Microondas y Estantería',
-        'Guardarropa'
+        'Guardarropa',
+        'Distribución espacial integral (36 m²)'
       ],
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp', tag: 'Vista Principal' },
@@ -705,6 +709,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'estandar-eltigre',
+      sede: 'el-tigre',
       title: 'Suite Estándar',
       desc: 'El equilibrio perfecto entre eficiencia ejecutiva y confort, diseñado para ofrecer privacidad absoluta y un reconfortante descanso contemporáneo.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
@@ -717,7 +722,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Cocina equipada tipo Kitchenette',
         'Nevera de 15 pies',
         'Horno Microondas y Estantería',
-        'Guardarropa'
+        'Guardarropa',
+        'Distribución espacial integral (36 m²)'
       ],
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp', tag: 'Vista Principal' },
@@ -731,6 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'premium-ptamata',
+      sede: 'punta-de-mata',
       title: 'Suite Premium',
       desc: 'La máxima expresión de exclusividad y confort, combinando áreas de estar independientes con equipamiento premium para estadías de distinción.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata.webp',
@@ -743,7 +750,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Cocina equipada tipo Kitchenette',
         'Nevera de 15 pies',
         'Horno Microondas y Estantería',
-        'Guardarropa'
+        'Guardarropa',
+        'Distribución espacial integral (36 m²)'
       ],
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata.webp', tag: 'Vista Principal' },
@@ -755,6 +763,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 'estandar-ptamata',
+      sede: 'punta-de-mata',
       title: 'Suite Estándar',
       desc: 'Un oasis de calma con arquitectura de vanguardia, optimizado para el confort del viajero corporativo que busca privacidad y descanso reparador.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
@@ -767,7 +776,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Cocina equipada tipo Kitchenette',
         'Nevera de 15 pies',
         'Horno Microondas y Estantería',
-        'Guardarropa'
+        'Guardarropa',
+        'Distribución espacial integral (36 m²)'
       ],
       gallery: [
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp', tag: 'Vista Principal / Dormitorio' },
@@ -779,7 +789,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  let currentCatalogSuiteIdx = 0;
+  let activeModalSuites = catalogSuitesData;
+  let activeModalSuiteIndex = 0;
+
+  function detectCurrentSede() {
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes('maturin')) return 'maturin';
+    if (path.includes('el-tigre')) return 'el-tigre';
+    if (path.includes('punta-de-mata')) return 'punta-de-mata';
+    return null;
+  }
+
+  // Soporte de filtro por URL param (?sede=maturin, etc.)
+  const urlParams = new URLSearchParams(window.location.search);
+  const sedeParam = urlParams.get('sede');
+  if (sedeParam) {
+    const filterSedeEl = document.getElementById('filter-sede');
+    if (filterSedeEl) {
+      filterSedeEl.value = sedeParam;
+      setTimeout(() => {
+        if (typeof window.applySuiteFilters === 'function') {
+          window.applySuiteFilters();
+        }
+      }, 50);
+    }
+  }
 
   window.applySuiteFilters = function() {
     const filterSedeEl = document.getElementById('filter-sede');
@@ -809,8 +843,30 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.openSuiteModalById = function(id) {
-    const idx = catalogSuitesData.findIndex(s => s.id === id);
-    currentCatalogSuiteIdx = idx !== -1 ? idx : 0;
+    const targetSuite = catalogSuitesData.find(s => s.id === id);
+    if (!targetSuite) return;
+
+    // Aislamiento estricto por sede:
+    // Si estamos en página de sede o hay un filtro de sede activo, o según la sede de la suite
+    const pageSede = detectCurrentSede();
+    const filterSedeEl = document.getElementById('filter-sede');
+    const filterSedeVal = filterSedeEl ? filterSedeEl.value : null;
+
+    let targetSede = targetSuite.sede;
+    if (pageSede) {
+      targetSede = pageSede;
+    } else if (filterSedeVal && filterSedeVal !== 'all') {
+      targetSede = filterSedeVal;
+    }
+
+    // Filtrar array a las suites de esa sede (2 suites: Estándar y Premium)
+    activeModalSuites = catalogSuitesData.filter(s => s.sede === targetSede);
+    if (activeModalSuites.length === 0) {
+      activeModalSuites = [targetSuite];
+    }
+
+    const idx = activeModalSuites.findIndex(s => s.id === id);
+    activeModalSuiteIndex = idx !== -1 ? idx : 0;
     updateSuiteModalData();
 
     const modal = document.getElementById('suite-modal');
@@ -821,27 +877,32 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   function updateSuiteModalData() {
-    const suite = catalogSuitesData[currentCatalogSuiteIdx];
+    const suite = activeModalSuites[activeModalSuiteIndex];
     if (!suite) return;
+
     const titleEl = document.getElementById('suite-modal-title');
     const descEl = document.getElementById('suite-modal-desc');
     const imgEl = document.getElementById('suite-modal-main-img');
     const tagEl = document.getElementById('suite-modal-tag');
     const counterEl = document.getElementById('suite-modal-counter');
     const thumbContainer = document.getElementById('suite-modal-thumbnails');
-    const amenitiesEl = document.getElementById('suite-modal-amenities');
+    const amenitiesEl = document.getElementById('suite-modal-amenities') || document.getElementById('suite-modal-features');
 
     if (titleEl) titleEl.textContent = suite.title;
     if (descEl) descEl.textContent = suite.desc;
     if (imgEl) imgEl.src = suite.image;
-    if (tagEl) tagEl.textContent = 'Vista Principal';
-    if (counterEl) counterEl.textContent = `0${currentCatalogSuiteIdx + 1} / 0${catalogSuitesData.length}`;
+    if (tagEl) tagEl.textContent = suite.gallery?.[0]?.tag || 'Vista Principal';
+
+    // Formato estricto 01 / 02 o 02 / 02 aislado por sede
+    const currentNum = String(activeModalSuiteIndex + 1).padStart(2, '0');
+    const totalNum = String(activeModalSuites.length).padStart(2, '0');
+    if (counterEl) counterEl.textContent = `${currentNum} / ${totalNum}`;
 
     if (amenitiesEl && suite.amenities) {
       amenitiesEl.innerHTML = suite.amenities.map(a => `
         <div class="flex items-start gap-2 text-xs text-karina-charcoal/80">
           <i class="fa-regular fa-circle-check text-karina-mustard text-xs mt-0.5 shrink-0"></i>
-          <span>${a}</span>
+          <span class="leading-tight">${a}</span>
         </div>
       `).join('');
     }
@@ -858,8 +919,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.navigateSuiteInModal = function(dir) {
-    const total = catalogSuitesData.length;
-    currentCatalogSuiteIdx = (currentCatalogSuiteIdx + dir + total) % total;
+    const total = activeModalSuites.length;
+    if (total <= 1) return;
+    activeModalSuiteIndex = (activeModalSuiteIndex + dir + total) % total;
     
     const wrapper = document.getElementById('suite-modal-wrapper');
     if (wrapper) wrapper.style.opacity = '0.3';
