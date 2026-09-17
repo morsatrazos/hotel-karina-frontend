@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 0,
       title: "Hotel Kariña Maturín",
-      tagline: "El resort insignia del oriente venezolano con parque acuático, gastronomía de autor y salones corporativos.",
+      tagline: "El resort insignia del Oriente Venezolano con parque acuático, gastronomía de autor y salones corporativos.",
       address: "Urbanización Palma Real, Etapa II, Macroparcela MC-30, Maturín, Edo. Monagas.",
       mapsUrl: "https://maps.google.com/?cid=370127326196523800",
       phone: "+58 0424-9169601",
@@ -127,16 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-Main.webp", caption: "Piscina Principal Resort Maturín" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-2.webp", caption: "Complejo de Piscinas y Palmeras" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp", caption: "Moriche Restaurant — Cocina de Autor" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp", caption: "Oh My Bar Lounge y Mixología" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp", caption: "La Palmera Restobar — Club Palma Real" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp", caption: "Lagos Restaurant — Vista a la Laguna" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria-Maturin.webp", caption: "Brûlée Pastelería Fina" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Palma-Bites.webp", caption: "Palma Bites — Tienda de Snacks" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp", caption: "Oh My Bar Bistro — Coctelería y Lounge" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Cervezas-En-Maturin-Padel.webp", caption: "Master Pádel y Ambiente Social" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Tenis-Maturin.webp", caption: "Canchas de Tenis Profesionales" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Gimnasio-1.webp", caption: "Gimnasio Equipado Palma Real" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Holo-Pilates-Maturin.webp", caption: "Holo Pilates Studio" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Laguna-Maturin-2.webp", caption: "Laguna Natural Club Palma Real" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria-Maturin.webp", caption: "Brûlée Pastelería Palma Real" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp", caption: "La Palmera Restobar Club" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp", caption: "Lagos Restaurant Club" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Salon-Maturin.webp", caption: "Salones Corporativos y Eventos" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Parque-Master-Padel.webp", caption: "Parque Infantil Master Pádel" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Parque-Club-Palma-Real.webp", caption: "Parque Infantil Club Palma Real" }
       ]
@@ -152,10 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/FACHADA-PRINCIPAL-PUNTADEMATA.webp", caption: "Fachada Principal Punta de Mata" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-en-Punta-de-Mata.webp", caption: "Piscina Central y Solárium" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-Familiar-Punta-de-Mata.webp", caption: "Piscina Familiar y Day Pass" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurante-Hamburguesa-Puntade-Mata.webp", caption: "Gastronomía Artesanal El Caney" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurante-Hamburguesa-Puntade-Mata.webp", caption: "Gastronomía Artesanal — Two Chefs Restaurant" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Cliente-Corporativo.webp", caption: "Espacios Corporativos y Coworking" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp", caption: "Lobby Principal y Recepción VIP" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp", caption: "Restaurante El Caney" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp", caption: "Two Chefs Restaurant" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp", caption: "Jardines y Fachadas Interiores" }
       ]
     },
@@ -560,8 +556,8 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
       amenities: [
         '1 Cama Matrimonial',
-        'Estación de Trabajo & TV 32"',
-        'Kitchenette & Nevera 15\''
+        'Estación de Trabajo y TV 32"',
+        'Kitchenette y Nevera 15\''
       ]
     },
     'dos-ambientes': {
@@ -572,8 +568,8 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
       amenities: [
         '2 Camas Matrimoniales',
-        'Estación de Trabajo & TV 32"',
-        'Kitchenette & Nevera 15\''
+        'Estación de Trabajo y TV 32"',
+        'Kitchenette y Nevera 15\''
       ]
     }
   };
@@ -990,8 +986,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       title: "Hotel Kariña El Tigre",
-      desc: "Sumergete en la refrescante piscina resort de Guañipa, área de caneyes, canchas deportivas y ambiente familiar único en la Mesa de Guanipa.",
-      tag: "Piscina Guanipa y Caney",
+      desc: "Sumérgete en la refrescante piscina resort de Guanipa, solárium, canchas deportivas y ambiente familiar único en la Mesa de Guanipa.",
+      tag: "Piscina Guanipa y Solárium",
       price: "$22",
       img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-3.webp"
     }
@@ -1258,46 +1254,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const gastronomiaMenusData = {
     'restaurante-283': {
       name: "Restaurante 283",
-      sede: "Hotel Kariña El Tigre",
+      sede: "Hotel Kariña El Tigre • Salón y Terraza Guanipa",
       schedule: "Lun a Dom • 7:00 AM – 10:30 PM",
       phone: "5804249169603",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp",
       categories: [
         {
-          name: "Entradas y Tapas",
+          name: "Pizzas a la Leña y Pastas Artesanales",
           items: [
-            { name: "Carpaccio de Solomo con Parmesano", desc: "Finas láminas de solomo sellado, emulsión de alcaparras, rúgula y lascas de parmesano reggiano.", price: "$14", tag: "Recomendado" },
-            { name: "Ceviche Tropical Guanipa", desc: "Pesca fresca del día marinada en lima, mango verde, ají dulce y maíz crocante.", price: "$16", tag: "Fresco" },
-            { name: "Tequeños de Autor con Melao de Papelón", desc: "6 unidades de masa hojaldrada rellenos de queso llanero premium con reducción de ají.", price: "$10", tag: "Tradición" }
+            { name: "Pizza Margherita Especial a la Leña", desc: "Salsa de tomate San Marzano, mozzarella fresca de búfala, albahaca fresca y aceite de oliva virgen extra.", price: "$12", tag: "Artesanal" },
+            { name: "Pizza Cuatro Quesos Gourmet", desc: "Base crujiente a la leña, mozzarella, gorgonzola, parmesano reggiano y queso de cabra artesanal.", price: "$14", tag: "A la Leña" },
+            { name: "Fettuccine al Pesto Genovés y Nueces", desc: "Pasta artesanal fresca salteada con albahaca fresca, nueces tostadas y parmesano.", price: "$15", tag: "Fresco" },
+            { name: "Lasagna Bolognese Tradicional", desc: "Capas de pasta casera, ragú clásico de carne de res, bechamel cremosa y gratén dorado.", price: "$16", tag: "Especialidad" }
           ]
         },
         {
-          name: "Platos Fuertes y Brasas",
+          name: "Paellas Tradicionales",
           items: [
-            { name: "Paella Valenciana de Mariscos 283", desc: "Nuestra especialidad con calamares, camarones, mejillones y toque de azafrán español (para compartir o individual).", price: "$28", tag: "Especialidad" },
-            { name: "Ribeye Angus a la Brasa (400g)", desc: "Corte selecto asado a término perfecto con vegetales confitados y puré rústico de apio.", price: "$34", tag: "Premium" },
-            { name: "Lomo de Salmón en Reducción de Cítricos", desc: "Salmón a la plancha sobre cama de espárragos y arroz jazmín aromatizado.", price: "$26", tag: "Mar" }
+            { name: "Paella Valenciana 283 (Individual o Para Compartir)", desc: "Nuestra especialidad insigne con mariscos frescos, calamares, camarones, mejillones y toque de azafrán español.", price: "$26", tag: "Especialidad" },
+            { name: "Paella Marinera Especial", desc: "Arroz al punto con caldo de mariscos concentrado, langostinos, calamares y pimientos asados.", price: "$28", tag: "Favorito" }
           ]
         },
         {
-          name: "Postres y Dulce Final",
+          name: "Desayunos 283",
           items: [
-            { name: "Marquesa de Cacao de Caripito", desc: "Capas crujientes con ganache de chocolate 70% y crocante de nueces.", price: "$8", tag: "Cacao 70%" },
-            { name: "Pie de Limón Criollo y Merengue", desc: "Base de galleta artesanal, crema ácida de limón y merengue tostado.", price: "$7", tag: "Artesanal" }
+            { name: "Desayuno Criollo Tradicional", desc: "Arepas calientes, carne mechada jugosa, huevos perico, queso telita y caraotas negras refritas.", price: "$12", tag: "Insignia" },
+            { name: "Omelette de Claras con Vegetales y Aguacate", desc: "Omelette con espinacas baby, queso pasteurizado y tostadas artesanales.", price: "$10", tag: "Balanceado" }
           ]
         },
         {
-          name: "Coctelería y Vinos",
+          name: "Servicio de Bar y Coctelería",
           items: [
-            { name: "Sangría de Autor 283 (Jarra)", desc: "Receta secreta con vino tinto español, frutas maceradas y licor de naranja.", price: "$22", tag: "Para Compartir" },
-            { name: "Smoked Old Fashioned", desc: "Bourbon premium ahumado con madera de roble y bíter artesanal.", price: "$14", tag: "Cóctel Autor" }
+            { name: "Sangría de Autor 283 (Jarra)", desc: "Receta secreta con vino tinto español, frutas frescas maceradas y licor de naranja.", price: "$22", tag: "Para Compartir" },
+            { name: "Smoked Old Fashioned", desc: "Bourbon premium ahumado con madera de roble y bíter artesanal.", price: "$14", tag: "Cóctel Autor" },
+            { name: "Mojitos y Cócteles Clásicos", desc: "Variedad de cócteles refrescantes preparados con frutas de temporada y licores importados.", price: "$10", tag: "Bar" }
           ]
         }
       ]
     },
-    'tu-chef': {
-      name: "Tu Chef Restaurante",
-      sede: "Hotel Kariña Punta de Mata",
+    'two-chefs': {
+      name: "Two Chefs Restaurant",
+      sede: "Hotel Kariña Punta de Mata • Salón Principal y Terraza",
       schedule: "Lun a Dom • 6:30 AM – 10:00 PM",
       phone: "5804249169602",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
@@ -1305,7 +1302,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           name: "Desayunos Ejecutivos y Criollos",
           items: [
-            { name: "Desayuno Criollo Tu Chef", desc: "Arepas asadas al momento, carne mechada de res, huevos perico, queso telita y caraotas negras refritas.", price: "$12", tag: "Insignia" },
+            { name: "Desayuno Criollo Two Chefs", desc: "Arepas asadas al momento, carne mechada de res, huevos perico, queso telita y caraotas negras refritas.", price: "$12", tag: "Insignia" },
             { name: "Omelette Fit de Claras y Aguacate", desc: "Omelette con espinacas baby, queso blanco pasteurizado y tostadas integrales.", price: "$10", tag: "Saludable" },
             { name: "Pancakes Clásicos con Miel y Frutas", desc: "Pancakes esponjosos con frutas frescas de estación y mantequilla artesanal.", price: "$9", tag: "Dulce Mañana" }
           ]
@@ -1321,7 +1318,48 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           name: "Cenas y Opciones Rápidas",
           items: [
-            { name: "Club House Tu Chef", desc: "Triple piso con pollo desmechado, tocineta crocante, queso gouda, huevo y papas fritas.", price: "$14", tag: "Clásico" },
+            { name: "Club House Two Chefs", desc: "Triple piso con pollo desmechado, tocineta crocante, queso gouda, huevo y papas fritas.", price: "$14", tag: "Clásico" },
+            { name: "Hamburguesa Artesanal Two Chefs", desc: "Carne de res seleccionada, pan brioche, queso cheddar fundido, tocineta y papas rústicas.", price: "$14", tag: "Especialidad" },
+            { name: "Ensalada César con Suprema de Pollo", desc: "Lechuga romana fresca, aderezo César artesanal, crutones de ajo y parmesano.", price: "$11", tag: "Fresco" }
+          ]
+        },
+        {
+          name: "Bebidas y Cafetería",
+          items: [
+            { name: "Jugos Naturales Tropicales (Parchita / Guanábana)", desc: "100% fruta natural recién exprimida.", price: "$4", tag: "Natural" },
+            { name: "Café Espresso y Cappuccino Kariña", desc: "Granos seleccionados tostados artesanalmente.", price: "$3", tag: "Especialidad" }
+          ]
+        }
+      ]
+    },
+    'tu-chef': {
+      name: "Two Chefs Restaurant",
+      sede: "Hotel Kariña Punta de Mata • Salón Principal y Terraza",
+      schedule: "Lun a Dom • 6:30 AM – 10:00 PM",
+      phone: "5804249169602",
+      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
+      categories: [
+        {
+          name: "Desayunos Ejecutivos y Criollos",
+          items: [
+            { name: "Desayuno Criollo Two Chefs", desc: "Arepas asadas al momento, carne mechada de res, huevos perico, queso telita y caraotas negras refritas.", price: "$12", tag: "Insignia" },
+            { name: "Omelette Fit de Claras y Aguacate", desc: "Omelette con espinacas baby, queso blanco pasteurizado y tostadas integrales.", price: "$10", tag: "Saludable" },
+            { name: "Pancakes Clásicos con Miel y Frutas", desc: "Pancakes esponjosos con frutas frescas de estación y mantequilla artesanal.", price: "$9", tag: "Dulce Mañana" }
+          ]
+        },
+        {
+          name: "Almuerzos y Menú Ejecutivo",
+          items: [
+            { name: "Asado Negro Tradicional", desc: "Corte de res cocinado lentamente en caramelo de papelón y especias, arroz blanco y plátano horneado.", price: "$18", tag: "Favorito" },
+            { name: "Pollo a la Plancha en Finas Hierbas", desc: "Pechuga marinada con romero fresco, ensalada verde y puré de papas trufado.", price: "$15", tag: "Ligero" },
+            { name: "Pastel de Chucho Oriental", desc: "Capas de pescado guisado con ají dulce, plátano maduro frito y queso blanco gratinado.", price: "$16", tag: "Oriental" }
+          ]
+        },
+        {
+          name: "Cenas y Opciones Rápidas",
+          items: [
+            { name: "Club House Two Chefs", desc: "Triple piso con pollo desmechado, tocineta crocante, queso gouda, huevo y papas fritas.", price: "$14", tag: "Clásico" },
+            { name: "Hamburguesa Artesanal Two Chefs", desc: "Carne de res seleccionada, pan brioche, queso cheddar fundido, tocineta y papas rústicas.", price: "$14", tag: "Especialidad" },
             { name: "Ensalada César con Suprema de Pollo", desc: "Lechuga romana fresca, aderezo César artesanal, crutones de ajo y parmesano.", price: "$11", tag: "Fresco" }
           ]
         },
@@ -1336,7 +1374,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'moriche-restaurant': {
       name: "Moriche Restaurant",
-      sede: "Hotel Kariña Maturín",
+      sede: "Hotel Kariña Maturín • Salón Insignia",
       schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
       phone: "5804249169601",
       heroImg: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
@@ -1346,7 +1384,7 @@ document.addEventListener('DOMContentLoaded', () => {
           items: [
             { name: "Arepa de Langosta Caribeña", desc: "Masa de maíz pilado, langosta fresca del Caribe, emulsión de aguacate y ají dulce margariteño.", price: "$18", tag: "Plato Insignia" },
             { name: "Carpaccio de Remolacha y Anacardo Fermentado", desc: "Finas láminas de remolacha asada, crema de anacardos fermentada, brotes orgánicos y pistacho.", price: "$14", tag: "Vegano" },
-            { name: "Tartar de Atún Rojo y Sésamo Tostado", desc: "Atún fresco en cubos, aderezo de soya cítrica, aguacate y chips de plátano verde.", price: "$16", tag: "Del Mar" }
+            { name: "Tartar de Atún Rojo y Sésamo Tostado", desc: "Atún fresco en cubos, aderezo de soya cítrica, aguacate y chips de plátano verde.", price: "$16", tag: "De Autor" }
           ]
         },
         {
@@ -1354,7 +1392,7 @@ document.addEventListener('DOMContentLoaded', () => {
           items: [
             { name: "Lomo de Rótalo en Mantequilla de Ají Dulce", desc: "Pesca del día a la plancha sobre risotto cremoso de coco y chips de topocho.", price: "$28", tag: "Recomendación Chef" },
             { name: "Asado Negro Braseado 12 Horas", desc: "Corte de res braseado en reducción de vino tinto y papelón con puré rústico de apio criollo.", price: "$26", tag: "Sin Gluten" },
-            { name: "Risotto Negro con Calamares Salteados", desc: "Arroz arborio en tinta de calamar, chipirones sellados y alioli suave de ajo asado.", price: "$24", tag: "Mediterráneo" }
+            { name: "Risotto Cremoso de Hongos Silvestres", desc: "Arroz arborio en caldo aromatizado con hongos silvestres, trufa y parmesano reggiano.", price: "$24", tag: "De Autor" }
           ]
         },
         {
@@ -1363,25 +1401,18 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Texturas de Cacao de Caripito 70%", desc: "Mousse aireado, bizcocho húmedo, tierra de cacao y gelée de frutos rojos.", price: "$10", tag: "Cacao Monagas" },
             { name: "Quesillo Tradicional al Caramelo de Ron Añejo", desc: "Suave textura con reducción de ron añejo venezolano y crocante de coco.", price: "$8", tag: "Artesanal" }
           ]
-        },
-        {
-          name: "Cava de Vinos y Copas",
-          items: [
-            { name: "Copa Malbec Reserva Mendoza", desc: "Notas profundas de ciruela, vainilla y roble.", price: "$12", tag: "Por Copa" },
-            { name: "Botella Sauvignon Blanc Chileno", desc: "Notas cítricas minerales ideales para pescados y mariscos.", price: "$32", tag: "Botella" }
-          ]
         }
       ]
     },
     'oh-my-bar': {
-      name: "Oh My Bar",
-      sede: "Hotel Kariña Maturín",
+      name: "Oh My Bar Bistro",
+      sede: "Hotel Kariña Maturín • Complejo Master Pádel",
       schedule: "Mié a Dom • 5:00 PM – 2:00 AM",
       phone: "5804249169601",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp",
       categories: [
         {
-          name: "Mixología y Cócteles de Autor",
+          name: "Coctelería de Autor y Mixología",
           items: [
             { name: "Margarita de Ají Dulce y Cocuy", desc: "Cocuy larense artesanal, reducción de ají dulce oriental, zumo de parchita y borde de sal aromatizada.", price: "$12", tag: "Insignia OMB" },
             { name: "Smoked Old Fashioned Kariña", desc: "Ron añejo venezolano, bíter aromático, ahumado en campana con madera de barrica.", price: "$14", tag: "Ahumado" },
@@ -1390,12 +1421,12 @@ document.addEventListener('DOMContentLoaded', () => {
           ]
         },
         {
-          name: "Tapas Gourmet y Piqueos",
+          name: "Hamburguesas, Alitas y Platos para Compartir",
           items: [
-            { name: "Mini Angus Burgers (3 unidades)", desc: "Pan brioche artesanal, carne angus smash, queso cheddar madurado y cebolla caramelizada.", price: "$14", tag: "Para Picar" },
-            { name: "Tabla de Quesos Madurados y Embutidos", desc: "Selección de jamón serrano, salami, queso manchego, gouda viejo, frutos secos y focaccia.", price: "$18", tag: "Para Compartir" },
-            { name: "Tacos de Pescado Crocante", desc: "Tortillas de maíz nixtamalizado, pescado crujiente, pico de gallo de mango y mayonesa de sriracha.", price: "$13", tag: "Crujiente" },
-            { name: "Tequeñotes Gourmet con Chutney de Mango", desc: "Dedos gigantes rellenos de abundante queso blanco con dip agridulce.", price: "$9", tag: "Favorito" }
+            { name: "Mini Angus Burgers OMB (3 unidades)", desc: "Pan brioche artesanal, carne angus smash, queso cheddar madurado y cebolla caramelizada.", price: "$14", tag: "Para Picar" },
+            { name: "Alitas BBQ Glaseadas al Ají Dulce", desc: "Alitas de pollo crocantes bañadas en nuestra salsa BBQ artesanal con toque oriental.", price: "$13", tag: "Favorito" },
+            { name: "Nachos Supremos OMB", desc: "Tortillas crocantes con queso cheddar fundido, pico de gallo, frijoles negros, guacamole y jalapeños.", price: "$14", tag: "Para Compartir" },
+            { name: "Tequeños con Chutney de Mango", desc: "Dedos dorados rellenos de abundante queso blanco con dip agridulce casero.", price: "$9", tag: "Clásico" }
           ]
         },
         {
@@ -1415,7 +1446,7 @@ document.addEventListener('DOMContentLoaded', () => {
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp",
       categories: [
         {
-          name: "Parrilla y Caney al Aire Libre",
+          name: "Parrillera al Aire Libre",
           items: [
             { name: "Parrillada Mixta Familiar Palma Real", desc: "Punta trasera, solomo, chorizo artesanal, chinchurria, yuca frita, guasacaca y ensalada rayada.", price: "$32", tag: "Familiar" },
             { name: "Hamburguesa Monster Club House", desc: "Doble carne a la brasa, queso fundido, tocineta ahumada, huevo frito y papas rústicas.", price: "$14", tag: "Favorito" },
@@ -1431,7 +1462,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ]
         },
         {
-          name: "Snacks de Piscina y Caney",
+          name: "Snacks de Piscina",
           items: [
             { name: "Tequeños Playeros Palma Real (8 und)", desc: "Crujientes dedos de queso servidos al borde de la piscina con salsas de la casa.", price: "$8", tag: "Piscina" },
             { name: "Papas Rústicas con Queso Cheddar y Tocineta", desc: "Papas con piel crocantes bañadas en salsa de queso fundido y tocineta picada.", price: "$7", tag: "Snack" },
