@@ -122,6 +122,7 @@
 
           </div>
         </div>
+
         <!-- DROPDOWN 2: CATÁLOGO DE SUITES -->
         <div class="nav-dropdown-wrapper relative group py-3">
           <a href="suites.html" class="nav-link-item px-3 py-2 flex items-center gap-1.5 transition-colors text-karina-charcoal group-hover:text-karina-mustard">
@@ -186,6 +187,343 @@
 
           </div>
         </div>
+
+        <!-- ENLACES DIRECTOS RESTANTES -->
+        <a href="vive-karina.html" class="nav-link-item px-3 py-2 transition-colors">¡Vive Kariña!</a>
+        <a href="restaurante.html" class="nav-link-item px-3 py-2 transition-colors">Gastronomía</a>
+        <a href="business.html" class="nav-link-item px-3 py-2 transition-colors">Corporativo</a>
+        <a href="fundacion.html" class="nav-link-item px-3 py-2 transition-colors text-karina-mustard font-bold">Fundación</a>
+
+      </nav>
+
+      <!-- BLOQUE DERECHO: Idioma + Botón Colaborar Shimmer -->
+      <div class="flex items-center gap-4 sm:gap-5">
+        <button onclick="openModal('modal-colaborar')" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+          <span>Colaborar</span>
+          <i class="fa-solid fa-heart text-karina-terracotta text-[10px]"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 2. MENÚ INMERSIVO OVERLAY                  -->
+  <!-- ========================================== -->
+  <div id="immersive-menu" class="fixed inset-0 z-[100] bg-[#2E2E2E] text-white opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+    <div class="flex items-center justify-between max-w-5xl mx-auto w-full border-b border-white/10 pb-6">
+      <a href="index.html">
+        <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Hotel Kariña" class="h-8 sm:h-10 w-auto object-contain">
+      </a>
+      <button id="close-menu-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full py-8 space-y-4 text-left">
+      <div class="border-b border-white/10 pb-4">
+        <button id="toggle-sedes-sub" class="w-full flex items-center justify-between text-left group">
+          <div class="flex items-baseline gap-4">
+            <span class="text-xs font-mono text-white/40">01</span>
+            <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Sedes</span>
+          </div>
+          <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
+        </button>
+        <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
+          <a href="maturin.html" class="block hover:text-karina-mustard transition-colors">Maturín (Hotel y Club)</a>
+          <a href="punta-de-mata.html" class="block hover:text-karina-mustard transition-colors">Punta de Mata</a>
+          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Negocios y Eventos)</a>
+        </div>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="suites.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">02</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Suites</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="business.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">03</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Business</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="vive-karina.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">04</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="fundacion.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">05</span>
+          <span class="text-2xl sm:text-3xl font-light text-karina-mustard transition-colors">Fundación</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="faqs.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">06</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Preguntas Frecuentes</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="contacto.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">07</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Contacto y Ubicaciones</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
+      <button onclick="alert('Iniciando chat con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+        <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
+        <span>Hablar con Arimiña-IA</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 3. MAIN CONTENT: FUNDACIÓN KARIÑA          -->
+  <!-- ========================================== -->
+  <main class="pt-28 pb-20 space-y-24">
+
+    <!-- ========================================== -->
+    <!-- 1. HERO SECTION                            -->
+    <!-- ========================================== -->
+    <section id="hero" class="max-w-7xl mx-auto px-6 sm:px-12 pt-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Columna Izquierda: Texto e Impacto -->
+        <div class="lg:col-span-6 space-y-6 text-left">
+          
+          <!-- Titular Principal con Tipografía Light Editorial y Trazo de Pincel -->
+          <div class="space-y-3">
+            <h1 class="text-4xl sm:text-6xl font-light text-karina-charcoal tracking-tight leading-[1.08]">
+              Raíces<br>
+              Profundas,<br>
+              Futuro<br>
+              Compartido.
+            </h1>
+
+            <!-- Trazo Curvo Sutil Orgánico -->
+            <div class="pt-1">
+              <svg width="220" height="12" viewBox="0 0 220 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-karina-mustard-light">
+                <path d="M4 8C60 2.5 160 2.5 216 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Párrafo Descriptivo -->
+          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed max-w-xl">
+            La Fundación Kariña se dedica a la preservación del patrimonio cultural indígena y al desarrollo sostenible de las comunidades locales en Venezuela, tejiendo historias de resiliencia y esperanza.
+          </p>
+
+          <!-- Botones de Acción -->
+          <div class="pt-2 flex flex-wrap items-center gap-4">
+            <a href="#impacto" class="px-7 py-3.5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold shadow-md transition-all active:scale-95 flex items-center justify-center">
+              <span>Conoce el Impacto</span>
+            </a>
+
+            <button onclick="openModal('modal-video')" class="px-6 py-3.5 rounded-full bg-white hover:bg-karina-cream text-karina-charcoal text-xs font-semibold border border-black/15 shadow-sm transition-all active:scale-95 flex items-center gap-2">
+              <i class="fa-solid fa-circle-play text-karina-blue"></i>
+              <span>Ver Documental</span>
+            </button>
+          </div>
+
+          <!-- Respaldo Hoteles Kariña -->
+          <div class="pt-4 flex items-center gap-3 text-xs text-karina-charcoal/60 border-t border-black/5 font-light">
+            <i class="fa-solid fa-shield-halved text-karina-mustard text-sm shrink-0"></i>
+            <span>Iniciativa respaldada por <strong>Hoteles Kariña</strong> dentro de su programa de responsabilidad cultural y sostenible.</span>
+          </div>
+
+        </div>
+
+        <!-- Columna Derecha: Foto Asimétrica con Marco Orgánico + Tarjeta Solapada -->
+        <div class="lg:col-span-6 relative">
+          
+          <!-- Contenedor de Foto con Forma Pebble Asimétrica Reversa -->
+          <div class="relative w-full h-[420px] sm:h-[500px] rounded-pebble-reverse overflow-hidden shadow-2xl bg-black/10 border-4 border-white group">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Comunidad Indígena Kariña" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+            <!-- Disparador de Video en Centro -->
+            <button onclick="openModal('modal-video')" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-white cursor-pointer group-hover:bg-black/20 transition-all">
+              <div class="w-16 h-16 rounded-full bg-white/90 text-karina-blue flex items-center justify-center shadow-2xl mb-3 transform group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-lg ml-1"></i>
+              </div>
+              <span class="text-[10px] font-mono font-bold uppercase tracking-widest bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
+                Ver Testimonios y Documental
+              </span>
+            </button>
+          </div>
+
+          <!-- Tarjeta Solapada Glassmorphism -->
+          <div class="absolute -bottom-6 sm:-bottom-8 -left-2 sm:-left-6 max-w-xs sm:max-w-sm bg-white/85 backdrop-blur-xl p-5 sm:p-6 rounded-[28px] border border-white/80 shadow-2xl space-y-2 text-left z-20">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-karina-mustard-light/70 flex items-center justify-center text-karina-charcoal text-base shrink-0">
+                <i class="fa-solid fa-people-hold text-karina-charcoal"></i>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-karina-charcoal">Comunidades</h3>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-blue font-semibold">Monagas, Anzoátegui y Oriente</span>
+              </div>
+            </div>
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed pt-1">
+              Apoyando a más de 12 asentamientos en la región oriental venezolana con programas educativos y culturales.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 2. EL SENTIDO DE URGENCIA Y DATOS CLAVE    -->
+    <!-- ========================================== -->
+    <section id="impacto" class="max-w-7xl mx-auto px-6 sm:px-12 py-10">
+      <div class="bg-white/40 rounded-[44px] p-8 sm:p-14 border border-black/5 shadow-sm space-y-10">
+        
+        <div class="max-w-3xl space-y-3 text-left">
+          <div class="flex items-center gap-2 text-karina-terracotta">
+            <span class="text-xs font-mono font-bold uppercase tracking-widest">EL TIEMPO ES AHORA</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+            Una lengua que necesita de todos nosotros para seguir viva
+          </h2>
+          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+            Estudios antropológicos demuestran una preocupante disminución de hablantes nativos en las últimas décadas.
+          </p>
+        </div>
+
+        <!-- Cards con Geometría Asimétrica Kariña -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left items-stretch">
+          
+          <!-- Card 1: 1978 -->
+          <div class="rounded-pebble bg-white/80 p-7 sm:p-8 border border-black/5 shadow-sm space-y-5 flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono uppercase tracking-wider font-semibold text-karina-charcoal/50 block">AÑO 1978 — ANTR. JORGE MOSONYI</span>
+              <p class="text-4xl font-light text-karina-charcoal tracking-tight">~11.000</p>
+              <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+                Personas hablaban fluidamente la lengua Kariña según la 1ra edición del Diccionario Básico del Idioma Kariña.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-black/5 flex items-center gap-2 text-[11px] font-mono text-karina-charcoal/70">
+              <i class="fa-solid fa-book-bookmark text-karina-blue"></i>
+              <span>Registro Histórico</span>
+            </div>
+          </div>
+
+          <!-- Card 2: 2008 -->
+          <div class="rounded-pebble-reverse bg-[#EB8C84]/15 p-7 sm:p-8 border border-karina-terracotta/25 shadow-sm space-y-5 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden">
+            <div class="space-y-3 relative z-10">
+              <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-karina-terracotta block">AÑO 2008 — ANTR. JOSÉ ÁLVAREZ</span>
+              <p class="text-4xl font-light text-karina-terracotta tracking-tight">4.451</p>
+              <p class="text-xs text-karina-charcoal/80 font-light leading-relaxed">
+                Censo que reveló una reducción de más del 55% de hablantes en tres décadas debido a la asimilación lingüística.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-karina-terracotta/20 flex items-center gap-2 text-[11px] font-mono text-karina-terracotta font-bold relative z-10">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span>Estado de Alerta Lingüística</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Presente -->
+          <div class="rounded-pebble bg-karina-blue text-white p-7 sm:p-8 border border-karina-blue/30 shadow-lg space-y-5 flex flex-col justify-between hover:shadow-xl transition-shadow">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-white/70 block">NUESTRA MISIÓN ACTUAL</span>
+              <p class="text-2xl sm:text-3xl font-light text-white tracking-tight">Educación Bilingüe</p>
+              <p class="text-xs text-white/90 font-light leading-relaxed">
+                Formar y apoyar a <strong>docentes Kariña</strong> en escuelas locales para enseñar y extender la lengua materna a las nuevas generaciones.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-white/20 flex items-center gap-2 text-[11px] font-mono text-karina-mustard-light font-bold">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Docentes + Aulas Comunitarias</span>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. CUATRO EJES DE ACCIÓN                   -->
+    <!-- ========================================== -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-12 space-y-8">
+      
+      <div class="flex items-center gap-2 border-b border-black/5 pb-4 text-left">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-karina-mustard">NUESTRA METODOLOGÍA</span>
+        <h2 class="text-3xl font-light text-karina-charcoal tracking-tight">Cuatro Ejes de Acción Comunitaria</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+        
+        <!-- Eje 1: Educación Bilingüe -->
+        <div class="animate-float-1 bg-[#FEF9E7] p-7 sm:p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-full bg-white/85 flex items-center justify-center text-karina-mustard text-lg shadow-sm">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-karina-charcoal tracking-tight">Educación Bilingüe</h3>
+              <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+                Publicación y donación de cartillas pedagógicas ilustradas para escuelas rurales con docentes locales.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eje 2: Patrimonio Oral -->
+        <div class="animate-float-2 bg-[#EBF5FB] p-7 sm:p-8 rounded-pebble-reverse border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-full bg-white/85 flex items-center justify-center text-karina-blue text-lg shadow-sm">
+              <i class="fa-solid fa-microphone-lines"></i>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-karina-charcoal tracking-tight">Patrimonio Oral</h3>
+              <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+                Grabación y archivo audiovisual de cantos, leyendas y memorias orales narradas por los abuelos y sabios comunitarios.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eje 3: Gastronomía y Saberes (Coral/Terracota Suave) -->
+        <div class="animate-float-3 bg-[#EB8C84]/35 p-7 sm:p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-full bg-white/85 flex items-center justify-center text-karina-terracotta text-lg shadow-sm">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-karina-charcoal tracking-tight">Gastronomía y Saberes</h3>
+              <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+                Documentación y preservación de recetas ancestrales como el casabe, platos autóctonos y el respeto sagrado hacia la tierra.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eje 4: Censo y Diagnóstico (Arena/Carbón Suave) -->
+        <div class="animate-float-4 bg-white/70 p-7 sm:p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-full bg-karina-cream flex items-center justify-center text-karina-charcoal text-lg shadow-sm border border-black/5">
+              <i class="fa-solid fa-clipboard-list"></i>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-karina-charcoal tracking-tight">Censo y Diagnóstico</h3>
+              <p class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
+                Levantamiento continuo de necesidades comunitarias en salud básica, dotación de material escolar e infraestructura educativa.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
     </section>
 

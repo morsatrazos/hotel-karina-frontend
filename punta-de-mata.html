@@ -210,6 +210,7 @@
 
           </div>
         </div>
+
         <!-- DROPDOWN 2: CATÁLOGO DE SUITES -->
         <div class="nav-dropdown-wrapper relative group py-3">
           <a href="suites.html" class="nav-link-item px-3 py-2 flex items-center gap-1.5 transition-colors text-karina-charcoal group-hover:text-karina-mustard">
@@ -274,6 +275,360 @@
 
           </div>
         </div>
+
+        <!-- ENLACES DIRECTOS RESTANTES -->
+        <a href="vive-karina.html" class="nav-link-item px-3 py-2 transition-colors">¡Vive Kariña!</a>
+        <a href="restaurante.html" class="nav-link-item px-3 py-2 transition-colors">Gastronomía</a>
+        <a href="business.html" class="nav-link-item px-3 py-2 transition-colors">Corporativo</a>
+        <a href="fundacion.html" class="nav-link-item px-3 py-2 transition-colors">Fundación</a>
+
+      </nav>
+
+      <!-- BLOQUE DERECHO: Idioma + Botón Contacto Shimmer -->
+      <div class="flex items-center gap-4 sm:gap-5">
+        <a href="contacto.html" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+          <span>Contacto</span>
+          <i class="fa-solid fa-envelope text-[10px]"></i>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 2. MENÚ INMERSIVO OVERLAY                  -->
+  <!-- ========================================== -->
+  <div id="immersive-menu" class="fixed inset-0 z-[100] bg-[#2E2E2E] text-white opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+    <div class="flex items-center justify-between max-w-5xl mx-auto w-full border-b border-white/10 pb-6">
+      <a href="index.html">
+        <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Hotel Kariña" class="h-8 sm:h-10 w-auto object-contain">
+      </a>
+      <button id="close-menu-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full py-8 space-y-4 text-left">
+      <div class="border-b border-white/10 pb-4">
+        <button id="toggle-sedes-sub" class="w-full flex items-center justify-between text-left group">
+          <div class="flex items-baseline gap-4">
+            <span class="text-xs font-mono text-white/40">01</span>
+            <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Sedes</span>
+          </div>
+          <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
+        </button>
+        <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
+          <a href="maturin.html" class="block hover:text-karina-mustard transition-colors">Maturín (Resort y Salón de Eventos)</a>
+          <a href="punta-de-mata.html" class="block text-karina-blue font-medium transition-colors">Punta de Mata (Hub Ejecutivo)</a>
+          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Negocios y Eventos)</a>
+        </div>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="#suites-sede" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">02</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Suites Ejecutivas</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="business.html" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">03</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Centro de Negocios</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="#galeria-bento" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">04</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería Punta de Mata</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="vive-karina.html" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">05</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Piscina y Day Pass</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="fundacion.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">06</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Fundación</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="faqs.html" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">07</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Preguntas Frecuentes</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="contacto.html" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">08</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Contacto y Ubicaciones</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
+      <a href="https://wa.me/5804249169602?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20consultar%20disponibilidad%20en%20Sede%20Punta%20de%20Mata" target="_blank" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+        <i class="fa-solid fa-sparkles text-[#2680BD]"></i>
+        <span>Hablar con Arimiña-IA</span>
+      </a>
+    </div>
+  </div>
+
+  <main class="pt-28 pb-16 space-y-20">
+
+    <!-- ========================================== -->
+    <!-- 2. CABECERA & GALERÍA BENTO FILTRABLE      -->
+    <!-- ========================================== -->
+    <section id="galeria-bento" class="max-w-7xl mx-auto px-6 sm:px-12 space-y-10 text-center">
+      
+      <!-- Titular Editorial -->
+      <div class="space-y-3 max-w-3xl mx-auto">
+        <span class="text-xs font-mono tracking-[0.2em] uppercase font-bold text-karina-charcoal/60 block">
+          Sector Zona Industrial • Punta de Mata, Monagas
+        </span>
+
+        <h1 class="text-4xl sm:text-6xl font-light text-karina-charcoal tracking-tight leading-tight">
+          ¡Vive Kariña Punta de Mata!
+        </h1>
+        <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed max-w-2xl mx-auto">
+          Un santuario de privacidad y tranquilidad diseñado para líderes y equipos corporativos. Entorno seguro rodeado de áreas verdes, piscina central con Day Pass, centro de negocios y resiliencia energética 24/7.
+        </p>
+
+        <!-- SVG Line Accents - Trazo Curvo Extendido -->
+        <div class="flex justify-center pt-2">
+          <svg width="220" height="12" viewBox="0 0 220 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-karina-blue">
+            <path d="M4 8C60 2.5 160 2.5 216 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Filtros Categoría (Tabs Minimalistas Editorial) -->
+      <div class="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+        <button onclick="filterBentoGallery('all', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all">
+          Todas
+        </button>
+        <button onclick="filterBentoGallery('lobby', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
+          Lobby y Salón
+        </button>
+        <button onclick="filterBentoGallery('gastronomia', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
+          Restaurante El Caney
+        </button>
+        <button onclick="filterBentoGallery('jardines', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
+          Fachadas y Jardines
+        </button>
+        <button onclick="filterBentoGallery('piscina', this)" class="bento-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/40 hover:bg-white/80 border border-karina-charcoal/10 transition-all">
+          Piscina y Day Pass
+        </button>
+      </div>
+
+      <!-- Grilla Bento Asimétrica -->
+      <div id="bento-container" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch pt-4 text-left">
+        
+        <!-- Foto 1: Principal Grande (Fachada Principal) (7 cols) -->
+        <div class="bento-card bento-item-all bento-item-jardines md:col-span-7 h-[360px] sm:h-[420px] rounded-pebble overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp', 'Fachada Principal — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp" alt="Fachada Principal Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 text-white space-y-1">
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Perímetro Seguro y Reservado</span>
+            <h3 class="text-xl font-light text-white">Privacidad Estratégica en Monagas Oeste</h3>
+          </div>
+        </div>
+
+        <!-- Foto 2: Forma Óval / Asimétrica Reversa (Lobby Principal) (5 cols) -->
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-5 h-[360px] sm:h-[420px] rounded-pebble-reverse overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp', 'Lobby y Recepción VIP — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp" alt="Lobby Principal Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 text-white space-y-1">
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full">Recepción VIP y Atención 24/7</span>
+            <h3 class="text-xl font-light text-white">Lobby Principal de Bienvenida</h3>
+          </div>
+        </div>
+
+        <!-- Foto 3: Piscina Central y Solárium (6 cols) -->
+        <div class="bento-card bento-item-all bento-item-piscina md:col-span-6 h-[280px] sm:h-[320px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-en-Punta-de-Mata.webp', 'Piscina Central y Solárium — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-en-Punta-de-Mata.webp" alt="Piscina Central Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5 text-white space-y-1">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Piscina y Relax</span>
+            <h4 class="text-base font-light text-white">Piscina Central y Solárium</h4>
+          </div>
+        </div>
+
+        <!-- Foto 4: Piscina Familiar y Day Pass (6 cols) -->
+        <div class="bento-card bento-item-all bento-item-piscina md:col-span-6 h-[280px] sm:h-[320px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-Familiar-Punta-de-Mata.webp', 'Piscina Familiar y Day Pass — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-Familiar-Punta-de-Mata.webp" alt="Piscina Familiar Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5 text-white space-y-1">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Piscina y Day Pass</span>
+            <h4 class="text-base font-light text-white">Piscina Familiar y Áreas de Descanso</h4>
+          </div>
+        </div>
+
+        <!-- Foto 5: Cliente Corporativo y Coworking (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Cliente-Corporativo.webp', 'Atención Corporativa y Coworking — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Cliente-Corporativo.webp" alt="Cliente Corporativo Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Centro Corporativo</span>
+            <h4 class="text-sm font-light text-white">Confort y Productividad Ejecutiva</h4>
+          </div>
+        </div>
+
+        <!-- Foto 6: Restaurante El Caney (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp', 'Restaurante El Caney — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp" alt="Restaurante El Caney Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Gastronomía</span>
+            <h4 class="text-sm font-light text-white">Restaurante El Caney</h4>
+          </div>
+        </div>
+
+        <!-- Foto 7: Hamburguesa Gourmet El Caney (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-gastronomia md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurante-Hamburguesa-Puntade-Mata.webp', 'Hamburguesa Artesanal El Caney — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurante-Hamburguesa-Puntade-Mata.webp" alt="Hamburguesa Artesanal Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-karina-mustard text-karina-charcoal font-bold px-2 py-0.5 rounded-full">Especialidad</span>
+            <h4 class="text-sm font-bold text-white">Hamburguesa Gourmet El Caney</h4>
+          </div>
+        </div>
+
+        <!-- Foto 8: Fachadas Interiores y Jardines (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-jardines md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp', 'Jardines Tropicales y Fachadas Interiores — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp" alt="Fachadas Interiores Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Jardines</span>
+            <h4 class="text-sm font-light text-white">Corredores y Áreas Verdes</h4>
+          </div>
+        </div>
+
+        <!-- Foto 9: Lounge de Espera / Lobby 2 (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-lobby md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata-2.webp', 'Lounge Ejecutivo y Sala de Espera — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata-2.webp" alt="Lounge de Espera Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Lounge</span>
+            <h4 class="text-sm font-light text-white">Lounge Ejecutivo y Espera</h4>
+          </div>
+        </div>
+
+        <!-- Foto 10: Fachada Frontal y Accesos (4 cols) -->
+        <div class="bento-card bento-item-all bento-item-jardines md:col-span-4 h-[260px] rounded-3xl overflow-hidden shadow-md relative group cursor-pointer" onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-2ptamata.webp', 'Acceso Frontal y Estacionamiento Privado — Kariña Punta de Mata')">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-2ptamata.webp" alt="Fachada y Accesos Punta de Mata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">Accesos</span>
+            <h4 class="text-sm font-light text-white">Estacionamiento y Accesos</h4>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. SECCIÓN DE SUITES DE LA SEDE            -->
+    <!-- ========================================== -->
+    <section id="suites-sede" class="max-w-7xl mx-auto px-6 sm:px-12 py-10">
+      
+      <!-- Subtítulo e Indicador Editorial -->
+      <div class="text-center space-y-4 mb-10">
+        
+        <!-- Filter Switcher (Píldoras Arriba) -->
+        <div class="flex justify-center gap-3">
+          <button id="suite-pill-1" onclick="switchSuiteView(1)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all">
+            Suite Premium
+          </button>
+          <button id="suite-pill-2" onclick="switchSuiteView(2)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all">
+            Suite Estándar
+          </button>
+        </div>
+
+        <!-- Texto Guía Abajo -->
+        <span class="text-[11px] font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest block pt-1">
+          AISLAMIENTO ACÚSTICO Y CONFORT TOTAL — PUNTA DE MATA, MONAGAS
+        </span>
+
+      </div>
+
+      <!-- Tarjeta Contenedora de Suite Display -->
+      <div id="suite-display-container" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white/60 rounded-[36px] p-6 sm:p-10 border border-black/5 shadow-sm suite-fade">
+        
+        <!-- Info Izquierda -->
+        <div class="lg:col-span-6 space-y-6 text-left">
+          <div class="space-y-1">
+            <span id="suite-meta" class="text-[11px] font-mono uppercase tracking-widest text-karina-blue font-bold block">36 m² • 2 Camas Matrimoniales</span>
+            <h3 id="suite-title" class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+              Suite Premium
+            </h3>
+          </div>
+
+          <p id="suite-desc" class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
+            La máxima expresión de exclusividad y confort, combinando áreas de estar independientes con equipamiento premium para estadías de distinción.
+          </p>
+
+          <!-- Checklist Bondades -->
+          <div id="suite-card-amenities" class="space-y-2.5 text-xs font-normal text-karina-charcoal/80">
+            <div class="flex items-center gap-3">
+              <i class="fa-regular fa-circle-check text-karina-blue text-sm"></i>
+              <span>2 Camas Matrimoniales</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-regular fa-circle-check text-karina-blue text-sm"></i>
+              <span>Estación de Trabajo & TV 32"</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-regular fa-circle-check text-karina-blue text-sm"></i>
+              <span>Kitchenette & Nevera 15'</span>
+            </div>
+          </div>
+
+          <!-- Cita Elegante -->
+          <p id="suite-quote" class="text-xs text-karina-charcoal/60 font-light italic border-l-2 border-karina-blue pl-3 py-0.5">
+            "El refugio silencioso donde la mente ejecutiva recarga su máxima energía."
+          </p>
+
+          <!-- Acciones: Modal de Detalles Amplios + Arimiña-IA -->
+          <div class="pt-2 flex flex-wrap items-center gap-3">
+            <button onclick="openSuiteDetailModal()" class="px-5 py-3 rounded-full bg-white hover:bg-karina-blue-light/40 text-karina-charcoal text-xs font-semibold border border-karina-charcoal/15 transition-all active:scale-95 shadow-sm flex items-center gap-2">
+              <span>Ver Detalles de la Suite</span>
+            </button>
+
+            <a id="suite-wa-btn" href="https://wa.me/5804249169602?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reservar%20una%20Suite%20Premium%20en%20Sede%20Punta%20de%20Mata" target="_blank" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group">
+              <span class="w-5 h-5 rounded-full bg-karina-blue text-white flex items-center justify-center text-[10px] shrink-0">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </span>
+              <span>Reserva con <strong>Arimiña-IA</strong></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Visor de Imagen Derecha -->
+        <div class="lg:col-span-6">
+          <div class="relative h-[320px] sm:h-[380px] w-full rounded-pebble overflow-hidden shadow-lg bg-black/10 cursor-pointer group" onclick="openSuiteDetailModal()">
+            <img id="suite-image" 
+                 src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata.webp" 
+                 alt="Suite Premium Doble Punta de Mata" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            
+            <div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full text-white text-[10px] font-mono flex items-center gap-1.5">
+              <span>★ 4.9 Confort Ejecutivo</span>
+              <span class="text-white/60">• Clic para ver fotos y equipamiento</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
     </section>
 

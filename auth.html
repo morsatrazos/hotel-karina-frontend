@@ -120,6 +120,7 @@
 
           </div>
         </div>
+
         <!-- DROPDOWN 2: CATÁLOGO DE SUITES -->
         <div class="nav-dropdown-wrapper relative group py-3">
           <a href="suites.html" class="nav-link-item px-3 py-2 flex items-center gap-1.5 transition-colors text-karina-charcoal group-hover:text-karina-mustard">
@@ -184,6 +185,160 @@
 
           </div>
         </div>
+
+        <!-- ENLACES DIRECTOS RESTANTES -->
+        <a href="vive-karina.html" class="nav-link-item px-3 py-2 transition-colors">¡Vive Kariña!</a>
+        <a href="restaurante.html" class="nav-link-item px-3 py-2 transition-colors">Gastronomía</a>
+        <a href="business.html" class="nav-link-item px-3 py-2 transition-colors">Corporativo</a>
+        <a href="fundacion.html" class="nav-link-item px-3 py-2 transition-colors">Fundación</a>
+
+      </nav>
+
+      <!-- BLOQUE DERECHO: Idioma + Botón Contacto Shimmer -->
+      <div class="flex items-center gap-4 sm:gap-5">
+                <a href="auth.html" class="nav-account-btn whitespace-nowrap flex items-center gap-1.5 leading-none text-xs font-bold text-[#1E1E1E] hover:text-[#2680BD] px-3 py-2 rounded-full hover:bg-[#E8DFC8]/40 transition shrink-0" title="Mi Cuenta">
+          <i class="fa-regular fa-user text-xs text-[#726B63]" data-lucide="user"></i>
+          <span class="nav-account-text">Mi Cuenta</span>
+        </a>
+        <a href="contacto.html" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+          <span>Contacto</span>
+          <i class="fa-solid fa-envelope text-[10px]"></i>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 2. MENÚ INMERSIVO OVERLAY                  -->
+  <!-- ========================================== -->
+  <div id="immersive-menu" class="fixed inset-0 z-[100] bg-[#2E2E2E] text-white opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+    <div class="flex items-center justify-between max-w-5xl mx-auto w-full border-b border-white/10 pb-6">
+      <a href="index.html">
+        <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Hotel Kariña" class="h-8 sm:h-10 w-auto object-contain">
+      </a>
+      <button id="close-menu-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full py-8 space-y-4 text-left">
+      <div class="border-b border-white/10 pb-4">
+        <button id="toggle-sedes-sub" class="w-full flex items-center justify-between text-left group">
+          <div class="flex items-baseline gap-4">
+            <span class="text-xs font-mono text-white/40">01</span>
+            <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Sedes</span>
+          </div>
+          <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
+        </button>
+        <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
+          <a href="maturin.html" class="block hover:text-karina-mustard transition-colors">Maturín (Hotel y Club Palma Real)</a>
+          <a href="punta-de-mata.html" class="block hover:text-karina-mustard transition-colors">Punta de Mata (Sede Ejecutiva)</a>
+          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Negocios y Eventos)</a>
+        </div>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="suites.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">02</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Suites</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="business.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">03</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Business</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="restaurante.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">04</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Gastronomía y Salón</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="vive-karina.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">05</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">¡Vive Kariña! (Day Pass)</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="fundacion.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">06</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Fundación Kariña</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="faqs.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">07</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Preguntas Frecuentes</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="contacto.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">08</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Contacto y Ubicaciones</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
+      <a href="auth.html" onclick="document.getElementById('close-menu-btn').click()" class="w-full py-3 px-6 rounded-full bg-white/10 hover:bg-karina-mustard hover:text-karina-charcoal text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
+        <i class="fa-regular fa-user"></i>
+        <span>Mi Cuenta / Iniciar Sesión</span>
+      </a>
+      <a href="https://wa.me/5804249169601?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20asistencia%20personalizada" target="_blank" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+        <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
+        <span>Hablar con Arimiña-IA</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 3. CONTENEDOR PRINCIPAL: PANTALLA DE ACCESO -->
+  <!-- ========================================== -->
+  <main class="pt-28 sm:pt-32 pb-16 px-4 sm:px-8 max-w-6xl mx-auto w-full flex-1 flex items-center justify-center">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+
+      <!-- COLUMNA IZQUIERDA: VISOR ASIMÉTRICO ORGÁNICO CON TIPOGRAFÍA LIGHT -->
+      <div class="lg:col-span-6 hidden lg:flex justify-center relative select-none">
+        <!-- Resplandor Ambiental -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-karina-mustard-light/35 rounded-full blur-3xl pointer-events-none animate-ambient-glow"></div>
+
+        <!-- Marco Pebble Asimétrico con Imagen de Suite de Lujo -->
+        <div class="relative w-[440px] h-[520px] rounded-pebble-reverse overflow-hidden shadow-2xl border-4 border-white bg-black/10 group">
+          <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80" 
+               alt="Suite Kariña" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 filter brightness-90">
+          
+          <!-- Degradado Oscuro Editorial para Contraste de Texto -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/20"></div>
+
+          <!-- Texto Superpuesto Exacto a la Referencia -->
+          <div class="absolute inset-0 p-10 flex flex-col justify-between text-white text-left">
+            <span class="text-[11px] font-mono uppercase tracking-widest text-white/70">
+              HOTEL KARIÑA
+            </span>
+
+            <div class="space-y-2">
+              <h1 class="text-4xl sm:text-5xl font-light text-white tracking-tight leading-[1.08]">
+                Tu estancia<br>
+                personaliza<br>
+                da<br>
+                comienza<br>
+                aquí
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- COLUMNA DERECHA: TARJETA DE ACCESO Y REGISTRO (CON ACCESO DIRECTO DEMO) -->
       <div class="lg:col-span-6 w-full max-w-md mx-auto">

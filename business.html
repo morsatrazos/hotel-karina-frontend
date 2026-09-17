@@ -122,6 +122,7 @@
 
           </div>
         </div>
+
         <!-- DROPDOWN 2: CATÁLOGO DE SUITES -->
         <div class="nav-dropdown-wrapper relative group py-3">
           <a href="suites.html" class="nav-link-item px-3 py-2 flex items-center gap-1.5 transition-colors text-karina-charcoal group-hover:text-karina-mustard">
@@ -186,6 +187,221 @@
 
           </div>
         </div>
+
+        <!-- ENLACES DIRECTOS RESTANTES -->
+        <a href="vive-karina.html" class="nav-link-item px-3 py-2 transition-colors">¡Vive Kariña!</a>
+        <a href="restaurante.html" class="nav-link-item px-3 py-2 transition-colors">Gastronomía</a>
+        <a href="business.html" class="nav-link-item px-3 py-2 transition-colors text-karina-mustard font-bold">Corporativo</a>
+        <a href="fundacion.html" class="nav-link-item px-3 py-2 transition-colors">Fundación</a>
+
+      </nav>
+
+      <!-- BLOQUE DERECHO: Selector de Idioma + Botón Píldora Shimmer -->
+      <div class="flex items-center gap-4 sm:gap-5">
+        <a href="#cotizacion" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+          <span>Convenio B2B</span>
+          <i class="fa-solid fa-sparkles text-[10px]"></i>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 2. MENÚ INMERSIVO OVERLAY                  -->
+  <!-- ========================================== -->
+  <div id="immersive-menu" class="fixed inset-0 z-[100] bg-[#2E2E2E] text-white opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+    <div class="flex items-center justify-between max-w-5xl mx-auto w-full border-b border-white/10 pb-6">
+      <a href="index.html">
+        <img src="https://uploads.onecompiler.io/44s48z3dm/1787539752119/Kari%C3%B1a-white-new.png" alt="Hotel Kariña" class="h-8 sm:h-10 w-auto object-contain">
+      </a>
+      <button id="close-menu-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-white transition-colors" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full py-8 space-y-4 text-left">
+      <div class="border-b border-white/10 pb-4">
+        <button id="toggle-sedes-sub" class="w-full flex items-center justify-between text-left group">
+          <div class="flex items-baseline gap-4">
+            <span class="text-xs font-mono text-white/40">01</span>
+            <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Sedes</span>
+          </div>
+          <i id="sedes-chevron" class="fa-solid fa-chevron-down text-xs text-white/40 transition-transform duration-300"></i>
+        </button>
+        <div id="sedes-sub-menu" class="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
+          <a href="maturin.html" class="block hover:text-karina-mustard transition-colors">Maturín (Hotel y Club)</a>
+          <a href="punta-de-mata.html" class="block hover:text-karina-mustard transition-colors">Punta de Mata</a>
+          <a href="el-tigre.html" class="block hover:text-karina-mustard transition-colors">El Tigre (Negocios y Eventos)</a>
+        </div>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="suites.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">02</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Suites</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="business.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">03</span>
+          <span class="text-2xl sm:text-3xl font-light text-karina-mustard transition-colors">Business</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="vive-karina.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">04</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="fundacion.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">05</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Fundación</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="faqs.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">06</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Preguntas Frecuentes</span>
+        </a>
+      </div>
+
+      <div class="border-b border-white/10 pb-4">
+        <a href="contacto.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
+          <span class="text-xs font-mono text-white/40">07</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Contacto y Ubicaciones</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
+      <button onclick="alert('Iniciando chat con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+        <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
+        <span>Hablar con Arimiña-IA</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 3. MAIN CONTENT: BUSINESS HUB              -->
+  <!-- ========================================== -->
+  <main class="pt-28 pb-20 space-y-16">
+
+    <!-- HERO CORPORATE HUB -->
+    <section class="relative min-h-[440px] sm:min-h-[500px] flex items-center bg-karina-charcoal rounded-[36px] overflow-hidden shadow-xl mx-6 sm:mx-12 mt-4 p-8 sm:p-14 lg:p-20 text-white">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80" alt="Corporate Hub Kariña" class="absolute inset-0 w-full h-full object-cover opacity-35">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-transparent"></div>
+      
+      <div class="relative z-10 max-w-2xl space-y-5 text-left">
+        <div class="inline-block space-y-1.5 text-left max-w-[170px] w-full">
+          <span class="text-xs font-mono tracking-[0.25em] uppercase font-bold text-karina-mustard-light block whitespace-nowrap">
+            CENTRO CORPORATIVO
+          </span>
+          <svg viewBox="0 0 170 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-2 text-karina-mustard">
+            <path d="M3 5.5C45 2 125 2 167 5.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight">
+          Infraestructura de Clase Ejecutiva
+        </h1>
+
+        <p class="text-xs sm:text-sm text-white/80 font-light leading-relaxed max-w-xl">
+          Diseñada para el liderazgo corporativo y optimizada para una productividad ininterrumpida. Nuestras instalaciones B2B combinan lujo orgánico con resiliencia operacional incondicional.
+        </p>
+
+        <div class="pt-2 flex flex-wrap items-center gap-4">
+          <a href="#cotizacion" class="px-7 py-3 rounded-full bg-karina-mustard hover:bg-karina-mustard-light text-karina-charcoal text-xs font-bold shadow-md transition-all active:scale-95 flex items-center gap-2">
+            <span>Solicitar Presupuesto</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+          <a href="https://wa.me/5804249169601" target="_blank" class="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-md transition-all flex items-center gap-2">
+            <i class="fa-solid fa-phone text-xs text-karina-mustard"></i>
+            <span>Atención Directa</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPACIDADES TÉCNICAS -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-12 pt-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <div class="lg:col-span-4 space-y-3 text-left">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-[2px] bg-karina-mustard"></span>
+            <span class="text-[10px] font-mono tracking-widest uppercase font-bold text-karina-mustard">EQUIPAMIENTO B2B</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
+            Capacidades técnicas
+          </h2>
+          <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+            Diseñadas para respaldar operaciones globales sin interrupciones, rodeadas por la calidez de nuestro ambiente boutique.
+          </p>
+        </div>
+
+        <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+          
+          <!-- Capacidad 1: Mostaza Suave #FEF9E7 + Float 1 -->
+          <div class="animate-float-1 bg-[#FEF9E7] p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shadow-xs">
+              <i class="fa-solid fa-bolt text-karina-mustard"></i>
+            </div>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-karina-charcoal">24/7 Energía eléctrica</h3>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Sistemas de generación con triple redundancia que garantizan cero tiempo de inactividad operativa para sus equipos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Capacidad 2: Azul Tenue #EBF5FB + Float 2 -->
+          <div class="animate-float-2 bg-[#EBF5FB] p-8 rounded-pebble-reverse border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-karina-blue text-lg shadow-xs">
+              <i class="fa-solid fa-wifi text-karina-blue"></i>
+            </div>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-karina-charcoal">Internet Fibra Óptica / WiFi</h3>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Conectividad simétrica dedicada de nivel empresarial con conmutación por error entre múltiples proveedores.
+              </p>
+            </div>
+          </div>
+
+          <!-- Capacidad 3: Terracota Pastel #FDF2E9 + Float 3 -->
+          <div class="animate-float-3 bg-[#FDF2E9] p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-karina-terracotta text-lg shadow-xs">
+              <i class="fa-solid fa-users-rectangle text-karina-terracotta"></i>
+            </div>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-karina-charcoal">Salón de conferencias</h3>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Espacios acondicionados acústicamente equipados con telepresencia 4K y asientos ergonómicos de lujo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Capacidad 4: Arena #FAF6F0 + Float 4 -->
+          <div class="animate-float-4 bg-[#FAF6F0] p-8 rounded-pebble-reverse border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-karina-charcoal text-lg shadow-xs">
+              <i class="fa-solid fa-briefcase text-karina-charcoal"></i>
+            </div>
+            <div class="space-y-1.5">
+              <h3 class="text-base font-bold text-karina-charcoal">Centro de Negocios</h3>
+              <p class="text-xs text-karina-charcoal/75 font-light leading-relaxed">
+                Facturación corporativa simplificada y conforme con las normativas fiscales locales para una contabilidad fluida.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </section>
 
     <!-- FORMULARIO DE SOLICITUD DE PRESUPUESTO -->
