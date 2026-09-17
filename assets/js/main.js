@@ -1804,6 +1804,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) {
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+      const video = modal.querySelector('video');
+      if (video) {
+        video.play().catch(() => {});
+      }
     }
   };
 
@@ -1812,6 +1816,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) {
       modal.classList.add('hidden');
       document.body.style.overflow = '';
+      const video = modal.querySelector('video');
+      if (video) {
+        video.pause();
+      }
     }
   };
 
