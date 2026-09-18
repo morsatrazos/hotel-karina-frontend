@@ -285,18 +285,19 @@
   <!-- ========================================== -->
   <!-- 3. HERO SECTION (ENCUADRE FIGMA EXACTO)    -->
   <!-- ========================================== -->
-  <section class="relative min-h-[92vh] sm:min-h-screen flex items-end justify-start pb-16 sm:pb-20 px-6 sm:px-16 bg-[#FFF6EA] overflow-hidden">
+  <section class="hero-section relative min-h-[92vh] sm:min-h-screen flex items-end justify-start pb-16 sm:pb-20 px-6 sm:px-16 bg-[#0f172a] overflow-hidden">
     
-    <!-- Video de Fondo Nítido (Autoplay & Loop con Audio) -->
-    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+    <!-- Video de Fondo Nítido (Autoplay & Loop) -->
+    <div class="hero-video-container absolute inset-0 z-0 pointer-events-none overflow-hidden bg-[#0f172a]">
       <video 
         id="hero-video"
         autoplay 
+        muted 
         loop 
         playsinline 
-        preload="auto"
-        poster="https://uploads.onecompiler.io/44s48z3dm/1787540023484/Banner-Sample-Kari%C3%B1a.png"
-        class="w-full h-full object-cover object-center scale-105"
+        webkit-playsinline 
+        preload="auto" 
+        class="hero-video w-full h-full object-cover object-center scale-105"
       >
         <source src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/HEADER-VIDEO-MONAGAS-NORTE-SUR.mp4" type="video/mp4">
       </video>

@@ -1,16 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
-  // 0. CONTROL DE AUDIO HERO VIDEO
+  // 0. CONTROL DE HERO VIDEO Y AUTOPLAY MÓVIL
   // ==========================================
-  const heroVideo = document.getElementById('hero-video');
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.play().catch(() => {
+      // Silencioso ante bloqueos estrictos de batería
+    });
+  }
+
   const heroAudioBtn = document.getElementById('hero-audio-btn');
   const heroAudioIcon = document.getElementById('hero-audio-icon');
   const heroAudioText = document.getElementById('hero-audio-text');
 
-  if (heroVideo) {
-    heroVideo.muted = false;
-
+  if (heroVideo && heroAudioBtn) {
     const updateHeroAudioUI = (isMuted) => {
       if (heroAudioIcon && heroAudioText) {
         if (isMuted) {
@@ -23,43 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    // Intentar reproducir con audio desmuteado
-    const playPromise = heroVideo.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          updateHeroAudioUI(heroVideo.muted);
-        })
-        .catch(() => {
-          // Si el navegador restringe autoplay con sonido, iniciar en mute y activar al primer gesto
-          heroVideo.muted = true;
-          heroVideo.play().catch(() => {});
-          updateHeroAudioUI(true);
+    updateHeroAudioUI(heroVideo.muted);
 
-          const enableAudioOnGesture = () => {
-            heroVideo.muted = false;
-            updateHeroAudioUI(false);
-            window.removeEventListener('click', enableAudioOnGesture);
-            window.removeEventListener('touchstart', enableAudioOnGesture);
-            window.removeEventListener('keydown', enableAudioOnGesture);
-          };
-
-          window.addEventListener('click', enableAudioOnGesture, { once: true });
-          window.addEventListener('touchstart', enableAudioOnGesture, { once: true });
-          window.addEventListener('keydown', enableAudioOnGesture, { once: true });
-        });
-    }
-
-    if (heroAudioBtn) {
-      heroAudioBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        heroVideo.muted = !heroVideo.muted;
-        if (!heroVideo.muted) {
-          heroVideo.play().catch(() => {});
-        }
-        updateHeroAudioUI(heroVideo.muted);
-      });
-    }
+    heroAudioBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      heroVideo.muted = !heroVideo.muted;
+      if (!heroVideo.muted) {
+        heroVideo.play().catch(() => {});
+      }
+      updateHeroAudioUI(heroVideo.muted);
+    });
   }
 
   // ==========================================

@@ -41,6 +41,23 @@ body {
 }
 
 /* ===================================================
+   HERO VIDEO & CONTAINER (DARK NEUTRAL BACKGROUND)
+   =================================================== */
+.hero,
+.hero-section,
+.hero-video-container {
+  background-color: #0f172a !important;
+  background-image: none !important;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ===================================================
    MORPHING FLOATING ISLAND NAVBAR
    =================================================== */
 #main-navbar {
