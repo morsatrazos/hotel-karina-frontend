@@ -961,9 +961,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Cargando más habitaciones...');
   };
 
-  window.inquireSuiteWithAI = function() {
+  window.inquireSuiteWithAI = function(customPrompt) {
     closeSuiteModal();
-    alert('Iniciando consulta de disponibilidad y tarifas con Arimiña-IA...');
+    const suiteTitle = document.getElementById('suite-modal-title')?.textContent || 'Suite';
+    const prompt = customPrompt || `Hola Arimiña, deseo consultar disponibilidad y cotizar la ${suiteTitle}`;
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(prompt);
+    }
   };
 
   // ==========================================
@@ -2096,5 +2100,411 @@ function toggleLanguage() {
 }
 window.toggleLanguage = toggleLanguage;
 
+// ==========================================
+// 18. ASISTENTE CONVERSACIONAL ARIMIÑA (MODAL INMERSIVO FULLSCREEN)
+// ==========================================
 
+function initAriminaChatModal() {
+  if (document.getElementById('modal-arimina')) return;
 
+  const modalHtml = `
+  <div id="modal-arimina" class="fixed inset-0 z-[100] bg-[#FAF8F5]/95 backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none flex flex-col justify-between" role="dialog" aria-modal="true" aria-labelledby="arimina-header-title">
+    <div class="max-w-4xl mx-auto w-full h-full flex flex-col py-4 sm:py-6 px-4 sm:px-6 relative">
+      
+      <!-- Cabecera Minimalista del Asistente -->
+      <header class="flex items-center justify-between pb-4 border-b border-[#E8DFC8]/60 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="relative w-10 h-10 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] shadow-md shrink-0">
+            <i class="fa-solid fa-wand-magic-sparkles text-sm animate-pulse"></i>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 id="arimina-header-title" class="text-base sm:text-lg font-bold text-[#1E1E1E] tracking-tight">Arimiña ✨</h3>
+              <span class="text-[10px] font-mono font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-full border border-emerald-200">En línea</span>
+            </div>
+            <p class="text-xs text-[#726B63] font-light">Conserje Virtual • Hotel Kariña</p>
+          </div>
+        </div>
+
+        <!-- Botón de Cierre Accesible -->
+        <button onclick="closeAriminaChat()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/5 hover:bg-black/10 text-xs font-semibold text-[#1E1E1E] transition-all active:scale-95 cursor-pointer" aria-label="Cerrar asistente Arimiña">
+          <span>✕ Cerrar</span>
+          <kbd class="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 bg-white/80 rounded text-[#726B63] border border-black/10">Esc</kbd>
+        </button>
+      </header>
+
+      <!-- Área Conversacional Central con Scroll Suave -->
+      <main id="arimina-messages-container" class="flex-1 overflow-y-auto py-6 space-y-4 no-scrollbar scroll-smooth pr-1">
+        
+        <!-- Welcome / Empty State Inicial -->
+        <div id="arimina-welcome-state" class="text-center py-6 sm:py-10 space-y-6 max-w-xl mx-auto">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-3xl bg-gradient-to-tr from-[#FFF3D6] to-[#FFE8A3] border border-[#F0A800]/30 shadow-lg flex items-center justify-center animate-ai-glow">
+            <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Arimiña Asistente" class="w-10 sm:w-12 h-auto object-contain">
+          </div>
+
+          <div class="space-y-2">
+            <h2 class="text-xl sm:text-2xl font-light text-[#1E1E1E]">
+              ¡Hola! Soy <strong class="font-extrabold text-karina-charcoal">Arimiña</strong> ✨
+            </h2>
+            <p class="text-xs sm:text-sm text-[#726B63] font-light leading-relaxed max-w-md mx-auto">
+              Tu conserje virtual con inteligencia artificial para asesorarte con reservas, suites, gastronomía, eventos y servicios en todas nuestras sedes.
+            </p>
+          </div>
+
+          <!-- Sugerencias Rápidas en Pills Interactivos -->
+          <div class="pt-2 space-y-2">
+            <p class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#726B63]">Sugerencias de consulta rápida:</p>
+            <div class="flex flex-wrap justify-center gap-2 pt-1">
+              <button onclick="sendAriminaQuickPrompt('Ver suites disponibles en Maturín')" class="px-4 py-2 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-medium text-[#1E1E1E] shadow-sm hover:shadow transition-all active:scale-95 text-left flex items-center gap-2 cursor-pointer">
+                <i class="fa-solid fa-bed text-[#F0A800] text-[11px]"></i>
+                <span>Ver suites disponibles en Maturín</span>
+              </button>
+              <button onclick="sendAriminaQuickPrompt('Conocer la gastronomía de Moriche y Oh My Bar')" class="px-4 py-2 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-medium text-[#1E1E1E] shadow-sm hover:shadow transition-all active:scale-95 text-left flex items-center gap-2 cursor-pointer">
+                <i class="fa-solid fa-utensils text-[#EB8C84] text-[11px]"></i>
+                <span>Conocer la gastronomía de Moriche y Oh My Bar</span>
+              </button>
+              <button onclick="sendAriminaQuickPrompt('Planes corporativos en El Tigre y Punta de Mata')" class="px-4 py-2 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-medium text-[#1E1E1E] shadow-sm hover:shadow transition-all active:scale-95 text-left flex items-center gap-2 cursor-pointer">
+                <i class="fa-solid fa-briefcase text-[#2680BD] text-[11px]"></i>
+                <span>Planes corporativos en El Tigre y Punta de Mata</span>
+              </button>
+              <button onclick="sendAriminaQuickPrompt('Hablar directamente con un asesor humano')" class="px-4 py-2 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-medium text-[#1E1E1E] shadow-sm hover:shadow transition-all active:scale-95 text-left flex items-center gap-2 cursor-pointer">
+                <i class="fa-brands fa-whatsapp text-emerald-600 text-xs"></i>
+                <span>Hablar directamente con un asesor humano</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feed Dinámico de Mensajes -->
+        <div id="arimina-messages-feed" class="space-y-4"></div>
+
+        <!-- Indicador de Escritura -->
+        <div id="arimina-typing-indicator" class="hidden flex items-center gap-2 text-xs text-[#726B63] pt-2">
+          <div class="w-7 h-7 rounded-full bg-[#FFD573]/60 flex items-center justify-center text-[10px] text-[#1E1E1E] shrink-0">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <div class="bg-white/90 border border-[#E8DFC8] px-3.5 py-2 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 bg-[#F0A800] rounded-full animate-bounce"></span>
+            <span class="w-1.5 h-1.5 bg-[#F0A800] rounded-full animate-bounce [animation-delay:0.2s]"></span>
+            <span class="w-1.5 h-1.5 bg-[#F0A800] rounded-full animate-bounce [animation-delay:0.4s]"></span>
+            <span class="text-[11px] text-[#726B63] ml-1 font-mono">Arimiña está escribiendo...</span>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- Input Bar Estilo Gemini / Claude (Flotante Inferior) -->
+      <footer class="pt-2 shrink-0">
+        <div class="max-w-3xl mx-auto w-full bg-white/95 backdrop-blur-xl border border-[#E8DFC8] rounded-3xl p-2 sm:p-2.5 shadow-xl transition-all focus-within:ring-2 focus-within:ring-[#F0A800]/50 focus-within:border-[#F0A800]">
+          <div class="flex items-end gap-2">
+            <textarea 
+              id="arimina-chat-input" 
+              rows="1" 
+              placeholder="Pregúntale a Arimiña sobre suites, gastronomía o reservas..." 
+              class="flex-1 bg-transparent border-none outline-none resize-none px-3 py-2 text-xs sm:text-sm text-[#1E1E1E] placeholder:text-[#726B63]/60 focus:ring-0 max-h-32 leading-relaxed"
+            ></textarea>
+            
+            <button 
+              id="arimina-chat-send" 
+              onclick="sendAriminaUserMessage()" 
+              class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E1E1E] hover:bg-black text-white flex items-center justify-center shrink-0 transition-all active:scale-90 shadow-sm cursor-pointer" 
+              aria-label="Enviar mensaje a Arimiña"
+            >
+              <i class="fa-solid fa-arrow-up text-xs sm:text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <p class="text-[10px] text-center text-[#726B63]/70 font-light mt-2 pb-1">
+          Arimiña utiliza IA para ayudarte a planificar tu estancia en Hotel Kariña.
+        </p>
+      </footer>
+
+    </div>
+  </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  const input = document.getElementById('arimina-chat-input');
+  if (input) {
+    input.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = (this.scrollHeight) + 'px';
+    });
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendAriminaUserMessage();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('modal-arimina');
+      if (modal && !modal.classList.contains('opacity-0')) {
+        closeAriminaChat();
+      }
+    }
+  });
+}
+
+function openAriminaChat(initialPrompt = '') {
+  initAriminaChatModal();
+  const modal = document.getElementById('modal-arimina');
+  if (modal) {
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100', 'pointer-events-auto');
+    document.body.style.overflow = 'hidden';
+
+    const input = document.getElementById('arimina-chat-input');
+    setTimeout(() => {
+      if (input) input.focus();
+      if (initialPrompt && initialPrompt.trim()) {
+        sendAriminaUserMessage(initialPrompt.trim());
+      }
+    }, 150);
+  }
+}
+
+function closeAriminaChat() {
+  const modal = document.getElementById('modal-arimina');
+  if (modal) {
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    modal.classList.remove('opacity-100', 'pointer-events-auto');
+    document.body.style.overflow = '';
+  }
+}
+
+function sendAriminaQuickPrompt(prompt) {
+  sendAriminaUserMessage(prompt);
+}
+
+function sendAriminaUserMessage(overrideText = null) {
+  const input = document.getElementById('arimina-chat-input');
+  const text = overrideText || (input ? input.value.trim() : '');
+  if (!text) return;
+
+  if (input && !overrideText) {
+    input.value = '';
+    input.style.height = 'auto';
+  }
+
+  const welcomeState = document.getElementById('arimina-welcome-state');
+  if (welcomeState) welcomeState.style.display = 'none';
+
+  const feed = document.getElementById('arimina-messages-feed');
+  const container = document.getElementById('arimina-messages-container');
+  const typing = document.getElementById('arimina-typing-indicator');
+
+  if (feed) {
+    const userBubble = document.createElement('div');
+    userBubble.className = 'flex justify-end';
+    userBubble.innerHTML = `
+      <div class="bg-[#1E1E1E] text-white rounded-2xl rounded-tr-none px-4 py-3 max-w-[85%] sm:max-w-[75%] text-xs sm:text-sm font-normal shadow-sm leading-relaxed text-left">
+        ${escapeHtml(text)}
+      </div>
+    `;
+    feed.appendChild(userBubble);
+  }
+
+  if (typing) typing.classList.remove('hidden');
+  if (container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+
+  setTimeout(() => {
+    if (typing) typing.classList.add('hidden');
+    const response = generateAriminaResponse(text);
+
+    if (feed) {
+      const aiBubble = document.createElement('div');
+      aiBubble.className = 'flex items-start gap-3 text-left';
+      aiBubble.innerHTML = `
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] text-xs shadow-sm shrink-0 mt-1">
+          <i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>
+        </div>
+        <div class="bg-white/95 border border-[#E8DFC8] text-[#1E1E1E] rounded-2xl rounded-tl-none p-4 sm:p-5 max-w-[90%] sm:max-w-[80%] text-xs sm:text-sm shadow-sm space-y-3 leading-relaxed">
+          <div>${formatAriminaMarkdown(response.text)}</div>
+          ${response.actionsHtml || ''}
+        </div>
+      `;
+      feed.appendChild(aiBubble);
+    }
+
+    if (container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+  }, 600);
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function formatAriminaMarkdown(md) {
+  let html = md
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n\n/g, '<br><br>')
+    .replace(/\n/g, '<br>');
+  return html;
+}
+
+function generateAriminaResponse(userQuery) {
+  const q = userQuery.toLowerCase();
+  const encodedQ = encodeURIComponent(`Hola Arimiña-IA, deseo consultar sobre: ${userQuery}`);
+  const waLink = `https://wa.me/5804249169601?text=${encodedQ}`;
+
+  // 1. Suites / Habitaciones / Sedes
+  if (q.includes('suite') || q.includes('habitaci') || q.includes('cama') || q.includes('matur') || q.includes('tigre') || q.includes('punta de mata') || q.includes('disponib') || q.includes('tarifa') || q.includes('precio') || q.includes('costo') || q.includes('hosped')) {
+    return {
+      text: `En **Hoteles Kariña** contamos con 2 configuraciones de suites cuidadosamente diseñadas para tu máximo confort en nuestras sedes de **Maturín**, **El Tigre** y **Punta de Mata**:\n\n` +
+            `• **Suite Estándar:** Equipada con **1 Cama Matrimonial** (capacidad para 2 personas), climatización split silenciosa, TV de alta definición, WiFi de alta velocidad y escritorio ejecutivo.\n` +
+            `• **Suite Premium:** Equipada con **2 Camas Matrimoniales** (capacidad para hasta 4 personas), dos ambientes independientes, sala de estar, kitchenette con nevera ejecutiva y acabados de lujo contemporáneo.\n\n` +
+            `¿En cuál de nuestras sedes te gustaría hospedarte?`,
+      actionsHtml: `
+        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
+          <a href="suites.html" class="px-3.5 py-1.5 rounded-full bg-[#1E1E1E] hover:bg-black text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+            <span>Ver Catálogo de Suites</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+          <a href="${waLink}" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+            <i class="fa-brands fa-whatsapp text-xs"></i>
+            <span>Cotizar con Asesor</span>
+          </a>
+        </div>
+      `
+    };
+  }
+
+  // 2. Gastronomía / Restaurantes / Bares
+  if (q.includes('gastronom') || q.includes('restaurante') || q.includes('comida') || q.includes('moriche') || q.includes('oh my bar') || q.includes('two chefs') || q.includes('283') || q.includes('brulee') || q.includes('brûlée') || q.includes('desayuno') || q.includes('cenar') || q.includes('comer') || q.includes('bar') || q.includes('bistro') || q.includes('cocktail') || q.includes('menu') || q.includes('menú')) {
+    return {
+      text: `Nuestra oferta gastronómica exalta los sabores autóctonos del **Oriente Venezolano** con técnicas contemporáneas de alta cocina:\n\n` +
+            `• **Moriche Restaurant (Maturín):** Restaurante insignia con cocina de autor, desayunos buffet y coctelería refinada.\n` +
+            `• **Oh My Bar Bistro (Maturín):** Gastronomía casual, hamburguesas gourmet, alitas BBQ y mixología en el complejo Master Pádel.\n` +
+            `• **Restaurante 283 (El Tigre):** Especialidad en paellas, carpaccio de ternera y cocina mediterránea contemporánea.\n` +
+            `• **Two Chefs Restaurant (Punta de Mata):** Exclusivos cortes premium y gastronomía de autor.\n` +
+            `• **Club Palma Real:** La Palmera Restobar, Lagos Restaurant y Brûlée Pastelería fina.`,
+      actionsHtml: `
+        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
+          <a href="restaurante.html" class="px-3.5 py-1.5 rounded-full bg-[#1E1E1E] hover:bg-black text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+            <span>Explorar Gastronomía</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+          <a href="${waLink}" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+            <i class="fa-brands fa-whatsapp text-xs"></i>
+            <span>Reservar Mesa</span>
+          </a>
+        </div>
+      `
+    };
+  }
+
+  // 3. Corporativo / Negocios / Salones / Eventos
+  if (q.includes('corporat') || q.includes('negocio') || q.includes('salon') || q.includes('salón') || q.includes('evento') || q.includes('conferenc') || q.includes('boda') || q.includes('reunion') || q.includes('reunión') || q.includes('empresa') || q.includes('guanipa') || q.includes('arimiña')) {
+    return {
+      text: `Disponemos de espacios corporativos y salones de alta confiabilidad con tecnología de vanguardia:\n\n` +
+            `• **Salón Arimiña (Maturín):** Gran salón de conferencias y recepciones con capacidad para hasta 250 personas, sonido acústico y catering integral.\n` +
+            `• **Salón Guanipa (El Tigre):** Centro de eventos corporativos y bodas con ambientes climatizados.\n` +
+            `• **Business Centers (Punta de Mata & El Tigre):** Salas de juntas ejecutivas con internet de fibra óptica simétrica dedicado, pantallas interactivas y coffee break corporativo.`,
+      actionsHtml: `
+        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
+          <a href="business.html" class="px-3.5 py-1.5 rounded-full bg-[#1E1E1E] hover:bg-black text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+            <span>Espacios Corporativos</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+          <a href="${waLink}" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+            <i class="fa-brands fa-whatsapp text-xs"></i>
+            <span>Cotizar Evento</span>
+          </a>
+        </div>
+      `
+    };
+  }
+
+  // 4. Asesor humano / WhatsApp / Contacto directo
+  if (q.includes('humano') || q.includes('asesor') || q.includes('persona') || q.includes('contacto') || q.includes('telefono') || q.includes('teléfono') || q.includes('llamar') || q.includes('hablar') || q.includes('whatsapp')) {
+    return {
+      text: `¡Por supuesto! Nuestro equipo de atención y conserjería humana está disponible a través de nuestra línea oficial de **WhatsApp** para brindarte atención personalizada al instante.`,
+      actionsHtml: `
+        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
+          <a href="${waLink}" target="_blank" class="px-4 py-2 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-bold inline-flex items-center gap-2 transition-all shadow-sm active:scale-95">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Conectar con Asesor Humano (+58 0424-9169601)</span>
+          </a>
+        </div>
+      `
+    };
+  }
+
+  // 5. Day Pass / Piscinas / Pádel / Recreación
+  if (q.includes('day pass') || q.includes('daypass') || q.includes('piscina') || q.includes('padel') || q.includes('pádel') || q.includes('recreac') || q.includes('sol')) {
+    return {
+      text: `Disfruta de una jornada inolvidable con nuestro **Day Pass**:\n\n` +
+            `• **Sede Maturín ($25):** Acceso completo al complejo de piscinas resort, parque acuático con toboganes, tumbonas y canchas de Master Pádel.\n` +
+            `• **Sede El Tigre ($20):** Acceso a piscinas recreativas, solárium y áreas verdes de descanso continuo.`,
+      actionsHtml: `
+        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
+          <a href="vive-karina.html" class="px-3.5 py-1.5 rounded-full bg-[#1E1E1E] hover:bg-black text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+            <span>Ver ¡Vive Kariña!</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+          <a href="${waLink}" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+            <i class="fa-brands fa-whatsapp text-xs"></i>
+            <span>Reservar Day Pass</span>
+          </a>
+        </div>
+      `
+    };
+  }
+
+  // 6. Fundación / Comunidad
+  if (q.includes('fundacion') || q.includes('fundación') || q.includes('comunidad') || q.includes('indigena') || q.includes('indígena') || q.includes('artesania') || q.includes('artesanía') || q.includes('social')) {
+    return {
+      text: `La **Fundación Kariña** es nuestro compromiso vivo con las comunidades ancestrales de Monagas y Anzoátegui, apoyando la educación bilingüe, la preservación cultural y el desarrollo de talleres de cestería y artesanía en fibra de moriche.`,
+      actionsHtml: `
+        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
+          <a href="fundacion.html" class="px-3.5 py-1.5 rounded-full bg-[#1E1E1E] hover:bg-black text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+            <span>Conocer Fundación</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+      `
+    };
+  }
+
+  // 7. Respuesta General / Default
+  return {
+    text: `Con gusto te asisto. En **Hotel Kariña** ofrecemos suites de descanso premium, gastronomía selecta, salones corporativos y piscinas resort en **Maturín**, **El Tigre** y **Punta de Mata**.\n\n` +
+          `Puedes consultarme sobre **disponibilidad de suites**, **restaurantes y bares**, **Day Pass** o **salones para eventos**. ¿Qué información deseas consultar?`,
+    actionsHtml: `
+      <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
+        <a href="suites.html" class="px-3 py-1.5 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-semibold text-[#1E1E1E] inline-flex items-center gap-1 transition-all">
+          <span>Ver Suites</span>
+        </a>
+        <a href="restaurante.html" class="px-3 py-1.5 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-semibold text-[#1E1E1E] inline-flex items-center gap-1 transition-all">
+          <span>Gastronomía</span>
+        </a>
+        <a href="${waLink}" target="_blank" class="px-3 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+          <i class="fa-brands fa-whatsapp text-xs"></i>
+          <span>Hablar por WhatsApp</span>
+        </a>
+      </div>
+    `
+  };
+}
+
+// Inicializar Arimiña Chat Modal al cargar el DOM
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAriminaChatModal);
+} else {
+  initAriminaChatModal();
+}
+
+// Exportación global de funciones de Arimiña
+window.initAriminaChatModal = initAriminaChatModal;
+window.openAriminaChat = openAriminaChat;
+window.closeAriminaChat = closeAriminaChat;
+window.sendAriminaQuickPrompt = sendAriminaQuickPrompt;
+window.sendAriminaUserMessage = sendAriminaUserMessage;

@@ -180,9 +180,7 @@
                 <i class="fa-solid fa-wand-magic-sparkles text-[#F0A800] text-xs"></i>
                 <span class="text-[11px] font-bold text-[#1E1E1E]">¿Cotización personalizada?</span>
               </div>
-              <a href="https://wa.me/5804249169601?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20consultar%20disponibilidad%20de%20suites" target="_blank" class="text-[10px] font-mono font-bold bg-[#1E1E1E] hover:bg-black text-white px-3 py-1 rounded-full transition-all active:scale-95">
-                Consultar IA ✨
-              </a>
+              <button onclick="openAriminaChat('Deseo una cotización personalizada de suites')" class="text-[10px] font-mono font-bold bg-[#1E1E1E] hover:bg-black text-white px-3 py-1 rounded-full transition-all active:scale-95 cursor-pointer">Consultar IA ✨</button>
             </div>
 
           </div>
@@ -280,7 +278,7 @@
     </div>
 
     <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
-      <button onclick="alert('Iniciando chat con Arimiña-IA...')" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+      <button onclick="if(typeof closeMenu === 'function') closeMenu(); openAriminaChat();" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
         <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
         <span>Hablar con Arimiña-IA</span>
       </button>
@@ -598,8 +596,15 @@
   <!-- JavaScript Modular Global -->
   <script src="assets/js/main.js"></script>
   <!-- Cápsula Flotante Discreta: Idioma -->
-  <div class="fixed bottom-6 right-6 z-40 flex items-center bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
-    <button onclick="if(window.toggleLanguage) toggleLanguage()" class="text-[#726B63] hover:text-[#1E1E1E] transition font-semibold"><span>ES/EN</span></button>
+  <!-- Cápsula Flotante Discreta: Arimiña IA + Idioma -->
+  <div class="fixed bottom-6 right-6 z-40 flex items-center gap-2">
+    <button onclick="openAriminaChat()" class="flex items-center gap-2 bg-[#1E1E1E] hover:bg-black text-white px-4 py-2 rounded-full border border-[#FFD573]/50 shadow-xl text-xs font-bold transition-all active:scale-95 group animate-ai-glow cursor-pointer" aria-label="Abrir asistente Arimiña">
+      <i class="fa-solid fa-wand-magic-sparkles text-[#FFD573] group-hover:rotate-12 transition-transform"></i>
+      <span>Arimiña ✨</span>
+    </button>
+    <div class="flex items-center bg-white/90 backdrop-blur-md px-3 py-2 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
+      <button onclick="if(window.toggleLanguage) toggleLanguage()" class="text-[#726B63] hover:text-[#1E1E1E] transition font-semibold"><span>ES/EN</span></button>
+    </div>
   </div>
 </body>
 </html>
