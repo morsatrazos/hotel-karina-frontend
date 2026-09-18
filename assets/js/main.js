@@ -1834,8 +1834,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===================================================
 
   window.askAIForHelp404 = function() {
-    const message = "Hola Arimiña-IA, me he perdido en el sitio web de Hoteles Kariña. ¿Podrías orientarme con las suites disponibles o servicios?";
-    window.open(`https://wa.me/5804249169601?text=${encodeURIComponent(message)}`, '_blank');
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat("Hola Arimiña, me he perdido en el sitio web de Hoteles Kariña. ¿Podrías orientarme con las suites disponibles o servicios?");
+    }
   };
 
   // Observador para resaltar la sección activa en el TOC de Términos y Privacidad

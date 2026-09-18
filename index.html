@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -325,15 +325,15 @@
       </h1>
       
       <!-- Píldora Arimiña-IA -->
-      <div class="inline-flex items-center gap-3 bg-white/95 backdrop-blur-md px-5 py-3 rounded-full shadow-2xl border border-white/80 cursor-pointer hover:bg-white hover:scale-105 transition-all">
-        <div class="w-8 h-8 rounded-full bg-[#FFD573] flex items-center justify-center text-[#343434] shadow-sm">
+      <button onclick="openAriminaChat('Deseo consultar disponibilidad y tarifas de suites')" class="inline-flex items-center gap-3 bg-white/95 backdrop-blur-md px-5 py-3 rounded-full shadow-2xl border border-white/80 cursor-pointer hover:bg-white hover:scale-105 transition-all active:scale-95 text-left" aria-label="Consulta disponibilidad y tarifas con Arimiña">
+        <div class="w-8 h-8 rounded-full bg-[#FFD573] flex items-center justify-center text-[#343434] shadow-sm shrink-0">
           <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
         </div>
         <div class="text-left pr-2">
           <p class="text-xs font-bold text-[#343434] leading-tight">Consulta disponibilidad y tarifas</p>
           <p class="text-[11px] text-[#343434]/70">con Arimiña-IA →</p>
         </div>
-      </div>
+      </button>
     </div>
   </section>
 
@@ -1149,8 +1149,8 @@
           <!-- BOTONES PRINCIPALES UNIFORMES (ARIMIÑA-IA Y CATALOGO) -->
           <div class="pt-4 space-y-2.5">
             
-            <button onclick="closeSedeModal(); alert('Iniciando consulta con Arimiña-IA...');" 
-                    class="w-full py-3 px-5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95 group">
+            <button onclick="closeSedeModal(); openAriminaChat('Deseo consultar tarifas y disponibilidad de sedes');" 
+                    class="w-full py-3 px-5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95 group cursor-pointer">
               <span class="w-5 h-5 rounded-full bg-karina-mustard text-karina-charcoal flex items-center justify-center text-[10px] shrink-0">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
               </span>
