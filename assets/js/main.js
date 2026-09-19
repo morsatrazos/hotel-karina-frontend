@@ -2230,6 +2230,17 @@ function initAriminaChatModal() {
   });
 }
 
+function getSessionId() {
+  let sid = localStorage.getItem('karina_chat_session_id');
+  if (!sid) {
+    sid = 'karina_' + Math.random().toString(36).substring(2, 11) + '_' + Date.now();
+    localStorage.setItem('karina_chat_session_id', sid);
+  }
+  return sid;
+}
+
+const ARIMINA_BACKEND_ENDPOINT = 'https://infinityart3d-agent.up.railway.app/webhook/webchat/karina';
+
 function openAriminaChat(initialPrompt = '') {
   initAriminaChatModal();
   const modal = document.getElementById('modal-arimina');
@@ -2261,8 +2272,9 @@ function sendAriminaQuickPrompt(prompt) {
   sendAriminaUserMessage(prompt);
 }
 
-function sendAriminaUserMessage(overrideText = null) {
+async function sendAriminaUserMessage(overrideText = null) {
   const input = document.getElementById('arimina-chat-input');
+  const sendBtn = document.getElementById('arimina-chat-send');
   const text = overrideText || (input ? input.value.trim() : '');
   if (!text) return;
 
@@ -2291,28 +2303,103 @@ function sendAriminaUserMessage(overrideText = null) {
 
   if (typing) typing.classList.remove('hidden');
   if (container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+  if (sendBtn) sendBtn.disabled = true;
 
-  setTimeout(() => {
-    if (typing) typing.classList.add('hidden');
-    const response = generateAriminaResponse(text);
+  try {
+    const payload = {
+      sessionId: getSessionId(),
+      text: text,
+      senderName: "Huésped"
+    };
 
-    if (feed) {
-      const aiBubble = document.createElement('div');
-      aiBubble.className = 'flex items-start gap-3 text-left';
-      aiBubble.innerHTML = `
-        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] text-xs shadow-sm shrink-0 mt-1">
-          <i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>
-        </div>
-        <div class="bg-white/95 border border-[#E8DFC8] text-[#1E1E1E] rounded-2xl rounded-tl-none p-4 sm:p-5 max-w-[90%] sm:max-w-[80%] text-xs sm:text-sm shadow-sm space-y-3 leading-relaxed">
-          <div>${formatAriminaMarkdown(response.text)}</div>
-          ${response.actionsHtml || ''}
-        </div>
-      `;
-      feed.appendChild(aiBubble);
+    const response = await fetch(ARIMINA_BACKEND_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
+    const data = await response.json();
+    const botReply = extractBotReply(data);
+
+    if (botReply) {
+      renderAriminaBotMessage(botReply);
+    } else {
+      renderAriminaBotMessage('Disculpa, no pude procesar tu solicitud en este momento. ¿Podrías reformular tu consulta o contactarnos por WhatsApp?');
+    }
+  } catch (error) {
+    console.error('Error conectando con Arimiña-IA:', error);
+    renderAriminaBotMessage(
+      'En este momento estoy experimentando dificultades técnicas para conectar con el servidor. Nuestro equipo está disponible por WhatsApp para atenderte de inmediato.',
+      true
+    );
+  } finally {
+    if (typing) typing.classList.add('hidden');
+    if (sendBtn) sendBtn.disabled = false;
     if (container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
-  }, 600);
+  }
+}
+
+function extractBotReply(data) {
+  if (!data) return '';
+  if (typeof data === 'string') return data;
+  if (data.replies && Array.isArray(data.replies) && data.replies.length > 0) {
+    return data.replies.map(r => (typeof r === 'string' ? r : (r.text || r.message || r.output || ''))).filter(Boolean).join('\n\n');
+  }
+  if (Array.isArray(data) && data.length > 0) {
+    return data.map(item => {
+      if (typeof item === 'string') return item;
+      if (item && typeof item === 'object') {
+        return item.output || item.text || item.message || item.reply || item.response || '';
+      }
+      return '';
+    }).filter(Boolean).join('\n\n');
+  }
+  if (typeof data === 'object') {
+    return data.output || data.text || data.message || data.reply || data.response || (data.data && data.data.text) || '';
+  }
+  return '';
+}
+
+function renderAriminaBotMessage(text, isError = false) {
+  const feed = document.getElementById('arimina-messages-feed');
+  const container = document.getElementById('arimina-messages-container');
+  if (!feed) return;
+
+  const aiBubble = document.createElement('div');
+  aiBubble.className = 'flex items-start gap-3 text-left';
+
+  let actionsHtml = '';
+  if (isError) {
+    const waEncoded = encodeURIComponent('Hola, deseo consultar con un asesor de Hotel Kariña');
+    const waLink = `https://wa.me/5804249169601?text=${waEncoded}`;
+    actionsHtml = `
+      <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
+        <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
+          <i class="fa-brands fa-whatsapp text-xs"></i>
+          <span>Contactar por WhatsApp (+58 0424-9169601)</span>
+        </a>
+      </div>
+    `;
+  }
+
+  aiBubble.innerHTML = `
+    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] text-xs shadow-sm shrink-0 mt-1">
+      <i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>
+    </div>
+    <div class="bg-white/95 border border-[#E8DFC8] text-[#1E1E1E] rounded-2xl rounded-tl-none p-4 sm:p-5 max-w-[90%] sm:max-w-[80%] text-xs sm:text-sm shadow-sm space-y-3 leading-relaxed">
+      <div class="arimina-msg-content text-[#1E1E1E] space-y-1">${formatAriminaMarkdown(text)}</div>
+      ${actionsHtml}
+    </div>
+  `;
+  feed.appendChild(aiBubble);
+
+  if (container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
 }
 
 function escapeHtml(str) {
@@ -2322,157 +2409,34 @@ function escapeHtml(str) {
 }
 
 function formatAriminaMarkdown(md) {
-  let html = md
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/\n\n/g, '<br><br>')
-    .replace(/\n/g, '<br>');
-  return html;
-}
+  if (!md) return '';
+  let text = md.trim();
 
-function generateAriminaResponse(userQuery) {
-  const q = userQuery.toLowerCase();
-  const encodedQ = encodeURIComponent(`Hola Arimiña-IA, deseo consultar sobre: ${userQuery}`);
-  const waLink = `https://wa.me/5804249169601?text=${encodedQ}`;
+  // Escape HTML characters to prevent raw injection
+  text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-  // 1. Suites / Habitaciones / Sedes
-  if (q.includes('suite') || q.includes('habitaci') || q.includes('cama') || q.includes('matur') || q.includes('tigre') || q.includes('punta de mata') || q.includes('disponib') || q.includes('tarifa') || q.includes('precio') || q.includes('costo') || q.includes('hosped')) {
-    return {
-      text: `En **Hoteles Kariña** contamos con 2 configuraciones de suites cuidadosamente diseñadas para tu máximo confort en nuestras sedes de **Maturín**, **El Tigre** y **Punta de Mata**:\n\n` +
-            `• **Suite Estándar:** Equipada con **1 Cama Matrimonial** (capacidad para 2 personas), climatización split silenciosa, TV de alta definición, WiFi de alta velocidad y escritorio ejecutivo.\n` +
-            `• **Suite Premium:** Equipada con **2 Camas Matrimoniales** (capacidad para hasta 4 personas), dos ambientes independientes, sala de estar, kitchenette con nevera ejecutiva y acabados de lujo contemporáneo.\n\n` +
-            `¿En cuál de nuestras sedes te gustaría hospedarte?`,
-      actionsHtml: `
-        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
-          <a href="suites.html" class="px-3.5 py-1.5 rounded-full bg-[#1E1E1E] hover:bg-black text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
-            <span>Ver Catálogo de Suites</span>
-            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-          </a>
-          <a href="${waLink}" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
-            <i class="fa-brands fa-whatsapp text-xs"></i>
-            <span>Cotizar con Asesor</span>
-          </a>
-        </div>
-      `
-    };
-  }
+  // Restore necessary formatted tags for links, bold, italic
+  // Markdown links [title](url)
+  text = text.replace(/\[(.*?)\]\((https?:\/\/[^\s\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[#2680BD] underline font-semibold hover:text-[#F0A800] transition-colors">$1</a>');
 
-  // 2. Gastronomía / Restaurantes / Bares
-  if (q.includes('gastronom') || q.includes('restaurante') || q.includes('comida') || q.includes('moriche') || q.includes('oh my bar') || q.includes('two chefs') || q.includes('283') || q.includes('brulee') || q.includes('brûlée') || q.includes('desayuno') || q.includes('cenar') || q.includes('comer') || q.includes('bar') || q.includes('bistro') || q.includes('cocktail') || q.includes('menu') || q.includes('menú')) {
-    return {
-      text: `Nuestra oferta gastronómica exalta los sabores autóctonos del **Oriente Venezolano** con técnicas contemporáneas de alta cocina:\n\n` +
-            `• **Moriche Restaurant (Maturín):** Restaurante insignia con cocina de autor, desayunos buffet y coctelería refinada.\n` +
-            `• **Oh My Bar Bistro (Maturín):** Gastronomía casual, hamburguesas gourmet, alitas BBQ y mixología en el complejo Master Pádel.\n` +
-            `• **Restaurante 283 (El Tigre):** Especialidad en paellas, carpaccio de ternera y cocina mediterránea contemporánea.\n` +
-            `• **Two Chefs Restaurant (Punta de Mata):** Exclusivos cortes premium y gastronomía de autor.\n` +
-            `• **Club Palma Real:** La Palmera Restobar, Lagos Restaurant y Brûlée Pastelería fina.`,
-      actionsHtml: `
-        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
-          <a href="restaurante.html" class="px-3.5 py-1.5 rounded-full bg-[#1E1E1E] hover:bg-black text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
-            <span>Explorar Gastronomía</span>
-            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-          </a>
-          <a href="${waLink}" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
-            <i class="fa-brands fa-whatsapp text-xs"></i>
-            <span>Reservar Mesa</span>
-          </a>
-        </div>
-      `
-    };
-  }
+  // Bold **text**
+  text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-  // 3. Corporativo / Negocios / Salones / Eventos
-  if (q.includes('corporat') || q.includes('negocio') || q.includes('salon') || q.includes('salón') || q.includes('evento') || q.includes('conferenc') || q.includes('boda') || q.includes('reunion') || q.includes('reunión') || q.includes('empresa') || q.includes('guanipa') || q.includes('arimiña')) {
-    return {
-      text: `Disponemos de espacios corporativos y salones de alta confiabilidad con tecnología de vanguardia:\n\n` +
-            `• **Salón Arimiña (Maturín):** Gran salón de conferencias y recepciones con capacidad para hasta 250 personas, sonido acústico y catering integral.\n` +
-            `• **Salón Guanipa (El Tigre):** Centro de eventos corporativos y bodas con ambientes climatizados.\n` +
-            `• **Business Centers (Punta de Mata & El Tigre):** Salas de juntas ejecutivas con internet de fibra óptica simétrica dedicado, pantallas interactivas y coffee break corporativo.`,
-      actionsHtml: `
-        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
-          <a href="business.html" class="px-3.5 py-1.5 rounded-full bg-[#1E1E1E] hover:bg-black text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
-            <span>Espacios Corporativos</span>
-            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-          </a>
-          <a href="${waLink}" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
-            <i class="fa-brands fa-whatsapp text-xs"></i>
-            <span>Cotizar Evento</span>
-          </a>
-        </div>
-      `
-    };
-  }
+  // Italic *text* or _text_
+  text = text.replace(/\*([^\*]+)\*/g, '<em>$1</em>');
+  text = text.replace(/_([^_]+)_/g, '<em>$1</em>');
 
-  // 4. Asesor humano / WhatsApp / Contacto directo
-  if (q.includes('humano') || q.includes('asesor') || q.includes('persona') || q.includes('contacto') || q.includes('telefono') || q.includes('teléfono') || q.includes('llamar') || q.includes('hablar') || q.includes('whatsapp')) {
-    return {
-      text: `¡Por supuesto! Nuestro equipo de atención y conserjería humana está disponible a través de nuestra línea oficial de **WhatsApp** para brindarte atención personalizada al instante.`,
-      actionsHtml: `
-        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
-          <a href="${waLink}" target="_blank" class="px-4 py-2 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-bold inline-flex items-center gap-2 transition-all shadow-sm active:scale-95">
-            <i class="fa-brands fa-whatsapp text-sm"></i>
-            <span>Conectar con Asesor Humano (+58 0424-9169601)</span>
-          </a>
-        </div>
-      `
-    };
-  }
+  // Numbered lists (e.g. "1. Suite Estándar")
+  text = text.replace(/^(\d+)\.\s+(.*?)$/gm, '<div class="flex items-start gap-2 my-1"><span class="font-mono font-bold text-[#F0A800] shrink-0 text-xs">$1.</span><div>$2</div></div>');
 
-  // 5. Day Pass / Piscinas / Pádel / Recreación
-  if (q.includes('day pass') || q.includes('daypass') || q.includes('piscina') || q.includes('padel') || q.includes('pádel') || q.includes('recreac') || q.includes('sol')) {
-    return {
-      text: `Disfruta de una jornada inolvidable con nuestro **Day Pass**:\n\n` +
-            `• **Sede Maturín ($25):** Acceso completo al complejo de piscinas resort, parque acuático con toboganes, tumbonas y canchas de Master Pádel.\n` +
-            `• **Sede El Tigre ($20):** Acceso a piscinas recreativas, solárium y áreas verdes de descanso continuo.`,
-      actionsHtml: `
-        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
-          <a href="vive-karina.html" class="px-3.5 py-1.5 rounded-full bg-[#1E1E1E] hover:bg-black text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
-            <span>Ver ¡Vive Kariña!</span>
-            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-          </a>
-          <a href="${waLink}" target="_blank" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
-            <i class="fa-brands fa-whatsapp text-xs"></i>
-            <span>Reservar Day Pass</span>
-          </a>
-        </div>
-      `
-    };
-  }
+  // Bullet points (- or • or *)
+  text = text.replace(/^[\s]*[-•]\s+(.*?)$/gm, '<div class="flex items-start gap-2 my-0.5"><span class="text-[#F0A800] shrink-0">•</span><div>$1</div></div>');
 
-  // 6. Fundación / Comunidad
-  if (q.includes('fundacion') || q.includes('fundación') || q.includes('comunidad') || q.includes('indigena') || q.includes('indígena') || q.includes('artesania') || q.includes('artesanía') || q.includes('social')) {
-    return {
-      text: `La **Fundación Kariña** es nuestro compromiso vivo con las comunidades ancestrales de Monagas y Anzoátegui, apoyando la educación bilingüe, la preservación cultural y el desarrollo de talleres de cestería y artesanía en fibra de moriche.`,
-      actionsHtml: `
-        <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
-          <a href="fundacion.html" class="px-3.5 py-1.5 rounded-full bg-[#1E1E1E] hover:bg-black text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
-            <span>Conocer Fundación</span>
-            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-          </a>
-        </div>
-      `
-    };
-  }
+  // Paragraph breaks
+  text = text.replace(/\n\n+/g, '<div class="h-2"></div>');
+  text = text.replace(/\n/g, '<br>');
 
-  // 7. Respuesta General / Default
-  return {
-    text: `Con gusto te asisto. En **Hotel Kariña** ofrecemos suites de descanso premium, gastronomía selecta, salones corporativos y piscinas resort en **Maturín**, **El Tigre** y **Punta de Mata**.\n\n` +
-          `Puedes consultarme sobre **disponibilidad de suites**, **restaurantes y bares**, **Day Pass** o **salones para eventos**. ¿Qué información deseas consultar?`,
-    actionsHtml: `
-      <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
-        <a href="suites.html" class="px-3 py-1.5 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-semibold text-[#1E1E1E] inline-flex items-center gap-1 transition-all">
-          <span>Ver Suites</span>
-        </a>
-        <a href="restaurante.html" class="px-3 py-1.5 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-semibold text-[#1E1E1E] inline-flex items-center gap-1 transition-all">
-          <span>Gastronomía</span>
-        </a>
-        <a href="${waLink}" target="_blank" class="px-3 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
-          <i class="fa-brands fa-whatsapp text-xs"></i>
-          <span>Hablar por WhatsApp</span>
-        </a>
-      </div>
-    `
-  };
+  return text;
 }
 
 // Inicializar Arimiña Chat Modal al cargar el DOM
@@ -2483,8 +2447,11 @@ if (document.readyState === 'loading') {
 }
 
 // Exportación global de funciones de Arimiña
+window.getSessionId = getSessionId;
 window.initAriminaChatModal = initAriminaChatModal;
 window.openAriminaChat = openAriminaChat;
 window.closeAriminaChat = closeAriminaChat;
 window.sendAriminaQuickPrompt = sendAriminaQuickPrompt;
 window.sendAriminaUserMessage = sendAriminaUserMessage;
+window.formatAriminaMarkdown = formatAriminaMarkdown;
+window.renderAriminaBotMessage = renderAriminaBotMessage;
