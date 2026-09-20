@@ -2286,10 +2286,6 @@ async function sendAriminaUserMessage(overrideText = null) {
   const welcomeState = document.getElementById('arimina-welcome-state');
   if (welcomeState) welcomeState.style.display = 'none';
 
-  // Remover quick replies previos al enviar nuevo mensaje
-  const prevQuickReplies = document.getElementById('arimina-quick-replies');
-  if (prevQuickReplies) prevQuickReplies.remove();
-
   const feed = document.getElementById('arimina-messages-feed');
   const container = document.getElementById('arimina-messages-container');
   const typing = document.getElementById('arimina-typing-indicator');
@@ -2347,37 +2343,6 @@ function parseMarkdown(md) {
   return formatAriminaMarkdown(md);
 }
 
-function renderQuickReplies(quickReplies) {
-  const chatContainer = document.getElementById('arimina-messages-feed');
-  const scrollContainer = document.getElementById('arimina-messages-container');
-  if (!chatContainer || !quickReplies || !Array.isArray(quickReplies) || quickReplies.length === 0) return;
-
-  const existing = document.getElementById('arimina-quick-replies');
-  if (existing) existing.remove();
-
-  const qrContainer = document.createElement('div');
-  qrContainer.id = 'arimina-quick-replies';
-  qrContainer.className = 'chat-quick-replies flex flex-wrap gap-2 pt-1 pl-11';
-
-  quickReplies.forEach(qr => {
-    const text = typeof qr === 'string' ? qr : (qr.text || qr.title || String(qr));
-    if (!text) return;
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'px-3.5 py-1.5 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-medium text-[#1E1E1E] shadow-sm hover:shadow transition-all active:scale-95 text-left cursor-pointer';
-    btn.textContent = text;
-    btn.onclick = () => sendAriminaUserMessage(text);
-    qrContainer.appendChild(btn);
-  });
-
-  chatContainer.appendChild(qrContainer);
-
-  if (scrollContainer) {
-    scrollContainer.scrollTo({ top: scrollContainer.scrollHeight, behavior: 'smooth' });
-    scrollContainer.scrollTop = scrollContainer.scrollHeight;
-  }
-}
-
 function renderBotRepliesData(data) {
   const chatContainer = document.getElementById('arimina-messages-feed');
   const scrollContainer = document.getElementById('arimina-messages-container');
@@ -2403,73 +2368,117 @@ function renderBotRepliesData(data) {
     return;
   }
 
-  // Iteración sobre data.replies
+  // Extraer textos e imágenes de data.replies
+  const textElements = [];
+  const imageElements = [];
+
   replies.forEach(reply => {
-    // 1. Contenedor principal de la respuesta del bot
-    const botMessageElement = document.createElement('div');
-    botMessageElement.className = 'chat-message chat-message-bot flex items-start gap-3 text-left';
-
-    // Avatar de Arimiña
-    const avatarElement = document.createElement('div');
-    avatarElement.className = 'w-8 h-8 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] text-xs shadow-sm shrink-0 mt-1';
-    avatarElement.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>';
-    botMessageElement.appendChild(avatarElement);
-
-    // Contenedor de la burbuja
-    const bubbleWrapper = document.createElement('div');
-    bubbleWrapper.className = 'bg-white/95 border border-[#E8DFC8] text-[#1E1E1E] rounded-2xl rounded-tl-none p-4 sm:p-5 max-w-[90%] sm:max-w-[80%] text-xs sm:text-sm shadow-sm space-y-3 leading-relaxed';
-
-    // 2. Renderizado del texto (con Markdown si aplica)
-    const replyText = typeof reply === 'string' ? reply : (reply.text || '');
-    if (replyText) {
-      const textElement = document.createElement('div');
-      textElement.className = 'chat-bubble-text arimina-msg-content text-[#1E1E1E] space-y-1';
-      textElement.innerHTML = parseMarkdown(replyText); // o el formateador que use el proyecto
-      bubbleWrapper.appendChild(textElement);
+    if (typeof reply === 'string') {
+      if (reply.trim()) textElements.push(reply.trim());
+    } else if (reply && typeof reply === 'object') {
+      const t = reply.text || reply.output || reply.message || '';
+      if (t && t.trim()) textElements.push(t.trim());
+      if (reply.imageUrl) {
+        imageElements.push({
+          imageUrl: reply.imageUrl,
+          imageTitle: reply.imageTitle || ''
+        });
+      }
     }
-
-    // 3. Renderizado de la imagen si está presente
-    if (reply.imageUrl) {
-      const mediaContainer = document.createElement('div');
-      mediaContainer.className = 'chat-bubble-media';
-      mediaContainer.style.marginTop = '10px';
-      mediaContainer.style.borderRadius = '12px';
-      mediaContainer.style.overflow = 'hidden';
-      mediaContainer.style.border = '1px solid rgba(0,0,0,0.08)';
-
-      mediaContainer.innerHTML = `
-        <a href="${reply.imageUrl}" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none;">
-          <img 
-            src="${reply.imageUrl}" 
-            alt="${reply.imageTitle || 'Fotografía de Hotel Kariña'}" 
-            loading="lazy"
-            style="width: 100%; max-height: 240px; object-fit: cover; display: block; transition: transform 0.2s ease;"
-            onmouseover="this.style.transform='scale(1.02)'"
-            onmouseout="this.style.transform='scale(1)'"
-          />
-          ${reply.imageTitle ? `
-            <div style="padding: 8px 12px; font-size: 12px; background: rgba(0,0,0,0.03); color: #555; font-weight: 500;">
-              ${reply.imageTitle}
-            </div>
-          ` : ''}
-        </a>
-      `;
-      bubbleWrapper.appendChild(mediaContainer);
-    }
-
-    botMessageElement.appendChild(bubbleWrapper);
-
-    // 4. Agregar mensaje al contenedor del chat
-    chatContainer.appendChild(botMessageElement);
   });
 
-  // 5. Renderizar los Quick Replies debajo
-  if (data && (data.quickReplies || data.quick_replies)) {
-    renderQuickReplies(data.quickReplies || data.quick_replies);
+  // 1. Contenedor principal de la respuesta del bot
+  const botMessageElement = document.createElement('div');
+  botMessageElement.className = 'chat-message chat-message-bot flex items-start gap-3 text-left';
+
+  // Avatar de Arimiña
+  const avatarElement = document.createElement('div');
+  avatarElement.className = 'w-8 h-8 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] text-xs shadow-sm shrink-0 mt-1';
+  avatarElement.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>';
+  botMessageElement.appendChild(avatarElement);
+
+  // Contenedor de la burbuja
+  const bubbleWrapper = document.createElement('div');
+  bubbleWrapper.className = 'bg-white/95 border border-[#E8DFC8] text-[#1E1E1E] rounded-2xl rounded-tl-none p-4 sm:p-5 max-w-[90%] sm:max-w-[80%] text-xs sm:text-sm shadow-sm space-y-3 leading-relaxed w-full';
+
+  // 2. Renderizado del texto (con Markdown si aplica)
+  if (textElements.length > 0) {
+    const textElement = document.createElement('div');
+    textElement.className = 'chat-bubble-text arimina-msg-content text-[#1E1E1E] space-y-1';
+    textElement.innerHTML = parseMarkdown(textElements.join('\n\n'));
+    bubbleWrapper.appendChild(textElement);
   }
 
-  // 6. Scroll automático hacia el último mensaje
+  // 3. Renderizado de imágenes: Bento Grid si >= 2 imágenes, Ancho Completo si 1 sola
+  if (imageElements.length === 1) {
+    const single = imageElements[0];
+    const mediaContainer = document.createElement('div');
+    mediaContainer.className = 'chat-bubble-media';
+    mediaContainer.style.marginTop = textElements.length > 0 ? '10px' : '0';
+    mediaContainer.style.borderRadius = '12px';
+    mediaContainer.style.overflow = 'hidden';
+    mediaContainer.style.border = '1px solid rgba(0,0,0,0.08)';
+
+    mediaContainer.innerHTML = `
+      <a href="${single.imageUrl}" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none;">
+        <img 
+          src="${single.imageUrl}" 
+          alt="${single.imageTitle || 'Fotografía de Hotel Kariña'}" 
+          loading="lazy"
+          style="width: 100%; max-height: 240px; object-fit: cover; display: block; transition: transform 0.2s ease;"
+          onmouseover="this.style.transform='scale(1.02)'"
+          onmouseout="this.style.transform='scale(1)'"
+        />
+        ${single.imageTitle ? `
+          <div style="padding: 8px 12px; font-size: 12px; background: rgba(0,0,0,0.03); color: #555; font-weight: 500;">
+            ${single.imageTitle}
+          </div>
+        ` : ''}
+      </a>
+    `;
+    bubbleWrapper.appendChild(mediaContainer);
+  } else if (imageElements.length >= 2) {
+    const bentoGrid = document.createElement('div');
+    let gridClass = 'grid-2';
+    if (imageElements.length === 3) gridClass = 'grid-3';
+    else if (imageElements.length === 4) gridClass = 'grid-4';
+    else if (imageElements.length > 4) gridClass = 'grid-many';
+
+    bentoGrid.className = `chat-bento-grid ${gridClass}`;
+    if (textElements.length > 0) {
+      bentoGrid.style.marginTop = '10px';
+    }
+
+    imageElements.forEach(img => {
+      const itemLink = document.createElement('a');
+      itemLink.href = img.imageUrl;
+      itemLink.target = '_blank';
+      itemLink.rel = 'noopener noreferrer';
+      itemLink.className = 'chat-bento-item';
+      itemLink.innerHTML = `
+        <img 
+          src="${img.imageUrl}" 
+          alt="${img.imageTitle || 'Fotografía de Hotel Kariña'}" 
+          loading="lazy"
+        />
+        ${img.imageTitle ? `
+          <div class="chat-bento-title">${img.imageTitle}</div>
+        ` : ''}
+      `;
+      bentoGrid.appendChild(itemLink);
+    });
+
+    bubbleWrapper.appendChild(bentoGrid);
+  }
+
+  botMessageElement.appendChild(bubbleWrapper);
+
+  // 4. Agregar mensaje al contenedor del chat
+  chatContainer.appendChild(botMessageElement);
+
+  // 5. Scroll automático hacia el último mensaje
   if (scrollContainer) {
+    scrollContainer.scrollTo({ top: scrollContainer.scrollHeight, behavior: 'smooth' });
     scrollContainer.scrollTop = scrollContainer.scrollHeight;
   }
 }
@@ -2556,9 +2565,16 @@ function formatAriminaMarkdown(md) {
   // Escape HTML characters to prevent raw injection
   text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-  // Restore necessary formatted tags for links, bold, italic
   // Markdown links [title](url)
-  text = text.replace(/\[(.*?)\]\((https?:\/\/[^\s\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[#2680BD] underline font-semibold hover:text-[#F0A800] transition-colors">$1</a>');
+  text = text.replace(/\[(.*?)\]\((https?:\/\/[^\s\)]+)\)/g, (match, title, url) => {
+    if (url.includes('wa.me')) {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i><span>${title}</span></a>`;
+    }
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-[#2680BD] underline font-semibold hover:text-[#F0A800] transition-colors">${title}</a>`;
+  });
+
+  // Raw wa.me links
+  text = text.replace(/(^|[\s\n])(https?:\/\/wa\.me\/[^\s<\)]+)/g, '$1<a href="$2" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i><span>Contactar por WhatsApp</span></a>');
 
   // Bold **text**
   text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
@@ -2598,5 +2614,5 @@ window.formatAriminaMarkdown = formatAriminaMarkdown;
 window.parseMarkdown = parseMarkdown;
 window.renderAriminaBotMessage = renderAriminaBotMessage;
 window.renderBotRepliesData = renderBotRepliesData;
-window.renderQuickReplies = renderQuickReplies;
+
 
