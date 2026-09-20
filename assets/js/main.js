@@ -1,4 +1,52 @@
+// ==========================================
+// CONFIGURACIÓN CENTRALIZADA GRUPO KARIÑA
+// ==========================================
+window.KARINA_CONFIG = {
+  contactEmail: "contacto@hoteleskarina.com",
+  social: {
+    instagramGeneral: "https://instagram.com/hoteleskarina",
+    instagramMaturin: "https://instagram.com/hotelkarina.maturin",
+    instagramElTigre: "https://instagram.com/hotelkarina.guanipa",
+    instagramPuntaDeMata: "https://instagram.com/hotelkarina.ptamata",
+    instagramFundacion: "https://instagram.com/fundacionkarina"
+  },
+  sedes: {
+    maturin: {
+      name: "Hotel Kariña Maturín",
+      address: "Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas",
+      phone: "+58 424-9169610",
+      whatsapp: "https://wa.me/584249169610",
+      instagram: "@hotelkarina.maturin",
+      instagramUrl: "https://instagram.com/hotelkarina.maturin"
+    },
+    elTigre: {
+      name: "Hotel Kariña El Tigre",
+      address: "A 100 m del Balancín Tricolor, Av. Ruiz Pineda con Calle 23 de Enero, El Tigre, Anzoátegui",
+      phone: "+58 424-9559213",
+      whatsapp: "https://wa.me/584249559213",
+      instagram: "@hotelkarina.guanipa",
+      instagramUrl: "https://instagram.com/hotelkarina.guanipa"
+    },
+    puntaDeMata: {
+      name: "Hotel Kariña Punta de Mata",
+      address: "Sector Zona Industrial, Ramal 7, Punta de Mata, Monagas",
+      phone: "+58 424-9396445",
+      whatsapp: "https://wa.me/584249396445",
+      instagram: "@hotelkarina.ptamata",
+      instagramUrl: "https://instagram.com/hotelkarina.ptamata"
+    }
+  }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Sincronizar dinámicamente enlaces de email con clase .karina-email-link
+  document.querySelectorAll('.karina-email-link').forEach(link => {
+    link.href = `mailto:${window.KARINA_CONFIG.contactEmail}`;
+    if (!link.hasChildNodes() || link.textContent.includes('@')) {
+      link.textContent = window.KARINA_CONFIG.contactEmail;
+    }
+  });
 
   // ==========================================
   // 0. CONTROL DE HERO VIDEO Y AUTOPLAY MÓVIL
@@ -91,6 +139,44 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
+  // CONFIGURACIÓN CENTRALIZADA DE CONTACTO
+  // ==========================================
+  const KARINA_CONFIG = {
+    contactEmail: 'contacto@hoteleskarina.com',
+    reservasEmail: 'reservas@hoteleskarina.com',
+    corporativoEmail: 'corporativo@hoteleskarina.com',
+    instagramGeneral: '@hoteleskarina',
+    instagramGeneralUrl: 'https://instagram.com/hoteleskarina',
+    sedes: {
+      maturin: {
+        name: 'Hotel Kariña Maturín',
+        phone: '+58 424-9169610',
+        phoneRaw: '+584249169610',
+        address: 'Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas',
+        instagram: '@hotelkarina.maturin',
+        instagramUrl: 'https://instagram.com/hotelkarina.maturin'
+      },
+      elTigre: {
+        name: 'Hotel Kariña El Tigre',
+        phone: '+58 424-9559213',
+        phoneRaw: '+584249559213',
+        address: 'A 100 m del Balancín Tricolor, Av. Ruiz Pineda con Calle 23 de Enero, El Tigre, Anzoátegui',
+        instagram: '@hotelkarina.guanipa',
+        instagramUrl: 'https://instagram.com/hotelkarina.guanipa'
+      },
+      puntaDeMata: {
+        name: 'Hotel Kariña Punta de Mata',
+        phone: '+58 424-9396445',
+        phoneRaw: '+584249396445',
+        address: 'Sector Zona Industrial, Ramal 7, Punta de Mata, Monagas',
+        instagram: '@hotelkarina.ptamata',
+        instagramUrl: 'https://instagram.com/hotelkarina.ptamata'
+      }
+    }
+  };
+  window.KARINA_CONFIG = KARINA_CONFIG;
+
+  // ==========================================
   // 3. CONTROLADORES SECCIÓN SEDES Y MODAL INMERSIVO
   // ==========================================
   const sedesData = [
@@ -98,9 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 0,
       title: "Hotel Kariña Maturín",
       tagline: "El resort insignia del Oriente Venezolano con parque acuático, gastronomía de autor y salones corporativos.",
-      address: "Urbanización Palma Real, Etapa II, Macroparcela MC-30, Maturín, Edo. Monagas.",
+      address: "Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas.",
       mapsUrl: "https://maps.google.com/?cid=370127326196523800",
-      phone: "+58 0424-9169601",
+      phone: "+58 424-9169610",
       images: [
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp", caption: "Área y Fachada Principal Maturín" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-Main.webp", caption: "Piscina Principal Resort Maturín" },
@@ -120,9 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 1,
       title: "Kariña Punta de Mata",
       tagline: "Un oasis de privacidad estratégica y tranquilidad rodeado de áreas verdes, perfecto para ejecutivos.",
-      address: "Sector Zona Industrial, Ramal 7, al lado del Depósito Empresas Polar, Punta de Mata, Edo. Monagas.",
+      address: "Sector Zona Industrial, Ramal 7, Punta de Mata, Monagas.",
       mapsUrl: "https://maps.google.com/?cid=9643206305083018040",
-      phone: "+58 0424-9169602",
+      phone: "+58 424-9396445",
       images: [
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/FACHADA-PRINCIPAL-PUNTADEMATA.webp", caption: "Fachada Principal Punta de Mata" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-en-Punta-de-Mata.webp", caption: "Piscina Central y Solárium" },
@@ -138,9 +224,9 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 2,
       title: "Hotel Kariña El Tigre",
       tagline: "Centro neurálgico para eventos corporativos, banquetes y alojamiento de alta gama en la Mesa de Guanipa.",
-      address: "Avenida Ruiz Pineda, a 100mts del Balancín Tricolor, cruce con Calle 23 de Enero, El Tigre, Edo. Anzoátegui.",
+      address: "A 100 m del Balancín Tricolor, Av. Ruiz Pineda con Calle 23 de Enero, El Tigre, Anzoátegui.",
       mapsUrl: "https://maps.google.com/?cid=12057092587787417265",
-      phone: "+58 0424-9169603",
+      phone: "+58 424-9559213",
       images: [
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Piscina-Principal-El-Tigre.webp", caption: "Piscina Principal" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Fachada-Atardecer-Guanipa.webp", caption: "Fachada Principal al Atardecer" },
@@ -1129,38 +1215,89 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // 2. Selector de Sede en Página de Contacto
-  const contactoSedesData = [
-    {
+  const contactoSedesData = {
+    'maturin': {
       title: "Sede Maturín",
-      address: "Urbanización Palma Real, Etapa II, Macroparcela MC-30, Maturín, Edo. Monagas.",
-      phone: "+58 (0291) 640-1234",
-      ws: "+58 (0424) 916-9601",
+      name: "Hotel Kariña Maturín",
+      address: "Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas",
+      phone: "+58 424-9169610",
+      phoneRaw: "+584249169610",
+      ws: "+58 424-9169610",
+      instagram: "@hotelkarina.maturin",
+      instagramUrl: "https://instagram.com/hotelkarina.maturin",
       mapsUrl: "https://maps.google.com/?cid=370127326196523800",
-      img: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80",
-      badge: "Maturín"
-    },
-    {
-      title: "Sede Punta de Mata",
-      address: "Sector Zona Industrial, Ramal 7, al lado del Depósito Empresas Polar, Punta de Mata, Edo. Monagas.",
-      phone: "+58 (0292) 331-5678",
-      ws: "+58 (0424) 916-9602",
-      mapsUrl: "https://maps.google.com/?cid=9643206305083018040",
       img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
-      badge: "Punta de Mata"
+      badge: "Hotel y Club Maturín",
+      tagline: "Urbanización Palma Real, Maturín, Estado Monagas."
     },
-    {
+    'punta-de-mata': {
+      title: "Sede Punta de Mata",
+      name: "Hotel Kariña Punta de Mata",
+      address: "Sector Zona Industrial, Ramal 7, Punta de Mata, Monagas",
+      phone: "+58 424-9396445",
+      phoneRaw: "+584249396445",
+      ws: "+58 424-9396445",
+      instagram: "@hotelkarina.ptamata",
+      instagramUrl: "https://instagram.com/hotelkarina.ptamata",
+      mapsUrl: "https://maps.google.com/?cid=9643206305083018040",
+      img: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80",
+      badge: "Hotel Corporativo Punta de Mata",
+      tagline: "Sector Zona Industrial, Ramal 7, Punta de Mata, Estado Monagas."
+    },
+    'el-tigre': {
       title: "Sede El Tigre",
-      address: "Avenida Ruiz Pineda, a 100mts del Balancín Tricolor, cruce con Calle 23 de Enero, El Tigre, Edo. Anzoátegui.",
-      phone: "+58 (0283) 241-9012",
-      ws: "+58 (0424) 916-9603",
+      name: "Hotel Kariña El Tigre",
+      address: "A 100 m del Balancín Tricolor, Av. Ruiz Pineda con Calle 23 de Enero, El Tigre, Anzoátegui",
+      phone: "+58 424-9559213",
+      phoneRaw: "+584249559213",
+      ws: "+58 424-9559213",
+      instagram: "@hotelkarina.guanipa",
+      instagramUrl: "https://instagram.com/hotelkarina.guanipa",
       mapsUrl: "https://maps.google.com/?cid=12057092587787417265",
       img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
-      badge: "El Tigre"
+      badge: "Hotel y Restaurante El Tigre",
+      tagline: "A 100 m del Balancín Tricolor, El Tigre, Estado Anzoátegui."
     }
+  };
+
+  const contactoSedesArray = [
+    contactoSedesData['maturin'],
+    contactoSedesData['punta-de-mata'],
+    contactoSedesData['el-tigre']
   ];
 
+  window.selectContactSede = function(sedeKey, btnElement) {
+    const data = contactoSedesData[sedeKey];
+    if (!data) return;
+
+    document.querySelectorAll('.contact-sede-pill').forEach(btn => {
+      btn.className = "contact-sede-pill flex-1 py-2 px-3 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal transition-all";
+    });
+    if (btnElement) {
+      btnElement.className = "contact-sede-pill flex-1 py-2 px-3 rounded-full text-xs font-bold bg-white text-karina-charcoal shadow-xs transition-all";
+    }
+
+    const titleEl = document.getElementById('contacto-sede-title');
+    const nameEl = document.getElementById('contacto-sede-name');
+    const addrEl = document.getElementById('contacto-sede-address');
+    const phoneEl = document.getElementById('contacto-sede-phone');
+    const wsEl = document.getElementById('contacto-sede-ws');
+    const badgeEl = document.getElementById('contacto-sede-badge');
+    const taglineEl = document.getElementById('contacto-sede-tagline');
+    const imgEl = document.getElementById('contacto-sede-img');
+
+    if (titleEl) titleEl.textContent = data.title;
+    if (nameEl) nameEl.textContent = data.name;
+    if (addrEl) addrEl.textContent = data.address;
+    if (phoneEl) phoneEl.textContent = data.phone;
+    if (wsEl) wsEl.textContent = data.ws;
+    if (badgeEl) badgeEl.textContent = data.badge;
+    if (taglineEl) taglineEl.textContent = data.tagline;
+    if (imgEl) imgEl.src = data.img;
+  };
+
   window.switchContactoSede = function(index) {
-    const data = contactoSedesData[index];
+    const data = contactoSedesArray[index];
     if (!data) return;
 
     for (let i = 0; i < 3; i++) {
@@ -1174,32 +1311,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    const wrapper = document.getElementById('contacto-sede-wrapper');
-    if (wrapper) wrapper.classList.add('is-changing');
+    const titleEl = document.getElementById('contacto-sede-title');
+    const nameEl = document.getElementById('contacto-sede-name');
+    const addrEl = document.getElementById('contacto-sede-address');
+    const phoneEl = document.getElementById('contacto-sede-phone');
+    const wsEl = document.getElementById('contacto-sede-ws');
+    const badgeEl = document.getElementById('contacto-sede-badge') || document.getElementById('contacto-map-badge');
+    const taglineEl = document.getElementById('contacto-sede-tagline');
+    const imgEl = document.getElementById('contacto-sede-img') || document.getElementById('contacto-map-img');
+    const mapLinkEl = document.getElementById('contacto-map-direct-link');
+    const btnDirEl = document.getElementById('contacto-btn-directions');
 
-    setTimeout(() => {
-      const titleEl = document.getElementById('contacto-sede-title');
-      const addrEl = document.getElementById('contacto-sede-address');
-      const phoneEl = document.getElementById('contacto-sede-phone');
-      const wsEl = document.getElementById('contacto-sede-ws');
-      const badgeEl = document.getElementById('contacto-map-badge');
-      const addrShortEl = document.getElementById('contacto-map-address-short');
-      const mapImgEl = document.getElementById('contacto-map-img');
-      const mapLinkEl = document.getElementById('contacto-map-direct-link');
-      const btnDirEl = document.getElementById('contacto-btn-directions');
-
-      if (titleEl) titleEl.textContent = data.title;
-      if (addrEl) addrEl.textContent = data.address;
-      if (phoneEl) phoneEl.textContent = data.phone;
-      if (wsEl) wsEl.textContent = data.ws;
-      if (badgeEl) badgeEl.textContent = data.badge;
-      if (addrShortEl) addrShortEl.textContent = data.address;
-      if (mapImgEl) mapImgEl.src = data.img;
-      if (mapLinkEl) mapLinkEl.href = data.mapsUrl;
-      if (btnDirEl) btnDirEl.href = data.mapsUrl;
-
-      if (wrapper) wrapper.classList.remove('is-changing');
-    }, 120);
+    if (titleEl) titleEl.textContent = data.title;
+    if (nameEl) nameEl.textContent = data.name;
+    if (addrEl) addrEl.textContent = data.address;
+    if (phoneEl) phoneEl.textContent = data.phone;
+    if (wsEl) wsEl.textContent = data.ws;
+    if (badgeEl) badgeEl.textContent = data.badge;
+    if (taglineEl) taglineEl.textContent = data.tagline;
+    if (imgEl) imgEl.src = data.img;
+    if (mapLinkEl) mapLinkEl.href = data.mapsUrl;
+    if (btnDirEl) btnDirEl.href = data.mapsUrl;
   };
 
   // Handlers para formularios
@@ -1239,7 +1371,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Restaurante 283",
       sede: "Hotel Kariña El Tigre • Salón y Terraza Guanipa",
       schedule: "Lun a Dom • 7:00 AM – 10:30 PM",
-      phone: "5804249169603",
+      phone: "584249559213",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp",
       categories: [
         {
@@ -1279,7 +1411,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Two Chefs Restaurant",
       sede: "Hotel Kariña Punta de Mata • Salón Principal y Terraza",
       schedule: "Lun a Dom • 6:30 AM – 10:00 PM",
-      phone: "5804249169602",
+      phone: "584249396445",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
       categories: [
         {
@@ -1319,7 +1451,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Two Chefs Restaurant",
       sede: "Hotel Kariña Punta de Mata • Salón Principal y Terraza",
       schedule: "Lun a Dom • 6:30 AM – 10:00 PM",
-      phone: "5804249169602",
+      phone: "584249396445",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
       categories: [
         {
@@ -1359,7 +1491,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Moriche Restaurant",
       sede: "Hotel Kariña Maturín • Salón Insignia",
       schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
-      phone: "5804249169601",
+      phone: "584249169610",
       heroImg: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
       categories: [
         {
@@ -1391,7 +1523,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Oh My Bar Bistro",
       sede: "Hotel Kariña Maturín • Complejo Master Pádel",
       schedule: "Mié a Dom • 5:00 PM – 2:00 AM",
-      phone: "5804249169601",
+      phone: "584249169610",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp",
       categories: [
         {
@@ -1425,7 +1557,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Propuestas Aliadas Complejo Palma Real",
       sede: "Maturín • Complejo Palma Real",
       schedule: "Mar a Dom • 8:00 AM – 9:00 PM",
-      phone: "5804249169601",
+      phone: "584249169610",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp",
       categories: [
         {
@@ -1770,7 +1902,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const total = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
     const text = `Hola Arimiña-IA, deseo realizar la siguiente reserva/pedido:%0A%0A${orderSummary}%0A%0ATotal Estimado: $${total}`;
 
-    window.open(`https://wa.me/5804249169601?text=${text}`, '_blank');
+    window.open(`https://wa.me/584249169610?text=${text}`, '_blank');
   };
 
   window.consultAIAssistant = function() {
@@ -1986,7 +2118,7 @@ function requestItineraryChange() {
   if (statusElem) {
     statusElem.textContent = 'Arimiña-IA: Te he abierto el canal de WhatsApp para reprogramar tu masaje o cena de hoy.';
   }
-  window.open('https://wa.me/5804249169601?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reprogramar%20mi%20itinerario%20de%20hoy%20en%20la%20suite%20403', '_blank');
+  window.open('https://wa.me/584249169610?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reprogramar%20mi%20itinerario%20de%20hoy%20en%20la%20suite%20403', '_blank');
 }
 
 function triggerQuickAction(actionName) {
@@ -2013,7 +2145,7 @@ window.triggerQuickAction = triggerQuickAction;
 function solicitarServicio(servicio) {
   const token = document.getElementById('display-token')?.textContent || 'KD-78291';
   const mensaje = `Hola Arimiña-IA, deseo solicitar el servicio de *${servicio}* para mi reserva con Token Odoo: *${token}*.`;
-  window.open(`https://wa.me/5804249169601?text=${encodeURIComponent(mensaje)}`, '_blank');
+  window.open(`https://wa.me/584249169610?text=${encodeURIComponent(mensaje)}`, '_blank');
 }
 
 function seleccionarHora(btn) {
@@ -2046,14 +2178,14 @@ function enviarAriminaDashboard() {
   if (input && input.value.trim() !== '') {
     const query = input.value.trim();
     const token = 'KD-78291';
-    window.open(`https://wa.me/5804249169601?text=${encodeURIComponent(`[Token Odoo: ${token}] Solicitud Huésped: ${query}`)}`, '_blank');
+    window.open(`https://wa.me/584249169610?text=${encodeURIComponent(`[Token Odoo: ${token}] Solicitud Huésped: ${query}`)}`, '_blank');
     input.value = '';
   }
 }
 
 function accionRapida(accion) {
   const token = 'KD-78291';
-  window.open(`https://wa.me/5804249169601?text=${encodeURIComponent(`[Token: ${token}] Solicitud rápida: ${accion}`)}`, '_blank');
+  window.open(`https://wa.me/584249169610?text=${encodeURIComponent(`[Token: ${token}] Solicitud rápida: ${accion}`)}`, '_blank');
 }
 
 // Exportación a objeto window para llamadas inline
@@ -2514,12 +2646,12 @@ function renderAriminaBotMessage(replyOrText, isError = false) {
     aiBubble.className = 'chat-message chat-message-bot flex items-start gap-3 text-left';
 
     const waEncoded = encodeURIComponent('Hola, deseo consultar con un asesor de Hotel Kariña');
-    const waLink = `https://wa.me/5804249169601?text=${waEncoded}`;
+    const waLink = `https://wa.me/584249169610?text=${waEncoded}`;
     const actionsHtml = `
       <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
         <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
           <i class="fa-brands fa-whatsapp text-xs"></i>
-          <span>Contactar por WhatsApp (+58 0424-9169601)</span>
+          <span>Contactar por WhatsApp (+58 424-9169610)</span>
         </a>
       </div>
     `;
