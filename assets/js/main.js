@@ -2300,46 +2300,6 @@ document.addEventListener('DOMContentLoaded', () => {
           ]
         }
       ]
-    },
-    'club-palma-real': {
-      name: "Propuestas Aliadas Complejo Palma Real",
-      sede: "Maturín • Complejo Palma Real",
-      schedule: "Mar a Dom • 8:00 AM – 9:00 PM",
-      phone: "584249169610",
-      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp",
-      categories: [
-        {
-          name: "Parrillera al Aire Libre",
-          items: [
-            { name: "Parrillada Mixta Familiar Palma Real", desc: "Punta trasera, solomo, chorizo artesanal, chinchurria, yuca frita, guasacaca y ensalada rayada.", price: "$32", tag: "Familiar" },
-            { name: "Hamburguesa Monster Club House", desc: "Doble carne a la brasa, queso fundido, tocineta ahumada, huevo frito y papas rústicas.", price: "$14", tag: "Favorito" },
-            { name: "Costillitas BBQ Glaseadas", desc: "Costillas de cerdo en cocción lenta bañadas en salsa barbacoa de miel y ají.", price: "$18", tag: "Brasas" }
-          ]
-        },
-        {
-          name: "Sushi Bar Aliado Palma Real",
-          items: [
-            { name: "Spicy Tuna Roll (10 piezas)", desc: "Atún fresco marinado en salsa picante, aguacate, sésamo y topping de wakame.", price: "$14", tag: "Sushi" },
-            { name: "Ebi Tempura Roll (10 piezas)", desc: "Langostino crocante tempurizado, queso crema, plátano maduro y salsa fuji dulce.", price: "$15", tag: "Tempura" },
-            { name: "Poke Bowl Tropical de Salmón", desc: "Base de arroz de sushi, salmón fresco, edamames, mango, aguacate y aderezo ponzu.", price: "$16", tag: "Bowl Fit" }
-          ]
-        },
-        {
-          name: "Snacks de Piscina",
-          items: [
-            { name: "Tequeños Playeros Palma Real (8 und)", desc: "Crujientes dedos de queso servidos al borde de la piscina con salsas de la casa.", price: "$8", tag: "Piscina" },
-            { name: "Papas Rústicas con Queso Cheddar y Tocineta", desc: "Papas con piel crocantes bañadas en salsa de queso fundido y tocineta picada.", price: "$7", tag: "Snack" },
-            { name: "Helados y Paletas Artesanales", desc: "Sabores frutales y cremosos ideales para refrescar la tarde.", price: "$4 - $6", tag: "Postre" }
-          ]
-        },
-        {
-          name: "Cafetería, Batidos y Cócteles",
-          items: [
-            { name: "Batidos Naturales y Frappés de Fruta", desc: "Fresas, parchita, mango, piña o melón bien granizados.", price: "$4", tag: "Granizado" },
-            { name: "Piña Colada y Coco Loco del Club", desc: "Servidos en copa alta con sombrillita y licor de coco tropical.", price: "$9", tag: "Tropical" }
-          ]
-        }
-      ]
     }
   };
 
