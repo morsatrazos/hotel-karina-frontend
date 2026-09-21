@@ -1107,11 +1107,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.inquireSuiteWithAI = function(customPrompt) {
-    if (customPrompt && typeof customPrompt === 'string') {
-      if (typeof window.closeSuiteModal === 'function') window.closeSuiteModal();
-      if (typeof window.openAriminaChat === 'function') window.openAriminaChat(customPrompt);
-    } else {
-      window.requestSuiteReservation();
+    if (typeof window.closeSuiteModal === 'function') window.closeSuiteModal();
+    const prompt = (customPrompt && typeof customPrompt === 'string') ? customPrompt : 'Hola, deseo cotizar una estadía.';
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(prompt);
     }
   };
 
