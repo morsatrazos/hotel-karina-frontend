@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sedesData = [
     {
       id: 0,
+      name: "Maturín",
       title: "Hotel Kariña Maturín",
       tagline: "El resort insignia del Oriente Venezolano con parque acuático, gastronomía de autor y salones corporativos.",
       address: "Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas.",
@@ -209,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 1,
+      name: "Punta de Mata",
       title: "Kariña Punta de Mata",
       tagline: "Un oasis de privacidad estratégica y tranquilidad rodeado de áreas verdes, perfecto para ejecutivos.",
       address: "Sector Zona Industrial, Ramal 7, Punta de Mata, Monagas.",
@@ -227,6 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 2,
+      name: "El Tigre",
       title: "Hotel Kariña El Tigre",
       tagline: "Centro neurálgico para eventos corporativos, banquetes y alojamiento de alta gama en la Mesa de Guanipa.",
       address: "A 100 m del Balancín Tricolor, Av. Ruiz Pineda con Calle 23 de Enero, El Tigre, Anzoátegui.",
@@ -404,6 +407,24 @@ document.addEventListener('DOMContentLoaded', () => {
   window.closeSedeModalOnBackdrop = function(e) {
     if (e.target.id === 'sede-modal') {
       closeSedeModal();
+    }
+  };
+
+  window.consultarTarifasSedeModal = function() {
+    const sede = sedesData[currentModalSede] || sedesData[0];
+    const sedeName = sede.name || (sede.id === 0 ? 'Maturín' : (sede.id === 1 ? 'Punta de Mata' : 'El Tigre'));
+    closeSedeModal();
+    const message = `Hola, deseo consultar las tarifas y suites para la sede ${sedeName}.`;
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(message, { sede: sedeName });
+    }
+  };
+
+  window.consultarTarifasSede = function(sedeName) {
+    if (typeof closeSedeModal === 'function') closeSedeModal();
+    const message = `Hola, deseo consultar las tarifas y suites para la sede ${sedeName}.`;
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(message, { sede: sedeName });
     }
   };
 
@@ -3383,5 +3404,8 @@ window.setCorporateDuration = setCorporateDuration;
 window.setCorporateBreakfast = setCorporateBreakfast;
 window.renderCorporateGrid = renderCorporateGrid;
 window.requestCorporateQuote = requestCorporateQuote;
+window.consultarTarifasSedeModal = consultarTarifasSedeModal;
+window.consultarTarifasSede = consultarTarifasSede;
+
 
 

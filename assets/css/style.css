@@ -908,3 +908,19 @@ input:checked + .slider-round:before {
 .overscroll-contain {
   overscroll-behavior: contain;
 }
+
+/* ===================================================
+   BARRA FLOTANTE DE ARIMIÑA CON SAFE AREA (iOS/Safari/Android)
+   =================================================== */
+.arimina-floating-bar {
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
+  max-width: 92vw;
+}
+
+@media (min-width: 768px) {
+  .arimina-floating-bar {
+    bottom: 2rem !important;
+    max-width: none;
+  }
+}
+
