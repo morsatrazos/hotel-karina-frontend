@@ -194,10 +194,10 @@
 
       </nav>
 
-      <!-- BLOQUE DERECHO: Selector de Idioma + Botón Píldora Shimmer -->
+      <!-- BLOQUE DERECHO: Botón Píldora Shimmer Cotizar Estadía -->
       <div class="flex items-center gap-4 sm:gap-5">
-        <button onclick="inquireSuiteWithAI()" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-karina-charcoal font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
-          <span>Reserva</span>
+        <button onclick="inquireSuiteWithAI()" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-karina-charcoal font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm cursor-pointer">
+          <span>Cotizar Estadía</span>
           <i class="fa-solid fa-sparkles text-[10px]"></i>
         </button>
       </div>
@@ -251,7 +251,7 @@
       <div class="border-b border-white/10 pb-4">
         <a href="vive-karina.html" onclick="document.getElementById('close-menu-btn').click()" class="flex items-baseline gap-4 group">
           <span class="text-xs font-mono text-white/40">04</span>
-          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General</span>
+          <span class="text-2xl sm:text-3xl font-light group-hover:text-karina-mustard transition-colors">Galería General (¡Vive Kariña!)</span>
         </a>
       </div>
 
@@ -278,7 +278,7 @@
     </div>
 
     <div class="max-w-xl mx-auto w-full pt-4 space-y-3">
-      <button onclick="inquireSuiteWithAI()" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
+      <button onclick="if(typeof closeMenu === 'function') closeMenu(); openAriminaChat();" class="w-full py-3.5 px-6 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all">
         <i class="fa-solid fa-sparkles text-[#F0A800]"></i>
         <span>Hablar con Arimiña-IA</span>
       </button>
@@ -1016,15 +1016,44 @@
 
   </div>
 
-  <!-- Cápsula Flotante Discreta: Idioma -->
-  <!-- Cápsula Flotante Discreta: Arimiña IA + Idioma -->
-  <div class="fixed bottom-6 right-6 z-40 flex items-center gap-2">
-    <button onclick="openAriminaChat()" class="flex items-center gap-2 bg-[#1E1E1E] hover:bg-black text-white px-4 py-2 rounded-full border border-[#FFD573]/50 shadow-xl text-xs font-bold transition-all active:scale-95 group animate-ai-glow cursor-pointer" aria-label="Abrir asistente Arimiña">
-      <i class="fa-solid fa-wand-magic-sparkles text-[#FFD573] group-hover:rotate-12 transition-transform"></i>
-      <span>Arimiña ✨</span>
-    </button>
-    <div class="flex items-center bg-white/90 backdrop-blur-md px-3 py-2 rounded-full border border-[#E8DFC8] shadow-lg text-xs font-bold text-[#1E1E1E]">
-      <button onclick="if(window.toggleLanguage) toggleLanguage()" class="text-[#726B63] hover:text-[#1E1E1E] transition font-semibold"><span>ES/EN</span></button>
+  <!-- ========================================== -->
+  <!-- LANZADOR FLOTANTE CENTRAL DE ARIMIÑA CON GLOW AMBIENTAL -->
+  <!-- ========================================== -->
+  <div class="fixed bottom-5 md:bottom-8 left-1/2 -translate-x-1/2 z-40 max-w-[95vw] sm:max-w-none">
+    <div class="relative group">
+      <!-- Halo Ambiental Glow Pulsante -->
+      <div class="absolute -inset-0.5 rounded-full bg-gradient-to-r from-amber-400 via-[#F0A800] to-amber-600 opacity-40 group-hover:opacity-75 blur-md animate-pulse pointer-events-none transition-opacity duration-300"></div>
+      
+      <!-- Cápsula Central Cristalina -->
+      <div onclick="openAriminaChat()" class="relative backdrop-blur-xl bg-white/95 border border-amber-500/40 shadow-2xl rounded-full px-4 sm:px-5 py-2 sm:py-2.5 flex items-center gap-2.5 sm:gap-3.5 cursor-pointer hover:bg-white hover:scale-[1.02] active:scale-95 transition-all select-none">
+        
+        <!-- Avatar Arimiña con Indicador de Estado Verde -->
+        <div class="relative flex items-center justify-center shrink-0">
+          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] shadow-xs">
+            <i class="fa-solid fa-wand-magic-sparkles text-[11px] sm:text-xs text-[#1E1E1E] group-hover:rotate-12 transition-transform"></i>
+          </div>
+          <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+        </div>
+
+        <!-- Texto de Invitación -->
+        <div class="text-left flex flex-col sm:flex-row sm:items-center sm:gap-1.5 min-w-0">
+          <span class="text-xs sm:text-sm font-bold text-karina-charcoal tracking-tight group-hover:text-karina-mustard transition-colors truncate">
+            ¿Dudas sobre suites o sedes?
+          </span>
+          <span class="text-[11px] sm:text-xs font-semibold text-karina-charcoal/80 hidden xs:inline sm:inline">
+            Pregúntale a Arimiña ✨
+          </span>
+        </div>
+
+        <!-- Separador Vertical Discreto -->
+        <div class="h-4 sm:h-5 w-[1px] bg-black/15 shrink-0 mx-0.5"></div>
+
+        <!-- Selector de Idioma -->
+        <button onclick="event.stopPropagation(); if(window.toggleLanguage) toggleLanguage();" class="text-[10px] sm:text-xs font-mono font-extrabold text-[#726B63] hover:text-[#1E1E1E] px-1.5 py-0.5 rounded-full hover:bg-black/5 transition-colors shrink-0" aria-label="Cambiar idioma">
+          <span>ES/EN</span>
+        </button>
+
+      </div>
     </div>
   </div>
 </body>

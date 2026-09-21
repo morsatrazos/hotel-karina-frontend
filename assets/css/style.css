@@ -892,12 +892,19 @@ input:checked + .slider-round:before {
   background: rgba(0, 0, 0, 0.02);
 }
 
+/* ===================================================
+   MOBILE KEYBOARD & 100dvh SAFE CHAT STYLES (iOS/Android)
+   =================================================== */
+#modal-arimina {
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+}
 
+#modal-arimina textarea,
+#modal-arimina input {
+  font-size: 16px !important; /* Previene auto-zoom en iOS Safari */
+}
 
-
-
-
-
-
-
-
+.overscroll-contain {
+  overscroll-behavior: contain;
+}

@@ -2243,11 +2243,11 @@ function initAriminaChatModal() {
   if (document.getElementById('modal-arimina')) return;
 
   const modalHtml = `
-  <div id="modal-arimina" class="fixed inset-0 z-[100] bg-[#FAF8F5]/95 backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none flex flex-col justify-between" role="dialog" aria-modal="true" aria-labelledby="arimina-header-title">
-    <div class="max-w-4xl mx-auto w-full h-full flex flex-col py-4 sm:py-6 px-4 sm:px-6 relative">
+  <div id="modal-arimina" class="fixed inset-0 z-[100] h-[100dvh] max-h-[100dvh] w-full bg-[#FAF8F5]/95 backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none flex flex-col overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="arimina-header-title">
+    <div class="max-w-4xl mx-auto w-full h-[100dvh] max-h-[100dvh] flex flex-col py-3 sm:py-6 px-3 sm:px-6 relative overflow-hidden">
       
       <!-- Cabecera Minimalista del Asistente -->
-      <header class="flex items-center justify-between pb-4 border-b border-[#E8DFC8]/60 shrink-0">
+      <header class="flex items-center justify-between pb-3 sm:pb-4 border-b border-[#E8DFC8]/60 shrink-0">
         <div class="flex items-center gap-3">
           <div class="relative w-10 h-10 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] shadow-md shrink-0">
             <i class="fa-solid fa-wand-magic-sparkles text-sm animate-pulse"></i>
@@ -2269,45 +2269,22 @@ function initAriminaChatModal() {
         </button>
       </header>
 
-      <!-- Área Conversacional Central con Scroll Suave -->
-      <main id="arimina-messages-container" class="flex-1 overflow-y-auto py-6 space-y-4 no-scrollbar scroll-smooth pr-1">
+      <!-- Área Conversacional Central con Scroll Suave y overscroll-contain -->
+      <main id="arimina-messages-container" class="flex-1 overflow-y-auto overscroll-contain py-4 sm:py-6 space-y-4 no-scrollbar scroll-smooth pr-1">
         
-        <!-- Welcome / Empty State Inicial -->
-        <div id="arimina-welcome-state" class="text-center py-6 sm:py-10 space-y-6 max-w-xl mx-auto">
+        <!-- Welcome / Empty State Inicial Limpio y Conversacional -->
+        <div id="arimina-welcome-state" class="text-center py-8 sm:py-12 space-y-5 max-w-xl mx-auto my-auto">
           <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-3xl bg-gradient-to-tr from-[#FFF3D6] to-[#FFE8A3] border border-[#F0A800]/30 shadow-lg flex items-center justify-center animate-ai-glow">
             <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Arimiña Asistente" class="w-10 sm:w-12 h-auto object-contain">
           </div>
 
-          <div class="space-y-2">
+          <div class="space-y-2.5 px-2">
             <h2 class="text-xl sm:text-2xl font-light text-[#1E1E1E]">
               ¡Hola! Soy <strong class="font-extrabold text-karina-charcoal">Arimiña</strong> ✨
             </h2>
             <p class="text-xs sm:text-sm text-[#726B63] font-light leading-relaxed max-w-md mx-auto">
-              Tu conserje virtual con inteligencia artificial para asesorarte con reservas, suites, gastronomía, eventos y servicios en todas nuestras sedes.
+              Tu conserje virtual para asesorarte con información sobre nuestras suites, restaurantes, eventos y servicios en Maturín, El Tigre y Punta de Mata. ¿En qué puedo ayudarte hoy?
             </p>
-          </div>
-
-          <!-- Sugerencias Rápidas en Pills Interactivos -->
-          <div class="pt-2 space-y-2">
-            <p class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#726B63]">Sugerencias de consulta rápida:</p>
-            <div class="flex flex-wrap justify-center gap-2 pt-1">
-              <button onclick="sendAriminaQuickPrompt('Ver suites disponibles en Maturín')" class="px-4 py-2 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-medium text-[#1E1E1E] shadow-sm hover:shadow transition-all active:scale-95 text-left flex items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-bed text-[#F0A800] text-[11px]"></i>
-                <span>Ver suites disponibles en Maturín</span>
-              </button>
-              <button onclick="sendAriminaQuickPrompt('Conocer la gastronomía de Moriche y Oh My Bar')" class="px-4 py-2 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-medium text-[#1E1E1E] shadow-sm hover:shadow transition-all active:scale-95 text-left flex items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-utensils text-[#EB8C84] text-[11px]"></i>
-                <span>Conocer la gastronomía de Moriche y Oh My Bar</span>
-              </button>
-              <button onclick="sendAriminaQuickPrompt('Planes corporativos en El Tigre y Punta de Mata')" class="px-4 py-2 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-medium text-[#1E1E1E] shadow-sm hover:shadow transition-all active:scale-95 text-left flex items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-briefcase text-[#2680BD] text-[11px]"></i>
-                <span>Planes corporativos en El Tigre y Punta de Mata</span>
-              </button>
-              <button onclick="sendAriminaQuickPrompt('Hablar directamente con un asesor humano')" class="px-4 py-2 rounded-full bg-white hover:bg-[#E8DFC8]/40 border border-[#E8DFC8] text-xs font-medium text-[#1E1E1E] shadow-sm hover:shadow transition-all active:scale-95 text-left flex items-center gap-2 cursor-pointer">
-                <i class="fa-brands fa-whatsapp text-emerald-600 text-xs"></i>
-                <span>Hablar directamente con un asesor humano</span>
-              </button>
-            </div>
           </div>
         </div>
 
@@ -2329,15 +2306,15 @@ function initAriminaChatModal() {
 
       </main>
 
-      <!-- Input Bar Estilo Gemini / Claude (Flotante Inferior) -->
-      <footer class="pt-2 shrink-0">
+      <!-- Input Bar Estilo Gemini / Claude (Flotante Inferior - shrink-0) -->
+      <footer class="pt-2 pb-2 sm:pb-0 shrink-0">
         <div class="max-w-3xl mx-auto w-full bg-white/95 backdrop-blur-xl border border-[#E8DFC8] rounded-3xl p-2 sm:p-2.5 shadow-xl transition-all focus-within:ring-2 focus-within:ring-[#F0A800]/50 focus-within:border-[#F0A800]">
           <div class="flex items-end gap-2">
             <textarea 
               id="arimina-chat-input" 
               rows="1" 
-              placeholder="Pregúntale a Arimiña sobre suites, gastronomía o reservas..." 
-              class="flex-1 bg-transparent border-none outline-none resize-none px-3 py-2 text-xs sm:text-sm text-[#1E1E1E] placeholder:text-[#726B63]/60 focus:ring-0 max-h-32 leading-relaxed"
+              placeholder="Escribe tu consulta aquí (ej. tarifas de suites, restaurantes)..." 
+              class="flex-1 bg-transparent border-none outline-none resize-none px-3 py-2 text-base text-[#1E1E1E] placeholder:text-[#726B63]/60 focus:ring-0 max-h-32 leading-relaxed"
             ></textarea>
             
             <button 
@@ -2350,7 +2327,7 @@ function initAriminaChatModal() {
             </button>
           </div>
         </div>
-        <p class="text-[10px] text-center text-[#726B63]/70 font-light mt-2 pb-1">
+        <p class="text-[10px] text-center text-[#726B63]/70 font-light mt-1.5 pb-0.5">
           Arimiña utiliza IA para ayudarte a planificar tu estancia en Hotel Kariña.
         </p>
       </footer>
@@ -2372,6 +2349,17 @@ function initAriminaChatModal() {
         e.preventDefault();
         sendAriminaUserMessage();
       }
+    });
+    input.addEventListener('focus', function() {
+      setTimeout(() => {
+        const container = document.getElementById('arimina-messages-container');
+        const feed = document.getElementById('arimina-messages-feed');
+        if (feed && feed.lastElementChild) {
+          feed.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        } else if (container) {
+          container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+        }
+      }, 250);
     });
   }
 
@@ -2403,6 +2391,7 @@ function openAriminaChat(initialPrompt = '') {
     modal.classList.remove('opacity-0', 'pointer-events-none');
     modal.classList.add('opacity-100', 'pointer-events-auto');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
 
     const input = document.getElementById('arimina-chat-input');
     setTimeout(() => {
@@ -2420,6 +2409,7 @@ function closeAriminaChat() {
     modal.classList.add('opacity-0', 'pointer-events-none');
     modal.classList.remove('opacity-100', 'pointer-events-auto');
     document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 }
 
