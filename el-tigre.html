@@ -588,18 +588,18 @@
       <div class="text-center space-y-4 mb-10">
         
         <!-- Filter Switcher (Píldoras Arriba) -->
-        <div class="flex justify-center gap-3">
+        <div class="flex flex-wrap justify-center gap-3">
           <button id="suite-pill-1" onclick="switchSuiteView(1)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all">
-            Suite Premium
+            Suite Premium ($140)
           </button>
           <button id="suite-pill-2" onclick="switchSuiteView(2)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all">
-            Suite Estándar
+            Suite Estándar (Desde $120)
           </button>
         </div>
 
         <!-- Texto Guía Abajo -->
         <span class="text-[11px] font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest block pt-1">
-          ESCOGE ENTRE DOS TIPOS DE SUITES — EL TIGRE, ANZOÁTEGUI
+          CONFORT CURADO, DESAYUNO INCLUIDO Y ESPACIOS AMPLIOS — EL TIGRE, ANZOÁTEGUI
         </span>
 
       </div>
@@ -610,7 +610,10 @@
         <!-- Info Izquierda -->
         <div class="lg:col-span-6 space-y-6 text-left">
           <div class="space-y-1">
-            <span id="suite-meta" class="text-[11px] font-mono uppercase tracking-widest text-karina-mustard font-bold block">36 m² • 2 Camas Matrimoniales</span>
+            <div class="flex items-center gap-2">
+              <span id="suite-meta" class="text-[11px] font-mono uppercase tracking-widest text-karina-mustard font-bold block">36 m² • 2 Camas Matrimoniales</span>
+              <span class="bg-[#2680BD]/15 text-[#2680BD] text-[10px] font-bold px-2.5 py-0.5 rounded-full font-mono">Desayuno Incluido</span>
+            </div>
             <h3 id="suite-title" class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
               Suite Premium
             </h3>
@@ -624,11 +627,11 @@
           <div id="suite-card-amenities" class="space-y-2.5 text-xs font-normal text-karina-charcoal/80">
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
-              <span>2 Camas Matrimoniales</span>
+              <span>2 Camas Matrimoniales • Desayuno Incluido</span>
             </div>
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
-              <span>Estación de Trabajo y TV 32"</span>
+              <span>Estación de Trabajo y Smart TV 32"</span>
             </div>
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
@@ -643,16 +646,16 @@
 
           <!-- Acciones: Modal de Detalles Amplios + Arimiña-IA -->
           <div class="pt-2 flex flex-wrap items-center gap-3">
-            <button onclick="openSuiteDetailModal()" class="px-5 py-3 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-semibold border border-karina-charcoal/15 transition-all active:scale-95 shadow-sm">
+            <button onclick="openSuiteDetailModal()" class="px-5 py-3 rounded-full bg-white hover:bg-karina-mustard-light text-karina-charcoal text-xs font-semibold border border-karina-charcoal/15 transition-all active:scale-95 shadow-sm cursor-pointer">
               <span>Ver Detalles de la Suite</span>
             </button>
 
-            <a id="suite-wa-btn" href="https://wa.me/584249559213?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reservar%20una%20Suite%20Premium%20en%20Sede%20El%20Tigre" target="_blank" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group">
+            <button onclick="requestSuiteReservation()" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group cursor-pointer">
               <span class="w-5 h-5 rounded-full bg-karina-mustard text-karina-charcoal flex items-center justify-center text-[10px] shrink-0">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
               </span>
-              <span>Reserva con <strong>Arimiña-IA</strong></span>
-            </a>
+              <span>Solicitar Reserva</span>
+            </button>
           </div>
         </div>
 
@@ -1099,6 +1102,9 @@
               Suite de 36 m² en El Tigre con dos camas matrimoniales confortables, cocina tipo kitchenette, nevera de 15 pies, microondas, estantería, clóset para la ropa, Smart TV de 32", aire acondicionado autónomo y fibra óptica.
             </p>
 
+            <!-- Desglose de Tarifas y Ocupación -->
+            <div id="suite-modal-pricing-breakdown" class="pt-1"></div>
+
             <div class="space-y-2.5 pt-2 text-xs text-karina-charcoal/80">
               <p class="font-bold text-[11px] uppercase tracking-widest text-karina-charcoal/70">Equipamiento Incluido:</p>
               <div id="suite-modal-features" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -1269,18 +1275,30 @@
 
     const suitesData = {
       1: {
+        id: "premium-el-tigre",
         title: "Suite Premium",
         meta: "36 m² • 2 Camas Matrimoniales",
+        priceDisplay: "$140 / noche",
+        tarifa_usd: "140",
         desc: "Una experiencia de inmersión en el lujo boutique, destacada por sus acabados de alta gama, espacialidad fluida y un ambiente de serenidad absoluta.",
         quote: '"Un santuario de descanso pensado para el viajero moderno."',
         image: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp",
         cardAmenities: [
-          "2 Camas Matrimoniales",
-          "Estación de Trabajo y TV 32\"",
+          "2 Camas Matrimoniales • Desayuno Incluido",
+          "Estación de Trabajo y Smart TV 32\"",
           "Kitchenette y Nevera 15'"
         ],
+        breakdown: {
+          base: "$140 / noche",
+          occupancy: [
+            { label: "2 Personas (2 Camas Matrimoniales)", price: "$140" },
+            { label: "Pax adicional", price: "+$20" }
+          ],
+          breakfast: "Desayuno Incluido"
+        },
         amenities: [
           "2 Camas Matrimoniales",
+          "Desayuno Incluido",
           "Mesa de noche",
           "Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32\"",
           "Internet por Fibra Óptica de Alta Velocidad",
@@ -1300,18 +1318,31 @@
         ]
       },
       2: {
+        id: "estandar-el-tigre",
         title: "Suite Estándar",
         meta: "36 m² • 1 Cama Matrimonial",
+        priceDisplay: "Desde $120 / noche",
+        tarifa_usd: "120",
         desc: "El equilibrio perfecto entre eficiencia ejecutiva y confort, diseñado para ofrecer privacidad absoluta y un reconfortante descanso contemporáneo.",
         quote: '"Espacio expansivo ideal para directivos y ejecutivos de alto nivel."',
         image: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp",
         cardAmenities: [
-          "1 Cama Matrimonial",
-          "Estación de Trabajo y TV 32\"",
+          "1 Cama Matrimonial • Desayuno Incluido",
+          "Estación de Trabajo y Smart TV 32\"",
           "Kitchenette y Nevera 15'"
         ],
+        breakdown: {
+          base: "Desde $120 / noche",
+          occupancy: [
+            { label: "1 Persona (Uso individual / Junior)", price: "$120" },
+            { label: "2 Personas (Cama Matrimonial)", price: "$130" },
+            { label: "Pax adicional", price: "+$20" }
+          ],
+          breakfast: "Desayuno Incluido"
+        },
         amenities: [
           "1 Cama Matrimonial",
+          "Desayuno Incluido",
           "Mesa de noche",
           "Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32\"",
           "Internet por Fibra Óptica de Alta Velocidad",
@@ -1359,6 +1390,36 @@
           <span class="leading-tight">${item}</span>
         </div>
       `).join('');
+    }
+
+    function renderSuiteModalBreakdown(type) {
+      const container = document.getElementById('suite-modal-pricing-breakdown');
+      if (!container) return;
+      const breakdown = suitesData[type]?.breakdown;
+      if (!breakdown) {
+        container.innerHTML = '';
+        return;
+      }
+      container.innerHTML = `
+        <div class="bg-black/[0.03] rounded-2xl p-3.5 border border-black/5 space-y-2">
+          <div class="flex items-center justify-between text-[10px] font-mono uppercase font-bold text-karina-charcoal/60 border-b border-black/5 pb-1">
+            <span>Ocupación & Plan</span>
+            <span>Tarifa / Noche</span>
+          </div>
+          <div class="space-y-1 text-xs">
+            ${breakdown.occupancy.map(item => `
+              <div class="flex items-center justify-between py-0.5">
+                <span class="text-karina-charcoal/80 font-medium">${item.label}</span>
+                <span class="font-bold text-karina-charcoal font-mono">${item.price}</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="pt-1 border-t border-black/5 flex items-center justify-between text-[11px] text-[#2680BD] font-semibold">
+            <span class="inline-flex items-center gap-1"><i class="fa-solid fa-check text-[10px]"></i> Desayuno incluido</span>
+            <span class="text-[10px] text-karina-charcoal/50 font-mono">IVA inc.</span>
+          </div>
+        </div>
+      `;
     }
 
     function switchSuiteView(type) {
@@ -1418,13 +1479,24 @@
         const tagEl = document.getElementById('suite-modal-tag');
         const counterEl = document.getElementById('suite-modal-counter');
 
-        if (titleEl) titleEl.textContent = data.title;
+        if (titleEl) {
+          titleEl.innerHTML = `
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <span>${data.title}</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#2680BD]/15 text-[#2680BD] border border-[#2680BD]/25 inline-flex items-center gap-1.5 font-mono">
+                <i class="fa-solid fa-mug-saucer text-xs"></i>
+                Desayuno Incluido
+              </span>
+            </div>
+          `;
+        }
         if (descEl) descEl.textContent = data.desc;
         if (imgEl) imgEl.src = data.image;
-        if (tagEl) tagEl.textContent = 'Vista Principal';
+        if (tagEl) tagEl.textContent = data.gallery?.[0]?.tag || 'Vista Principal';
         if (counterEl) counterEl.textContent = `0${currentSuiteType} / 02`;
         renderSuiteModalThumbnails(currentSuiteType);
         renderSuiteModalAmenities(currentSuiteType);
+        renderSuiteModalBreakdown(currentSuiteType);
         if (wrapper) wrapper.style.opacity = '1';
       }, 120);
     }
@@ -1438,13 +1510,24 @@
       const tagEl = document.getElementById('suite-modal-tag');
       const counterEl = document.getElementById('suite-modal-counter');
 
-      if (titleEl) titleEl.textContent = data.title;
+      if (titleEl) {
+        titleEl.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <span>${data.title}</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#2680BD]/15 text-[#2680BD] border border-[#2680BD]/25 inline-flex items-center gap-1.5 font-mono">
+              <i class="fa-solid fa-mug-saucer text-xs"></i>
+              Desayuno Incluido
+            </span>
+          </div>
+        `;
+      }
       if (descEl) descEl.textContent = data.desc;
       if (imgEl) imgEl.src = data.image;
-      if (tagEl) tagEl.textContent = 'Vista Principal';
+      if (tagEl) tagEl.textContent = data.gallery?.[0]?.tag || 'Vista Principal';
       if (counterEl) counterEl.textContent = `0${currentSuiteType} / 02`;
       renderSuiteModalThumbnails(currentSuiteType);
       renderSuiteModalAmenities(currentSuiteType);
+      renderSuiteModalBreakdown(currentSuiteType);
 
       if (modal) {
         modal.classList.add('is-open');

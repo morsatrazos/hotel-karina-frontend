@@ -640,18 +640,21 @@
       <div class="text-center space-y-4 mb-10">
         
         <!-- Filter Switcher (Píldoras Arriba) -->
-        <div class="flex justify-center gap-3">
+        <div class="flex flex-wrap justify-center gap-3">
           <button id="suite-pill-1" onclick="switchSuiteView(1)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all">
-            Suite Premium
+            Suite Premium ($140)
           </button>
           <button id="suite-pill-2" onclick="switchSuiteView(2)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all">
-            Suite Estándar
+            Suite Estándar (Desde $120)
+          </button>
+          <button id="suite-pill-3" onclick="switchSuiteView(3)" class="suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all">
+            Suite Triple ($170)
           </button>
         </div>
 
         <!-- Texto Guía Abajo -->
         <span class="text-[11px] font-mono font-normal text-karina-charcoal/60 uppercase tracking-widest block pt-1">
-          CONFORT CURADO Y ESPACIOS AMPLIOS — MATURÍN, MONAGAS
+          CONFORT CURADO, DESAYUNO INCLUIDO Y ESPACIOS AMPLIOS — MATURÍN, MONAGAS
         </span>
 
       </div>
@@ -662,7 +665,10 @@
         <!-- Info Izquierda -->
         <div class="lg:col-span-6 space-y-6 text-left">
           <div class="space-y-1">
-            <span id="suite-meta" class="text-[11px] font-mono uppercase tracking-widest text-karina-mustard font-bold block">50 m² • 2 Camas Matrimoniales</span>
+            <div class="flex items-center gap-2">
+              <span id="suite-meta" class="text-[11px] font-mono uppercase tracking-widest text-karina-mustard font-bold block">50 m² • 2 Camas Matrimoniales</span>
+              <span class="bg-[#2680BD]/15 text-[#2680BD] text-[10px] font-bold px-2.5 py-0.5 rounded-full font-mono">Desayuno Incluido</span>
+            </div>
             <h3 id="suite-title" class="text-3xl sm:text-4xl font-light text-karina-charcoal tracking-tight">
               Suite Premium
             </h3>
@@ -676,15 +682,15 @@
           <div id="suite-card-amenities" class="space-y-2.5 text-xs font-normal text-karina-charcoal/80">
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
-              <span>2 Camas Matrimoniales</span>
+              <span>2 Camas Matrimoniales • Desayuno Incluido</span>
             </div>
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
-              <span>Estación de Trabajo y TV 32"</span>
+              <span>Estación de Trabajo y Smart TV 32"</span>
             </div>
             <div class="flex items-center gap-3">
               <i class="fa-regular fa-circle-check text-karina-mustard text-sm"></i>
-              <span>Kitchenette y Nevera 15'</span>
+              <span>Dos ambientes y Kitchenette con Nevera 15'</span>
             </div>
           </div>
 
@@ -699,12 +705,12 @@
               <span>Ver Detalles de la Suite</span>
             </button>
 
-            <a id="suite-wa-btn" href="https://wa.me/584249169610?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reservar%20una%20Suite%20Premium%20en%20Sede%20Maturin" target="_blank" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group">
+            <button onclick="requestSuiteReservation()" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-semibold shadow-md transition-all active:scale-95 group cursor-pointer">
               <span class="w-5 h-5 rounded-full bg-karina-mustard text-karina-charcoal flex items-center justify-center text-[10px] shrink-0">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
               </span>
-              <span>Reserva con <strong>Arimiña-IA</strong></span>
-            </a>
+              <span>Solicitar Reserva</span>
+            </button>
           </div>
         </div>
 
@@ -1245,10 +1251,13 @@
               </button>
             </div>
 
-            <h3 id="suite-modal-title" class="text-3xl font-light text-karina-charcoal">Suite Premium</h3>
+            <h3 id="suite-modal-title" class="text-2xl sm:text-3xl font-light text-karina-charcoal">Suite Premium</h3>
             <p id="suite-modal-desc" class="text-xs text-karina-charcoal/70 leading-relaxed font-light">
               Nuestra habitación insignia en Maturín con dos camas matrimoniales confortables, cocina tipo kitchenette, nevera de 15 pies, microondas, estantería, clóset para la ropa, Smart TV de 32", aire acondicionado autónomo y fibra óptica.
             </p>
+
+            <!-- Desglose de Tarifas y Ocupación -->
+            <div id="suite-modal-pricing-breakdown" class="pt-1"></div>
 
             <div class="space-y-2.5 pt-2 text-xs text-karina-charcoal/80">
               <p class="font-bold text-[11px] uppercase tracking-widest text-karina-charcoal/70">Equipamiento Incluido:</p>
@@ -1361,6 +1370,7 @@
     // 4. Suite Filter Switcher & Modal Controls (Maturín)
     const suitePill1 = document.getElementById('suite-pill-1');
     const suitePill2 = document.getElementById('suite-pill-2');
+    const suitePill3 = document.getElementById('suite-pill-3');
     const suiteContainer = document.getElementById('suite-display-container');
 
     const suiteTitle = document.getElementById('suite-title');
@@ -1370,20 +1380,32 @@
 
     const suitesData = {
       1: {
+        id: "premium-maturin",
         title: "Suite Premium",
         meta: "50 m² • 2 Camas Matrimoniales",
+        priceDisplay: "$140 / noche",
+        tarifa_usd: "140",
         desc: "Santuario de amplitud superior y estética sutil, donde la calidez del lujo contemporáneo se integra armoniosamente con las vistas al complejo.",
         quote: '"El balance perfecto entre el descanso de lujo y la comodidad superior."',
         image: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp",
         cardAmenities: [
-          "2 Camas Matrimoniales",
-          "Estación de Trabajo y TV 32\"",
-          "Kitchenette y Nevera 15'"
+          "2 Camas Matrimoniales • Desayuno Incluido",
+          "Estación de Trabajo y Smart TV 32\"",
+          "Dos ambientes y Kitchenette con Nevera 15'"
         ],
+        breakdown: {
+          base: "$140 / noche",
+          occupancy: [
+            { label: "2 Personas (2 Camas Matrimoniales)", price: "$140" },
+            { label: "Pax adicional", price: "+$20" }
+          ],
+          breakfast: "Desayuno Incluido"
+        },
         amenities: [
           "2 Camas Matrimoniales",
+          "Desayuno Incluido",
           "Mesa de noche",
-          "Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32\"",
+          "Estación de trabajo ejecutiva con Smart TV de 32\"",
           "Internet por Fibra Óptica de Alta Velocidad",
           "Aire Acondicionado Autónomo",
           "Cocina equipada tipo Kitchenette",
@@ -1403,20 +1425,33 @@
         ]
       },
       2: {
+        id: "estandar-maturin",
         title: "Suite Estándar",
         meta: "48 m² • 1 Cama Matrimonial",
+        priceDisplay: "Desde $120 / noche",
+        tarifa_usd: "120",
         desc: "Un refugio de diseño contemporáneo y confort absoluto, pensado para garantizar un descanso impecable y alta conectividad en todo momento.",
         quote: '"Eficiencia y elegancia terrenal pensadas para el confort del huésped."',
         image: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp",
         cardAmenities: [
-          "1 Cama Matrimonial",
-          "Estación de Trabajo y TV 32\"",
-          "Kitchenette y Nevera 15'"
+          "1 Cama Matrimonial • Desayuno Incluido",
+          "Estación de Trabajo y Smart TV 32\"",
+          "Dos ambientes y Kitchenette con Nevera 15'"
         ],
+        breakdown: {
+          base: "Desde $120 / noche",
+          occupancy: [
+            { label: "1 Persona (Uso individual / Junior)", price: "$120" },
+            { label: "2 Personas (Cama Matrimonial)", price: "$130" },
+            { label: "Pax adicional", price: "+$20" }
+          ],
+          breakfast: "Desayuno Incluido"
+        },
         amenities: [
           "1 Cama Matrimonial",
+          "Desayuno Incluido",
           "Mesa de noche",
-          "Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32\"",
+          "Estación de trabajo ejecutiva con Smart TV de 32\"",
           "Internet por Fibra Óptica de Alta Velocidad",
           "Aire Acondicionado Autónomo",
           "Cocina equipada tipo Kitchenette",
@@ -1429,9 +1464,52 @@
           { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp", tag: "Vista Principal / Dormitorio" },
           { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Comedor.webp", tag: "Área de Comedor" },
           { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-3.webp", tag: "Ambiente Integrado" },
-          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-maturin-2.webp", tag: "Espacio de Descanso" },
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-maturin-2.webp", tag: "Espacio de Descanso" },
           { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor-2.webp", tag: "Sala y Comedor" },
           { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp", tag: "Sala de Estar Integrada" }
+        ]
+      },
+      3: {
+        id: "triple-maturin",
+        title: "Suite Triple",
+        meta: "50 m² • 3 Camas Confortables",
+        priceDisplay: "$170 / noche",
+        tarifa_usd: "170",
+        desc: "Máxima capacidad y confort exclusivo para 3 personas en Sede Maturín. Equipada con 3 camas confortables, dos ambientes independientes, kitchenette y desayuno incluido.",
+        quote: '"Espacio y calidez ideales para familias o grupos de negocios en Maturín."',
+        image: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-Doble-Maturin.webp",
+        cardAmenities: [
+          "3 Camas Confortables • Desayuno Incluido",
+          "Estación de Trabajo y Smart TV 32\"",
+          "Dos ambientes y Kitchenette con Nevera 15'"
+        ],
+        breakdown: {
+          base: "$170 / noche (3 Personas)",
+          occupancy: [
+            { label: "3 Personas (3 Camas)", price: "$170" },
+            { label: "Pax adicional", price: "+$20" }
+          ],
+          breakfast: "Desayuno Incluido"
+        },
+        amenities: [
+          "3 Camas Confortables",
+          "Desayuno Incluido",
+          "Exclusiva Sede Maturín (3 Pax)",
+          "Mesa de noche",
+          "Estación de trabajo ejecutiva con Smart TV de 32\"",
+          "Internet por Fibra Óptica de Alta Velocidad",
+          "Aire Acondicionado Autónomo",
+          "Cocina equipada tipo Kitchenette",
+          "Nevera de 15 pies",
+          "Horno Microondas y Estantería",
+          "Guardarropa",
+          "Dos ambientes independientes con baño amplio (50 m²)"
+        ],
+        gallery: [
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-Doble-Maturin.webp", tag: "Vista Principal Triple" },
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp", tag: "Habitación y Camas" },
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium3.webp", tag: "Área de Sala" },
+          { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium5.webp", tag: "Espacio de Confort" }
         ]
       }
     };
@@ -1463,6 +1541,36 @@
       `).join('');
     }
 
+    function renderSuiteModalBreakdown(type) {
+      const container = document.getElementById('suite-modal-pricing-breakdown');
+      if (!container) return;
+      const breakdown = suitesData[type]?.breakdown;
+      if (!breakdown) {
+        container.innerHTML = '';
+        return;
+      }
+      container.innerHTML = `
+        <div class="bg-black/[0.03] rounded-2xl p-3.5 border border-black/5 space-y-2">
+          <div class="flex items-center justify-between text-[10px] font-mono uppercase font-bold text-karina-charcoal/60 border-b border-black/5 pb-1">
+            <span>Ocupación & Plan</span>
+            <span>Tarifa / Noche</span>
+          </div>
+          <div class="space-y-1 text-xs">
+            ${breakdown.occupancy.map(item => `
+              <div class="flex items-center justify-between py-0.5">
+                <span class="text-karina-charcoal/80 font-medium">${item.label}</span>
+                <span class="font-bold text-karina-charcoal font-mono">${item.price}</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="pt-1 border-t border-black/5 flex items-center justify-between text-[11px] text-[#2680BD] font-semibold">
+            <span class="inline-flex items-center gap-1"><i class="fa-solid fa-check text-[10px]"></i> Desayuno incluido</span>
+            <span class="text-[10px] text-karina-charcoal/50 font-mono">IVA inc.</span>
+          </div>
+        </div>
+      `;
+    }
+
     function switchSuiteView(type) {
       currentSuiteType = type;
       if (suiteContainer) suiteContainer.classList.add('changing');
@@ -1492,13 +1600,15 @@
           waBtn.href = `https://wa.me/584249169610?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reservar%20una%20${encodeURIComponent(data.title)}%20en%20Sede%20Maturin`;
         }
 
-        if (type === 1) {
-          if (suitePill1) suitePill1.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
-          if (suitePill2) suitePill2.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all";
-        } else {
-          if (suitePill2) suitePill2.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
-          if (suitePill1) suitePill1.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all";
-        }
+        const pills = [suitePill1, suitePill2, suitePill3];
+        pills.forEach((pill, idx) => {
+          if (!pill) return;
+          if (idx + 1 === type) {
+            pill.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+          } else {
+            pill.className = "suite-pill-btn px-6 py-2.5 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-karina-charcoal/10 transition-all";
+          }
+        });
 
         if (suiteContainer) suiteContainer.classList.remove('changing');
       }, 150);
@@ -1506,7 +1616,7 @@
 
     // Modal Inner Navigation
     function navigateSuiteInModal(dir) {
-      currentSuiteType = currentSuiteType === 1 ? 2 : 1;
+      currentSuiteType = (currentSuiteType - 1 + dir + 3) % 3 + 1;
       switchSuiteView(currentSuiteType);
       
       const wrapper = document.getElementById('suite-modal-wrapper');
@@ -1520,13 +1630,24 @@
         const tagEl = document.getElementById('suite-modal-tag');
         const counterEl = document.getElementById('suite-modal-counter');
 
-        if (titleEl) titleEl.textContent = data.title;
+        if (titleEl) {
+          titleEl.innerHTML = `
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <span>${data.title}</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#2680BD]/15 text-[#2680BD] border border-[#2680BD]/25 inline-flex items-center gap-1.5 font-mono">
+                <i class="fa-solid fa-mug-saucer text-xs"></i>
+                Desayuno Incluido
+              </span>
+            </div>
+          `;
+        }
         if (descEl) descEl.textContent = data.desc;
         if (imgEl) imgEl.src = data.image;
         if (tagEl) tagEl.textContent = data.gallery?.[0]?.tag || 'Vista Principal';
-        if (counterEl) counterEl.textContent = `0${currentSuiteType} / 02`;
+        if (counterEl) counterEl.textContent = `0${currentSuiteType} / 03`;
         renderSuiteModalThumbnails(currentSuiteType);
         renderSuiteModalAmenities(currentSuiteType);
+        renderSuiteModalBreakdown(currentSuiteType);
         if (wrapper) wrapper.style.opacity = '1';
       }, 120);
     }
@@ -1540,13 +1661,24 @@
       const tagEl = document.getElementById('suite-modal-tag');
       const counterEl = document.getElementById('suite-modal-counter');
 
-      if (titleEl) titleEl.textContent = data.title;
+      if (titleEl) {
+        titleEl.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <span>${data.title}</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#2680BD]/15 text-[#2680BD] border border-[#2680BD]/25 inline-flex items-center gap-1.5 font-mono">
+              <i class="fa-solid fa-mug-saucer text-xs"></i>
+              Desayuno Incluido
+            </span>
+          </div>
+        `;
+      }
       if (descEl) descEl.textContent = data.desc;
       if (imgEl) imgEl.src = data.image;
       if (tagEl) tagEl.textContent = data.gallery?.[0]?.tag || 'Vista Principal';
-      if (counterEl) counterEl.textContent = `0${currentSuiteType} / 02`;
+      if (counterEl) counterEl.textContent = `0${currentSuiteType} / 03`;
       renderSuiteModalThumbnails(currentSuiteType);
       renderSuiteModalAmenities(currentSuiteType);
+      renderSuiteModalBreakdown(currentSuiteType);
 
       if (modal) {
         modal.classList.add('is-open');

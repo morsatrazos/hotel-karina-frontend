@@ -622,10 +622,10 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Suite Estándar',
       desc: 'Un refugio de diseño contemporáneo y confort absoluto, pensado para garantizar un descanso impecable y alta conectividad en todo momento.',
       quote: '"Un santuario de descanso pensado para el confort y la comodidad."',
-      price: '$120',
+      price: 'Desde $120',
       img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
       amenities: [
-        '1 Cama Matrimonial',
+        '1 Cama Matrimonial (Desayuno Incluido)',
         'Estación de Trabajo y TV 32"',
         'Kitchenette y Nevera 15\''
       ]
@@ -634,10 +634,10 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Suite Premium',
       desc: 'Santuario de amplitud superior y estética sutil, donde la calidez del lujo contemporáneo se integra armoniosamente con las vistas al complejo.',
       quote: '"La combinación perfecta entre amplitud, descanso y equipamiento superior."',
-      price: '$170',
+      price: '$140',
       img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
       amenities: [
-        '2 Camas Matrimoniales',
+        '2 Camas Matrimoniales (Desayuno Incluido)',
         'Estación de Trabajo y TV 32"',
         'Kitchenette y Nevera 15\''
       ]
@@ -692,17 +692,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8. CONTROLADORES CATÁLOGO DE SUITES Y MODAL
   // ==========================================
   const catalogSuitesData = [
+    // MATURÍN
     {
       id: 'premium-maturin',
       sede: 'maturin',
       sedeName: 'Maturín',
-      tarifa_usd: '180',
-      price: '$180',
+      tarifa_usd: '140',
+      price: '$140',
+      priceDisplay: '$140 / noche',
       title: 'Suite Premium',
+      tag: 'Desayuno Incluido',
       desc: 'Santuario de amplitud superior y estética sutil, donde la calidez del lujo contemporáneo se integra armoniosamente con las vistas al complejo.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+      breakdown: {
+        base: '$140 / noche',
+        occupancy: [
+          { label: '2 Personas (2 Camas Matrimoniales)', price: '$140' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
       amenities: [
         '2 Camas Matrimoniales',
+        'Desayuno Incluido',
         'Mesa de noche',
         'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
         'Internet por Fibra Óptica de Alta Velocidad',
@@ -727,13 +739,25 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'estandar-maturin',
       sede: 'maturin',
       sedeName: 'Maturín',
-      tarifa_usd: '130',
-      price: '$130',
+      tarifa_usd: '120',
+      price: '$120',
+      priceDisplay: 'Desde $120 / noche',
       title: 'Suite Estándar',
+      tag: 'Desayuno Incluido',
       desc: 'Un refugio de diseño contemporáneo y confort absoluto, pensado para garantizar un descanso impecable y alta conectividad en todo momento.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp',
+      breakdown: {
+        base: 'Desde $120 / noche',
+        occupancy: [
+          { label: '1 Persona (Uso individual / Junior)', price: '$120' },
+          { label: '2 Personas (Cama Matrimonial)', price: '$130' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
       amenities: [
         '1 Cama Matrimonial',
+        'Desayuno Incluido',
         'Mesa de noche',
         'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
         'Internet por Fibra Óptica de Alta Velocidad',
@@ -754,16 +778,68 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
+      id: 'triple-maturin',
+      sede: 'maturin',
+      sedeName: 'Maturín',
+      tarifa_usd: '170',
+      price: '$170',
+      priceDisplay: '$170 / noche',
+      title: 'Suite Triple',
+      tag: 'Exclusiva Maturín • Desayuno Incluido',
+      desc: 'Máxima capacidad y confort exclusivo para 3 personas en Sede Maturín. Equipada con 3 camas confortables, dos ambientes independientes, kitchenette y desayuno incluido.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-Doble-Maturin.webp',
+      breakdown: {
+        base: '$170 / noche (3 Personas)',
+        occupancy: [
+          { label: '3 Personas (3 Camas)', price: '$170' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
+      amenities: [
+        '3 Camas Confortables',
+        'Desayuno Incluido',
+        'Exclusiva Sede Maturín (3 Pax)',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con Smart TV de 32"',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa',
+        'Dos ambientes independientes con baño amplio (50 m²)'
+      ],
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-Doble-Maturin.webp', tag: 'Vista Principal Triple' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp', tag: 'Habitación y Camas' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium3.webp', tag: 'Área de Sala' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium5.webp', tag: 'Espacio de Confort' }
+      ]
+    },
+    // EL TIGRE
+    {
       id: 'premium-eltigre',
       sede: 'el-tigre',
       sedeName: 'El Tigre',
-      tarifa_usd: '180',
-      price: '$180',
+      tarifa_usd: '140',
+      price: '$140',
+      priceDisplay: '$140 / noche',
       title: 'Suite Premium',
+      tag: 'Desayuno Incluido',
       desc: 'Una experiencia de inmersión en el lujo boutique, destacada por sus acabados de alta gama, espacialidad fluida y un ambiente de serenidad absoluta.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp',
+      breakdown: {
+        base: '$140 / noche',
+        occupancy: [
+          { label: '2 Personas (2 Camas Matrimoniales)', price: '$140' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
       amenities: [
         '2 Camas Matrimoniales',
+        'Desayuno Incluido',
         'Mesa de noche',
         'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
         'Internet por Fibra Óptica de Alta Velocidad',
@@ -786,13 +862,25 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'estandar-eltigre',
       sede: 'el-tigre',
       sedeName: 'El Tigre',
-      tarifa_usd: '130',
-      price: '$130',
+      tarifa_usd: '120',
+      price: '$120',
+      priceDisplay: 'Desde $120 / noche',
       title: 'Suite Estándar',
+      tag: 'Desayuno Incluido',
       desc: 'El equilibrio perfecto entre eficiencia ejecutiva y confort, diseñado para ofrecer privacidad absoluta y un reconfortante descanso contemporáneo.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
+      breakdown: {
+        base: 'Desde $120 / noche',
+        occupancy: [
+          { label: '1 Persona (Uso individual / Junior)', price: '$120' },
+          { label: '2 Personas (Cama Matrimonial)', price: '$130' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
       amenities: [
         '1 Cama Matrimonial',
+        'Desayuno Incluido',
         'Mesa de noche',
         'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
         'Internet por Fibra Óptica de Alta Velocidad',
@@ -813,17 +901,29 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-7.webp', tag: 'Perspectiva General' }
       ]
     },
+    // PUNTA DE MATA
     {
       id: 'premium-ptamata',
       sede: 'punta-de-mata',
       sedeName: 'Punta de Mata',
-      tarifa_usd: '150',
-      price: '$150',
+      tarifa_usd: '120',
+      price: '$120',
+      priceDisplay: '$120 / noche',
       title: 'Suite Premium',
+      tag: 'Desayuno Incluido',
       desc: 'La máxima expresión de exclusividad y confort, combinando áreas de estar independientes con equipamiento premium para estadías de distinción.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata.webp',
+      breakdown: {
+        base: '$120 / noche',
+        occupancy: [
+          { label: '2 Personas (2 Camas Matrimoniales)', price: '$120' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
       amenities: [
         '2 Camas Matrimoniales',
+        'Desayuno Incluido',
         'Mesa de noche',
         'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
         'Internet por Fibra Óptica de Alta Velocidad',
@@ -846,13 +946,25 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'estandar-ptamata',
       sede: 'punta-de-mata',
       sedeName: 'Punta de Mata',
-      tarifa_usd: '120',
-      price: '$120',
+      tarifa_usd: '100',
+      price: '$100',
+      priceDisplay: 'Desde $100 / noche',
       title: 'Suite Estándar',
+      tag: 'Desayuno Incluido',
       desc: 'Un oasis de calma con arquitectura de vanguardia, optimizado para el confort del viajero corporativo que busca privacidad y descanso reparador.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+      breakdown: {
+        base: 'Desde $100 / noche',
+        occupancy: [
+          { label: '1 Persona (Uso individual / Junior)', price: '$100' },
+          { label: '2 Personas (Cama Matrimonial)', price: '$110' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
       amenities: [
         '1 Cama Matrimonial',
+        'Desayuno Incluido',
         'Mesa de noche',
         'Estación de trabajo ejecutiva integrada con mueble para Smart TV de 32"',
         'Internet por Fibra Óptica de Alta Velocidad',
@@ -914,8 +1026,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (capacity === '2') {
         matchCapacity = card.classList.contains('suite-item-estandar');
+      } else if (capacity === '3') {
+        matchCapacity = card.classList.contains('suite-item-triple') || card.classList.contains('suite-item-premium');
       } else if (capacity === '4') {
-        matchCapacity = card.classList.contains('suite-item-premium');
+        matchCapacity = card.classList.contains('suite-item-premium') || card.classList.contains('suite-item-triple');
       }
 
       if (matchSede && matchCapacity) {
@@ -931,7 +1045,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!targetSuite) return;
 
     // Aislamiento estricto por sede:
-    // Si estamos en página de sede o hay un filtro de sede activo, o según la sede de la suite
     const pageSede = detectCurrentSede();
     const filterSedeEl = document.getElementById('filter-sede');
     const filterSedeVal = filterSedeEl ? filterSedeEl.value : null;
@@ -943,7 +1056,7 @@ document.addEventListener('DOMContentLoaded', () => {
       targetSede = filterSedeVal;
     }
 
-    // Filtrar array a las suites de esa sede (2 suites: Estándar y Premium)
+    // Filtrar array a las suites de esa sede
     activeModalSuites = catalogSuitesData.filter(s => s.sede === targetSede);
     if (activeModalSuites.length === 0) {
       activeModalSuites = [targetSuite];
@@ -971,16 +1084,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterEl = document.getElementById('suite-modal-counter');
     const thumbContainer = document.getElementById('suite-modal-thumbnails');
     const amenitiesEl = document.getElementById('suite-modal-amenities') || document.getElementById('suite-modal-features');
+    const breakdownEl = document.getElementById('suite-modal-pricing-breakdown');
 
-    if (titleEl) titleEl.textContent = suite.title;
+    if (titleEl) {
+      titleEl.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <span>${suite.title}</span>
+          <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#2680BD]/15 text-[#2680BD] border border-[#2680BD]/25 inline-flex items-center gap-1.5 font-mono">
+            <i class="fa-solid fa-mug-saucer text-xs"></i>
+            Desayuno Incluido
+          </span>
+        </div>
+      `;
+    }
+
     if (descEl) descEl.textContent = suite.desc;
     if (imgEl) imgEl.src = suite.image;
     if (tagEl) tagEl.textContent = suite.gallery?.[0]?.tag || 'Vista Principal';
 
-    // Formato estricto 01 / 02 o 02 / 02 aislado por sede
     const currentNum = String(activeModalSuiteIndex + 1).padStart(2, '0');
     const totalNum = String(activeModalSuites.length).padStart(2, '0');
     if (counterEl) counterEl.textContent = `${currentNum} / ${totalNum}`;
+
+    // Renderizar desglose de tarifas y ocupación si existe el contenedor o crearlo
+    if (breakdownEl && suite.breakdown) {
+      breakdownEl.innerHTML = `
+        <div class="bg-black/[0.03] rounded-2xl p-3.5 border border-black/5 space-y-2">
+          <div class="flex items-center justify-between text-[10px] font-mono uppercase font-bold text-karina-charcoal/60 border-b border-black/5 pb-1">
+            <span>Ocupación & Plan</span>
+            <span>Tarifa / Noche</span>
+          </div>
+          <div class="space-y-1 text-xs">
+            ${suite.breakdown.occupancy.map(item => `
+              <div class="flex items-center justify-between py-0.5">
+                <span class="text-karina-charcoal/80 font-medium">${item.label}</span>
+                <span class="font-bold text-karina-charcoal font-mono">${item.price}</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="pt-1 border-t border-black/5 flex items-center justify-between text-[11px] text-[#2680BD] font-semibold">
+            <span class="inline-flex items-center gap-1"><i class="fa-solid fa-check text-[10px]"></i> Desayuno tipo continental incluido</span>
+            <span class="text-[10px] text-karina-charcoal/50 font-mono">IVA inc.</span>
+          </div>
+        </div>
+      `;
+    }
 
     if (amenitiesEl && suite.amenities) {
       amenitiesEl.innerHTML = suite.amenities.map(a => `
@@ -1074,16 +1222,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (!suite) {
+      const isTriple = suiteTitle.toLowerCase().includes('triple');
       const isPremium = suiteTitle.toLowerCase().includes('premium');
-      suite = catalogSuitesData.find(s => s.sede === sedeCode && (isPremium ? s.id.startsWith('premium') : s.id.startsWith('estandar')));
+      suite = catalogSuitesData.find(s => s.sede === sedeCode && (isTriple ? s.id.startsWith('triple') : (isPremium ? s.id.startsWith('premium') : s.id.startsWith('estandar'))));
     }
 
     let tarifa = suite?.tarifa_usd || modal?.dataset?.tarifa;
     if (!tarifa) {
-      if (suiteTitle.toLowerCase().includes('premium')) {
-        tarifa = (sedeCode === 'punta-de-mata') ? '150' : '180';
+      if (suiteTitle.toLowerCase().includes('triple')) {
+        tarifa = '170';
+      } else if (suiteTitle.toLowerCase().includes('premium')) {
+        tarifa = (sedeCode === 'punta-de-mata') ? '120' : '140';
       } else {
-        tarifa = (sedeCode === 'punta-de-mata') ? '120' : '130';
+        tarifa = (sedeCode === 'punta-de-mata') ? '100' : '120';
       }
     }
 
