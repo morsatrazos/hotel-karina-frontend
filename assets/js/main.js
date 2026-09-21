@@ -1431,6 +1431,391 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // ===================================================
+  // 12. CONTROLADORES: PLANES CORPORATIVOS (BUSINESS.HTML)
+  // ===================================================
+  const corporatePlansData = {
+    semanal: {
+      conDesayuno: [
+        {
+          id: 'estandar-sem-des',
+          title: 'Suite Estándar',
+          capacity: '1 Pax',
+          paxIcon: 'fa-user',
+          tag: 'Eficiencia Ejecutiva',
+          price: '$630',
+          period: '/ semana',
+          dailyNote: '$90/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+          benefits: [
+            '1 Cama Matrimonial Confortable',
+            'Desayuno diario incluido',
+            'Room service diario incluido',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada y nevera ejecutiva',
+            'Planta eléctrica continua 24/7'
+          ]
+        },
+        {
+          id: 'matrimonial-sem-des',
+          title: 'Suite Matrimonial',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Confort Corporativo',
+          price: '$770',
+          period: '/ semana',
+          dailyNote: '$110/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
+          benefits: [
+            '1 Cama King / Matrimonial Amplia (2 Pax)',
+            'Desayuno diario incluido para 2',
+            'Room service diario incluido',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada y nevera ejecutiva',
+            'Planta eléctrica continua 24/7'
+          ]
+        },
+        {
+          id: 'premium-sem-des',
+          title: 'Suite Premium',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Doble Ambiente & Máximo Lujo',
+          featured: true,
+          price: '$840',
+          period: '/ semana',
+          dailyNote: '$120/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+          benefits: [
+            '2 Camas Matrimoniales (2 Pax)',
+            'Dos ambientes independientes (Sala-Comedor + Habitación)',
+            'Desayuno diario incluido para 2',
+            'Room service diario incluido',
+            'Cocina completa, microondas y nevera 15\'',
+            'Planta eléctrica 24/7 y soporte preferencial'
+          ]
+        }
+      ],
+      sinDesayuno: [
+        {
+          id: 'estandar-sem-nodes',
+          title: 'Suite Estándar',
+          capacity: '1 Pax',
+          paxIcon: 'fa-user',
+          tag: 'Eficiencia Ejecutiva',
+          price: '$560',
+          period: '/ semana',
+          dailyNote: '$80/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+          benefits: [
+            '1 Cama Matrimonial Confortable',
+            'Room service diario incluido',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada y nevera ejecutiva',
+            'Planta eléctrica continua 24/7',
+            'Acceso a centro de negocios y piscinas'
+          ]
+        },
+        {
+          id: 'matrimonial-sem-nodes',
+          title: 'Suite Matrimonial',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Confort Corporativo',
+          price: '$700',
+          period: '/ semana',
+          dailyNote: '$100/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
+          benefits: [
+            '1 Cama King / Matrimonial Amplia (2 Pax)',
+            'Room service diario incluido',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada y nevera ejecutiva',
+            'Planta eléctrica continua 24/7',
+            'Acceso a centro de negocios y piscinas'
+          ]
+        },
+        {
+          id: 'premium-sem-nodes',
+          title: 'Suite Premium',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Doble Ambiente & Máximo Lujo',
+          featured: true,
+          price: '$770',
+          period: '/ semana',
+          dailyNote: '$110/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+          benefits: [
+            '2 Camas Matrimoniales (2 Pax)',
+            'Dos ambientes independientes (Sala-Comedor + Habitación)',
+            'Room service diario incluido',
+            'Cocina completa, microondas y nevera 15\'',
+            'Planta eléctrica 24/7 y soporte corporativo preferencial',
+            'Internet simétrico dedicado'
+          ]
+        }
+      ]
+    },
+    mensual: {
+      conDesayuno: [
+        {
+          id: 'estandar-mes-des',
+          title: 'Suite Estándar',
+          capacity: '1 Pax',
+          paxIcon: 'fa-user',
+          tag: 'Larga Estadía Ejecutiva',
+          price: '$1.293,40',
+          period: '/ mes (30 noches)',
+          dailyNote: 'Tarifa mensual corporativa',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+          benefits: [
+            '1 Cama Matrimonial (1 Pax)',
+            'Desayuno diario incluido',
+            'Room service diario incluido',
+            'Limpieza y mantenimiento integral',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada, nevera 15\' y microondas',
+            'Planta eléctrica continua 24/7 y factura fiscal'
+          ]
+        },
+        {
+          id: 'premium-mes-des',
+          title: 'Suite Premium',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Residencia Corporativa VIP',
+          featured: true,
+          price: '$1.760,88',
+          period: '/ mes (30 noches)',
+          dailyNote: 'Tarifa mensual corporativa',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+          benefits: [
+            '2 Camas Matrimoniales (2 Pax)',
+            'Dos ambientes independientes (50 m²)',
+            'Desayuno diario incluido para 2',
+            'Room service diario incluido',
+            'Cocina completa de alta gama, nevera 15\' y microondas',
+            'Limpieza y mantenimiento programado',
+            'Planta eléctrica 24/7 y facturación fiscal empresarial'
+          ]
+        }
+      ],
+      sinDesayuno: [
+        {
+          id: 'estandar-mes-nodes',
+          title: 'Suite Estándar',
+          capacity: '1 Pax',
+          paxIcon: 'fa-user',
+          tag: 'Larga Estadía Económica',
+          price: '$765,60',
+          period: '/ mes (30 noches)',
+          dailyNote: 'Tarifa mensual corporativa',
+          serviceNote: '1 Room service semanal incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+          benefits: [
+            '1 Cama Matrimonial (1 Pax)',
+            '1 Room service semanal incluido',
+            'Limpieza y cambio de lencería semanal',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada, nevera 15\' y microondas',
+            'Planta eléctrica continua 24/7 y factura fiscal'
+          ]
+        },
+        {
+          id: 'premium-mes-nodes',
+          title: 'Suite Premium',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Residencia Corporativa VIP',
+          featured: true,
+          price: '$1.186,68',
+          period: '/ mes (30 noches)',
+          dailyNote: 'Tarifa mensual corporativa',
+          serviceNote: '1 Room service semanal incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+          benefits: [
+            '2 Camas Matrimoniales (2 Pax)',
+            'Dos ambientes independientes (50 m²)',
+            '1 Room service semanal incluido',
+            'Limpieza y cambio de lencería semanal',
+            'Cocina completa de alta gama, nevera 15\' y microondas',
+            'Planta eléctrica 24/7 y facturación fiscal empresarial'
+          ]
+        }
+      ]
+    }
+  };
+
+  let currentCorporateDuration = 'semanal';
+  let currentCorporateBreakfast = 'conDesayuno';
+
+  window.setCorporateDuration = function(duration) {
+    currentCorporateDuration = duration;
+    updateCorporateToggleButtons();
+    renderCorporateGrid();
+  };
+
+  window.setCorporateBreakfast = function(breakfast) {
+    currentCorporateBreakfast = breakfast;
+    updateCorporateToggleButtons();
+    renderCorporateGrid();
+  };
+
+  function updateCorporateToggleButtons() {
+    const btnSemanal = document.getElementById('corp-toggle-semanal');
+    const btnMensual = document.getElementById('corp-toggle-mensual');
+    const btnConDes = document.getElementById('corp-toggle-con-desayuno');
+    const btnSinDes = document.getElementById('corp-toggle-sin-desayuno');
+
+    const activeDarkClass = "px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-xs transition-all cursor-pointer";
+    const inactiveClass = "px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal transition-all cursor-pointer";
+    const activeGoldClass = "px-5 py-2 rounded-full text-xs font-bold bg-karina-mustard text-karina-charcoal shadow-xs transition-all cursor-pointer";
+
+    if (btnSemanal && btnMensual) {
+      if (currentCorporateDuration === 'semanal') {
+        btnSemanal.className = activeDarkClass;
+        btnMensual.className = inactiveClass;
+      } else {
+        btnMensual.className = activeDarkClass;
+        btnSemanal.className = inactiveClass;
+      }
+    }
+
+    if (btnConDes && btnSinDes) {
+      if (currentCorporateBreakfast === 'conDesayuno') {
+        btnConDes.className = activeGoldClass;
+        btnSinDes.className = inactiveClass;
+      } else {
+        btnSinDes.className = activeDarkClass;
+        btnConDes.className = inactiveClass;
+      }
+    }
+  }
+
+  window.renderCorporateGrid = function() {
+    const gridContainer = document.getElementById('corporate-cards-grid');
+    const footerNote = document.getElementById('corporate-footer-note');
+    if (!gridContainer) return;
+
+    const cards = corporatePlansData[currentCorporateDuration]?.[currentCorporateBreakfast] || [];
+    
+    const isSemanal = currentCorporateDuration === 'semanal';
+    gridContainer.className = isSemanal 
+      ? "grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 transition-opacity duration-300"
+      : "grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto transition-opacity duration-300";
+
+    gridContainer.innerHTML = cards.map(card => `
+      <div class="bg-white/90 backdrop-blur-md rounded-[32px] p-6 sm:p-7 border border-black/5 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative ${card.featured ? 'ring-2 ring-karina-mustard/60' : ''}">
+        
+        ${card.featured ? `
+        <div class="absolute -top-3 right-6 bg-gradient-to-r from-karina-mustard to-amber-500 text-white font-extrabold text-[10px] uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md z-10 flex items-center gap-1">
+          <i class="fa-solid fa-star text-[9px]"></i>
+          <span>Más Solicitado</span>
+        </div>
+        ` : ''}
+
+        <div class="space-y-5">
+          <!-- Imagen de la Suite -->
+          <div class="relative h-48 w-full rounded-2xl overflow-hidden bg-black/5 shadow-inner">
+            <img src="${card.image}" alt="${card.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-black/65 backdrop-blur-md text-white text-[10px] font-mono font-semibold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+              <i class="fa-solid ${card.paxIcon} text-karina-mustard"></i>
+              <span>${card.capacity}</span>
+            </div>
+            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md text-karina-charcoal text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-xs">
+              ${card.tag}
+            </div>
+          </div>
+
+          <!-- Título y Tarifa -->
+          <div class="space-y-1.5 text-left border-b border-black/5 pb-4">
+            <h3 class="text-xl sm:text-2xl font-bold text-karina-charcoal tracking-tight">
+              ${card.title}
+            </h3>
+            <div class="flex items-baseline gap-1.5 flex-wrap">
+              <span class="text-3xl font-extrabold text-karina-charcoal tracking-tight">${card.price}</span>
+              <span class="text-xs font-mono text-karina-charcoal/60 font-semibold">${card.period}</span>
+            </div>
+            <p class="text-[11px] text-karina-charcoal/70 font-medium">
+              <span class="text-karina-mustard font-bold">●</span> ${card.dailyNote} • <span class="italic">${card.serviceNote}</span>
+            </p>
+          </div>
+
+          <!-- Lista de Beneficios -->
+          <div class="space-y-2.5 text-left text-xs text-karina-charcoal/80 pt-1">
+            <p class="font-mono uppercase tracking-wider text-[10px] text-karina-charcoal/50 font-bold">Beneficios Incluidos:</p>
+            ${card.benefits.map(b => `
+              <div class="flex items-start gap-2.5">
+                <i class="fa-regular fa-circle-check text-karina-mustard text-xs mt-0.5 shrink-0"></i>
+                <span class="leading-tight">${b}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Botón CTA con Arimiña -->
+        <div class="pt-6 mt-6 border-t border-black/5">
+          <button onclick="requestCorporateQuote('${card.title}', '${card.price}')" class="w-full py-3.5 px-5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95 cursor-pointer group/btn">
+            <i class="fa-solid fa-wand-magic-sparkles text-karina-mustard text-xs group-hover/btn:rotate-12 transition-transform"></i>
+            <span>Iniciar Solicitud con Arimiña</span>
+          </button>
+        </div>
+
+      </div>
+    `).join('');
+
+    if (footerNote) {
+      if (isSemanal) {
+        footerNote.innerHTML = `
+          <p class="font-semibold text-karina-charcoal"><i class="fa-solid fa-circle-info text-karina-mustard mr-1.5"></i> <strong>Nota del Plan Semanal:</strong> Persona adicional <strong>+$140/semana</strong> con IVA incluido. Todos los planes semanales incluyen room service diario.</p>
+          <p class="text-[11px] text-karina-charcoal/60">Tarifas preferenciales aplicables a estancias mínimas de 7 noches continuas en cualquiera de nuestras sedes.</p>
+        `;
+      } else {
+        footerNote.innerHTML = `
+          <p class="font-semibold text-karina-charcoal"><i class="fa-solid fa-circle-info text-karina-mustard mr-1.5"></i> <strong>Nota del Plan Mensual:</strong> Calculado en base a 30 noches continuas. Modalidad "Con Desayuno" incluye room service diario; modalidad "Sin Desayuno" incluye 1 room service semanal.</p>
+          <p class="text-[11px] text-karina-charcoal/60">Facturación fiscal corporativa, soporte operacional 24/7 y acceso a todas las bondades ejecutivas de Hotel Kariña.</p>
+        `;
+      }
+    }
+  };
+
+  window.requestCorporateQuote = function(suiteTitle, price) {
+    const planLabel = currentCorporateDuration === 'semanal' ? 'Plan Semanal (7 Noches)' : 'Plan Mensual (30 Noches)';
+    const breakfastLabel = currentCorporateBreakfast === 'conDesayuno' ? 'Con Desayuno' : 'Sin Desayuno';
+    const message = `Hola, deseo solicitar una cotización corporativa para el ${planLabel} (${breakfastLabel}) en la ${suiteTitle}.`;
+    const contextData = {
+      plan_corporativo: planLabel,
+      modalidad_desayuno: breakfastLabel,
+      suite_nombre: suiteTitle,
+      tarifa_plan: price
+    };
+
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(message, contextData);
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.getElementById('corporate-cards-grid')) {
+        renderCorporateGrid();
+      }
+    });
+  } else {
+    if (document.getElementById('corporate-cards-grid')) {
+      renderCorporateGrid();
+    }
+  }
+
   // Handlers para formularios
   window.handleQuoteSubmit = function(e) {
     e.preventDefault();
@@ -2832,7 +3217,7 @@ if (document.readyState === 'loading') {
   initAriminaChatModal();
 }
 
-// Exportación global de funciones de Arimiña
+// Exportación global de funciones de Arimiña y Planes Corporativos
 window.getSessionId = getSessionId;
 window.initAriminaChatModal = initAriminaChatModal;
 window.openAriminaChat = openAriminaChat;
@@ -2843,5 +3228,9 @@ window.formatAriminaMarkdown = formatAriminaMarkdown;
 window.parseMarkdown = parseMarkdown;
 window.renderAriminaBotMessage = renderAriminaBotMessage;
 window.renderBotRepliesData = renderBotRepliesData;
+window.setCorporateDuration = setCorporateDuration;
+window.setCorporateBreakfast = setCorporateBreakfast;
+window.renderCorporateGrid = renderCorporateGrid;
+window.requestCorporateQuote = requestCorporateQuote;
 
 
