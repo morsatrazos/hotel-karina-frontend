@@ -2261,35 +2261,42 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     'oh-my-bar': {
-      name: "Oh My Bar Bistro",
+      name: "OH MY BAR & BISTRO",
       sede: "Hotel Kariña Maturín • Complejo Master Pádel",
       schedule: "Mié a Dom • 5:00 PM – 2:00 AM",
       phone: "584249169610",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp",
       categories: [
         {
-          name: "Coctelería de Autor y Mixología",
+          name: "Entradas",
           items: [
-            { name: "Margarita de Ají Dulce y Cocuy", desc: "Cocuy larense artesanal, reducción de ají dulce oriental, zumo de parchita y borde de sal aromatizada.", price: "$12", tag: "Insignia OMB" },
-            { name: "Smoked Old Fashioned Kariña", desc: "Ron añejo venezolano, bíter aromático, ahumado en campana con madera de barrica.", price: "$14", tag: "Ahumado" },
-            { name: "Gin Tonic Pasión Botánica", desc: "Gin premium infusionado con bayas de enebro, pepino fresco, pimienta rosa y tónica premium.", price: "$12", tag: "Refrescante" },
-            { name: "Mojito de Parchita y Hierbabuena", desc: "Ron blanco, pulpa fresca de maracuyá, menta macerada y soda efervescente.", price: "$10", tag: "Tropical" }
+            { name: "Tequeños (6 und)", desc: "Crujientes deditos de hojaldre rellenos de queso blanco con salsa tártara de la casa.", price: "$8", tag: "Para Picar" },
+            { name: "Nuggets con Papas", desc: "Trocitos de pechuga de pollo crujientes acompañados de papas fritas doradas.", price: "$6", tag: "Snack" },
+            { name: "Alitas BBQ con Papas", desc: "Alitas de pollo glaseadas en salsa barbacoa artesanal con papas fritas.", price: "$8", tag: "Favorito" },
+            { name: "Nachos", desc: "Totopos crujientes de maíz con abundante queso cheddar fundido, pico de gallo y salsas.", price: "$10", tag: "Para Compartir" },
+            { name: "Carpaccio de Lomito", desc: "Finas láminas de lomito de res fresco con alcaparras baby, aceite de oliva virgen y queso parmesano.", price: "$12", tag: "Gourmet" }
           ]
         },
         {
-          name: "Hamburguesas, Alitas y Platos para Compartir",
+          name: "Ensaladas",
           items: [
-            { name: "Mini Angus Burgers OMB (3 unidades)", desc: "Pan brioche artesanal, carne angus smash, queso cheddar madurado y cebolla caramelizada.", price: "$14", tag: "Para Picar" },
-            { name: "Alitas BBQ Glaseadas al Ají Dulce", desc: "Alitas de pollo crocantes bañadas en nuestra salsa BBQ artesanal con toque oriental.", price: "$13", tag: "Favorito" },
-            { name: "Nachos Supremos OMB", desc: "Tortillas crocantes con queso cheddar fundido, pico de gallo, frijoles negros, guacamole y jalapeños.", price: "$14", tag: "Para Compartir" },
-            { name: "Tequeños con Chutney de Mango", desc: "Dedos dorados rellenos de abundante queso blanco con dip agridulce casero.", price: "$9", tag: "Clásico" }
+            { name: "Ensalada César Clásica", desc: "Hojas frescas de lechuga romana seleccionada, aderezo César casero, croutons crocantes y parmesano.", price: "$8", tag: "Clásica" },
+            { name: "Ensalada César con Pollo", desc: "Nuestra ensalada César tradicional servida con jugosa pechuga de pollo a la brasa.", price: "$10", tag: "Favorito" }
           ]
         },
         {
-          name: "Licores y Cervezas",
+          name: "Burgers & Bistro",
           items: [
-            { name: "Cervezas Nacionales e Importadas", desc: "Variedad de rubias, negras y artesanales bien frías.", price: "$4 - $6", tag: "Frías" },
-            { name: "Servicio de Whisky / Ron Premium (Botella)", desc: "Incluye hielo, mezcladores y servicio en mesa con frutos secos.", price: "$65 - $130", tag: "Servicio VIP" }
+            { name: "Hamburguesa de Carne", desc: "Jugosa carne de res artesanal al grill, pan brioche, queso gouda fundido, lechuga, tomate y salsas especiales.", price: "$8", tag: "Artesanal" },
+            { name: "Hamburguesa Crispy de Pollo", desc: "Pechuga de pollo extra crujiente marinada, pan brioche, queso, vegetales frescos y aderezo especial.", price: "$9", tag: "Crispy" },
+            { name: "Perro Caliente", desc: "Salchicha premium, pan suave al vapor, cebolla picadita, papitas crujientes y trío de salsas tradicionales.", price: "$2,5", tag: "Clásico" }
+          ]
+        },
+        {
+          name: "Papas",
+          items: [
+            { name: "Ración Tradicional", desc: "Papas fritas doradas y crujientes recién hechas con el toque perfecto de sal.", price: "$2,5", tag: "Ración" },
+            { name: "Ración Especial con Cheddar y Tocineta", desc: "Papas fritas crujientes bañadas en abundante queso cheddar fundido y trocitos de tocineta crocante.", price: "$3,5", tag: "Especial" }
           ]
         }
       ]
@@ -2342,6 +2349,8 @@ document.addEventListener('DOMContentLoaded', () => {
   gastronomiaMenusData['moriche'] = gastronomiaMenusData['moriche-restaurant'];
   gastronomiaMenusData['283'] = gastronomiaMenusData['restaurante-283'];
   gastronomiaMenusData['283-restaurant'] = gastronomiaMenusData['restaurante-283'];
+  gastronomiaMenusData['ohmybar'] = gastronomiaMenusData['oh-my-bar'];
+  gastronomiaMenusData['oh-my-bar-bistro'] = gastronomiaMenusData['oh-my-bar'];
 
 
   // 1. Filtrado de Tarjetas de Gastronomía por Sede
