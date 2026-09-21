@@ -2021,154 +2021,241 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Base de datos de menús digitales por establecimiento
   const gastronomiaMenusData = {
-    'restaurante-283': {
-      name: "Restaurante 283",
-      sede: "Hotel Kariña El Tigre • Salón y Terraza Guanipa",
-      schedule: "Lun a Dom • 7:00 AM – 10:30 PM",
-      phone: "584249559213",
-      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp",
-      categories: [
-        {
-          name: "Pizzas a la Leña y Pastas Artesanales",
-          items: [
-            { name: "Pizza Margherita Especial a la Leña", desc: "Salsa de tomate San Marzano, mozzarella fresca de búfala, albahaca fresca y aceite de oliva virgen extra.", price: "$12", tag: "Artesanal" },
-            { name: "Pizza Cuatro Quesos Gourmet", desc: "Base crujiente a la leña, mozzarella, gorgonzola, parmesano reggiano y queso de cabra artesanal.", price: "$14", tag: "A la Leña" },
-            { name: "Fettuccine al Pesto Genovés y Nueces", desc: "Pasta artesanal fresca salteada con albahaca fresca, nueces tostadas y parmesano.", price: "$15", tag: "Fresco" },
-            { name: "Lasagna Bolognese Tradicional", desc: "Capas de pasta casera, ragú clásico de carne de res, bechamel cremosa y gratén dorado.", price: "$16", tag: "Especialidad" }
-          ]
-        },
-        {
-          name: "Paellas Tradicionales",
-          items: [
-            { name: "Paella Valenciana 283 (Individual o Para Compartir)", desc: "Nuestra especialidad insigne con mariscos frescos, calamares, camarones, mejillones y toque de azafrán español.", price: "$26", tag: "Especialidad" },
-            { name: "Paella Marinera Especial", desc: "Arroz al punto con caldo de mariscos concentrado, langostinos, calamares y pimientos asados.", price: "$28", tag: "Favorito" }
-          ]
-        },
-        {
-          name: "Desayunos 283",
-          items: [
-            { name: "Desayuno Criollo Tradicional", desc: "Arepas calientes, carne mechada jugosa, huevos perico, queso telita y caraotas negras refritas.", price: "$12", tag: "Insignia" },
-            { name: "Omelette de Claras con Vegetales y Aguacate", desc: "Omelette con espinacas baby, queso pasteurizado y tostadas artesanales.", price: "$10", tag: "Balanceado" }
-          ]
-        },
-        {
-          name: "Servicio de Bar y Coctelería",
-          items: [
-            { name: "Sangría de Autor 283 (Jarra)", desc: "Receta secreta con vino tinto español, frutas frescas maceradas y licor de naranja.", price: "$22", tag: "Para Compartir" },
-            { name: "Smoked Old Fashioned", desc: "Bourbon premium ahumado con madera de roble y bíter artesanal.", price: "$14", tag: "Cóctel Autor" },
-            { name: "Mojitos y Cócteles Clásicos", desc: "Variedad de cócteles refrescantes preparados con frutas de temporada y licores importados.", price: "$10", tag: "Bar" }
-          ]
-        }
-      ]
-    },
     'two-chefs': {
       name: "Two Chefs Restaurant",
       sede: "Hotel Kariña Punta de Mata • Salón Principal y Terraza",
-      schedule: "Lun a Dom • 6:30 AM – 10:00 PM",
-      phone: "584249396445",
+      schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
+      phone: "584249207903",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
       categories: [
         {
-          name: "Desayunos Ejecutivos y Criollos",
+          name: "Entradas",
           items: [
-            { name: "Desayuno Criollo Two Chefs", desc: "Arepas asadas al momento, carne mechada de res, huevos perico, queso telita y caraotas negras refritas.", price: "$12", tag: "Insignia" },
-            { name: "Omelette Fit de Claras y Aguacate", desc: "Omelette con espinacas baby, queso blanco pasteurizado y tostadas integrales.", price: "$10", tag: "Saludable" },
-            { name: "Pancakes Clásicos con Miel y Frutas", desc: "Pancakes esponjosos con frutas frescas de estación y mantequilla artesanal.", price: "$9", tag: "Dulce Mañana" }
+            { name: "Tequeños Tradicionales de Queso Blanco (6 und)", desc: "Crujientes deditos de hojaldre rellenos de abundante queso blanco con salsa tártara casera.", price: "$4", tag: "Clásico" },
+            { name: "Ceviche Clásico Two Chefs", desc: "Pesca fresca del día marinada en limón criollo, cebolla morada, ají dulce y cilantro fresco con tostones.", price: "$8", tag: "Fresco" },
+            { name: "Carpaccio de Res con Lascas de Parmesano", desc: "Finas láminas de lomito de res con alcaparras baby, reducción balsámica, rúgula y parmesano reggiano.", price: "$10", tag: "De Autor" }
           ]
         },
         {
-          name: "Almuerzos y Menú Ejecutivo",
+          name: "Ensaladas",
           items: [
-            { name: "Asado Negro Tradicional", desc: "Corte de res cocinado lentamente en caramelo de papelón y especias, arroz blanco y plátano horneado.", price: "$18", tag: "Favorito" },
-            { name: "Pollo a la Plancha en Finas Hierbas", desc: "Pechuga marinada con romero fresco, ensalada verde y puré de papas trufado.", price: "$15", tag: "Ligero" },
-            { name: "Pastel de Chucho Oriental", desc: "Capas de pescado guisado con ají dulce, plátano maduro frito y queso blanco gratinado.", price: "$16", tag: "Oriental" }
+            { name: "Ensalada Verde de la Huerta", desc: "Mezcla de lechugas hidropónicas, tomate cherry, pepino, zanahoria y vinagreta cítrica de la casa.", price: "$4", tag: "Ligera" },
+            { name: "Ensalada César Tradicional", desc: "Lechuga romana crujiente, aderezo César casero, croutons aromatizados al ajo y queso parmesano.", price: "$8", tag: "Favorito" },
+            { name: "Ensalada César con Suprema de Pollo o Camarones", desc: "Nuestra César insigne coronada con pechuga de pollo a la plancha o camarones salteados al grill.", price: "$12", tag: "Especialidad" }
           ]
         },
         {
-          name: "Cenas y Opciones Rápidas",
+          name: "Cortes de Res",
           items: [
-            { name: "Club House Two Chefs", desc: "Triple piso con pollo desmechado, tocineta crocante, queso gouda, huevo y papas fritas.", price: "$14", tag: "Clásico" },
-            { name: "Hamburguesa Artesanal Two Chefs", desc: "Carne de res seleccionada, pan brioche, queso cheddar fundido, tocineta y papas rústicas.", price: "$14", tag: "Especialidad" },
-            { name: "Ensalada César con Suprema de Pollo", desc: "Lechuga romana fresca, aderezo César artesanal, crutones de ajo y parmesano.", price: "$11", tag: "Fresco" }
+            { name: "Solomo de Cuerito a la Parrilla (350g)", desc: "Corte tierno y jugoso a las brasas, servido con yuca al vapor, guasacaca y ensalada fresca.", price: "$14", tag: "A las Brasas" },
+            { name: "Punta Trasera Premium (350g)", desc: "Corte selecto madurado a la brasa con chimichurri casero, yuca frita y queso telita.", price: "$15", tag: "Corte Selecto" },
+            { name: "Churrasco de Lomito de Res al Grill", desc: "Medallón de lomito tierno a la plancha bañado en mantequilla de finas hierbas y papas rústicas.", price: "$15", tag: "Insignia" }
           ]
         },
         {
-          name: "Bebidas y Cafetería",
+          name: "Parrillas",
           items: [
-            { name: "Jugos Naturales Tropicales (Parchita / Guanábana)", desc: "100% fruta natural recién exprimida.", price: "$4", tag: "Natural" },
-            { name: "Café Espresso y Cappuccino Kariña", desc: "Granos seleccionados tostados artesanalmente.", price: "$3", tag: "Especialidad" }
-          ]
-        }
-      ]
-    },
-    'tu-chef': {
-      name: "Two Chefs Restaurant",
-      sede: "Hotel Kariña Punta de Mata • Salón Principal y Terraza",
-      schedule: "Lun a Dom • 6:30 AM – 10:00 PM",
-      phone: "584249396445",
-      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
-      categories: [
-        {
-          name: "Desayunos Ejecutivos y Criollos",
-          items: [
-            { name: "Desayuno Criollo Two Chefs", desc: "Arepas asadas al momento, carne mechada de res, huevos perico, queso telita y caraotas negras refritas.", price: "$12", tag: "Insignia" },
-            { name: "Omelette Fit de Claras y Aguacate", desc: "Omelette con espinacas baby, queso blanco pasteurizado y tostadas integrales.", price: "$10", tag: "Saludable" },
-            { name: "Pancakes Clásicos con Miel y Frutas", desc: "Pancakes esponjosos con frutas frescas de estación y mantequilla artesanal.", price: "$9", tag: "Dulce Mañana" }
+            { name: "Parrilla Individual Two Chefs", desc: "Solomo de res, pechuga de pollo, chorizo parrillero, morcilla, yuca frita, guasacaca y queso asado.", price: "$14", tag: "Individual" },
+            { name: "Parrilla Mixta Dúo (2 Personas)", desc: "Selección de res, pechuga de pollo, chuleta de cerdo, chorizo, morcilla, tostones con queso y ensalada.", price: "$20", tag: "Para Compartir" },
+            { name: "Gran Parrilla Familiar Two Chefs (4 Personas)", desc: "Banquete parrillero completo con cortes premium, embutidos artesanales, tostones, yuca frita y ensalada mixta.", price: "$28", tag: "Familiar" }
           ]
         },
         {
-          name: "Almuerzos y Menú Ejecutivo",
+          name: "Aves",
           items: [
-            { name: "Asado Negro Tradicional", desc: "Corte de res cocinado lentamente en caramelo de papelón y especias, arroz blanco y plátano horneado.", price: "$18", tag: "Favorito" },
-            { name: "Pollo a la Plancha en Finas Hierbas", desc: "Pechuga marinada con romero fresco, ensalada verde y puré de papas trufado.", price: "$15", tag: "Ligero" },
-            { name: "Pastel de Chucho Oriental", desc: "Capas de pescado guisado con ají dulce, plátano maduro frito y queso blanco gratinado.", price: "$16", tag: "Oriental" }
+            { name: "Pechuga de Pollo a la Plancha en Finas Hierbas", desc: "Suprema de pollo marinada en hierbas aromáticas y limón, vegetales salteados y puré de papas.", price: "$9", tag: "Balanceado" },
+            { name: "Pollo al Grill en Salsa de Champiñones", desc: "Pechuga grille bañada en cremosa salsa de hongos silvestres y arroz perfumado.", price: "$11", tag: "Especial" },
+            { name: "Cordon Bleu de Pollo Artesanal", desc: "Pechuga rellena de jamón ahumado superior y queso mozzarella fundido, dorada y crujiente.", price: "$12", tag: "Favorito" }
           ]
         },
         {
-          name: "Cenas y Opciones Rápidas",
+          name: "Pastas",
           items: [
-            { name: "Club House Two Chefs", desc: "Triple piso con pollo desmechado, tocineta crocante, queso gouda, huevo y papas fritas.", price: "$14", tag: "Clásico" },
-            { name: "Hamburguesa Artesanal Two Chefs", desc: "Carne de res seleccionada, pan brioche, queso cheddar fundido, tocineta y papas rústicas.", price: "$14", tag: "Especialidad" },
-            { name: "Ensalada César con Suprema de Pollo", desc: "Lechuga romana fresca, aderezo César artesanal, crutones de ajo y parmesano.", price: "$11", tag: "Fresco" }
+            { name: "Fettuccine o Penne al Pomodoro y Albahaca", desc: "Salsa de tomates frescos confitados, ajo, aceite de oliva virgen extra y albahaca fresca.", price: "$10", tag: "Artesanal" },
+            { name: "Fettuccine Alfredo con Suprema de Pollo", desc: "Salsa blanca cremosa a base de mantequilla, crema de leche, parmesano y dados de pechuga grille.", price: "$13", tag: "Clásico" },
+            { name: "Linguini Frutti di Mare Especial", desc: "Pasta larga salteada con camarones, calamares y mejillones en vino blanco y bisqué de mariscos.", price: "$15", tag: "Especialidad" }
           ]
         },
         {
-          name: "Bebidas y Cafetería",
+          name: "Pescados y Marisquería",
           items: [
-            { name: "Jugos Naturales Tropicales (Parchita / Guanábana)", desc: "100% fruta natural recién exprimida.", price: "$4", tag: "Natural" },
-            { name: "Café Espresso y Cappuccino Kariña", desc: "Granos seleccionados tostados artesanalmente.", price: "$3", tag: "Especialidad" }
+            { name: "Rueda de Carite o Pargo a la Plancha", desc: "Pesca fresca del Oriente a la plancha con tostones crujientes, ensalada rayada y limón criollo.", price: "$12", tag: "Pesca del Día" },
+            { name: "Filete de Merluza en Salsa de Alcaparras", desc: "Filete tierno salteado con mantequilla clarificada, alcaparras baby y puré rústico.", price: "$14", tag: "Gourmet" },
+            { name: "Camarones al Ajillo o al Grill", desc: "Camarones selectos salteados en abundante aceite de oliva, ajo laminado, perejil y vino blanco.", price: "$15", tag: "Insignia" }
+          ]
+        },
+        {
+          name: "Sándwiches & Burgers",
+          items: [
+            { name: "Sándwich Tostado de Jamón y Queso Fundido", desc: "Pan artesanal sellado a la plancha con mantequilla, jamón superior y doble queso gouda.", price: "$5", tag: "Rápido" },
+            { name: "Club House Tradicional Two Chefs", desc: "Triple piso con pollo desmechado, tocineta crocante, queso gouda, jamón, huevo frito y papas fritas.", price: "$10", tag: "Clásico" },
+            { name: "Hamburguesa Monster Doble Carne Two Chefs", desc: "Doble carne smash de res, pan brioche, queso cheddar fundido, tocineta ahumada y papas rústicas.", price: "$13", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Pizzas Pequeñas",
+          items: [
+            { name: "Pizza Pequeña Margarita", desc: "Masa artesanal fina, salsa de la casa, mozzarella fundida y orégano aromático.", price: "$7", tag: "Personal" },
+            { name: "Pizza Pequeña Pepperoni o Jamón", desc: "Mozzarella abundante, salsa de tomate y abundante pepperoni americano o jamón cocido.", price: "$9", tag: "Favorito" },
+            { name: "Pizza Pequeña Especial Two Chefs", desc: "Mozzarella, tocineta crocante, champiñones frescos, maíz tierno y pimentón asado.", price: "$10", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Pizzas Familiares",
+          items: [
+            { name: "Pizza Familiar Cuatro Quesos", desc: "Mozzarella, parmesano, queso azul y gouda fundidos sobre masa madre crujiente.", price: "$12", tag: "Familiar" },
+            { name: "Pizza Familiar Suprema Two Chefs", desc: "Jamón, pepperoni, tocineta ahumada, champiñones, cebolla morada, maíz y pimientos verdes.", price: "$14", tag: "Completa" },
+            { name: "Pizza Familiar Mar y Tierra Especial", desc: "Combinación exclusiva con camarones salteados, tocineta ahumada, mozzarella premium y orégano.", price: "$15", tag: "Gourmet" }
           ]
         }
       ]
     },
     'moriche-restaurant': {
       name: "Moriche Restaurant",
-      sede: "Hotel Kariña Maturín • Salón Insignia",
-      schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
-      phone: "584249169610",
+      sede: "Hotel Kariña El Tigre • Salón Insignia y Terraza Guanipa",
+      schedule: "Lun a Dom • 6:30 AM – 10:30 PM",
+      phone: "584249344204",
       heroImg: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
       categories: [
         {
-          name: "Entradas de Alta Cocina",
+          name: "Entradas",
           items: [
-            { name: "Arepa de Langosta Caribeña", desc: "Masa de maíz pilado, langosta fresca del Caribe, emulsión de aguacate y ají dulce margariteño.", price: "$18", tag: "Plato Insignia" },
-            { name: "Carpaccio de Remolacha y Anacardo Fermentado", desc: "Finas láminas de remolacha asada, crema de anacardos fermentada, brotes orgánicos y pistacho.", price: "$14", tag: "Vegano" },
-            { name: "Tartar de Atún Rojo y Sésamo Tostado", desc: "Atún fresco en cubos, aderezo de soya cítrica, aguacate y chips de plátano verde.", price: "$16", tag: "De Autor" }
+            { name: "Tequeños Gourmet de Hoja con Dip de Ají Dulce", desc: "Deditos artesanales con masa fina crocante rellenos de queso blanco y dip de ají dulce oriental.", price: "$10", tag: "Entrada" },
+            { name: "Tartar de Atún Rojo y Sésamo Tostado", desc: "Atún fresco en cubos, aderezo cítrico de soya, aguacate cremoso y chips de plátano verde.", price: "$14", tag: "De Autor" },
+            { name: "Arepitas de Langosta Caribeña (3 und)", desc: "Masa de maíz pilado rellena con langosta fresca salteada en emulsión de ají dulce margariteño.", price: "$18", tag: "Insignia" },
+            { name: "Experiencia Moriche Gran Degustación (4-6 Personas)", desc: "Tabla maestra de alta cocina con arepas de langosta, carpaccio de lomo, tartar de atún, croquetas ibéricas y tequeños gourmet.", price: "$60", tag: "Experiencia VIP" }
           ]
         },
         {
-          name: "Platos Fuertes y Especialidades",
+          name: "Ensaladas",
           items: [
-            { name: "Lomo de Rótalo en Mantequilla de Ají Dulce", desc: "Pesca del día a la plancha sobre risotto cremoso de coco y chips de topocho.", price: "$28", tag: "Recomendación Chef" },
-            { name: "Asado Negro Braseado 12 Horas", desc: "Corte de res braseado en reducción de vino tinto y papelón con puré rústico de apio criollo.", price: "$26", tag: "Sin Gluten" },
-            { name: "Risotto Cremoso de Hongos Silvestres", desc: "Arroz arborio en caldo aromatizado con hongos silvestres, trufa y parmesano reggiano.", price: "$24", tag: "De Autor" }
+            { name: "Ensalada Capresa Contemporánea", desc: "Bocconcini de mozzarella fresca, tomates confitados, pesto de albahaca fresca y reducción balsámica.", price: "$12", tag: "Fresco" },
+            { name: "Ensalada César Moriche con Pollo Grille", desc: "Hojas hidropónicas seleccionadas, aderezo de anchoas casero, pechuga a la brasa y lascas de parmesano reggiano.", price: "$14", tag: "Clásico" },
+            { name: "Ensalada Tibia de Langostinos y Mango Verde", desc: "Langostinos al grill sobre mix de verdes, mango verde en julianas, aguacate y vinagreta de maracuyá.", price: "$16", tag: "De Autor" }
           ]
         },
         {
-          name: "Postres de Autor",
+          name: "Hamburguesas con papas",
           items: [
-            { name: "Texturas de Cacao de Caripito 70%", desc: "Mousse aireado, bizcocho húmedo, tierra de cacao y gelée de frutos rojos.", price: "$10", tag: "Cacao Monagas" },
-            { name: "Quesillo Tradicional al Caramelo de Ron Añejo", desc: "Suave textura con reducción de ron añejo venezolano y crocante de coco.", price: "$8", tag: "Artesanal" }
+            { name: "Hamburguesa Clásica Moriche", desc: "Carne de res angus (200g), pan brioche tostado con mantequilla, lechuga, tomate, queso gouda y papas fritas.", price: "$10", tag: "Clásica" },
+            { name: "Hamburguesa Bacon & Cheddar Ahumada", desc: "Carne premium a la brasa, queso cheddar fundido, tocineta glaseada en miel de papelón y papas.", price: "$12", tag: "Favorito" },
+            { name: "Hamburguesa Insignia Moriche Trufada", desc: "Carne angus seleccionada, queso brie fundido, cebolla caramelizada, mayonesa trufada y papas rústicas.", price: "$13", tag: "Gourmet" }
+          ]
+        },
+        {
+          name: "Sandwichería con papas",
+          items: [
+            { name: "Sándwich de Pollo Crispy en Pan Brioche", desc: "Pechuga marinada empanizada, aderezo ranch de la casa, pepinillos agridulces y papas fritas.", price: "$12", tag: "Crispy" },
+            { name: "Club House Especial Guanipa", desc: "Triple piso de pechuga grille, jamón selva negra, tocineta crocante, queso gouda y huevo con papas.", price: "$14", tag: "Clásico" },
+            { name: "Philly Steak Sandwich de Lomito", desc: "Tiras de lomito de res salteadas con cebollas caramelizadas, pimientos y queso provolone fundido.", price: "$16", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Platos Fuertes",
+          items: [
+            { name: "Pechuga Moriche en Mantequilla de Romero", desc: "Suprema de pollo a la brasa con puré rústico de apio criollo y vegetales salteados al vapor.", price: "$16", tag: "Balanceado" },
+            { name: "Risotto Cremoso de Hongos Silvestres y Trufa", desc: "Arroz arborio en fondo aromatizado con setas silvestres, aceite de trufa y parmesano.", price: "$22", tag: "De Autor" },
+            { name: "Asado Negro Braseado 12 Horas", desc: "Corte selecto braseado a fuego lento en reducción de vino tinto y papelón con puré de papas.", price: "$26", tag: "Insignia" },
+            { name: "Lomo de Rótalo o Pargo en Costra de Almendras", desc: "Pesca fresca del día sobre risotto cremoso de coco y chips crocantes de plátano.", price: "$28", tag: "Pesca Selecta" },
+            { name: "Churrasco de Lomito Angus a las Brasas (400g)", desc: "Corte de lomito de res a las brasas con mantequilla aromatizada, vegetales asados y papas rústicas.", price: "$30", tag: "Corte Prime" }
+          ]
+        },
+        {
+          name: "Bebidas",
+          items: [
+            { name: "Agua Mineral / Refrescos Variados", desc: "Agua mineral embotellada o refrescos de línea bien fríos.", price: "$2", tag: "Bebida" },
+            { name: "Café Espresso / Americano / Cappuccino", desc: "Granos de café seleccionados de especialidad venezolana tostados artesanalmente.", price: "$3", tag: "Cafetería" },
+            { name: "Jugos Naturales Tropicales de Temporada", desc: "Parchita, guanábana, fresa, piña o melón 100% natural recién exprimido.", price: "$4", tag: "Natural" },
+            { name: "Limonada Frappé con Hierbabuena o Coco", desc: "Refrescante limonada granizada con hierbabuena fresca o cremosa crema de coco.", price: "$5", tag: "Refrescante" }
+          ]
+        }
+      ]
+    },
+    'restaurante-283': {
+      name: "283 Restaurant",
+      sede: "Hotel Kariña Maturín • Complejo Gastronómico Insignia",
+      schedule: "Lun a Dom • 7:00 AM – 9:00 PM",
+      phone: "584249169610",
+      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp",
+      categories: [
+        {
+          name: "Desayunos",
+          items: [
+            { name: "Desayuno Continental Ligero", desc: "Tostadas artesanales, mermelada casera, mantequilla, huevos al gusto, café de la casa y jugo natural.", price: "$9,60", tag: "Continental" },
+            { name: "Omelette de Claras con Vegetales y Queso Telita", desc: "Omelette tierno con espinacas baby, champiñones, queso telita fresco y tostadas integrales.", price: "$11,50", tag: "Saludable" },
+            { name: "Desayuno Criollo Tradicional 283", desc: "Arepas asadas, carne mechada jugosa, huevos perico, queso telita fresco y caraotas negras refritas.", price: "$14,50", tag: "Insignia" }
+          ]
+        },
+        {
+          name: "Entradas & Snacks",
+          items: [
+            { name: "Tequeños Tradicionales 283 (6 und)", desc: "Deditos de queso dorados y crujientes con dip tártara casera y salsa de la casa.", price: "$7,00", tag: "Clásico" },
+            { name: "Ceviche Mixto Oriental", desc: "Pescado blanco y camarones en leche de tigre con ají dulce oriental, cebolla morada y tostones.", price: "$12,50", tag: "Fresco" },
+            { name: "Carpaccio de Lomito con Alcaparras y Parmesano", desc: "Finas láminas de lomito fresco, aderezo balsámico, rúgula fresca y lascas de parmesano.", price: "$14,00", tag: "Gourmet" },
+            { name: "Tabla de Degustación 283 de Entradas", desc: "Surtido especial para compartir con tequeños, mini arepitas rellenas, ceviche y croquetas.", price: "$18,00", tag: "Para Compartir" }
+          ]
+        },
+        {
+          name: "Carnes & Aves",
+          items: [
+            { name: "Suprema de Pollo a la Plancha o en Finas Hierbas", desc: "Pechuga marinada a la brasa con puré de papas y vegetales salteados de temporada.", price: "$18,50", tag: "Aves" },
+            { name: "Parrillada Individual de Solomo y Pollo", desc: "Cortes de res y pollo a la parrilla con yuca frita, guasacaca y queso asado.", price: "$22,00", tag: "Parrilla" },
+            { name: "Churrasco de Lomito al Grill (350g)", desc: "Centro de lomito tierno a las brasas con mantequilla aromatizada y papas rústicas.", price: "$26,50", tag: "Corte Selecto" },
+            { name: "Punta Trasera Prime 283 (400g)", desc: "Corte prémium madurado con chimichurri casero, yuca al vapor y ensalada mixta.", price: "$31,50", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Especiales 283 / Pinchos",
+          items: [
+            { name: "Pinchos Mixtos 283 de Res y Pollo al Carbón", desc: "Brochetas marinadas al carbón intercaladas con pimentón dulce, cebolla y tostones.", price: "$22,30", tag: "Al Carbón" },
+            { name: "Paella Valenciana Tradicional 283", desc: "Receta insigne con azafrán español, mariscos frescos, calamares, pollo y pimientos asados.", price: "$26,00", tag: "Insignia 283" },
+            { name: "Pinchos Especiales de Lomito y Langostinos", desc: "Brochetas de medallones de lomito y langostinos gigantes a la brasa con mantequilla de ajo.", price: "$34,00", tag: "Chef Special" }
+          ]
+        },
+        {
+          name: "Mariscos",
+          items: [
+            { name: "Cazuela de Mariscos Gratinada 283", desc: "Selección de langostinos, calamares, pulpo y mejillones en cremosa salsa bisqué gratinada con queso.", price: "$41,00", tag: "Marisquería" },
+            { name: "Langostinos Gigantes al Ajillo o a las Brasas", desc: "Langostinos frescos en emulsión de ajo confitado, vino blanco, perejil y arroz con coco.", price: "$44,95", tag: "Plato de Lujo" }
+          ]
+        },
+        {
+          name: "Pastas",
+          items: [
+            { name: "Fettuccine al Pesto Genovés y Nueces", desc: "Pasta al dente salteada con salsa pesto tradicional, nueces tostadas y queso parmesano reggiano.", price: "$17,00", tag: "Pasta Fresca" },
+            { name: "Fettuccine con Lomito y Champiñones", desc: "Pasta larga con tiras de lomito salteadas, salsa cremosa de hongos y toque de trufa.", price: "$24,50", tag: "Gourmet" },
+            { name: "Linguini Frutti di Mare con Langosta y Camarones", desc: "Pasta larga salteada con cola de langosta, camarones y calamares en reducción de vino blanco.", price: "$38,00", tag: "Insignia de Mar" }
+          ]
+        },
+        {
+          name: "Ensaladas",
+          items: [
+            { name: "Ensalada César 283 Tradicional", desc: "Lechuga romana fresca, aderezo César artesanal, croutons crocantes y queso parmesano.", price: "$12,15", tag: "Clásica" },
+            { name: "Ensalada César con Pollo Grillado", desc: "Nuestra César clásica con pechuga de pollo marinada a las brasas y parmesano.", price: "$16,50", tag: "Favorito" },
+            { name: "Ensalada Especial 283 de Camarones y Aguacate", desc: "Mix de lechugas, camarones al grill, aguacate cremoso, tomates cherry y vinagreta de mostaza miel.", price: "$21,00", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Burgers",
+          items: [
+            { name: "Hamburguesa Clásica 283", desc: "Carne de res seleccionada (200g), pan brioche, queso gouda, lechuga, tomate y papas fritas.", price: "$14,80", tag: "Artesanal" },
+            { name: "Hamburguesa Gourmet Bacon & Cheese", desc: "Carne angus, queso cheddar fundido, tocineta crocante caramelizada y papas rústicas.", price: "$16,20", tag: "Favorito" },
+            { name: "Hamburguesa Doble Smash 283 Monster", desc: "Doble carne smash, cebolla caramelizada, doble queso cheddar fundido, salsa especial y papas.", price: "$17,50", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Pizzas",
+          items: [
+            { name: "Pizza Margherita a la Leña", desc: "Salsa pomodoro San Marzano, mozzarella fresca, albahaca y aceite de oliva virgen extra.", price: "$13,00", tag: "A la Leña" },
+            { name: "Pizza Cuatro Estaciones 283", desc: "Jamón superior, pepperoni, champiñones frescos y aceitunas negras sobre mozzarella fundida.", price: "$17,50", tag: "Favorito" },
+            { name: "Pizza Especial 283 Mar y Tierra", desc: "Masa madre crocante, camarones salteados, tocineta ahumada, queso parmesano y orégano.", price: "$22,50", tag: "Insignia" }
+          ]
+        },
+        {
+          name: "Postres",
+          items: [
+            { name: "Quesillo Tradicional al Caramelo de Ron Añejo", desc: "Receta casera con suave textura cremosa y reducción de ron añejo venezolano.", price: "$9,80", tag: "Artesanal" },
+            { name: "Texturas de Cacao de Caripito 70%", desc: "Mousse aireado de chocolate oscuro, bizcocho húmedo y coulis de frutos rojos silvestres.", price: "$10,20", tag: "Cacao Monagas" }
           ]
         }
       ]
@@ -2248,6 +2335,14 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     }
   };
+
+  // Configuración de alias
+  gastronomiaMenusData['tu-chef'] = gastronomiaMenusData['two-chefs'];
+  gastronomiaMenusData['twochefs'] = gastronomiaMenusData['two-chefs'];
+  gastronomiaMenusData['moriche'] = gastronomiaMenusData['moriche-restaurant'];
+  gastronomiaMenusData['283'] = gastronomiaMenusData['restaurante-283'];
+  gastronomiaMenusData['283-restaurant'] = gastronomiaMenusData['restaurante-283'];
+
 
   // 1. Filtrado de Tarjetas de Gastronomía por Sede
   window.filterGastronomiaBySede = function(sedeKey, btnEl) {
