@@ -16,6 +16,8 @@ window.KARINA_CONFIG = {
       address: "Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas",
       phone: "+58 424-9169610",
       whatsapp: "https://wa.me/584249169610",
+      padelPhone: "+58 414-1908421",
+      padelWhatsapp: "https://wa.me/584141908421",
       instagram: "@hotelkarina.maturin",
       instagramUrl: "https://instagram.com/hotelkarina.maturin"
     },
@@ -152,6 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
         name: 'Hotel Kariña Maturín',
         phone: '+58 424-9169610',
         phoneRaw: '+584249169610',
+        padelPhone: '+58 414-1908421',
+        padelPhoneRaw: '+584141908421',
+        padelWhatsapp: 'https://wa.me/584141908421',
         address: 'Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas',
         instagram: '@hotelkarina.maturin',
         instagramUrl: 'https://instagram.com/hotelkarina.maturin'
@@ -1041,21 +1046,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const dayPassData = [
     {
       title: "Hotel Kariña Maturín",
-      desc: "Disfruta de un día de sol con acceso libre a las piscinas familiares, parque acuático infantil con toboganes, tumbonas de descanso y vestidores de 10:00 AM a 6:00 PM.",
+      desc: "Disfruta de un día de sol con acceso libre a las piscinas familiares, parque acuático infantil con toboganes, tumbonas de descanso y vestidores. Horario extendido nocturno hasta las 8:00 p.m.",
       tag: "Piscina Resort y Toboganes",
       price: "$25",
       img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp"
     },
     {
       title: "Kariña Punta de Mata",
-      desc: "Un día completo de paz corporativa rodeado de jardines tropicales, acceso a piscina ejecutiva, toallas y consumo acreditado en restaurante.",
+      desc: "Un día completo de paz corporativa rodeado de jardines tropicales, acceso a piscina ejecutiva, toallas y consumo acreditado en restaurante. Horario disponible hasta las 6:00 p.m.",
       tag: "Piscina Ejecutiva y Jardines",
       price: "$20",
       img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptmata.webp"
     },
     {
       title: "Hotel Kariña El Tigre",
-      desc: "Sumérgete en la refrescante piscina resort de Guanipa, solárium, canchas deportivas y ambiente familiar único en la Mesa de Guanipa.",
+      desc: "Sumérgete en la refrescante piscina resort de Guanipa, solárium, canchas deportivas y ambiente familiar único en la Mesa de Guanipa. Horario disponible hasta las 6:00 p.m.",
       tag: "Piscina Guanipa y Solárium",
       price: "$22",
       img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-3.webp"
@@ -1294,6 +1299,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (badgeEl) badgeEl.textContent = data.badge;
     if (taglineEl) taglineEl.textContent = data.tagline;
     if (imgEl) imgEl.src = data.img;
+
+    const padelBox = document.getElementById('contacto-sede-padel-box');
+    if (padelBox) {
+      if (sedeKey === 'maturin') {
+        padelBox.classList.remove('hidden');
+      } else {
+        padelBox.classList.add('hidden');
+      }
+    }
   };
 
   window.switchContactoSede = function(index) {
@@ -1332,6 +1346,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (imgEl) imgEl.src = data.img;
     if (mapLinkEl) mapLinkEl.href = data.mapsUrl;
     if (btnDirEl) btnDirEl.href = data.mapsUrl;
+
+    const padelBox = document.getElementById('contacto-sede-padel-box');
+    if (padelBox) {
+      if (index === 0) {
+        padelBox.classList.remove('hidden');
+      } else {
+        padelBox.classList.add('hidden');
+      }
+    }
   };
 
   // Handlers para formularios

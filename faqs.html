@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -323,8 +323,10 @@
               <span class="text-[10px] font-mono text-karina-charcoal/50 uppercase tracking-widest block">BÚSQUEDAS FRECUENTES</span>
               <div class="flex flex-wrap gap-2 text-[11px]">
                 <button onclick="filterFaqByTag('check-in')" class="px-3 py-1 rounded-full bg-white/60 hover:bg-white border border-black/10 text-karina-charcoal/80 transition-colors">Check-in</button>
-                <button onclick="filterFaqByTag('mascotas')" class="px-3 py-1 rounded-full bg-white/60 hover:bg-white border border-black/10 text-karina-charcoal/80 transition-colors">Mascotas</button>
+                <button onclick="filterFaqByTag('pádel')" class="px-3 py-1 rounded-full bg-white/60 hover:bg-white border border-black/10 text-karina-charcoal/80 transition-colors">Pádel</button>
+                <button onclick="filterFaqByTag('piscinas')" class="px-3 py-1 rounded-full bg-white/60 hover:bg-white border border-black/10 text-karina-charcoal/80 transition-colors">Piscinas</button>
                 <button onclick="filterFaqByTag('desayuno')" class="px-3 py-1 rounded-full bg-white/60 hover:bg-white border border-black/10 text-karina-charcoal/80 transition-colors">Desayuno</button>
+                <button onclick="filterFaqByTag('mascotas')" class="px-3 py-1 rounded-full bg-white/60 hover:bg-white border border-black/10 text-karina-charcoal/80 transition-colors">Mascotas</button>
                 <button onclick="filterFaqByTag('cancelaciones')" class="px-3 py-1 rounded-full bg-white/60 hover:bg-white border border-black/10 text-karina-charcoal/80 transition-colors">Cancelaciones</button>
               </div>
             </div>
@@ -356,7 +358,7 @@
               <div class="w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-xs shadow-sm">
                 <i class="fa-solid fa-calendar-check text-karina-mustard"></i>
               </div>
-              <h2 class="text-xl font-light text-karina-charcoal">Reservas</h2>
+              <h2 class="text-xl font-light text-karina-charcoal">Reservas y Políticas</h2>
             </div>
 
             <div class="space-y-2">
@@ -412,7 +414,7 @@
               <div class="w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-xs shadow-sm">
                 <i class="fa-solid fa-crown text-karina-mustard"></i>
               </div>
-              <h2 class="text-xl font-light text-karina-charcoal">Amenidades</h2>
+              <h2 class="text-xl font-light text-karina-charcoal">Amenidades, Piscinas y Deportes</h2>
             </div>
 
             <div class="space-y-2">
@@ -424,8 +426,44 @@
                 <div class="faq-accordion-wrapper">
                   <div class="faq-accordion-inner">
                     <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed pt-3">
-                      El servicio de desayuno se coordina directamente con recepción según las opciones y el plan contratado en su reserva.
+                      El servicio de desayuno se coordina directamente con recepción según las opciones y el plan contratado en su reserva (servicio a la carta / continental según plan).
                     </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item-card bg-white/70 rounded-2xl border border-black/5 p-4 cursor-pointer hover:bg-white transition-colors" onclick="toggleFaqAccordion(this)">
+                <div class="flex items-center justify-between gap-4">
+                  <span class="text-xs sm:text-sm font-medium text-karina-charcoal">¿Cuáles son los horarios de piscina y Day Pass?</span>
+                  <i class="fa-solid fa-chevron-down text-xs text-karina-charcoal/50 faq-chevron"></i>
+                </div>
+                <div class="faq-accordion-wrapper">
+                  <div class="faq-accordion-inner">
+                    <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed pt-3">
+                      En la <strong>Sede Maturín</strong> contamos con horario extendido nocturno hasta las <strong>8:00 p.m.</strong> En las <strong>Sedes El Tigre y Punta de Mata</strong> el horario de piscinas es hasta las <strong>6:00 p.m.</strong> Todos nuestros huéspedes cuentan con acceso libre e ilimitado a las piscinas durante su estadía.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item-card bg-white/70 rounded-2xl border border-black/5 p-4 cursor-pointer hover:bg-white transition-colors" onclick="toggleFaqAccordion(this)">
+                <div class="flex items-center justify-between gap-4">
+                  <span class="text-xs sm:text-sm font-medium text-karina-charcoal">¿Cómo reservar las canchas de pádel en Maturín (Master Pádel)?</span>
+                  <i class="fa-solid fa-chevron-down text-xs text-karina-charcoal/50 faq-chevron"></i>
+                </div>
+                <div class="faq-accordion-wrapper">
+                  <div class="faq-accordion-inner">
+                    <div class="text-xs text-karina-charcoal/70 font-light leading-relaxed pt-3 space-y-2">
+                      <p>
+                        En la sede Maturín (Club Palma Real) disponemos del complejo <strong>Master Pádel</strong> con canchas panorámicas profesionales iluminadas. El horario de pistas es de <strong>7:00 p.m. hasta las 11:30 p.m.</strong> (fines de semana con horario extendido).
+                      </p>
+                      <p>
+                        Para reservar tu cancha o consultar tarifas y alquiler de palas, contacta directamente al WhatsApp: 
+                        <a href="https://wa.me/584141908421" target="_blank" class="font-bold text-karina-blue underline hover:text-karina-charcoal inline-flex items-center gap-1">
+                          <i class="fa-brands fa-whatsapp text-emerald-600"></i> +58 414-1908421
+                        </a>.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -438,7 +476,7 @@
                 <div class="faq-accordion-wrapper">
                   <div class="faq-accordion-inner">
                     <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed pt-3">
-                      Actualmente no contamos con instalaciones pet friendly, por lo que no admitimos mascotas en nuestras suites.
+                      No se admiten mascotas (no pet-friendly). Para garantizar el máximo estándar de descanso, silencio y bienestar de todos los huéspedes, no contamos con servicio de alojamiento para mascotas en nuestras suites.
                     </p>
                   </div>
                 </div>
@@ -532,6 +570,11 @@
             <a href="https://wa.me/584249169610" target="_blank" class="hover:text-white transition-colors text-[11px] text-[#92CEF7] inline-flex items-center gap-1">
               <i class="fa-brands fa-whatsapp text-xs"></i> +58 424-9169610
             </a>
+            <div class="pt-0.5">
+              <a href="https://wa.me/584141908421" target="_blank" class="hover:text-white transition-colors text-[10px] text-[#FFD573] inline-flex items-center gap-1">
+                <i class="fa-brands fa-whatsapp text-[10px]"></i> Master Pádel: +58 414-1908421
+              </a>
+            </div>
           </div>
 
           <!-- El Tigre -->
