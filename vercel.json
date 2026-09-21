@@ -10,5 +10,9 @@
     { "source": "/checkin.html", "destination": "/", "permanent": false },
     { "source": "/pre-checkin", "destination": "/", "permanent": false },
     { "source": "/pre-checkin.html", "destination": "/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/corporativo", "destination": "/business.html" },
+    { "source": "/planes-corporativos", "destination": "/business.html" }
   ]
 }
