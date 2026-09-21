@@ -695,6 +695,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'premium-maturin',
       sede: 'maturin',
+      sedeName: 'Maturín',
+      tarifa_usd: '180',
+      price: '$180',
       title: 'Suite Premium',
       desc: 'Santuario de amplitud superior y estética sutil, donde la calidez del lujo contemporáneo se integra armoniosamente con las vistas al complejo.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
@@ -723,6 +726,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'estandar-maturin',
       sede: 'maturin',
+      sedeName: 'Maturín',
+      tarifa_usd: '130',
+      price: '$130',
       title: 'Suite Estándar',
       desc: 'Un refugio de diseño contemporáneo y confort absoluto, pensado para garantizar un descanso impecable y alta conectividad en todo momento.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp',
@@ -750,6 +756,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'premium-eltigre',
       sede: 'el-tigre',
+      sedeName: 'El Tigre',
+      tarifa_usd: '180',
+      price: '$180',
       title: 'Suite Premium',
       desc: 'Una experiencia de inmersión en el lujo boutique, destacada por sus acabados de alta gama, espacialidad fluida y un ambiente de serenidad absoluta.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp',
@@ -776,6 +785,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'estandar-eltigre',
       sede: 'el-tigre',
+      sedeName: 'El Tigre',
+      tarifa_usd: '130',
+      price: '$130',
       title: 'Suite Estándar',
       desc: 'El equilibrio perfecto entre eficiencia ejecutiva y confort, diseñado para ofrecer privacidad absoluta y un reconfortante descanso contemporáneo.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
@@ -804,6 +816,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'premium-ptamata',
       sede: 'punta-de-mata',
+      sedeName: 'Punta de Mata',
+      tarifa_usd: '150',
+      price: '$150',
       title: 'Suite Premium',
       desc: 'La máxima expresión de exclusividad y confort, combinando áreas de estar independientes con equipamiento premium para estadías de distinción.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata.webp',
@@ -830,6 +845,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 'estandar-ptamata',
       sede: 'punta-de-mata',
+      sedeName: 'Punta de Mata',
+      tarifa_usd: '120',
+      price: '$120',
       title: 'Suite Estándar',
       desc: 'Un oasis de calma con arquitectura de vanguardia, optimizado para el confort del viajero corporativo que busca privacidad y descanso reparador.',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
@@ -1031,12 +1049,69 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Cargando más habitaciones...');
   };
 
-  window.inquireSuiteWithAI = function(customPrompt) {
-    closeSuiteModal();
-    const suiteTitle = document.getElementById('suite-modal-title')?.textContent || 'Suite';
-    const prompt = customPrompt || `Hola Arimiña, deseo consultar disponibilidad y cotizar la ${suiteTitle}`;
+  window.requestSuiteReservation = function(suiteId) {
+    let suite = null;
+
+    if (suiteId && typeof suiteId === 'string') {
+      suite = catalogSuitesData.find(s => s.id === suiteId);
+    }
+    
+    if (!suite && typeof activeModalSuites !== 'undefined' && activeModalSuites[activeModalSuiteIndex]) {
+      suite = activeModalSuites[activeModalSuiteIndex];
+    }
+
+    const modal = document.getElementById('suite-modal');
+    const modalTitleEl = document.getElementById('suite-modal-title');
+    const suiteTitle = suite?.title || modalTitleEl?.textContent?.trim() || 'Suite Premium';
+    
+    let sedeCode = suite?.sede || modal?.dataset?.sede || detectCurrentSede() || 'maturin';
+    let sedeDisplay = suite?.sedeName;
+    if (!sedeDisplay) {
+      if (sedeCode === 'maturin') sedeDisplay = 'Maturín';
+      else if (sedeCode === 'el-tigre') sedeDisplay = 'El Tigre';
+      else if (sedeCode === 'punta-de-mata') sedeDisplay = 'Punta de Mata';
+      else sedeDisplay = 'Maturín';
+    }
+
+    if (!suite) {
+      const isPremium = suiteTitle.toLowerCase().includes('premium');
+      suite = catalogSuitesData.find(s => s.sede === sedeCode && (isPremium ? s.id.startsWith('premium') : s.id.startsWith('estandar')));
+    }
+
+    let tarifa = suite?.tarifa_usd || modal?.dataset?.tarifa;
+    if (!tarifa) {
+      if (suiteTitle.toLowerCase().includes('premium')) {
+        tarifa = (sedeCode === 'punta-de-mata') ? '150' : '180';
+      } else {
+        tarifa = (sedeCode === 'punta-de-mata') ? '120' : '130';
+      }
+    }
+
+    const message = `Hola, deseo solicitar la reserva para la ${suiteTitle} en la sede ${sedeDisplay}.`;
+    const contextData = {
+      suite_nombre: suiteTitle,
+      sede: sedeDisplay,
+      tarifa_usd: String(tarifa)
+    };
+
+    if (typeof window.closeSuiteModal === 'function') {
+      window.closeSuiteModal();
+    } else if (modal) {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
     if (typeof window.openAriminaChat === 'function') {
-      window.openAriminaChat(prompt);
+      window.openAriminaChat(message, contextData);
+    }
+  };
+
+  window.inquireSuiteWithAI = function(customPrompt) {
+    if (customPrompt && typeof customPrompt === 'string') {
+      if (typeof window.closeSuiteModal === 'function') window.closeSuiteModal();
+      if (typeof window.openAriminaChat === 'function') window.openAriminaChat(customPrompt);
+    } else {
+      window.requestSuiteReservation();
     }
   };
 
@@ -2384,7 +2459,7 @@ function getSessionId() {
 
 const ARIMINA_BACKEND_ENDPOINT = 'https://infinityart3d-agent.up.railway.app/webhook/webchat/karina';
 
-function openAriminaChat(initialPrompt = '') {
+function openAriminaChat(initialPrompt = '', contextData = null) {
   initAriminaChatModal();
   const modal = document.getElementById('modal-arimina');
   if (modal) {
@@ -2397,7 +2472,7 @@ function openAriminaChat(initialPrompt = '') {
     setTimeout(() => {
       if (input) input.focus();
       if (initialPrompt && initialPrompt.trim()) {
-        sendAriminaUserMessage(initialPrompt.trim());
+        sendAriminaUserMessage(initialPrompt.trim(), contextData);
       }
     }, 150);
   }
@@ -2417,7 +2492,7 @@ function sendAriminaQuickPrompt(prompt) {
   sendAriminaUserMessage(prompt);
 }
 
-async function sendAriminaUserMessage(overrideText = null) {
+async function sendAriminaUserMessage(overrideText = null, contextData = null) {
   const input = document.getElementById('arimina-chat-input');
   const sendBtn = document.getElementById('arimina-chat-send');
   const text = overrideText || (input ? input.value.trim() : '');
@@ -2456,6 +2531,16 @@ async function sendAriminaUserMessage(overrideText = null) {
       text: text,
       senderName: "Huésped"
     };
+
+    if (contextData && typeof contextData === 'object') {
+      if (contextData.suite_nombre) payload.suite_nombre = contextData.suite_nombre;
+      if (contextData.sede) payload.sede = contextData.sede;
+      if (contextData.tarifa_usd) payload.tarifa_usd = contextData.tarifa_usd;
+      payload.metadata = {
+        ...(contextData.metadata || {}),
+        ...contextData
+      };
+    }
 
     const response = await fetch(ARIMINA_BACKEND_ENDPOINT, {
       method: 'POST',
