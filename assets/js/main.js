@@ -194,12 +194,22 @@ document.addEventListener('DOMContentLoaded', () => {
       mapsUrl: "https://maps.google.com/?cid=370127326196523800",
       phone: "+58 424-9169610",
       images: [
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp", caption: "Área y Fachada Principal Maturín" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Karina-Maturin-Hotel.webp", caption: "Fachada Aérea Complejo Hotelero Maturín" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-Main.webp", caption: "Piscina Principal Resort Maturín" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-2.webp", caption: "Complejo de Piscinas y Palmeras" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-3.webp", caption: "Piscina y Solárium Tropical" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp", caption: "Moriche Restaurant — Cocina de Autor" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-restaurant-1.webp", caption: "Moriche Restaurant — Salón y Gastronomía" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant-Carpaccio.webp", caption: "Moriche Restaurant — Carpaccio Gourmet" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp", caption: "Oh My Bar Bistro — Coctelería y Lounge" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Cervezas-En-Maturin-Padel.webp", caption: "Master Pádel y Ambiente Social" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/oHMYBAR-8.webp", caption: "Oh My Bar Bistro — Ambiente Nocturno" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/MasterPadel-Maturin-1.webp", caption: "Master Pádel — Canchas Panorámicas" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-9.webp", caption: "Master Pádel — Acción en Cancha" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-5.webp", caption: "Master Pádel — Pistas Profesionales" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-7.webp", caption: "Master Pádel — Torneos y Clínicas" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-8.webp", caption: "Master Pádel — Iluminación Nocturna" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-bar.webp", caption: "Master Pádel — Bar y Tercer Tiempo" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Barberia-Peluqueria-Estilos.webp", caption: "Estilos HairClub — Barbería y Estilismo" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria-Maturin.webp", caption: "Brûlée Pastelería Palma Real" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp", caption: "La Palmera Restobar Club" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp", caption: "Lagos Restaurant Club" },
@@ -1413,6 +1423,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target.id === 'daypass-modal') closeDayPassModal();
   };
 
+  window.acquireDayPassWithAI = function() {
+    closeDayPassModal();
+    const sedes = ["Maturín", "Punta de Mata", "El Tigre"];
+    const sedeName = sedes[currentDayPassSedeIdx] || "Maturín";
+    const prompt = `Hola, deseo adquirir un Day Pass para la sede ${sedeName}.`;
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(prompt);
+    }
+  };
+
   window.loadMoreViveMoments = function() {
     console.log('Cargando más momentos en la galería ¡Vive Kariña!...');
   };
@@ -1477,7 +1497,7 @@ document.addEventListener('DOMContentLoaded', () => {
       instagram: "@hotelkarina.maturin",
       instagramUrl: "https://instagram.com/hotelkarina.maturin",
       mapsUrl: "https://maps.google.com/?cid=370127326196523800",
-      img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Karina-Maturin-Hotel.webp",
       badge: "Hotel y Club Maturín",
       tagline: "Urbanización Palma Real, Maturín, Estado Monagas."
     },
@@ -1491,7 +1511,7 @@ document.addEventListener('DOMContentLoaded', () => {
       instagram: "@hotelkarina.ptamata",
       instagramUrl: "https://instagram.com/hotelkarina.ptamata",
       mapsUrl: "https://maps.google.com/?cid=9643206305083018040",
-      img: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80",
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/FACHADA-PRINCIPAL-PUNTADEMATA.webp",
       badge: "Hotel Corporativo Punta de Mata",
       tagline: "Sector Zona Industrial, Ramal 7, Punta de Mata, Estado Monagas."
     },
@@ -1505,7 +1525,7 @@ document.addEventListener('DOMContentLoaded', () => {
       instagram: "@hotelkarina.guanipa",
       instagramUrl: "https://instagram.com/hotelkarina.guanipa",
       mapsUrl: "https://maps.google.com/?cid=12057092587787417265",
-      img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Fachada-Atardecer-Guanipa.webp",
       badge: "Hotel y Restaurante El Tigre",
       tagline: "A 100 m del Balancín Tricolor, El Tigre, Estado Anzoátegui."
     }
@@ -2025,7 +2045,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Two Chefs Restaurant",
       sede: "Hotel Kariña Punta de Mata • Salón Principal y Terraza",
       schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
-      phone: "584249207903",
+      phone: "584249396445",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
       categories: [
         {
@@ -2112,10 +2132,10 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'moriche-restaurant': {
       name: "Moriche Restaurant",
-      sede: "Hotel Kariña El Tigre • Salón Insignia y Terraza Guanipa",
-      schedule: "Lun a Dom • 6:30 AM – 10:30 PM",
-      phone: "584249344204",
-      heroImg: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+      sede: "Hotel Kariña Maturín • Salón Insignia y Terraza Palma Real",
+      schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
+      phone: "584249169610",
+      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp",
       categories: [
         {
           name: "Entradas",
@@ -2173,9 +2193,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'restaurante-283': {
       name: "283 Restaurant",
-      sede: "Hotel Kariña Maturín • Complejo Gastronómico Insignia",
-      schedule: "Lun a Dom • 7:00 AM – 9:00 PM",
-      phone: "584249169610",
+      sede: "Hotel Kariña El Tigre • Complejo Gastronómico Insignia",
+      schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
+      phone: "584249559213",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp",
       categories: [
         {

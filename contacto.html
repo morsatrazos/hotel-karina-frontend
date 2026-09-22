@@ -49,9 +49,6 @@
   <!-- ========================================== -->
   <!-- 1. NAVBAR OFICIAL CON ISLA FLOTANTE       -->
   <!-- ========================================== -->
-  <!-- ========================================== -->
-  <!-- 1. NAVBAR OFICIAL CON ISLA FLOTANTE Y DROPDOWNS CREATIVOS -->
-  <!-- ========================================== -->
   <header id="main-navbar" class="fixed top-0 inset-x-0 mx-auto w-full z-50 navbar-default">
     <div class="nav-inner max-w-[1440px] mx-auto px-4 sm:px-12 h-20 flex items-center justify-between">
       
@@ -72,7 +69,7 @@
       <!-- BLOQUE CENTRO: NAVEGACIÓN PRINCIPAL CON DROPDOWNS CREATIVOS -->
       <nav class="hidden lg:flex items-center gap-2 text-xs font-semibold text-karina-charcoal/90">
 
-                <!-- DROPDOWN 1: SEDES -->
+        <!-- DROPDOWN 1: SEDES -->
         <div class="nav-dropdown-wrapper relative group py-3">
           <a href="index.html#sedes" class="nav-link-item px-3 py-2 flex items-center gap-1.5 transition-colors text-karina-charcoal group-hover:text-karina-mustard">
             <span>Sedes</span>
@@ -81,7 +78,7 @@
 
           <div class="dropdown-hover-bridge absolute top-full left-0 w-full h-3"></div>
 
-                    <!-- Panel Desplegable Asimétrico Orgánico Sedes -->
+          <!-- Panel Desplegable Asimétrico Orgánico Sedes -->
           <div class="nav-dropdown-panel absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[440px] bg-[#FAF6F0]/95 backdrop-blur-xl rounded-pebble p-6 pt-6 shadow-2xl border border-[#E8DFC8] overflow-hidden opacity-0 pointer-events-none translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 text-left z-50">
             
             <div class="flex items-center pb-2.5 mb-2 border-b border-[#E8DFC8]/60">
@@ -197,7 +194,7 @@
       <!-- BLOQUE DERECHO: Idioma + Botón WhatsApp Shimmer -->
       <div class="flex items-center gap-4 sm:gap-5">
         <a href="https://wa.me/584249169610" target="_blank" class="shimmer-btn bg-[#FFD573] hover:bg-[#F0A800] text-[#343434] font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
-          <span>WhatsApp</span>
+          <span>WhatsApp Central</span>
           <i class="fa-brands fa-whatsapp text-xs"></i>
         </a>
       </div>
@@ -286,174 +283,403 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- 3. MAIN CONTENT: UBICACIONES Y CONTACTO    -->
+  <!-- 3. MAIN CONTENT: SEDES FÍSICAS Y CONTACTO  -->
   <!-- ========================================== -->
   <main class="pt-28 pb-20 space-y-16">
 
-    <!-- CABECERA Y SELECTOR DE SEDES -->
-    <section class="max-w-7xl mx-auto px-6 sm:px-12 space-y-8 pt-4">
-      
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div class="space-y-3 text-left max-w-2xl">
-          <span class="inline-block px-3.5 py-1 rounded-full bg-black/5 text-[10px] font-mono tracking-widest uppercase text-karina-mustard font-bold">
-            RED DE HOTELES EN VENEZUELA
-          </span>
-          <h1 class="text-3xl sm:text-5xl font-light text-karina-charcoal tracking-tight leading-tight">
-            Nuestras Sedes y Canales de Contacto
-          </h1>
-          <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed">
-            Consulte las fichas de acceso, números de contacto y rutas directas a nuestras tres sedes en Monagas y Anzoátegui.
-          </p>
+    <!-- CABECERA PRINCIPAL EDITORIAL -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-12 space-y-6 pt-4 text-center">
+      <div class="space-y-3 max-w-3xl mx-auto">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-black/5 text-[10px] font-mono tracking-widest uppercase text-karina-charcoal/80 font-bold border border-black/5">
+          RED DE HOTELES EN EL ORIENTE VENEZOLANO
+        </span>
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-light text-karina-charcoal tracking-tight leading-tight">
+          Nuestras Sedes y Contacto Directo
+        </h1>
+        <p class="text-xs sm:text-sm text-karina-charcoal/70 font-light leading-relaxed max-w-2xl mx-auto">
+          Atención personalizada e inmediata sin intermediarios. Comunícate directamente con la recepción de cada sede, planifica tu ruta de llegada o activa a nuestro asistente inteligente.
+        </p>
+
+        <!-- Trazo Curvo Dorado de Marca -->
+        <div class="flex justify-center pt-2">
+          <svg width="220" height="12" viewBox="0 0 220 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-karina-mustard-light">
+            <path d="M4 8C60 2.5 160 2.5 216 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
         </div>
       </div>
+    </section>
 
-      <!-- Grid: Mapa Interactivo / Selector + Tarjeta Info -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-4 items-start">
+    <!-- HUB DE SEDES: 3 TARJETAS COMPLETAS CON FOTOS OFICIALES Y ACCIONES DIRECTAS -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
         
-        <!-- Columna Izquierda: Mapa / Imagen Dinámica -->
-        <div class="lg:col-span-7 bg-karina-charcoal rounded-[36px] overflow-hidden shadow-xl min-h-[380px] sm:min-h-[440px] relative flex flex-col justify-end p-6 sm:p-8 text-white group">
-          <img id="contacto-sede-img" 
-               src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" 
-               alt="Sede Kariña" 
-               class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+        <!-- ================= TARJETA 1: SEDE MATURÍN ================= -->
+        <div class="bg-white/90 rounded-[36px] overflow-hidden border border-black/10 shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-300 group">
+          
+          <!-- Foto de Fachada Superior -->
+          <div class="relative h-[240px] w-full overflow-hidden bg-black/10">
+            <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Karina-Maturin-Hotel.webp" 
+                 alt="Fachada Hotel Kariña Maturín" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full bg-karina-mustard text-karina-charcoal text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                Hotel, Resort & Club
+              </span>
+            </div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <h3 class="text-xl font-bold tracking-tight">Hotel Kariña Maturín</h3>
+              <p class="text-[11px] text-white/80 font-light">Monagas • Urb. Palma Real</p>
+            </div>
+          </div>
 
-          <div class="relative z-10 space-y-2 text-left">
-            <span id="contacto-sede-badge" class="px-3.5 py-1 rounded-full bg-karina-mustard text-karina-charcoal text-[10px] font-bold uppercase tracking-wider inline-block">
-              Hotel y Club Maturín
-            </span>
-            <h2 id="contacto-sede-name" class="text-2xl sm:text-3xl font-bold text-white">
-              Hotel Kariña Maturín
-            </h2>
-            <p id="contacto-sede-tagline" class="text-xs text-white/80 font-light max-w-lg">
-              Urbanización Palma Real, Maturín, Estado Monagas.
-            </p>
+          <!-- Información y Detalles -->
+          <div class="p-6 sm:p-7 space-y-5 flex-1 flex flex-col justify-between text-left">
+            <div class="space-y-4 text-xs text-karina-charcoal/80 font-light">
+              
+              <!-- Dirección Física -->
+              <div class="space-y-1 border-b border-black/5 pb-3">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 font-bold block flex items-center gap-1.5">
+                  <i class="fa-solid fa-location-dot text-[#F0A800]"></i> Dirección Física
+                </span>
+                <p class="text-xs text-karina-charcoal leading-relaxed font-normal">
+                  Etapa II, Macroparcela MC-30, Urb. Palma Real, Maturín, Monagas
+                </p>
+              </div>
+
+              <!-- Teléfono / Recepción -->
+              <div class="space-y-1 border-b border-black/5 pb-3">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 font-bold block flex items-center gap-1.5">
+                  <i class="fa-solid fa-phone text-[#2680BD]"></i> Recepción & Reservas
+                </span>
+                <p class="text-sm font-bold text-karina-charcoal font-mono">
+                  +58 424-9169610
+                </p>
+              </div>
+
+              <!-- Servicios Destacados Sede -->
+              <div class="space-y-2">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 font-bold block">
+                  Servicios y Espacios
+                </span>
+                <div class="flex flex-wrap gap-1.5 text-[10px] font-medium text-karina-charcoal/80">
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Piscinas & Toboganes</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Moriche Restaurant</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Oh My Bar</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Estilos HairClub</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Salones de Eventos</span>
+                </div>
+              </div>
+
+              <!-- Badge Master Pádel -->
+              <div class="p-2.5 rounded-2xl bg-[#F0A800]/10 border border-[#F0A800]/30 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-trophy text-[#F0A800] text-xs"></i>
+                  <span class="text-[11px] font-bold text-karina-charcoal">Master Pádel Club</span>
+                </div>
+                <a href="https://wa.me/584141908421?text=Hola,%20deseo%20informaci%C3%B3n%20y%20reserva%20de%20cancha%20en%20Master%20P%C3%A1del%20Matur%C3%ADn" target="_blank" class="text-[10px] font-bold bg-[#1E1E1E] text-white px-2.5 py-1 rounded-full hover:bg-black transition-colors flex items-center gap-1">
+                  <i class="fa-brands fa-whatsapp text-emerald-400"></i> +58 414-1908421
+                </a>
+              </div>
+
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="pt-4 space-y-2 border-t border-black/10">
+              <a href="https://wa.me/584249169610?text=Hola%20Hotel%20Kari%C3%B1a%20Matur%C3%ADn,%20deseo%20consultar%20informaci%C3%B3n%20y%20reservas." target="_blank" class="w-full py-3 px-5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>WhatsApp Maturín</span>
+              </a>
+
+              <div class="grid grid-cols-2 gap-2">
+                <a href="https://maps.google.com/?cid=370127326196523800" target="_blank" class="py-2.5 px-3 rounded-full bg-black/5 hover:bg-black/10 text-karina-charcoal text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
+                  <i class="fa-solid fa-map-location-dot text-xs text-[#2680BD]"></i>
+                  <span>Google Maps</span>
+                </a>
+                <a href="maturin.html" class="py-2.5 px-3 rounded-full bg-black/5 hover:bg-black/10 text-karina-charcoal text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
+                  <span>Ver Sede</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- Columna Derecha: Selector de Sede + Información Detallada -->
-        <div class="lg:col-span-5 space-y-6 text-left">
+        <!-- ================= TARJETA 2: SEDE PUNTA DE MATA ================= -->
+        <div class="bg-white/90 rounded-[36px] overflow-hidden border border-black/10 shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-300 group">
           
-          <!-- Botones Selector de Sede -->
-          <div class="flex gap-2 p-1.5 bg-black/5 rounded-full border border-black/5">
-            <button onclick="selectContactSede('maturin', this)" class="contact-sede-pill flex-1 py-2 px-3 rounded-full text-xs font-bold bg-white text-karina-charcoal shadow-xs transition-all">
-              Maturín
-            </button>
-            <button onclick="selectContactSede('punta-de-mata', this)" class="contact-sede-pill flex-1 py-2 px-3 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal transition-all">
-              Punta de Mata
-            </button>
-            <button onclick="selectContactSede('el-tigre', this)" class="contact-sede-pill flex-1 py-2 px-3 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal transition-all">
-              El Tigre
-            </button>
+          <!-- Foto de Fachada Superior -->
+          <div class="relative h-[240px] w-full overflow-hidden bg-black/10">
+            <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/FACHADA-PRINCIPAL-PUNTADEMATA.webp" 
+                 alt="Fachada Hotel Kariña Punta de Mata" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full bg-[#2680BD] text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                Hub Ejecutivo & Privacidad
+              </span>
+            </div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <h3 class="text-xl font-bold tracking-tight">Kariña Punta de Mata</h3>
+              <p class="text-[11px] text-white/80 font-light">Monagas • Sector Zona Industrial</p>
+            </div>
           </div>
 
-          <!-- Tarjeta Info Contacto Sede -->
-          <div class="bg-white p-6 sm:p-8 rounded-[32px] border border-black/5 shadow-sm space-y-5">
-            <div class="flex items-center justify-between border-b border-black/5 pb-4">
-              <h3 id="contacto-sede-title" class="text-2xl sm:text-3xl font-light text-karina-charcoal">
-                Sede Maturín
-              </h3>
+          <!-- Información y Detalles -->
+          <div class="p-6 sm:p-7 space-y-5 flex-1 flex flex-col justify-between text-left">
+            <div class="space-y-4 text-xs text-karina-charcoal/80 font-light">
+              
+              <!-- Dirección Física -->
+              <div class="space-y-1 border-b border-black/5 pb-3">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 font-bold block flex items-center gap-1.5">
+                  <i class="fa-solid fa-location-dot text-[#2680BD]"></i> Dirección Física
+                </span>
+                <p class="text-xs text-karina-charcoal leading-relaxed font-normal">
+                  Sector Zona Industrial, Ramal 7, Punta de Mata, Monagas
+                </p>
+              </div>
+
+              <!-- Teléfono / Recepción -->
+              <div class="space-y-1 border-b border-black/5 pb-3">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 font-bold block flex items-center gap-1.5">
+                  <i class="fa-solid fa-phone text-[#2680BD]"></i> Recepción & Reservas
+                </span>
+                <p class="text-sm font-bold text-karina-charcoal font-mono">
+                  +58 424-9396445
+                </p>
+              </div>
+
+              <!-- Servicios Destacados Sede -->
+              <div class="space-y-2">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 font-bold block">
+                  Servicios y Espacios
+                </span>
+                <div class="flex flex-wrap gap-1.5 text-[10px] font-medium text-karina-charcoal/80">
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Piscina Ejecutiva</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Two Chefs Restaurant</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Centro Corporativo</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Fibra Redundante</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Seguridad 24/7</span>
+                </div>
+              </div>
+
+              <!-- Badge Two Chefs Restaurant -->
+              <div class="p-2.5 rounded-2xl bg-[#2680BD]/10 border border-[#2680BD]/30 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-utensils text-[#2680BD] text-xs"></i>
+                  <span class="text-[11px] font-bold text-karina-charcoal">Two Chefs Restaurant</span>
+                </div>
+                <a href="https://wa.me/584249396445?text=Hola%20Two%20Chefs%20Restaurant,%20deseo%20consultar%20el%20men%C3%BA%20y%20hacer%20un%20pedido%20o%20reserva" target="_blank" class="text-[10px] font-bold bg-[#1E1E1E] text-white px-2.5 py-1 rounded-full hover:bg-black transition-colors flex items-center gap-1">
+                  <i class="fa-brands fa-whatsapp text-emerald-400"></i> Pedidos WhatsApp
+                </a>
+              </div>
+
             </div>
 
+            <!-- Botones de Acción -->
+            <div class="pt-4 space-y-2 border-t border-black/10">
+              <a href="https://wa.me/584249396445?text=Hola%20Hotel%20Kari%C3%B1a%20Punta%20de%20Mata,%20deseo%20consultar%20informaci%C3%B3n%20y%20reservas." target="_blank" class="w-full py-3 px-5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>WhatsApp Punta de Mata</span>
+              </a>
+
+              <div class="grid grid-cols-2 gap-2">
+                <a href="https://maps.google.com/?cid=9643206305083018040" target="_blank" class="py-2.5 px-3 rounded-full bg-black/5 hover:bg-black/10 text-karina-charcoal text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
+                  <i class="fa-solid fa-map-location-dot text-xs text-[#2680BD]"></i>
+                  <span>Google Maps</span>
+                </a>
+                <a href="punta-de-mata.html" class="py-2.5 px-3 rounded-full bg-black/5 hover:bg-black/10 text-karina-charcoal text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
+                  <span>Ver Sede</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ================= TARJETA 3: SEDE EL TIGRE ================= -->
+        <div class="bg-white/90 rounded-[36px] overflow-hidden border border-black/10 shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-300 group">
+          
+          <!-- Foto de Fachada Superior -->
+          <div class="relative h-[240px] w-full overflow-hidden bg-black/10">
+            <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Fachada-Atardecer-Guanipa.webp" 
+                 alt="Fachada Hotel Kariña El Tigre" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full bg-[#EB8C84] text-[#1E1E1E] text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                Negocios, Eventos & Confort
+              </span>
+            </div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <h3 class="text-xl font-bold tracking-tight">Hotel Kariña El Tigre</h3>
+              <p class="text-[11px] text-white/80 font-light">Anzoátegui • Av. Ruiz Pineda</p>
+            </div>
+          </div>
+
+          <!-- Información y Detalles -->
+          <div class="p-6 sm:p-7 space-y-5 flex-1 flex flex-col justify-between text-left">
             <div class="space-y-4 text-xs text-karina-charcoal/80 font-light">
+              
+              <!-- Dirección Física -->
               <div class="space-y-1 border-b border-black/5 pb-3">
-                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 block">Dirección Física</span>
-                <p id="contacto-sede-address">Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas</p>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 font-bold block flex items-center gap-1.5">
+                  <i class="fa-solid fa-location-dot text-[#EB8C84]"></i> Dirección Física
+                </span>
+                <p class="text-xs text-karina-charcoal leading-relaxed font-normal">
+                  Av. Ruiz Pineda c/c 23 de Enero (a 100m del Balancín), El Tigre, Anzoátegui
+                </p>
               </div>
 
+              <!-- Teléfono / Recepción -->
               <div class="space-y-1 border-b border-black/5 pb-3">
-                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 block">Recepción y Reservas</span>
-                <p id="contacto-sede-phone" class="font-normal text-karina-charcoal text-sm">+58 424-9169610</p>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 font-bold block flex items-center gap-1.5">
+                  <i class="fa-solid fa-phone text-[#2680BD]"></i> Recepción & Reservas
+                </span>
+                <p class="text-sm font-bold text-karina-charcoal font-mono">
+                  +58 424-9559213
+                </p>
               </div>
 
-              <div class="space-y-1">
-                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 block">WhatsApp y Contacto</span>
-                <p id="contacto-sede-ws" class="font-normal text-karina-charcoal text-sm">+58 424-9169610</p>
-                <div id="contacto-sede-padel-box" class="pt-1.5 flex items-center gap-2">
-                  <span class="text-[10px] font-mono font-bold bg-[#F0A800]/20 text-karina-charcoal px-2 py-0.5 rounded-md uppercase">Master Pádel</span>
-                  <a href="https://wa.me/584141908421" target="_blank" class="text-xs font-bold text-karina-charcoal hover:text-[#2680BD] transition-colors inline-flex items-center gap-1">
-                    <i class="fa-brands fa-whatsapp text-emerald-600"></i> +58 414-1908421
+              <!-- Servicios Destacados Sede -->
+              <div class="space-y-2">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-karina-charcoal/50 font-bold block">
+                  Servicios y Espacios
+                </span>
+                <div class="flex flex-wrap gap-1.5 text-[10px] font-medium text-karina-charcoal/80">
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Piscina Guanipa</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">283 Restaurante</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Salón Guanipa (300 Pax)</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Gimnasio Equipado</span>
+                  <span class="bg-[#FAF6F0] border border-black/5 px-2.5 py-1 rounded-full">Planta 100% 24/7</span>
+                </div>
+              </div>
+
+              <!-- Badge 283 Restaurante -->
+              <div class="p-2.5 rounded-2xl bg-[#F0A800]/10 border border-[#F0A800]/30 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-pizza-slice text-[#F0A800] text-xs"></i>
+                  <span class="text-[11px] font-bold text-karina-charcoal">283 Restaurante</span>
+                </div>
+                <a href="https://wa.me/584249559213?text=Hola%20283%20Restaurante%20El%20Tigre,%20deseo%20consultar%20el%20men%C3%BA%20y%20reservar%20mesa" target="_blank" class="text-[10px] font-bold bg-[#1E1E1E] text-white px-2.5 py-1 rounded-full hover:bg-black transition-colors flex items-center gap-1">
+                  <i class="fa-brands fa-whatsapp text-emerald-400"></i> Reservar Mesa
+                </a>
+              </div>
+
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="pt-4 space-y-2 border-t border-black/10">
+              <a href="https://wa.me/584249559213?text=Hola%20Hotel%20Kari%C3%B1a%20El%20Tigre,%20deseo%20consultar%20informaci%C3%B3n%20y%20reservas." target="_blank" class="w-full py-3 px-5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>WhatsApp El Tigre</span>
+              </a>
+
+              <div class="grid grid-cols-2 gap-2">
+                <a href="https://maps.google.com/?cid=12057092587787417265" target="_blank" class="py-2.5 px-3 rounded-full bg-black/5 hover:bg-black/10 text-karina-charcoal text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
+                  <i class="fa-solid fa-map-location-dot text-xs text-[#2680BD]"></i>
+                  <span>Google Maps</span>
+                </a>
+                <a href="el-tigre.html" class="py-2.5 px-3 rounded-full bg-black/5 hover:bg-black/10 text-karina-charcoal text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
+                  <span>Ver Sede</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN CANALES CENTRALES & ASISTENCIA INTELIGENTE ARIMIÑA-IA -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-12 pt-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Tarjeta Arimiña-IA Asistente Inmediato (7 Cols) -->
+        <div class="lg:col-span-7 bg-gradient-to-br from-[#FAF6F0] to-[#FFF3DC] rounded-[36px] p-8 sm:p-10 border border-[#E8DFC8] shadow-sm flex flex-col justify-between text-left relative overflow-hidden">
+          <div class="space-y-4 relative z-10">
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full bg-karina-mustard flex items-center justify-center text-xs text-karina-charcoal shadow-xs">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </span>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-[#726B63] font-bold">Atención Inmediata 24/7</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-4xl font-light text-karina-charcoal tracking-tight leading-tight">
+              ¿Deseas consultar o cotizar en tiempo real?
+            </h2>
+            <p class="text-xs sm:text-sm text-karina-charcoal/75 font-light leading-relaxed max-w-xl">
+              Nuestra inteligencia artificial <strong>Arimiña-IA</strong> te ayuda al instante a comparar sedes, verificar tarifas de suites, gestionar cotizaciones corporativas, menús gastronómicos y pases de Day Pass.
+            </p>
+
+            <!-- Píldoras de Preguntas Rápidas -->
+            <div class="flex flex-wrap gap-2 pt-2">
+              <button onclick="openAriminaChat('Deseo una cotización corporativa para mi empresa')" class="text-xs bg-white/80 hover:bg-white text-karina-charcoal px-3.5 py-1.5 rounded-full border border-black/10 transition-all font-medium cursor-pointer">
+                🏢 Cotización Corporativa
+              </button>
+              <button onclick="openAriminaChat('Hola, deseo consultar información y adquirir un Day Pass.')" class="text-xs bg-white/80 hover:bg-white text-karina-charcoal px-3.5 py-1.5 rounded-full border border-black/10 transition-all font-medium cursor-pointer">
+                🎟️ Comprar Day Pass
+              </button>
+              <button onclick="openAriminaChat('¿Cuáles son las diferencias y amenidades entre las 3 sedes?')" class="text-xs bg-white/80 hover:bg-white text-karina-charcoal px-3.5 py-1.5 rounded-full border border-black/10 transition-all font-medium cursor-pointer">
+                📍 Comparar Sedes
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-6 relative z-10">
+            <button onclick="openAriminaChat()" class="px-8 py-3.5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold shadow-md transition-all active:scale-95 flex items-center gap-2.5 cursor-pointer">
+              <i class="fa-solid fa-wand-magic-sparkles text-karina-mustard text-sm"></i>
+              <span>Abrir Chat con Arimiña-IA</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tarjeta Correo & Redes Centrales (5 Cols) -->
+        <div class="lg:col-span-5 bg-white/90 rounded-[36px] p-8 sm:p-10 border border-black/10 shadow-sm flex flex-col justify-between text-left space-y-6">
+          <div class="space-y-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-karina-charcoal/50 font-bold block">
+              CANALES CORPORATIVOS
+            </span>
+            <h3 class="text-xl sm:text-2xl font-bold text-karina-charcoal">
+              Grupo Kariña Venezuela
+            </h3>
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+              Para requerimientos institucionales, convenios empresariales a largo plazo o alianzas estratégicas.
+            </p>
+
+            <div class="space-y-3 pt-2 text-xs">
+              <div class="flex items-center gap-3 p-3 rounded-2xl bg-[#FAF6F0] border border-black/5">
+                <i class="fa-solid fa-envelope text-karina-mustard text-base"></i>
+                <div class="min-w-0 flex-1">
+                  <span class="text-[10px] font-mono uppercase text-karina-charcoal/50 block">Correo Central</span>
+                  <a href="mailto:contacto@hoteleskarina.com" class="karina-email-link font-bold text-karina-charcoal hover:text-karina-blue truncate block">
+                    contacto@hoteleskarina.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 p-3 rounded-2xl bg-[#FAF6F0] border border-black/5">
+                <i class="fa-brands fa-instagram text-[#EB8C84] text-base"></i>
+                <div class="min-w-0 flex-1">
+                  <span class="text-[10px] font-mono uppercase text-karina-charcoal/50 block">Instagram Oficial</span>
+                  <a href="https://instagram.com/hoteleskarina" target="_blank" class="font-bold text-karina-charcoal hover:text-karina-mustard truncate block">
+                    @hoteleskarina
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- FORMULARIO DE MENSAJE DIRECTO -->
-    <section class="max-w-7xl mx-auto px-6 sm:px-12 pt-6">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <!-- Texto Izquierda -->
-        <div class="lg:col-span-5 space-y-4 text-left">
-          <div class="flex items-center gap-2">
-            <span class="w-8 h-[2px] bg-karina-mustard"></span>
-            <span class="text-[10px] font-mono tracking-widest uppercase font-bold text-karina-mustard">ATENCIÓN AL HUÉSPED</span>
+          <div class="pt-2">
+            <a href="business.html" class="inline-flex items-center gap-2 text-xs font-bold text-[#2680BD] hover:text-karina-charcoal transition-colors">
+              <span>Conoce nuestros Planes Corporativos para Empresas</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
           </div>
-
-          <h2 class="text-2xl sm:text-4xl font-light text-karina-charcoal tracking-tight leading-tight">
-            Envíenos un mensaje
-          </h2>
-          <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
-            Para consultas corporativas, reservas de eventos o requerimientos especiales, nuestro equipo de atención responderá a la brevedad.
-          </p>
-
-          <div class="space-y-2 pt-2 text-xs font-normal text-karina-charcoal/80">
-            <div class="flex items-center gap-2.5">
-              <i class="fa-solid fa-envelope text-karina-mustard text-sm"></i>
-              <a href="mailto:contacto@hoteleskarina.com" class="karina-email-link hover:underline">contacto@hoteleskarina.com</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Formulario Derecha -->
-        <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-[32px] border border-black/5 shadow-sm text-left">
-          <form id="contact-general-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="space-y-1">
-                <label class="text-[10px] font-mono text-karina-charcoal/60 uppercase">Nombre Completo</label>
-                <input type="text" required placeholder="Ej. Ana Silva" class="w-full bg-karina-cream/40 border border-black/10 rounded-xl px-3.5 py-2 text-xs text-karina-charcoal placeholder-karina-charcoal/40 focus:outline-none focus:ring-1 focus:ring-karina-mustard">
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-mono text-karina-charcoal/60 uppercase">Empresa (Opcional)</label>
-                <input type="text" placeholder="Ej. Corporación C.A." class="w-full bg-karina-cream/40 border border-black/10 rounded-xl px-3.5 py-2 text-xs text-karina-charcoal placeholder-karina-charcoal/40 focus:outline-none focus:ring-1 focus:ring-karina-mustard">
-              </div>
-            </div>
-
-            <div class="space-y-1">
-              <label class="text-[10px] font-mono text-karina-charcoal/60 uppercase">Correo Electrónico</label>
-              <input type="email" required placeholder="ana@ejemplo.com" class="w-full bg-karina-cream/40 border border-black/10 rounded-xl px-3.5 py-2 text-xs text-karina-charcoal placeholder-karina-charcoal/40 focus:outline-none focus:ring-1 focus:ring-karina-mustard">
-            </div>
-
-            <div class="space-y-1">
-              <label class="text-[10px] font-mono text-karina-charcoal/60 uppercase">Asunto</label>
-              <select class="w-full bg-karina-cream/40 border border-black/10 rounded-xl px-3.5 py-2 text-xs text-karina-charcoal focus:outline-none focus:ring-1 focus:ring-karina-mustard cursor-pointer">
-                <option>Reserva Corporativa</option>
-                <option>Eventos y Salones</option>
-                <option>Consulta General</option>
-              </select>
-            </div>
-
-            <div class="space-y-1">
-              <label class="text-[10px] font-mono text-karina-charcoal/60 uppercase">Mensaje</label>
-              <textarea rows="3" required placeholder="¿En qué podemos ayudarle?" class="w-full bg-karina-cream/40 border border-black/10 rounded-xl px-3.5 py-2 text-xs text-karina-charcoal placeholder-karina-charcoal/40 focus:outline-none focus:ring-1 focus:ring-karina-mustard resize-none"></textarea>
-            </div>
-
-            <div id="contact-success-banner" class="hidden p-3 rounded-xl bg-karina-mustard/20 border border-karina-mustard/40 text-center text-xs text-karina-charcoal font-semibold">
-              <i class="fa-solid fa-circle-check text-karina-mustard mr-1"></i> Mensaje enviado con éxito. Responderemos a la brevedad.
-            </div>
-
-            <div class="pt-2 text-right">
-              <button type="submit" class="px-8 py-3 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold transition-all shadow-md active:scale-95">
-                Enviar Mensaje →
-              </button>
-            </div>
-          </form>
         </div>
 
       </div>
@@ -604,6 +830,7 @@
 
   <!-- JavaScript Modular Global -->
   <script src="assets/js/main.js"></script>
+
   <!-- ========================================== -->
   <!-- LANZADOR FLOTANTE CENTRAL DE ARIMIÑA CON GLOW AMBIENTAL -->
   <!-- ========================================== -->

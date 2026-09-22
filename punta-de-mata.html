@@ -711,18 +711,21 @@
             Menús diseñados para mantener el rendimiento: desayunos tempranos desde las 06:00, almuerzos ejecutivos balanceados y cenas a la carta en un ambiente relajado frente a los jardines.
           </p>
 
-          <div class="pt-2">
-            <a href="restaurante.html" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold transition-all shadow-md active:scale-95 group">
-              <i class="fa-solid fa-utensils text-karina-blue"></i>
-              <span>Consultar menú gastronómico con Arimiña-IA</span>
-              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+          <div class="pt-2 flex flex-wrap items-center gap-3">
+            <button type="button" onclick="openGastronomiaMenu('two-chefs')" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold transition-all shadow-md active:scale-95 cursor-pointer">
+              <i class="fa-solid fa-book-open text-karina-blue"></i>
+              <span>Ver Menú Digital</span>
+            </button>
+            <a href="https://wa.me/584249396445?text=Hola%20Two%20Chefs%20Restaurant,%20deseo%20consultar%20el%20men%C3%BA%20y%20reservar%20una%20mesa%20en%20Punta%20de%20Mata" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#128C7E] text-xs font-bold border border-[#25D366]/30 transition-all shadow-sm active:scale-95">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Reservar Mesa</span>
             </a>
           </div>
         </div>
 
         <!-- Foto Orgánica Derecha -->
         <div class="lg:col-span-6">
-          <div class="relative h-[320px] sm:h-[400px] w-full rounded-[36px] overflow-hidden shadow-xl bg-black/10 group cursor-pointer border border-black/5">
+          <div class="relative h-[320px] sm:h-[400px] w-full rounded-[36px] overflow-hidden shadow-xl bg-black/10 group cursor-pointer border border-black/5" onclick="openGastronomiaMenu('two-chefs')">
             <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp" 
                  alt="Two Chefs Restaurant Punta de Mata" 
                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
@@ -747,14 +750,17 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
         
-        <!-- Servicio 1: Piscina Ejecutiva y Relax -->
-        <div class="service-card-anim bg-karina-blue-light/30 hover:bg-karina-blue-light/50 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm">
+        <!-- Servicio 1: Piscina Ejecutiva y Relax (Day Pass) -->
+        <div onclick="openAriminaChat('Hola, deseo adquirir un Day Pass para la sede Punta de Mata.')" class="service-card-anim bg-karina-blue-light/30 hover:bg-karina-blue-light/50 p-6 rounded-3xl flex items-center gap-5 cursor-pointer border border-black/5 shadow-sm transition-all hover:scale-[1.02]">
           <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-karina-blue text-lg shrink-0 shadow-sm">
             <i class="fa-solid fa-water-ladder"></i>
           </div>
           <div>
-            <h3 class="text-base font-bold text-karina-charcoal">Piscina y Relax</h3>
-            <p class="text-xs text-karina-charcoal/70 font-normal">Piscina al aire libre rodeada de jardines tropicales. Horario disponible hasta las 6:00 p.m.</p>
+            <div class="flex items-center gap-2">
+              <h3 class="text-base font-bold text-karina-charcoal">Piscina y Day Pass</h3>
+              <span class="text-[9px] font-bold bg-[#2680BD] text-white px-2 py-0.5 rounded-full uppercase">Day Pass</span>
+            </div>
+            <p class="text-xs text-karina-charcoal/70 font-normal">Piscina al aire libre rodeada de jardines tropicales. Consulta y adquiere tu Day Pass con Arimiña-IA.</p>
           </div>
         </div>
 
@@ -1401,6 +1407,56 @@
 
   <!-- Script Oficial Global -->
   <script src="assets/js/main.js"></script>
+
+  <!-- ========================================== -->
+  <!-- MODAL DE MENÚ DIGITAL INTERACTIVO          -->
+  <!-- ========================================== -->
+  <div id="gastronomia-menu-modal" class="is-hidden fixed inset-0 z-[250] flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-md">
+    
+    <!-- Backdrop Click to Close -->
+    <div class="absolute inset-0" onclick="closeGastronomiaMenu()"></div>
+
+    <!-- Panel del Modal -->
+    <div class="modal-panel relative z-10 bg-[#FAF6F0] rounded-[32px] border border-[#E8DFC8] max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden text-left">
+      
+      <!-- Cabecera del Modal -->
+      <div class="p-5 sm:p-6 border-b border-black/10 bg-white/60 flex items-start justify-between gap-4 shrink-0">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2 flex-wrap">
+            <h3 id="modal-menu-title" class="text-xl sm:text-2xl font-bold text-karina-charcoal">Menú Digital</h3>
+            <span id="modal-menu-schedule" class="text-xs text-karina-charcoal/80 font-medium"></span>
+          </div>
+          <p id="modal-menu-subtitle" class="text-xs text-karina-charcoal/60 font-light">Hotel Kariña Venezuela</p>
+        </div>
+
+        <button onclick="closeGastronomiaMenu()" class="w-9 h-9 rounded-full bg-black/5 hover:bg-black/10 text-karina-charcoal flex items-center justify-center transition-colors shrink-0" aria-label="Cerrar modal">
+          <i class="fa-solid fa-xmark text-base"></i>
+        </button>
+      </div>
+
+      <!-- Contenido de Categorías y Platos con Scroll Suave -->
+      <div id="modal-menu-categories" class="p-5 sm:p-6 overflow-y-auto space-y-8 flex-1">
+        <!-- Renderizado dinámico desde JavaScript -->
+      </div>
+
+      <!-- Pie del Modal con Acción de Pedido -->
+      <div class="p-4 sm:p-5 border-t border-black/10 bg-white/80 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+        <p class="text-[11px] text-karina-charcoal/60 font-light text-center sm:text-left">
+          Precios referenciales sujetos a disponibilidad de ingredientes frescos.
+        </p>
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <button onclick="closeGastronomiaMenu()" class="flex-1 sm:flex-none px-5 py-2.5 rounded-full bg-black/5 hover:bg-black/10 text-karina-charcoal text-xs font-semibold transition-colors">
+            Cerrar
+          </button>
+          <a id="modal-menu-whatsapp-btn" href="#" target="_blank" class="flex-1 sm:flex-none px-6 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-95">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Pedir por WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- ========================================== -->
   <!-- LIGHTBOX MODAL UNIVERSAL PARA IMÁGENES     -->
