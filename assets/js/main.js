@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 0,
       name: "Maturín",
       title: "Hotel Kariña Maturín",
-      tagline: "El resort insignia del Oriente Venezolano con parque acuático, gastronomía de autor y salones corporativos.",
+      tagline: "El resort insignia del Oriente Venezolano con piscina semiolímpica, solárium, gastronomía de autor y salones corporativos.",
       address: "Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas.",
       mapsUrl: "https://maps.google.com/?cid=370127326196523800",
       phone: "+58 424-9169610",
@@ -1314,8 +1314,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const dayPassData = [
     {
       title: "Hotel Kariña Maturín",
-      desc: "Disfruta de un día de sol con acceso libre a las piscinas familiares, parque acuático infantil con toboganes, tumbonas de descanso y vestidores. Horario extendido nocturno hasta las 8:00 p.m.",
-      tag: "Piscina Resort y Toboganes",
+      desc: "Disfruta de un día de sol con acceso libre a las piscinas familiares, piscina semiolímpica, solárium de descanso y vestidores. Horario extendido nocturno hasta las 8:00 p.m.",
+      tag: "Piscina Semiolímpica y Solárium",
       price: "$25",
       img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp"
     },
@@ -1347,7 +1347,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const items = document.querySelectorAll('.vive-item');
     items.forEach(item => {
       if (category === 'all' || item.classList.contains('vive-cat-' + category)) {
-        item.style.display = 'block';
+        item.style.display = '';
       } else {
         item.style.display = 'none';
       }
