@@ -1337,22 +1337,261 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentDayPassSedeIdx = 0;
 
-  window.filterViveGallery = function(category, clickedBtn) {
-    const tabs = document.querySelectorAll('.vive-tab');
-    tabs.forEach(tab => {
-      tab.className = "vive-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-black/10 transition-all";
-    });
-    if (clickedBtn) clickedBtn.className = "vive-tab px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+  // ==========================================
+  // 9.1 INTEGRACIÓN SUPABASE: HOTEL MEDIA Y PAGINACIÓN
+  // ==========================================
+  const SUPABASE_URL = window.SUPABASE_URL || 'https://sdwxibeicptfevccvjmt.supabase.co';
+  const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || '';
 
+  function getSupabaseClient() {
+    if (window.supabaseClient) return window.supabaseClient;
+    if (typeof window.supabase !== 'undefined' && typeof window.supabase.createClient === 'function') {
+      try {
+        if (SUPABASE_ANON_KEY) {
+          window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+          return window.supabaseClient;
+        }
+      } catch (err) {
+        console.warn('Error inicializando cliente de Supabase:', err);
+      }
+    }
+    return null;
+  }
+
+  const VIVE_PAGE_SIZE = 6;
+  let vivePage = 1;
+  let viveHasMore = true;
+  let viveIsLoading = false;
+  let viveActiveCategory = 'todos';
+
+  const viveCategoryMap = {
+    'piscinas': ['piscina', 'solarium'],
+    'gastronomia': ['plato', 'bebida', 'cocteleria'],
+    'padel': ['deporte'],
+    'eventos': ['social', 'interiorismo', 'fachada', 'fitness'],
+  };
+
+  function getSedeDisplayName(sedeId) {
+    if (sedeId === 1 || sedeId === '1' || sedeId === 'maturin') return 'Maturín';
+    if (sedeId === 2 || sedeId === '2' || sedeId === 'punta-de-mata') return 'Punta de Mata';
+    if (sedeId === 3 || sedeId === '3' || sedeId === 'el-tigre') return 'El Tigre';
+    return 'Kariña';
+  }
+
+  function formatSedeBadge(sedeId, categoria) {
+    let sedeName = 'KARIÑA';
+    if (sedeId === 1 || sedeId === '1' || sedeId === 'maturin') sedeName = 'MATURÍN';
+    else if (sedeId === 2 || sedeId === '2' || sedeId === 'punta-de-mata') sedeName = 'PUNTA DE MATA';
+    else if (sedeId === 3 || sedeId === '3' || sedeId === 'el-tigre') sedeName = 'EL TIGRE';
+
+    const catUpper = (categoria || '').toUpperCase();
+    return `${sedeName} · ${catUpper || 'MOMENTO'}`;
+  }
+
+  function createMediaCardHtml(item, index) {
+    const badgeText = formatSedeBadge(item.sede_id, item.categoria);
+    const sedeName = getSedeDisplayName(item.sede_id);
+    const title = item.titulo || 'Momento Kariña';
+    const desc = item.descripcion_bot || '';
+    const imgUrl = item.url_publica || '';
+
+    let catClass = 'vive-cat-eventos';
+    const cat = (item.categoria || '').toLowerCase();
+    if (['piscina', 'solarium'].includes(cat)) catClass = 'vive-cat-piscinas';
+    else if (['plato', 'bebida', 'cocteleria'].includes(cat)) catClass = 'vive-cat-gastronomia';
+    else if (['deporte'].includes(cat)) catClass = 'vive-cat-padel';
+
+    const colSpan = (index % 5 === 0 || index % 5 === 1) ? 'md:col-span-6' : 'md:col-span-4';
+    const heightClass = colSpan === 'md:col-span-6' ? 'min-h-[280px]' : 'h-[260px]';
+
+    const safeTitle = title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    const safeSede = sedeName.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    const safeImg = imgUrl.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+
+    return `
+      <div class="vive-item ${catClass} ${colSpan} ${heightClass} rounded-3xl overflow-hidden shadow-md relative group cursor-pointer transition-all duration-300 hover:shadow-xl"
+           onclick="openViveLightbox('${safeImg}', '${safeTitle}', 'photo', '${safeSede}')">
+        <img src="${imgUrl}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[10px] font-mono px-2.5 py-1 rounded-full uppercase">
+          ${badgeText}
+        </span>
+        <div class="absolute bottom-4 left-4 right-4 text-white space-y-0.5">
+          <h3 class="text-sm font-bold text-white">${title}</h3>
+          ${desc ? `<p class="text-[11px] text-white/80 font-light line-clamp-2">${desc}</p>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  function updateViveButtonState(state) {
+    const btn = document.getElementById('load-more-vive-btn');
+    const textEl = document.getElementById('load-more-text');
+    const iconEl = document.getElementById('load-more-icon');
+    if (!btn) return;
+
+    if (state === 'loading') {
+      btn.disabled = true;
+      if (textEl) textEl.textContent = 'Cargando momentos...';
+      if (iconEl) iconEl.className = 'fa-solid fa-spinner fa-spin text-[10px]';
+    } else if (state === 'nomore') {
+      btn.disabled = true;
+      btn.classList.add('opacity-50', 'pointer-events-none');
+      if (textEl) textEl.textContent = 'No hay más momentos';
+      if (iconEl) iconEl.className = 'fa-solid fa-check text-[10px]';
+    } else {
+      btn.disabled = false;
+      btn.classList.remove('opacity-50', 'pointer-events-none');
+      if (textEl) textEl.textContent = 'Cargar Más Momentos';
+      if (iconEl) iconEl.className = 'fa-solid fa-chevron-down text-[10px]';
+    }
+  }
+
+  function fallbackViveDomFilter(category) {
     const items = document.querySelectorAll('.vive-item');
     items.forEach(item => {
-      if (category === 'all' || item.classList.contains('vive-cat-' + category)) {
+      if (category === 'all' || category === 'todos' || item.classList.contains('vive-cat-' + category)) {
         item.style.display = '';
       } else {
         item.style.display = 'none';
       }
     });
+  }
+
+  function renderViveMediaCards(items, replace) {
+    const grid = document.getElementById('vive-bento-grid');
+    if (!grid) return;
+
+    const cardsHtml = items.map((item, idx) => createMediaCardHtml(item, idx)).join('');
+    if (replace) {
+      grid.innerHTML = cardsHtml;
+    } else {
+      grid.insertAdjacentHTML('beforeend', cardsHtml);
+    }
+  }
+
+  window.handleCategoryChange = async function(newCategory, clickedBtn) {
+    const normCategory = (newCategory === 'all' || newCategory === 'todos') ? 'todos' : newCategory;
+    viveActiveCategory = normCategory;
+    vivePage = 1;
+    viveHasMore = true;
+    viveIsLoading = true;
+
+    // Actualizar estilo visual de las pestañas
+    const tabs = document.querySelectorAll('.vive-tab');
+    tabs.forEach(tab => {
+      tab.className = "vive-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-black/10 transition-all";
+    });
+    if (clickedBtn) {
+      clickedBtn.className = "vive-tab px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+    }
+
+    updateViveButtonState('loading');
+
+    const client = getSupabaseClient();
+    if (!client) {
+      fallbackViveDomFilter(normCategory);
+      viveIsLoading = false;
+      updateViveButtonState('ready');
+      return;
+    }
+
+    let query = client
+      .from('hotel_media')
+      .select('id, sede_id, entidad_tipo, categoria, titulo, url_publica, descripcion_bot')
+      .order('id', { ascending: true })
+      .range(0, VIVE_PAGE_SIZE - 1);
+
+    if (normCategory !== 'todos') {
+      const dbCategories = viveCategoryMap[normCategory] || [normCategory];
+      query = query.in('categoria', dbCategories);
+    }
+
+    try {
+      const { data, error } = await query;
+      if (error) {
+        console.error('Error al filtrar categoría desde Supabase:', error);
+        fallbackViveDomFilter(normCategory);
+        updateViveButtonState('ready');
+      } else if (data && data.length > 0) {
+        renderViveMediaCards(data, true);
+        if (data.length < VIVE_PAGE_SIZE) {
+          viveHasMore = false;
+          updateViveButtonState('nomore');
+        } else {
+          updateViveButtonState('ready');
+        }
+      } else {
+        fallbackViveDomFilter(normCategory);
+        updateViveButtonState('ready');
+      }
+    } catch (err) {
+      console.error('Excepción al cambiar categoría:', err);
+      fallbackViveDomFilter(normCategory);
+      updateViveButtonState('ready');
+    } finally {
+      viveIsLoading = false;
+    }
   };
+
+  // Alias para compatibilidad con llamadas existentes en HTML
+  window.filterViveGallery = window.handleCategoryChange;
+
+  window.handleLoadMore = async function() {
+    if (viveIsLoading || !viveHasMore) return;
+    viveIsLoading = true;
+    updateViveButtonState('loading');
+
+    const from = vivePage * VIVE_PAGE_SIZE;
+    const to = from + VIVE_PAGE_SIZE - 1;
+
+    const client = getSupabaseClient();
+    if (!client) {
+      console.warn('Supabase no configurado o sin clave activa. Manteniendo estado actual.');
+      viveIsLoading = false;
+      updateViveButtonState('ready');
+      return;
+    }
+
+    let query = client
+      .from('hotel_media')
+      .select('id, sede_id, entidad_tipo, categoria, titulo, url_publica, descripcion_bot')
+      .order('id', { ascending: true })
+      .range(from, to);
+
+    if (viveActiveCategory !== 'todos' && viveActiveCategory !== 'all') {
+      const dbCategories = viveCategoryMap[viveActiveCategory] || [viveActiveCategory];
+      query = query.in('categoria', dbCategories);
+    }
+
+    try {
+      const { data, error } = await query;
+      if (error) {
+        console.error('Error al cargar momentos desde Supabase:', error);
+        updateViveButtonState('ready');
+      } else if (data) {
+        if (data.length < VIVE_PAGE_SIZE) {
+          viveHasMore = false;
+          updateViveButtonState('nomore');
+        } else {
+          updateViveButtonState('ready');
+        }
+
+        if (data.length > 0) {
+          renderViveMediaCards(data, false);
+          vivePage += 1;
+        }
+      }
+    } catch (err) {
+      console.error('Excepción al cargar momentos:', err);
+      updateViveButtonState('ready');
+    } finally {
+      viveIsLoading = false;
+    }
+  };
+
+  // Alias para compatibilidad con el botón HTML
+  window.loadMoreViveMoments = window.handleLoadMore;
 
   window.openViveLightbox = function(src, caption, type, sede) {
     const modal = document.getElementById('vive-lightbox-modal');
@@ -1443,10 +1682,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof window.openAriminaChat === 'function') {
       window.openAriminaChat(prompt);
     }
-  };
-
-  window.loadMoreViveMoments = function() {
-    console.log('Cargando más momentos en la galería ¡Vive Kariña!...');
   };
 
   // ===================================================

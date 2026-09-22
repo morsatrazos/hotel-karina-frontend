@@ -13,6 +13,9 @@
   <!-- FontAwesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Supabase JS Client CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <!-- Tailwind CSS Engine -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -459,9 +462,9 @@
 
       <!-- BOTÓN CARGAR MÁS MOMENTOS -->
       <div class="text-center pt-10">
-        <button onclick="loadMoreViveMoments()" class="px-8 py-3 rounded-full bg-white hover:bg-white/80 text-karina-charcoal text-xs font-bold border border-black/10 shadow-sm transition-all active:scale-95 flex items-center gap-2 mx-auto">
-          <span>Cargar Más Momentos</span>
-          <i class="fa-solid fa-chevron-down text-[10px]"></i>
+        <button id="load-more-vive-btn" onclick="loadMoreViveMoments()" class="px-8 py-3 rounded-full bg-white hover:bg-white/80 text-karina-charcoal text-xs font-bold border border-black/10 shadow-sm transition-all active:scale-95 flex items-center gap-2 mx-auto disabled:opacity-60 disabled:cursor-not-allowed">
+          <span id="load-more-text">Cargar Más Momentos</span>
+          <i id="load-more-icon" class="fa-solid fa-chevron-down text-[10px]"></i>
         </button>
       </div>
     </section>
