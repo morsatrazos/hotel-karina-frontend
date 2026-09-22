@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -323,7 +323,7 @@
 
     <!-- Contenido Inferior Izquierdo (Titular + CTA Suites) -->
     <div class="relative z-10 max-w-2xl lg:max-w-3xl text-left reveal">
-      <h1 class="text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-light text-white leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)] mb-6">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)] mb-6">
         Miles de huéspedes eligen<br class="hidden md:inline"> hospedarse con nosotros
       </h1>
       
@@ -628,57 +628,73 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-left reveal">
         
-        <!-- Fila 1 & 2 Izquierda: Piscina Resort -->
-        <div onclick="openLightbox(this)" class="lg:col-span-6 lg:row-span-2 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[340px]">
-          <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80" 
-               alt="Piscina Resort" 
+        <!-- 1. Slot Vertical (Piscina): 6 cols, 2 rows -->
+        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-3.webp', 'Piscinas y Áreas Húmedas — Hoteles Kariña', 'Solárium, descanso al aire libre y experiencia Day Pass')" class="lg:col-span-6 lg:row-span-2 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[340px] bg-black/10">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-3.webp" 
+               alt="Piscinas y Solárium" 
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-          <span class="absolute bottom-6 left-6 text-sm font-bold text-white">Piscina Resort</span>
-        </div>
-
-        <!-- Fila 1 Derecha: Gastronomía Gourmet -->
-        <div onclick="openLightbox(this)" class="lg:col-span-6 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[160px]">
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" 
-               alt="Gastronomía Gourmet / Restaurante" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-6 text-xs font-bold text-white">Gastronomía Gourmet / Restaurante</span>
-        </div>
-
-        <!-- Fila 2 Centro: Botón ¡SIENTE KARIÑA! -->
-        <div class="lg:col-span-3 bg-[#FFF6EA] text-karina-charcoal rounded-3xl p-6 flex flex-col items-center justify-center text-center shadow-lg min-h-[160px]">
-          <span class="text-xs font-extrabold uppercase tracking-wider mb-2">¡SIENTE KARIÑA!</span>
-          <div class="w-8 h-8 rounded-full bg-[#F0A800] text-white flex items-center justify-center shadow-md">
-            <i class="fa-solid fa-play text-xs ml-0.5"></i>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 text-white space-y-1">
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-[#F0A800] text-[#343434] font-bold px-2.5 py-1 rounded-full">ÁREAS HÚMEDAS</span>
+            <h3 class="text-xl font-bold text-white">Piscinas y Solárium Tropical</h3>
           </div>
         </div>
 
-        <!-- Fila 2 Derecha: Salón de Eventos y Bar -->
-        <div onclick="openLightbox(this)" class="lg:col-span-3 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[160px]">
-          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80" 
-               alt="Salón de Eventos y Bar" 
+        <!-- 2. Slot Superior Derecho (Gastronomía): 6 cols -->
+        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Carpaccio-de-pulpo-En-El-Tigre.webp', 'Gastronomía de Autor — Hoteles Kariña', 'Propuestas culinarias de autor en Moriche, 283 y Two Chefs')" class="lg:col-span-6 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[170px] bg-black/10">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Carpaccio-de-pulpo-En-El-Tigre.webp" 
+               alt="Gastronomía de Autor" 
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-4 text-xs font-bold text-white">Salón de Eventos y Bar</span>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-6 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">ALTA COCINA</span>
+            <h4 class="text-sm font-bold text-white">Gastronomía Gourmet & Sabores de Autor</h4>
+          </div>
         </div>
 
-        <!-- Fila 3 Izquierda: Cafetería y Barra de Jugos -->
-        <div onclick="openLightbox(this)" class="lg:col-span-6 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[160px]">
-          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80" 
-               alt="Cafetería y Barra de Jugos" 
+        <!-- 3. Card Central (CTA "Siente Kariña"): 3 cols -->
+        <a href="vive-karina.html" class="lg:col-span-3 bg-[#FFF6EA] hover:bg-white text-karina-charcoal rounded-3xl p-6 flex flex-col items-center justify-center text-center shadow-lg min-h-[170px] group transition-all border border-black/5 hover:scale-[1.02]">
+          <span class="text-xs font-extrabold uppercase tracking-wider mb-2 text-karina-charcoal group-hover:text-karina-mustard transition-colors">¡SIENTE KARIÑA!</span>
+          <div class="w-10 h-10 rounded-full bg-[#F0A800] group-hover:bg-[#FFD573] text-karina-charcoal flex items-center justify-center shadow-md mb-2 transition-all">
+            <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+          </div>
+          <span class="text-[11px] font-bold text-karina-charcoal/80 group-hover:text-karina-charcoal transition-colors">Explorar Galería Vive Kariña →</span>
+        </a>
+
+        <!-- 4. Slot Inferior Central (Instalaciones / Lobby): 3 cols -->
+        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Lobby-Nocturno-Guanipa.webp', 'Instalaciones y Lobby — Hoteles Kariña', 'Espacios modernos de recepción y áreas sociales')" class="lg:col-span-3 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[170px] bg-black/10">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Lobby-Nocturno-Guanipa.webp" 
+               alt="Instalaciones y Lobby" 
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-6 text-xs font-bold text-white">Cafetería y Barra de Jugos</span>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">INSTALACIONES</span>
+            <h4 class="text-xs font-bold text-white">Lobby & Espacios Sociales</h4>
+          </div>
         </div>
 
-        <!-- Fila 3 Derecha: Gimnasio y Canchas Deportivas -->
-        <div onclick="openLightbox(this)" class="lg:col-span-6 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[160px]">
-          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" 
-               alt="Gimnasio y Canchas Deportivas" 
+        <!-- 5. Slot Inferior Izquierdo (Pádel): 6 cols -->
+        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-6.webp', 'Master Pádel — Hoteles Kariña', 'Pistas panorámicas techadas con iluminación nocturna')" class="lg:col-span-6 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[170px] bg-black/10">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-6.webp" 
+               alt="Master Pádel Techadas" 
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-          <span class="absolute bottom-4 left-6 text-xs font-bold text-white">Gimnasio y Canchas Deportivas</span>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-6 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-[#2680BD] text-white font-bold px-2 py-0.5 rounded-full">DEPORTES</span>
+            <h4 class="text-sm font-bold text-white">Canchas Profesionales de Pádel</h4>
+          </div>
+        </div>
+
+        <!-- 6. Slot Inferior Derecho (Gimnasio): 6 cols -->
+        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Gimnasio-Karina-El-Tigre.webp', 'Gimnasio y Bienestar — Hoteles Kariña', 'Equipamiento cardiovascular y de fuerza')" class="lg:col-span-6 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[170px] bg-black/10">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Gimnasio-Karina-El-Tigre.webp" 
+               alt="Gimnasio y Fitness" 
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-6 text-white space-y-0.5">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full">BIENESTAR</span>
+            <h4 class="text-sm font-bold text-white">Fitness Center & Gimnasio</h4>
+          </div>
         </div>
 
       </div>
@@ -1286,7 +1302,7 @@
   <!-- ========================================== -->
   <!-- LANZADOR FLOTANTE CENTRAL DE ARIMIÑA CON GLOW AMBIENTAL -->
   <!-- ========================================== -->
-  <div class="fixed arimina-floating-bar bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-40 max-w-[92vw] sm:max-w-none mb-[env(safe-area-inset-bottom)] pointer-events-auto" style="bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));">
+  <div class="fixed arimina-floating-bar bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-40 max-w-[92vw] sm:max-w-none mb-[env(safe-area-inset-bottom)] pointer-events-auto" style="bottom: calc(1rem + env(safe-area-inset-bottom, 0px));">
     <div class="relative group">
       <!-- Halo Ambiental Glow Pulsante -->
       <div class="absolute -inset-0.5 rounded-full bg-gradient-to-r from-amber-400 via-[#F0A800] to-amber-600 opacity-40 group-hover:opacity-75 blur-md animate-pulse pointer-events-none transition-opacity duration-300"></div>

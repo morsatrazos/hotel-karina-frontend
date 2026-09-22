@@ -2057,7 +2057,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Two Chefs Restaurant",
       sede: "Hotel Kariña Punta de Mata • Salón Principal y Terraza",
       schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
-      phone: "584249396445",
+      phone: "584249207903",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
       categories: [
         {
@@ -2144,9 +2144,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'moriche-restaurant': {
       name: "Moriche Restaurant",
-      sede: "Hotel Kariña Maturín • Salón Insignia y Terraza Palma Real",
-      schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
-      phone: "584249169610",
+      sede: "Hotel Kariña • Salón Insignia y Terraza (Precios con IVA incluido)",
+      schedule: "Lun a Dom • 6:30 AM – 10:30 PM",
+      phone: "584249344204",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp",
       categories: [
         {
@@ -2205,9 +2205,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'restaurante-283': {
       name: "283 Restaurant",
-      sede: "Hotel Kariña El Tigre • Complejo Gastronómico Insignia",
-      schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
-      phone: "584249559213",
+      sede: "Hotel Kariña • Complejo Gastronómico Insignia",
+      schedule: "Lun a Dom • 7:00 AM – 9:00 PM",
+      phone: "584249169610",
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp",
       categories: [
         {
@@ -2300,7 +2300,7 @@ document.addEventListener('DOMContentLoaded', () => {
       heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp",
       categories: [
         {
-          name: "Entradas",
+          name: "Entradas & Snacks",
           items: [
             { name: "Tequeños (6 und)", desc: "Crujientes deditos de hojaldre rellenos de queso blanco con salsa tártara de la casa.", price: "$8", tag: "Para Picar" },
             { name: "Nuggets con Papas", desc: "Trocitos de pechuga de pollo crujientes acompañados de papas fritas doradas.", price: "$6", tag: "Snack" },
@@ -2325,7 +2325,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ]
         },
         {
-          name: "Papas",
+          name: "Raciones de Papas",
           items: [
             { name: "Ración Tradicional", desc: "Papas fritas doradas y crujientes recién hechas con el toque perfecto de sal.", price: "$2,5", tag: "Ración" },
             { name: "Ración Especial con Cheddar y Tocineta", desc: "Papas fritas crujientes bañadas en abundante queso cheddar fundido y trocitos de tocineta crocante.", price: "$3,5", tag: "Especial" }
@@ -2339,6 +2339,8 @@ document.addEventListener('DOMContentLoaded', () => {
   gastronomiaMenusData['tu-chef'] = gastronomiaMenusData['two-chefs'];
   gastronomiaMenusData['twochefs'] = gastronomiaMenusData['two-chefs'];
   gastronomiaMenusData['moriche'] = gastronomiaMenusData['moriche-restaurant'];
+  gastronomiaMenusData['moriche-el-tigre'] = gastronomiaMenusData['moriche-restaurant'];
+  gastronomiaMenusData['moriche-maturin'] = gastronomiaMenusData['moriche-restaurant'];
   gastronomiaMenusData['283'] = gastronomiaMenusData['restaurante-283'];
   gastronomiaMenusData['283-restaurant'] = gastronomiaMenusData['restaurante-283'];
   gastronomiaMenusData['ohmybar'] = gastronomiaMenusData['oh-my-bar'];
@@ -2408,12 +2410,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Helper: Asegurar existencia del modal de menú en el DOM
+  function ensureGastronomiaMenuModal() {
+    let modal = document.getElementById('gastronomia-menu-modal');
+    if (modal) return modal;
+
+    modal = document.createElement('div');
+    modal.id = 'gastronomia-menu-modal';
+    modal.className = 'is-hidden fixed inset-0 z-[250] flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-md';
+    modal.setAttribute('onclick', 'closeGastronomiaMenuOnBackdrop(event)');
+    modal.innerHTML = `
+      <div class="modal-panel relative w-full max-w-4xl max-h-[92vh] bg-karina-cream rounded-[32px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-black/10 flex flex-col justify-between" onclick="event.stopPropagation()">
+        <!-- Encabezado Fijo del Menú -->
+        <div class="p-5 sm:p-7 bg-white/90 border-b border-black/10 flex items-start justify-between gap-4 shrink-0">
+          <div class="space-y-1 text-left">
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-karina-mustard text-karina-charcoal font-bold px-2.5 py-0.5 rounded-full inline-block">
+              CARTA DIGITAL
+            </span>
+            <h3 id="modal-menu-title" class="text-xl sm:text-2xl font-bold text-karina-charcoal"></h3>
+            <p id="modal-menu-subtitle" class="text-xs text-karina-charcoal/70 font-light"></p>
+            <p id="modal-menu-schedule" class="text-[11px] text-karina-charcoal/80 font-mono font-medium pt-1"></p>
+          </div>
+          <button onclick="closeGastronomiaMenu()" class="w-9 h-9 rounded-full bg-black/5 hover:bg-black/10 text-karina-charcoal flex items-center justify-center text-lg transition-colors cursor-pointer shrink-0" aria-label="Cerrar carta">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Contenido Scrolleable de Categorías -->
+        <div id="modal-menu-categories" class="p-5 sm:p-8 overflow-y-auto space-y-8 flex-1"></div>
+
+        <!-- Footer Fijo con CTA Directo -->
+        <div class="p-4 sm:p-5 bg-white/90 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+          <p class="text-xs text-karina-charcoal/70 font-light text-center sm:text-left">
+            Precios sujetos a disponibilidad e IVA según normativa.
+          </p>
+          <a id="modal-menu-whatsapp-btn" href="#" target="_blank" class="w-full sm:w-auto py-2.5 px-6 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Pedir / Reservar por WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    return modal;
+  }
+
   // 3. Modal de Menú Digital
   window.openGastronomiaMenu = function(restaurantId, categoryKeyword = '') {
     const data = gastronomiaMenusData[restaurantId];
     if (!data) return;
 
-    const modal = document.getElementById('gastronomia-menu-modal');
+    const modal = ensureGastronomiaMenuModal();
     const titleEl = document.getElementById('modal-menu-title');
     const subtitleEl = document.getElementById('modal-menu-subtitle');
     const scheduleEl = document.getElementById('modal-menu-schedule');
@@ -2485,6 +2532,10 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.classList.add('is-hidden');
       document.body.style.overflow = '';
     }
+  };
+
+  window.closeGastronomiaMenuOnBackdrop = function(e) {
+    if (e.target.id === 'gastronomia-menu-modal') closeGastronomiaMenu();
   };
 
   // 4. Carrusel de Propuestas Aliadas Club Palma Real (Touch & Mouse Drag)
