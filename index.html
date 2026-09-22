@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -626,74 +626,92 @@
         <h2 class="text-3xl sm:text-5xl font-light mb-12">Vive Kariña</h2>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-left reveal">
+      <!-- Grid 3x2 Balanceado y Panorámico -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left reveal">
         
-        <!-- 1. Slot Vertical (Piscina): 6 cols, 2 rows -->
-        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-3.webp', 'Piscinas y Áreas Húmedas — Hoteles Kariña', 'Solárium, descanso al aire libre y experiencia Day Pass')" class="lg:col-span-6 lg:row-span-2 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[340px] bg-black/10">
+        <!-- Posición 1 (Piscina & Resort - Maturín) -->
+        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-3.webp', 'Piscina & Solárium — Hotel Kariña Maturín', 'Espacios al aire libre, solárium y relajación tropical')" 
+             class="relative h-52 sm:h-56 rounded-2xl overflow-hidden group cursor-pointer shadow-lg bg-black/10">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-3.webp" 
-               alt="Piscinas y Solárium" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-          <div class="absolute bottom-6 left-6 text-white space-y-1">
-            <span class="text-[10px] font-mono tracking-widest uppercase bg-[#F0A800] text-[#343434] font-bold px-2.5 py-1 rounded-full">ÁREAS HÚMEDAS</span>
-            <h3 class="text-xl font-bold text-white">Piscinas y Solárium Tropical</h3>
+               alt="Piscina & Solárium Maturín" 
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-[#F0A800] text-[#343434] font-bold px-2.5 py-0.5 rounded-full inline-block">ÁREAS HÚMEDAS</span>
+            <h3 class="text-base sm:text-lg font-bold text-white leading-tight">Piscina & Solárium</h3>
           </div>
         </div>
 
-        <!-- 2. Slot Superior Derecho (Gastronomía): 6 cols -->
-        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Carpaccio-de-pulpo-En-El-Tigre.webp', 'Gastronomía de Autor — Hoteles Kariña', 'Propuestas culinarias de autor en Moriche, 283 y Two Chefs')" class="lg:col-span-6 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[170px] bg-black/10">
+        <!-- Posición 2 (Deporte y Acción - Master Pádel) -->
+        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/MasterPadel-Maturin-1.webp', 'Master Pádel Maturín — Hotel Kariña', 'Canchas panorámicas techadas, torneos y clínicas formativas')" 
+             class="relative h-52 sm:h-56 rounded-2xl overflow-hidden group cursor-pointer shadow-lg bg-black/10">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/MasterPadel-Maturin-1.webp" 
+               alt="Master Pádel Maturín" 
+               class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-[#2680BD] text-white font-bold px-2.5 py-0.5 rounded-full inline-block">DEPORTE & ACCIÓN</span>
+            <h3 class="text-base sm:text-lg font-bold text-white leading-tight">Master Pádel Maturín</h3>
+          </div>
+        </div>
+
+        <!-- Posición 3 (Alta Gastronomía - Moriche / 283) -->
+        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Carpaccio-de-pulpo-En-El-Tigre.webp', 'Moriche Restaurant — Cocina de Autor', 'Propuestas gastronómicas de autor, maridaje y sabores regionales')" 
+             class="relative h-52 sm:h-56 rounded-2xl overflow-hidden group cursor-pointer shadow-lg bg-black/10">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Carpaccio-de-pulpo-En-El-Tigre.webp" 
-               alt="Gastronomía de Autor" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-          <div class="absolute bottom-4 left-6 text-white space-y-0.5">
-            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">ALTA COCINA</span>
-            <h4 class="text-sm font-bold text-white">Gastronomía Gourmet & Sabores de Autor</h4>
+               alt="Moriche Restaurant" 
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2.5 py-0.5 rounded-full inline-block">ALTA COCINA</span>
+            <h3 class="text-base sm:text-lg font-bold text-white leading-tight">Moriche Restaurant</h3>
           </div>
         </div>
 
-        <!-- 3. Card Central (CTA "Siente Kariña"): 3 cols -->
-        <a href="vive-karina.html" class="lg:col-span-3 bg-[#FFF6EA] hover:bg-white text-karina-charcoal rounded-3xl p-6 flex flex-col items-center justify-center text-center shadow-lg min-h-[170px] group transition-all border border-black/5 hover:scale-[1.02]">
-          <span class="text-xs font-extrabold uppercase tracking-wider mb-2 text-karina-charcoal group-hover:text-karina-mustard transition-colors">¡SIENTE KARIÑA!</span>
-          <div class="w-10 h-10 rounded-full bg-[#F0A800] group-hover:bg-[#FFD573] text-karina-charcoal flex items-center justify-center shadow-md mb-2 transition-all">
-            <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+        <!-- Posición 4 (Card Interactiva CTA - "Vive Kariña") -->
+        <a href="vive-karina.html" 
+           class="h-52 sm:h-56 rounded-2xl bg-gradient-to-br from-[#FFF6EA] to-[#FFECCE] hover:from-white hover:to-[#FFF6EA] text-karina-charcoal p-6 flex flex-col justify-between shadow-lg border border-white/20 transition-all hover:scale-[1.02] group cursor-pointer">
+          <div class="space-y-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-karina-mustard text-karina-charcoal text-[10px] font-bold uppercase tracking-wider self-start shadow-2xs">
+              <i class="fa-solid fa-wand-magic-sparkles text-[9px]"></i> EXPERIENCIAS KARIÑA
+            </span>
+            <p class="text-xs text-karina-charcoal/70 font-light leading-relaxed">
+              Descubre cada rincón, deportes, bienestar y sabores del Oriente Venezolano.
+            </p>
           </div>
-          <span class="text-[11px] font-bold text-karina-charcoal/80 group-hover:text-karina-charcoal transition-colors">Explorar Galería Vive Kariña →</span>
+          <div class="flex items-center justify-between pt-2 border-t border-black/5">
+            <span class="text-xs sm:text-sm font-bold text-karina-charcoal group-hover:text-karina-mustard transition-colors">
+              Explora la Galería Vive Kariña →
+            </span>
+            <div class="w-8 h-8 rounded-full bg-karina-charcoal group-hover:bg-[#F0A800] text-white group-hover:text-karina-charcoal flex items-center justify-center transition-all shadow-xs shrink-0 group-hover:translate-x-0.5">
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </div>
         </a>
 
-        <!-- 4. Slot Inferior Central (Instalaciones / Lobby): 3 cols -->
-        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Lobby-Nocturno-Guanipa.webp', 'Instalaciones y Lobby — Hoteles Kariña', 'Espacios modernos de recepción y áreas sociales')" class="lg:col-span-3 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[170px] bg-black/10">
+        <!-- Posición 5 (Lounge & Vida Nocturna - Oh My Bar) -->
+        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Tinto-de-Verano-Master-Padel-Oh-my-bar.webp', 'Oh My Bar Bistro — Mixología y Coctelería', 'Ambiente lounge, cócteles de autor y gastronomía bistro')" 
+             class="relative h-52 sm:h-56 rounded-2xl overflow-hidden group cursor-pointer shadow-lg bg-black/10">
+          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Tinto-de-Verano-Master-Padel-Oh-my-bar.webp" 
+               alt="Oh My Bar Bistro" 
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-karina-mustard text-karina-charcoal font-extrabold px-2.5 py-0.5 rounded-full inline-block">MIXOLOGÍA & LOUNGE</span>
+            <h3 class="text-base sm:text-lg font-bold text-white leading-tight">Oh My Bar Bistro</h3>
+          </div>
+        </div>
+
+        <!-- Posición 6 (Instalaciones & Arquitectura - El Tigre Nocturno) -->
+        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Lobby-Nocturno-Guanipa.webp', 'Lobby & Espacios Sociales — Hotel Kariña El Tigre', 'Instalaciones modernas, confort ejecutivo y recepción 24/7')" 
+             class="relative h-52 sm:h-56 rounded-2xl overflow-hidden group cursor-pointer shadow-lg bg-black/10">
           <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Lobby-Nocturno-Guanipa.webp" 
-               alt="Instalaciones y Lobby" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-          <div class="absolute bottom-4 left-4 text-white space-y-0.5">
-            <span class="text-[9px] font-mono tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full">INSTALACIONES</span>
-            <h4 class="text-xs font-bold text-white">Lobby & Espacios Sociales</h4>
-          </div>
-        </div>
-
-        <!-- 5. Slot Inferior Izquierdo (Pádel): 6 cols -->
-        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-6.webp', 'Master Pádel — Hoteles Kariña', 'Pistas panorámicas techadas con iluminación nocturna')" class="lg:col-span-6 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[170px] bg-black/10">
-          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-6.webp" 
-               alt="Master Pádel Techadas" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-          <div class="absolute bottom-4 left-6 text-white space-y-0.5">
-            <span class="text-[9px] font-mono tracking-widest uppercase bg-[#2680BD] text-white font-bold px-2 py-0.5 rounded-full">DEPORTES</span>
-            <h4 class="text-sm font-bold text-white">Canchas Profesionales de Pádel</h4>
-          </div>
-        </div>
-
-        <!-- 6. Slot Inferior Derecho (Gimnasio): 6 cols -->
-        <div onclick="openLightbox('https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Gimnasio-Karina-El-Tigre.webp', 'Gimnasio y Bienestar — Hoteles Kariña', 'Equipamiento cardiovascular y de fuerza')" class="lg:col-span-6 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg min-h-[170px] bg-black/10">
-          <img src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Gimnasio-Karina-El-Tigre.webp" 
-               alt="Gimnasio y Fitness" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-          <div class="absolute bottom-4 left-6 text-white space-y-0.5">
-            <span class="text-[9px] font-mono tracking-widest uppercase bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full">BIENESTAR</span>
-            <h4 class="text-sm font-bold text-white">Fitness Center & Gimnasio</h4>
+               alt="Lobby & Espacios Sociales" 
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
+            <span class="text-[9px] font-mono tracking-widest uppercase bg-emerald-600 text-white font-bold px-2.5 py-0.5 rounded-full inline-block">CONFORT EJECUTIVO</span>
+            <h3 class="text-base sm:text-lg font-bold text-white leading-tight">Lobby & Espacios Sociales</h3>
           </div>
         </div>
 
