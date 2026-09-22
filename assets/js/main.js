@@ -198,10 +198,13 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-Main.webp", caption: "Piscina Principal Resort Maturín" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-2.webp", caption: "Complejo de Piscinas y Palmeras" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-3.webp", caption: "Piscina y Solárium Tropical" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Laguna-Master-Padel-Maturin.webp", caption: "Laguna y Entorno Natural Club Palma Real" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp", caption: "Moriche Restaurant — Cocina de Autor" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-restaurant-1.webp", caption: "Moriche Restaurant — Salón y Gastronomía" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant-Carpaccio.webp", caption: "Moriche Restaurant — Carpaccio Gourmet" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp", caption: "Oh My Bar Bistro — Coctelería y Lounge" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Tinto-de-Verano-Master-Padel-Oh-my-bar.webp", caption: "Oh My Bar Bistro — Mixología y Tinto de Verano" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Arguiles-Master-Padel-Maturin.webp", caption: "Oh My Bar Lounge — Experiencia Shisha y Cócteles" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/oHMYBAR-8.webp", caption: "Oh My Bar Bistro — Ambiente Nocturno" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/MasterPadel-Maturin-1.webp", caption: "Master Pádel — Canchas Panorámicas" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-9.webp", caption: "Master Pádel — Acción en Cancha" },
@@ -210,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-8.webp", caption: "Master Pádel — Iluminación Nocturna" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-6.webp", caption: "Master Pádel — Canchas de Pádel Techadas" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Barberia-Peluqueria-Estilos.webp", caption: "Estilos HairClub — Barbería y Estilismo" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Chicha-En-Maturin-Don-Guille.webp", caption: "Chichas Don Guille Palma Real" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria-Maturin.webp", caption: "Brûlée Pastelería Palma Real" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp", caption: "La Palmera Restobar Club" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp", caption: "Lagos Restaurant Club" },
@@ -230,11 +234,12 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/FACHADA-PRINCIPAL-PUNTADEMATA.webp", caption: "Fachada Principal Punta de Mata" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-en-Punta-de-Mata.webp", caption: "Piscina Central y Solárium" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-Familiar-Punta-de-Mata.webp", caption: "Piscina Familiar y Day Pass" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurante-Hamburguesa-Puntade-Mata.webp", caption: "Gastronomía Artesanal — Two Chefs Restaurant" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Cliente-Corporativo.webp", caption: "Espacios Corporativos y Coworking" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-Punta-de-Mata/Hamburguesas-en-Punta-De-Mata.webp", caption: "Gastronomía Artesanal — Two Chefs Restaurant" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-Punta-de-Mata/Ensalada-Cesar-en-Punta-De-Mata.webp", caption: "Ensaladas Frescas — Two Chefs Restaurant" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-Punta-de-Mata/JUGOS-EN-PUNTA-DE-MATA.webp", caption: "Jugos Naturales y Coctelería — Two Chefs Restaurant" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Cafe-en-Punta-de-Mata.webp", caption: "Café, Desayunos y Barismo — Two Chefs Restaurant" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp", caption: "Lobby Principal y Recepción VIP" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp", caption: "Two Chefs Restaurant" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Cafe-en-Punta-de-Mata.webp", caption: "Café y Barismo — Two Chefs Restaurant" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp", caption: "Two Chefs Restaurant — Salón Principal" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp", caption: "Jardines y Fachadas Interiores" }
       ]
     },
@@ -247,12 +252,18 @@ document.addEventListener('DOMContentLoaded', () => {
       mapsUrl: "https://maps.google.com/?cid=12057092587787417265",
       phone: "+58 424-9559213",
       images: [
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Piscina-Principal-El-Tigre.webp", caption: "Piscina Principal" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Piscina-Principal-El-Tigre.webp", caption: "Piscina Principal y Áreas Húmedas" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-El-Tigre-4.webp", caption: "Solárium y Piscina Resort El Tigre" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Fachada-Atardecer-Guanipa.webp", caption: "Fachada Principal al Atardecer" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-1.webp", caption: "Lobby Principal y Recepción" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Lobby-Nocturno-Guanipa.webp", caption: "Lobby Nocturno y Recepción" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-1.webp", caption: "Lobby Principal" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Espacios-Sociales-Karina-El-Tigre.webp", caption: "Espacios Sociales y Coworking" },
         { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Centro-de-Negocios-El-Tigre.webp", caption: "Centro de Negocios y Espacios Corporativos" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Gimnasio-El-Tigre.webp", caption: "Gimnasio y Bienestar" },
-        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp", caption: "Gastronomía de Autor y 283 Restaurante" }
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Gimnasio-Karina-El-Tigre.webp", caption: "Gimnasio y Fitness Center" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Carpaccio-de-pulpo-En-El-Tigre.webp", caption: "283 Restaurant — Carpaccio de Pulpo" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Pinchos-283-Restaurant.webp", caption: "283 Restaurant — Pinchos y Tapas" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Menu-Ejecutivo-283-RESTAURANT.webp", caption: "283 Restaurant — Menú Ejecutivo y Almuerzos" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp", caption: "283 Restaurant — Paella y Cocina Mediterránea" }
       ]
     }
   ];
