@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Metadata } from 'next';
 import { TeaserVideoPlayer } from '@/components/teaser/TeaserVideoPlayer';
 import { CampaignChapters } from '@/components/teaser/CampaignChapters';

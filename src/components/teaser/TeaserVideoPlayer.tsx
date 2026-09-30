@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import type { MouseEvent } from 'react';
 
 interface TeaserVideoPlayerProps {
   src: string;
@@ -10,9 +11,9 @@ interface TeaserVideoPlayerProps {
 }
 
 export function TeaserVideoPlayer({ src, badge, title, subtitle }: TeaserVideoPlayerProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -25,15 +26,18 @@ export function TeaserVideoPlayer({ src, badge, title, subtitle }: TeaserVideoPl
   const togglePlay = () => {
     if (!videoRef.current) return;
     if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPlaying(true);
+      videoRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        setIsPlaying(false);
+      });
     } else {
       videoRef.current.pause();
       setIsPlaying(false);
     }
   };
 
-  const toggleMute = (e: React.MouseEvent) => {
+  const toggleMute = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     if (!videoRef.current) return;
     videoRef.current.muted = !videoRef.current.muted;

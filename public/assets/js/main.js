@@ -1,0 +1,3804 @@
+// ==========================================
+// GUARDIA TEMPORAL DE RUTAS (FASE DE EXPECTATIVA)
+// ==========================================
+if (typeof window !== 'undefined' && window.location) {
+  const currentPath = window.location.pathname;
+  const isTeaser = currentPath === '/' || currentPath === '/index.html' || currentPath === '' || currentPath.endsWith('/index.html');
+  if (!isTeaser && !window.location.search.includes('preview=true')) {
+    window.location.replace('/');
+  }
+}
+
+// ==========================================
+// CONFIGURACIÓN CENTRALIZADA GRUPO KARIÑA
+// ==========================================
+window.KARINA_CONFIG = {
+  contactEmail: "contacto@hoteleskarina.com",
+  social: {
+    instagramGeneral: "https://instagram.com/hoteleskarina",
+    instagramMaturin: "https://instagram.com/hotelkarina.maturin",
+    instagramElTigre: "https://instagram.com/hotelkarina.guanipa",
+    instagramPuntaDeMata: "https://instagram.com/hotelkarina.ptamata",
+    instagramFundacion: "https://instagram.com/fundacionkarina"
+  },
+  sedes: {
+    maturin: {
+      name: "Hotel Kariña Maturín",
+      address: "Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas",
+      phone: "+58 424-9169610",
+      whatsapp: "https://wa.me/584249169610",
+      padelPhone: "+58 414-1908421",
+      padelWhatsapp: "https://wa.me/584141908421",
+      instagram: "@hotelkarina.maturin",
+      instagramUrl: "https://instagram.com/hotelkarina.maturin"
+    },
+    elTigre: {
+      name: "Hotel Kariña El Tigre",
+      address: "A 100 m del Balancín Tricolor, Av. Ruiz Pineda con Calle 23 de Enero, El Tigre, Anzoátegui",
+      phone: "+58 424-9559213",
+      whatsapp: "https://wa.me/584249559213",
+      instagram: "@hotelkarina.guanipa",
+      instagramUrl: "https://instagram.com/hotelkarina.guanipa"
+    },
+    puntaDeMata: {
+      name: "Hotel Kariña Punta de Mata",
+      address: "Sector Zona Industrial, Ramal 7, Punta de Mata, Monagas",
+      phone: "+58 424-9396445",
+      whatsapp: "https://wa.me/584249396445",
+      instagram: "@hotelkarina.ptamata",
+      instagramUrl: "https://instagram.com/hotelkarina.ptamata"
+    }
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Sincronizar dinámicamente enlaces de email con clase .karina-email-link
+  document.querySelectorAll('.karina-email-link').forEach(link => {
+    link.href = `mailto:${window.KARINA_CONFIG.contactEmail}`;
+    if (!link.hasChildNodes() || link.textContent.includes('@')) {
+      link.textContent = window.KARINA_CONFIG.contactEmail;
+    }
+  });
+
+  // ==========================================
+  // 0. CONTROL DE HERO VIDEO Y AUTOPLAY MÓVIL
+  // ==========================================
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.play().catch(() => {
+      // Silencioso ante bloqueos estrictos de batería
+    });
+  }
+
+  const heroAudioBtn = document.getElementById('hero-audio-btn');
+  const heroAudioIcon = document.getElementById('hero-audio-icon');
+  const heroAudioText = document.getElementById('hero-audio-text');
+
+  if (heroVideo && heroAudioBtn) {
+    const updateHeroAudioUI = (isMuted) => {
+      if (heroAudioIcon && heroAudioText) {
+        if (isMuted) {
+          heroAudioIcon.className = 'fa-solid fa-volume-xmark text-white/70';
+          heroAudioText.textContent = 'Silenciado';
+        } else {
+          heroAudioIcon.className = 'fa-solid fa-volume-high text-[#FFD573]';
+          heroAudioText.textContent = 'Audio activo';
+        }
+      }
+    };
+
+    updateHeroAudioUI(heroVideo.muted);
+
+    heroAudioBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      heroVideo.muted = !heroVideo.muted;
+      if (!heroVideo.muted) {
+        heroVideo.play().catch(() => {});
+      }
+      updateHeroAudioUI(heroVideo.muted);
+    });
+  }
+
+  // ==========================================
+  // 1. NAVBAR MORPHING FLOATING ISLAND
+  // ==========================================
+  const navbar = document.getElementById('main-navbar');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 45) {
+      navbar.classList.remove('navbar-default');
+      navbar.classList.add('navbar-scrolled');
+    } else {
+      navbar.classList.remove('navbar-scrolled');
+      navbar.classList.add('navbar-default');
+    }
+  }, { passive: true });
+
+  // ==========================================
+  // 2. MENÚ INMERSIVO (100% OVERLAY)
+  // ==========================================
+  const immersiveMenu = document.getElementById('immersive-menu');
+  const openMenuBtn = document.getElementById('open-menu-btn');
+  const menuToggleBtn = document.getElementById('menu-toggle-btn');
+  const closeMenuBtn = document.getElementById('close-menu-btn');
+
+  function openMenu() {
+    immersiveMenu.classList.remove('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    immersiveMenu.classList.add('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = '';
+  }
+
+  if (openMenuBtn) openMenuBtn.addEventListener('click', openMenu);
+  if (menuToggleBtn) menuToggleBtn.addEventListener('click', openMenu);
+  if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+
+  // Acordeón interno de Sedes dentro del menú
+  const toggleSedesBtn = document.getElementById('toggle-sedes-sub');
+  const sedesSubMenu = document.getElementById('sedes-sub-menu');
+  const sedesChevron = document.getElementById('sedes-chevron');
+
+  if (toggleSedesBtn) {
+    toggleSedesBtn.addEventListener('click', () => {
+      sedesSubMenu.classList.toggle('hidden');
+      sedesChevron.classList.toggle('rotate-180');
+    });
+  }
+
+  // ==========================================
+  // CONFIGURACIÓN CENTRALIZADA DE CONTACTO
+  // ==========================================
+  const KARINA_CONFIG = {
+    contactEmail: 'contacto@hoteleskarina.com',
+    reservasEmail: 'reservas@hoteleskarina.com',
+    corporativoEmail: 'corporativo@hoteleskarina.com',
+    instagramGeneral: '@hoteleskarina',
+    instagramGeneralUrl: 'https://instagram.com/hoteleskarina',
+    sedes: {
+      maturin: {
+        name: 'Hotel Kariña Maturín',
+        phone: '+58 424-9169610',
+        phoneRaw: '+584249169610',
+        padelPhone: '+58 414-1908421',
+        padelPhoneRaw: '+584141908421',
+        padelWhatsapp: 'https://wa.me/584141908421',
+        address: 'Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas',
+        instagram: '@hotelkarina.maturin',
+        instagramUrl: 'https://instagram.com/hotelkarina.maturin'
+      },
+      elTigre: {
+        name: 'Hotel Kariña El Tigre',
+        phone: '+58 424-9559213',
+        phoneRaw: '+584249559213',
+        address: 'A 100 m del Balancín Tricolor, Av. Ruiz Pineda con Calle 23 de Enero, El Tigre, Anzoátegui',
+        instagram: '@hotelkarina.guanipa',
+        instagramUrl: 'https://instagram.com/hotelkarina.guanipa'
+      },
+      puntaDeMata: {
+        name: 'Hotel Kariña Punta de Mata',
+        phone: '+58 424-9396445',
+        phoneRaw: '+584249396445',
+        address: 'Sector Zona Industrial, Ramal 7, Punta de Mata, Monagas',
+        instagram: '@hotelkarina.ptamata',
+        instagramUrl: 'https://instagram.com/hotelkarina.ptamata'
+      }
+    }
+  };
+  window.KARINA_CONFIG = KARINA_CONFIG;
+
+  // ==========================================
+  // 3. CONTROLADORES SECCIÓN SEDES Y MODAL INMERSIVO
+  // ==========================================
+  const sedesData = [
+    {
+      id: 0,
+      name: "Maturín",
+      title: "Hotel Kariña Maturín",
+      tagline: "El resort insignia del Oriente Venezolano con piscina semiolímpica, solárium, gastronomía de autor y salones corporativos.",
+      address: "Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas.",
+      mapsUrl: "https://maps.google.com/?cid=370127326196523800",
+      phone: "+58 424-9169610",
+      images: [
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Karina-Maturin-Hotel.webp", caption: "Fachada Aérea Complejo Hotelero Maturín" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-Main.webp", caption: "Piscina Principal Resort Maturín" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-2.webp", caption: "Complejo de Piscinas y Palmeras" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Piscina-Maturin-3.webp", caption: "Piscina y Solárium Tropical" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Laguna-Master-Padel-Maturin.webp", caption: "Laguna y Entorno Natural Club Palma Real" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp", caption: "Moriche Restaurant — Cocina de Autor" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-restaurant-1.webp", caption: "Moriche Restaurant — Salón y Gastronomía" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant-Carpaccio.webp", caption: "Moriche Restaurant — Carpaccio Gourmet" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp", caption: "Oh My Bar Bistro — Coctelería y Lounge" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Tinto-de-Verano-Master-Padel-Oh-my-bar.webp", caption: "Oh My Bar Bistro — Mixología y Tinto de Verano" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Arguiles-Master-Padel-Maturin.webp", caption: "Oh My Bar Lounge — Experiencia Shisha y Cócteles" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/oHMYBAR-8.webp", caption: "Oh My Bar Bistro — Ambiente Nocturno" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/MasterPadel-Maturin-1.webp", caption: "Master Pádel — Canchas Panorámicas" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-9.webp", caption: "Master Pádel — Acción en Cancha" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-5.webp", caption: "Master Pádel — Pistas Profesionales" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-7.webp", caption: "Master Pádel — Torneos y Clínicas" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-8.webp", caption: "Master Pádel — Iluminación Nocturna" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Master-Padel-Maturin-6.webp", caption: "Master Pádel — Canchas de Pádel Techadas" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Barberia-Peluqueria-Estilos.webp", caption: "Estilos HairClub — Barbería y Estilismo" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Chicha-En-Maturin-Don-Guille.webp", caption: "Chichas Don Guille Palma Real" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Brulee-Pasteleria-Maturin.webp", caption: "Brûlée Pastelería Palma Real" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/La-PalmeraRestobar.webp", caption: "La Palmera Restobar Club" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Lagos-Restaurant.webp", caption: "Lagos Restaurant Club" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Salon-Maturin.webp", caption: "Salones Corporativos y Eventos" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Parque-Master-Padel.webp", caption: "Parque Infantil Master Pádel" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Parque-Club-Palma-Real.webp", caption: "Parque Infantil Club Palma Real" }
+      ]
+    },
+    {
+      id: 1,
+      name: "Punta de Mata",
+      title: "Kariña Punta de Mata",
+      tagline: "Un oasis de privacidad estratégica y tranquilidad rodeado de áreas verdes, perfecto para ejecutivos.",
+      address: "Sector Zona Industrial, Ramal 7, Punta de Mata, Monagas.",
+      mapsUrl: "https://maps.google.com/?cid=9643206305083018040",
+      phone: "+58 424-9396445",
+      images: [
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/FACHADA-PRINCIPAL-PUNTADEMATA.webp", caption: "Fachada Principal Punta de Mata" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-en-Punta-de-Mata.webp", caption: "Piscina Central y Solárium" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Piscina-Familiar-Punta-de-Mata.webp", caption: "Piscina Familiar y Day Pass" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-Punta-de-Mata/Hamburguesas-en-Punta-De-Mata.webp", caption: "Gastronomía Artesanal — Two Chefs Restaurant" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-Punta-de-Mata/Ensalada-Cesar-en-Punta-De-Mata.webp", caption: "Ensaladas Frescas — Two Chefs Restaurant" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-Punta-de-Mata/JUGOS-EN-PUNTA-DE-MATA.webp", caption: "Jugos Naturales y Coctelería — Two Chefs Restaurant" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Cafe-en-Punta-de-Mata.webp", caption: "Café, Desayunos y Barismo — Two Chefs Restaurant" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/lobby-ptamata.webp", caption: "Lobby Principal y Recepción VIP" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp", caption: "Two Chefs Restaurant — Salón Principal" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-int-1.webp", caption: "Jardines y Fachadas Interiores" }
+      ]
+    },
+    {
+      id: 2,
+      name: "El Tigre",
+      title: "Hotel Kariña El Tigre",
+      tagline: "Centro neurálgico para eventos corporativos, banquetes y alojamiento de alta gama en la Mesa de Guanipa.",
+      address: "A 100 m del Balancín Tricolor, Av. Ruiz Pineda con Calle 23 de Enero, El Tigre, Anzoátegui.",
+      mapsUrl: "https://maps.google.com/?cid=12057092587787417265",
+      phone: "+58 424-9559213",
+      images: [
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Piscina-Principal-El-Tigre.webp", caption: "Piscina Principal y Áreas Húmedas" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-El-Tigre-4.webp", caption: "Solárium y Piscina Resort El Tigre" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Fachada-Atardecer-Guanipa.webp", caption: "Fachada Principal al Atardecer" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Lobby-Nocturno-Guanipa.webp", caption: "Lobby Nocturno y Recepción" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Lobby-el-Tigre/Lobby--El-Tigre-1.webp", caption: "Lobby Principal" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Espacios-Sociales-Karina-El-Tigre.webp", caption: "Espacios Sociales y Coworking" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Centro-de-Negocios-El-Tigre.webp", caption: "Centro de Negocios y Espacios Corporativos" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Gimnasio-Karina-El-Tigre.webp", caption: "Gimnasio y Fitness Center" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Carpaccio-de-pulpo-En-El-Tigre.webp", caption: "283 Restaurant — Carpaccio de Pulpo" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Pinchos-283-Restaurant.webp", caption: "283 Restaurant — Pinchos y Tapas" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Menu-Ejecutivo-283-RESTAURANT.webp", caption: "283 Restaurant — Menú Ejecutivo y Almuerzos" },
+        { src: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp", caption: "283 Restaurant — Paella y Cocina Mediterránea" }
+      ]
+    }
+  ];
+
+  let currentActiveSede = 0;
+  let currentModalSede = 0;
+
+  window.navigateSede = function(direction) {
+    const total = sedesData.length;
+    currentActiveSede = (currentActiveSede + direction + total) % total;
+    updateCarouselCounter();
+    openSedeModal(currentActiveSede);
+  };
+
+  window.navigateSedeInModal = function(direction) {
+    const total = sedesData.length;
+    currentModalSede = (currentModalSede + direction + total) % total;
+    currentActiveSede = currentModalSede;
+    
+    updateCarouselCounter();
+
+    const wrapper = document.getElementById('modal-content-wrapper');
+    if (wrapper) wrapper.classList.add('is-switching');
+
+    setTimeout(() => {
+      populateModalData(currentModalSede);
+      if (wrapper) wrapper.classList.remove('is-switching');
+    }, 140);
+  };
+
+  function updateCarouselCounter() {
+    const dots = document.querySelectorAll('.sede-dot');
+    const counter = document.getElementById('sede-counter');
+
+    dots.forEach((dot, idx) => {
+      if (idx === currentActiveSede) {
+        dot.className = 'sede-dot w-2.5 h-2.5 rounded-full bg-karina-charcoal transition-all';
+      } else {
+        dot.className = 'sede-dot w-2 h-2 rounded-full bg-karina-charcoal/30 transition-all';
+      }
+    });
+
+    if (counter) {
+      counter.textContent = `0${currentActiveSede + 1} - 03`;
+    }
+  }
+
+  function populateModalData(index) {
+    const sede = sedesData[index];
+    const modalTitle = document.getElementById('modal-title');
+    const modalTagline = document.getElementById('modal-tagline');
+    const modalAddress = document.getElementById('modal-address');
+    const modalMapsLink = document.getElementById('modal-maps-link');
+    const modalCounterText = document.getElementById('modal-counter-text');
+    const phoneLink = document.getElementById('modal-phone-link');
+
+    if (modalTitle) modalTitle.textContent = sede.title;
+    if (modalTagline) modalTagline.textContent = sede.tagline;
+    if (modalAddress) modalAddress.textContent = sede.address;
+    if (modalMapsLink) modalMapsLink.href = sede.mapsUrl;
+    if (modalCounterText) modalCounterText.textContent = `0${index + 1} / 03`;
+    
+    if (phoneLink) {
+      phoneLink.textContent = sede.phone;
+      phoneLink.href = `tel:${sede.phone.replace(/[^0-9+]/g, '')}`;
+    }
+
+    // Botón de acción Sede / Catálogo Suites
+    const exploreBtn = document.getElementById('modal-explore-sede-link') || document.querySelector('#sede-modal a[href="#suites"], #sede-modal a[href="el-tigre.html"], #sede-modal a[href="maturin.html"], #sede-modal a[href="punta-de-mata.html"]');
+    const exploreText = document.getElementById('modal-explore-sede-text');
+    if (exploreBtn) {
+      exploreBtn.removeAttribute('onclick');
+      if (index === 0) {
+        exploreBtn.href = "maturin.html";
+        if (exploreText) {
+          exploreText.innerHTML = `Explorar Sede Maturín <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        } else {
+          exploreBtn.innerHTML = `<span>Explorar Sede Maturín</span> <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        }
+      } else if (index === 1) {
+        exploreBtn.href = "punta-de-mata.html";
+        if (exploreText) {
+          exploreText.innerHTML = `Explorar Sede Punta de Mata <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        } else {
+          exploreBtn.innerHTML = `<span>Explorar Sede Punta de Mata</span> <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        }
+      } else if (index === 2) {
+        exploreBtn.href = "el-tigre.html";
+        if (exploreText) {
+          exploreText.innerHTML = `Explorar Sede El Tigre <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        } else {
+          exploreBtn.innerHTML = `<span>Explorar Sede El Tigre</span> <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
+        }
+      }
+    }
+
+    const thumbContainer = document.getElementById('modal-thumbnails-container');
+    if (thumbContainer && sede.images) {
+      const cols = sede.images.length >= 6 ? 6 : (sede.images.length >= 4 ? sede.images.length : 4);
+      thumbContainer.className = `grid grid-cols-${cols} gap-2 pt-1`;
+      thumbContainer.innerHTML = sede.images.map((img, i) => `
+        <button onclick="setModalImage(${i})" class="thumb-btn ${i === 0 ? 'is-active-thumb' : ''} aspect-square rounded-xl overflow-hidden border-2 border-transparent focus:ring-1 focus:ring-karina-blue">
+          <img id="thumb-${i}" src="${img.src}" class="w-full h-full object-cover" alt="${img.caption}">
+        </button>
+      `).join('');
+    } else {
+      for (let i = 0; i < 4; i++) {
+        const thumb = document.getElementById(`thumb-${i}`);
+        if (thumb && sede.images[i]) {
+          thumb.src = sede.images[i].src;
+        }
+      }
+    }
+
+    setModalImage(0);
+  }
+
+  window.openSedeModal = function(index) {
+    currentModalSede = index;
+    currentActiveSede = index;
+    updateCarouselCounter();
+    populateModalData(index);
+
+    const modal = document.getElementById('sede-modal');
+    if (modal) {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.setModalImage = function(imgIndex) {
+    const sede = sedesData[currentModalSede];
+    const mainImg = document.getElementById('modal-main-image');
+    const caption = document.getElementById('modal-image-caption');
+    const thumbs = document.querySelectorAll('.thumb-btn');
+
+    if (mainImg && sede.images[imgIndex]) {
+      mainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        mainImg.src = sede.images[imgIndex].src;
+        if (caption) caption.textContent = sede.images[imgIndex].caption;
+        mainImg.style.opacity = '1';
+      }, 100);
+    }
+
+    thumbs.forEach((t, i) => {
+      if (i === imgIndex) {
+        t.classList.add('is-active-thumb');
+      } else {
+        t.classList.remove('is-active-thumb');
+      }
+    });
+  };
+
+  window.closeSedeModal = function() {
+    const modal = document.getElementById('sede-modal');
+    if (modal) {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.closeSedeModalOnBackdrop = function(e) {
+    if (e.target.id === 'sede-modal') {
+      closeSedeModal();
+    }
+  };
+
+  window.consultarTarifasSedeModal = function() {
+    const sede = sedesData[currentModalSede] || sedesData[0];
+    const sedeName = sede.name || (sede.id === 0 ? 'Maturín' : (sede.id === 1 ? 'Punta de Mata' : 'El Tigre'));
+    closeSedeModal();
+    const message = `Hola, deseo consultar las tarifas y suites para la sede ${sedeName}.`;
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(message, { sede: sedeName });
+    }
+  };
+
+  window.consultarTarifasSede = function(sedeName) {
+    if (typeof closeSedeModal === 'function') closeSedeModal();
+    const message = `Hola, deseo consultar las tarifas y suites para la sede ${sedeName}.`;
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(message, { sede: sedeName });
+    }
+  };
+
+  // Escuchador de teclado (ESC y Flechas Lateral)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (immersiveMenu && !immersiveMenu.classList.contains('opacity-0')) {
+        closeMenu();
+      }
+      const sedeModal = document.getElementById('sede-modal');
+      if (sedeModal && sedeModal.classList.contains('is-open')) closeSedeModal();
+      const suiteModal = document.getElementById('suite-modal');
+      if (suiteModal && suiteModal.classList.contains('is-open')) closeSuiteModal();
+      const viveModal = document.getElementById('vive-lightbox-modal');
+      if (viveModal && viveModal.classList.contains('is-open')) closeViveLightbox();
+      const dpModal = document.getElementById('daypass-modal');
+      if (dpModal && dpModal.classList.contains('is-open')) closeDayPassModal();
+      const cartDrawer = document.getElementById('cart-drawer');
+      if (cartDrawer && !cartDrawer.classList.contains('translate-x-full')) toggleCartDrawer(false);
+      closeModal('modal-video');
+      closeModal('modal-colaborar');
+      closeModal('modal-lightbox');
+    }
+    const sedeModal = document.getElementById('sede-modal');
+    if (sedeModal && sedeModal.classList.contains('is-open')) {
+      if (e.key === 'ArrowLeft') navigateSedeInModal(-1);
+      if (e.key === 'ArrowRight') navigateSedeInModal(1);
+    }
+    const suiteModal = document.getElementById('suite-modal');
+    if (suiteModal && suiteModal.classList.contains('is-open')) {
+      if (e.key === 'ArrowLeft') navigateSuiteInModal(-1);
+      if (e.key === 'ArrowRight') navigateSuiteInModal(1);
+    }
+  });
+
+  // Soporte Gestual Táctil (Swipe en Móviles)
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const modalContainer = document.getElementById('sede-modal-container');
+  if (modalContainer) {
+    modalContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    modalContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeDistance = touchEndX - touchStartX;
+      if (swipeDistance > 45) navigateSedeInModal(-1);
+      else if (swipeDistance < -45) navigateSedeInModal(1);
+    }, { passive: true });
+  }
+
+
+
+  // ==========================================
+  // 5. ACORDEÓN DE PREGUNTAS FRECUENTES (EDITORIAL)
+  // ==========================================
+  window.toggleEditorialFaq = function(item) {
+    const wrapper = item.querySelector('.faq-wrapper');
+    const isOpen = wrapper.classList.contains('is-open');
+
+    // Cerrar los demás ítems para mantener orden visual
+    document.querySelectorAll('.faq-line-item').forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove('is-active');
+        otherItem.querySelector('.faq-wrapper').classList.remove('is-open');
+      }
+    });
+
+    if (isOpen) {
+      item.classList.remove('is-active');
+      wrapper.classList.remove('is-open');
+    } else {
+      item.classList.add('is-active');
+      wrapper.classList.add('is-open');
+    }
+  };
+
+  // Filtros por Categoría de FAQs
+  window.filterFaq = function(category, clickedBtn) {
+    document.querySelectorAll('.filter-tab').forEach(btn => {
+      btn.className = 'filter-tab px-4 py-1.5 rounded-full text-xs font-semibold text-[#343434]/70 hover:text-[#343434] bg-white/40 hover:bg-white/80 border border-[#343434]/10';
+    });
+
+    clickedBtn.className = 'filter-tab px-4 py-1.5 rounded-full text-xs font-bold bg-[#343434] text-white shadow-sm';
+
+    const items = document.querySelectorAll('.faq-line-item');
+    items.forEach(item => {
+      item.classList.remove('is-active');
+      item.querySelector('.faq-wrapper').classList.remove('is-open');
+
+      if (category === 'all' || item.classList.contains('faq-item-' + category)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  };
+
+  // Botón Volver Arriba (Scroll to Top)
+  window.scrollToTop = function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // ==========================================
+  // 6. LIGHTBOX MODAL UNIVERSAL PARA IMÁGENES
+  // ==========================================
+  window.openLightbox = function(srcOrEl, title = '', desc = '') {
+    let src = '';
+    let captionText = '';
+
+    if (typeof srcOrEl === 'string') {
+      src = srcOrEl;
+      captionText = title ? (desc ? `${title} — ${desc}` : title) : '';
+    } else if (srcOrEl && srcOrEl.tagName === 'IMG') {
+      src = srcOrEl.src;
+      captionText = title || srcOrEl.alt || '';
+    } else if (srcOrEl && srcOrEl.querySelector) {
+      const img = srcOrEl.querySelector('img');
+      if (img) {
+        src = img.src;
+        captionText = title || img.alt || '';
+      }
+    }
+
+    if (!src) return;
+
+    // Caso A: Modal moderno con transiciones (lightbox-modal)
+    const modernModal = document.getElementById('lightbox-modal');
+    if (modernModal) {
+      const imgEl = modernModal.querySelector('#lightbox-img') || document.getElementById('lightbox-img');
+      const captionEl = modernModal.querySelector('#lightbox-caption') || document.getElementById('lightbox-caption');
+      
+      if (imgEl) imgEl.src = src;
+      if (captionEl) {
+        captionEl.textContent = captionText;
+        if (captionText) {
+          captionEl.classList.remove('hidden');
+        } else {
+          captionEl.classList.add('hidden');
+        }
+      }
+
+      modernModal.classList.remove('opacity-0', 'pointer-events-none');
+      modernModal.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+      return;
+    }
+
+    // Caso B: Modal Fundación (modal-lightbox)
+    const fundacionModal = document.getElementById('modal-lightbox');
+    if (fundacionModal) {
+      const img = fundacionModal.querySelector('#lightbox-img') || document.getElementById('lightbox-img');
+      const titleEl = fundacionModal.querySelector('#lightbox-title') || document.getElementById('lightbox-title');
+      const descEl = fundacionModal.querySelector('#lightbox-desc') || document.getElementById('lightbox-desc');
+
+      if (img) img.src = src;
+      if (titleEl) titleEl.textContent = title || '';
+      if (descEl) descEl.textContent = desc || '';
+
+      if (typeof window.openModal === 'function') {
+        window.openModal('modal-lightbox');
+      } else {
+        fundacionModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+  };
+
+  window.closeLightbox = function() {
+    const modernModal = document.getElementById('lightbox-modal');
+    if (modernModal) {
+      modernModal.classList.add('opacity-0', 'pointer-events-none');
+      modernModal.classList.remove('opacity-100');
+    }
+
+    const fundacionModal = document.getElementById('modal-lightbox');
+    if (fundacionModal) {
+      if (typeof window.closeModal === 'function') {
+        window.closeModal('modal-lightbox');
+      } else {
+        fundacionModal.classList.add('hidden');
+      }
+    }
+
+    document.body.style.overflow = '';
+  };
+
+
+  // ==========================================
+  // 7. MOTOR INTERSECTION OBSERVER (ANIMACIONES)
+  // ==========================================
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  // ==========================================
+  // 4. SUITES TABS / SWITCHER
+  // ==========================================
+  const suiteData = {
+    'un-ambiente': {
+      title: 'Suite Estándar',
+      desc: 'Un refugio de diseño contemporáneo y confort absoluto, pensado para garantizar un descanso impecable y alta conectividad en todo momento.',
+      quote: '"Un santuario de descanso pensado para el confort y la comodidad."',
+      price: 'Desde $120',
+      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/Suite-Estandar-PuntadeMata_resultado.webp',
+      amenities: [
+        '1 Cama Matrimonial (Desayuno Incluido)',
+        'Estación de Trabajo y TV',
+        'Kitchenette y Nevera 15\''
+      ]
+    },
+    'dos-ambientes': {
+      title: 'Suite Premium',
+      desc: 'Santuario de amplitud superior y estética sutil, donde la calidez del lujo contemporáneo se integra armoniosamente con las vistas al complejo.',
+      quote: '"La combinación perfecta entre amplitud, descanso y equipamiento superior."',
+      price: '$140',
+      img: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+      amenities: [
+        '2 Camas Matrimoniales (Desayuno Incluido)',
+        'Estación de Trabajo y TV',
+        'Kitchenette y Nevera 15\''
+      ]
+    }
+  };
+
+  window.switchSuite = function(type) {
+    const btnUn = document.getElementById('btn-un-ambiente');
+    const btnDos = document.getElementById('btn-dos-ambientes');
+    const container = document.getElementById('home-suite-container') || document.querySelector('#suites .grid');
+    const title = document.getElementById('suite-title');
+    const desc = document.getElementById('suite-desc');
+    const quote = document.getElementById('suite-quote');
+    const price = document.getElementById('suite-price');
+    const img = document.getElementById('suite-img');
+    const amenitiesList = document.getElementById('suite-amenities');
+
+    if (!btnUn || !btnDos) return;
+
+    if (type === 'un-ambiente') {
+      btnUn.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434] bg-[#343434] text-white transition-all shadow-sm';
+      btnDos.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434]/30 bg-transparent text-[#343434] hover:border-[#343434] transition-all';
+    } else {
+      btnDos.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434] bg-[#343434] text-white transition-all shadow-sm';
+      btnUn.className = 'px-5 py-1.5 rounded-full text-xs font-bold border border-[#343434]/30 bg-transparent text-[#343434] hover:border-[#343434] transition-all';
+    }
+
+    if (container) container.classList.add('changing');
+
+    setTimeout(() => {
+      const data = suiteData[type];
+      if (title) title.textContent = data.title;
+      if (desc) desc.textContent = data.desc;
+      if (quote) quote.textContent = data.quote;
+      if (price) price.textContent = data.price;
+      if (img) img.src = data.img;
+
+      if (amenitiesList && data.amenities) {
+        amenitiesList.innerHTML = data.amenities.map(a => `
+          <div class="flex items-center gap-3 text-xs font-semibold text-[#343434]">
+            <i class="fa-regular fa-circle-check text-[#F0A800]"></i>
+            <span>${a}</span>
+          </div>
+        `).join('');
+      }
+
+      if (container) container.classList.remove('changing');
+    }, 150);
+  };
+
+  // ==========================================
+  // 8. CONTROLADORES CATÁLOGO DE SUITES Y MODAL
+  // ==========================================
+  const catalogSuitesData = [
+    // MATURÍN
+    {
+      id: 'premium-maturin',
+      sede: 'maturin',
+      sedeName: 'Maturín',
+      tarifa_usd: '140',
+      price: '$140',
+      priceDisplay: '$140 / noche',
+      title: 'Suite Premium',
+      tag: 'Desayuno Incluido',
+      desc: 'Santuario de amplitud superior y estética sutil, donde la calidez del lujo contemporáneo se integra armoniosamente con las vistas al complejo.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+      breakdown: {
+        base: '$140 / noche',
+        occupancy: [
+          { label: '2 Personas (2 Camas Matrimoniales)', price: '$140' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
+      amenities: [
+        '2 Camas Matrimoniales',
+        'Desayuno Incluido',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para TV',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa',
+        'Dos ambientes independientes: Sala-comedor y habitación con baño separado (50 m²)'
+      ],
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp', tag: 'Vista Principal' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-Doble-Maturin.webp', tag: 'Dormitorio Doble Matrimonial' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-Main.webp', tag: 'Vista Panorámica de la Suite' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-2.webp', tag: 'Camas y Lencería' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium3.webp', tag: 'Ambiente y Confort' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium5.webp', tag: 'Espacio de Descanso' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-6.webp', tag: 'Detalles y Acabados' }
+      ]
+    },
+    {
+      id: 'estandar-maturin',
+      sede: 'maturin',
+      sedeName: 'Maturín',
+      tarifa_usd: '120',
+      price: '$120',
+      priceDisplay: 'Desde $120 / noche',
+      title: 'Suite Estándar',
+      tag: 'Desayuno Incluido',
+      desc: 'Un refugio de diseño contemporáneo y confort absoluto, pensado para garantizar un descanso impecable y alta conectividad en todo momento.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp',
+      breakdown: {
+        base: 'Desde $120 / noche',
+        occupancy: [
+          { label: '1 Persona (Uso individual / Junior)', price: '$120' },
+          { label: '2 Personas (Cama Matrimonial)', price: '$130' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
+      amenities: [
+        '1 Cama Matrimonial',
+        'Desayuno Incluido',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para TV',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa',
+        'Dos ambientes independientes: Sala-comedor y habitación con baño separado (48 m²)'
+      ],
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Main.webp', tag: 'Vista Principal / Dormitorio' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Comedor.webp', tag: 'Área de Comedor' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-3.webp', tag: 'Ambiente Integrado' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-maturin-2.webp', tag: 'Espacio de Descanso' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor-2.webp', tag: 'Sala y Comedor' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Maturin/Suite-Estandar-Maturin-Sala-Comedor.webp', tag: 'Sala de Estar Integrada' }
+      ]
+    },
+    {
+      id: 'triple-maturin',
+      sede: 'maturin',
+      sedeName: 'Maturín',
+      tarifa_usd: '170',
+      price: '$170',
+      priceDisplay: '$170 / noche',
+      title: 'Suite Triple',
+      tag: 'Exclusiva Maturín • Desayuno Incluido',
+      desc: 'Máxima capacidad y confort exclusivo para 3 personas en Sede Maturín. Equipada con 3 camas confortables, dos ambientes independientes, kitchenette y desayuno incluido.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-Doble-Maturin.webp',
+      breakdown: {
+        base: '$170 / noche (3 Personas)',
+        occupancy: [
+          { label: '3 Personas (3 Camas)', price: '$170' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
+      amenities: [
+        '3 Camas Confortables',
+        'Desayuno Incluido',
+        'Exclusiva Sede Maturín (3 Pax)',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con TV',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa',
+        'Dos ambientes independientes con baño amplio (50 m²)'
+      ],
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium-Doble-Maturin.webp', tag: 'Vista Principal Triple' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp', tag: 'Habitación y Camas' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium3.webp', tag: 'Área de Sala' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Premium5.webp', tag: 'Espacio de Confort' }
+      ]
+    },
+    // EL TIGRE
+    {
+      id: 'premium-eltigre',
+      sede: 'el-tigre',
+      sedeName: 'El Tigre',
+      tarifa_usd: '140',
+      price: '$140',
+      priceDisplay: '$140 / noche',
+      title: 'Suite Premium',
+      tag: 'Desayuno Incluido',
+      desc: 'Una experiencia de inmersión en el lujo boutique, destacada por sus acabados de alta gama, espacialidad fluida y un ambiente de serenidad absoluta.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp',
+      breakdown: {
+        base: '$140 / noche',
+        occupancy: [
+          { label: '2 Personas (2 Camas Matrimoniales)', price: '$140' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
+      amenities: [
+        '2 Camas Matrimoniales',
+        'Desayuno Incluido',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para TV',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa',
+        'Distribución espacial integral (36 m²)'
+      ],
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20Premium-Main-El%20Tigre.webp', tag: 'Vista Principal' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite%20PremiumEl%20Tigre.webp', tag: 'Dormitorio Matrimonial' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite-Premium%20El%20Tigre.webp', tag: 'Lounge y Confort' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite-Premium-2.webp', tag: 'Área de Estar' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-El-Tigre/Suite-Premium-3-El-Tigre.webp', tag: 'Detalles y Acabados' }
+      ]
+    },
+    {
+      id: 'estandar-eltigre',
+      sede: 'el-tigre',
+      sedeName: 'El Tigre',
+      tarifa_usd: '120',
+      price: '$120',
+      priceDisplay: 'Desde $120 / noche',
+      title: 'Suite Estándar',
+      tag: 'Desayuno Incluido',
+      desc: 'El equilibrio perfecto entre eficiencia ejecutiva y confort, diseñado para ofrecer privacidad absoluta y un reconfortante descanso contemporáneo.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
+      breakdown: {
+        base: 'Desde $120 / noche',
+        occupancy: [
+          { label: '1 Persona (Uso individual / Junior)', price: '$120' },
+          { label: '2 Personas (Cama Matrimonial)', price: '$130' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
+      amenities: [
+        '1 Cama Matrimonial',
+        'Desayuno Incluido',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para TV',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa',
+        'Distribución espacial integral (36 m²)'
+      ],
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp', tag: 'Vista Principal' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-2.webp', tag: 'Dormitorio Matrimonial' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-3.webp', tag: 'Área de Confort' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-4.webp', tag: 'Ambiente Integrado' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-5.webp', tag: 'Espacio de Descanso' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-6.webp', tag: 'Baño y Acabados' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-El-Tigre-7.webp', tag: 'Perspectiva General' }
+      ]
+    },
+    // PUNTA DE MATA
+    {
+      id: 'premium-ptamata',
+      sede: 'punta-de-mata',
+      sedeName: 'Punta de Mata',
+      tarifa_usd: '120',
+      price: '$120',
+      priceDisplay: '$120 / noche',
+      title: 'Suite Premium',
+      tag: 'Desayuno Incluido',
+      desc: 'La máxima expresión de exclusividad y confort, combinando áreas de estar independientes con equipamiento premium para estadías de distinción.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata.webp',
+      breakdown: {
+        base: '$120 / noche',
+        occupancy: [
+          { label: '2 Personas (2 Camas Matrimoniales)', price: '$120' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
+      amenities: [
+        '2 Camas Matrimoniales',
+        'Desayuno Incluido',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para TV',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa',
+        'Distribución espacial integral (36 m²)'
+      ],
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata.webp', tag: 'Vista Principal' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-2.webp', tag: 'Dormitorio Doble' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Premium-Punta-de-Mata-3.webp', tag: 'Espacio y Confort' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Doble-Punta-de-mata-5.jpg', tag: 'Camas y Lencería' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Punta-de-Mata/Suite-Premium-Doble-5.webp', tag: 'Detalles y Acabados' }
+      ]
+    },
+    {
+      id: 'estandar-ptamata',
+      sede: 'punta-de-mata',
+      sedeName: 'Punta de Mata',
+      tarifa_usd: '100',
+      price: '$100',
+      priceDisplay: 'Desde $100 / noche',
+      title: 'Suite Estándar',
+      tag: 'Desayuno Incluido',
+      desc: 'Un oasis de calma con arquitectura de vanguardia, optimizado para el confort del viajero corporativo que busca privacidad y descanso reparador.',
+      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+      breakdown: {
+        base: 'Desde $100 / noche',
+        occupancy: [
+          { label: '1 Persona (Uso individual / Junior)', price: '$100' },
+          { label: '2 Personas (Cama Matrimonial)', price: '$110' },
+          { label: 'Pax adicional', price: '+$20' }
+        ],
+        breakfast: 'Desayuno Incluido'
+      },
+      amenities: [
+        '1 Cama Matrimonial',
+        'Desayuno Incluido',
+        'Mesa de noche',
+        'Estación de trabajo ejecutiva integrada con mueble para TV',
+        'Internet por Fibra Óptica de Alta Velocidad',
+        'Aire Acondicionado Autónomo',
+        'Cocina equipada tipo Kitchenette',
+        'Nevera de 15 pies',
+        'Horno Microondas y Estantería',
+        'Guardarropa',
+        'Distribución espacial integral (36 m²)'
+      ],
+      gallery: [
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp', tag: 'Vista Principal / Dormitorio' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/Suite-Estandar-PuntadeMata_resultado.webp', tag: 'Dormitorio Matrimonial' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-estandar-ptmata-2.webp', tag: 'Área de Descanso' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-estandar-ptmata-.webp', tag: 'Espacio Integrado' },
+        { src: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptamata.webp', tag: 'Fachada Sede Punta de Mata' }
+      ]
+    }
+  ];
+
+  let activeModalSuites = catalogSuitesData;
+  let activeModalSuiteIndex = 0;
+
+  function detectCurrentSede() {
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes('maturin')) return 'maturin';
+    if (path.includes('el-tigre')) return 'el-tigre';
+    if (path.includes('punta-de-mata')) return 'punta-de-mata';
+    return null;
+  }
+
+  // Soporte de filtro por URL param (?sede=maturin, etc.)
+  const urlParams = new URLSearchParams(window.location.search);
+  const sedeParam = urlParams.get('sede');
+  if (sedeParam) {
+    const filterSedeEl = document.getElementById('filter-sede');
+    if (filterSedeEl) {
+      filterSedeEl.value = sedeParam;
+      setTimeout(() => {
+        if (typeof window.applySuiteFilters === 'function') {
+          window.applySuiteFilters();
+        }
+      }, 50);
+    }
+  }
+
+  window.applySuiteFilters = function() {
+    const filterSedeEl = document.getElementById('filter-sede');
+    const filterCapEl = document.getElementById('filter-capacity');
+    if (!filterSedeEl || !filterCapEl) return;
+    
+    const sede = filterSedeEl.value;
+    const capacity = filterCapEl.value;
+    const cards = document.querySelectorAll('.suite-card');
+
+    cards.forEach(card => {
+      let matchSede = (sede === 'all') || card.classList.contains('suite-item-' + sede);
+      let matchCapacity = true;
+
+      if (capacity === '2') {
+        matchCapacity = card.classList.contains('suite-item-estandar');
+      } else if (capacity === '3') {
+        matchCapacity = card.classList.contains('suite-item-triple') || card.classList.contains('suite-item-premium');
+      } else if (capacity === '4') {
+        matchCapacity = card.classList.contains('suite-item-premium') || card.classList.contains('suite-item-triple');
+      }
+
+      if (matchSede && matchCapacity) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  };
+
+  window.openSuiteModalById = function(id) {
+    const targetSuite = catalogSuitesData.find(s => s.id === id);
+    if (!targetSuite) return;
+
+    // Aislamiento estricto por sede:
+    const pageSede = detectCurrentSede();
+    const filterSedeEl = document.getElementById('filter-sede');
+    const filterSedeVal = filterSedeEl ? filterSedeEl.value : null;
+
+    let targetSede = targetSuite.sede;
+    if (pageSede) {
+      targetSede = pageSede;
+    } else if (filterSedeVal && filterSedeVal !== 'all') {
+      targetSede = filterSedeVal;
+    }
+
+    // Filtrar array a las suites de esa sede
+    activeModalSuites = catalogSuitesData.filter(s => s.sede === targetSede);
+    if (activeModalSuites.length === 0) {
+      activeModalSuites = [targetSuite];
+    }
+
+    const idx = activeModalSuites.findIndex(s => s.id === id);
+    activeModalSuiteIndex = idx !== -1 ? idx : 0;
+    updateSuiteModalData();
+
+    const modal = document.getElementById('suite-modal');
+    if (modal) {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  function updateSuiteModalData() {
+    const suite = activeModalSuites[activeModalSuiteIndex];
+    if (!suite) return;
+
+    const titleEl = document.getElementById('suite-modal-title');
+    const descEl = document.getElementById('suite-modal-desc');
+    const imgEl = document.getElementById('suite-modal-main-img');
+    const tagEl = document.getElementById('suite-modal-tag');
+    const counterEl = document.getElementById('suite-modal-counter');
+    const thumbContainer = document.getElementById('suite-modal-thumbnails');
+    const amenitiesEl = document.getElementById('suite-modal-amenities') || document.getElementById('suite-modal-features');
+    const breakdownEl = document.getElementById('suite-modal-pricing-breakdown');
+
+    if (titleEl) {
+      titleEl.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <span>${suite.title}</span>
+          <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#2680BD]/15 text-[#2680BD] border border-[#2680BD]/25 inline-flex items-center gap-1.5 font-mono">
+            <i class="fa-solid fa-mug-saucer text-xs"></i>
+            Desayuno Incluido
+          </span>
+        </div>
+      `;
+    }
+
+    if (descEl) descEl.textContent = suite.desc;
+    if (imgEl) imgEl.src = suite.image;
+    if (tagEl) tagEl.textContent = suite.gallery?.[0]?.tag || 'Vista Principal';
+
+    const currentNum = String(activeModalSuiteIndex + 1).padStart(2, '0');
+    const totalNum = String(activeModalSuites.length).padStart(2, '0');
+    if (counterEl) counterEl.textContent = `${currentNum} / ${totalNum}`;
+
+    // Renderizar desglose de tarifas y ocupación si existe el contenedor o crearlo
+    if (breakdownEl && suite.breakdown) {
+      breakdownEl.innerHTML = `
+        <div class="bg-black/[0.03] rounded-2xl p-3.5 border border-black/5 space-y-2">
+          <div class="flex items-center justify-between text-[10px] font-mono uppercase font-bold text-karina-charcoal/60 border-b border-black/5 pb-1">
+            <span>Ocupación & Plan</span>
+            <span>Tarifa / Noche</span>
+          </div>
+          <div class="space-y-1 text-xs">
+            ${suite.breakdown.occupancy.map(item => `
+              <div class="flex items-center justify-between py-0.5">
+                <span class="text-karina-charcoal/80 font-medium">${item.label}</span>
+                <span class="font-bold text-karina-charcoal font-mono">${item.price}</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="pt-1 border-t border-black/5 flex items-center justify-between text-[11px] text-[#2680BD] font-semibold">
+            <span class="inline-flex items-center gap-1"><i class="fa-solid fa-check text-[10px]"></i> Desayuno tipo continental incluido</span>
+            <span class="text-[10px] text-karina-charcoal/50 font-mono">IVA inc.</span>
+          </div>
+        </div>
+      `;
+    }
+
+    if (amenitiesEl && suite.amenities) {
+      amenitiesEl.innerHTML = suite.amenities.map(a => `
+        <div class="flex items-start gap-2 text-xs text-karina-charcoal/80">
+          <i class="fa-regular fa-circle-check text-karina-mustard text-xs mt-0.5 shrink-0"></i>
+          <span class="leading-tight">${a}</span>
+        </div>
+      `).join('');
+    }
+
+    if (thumbContainer && suite.gallery && suite.gallery.length > 0) {
+      const cols = suite.gallery.length >= 7 ? 7 : (suite.gallery.length > 4 ? 6 : 4);
+      thumbContainer.className = `grid grid-cols-${cols} gap-2`;
+      thumbContainer.innerHTML = suite.gallery.map(item => `
+        <button onclick="setSuiteModalImg('${item.src}', '${item.tag}')" class="h-14 sm:h-16 rounded-xl overflow-hidden border border-black/10 focus:ring-2 focus:ring-karina-mustard transition-transform active:scale-95 group" title="${item.tag}">
+          <img src="${item.src}" alt="${item.tag}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        </button>
+      `).join('');
+    }
+  }
+
+  window.navigateSuiteInModal = function(dir) {
+    const total = activeModalSuites.length;
+    if (total <= 1) return;
+    activeModalSuiteIndex = (activeModalSuiteIndex + dir + total) % total;
+    
+    const wrapper = document.getElementById('suite-modal-wrapper');
+    if (wrapper) wrapper.style.opacity = '0.3';
+    setTimeout(() => {
+      updateSuiteModalData();
+      if (wrapper) wrapper.style.opacity = '1';
+    }, 120);
+  };
+
+  window.setSuiteModalImg = function(src, tag) {
+    const imgEl = document.getElementById('suite-modal-main-img');
+    const tagEl = document.getElementById('suite-modal-tag');
+    if (imgEl) imgEl.src = src;
+    if (tagEl && tag) tagEl.textContent = tag;
+  };
+
+  window.openSuiteModalMainLightbox = function() {
+    const imgEl = document.getElementById('suite-modal-main-img');
+    const titleEl = document.getElementById('suite-modal-title');
+    const tagEl = document.getElementById('suite-modal-tag');
+    if (imgEl && imgEl.src) {
+      const title = titleEl ? titleEl.textContent : 'Suite Kariña';
+      const tag = tagEl ? tagEl.textContent : '';
+      openLightbox(imgEl.src, title, tag);
+    }
+  };
+
+  window.closeSuiteModal = function() {
+    const modal = document.getElementById('suite-modal');
+    if (modal) {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.closeSuiteModalOnBackdrop = function(e) {
+    if (e.target.id === 'suite-modal') closeSuiteModal();
+  };
+
+  window.loadMoreCatalogSuites = function() {
+    console.log('Cargando más habitaciones...');
+  };
+
+  window.requestSuiteReservation = function(suiteId) {
+    let suite = null;
+
+    if (suiteId && typeof suiteId === 'string') {
+      suite = catalogSuitesData.find(s => s.id === suiteId);
+    }
+    
+    if (!suite && typeof activeModalSuites !== 'undefined' && activeModalSuites[activeModalSuiteIndex]) {
+      suite = activeModalSuites[activeModalSuiteIndex];
+    }
+
+    const modal = document.getElementById('suite-modal');
+    const modalTitleEl = document.getElementById('suite-modal-title');
+    const suiteTitle = suite?.title || modalTitleEl?.textContent?.trim() || 'Suite Premium';
+    
+    let sedeCode = suite?.sede || modal?.dataset?.sede || detectCurrentSede() || 'maturin';
+    let sedeDisplay = suite?.sedeName;
+    if (!sedeDisplay) {
+      if (sedeCode === 'maturin') sedeDisplay = 'Maturín';
+      else if (sedeCode === 'el-tigre') sedeDisplay = 'El Tigre';
+      else if (sedeCode === 'punta-de-mata') sedeDisplay = 'Punta de Mata';
+      else sedeDisplay = 'Maturín';
+    }
+
+    if (!suite) {
+      const isTriple = suiteTitle.toLowerCase().includes('triple');
+      const isPremium = suiteTitle.toLowerCase().includes('premium');
+      suite = catalogSuitesData.find(s => s.sede === sedeCode && (isTriple ? s.id.startsWith('triple') : (isPremium ? s.id.startsWith('premium') : s.id.startsWith('estandar'))));
+    }
+
+    let tarifa = suite?.tarifa_usd || modal?.dataset?.tarifa;
+    if (!tarifa) {
+      if (suiteTitle.toLowerCase().includes('triple')) {
+        tarifa = '170';
+      } else if (suiteTitle.toLowerCase().includes('premium')) {
+        tarifa = (sedeCode === 'punta-de-mata') ? '120' : '140';
+      } else {
+        tarifa = (sedeCode === 'punta-de-mata') ? '100' : '120';
+      }
+    }
+
+    const message = `Hola, deseo solicitar la reserva para la ${suiteTitle} en la sede ${sedeDisplay}.`;
+    const contextData = {
+      suite_nombre: suiteTitle,
+      sede: sedeDisplay,
+      tarifa_usd: String(tarifa)
+    };
+
+    if (typeof window.closeSuiteModal === 'function') {
+      window.closeSuiteModal();
+    } else if (modal) {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(message, contextData);
+    }
+  };
+
+  window.inquireSuiteWithAI = function(customPrompt) {
+    if (typeof window.closeSuiteModal === 'function') window.closeSuiteModal();
+    const prompt = (customPrompt && typeof customPrompt === 'string') ? customPrompt : 'Hola, deseo cotizar una estadía.';
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(prompt);
+    }
+  };
+
+  // ==========================================
+  // 9. CONTROLADORES PÁGINA VIVE KARIÑA Y DAY PASS
+  // ==========================================
+  const dayPassData = [
+    {
+      title: "Hotel Kariña Maturín",
+      desc: "Disfruta de un día de sol con acceso libre a las piscinas familiares, piscina semiolímpica, solárium de descanso y vestidores. Horario extendido nocturno hasta las 8:00 p.m.",
+      tag: "Piscina Semiolímpica y Solárium",
+      price: "$25",
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/Area-Hotel-Karina-Maturin.webp"
+    },
+    {
+      title: "Kariña Punta de Mata",
+      desc: "Un día completo de paz corporativa rodeado de jardines tropicales, acceso a piscina ejecutiva, toallas y consumo acreditado en restaurante. Horario disponible hasta las 6:00 p.m.",
+      tag: "Piscina Ejecutiva y Jardines",
+      price: "$20",
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/fachada-main-ptmata.webp"
+    },
+    {
+      title: "Hotel Kariña El Tigre",
+      desc: "Sumérgete en la refrescante piscina resort de Guanipa, solárium, canchas deportivas y ambiente familiar único en la Mesa de Guanipa. Horario disponible hasta las 6:00 p.m.",
+      tag: "Piscina Guanipa y Solárium",
+      price: "$22",
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Piscina-En-El-Tigre-3.webp"
+    }
+  ];
+
+  let currentDayPassSedeIdx = 0;
+
+  // ==========================================
+  // 9.1 INTEGRACIÓN SUPABASE: HOTEL MEDIA Y PAGINACIÓN
+  // ==========================================
+  const SUPABASE_URL = window.SUPABASE_URL || 'https://sdwxibeicptfevccvjmt.supabase.co';
+  const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || '';
+
+  function getSupabaseClient() {
+    if (window.supabaseClient) return window.supabaseClient;
+    if (typeof window.supabase !== 'undefined' && typeof window.supabase.createClient === 'function') {
+      try {
+        if (SUPABASE_ANON_KEY) {
+          window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+          return window.supabaseClient;
+        }
+      } catch (err) {
+        console.warn('Error inicializando cliente de Supabase:', err);
+      }
+    }
+    return null;
+  }
+
+  const VIVE_PAGE_SIZE = 6;
+  let vivePage = 1;
+  let viveHasMore = true;
+  let viveIsLoading = false;
+  let viveActiveCategory = 'todos';
+
+  const viveCategoryMap = {
+    'piscinas': ['piscina', 'solarium'],
+    'gastronomia': ['plato', 'bebida', 'cocteleria'],
+    'padel': ['deporte'],
+    'eventos': ['social', 'interiorismo', 'fachada', 'fitness'],
+  };
+
+  function getSedeDisplayName(sedeId) {
+    if (sedeId === 1 || sedeId === '1' || sedeId === 'maturin') return 'Maturín';
+    if (sedeId === 2 || sedeId === '2' || sedeId === 'punta-de-mata') return 'Punta de Mata';
+    if (sedeId === 3 || sedeId === '3' || sedeId === 'el-tigre') return 'El Tigre';
+    return 'Kariña';
+  }
+
+  function formatSedeBadge(sedeId, categoria) {
+    let sedeName = 'KARIÑA';
+    if (sedeId === 1 || sedeId === '1' || sedeId === 'maturin') sedeName = 'MATURÍN';
+    else if (sedeId === 2 || sedeId === '2' || sedeId === 'punta-de-mata') sedeName = 'PUNTA DE MATA';
+    else if (sedeId === 3 || sedeId === '3' || sedeId === 'el-tigre') sedeName = 'EL TIGRE';
+
+    const catUpper = (categoria || '').toUpperCase();
+    return `${sedeName} · ${catUpper || 'MOMENTO'}`;
+  }
+
+  function createMediaCardHtml(item, index) {
+    const badgeText = formatSedeBadge(item.sede_id, item.categoria);
+    const sedeName = getSedeDisplayName(item.sede_id);
+    const title = item.titulo || 'Momento Kariña';
+    const desc = item.descripcion_bot || '';
+    const imgUrl = item.url_publica || '';
+
+    let catClass = 'vive-cat-eventos';
+    const cat = (item.categoria || '').toLowerCase();
+    if (['piscina', 'solarium'].includes(cat)) catClass = 'vive-cat-piscinas';
+    else if (['plato', 'bebida', 'cocteleria'].includes(cat)) catClass = 'vive-cat-gastronomia';
+    else if (['deporte'].includes(cat)) catClass = 'vive-cat-padel';
+
+    const colSpan = (index % 5 === 0 || index % 5 === 1) ? 'md:col-span-6' : 'md:col-span-4';
+    const heightClass = colSpan === 'md:col-span-6' ? 'min-h-[280px]' : 'h-[260px]';
+
+    const safeTitle = title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    const safeSede = sedeName.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    const safeImg = imgUrl.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+
+    return `
+      <div class="vive-item ${catClass} ${colSpan} ${heightClass} rounded-3xl overflow-hidden shadow-md relative group cursor-pointer transition-all duration-300 hover:shadow-xl"
+           onclick="openViveLightbox('${safeImg}', '${safeTitle}', 'photo', '${safeSede}')">
+        <img src="${imgUrl}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[10px] font-mono px-2.5 py-1 rounded-full uppercase">
+          ${badgeText}
+        </span>
+        <div class="absolute bottom-4 left-4 right-4 text-white space-y-0.5">
+          <h3 class="text-sm font-bold text-white">${title}</h3>
+          ${desc ? `<p class="text-[11px] text-white/80 font-light line-clamp-2">${desc}</p>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  function updateViveButtonState(state) {
+    const btn = document.getElementById('load-more-vive-btn');
+    const textEl = document.getElementById('load-more-text');
+    const iconEl = document.getElementById('load-more-icon');
+    if (!btn) return;
+
+    if (state === 'loading') {
+      btn.disabled = true;
+      if (textEl) textEl.textContent = 'Cargando momentos...';
+      if (iconEl) iconEl.className = 'fa-solid fa-spinner fa-spin text-[10px]';
+    } else if (state === 'nomore') {
+      btn.disabled = true;
+      btn.classList.add('opacity-50', 'pointer-events-none');
+      if (textEl) textEl.textContent = 'No hay más momentos';
+      if (iconEl) iconEl.className = 'fa-solid fa-check text-[10px]';
+    } else {
+      btn.disabled = false;
+      btn.classList.remove('opacity-50', 'pointer-events-none');
+      if (textEl) textEl.textContent = 'Cargar Más Momentos';
+      if (iconEl) iconEl.className = 'fa-solid fa-chevron-down text-[10px]';
+    }
+  }
+
+  function fallbackViveDomFilter(category) {
+    const items = document.querySelectorAll('.vive-item');
+    items.forEach(item => {
+      if (category === 'all' || category === 'todos' || item.classList.contains('vive-cat-' + category)) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  function renderViveMediaCards(items, replace) {
+    const grid = document.getElementById('vive-bento-grid');
+    if (!grid) return;
+
+    const cardsHtml = items.map((item, idx) => createMediaCardHtml(item, idx)).join('');
+    if (replace) {
+      grid.innerHTML = cardsHtml;
+    } else {
+      grid.insertAdjacentHTML('beforeend', cardsHtml);
+    }
+  }
+
+  window.handleCategoryChange = async function(newCategory, clickedBtn) {
+    const normCategory = (newCategory === 'all' || newCategory === 'todos') ? 'todos' : newCategory;
+    viveActiveCategory = normCategory;
+    vivePage = 1;
+    viveHasMore = true;
+    viveIsLoading = true;
+
+    // Actualizar estilo visual de las pestañas
+    const tabs = document.querySelectorAll('.vive-tab');
+    tabs.forEach(tab => {
+      tab.className = "vive-tab px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 hover:bg-white border border-black/10 transition-all";
+    });
+    if (clickedBtn) {
+      clickedBtn.className = "vive-tab px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+    }
+
+    updateViveButtonState('loading');
+
+    const client = getSupabaseClient();
+    if (!client) {
+      fallbackViveDomFilter(normCategory);
+      viveIsLoading = false;
+      updateViveButtonState('ready');
+      return;
+    }
+
+    let query = client
+      .from('hotel_media')
+      .select('id, sede_id, entidad_tipo, categoria, titulo, url_publica, descripcion_bot')
+      .order('id', { ascending: true })
+      .range(0, VIVE_PAGE_SIZE - 1);
+
+    if (normCategory !== 'todos') {
+      const dbCategories = viveCategoryMap[normCategory] || [normCategory];
+      query = query.in('categoria', dbCategories);
+    }
+
+    try {
+      const { data, error } = await query;
+      if (error) {
+        console.error('Error al filtrar categoría desde Supabase:', error);
+        fallbackViveDomFilter(normCategory);
+        updateViveButtonState('ready');
+      } else if (data && data.length > 0) {
+        renderViveMediaCards(data, true);
+        if (data.length < VIVE_PAGE_SIZE) {
+          viveHasMore = false;
+          updateViveButtonState('nomore');
+        } else {
+          updateViveButtonState('ready');
+        }
+      } else {
+        fallbackViveDomFilter(normCategory);
+        updateViveButtonState('ready');
+      }
+    } catch (err) {
+      console.error('Excepción al cambiar categoría:', err);
+      fallbackViveDomFilter(normCategory);
+      updateViveButtonState('ready');
+    } finally {
+      viveIsLoading = false;
+    }
+  };
+
+  // Alias para compatibilidad con llamadas existentes en HTML
+  window.filterViveGallery = window.handleCategoryChange;
+
+  window.handleLoadMore = async function() {
+    if (viveIsLoading || !viveHasMore) return;
+    viveIsLoading = true;
+    updateViveButtonState('loading');
+
+    const from = vivePage * VIVE_PAGE_SIZE;
+    const to = from + VIVE_PAGE_SIZE - 1;
+
+    const client = getSupabaseClient();
+    if (!client) {
+      console.warn('Supabase no configurado o sin clave activa. Manteniendo estado actual.');
+      viveIsLoading = false;
+      updateViveButtonState('ready');
+      return;
+    }
+
+    let query = client
+      .from('hotel_media')
+      .select('id, sede_id, entidad_tipo, categoria, titulo, url_publica, descripcion_bot')
+      .order('id', { ascending: true })
+      .range(from, to);
+
+    if (viveActiveCategory !== 'todos' && viveActiveCategory !== 'all') {
+      const dbCategories = viveCategoryMap[viveActiveCategory] || [viveActiveCategory];
+      query = query.in('categoria', dbCategories);
+    }
+
+    try {
+      const { data, error } = await query;
+      if (error) {
+        console.error('Error al cargar momentos desde Supabase:', error);
+        updateViveButtonState('ready');
+      } else if (data) {
+        if (data.length < VIVE_PAGE_SIZE) {
+          viveHasMore = false;
+          updateViveButtonState('nomore');
+        } else {
+          updateViveButtonState('ready');
+        }
+
+        if (data.length > 0) {
+          renderViveMediaCards(data, false);
+          vivePage += 1;
+        }
+      }
+    } catch (err) {
+      console.error('Excepción al cargar momentos:', err);
+      updateViveButtonState('ready');
+    } finally {
+      viveIsLoading = false;
+    }
+  };
+
+  // Alias para compatibilidad con el botón HTML
+  window.loadMoreViveMoments = window.handleLoadMore;
+
+  window.openViveLightbox = function(src, caption, type, sede) {
+    const modal = document.getElementById('vive-lightbox-modal');
+    const imgEl = document.getElementById('lightbox-img');
+    const captionEl = document.getElementById('lightbox-caption');
+    const sedeEl = document.getElementById('lightbox-sede');
+
+    if (imgEl) imgEl.src = src;
+    if (captionEl) captionEl.textContent = caption;
+    if (sedeEl) sedeEl.textContent = sede || 'Kariña';
+
+    if (modal) modal.classList.add('is-open');
+  };
+
+  window.closeViveLightbox = function() {
+    const modal = document.getElementById('vive-lightbox-modal');
+    if (modal) modal.classList.remove('is-open');
+  };
+
+  window.closeViveLightboxOnBackdrop = function(e) {
+    if (e.target.id === 'vive-lightbox-modal') closeViveLightbox();
+  };
+
+  window.openDayPassModal = function(sedeIndex) {
+    currentDayPassSedeIdx = sedeIndex || 0;
+    selectDayPassSede(currentDayPassSedeIdx);
+
+    const modal = document.getElementById('daypass-modal');
+    if (modal) {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.selectDayPassSede = function(index) {
+    currentDayPassSedeIdx = index;
+    const data = dayPassData[index];
+    if (!data) return;
+
+    for (let i = 0; i < 3; i++) {
+      const tab = document.getElementById(`dp-tab-${i}`);
+      if (tab) {
+        if (i === index) {
+          tab.className = "dp-tab-btn py-2.5 px-3 rounded-2xl text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all text-center";
+        } else {
+          tab.className = "dp-tab-btn py-2.5 px-3 rounded-2xl text-xs font-semibold text-karina-charcoal/70 bg-white/60 hover:bg-white border border-black/10 transition-all text-center";
+        }
+      }
+    }
+
+    const wrapper = document.getElementById('daypass-detail-wrapper');
+    if (wrapper) wrapper.style.opacity = '0.3';
+
+    setTimeout(() => {
+      const titleEl = document.getElementById('dp-sede-title');
+      const descEl = document.getElementById('dp-sede-desc');
+      const tagEl = document.getElementById('dp-sede-tag');
+      const priceEl = document.getElementById('dp-sede-price');
+      const imgEl = document.getElementById('dp-sede-img');
+
+      if (titleEl) titleEl.textContent = data.title;
+      if (descEl) descEl.textContent = data.desc;
+      if (tagEl) tagEl.textContent = data.tag;
+      if (priceEl) priceEl.innerHTML = `${data.price} <span class="text-xs font-light text-karina-charcoal/60">/ persona</span>`;
+      if (imgEl) imgEl.src = data.img;
+
+      if (wrapper) wrapper.style.opacity = '1';
+    }, 120);
+  };
+
+  window.closeDayPassModal = function() {
+    const modal = document.getElementById('daypass-modal');
+    if (modal) {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.closeDayPassModalOnBackdrop = function(e) {
+    if (e.target.id === 'daypass-modal') closeDayPassModal();
+  };
+
+  window.acquireDayPassWithAI = function() {
+    closeDayPassModal();
+    const sedes = ["Maturín", "Punta de Mata", "El Tigre"];
+    const sedeName = sedes[currentDayPassSedeIdx] || "Maturín";
+    const prompt = `Hola, deseo adquirir un Day Pass para la sede ${sedeName}.`;
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(prompt);
+    }
+  };
+
+  // ===================================================
+  // 10. LÓGICA JAVASCRIPT: BUSINESS, FAQS Y CONTACTO
+  // ===================================================
+
+  // 1. Acordeón de FAQs
+  window.toggleFaqAccordion = function(element) {
+    const wrapper = element.querySelector('.faq-accordion-wrapper');
+    if (!wrapper) return;
+    const isOpen = wrapper.classList.contains('is-open');
+
+    // Cerrar otros acordeones
+    document.querySelectorAll('.faq-item-card').forEach(card => {
+      card.classList.remove('is-open');
+      const otherWrapper = card.querySelector('.faq-accordion-wrapper');
+      if (otherWrapper) otherWrapper.classList.remove('is-open');
+    });
+
+    if (!isOpen) {
+      element.classList.add('is-open');
+      wrapper.classList.add('is-open');
+    }
+  };
+
+  // Búsqueda de FAQs
+  window.searchFaqs = function() {
+    const searchInput = document.getElementById('faq-search-input');
+    if (!searchInput) return;
+    const input = searchInput.value.toLowerCase();
+    const cards = document.querySelectorAll('.faq-item-card');
+
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      if (text.includes(input)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  };
+
+  window.filterFaqByTag = function(tag) {
+    const input = document.getElementById('faq-search-input');
+    if (input) {
+      input.value = tag;
+      window.searchFaqs();
+    }
+  };
+
+  // 2. Selector de Sede en Página de Contacto
+  const contactoSedesData = {
+    'maturin': {
+      title: "Sede Maturín",
+      name: "Hotel Kariña Maturín",
+      address: "Etapa II, Macroparcela MC-30, Urbanización Palma Real, Maturín, Monagas",
+      phone: "+58 424-9169610",
+      phoneRaw: "+584249169610",
+      ws: "+58 424-9169610",
+      instagram: "@hotelkarina.maturin",
+      instagramUrl: "https://instagram.com/hotelkarina.maturin",
+      mapsUrl: "https://maps.google.com/?cid=370127326196523800",
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Karina-Maturin-Hotel.webp",
+      badge: "Hotel y Club Maturín",
+      tagline: "Urbanización Palma Real, Maturín, Estado Monagas."
+    },
+    'punta-de-mata': {
+      title: "Sede Punta de Mata",
+      name: "Hotel Kariña Punta de Mata",
+      address: "Sector Zona Industrial, Ramal 7, Punta de Mata, Monagas",
+      phone: "+58 424-9396445",
+      phoneRaw: "+584249396445",
+      ws: "+58 424-9396445",
+      instagram: "@hotelkarina.ptamata",
+      instagramUrl: "https://instagram.com/hotelkarina.ptamata",
+      mapsUrl: "https://maps.google.com/?cid=9643206305083018040",
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Principales-Homepage/FACHADA-PRINCIPAL-PUNTADEMATA.webp",
+      badge: "Hotel Corporativo Punta de Mata",
+      tagline: "Sector Zona Industrial, Ramal 7, Punta de Mata, Estado Monagas."
+    },
+    'el-tigre': {
+      title: "Sede El Tigre",
+      name: "Hotel Kariña El Tigre",
+      address: "A 100 m del Balancín Tricolor, Av. Ruiz Pineda con Calle 23 de Enero, El Tigre, Anzoátegui",
+      phone: "+58 424-9559213",
+      phoneRaw: "+584249559213",
+      ws: "+58 424-9559213",
+      instagram: "@hotelkarina.guanipa",
+      instagramUrl: "https://instagram.com/hotelkarina.guanipa",
+      mapsUrl: "https://maps.google.com/?cid=12057092587787417265",
+      img: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Fachada-Atardecer-Guanipa.webp",
+      badge: "Hotel y Restaurante El Tigre",
+      tagline: "A 100 m del Balancín Tricolor, El Tigre, Estado Anzoátegui."
+    }
+  };
+
+  const contactoSedesArray = [
+    contactoSedesData['maturin'],
+    contactoSedesData['punta-de-mata'],
+    contactoSedesData['el-tigre']
+  ];
+
+  window.selectContactSede = function(sedeKey, btnElement) {
+    const data = contactoSedesData[sedeKey];
+    if (!data) return;
+
+    document.querySelectorAll('.contact-sede-pill').forEach(btn => {
+      btn.className = "contact-sede-pill flex-1 py-2 px-3 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal transition-all";
+    });
+    if (btnElement) {
+      btnElement.className = "contact-sede-pill flex-1 py-2 px-3 rounded-full text-xs font-bold bg-white text-karina-charcoal shadow-xs transition-all";
+    }
+
+    const titleEl = document.getElementById('contacto-sede-title');
+    const nameEl = document.getElementById('contacto-sede-name');
+    const addrEl = document.getElementById('contacto-sede-address');
+    const phoneEl = document.getElementById('contacto-sede-phone');
+    const wsEl = document.getElementById('contacto-sede-ws');
+    const badgeEl = document.getElementById('contacto-sede-badge');
+    const taglineEl = document.getElementById('contacto-sede-tagline');
+    const imgEl = document.getElementById('contacto-sede-img');
+
+    if (titleEl) titleEl.textContent = data.title;
+    if (nameEl) nameEl.textContent = data.name;
+    if (addrEl) addrEl.textContent = data.address;
+    if (phoneEl) phoneEl.textContent = data.phone;
+    if (wsEl) wsEl.textContent = data.ws;
+    if (badgeEl) badgeEl.textContent = data.badge;
+    if (taglineEl) taglineEl.textContent = data.tagline;
+    if (imgEl) imgEl.src = data.img;
+
+    const padelBox = document.getElementById('contacto-sede-padel-box');
+    if (padelBox) {
+      if (sedeKey === 'maturin') {
+        padelBox.classList.remove('hidden');
+      } else {
+        padelBox.classList.add('hidden');
+      }
+    }
+  };
+
+  window.switchContactoSede = function(index) {
+    const data = contactoSedesArray[index];
+    if (!data) return;
+
+    for (let i = 0; i < 3; i++) {
+      const tab = document.getElementById(`contacto-tab-${i}`);
+      if (tab) {
+        if (i === index) {
+          tab.className = "contacto-tab-btn px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-sm transition-all";
+        } else {
+          tab.className = "contacto-tab-btn px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal bg-white/50 border border-black/10 transition-all";
+        }
+      }
+    }
+
+    const titleEl = document.getElementById('contacto-sede-title');
+    const nameEl = document.getElementById('contacto-sede-name');
+    const addrEl = document.getElementById('contacto-sede-address');
+    const phoneEl = document.getElementById('contacto-sede-phone');
+    const wsEl = document.getElementById('contacto-sede-ws');
+    const badgeEl = document.getElementById('contacto-sede-badge') || document.getElementById('contacto-map-badge');
+    const taglineEl = document.getElementById('contacto-sede-tagline');
+    const imgEl = document.getElementById('contacto-sede-img') || document.getElementById('contacto-map-img');
+    const mapLinkEl = document.getElementById('contacto-map-direct-link');
+    const btnDirEl = document.getElementById('contacto-btn-directions');
+
+    if (titleEl) titleEl.textContent = data.title;
+    if (nameEl) nameEl.textContent = data.name;
+    if (addrEl) addrEl.textContent = data.address;
+    if (phoneEl) phoneEl.textContent = data.phone;
+    if (wsEl) wsEl.textContent = data.ws;
+    if (badgeEl) badgeEl.textContent = data.badge;
+    if (taglineEl) taglineEl.textContent = data.tagline;
+    if (imgEl) imgEl.src = data.img;
+    if (mapLinkEl) mapLinkEl.href = data.mapsUrl;
+    if (btnDirEl) btnDirEl.href = data.mapsUrl;
+
+    const padelBox = document.getElementById('contacto-sede-padel-box');
+    if (padelBox) {
+      if (index === 0) {
+        padelBox.classList.remove('hidden');
+      } else {
+        padelBox.classList.add('hidden');
+      }
+    }
+  };
+
+  // ===================================================
+  // 12. CONTROLADORES: PLANES CORPORATIVOS (BUSINESS.HTML)
+  // ===================================================
+  const corporatePlansData = {
+    semanal: {
+      conDesayuno: [
+        {
+          id: 'estandar-sem-des',
+          title: 'Suite Estándar',
+          capacity: '1 Pax',
+          paxIcon: 'fa-user',
+          tag: 'Eficiencia Ejecutiva',
+          price: '$630',
+          period: '/ semana',
+          dailyNote: '$90/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+          benefits: [
+            '1 Cama Matrimonial Confortable',
+            'Desayuno diario incluido',
+            'Room service diario incluido',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada y nevera ejecutiva',
+            'Planta eléctrica continua 24/7'
+          ]
+        },
+        {
+          id: 'matrimonial-sem-des',
+          title: 'Suite Matrimonial',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Confort Corporativo',
+          price: '$770',
+          period: '/ semana',
+          dailyNote: '$110/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
+          benefits: [
+            '1 Cama King / Matrimonial Amplia (2 Pax)',
+            'Desayuno diario incluido para 2',
+            'Room service diario incluido',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada y nevera ejecutiva',
+            'Planta eléctrica continua 24/7'
+          ]
+        },
+        {
+          id: 'premium-sem-des',
+          title: 'Suite Premium',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Doble Ambiente & Máximo Lujo',
+          featured: true,
+          price: '$840',
+          period: '/ semana',
+          dailyNote: '$120/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+          benefits: [
+            '2 Camas Matrimoniales (2 Pax)',
+            'Dos ambientes independientes (Sala-Comedor + Habitación)',
+            'Desayuno diario incluido para 2',
+            'Room service diario incluido',
+            'Cocina completa, microondas y nevera 15\'',
+            'Planta eléctrica 24/7 y soporte preferencial'
+          ]
+        }
+      ],
+      sinDesayuno: [
+        {
+          id: 'estandar-sem-nodes',
+          title: 'Suite Estándar',
+          capacity: '1 Pax',
+          paxIcon: 'fa-user',
+          tag: 'Eficiencia Ejecutiva',
+          price: '$560',
+          period: '/ semana',
+          dailyNote: '$80/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+          benefits: [
+            '1 Cama Matrimonial Confortable',
+            'Room service diario incluido',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada y nevera ejecutiva',
+            'Planta eléctrica continua 24/7',
+            'Acceso a centro de negocios y piscinas'
+          ]
+        },
+        {
+          id: 'matrimonial-sem-nodes',
+          title: 'Suite Matrimonial',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Confort Corporativo',
+          price: '$700',
+          period: '/ semana',
+          dailyNote: '$100/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
+          benefits: [
+            '1 Cama King / Matrimonial Amplia (2 Pax)',
+            'Room service diario incluido',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada y nevera ejecutiva',
+            'Planta eléctrica continua 24/7',
+            'Acceso a centro de negocios y piscinas'
+          ]
+        },
+        {
+          id: 'premium-sem-nodes',
+          title: 'Suite Premium',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Doble Ambiente & Máximo Lujo',
+          featured: true,
+          price: '$770',
+          period: '/ semana',
+          dailyNote: '$110/día aprox. (IVA inc.)',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+          benefits: [
+            '2 Camas Matrimoniales (2 Pax)',
+            'Dos ambientes independientes (Sala-Comedor + Habitación)',
+            'Room service diario incluido',
+            'Cocina completa, microondas y nevera 15\'',
+            'Planta eléctrica 24/7 y soporte corporativo preferencial',
+            'Internet simétrico dedicado'
+          ]
+        }
+      ]
+    },
+    mensual: {
+      conDesayuno: [
+        {
+          id: 'estandar-mes-des',
+          title: 'Suite Estándar',
+          capacity: '1 Pax',
+          paxIcon: 'fa-user',
+          tag: 'Larga Estadía Ejecutiva',
+          price: '$1.293,40',
+          period: '/ mes (30 noches)',
+          dailyNote: 'Tarifa mensual corporativa',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+          benefits: [
+            '1 Cama Matrimonial (1 Pax)',
+            'Desayuno diario incluido',
+            'Room service diario incluido',
+            'Limpieza y mantenimiento integral',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada, nevera 15\' y microondas',
+            'Planta eléctrica continua 24/7 y factura fiscal'
+          ]
+        },
+        {
+          id: 'premium-mes-des',
+          title: 'Suite Premium',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Residencia Corporativa VIP',
+          featured: true,
+          price: '$1.760,88',
+          period: '/ mes (30 noches)',
+          dailyNote: 'Tarifa mensual corporativa',
+          serviceNote: 'Room service diario incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+          benefits: [
+            '2 Camas Matrimoniales (2 Pax)',
+            'Dos ambientes independientes (50 m²)',
+            'Desayuno diario incluido para 2',
+            'Room service diario incluido',
+            'Cocina completa de alta gama, nevera 15\' y microondas',
+            'Limpieza y mantenimiento programado',
+            'Planta eléctrica 24/7 y facturación fiscal empresarial'
+          ]
+        }
+      ],
+      sinDesayuno: [
+        {
+          id: 'estandar-mes-nodes',
+          title: 'Suite Estándar',
+          capacity: '1 Pax',
+          paxIcon: 'fa-user',
+          tag: 'Larga Estadía Económica',
+          price: '$765,60',
+          period: '/ mes (30 noches)',
+          dailyNote: 'Tarifa mensual corporativa',
+          serviceNote: '1 Room service semanal incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-Punta-de-Mata/suite-ptamata-main.webp',
+          benefits: [
+            '1 Cama Matrimonial (1 Pax)',
+            '1 Room service semanal incluido',
+            'Limpieza y cambio de lencería semanal',
+            'Internet por Fibra Óptica de Alta Velocidad',
+            'Kitchenette equipada, nevera 15\' y microondas',
+            'Planta eléctrica continua 24/7 y factura fiscal'
+          ]
+        },
+        {
+          id: 'premium-mes-nodes',
+          title: 'Suite Premium',
+          capacity: '2 Pax',
+          paxIcon: 'fa-user-group',
+          tag: 'Residencia Corporativa VIP',
+          featured: true,
+          price: '$1.186,68',
+          period: '/ mes (30 noches)',
+          dailyNote: 'Tarifa mensual corporativa',
+          serviceNote: '1 Room service semanal incluido',
+          image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
+          benefits: [
+            '2 Camas Matrimoniales (2 Pax)',
+            'Dos ambientes independientes (50 m²)',
+            '1 Room service semanal incluido',
+            'Limpieza y cambio de lencería semanal',
+            'Cocina completa de alta gama, nevera 15\' y microondas',
+            'Planta eléctrica 24/7 y facturación fiscal empresarial'
+          ]
+        }
+      ]
+    }
+  };
+
+  let currentCorporateDuration = 'semanal';
+  let currentCorporateBreakfast = 'conDesayuno';
+
+  window.setCorporateDuration = function(duration) {
+    currentCorporateDuration = duration;
+    updateCorporateToggleButtons();
+    renderCorporateGrid();
+  };
+
+  window.setCorporateBreakfast = function(breakfast) {
+    currentCorporateBreakfast = breakfast;
+    updateCorporateToggleButtons();
+    renderCorporateGrid();
+  };
+
+  function updateCorporateToggleButtons() {
+    const btnSemanal = document.getElementById('corp-toggle-semanal');
+    const btnMensual = document.getElementById('corp-toggle-mensual');
+    const btnConDes = document.getElementById('corp-toggle-con-desayuno');
+    const btnSinDes = document.getElementById('corp-toggle-sin-desayuno');
+
+    const activeDarkClass = "px-5 py-2 rounded-full text-xs font-bold bg-karina-charcoal text-white shadow-xs transition-all cursor-pointer";
+    const inactiveClass = "px-5 py-2 rounded-full text-xs font-semibold text-karina-charcoal/70 hover:text-karina-charcoal transition-all cursor-pointer";
+    const activeGoldClass = "px-5 py-2 rounded-full text-xs font-bold bg-karina-mustard text-karina-charcoal shadow-xs transition-all cursor-pointer";
+
+    if (btnSemanal && btnMensual) {
+      if (currentCorporateDuration === 'semanal') {
+        btnSemanal.className = activeDarkClass;
+        btnMensual.className = inactiveClass;
+      } else {
+        btnMensual.className = activeDarkClass;
+        btnSemanal.className = inactiveClass;
+      }
+    }
+
+    if (btnConDes && btnSinDes) {
+      if (currentCorporateBreakfast === 'conDesayuno') {
+        btnConDes.className = activeGoldClass;
+        btnSinDes.className = inactiveClass;
+      } else {
+        btnSinDes.className = activeDarkClass;
+        btnConDes.className = inactiveClass;
+      }
+    }
+  }
+
+  window.renderCorporateGrid = function() {
+    const gridContainer = document.getElementById('corporate-cards-grid');
+    const footerNote = document.getElementById('corporate-footer-note');
+    if (!gridContainer) return;
+
+    const cards = corporatePlansData[currentCorporateDuration]?.[currentCorporateBreakfast] || [];
+    
+    const isSemanal = currentCorporateDuration === 'semanal';
+    gridContainer.className = isSemanal 
+      ? "grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 transition-opacity duration-300"
+      : "grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto transition-opacity duration-300";
+
+    gridContainer.innerHTML = cards.map(card => `
+      <div class="bg-white/90 backdrop-blur-md rounded-[32px] p-6 sm:p-7 border border-black/5 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative ${card.featured ? 'ring-2 ring-karina-mustard/60' : ''}">
+        
+        ${card.featured ? `
+        <div class="absolute -top-3 right-6 bg-gradient-to-r from-karina-mustard to-amber-500 text-white font-extrabold text-[10px] uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md z-10 flex items-center gap-1">
+          <i class="fa-solid fa-star text-[9px]"></i>
+          <span>Más Solicitado</span>
+        </div>
+        ` : ''}
+
+        <div class="space-y-5">
+          <!-- Imagen de la Suite -->
+          <div class="relative h-48 w-full rounded-2xl overflow-hidden bg-black/5 shadow-inner">
+            <img src="${card.image}" alt="${card.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-black/65 backdrop-blur-md text-white text-[10px] font-mono font-semibold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+              <i class="fa-solid ${card.paxIcon} text-karina-mustard"></i>
+              <span>${card.capacity}</span>
+            </div>
+            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md text-karina-charcoal text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-xs">
+              ${card.tag}
+            </div>
+          </div>
+
+          <!-- Título y Tarifa -->
+          <div class="space-y-1.5 text-left border-b border-black/5 pb-4">
+            <h3 class="text-xl sm:text-2xl font-bold text-karina-charcoal tracking-tight">
+              ${card.title}
+            </h3>
+            <div class="flex items-baseline gap-1.5 flex-wrap">
+              <span class="text-3xl font-extrabold text-karina-charcoal tracking-tight">${card.price}</span>
+              <span class="text-xs font-mono text-karina-charcoal/60 font-semibold">${card.period}</span>
+            </div>
+            <p class="text-[11px] text-karina-charcoal/70 font-medium">
+              <span class="text-karina-mustard font-bold">●</span> ${card.dailyNote} • <span class="italic">${card.serviceNote}</span>
+            </p>
+          </div>
+
+          <!-- Lista de Beneficios -->
+          <div class="space-y-2.5 text-left text-xs text-karina-charcoal/80 pt-1">
+            <p class="font-mono uppercase tracking-wider text-[10px] text-karina-charcoal/50 font-bold">Beneficios Incluidos:</p>
+            ${card.benefits.map(b => `
+              <div class="flex items-start gap-2.5">
+                <i class="fa-regular fa-circle-check text-karina-mustard text-xs mt-0.5 shrink-0"></i>
+                <span class="leading-tight">${b}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Botón CTA con Arimiña -->
+        <div class="pt-6 mt-6 border-t border-black/5">
+          <button onclick="requestCorporateQuote('${card.title}', '${card.price}')" class="w-full py-3.5 px-5 rounded-full bg-karina-charcoal hover:bg-black text-white text-xs font-bold flex items-center justify-center gap-2.5 shadow-md transition-all active:scale-95 cursor-pointer group/btn">
+            <i class="fa-solid fa-wand-magic-sparkles text-karina-mustard text-xs group-hover/btn:rotate-12 transition-transform"></i>
+            <span>Iniciar Solicitud con Arimiña</span>
+          </button>
+        </div>
+
+      </div>
+    `).join('');
+
+    if (footerNote) {
+      if (isSemanal) {
+        footerNote.innerHTML = `
+          <p class="font-semibold text-karina-charcoal"><i class="fa-solid fa-circle-info text-karina-mustard mr-1.5"></i> <strong>Nota del Plan Semanal:</strong> Persona adicional <strong>+$140/semana</strong> con IVA incluido. Todos los planes semanales incluyen room service diario.</p>
+          <p class="text-[11px] text-karina-charcoal/60">Tarifas preferenciales aplicables a estancias mínimas de 7 noches continuas en cualquiera de nuestras sedes.</p>
+        `;
+      } else {
+        footerNote.innerHTML = `
+          <p class="font-semibold text-karina-charcoal"><i class="fa-solid fa-circle-info text-karina-mustard mr-1.5"></i> <strong>Nota del Plan Mensual:</strong> Calculado en base a 30 noches continuas. Modalidad "Con Desayuno" incluye room service diario; modalidad "Sin Desayuno" incluye 1 room service semanal.</p>
+          <p class="text-[11px] text-karina-charcoal/60">Facturación fiscal corporativa, soporte operacional 24/7 y acceso a todas las bondades ejecutivas de Hotel Kariña.</p>
+        `;
+      }
+    }
+  };
+
+  window.requestCorporateQuote = function(suiteTitle, price) {
+    const planLabel = currentCorporateDuration === 'semanal' ? 'Plan Semanal (7 Noches)' : 'Plan Mensual (30 Noches)';
+    const breakfastLabel = currentCorporateBreakfast === 'conDesayuno' ? 'Con Desayuno' : 'Sin Desayuno';
+    const message = `Hola, deseo solicitar una cotización corporativa para el ${planLabel} (${breakfastLabel}) en la ${suiteTitle}.`;
+    const contextData = {
+      plan_corporativo: planLabel,
+      modalidad_desayuno: breakfastLabel,
+      suite_nombre: suiteTitle,
+      tarifa_plan: price
+    };
+
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat(message, contextData);
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.getElementById('corporate-cards-grid')) {
+        renderCorporateGrid();
+      }
+    });
+  } else {
+    if (document.getElementById('corporate-cards-grid')) {
+      renderCorporateGrid();
+    }
+  }
+
+  // Handlers para formularios
+  window.handleQuoteSubmit = function(e) {
+    e.preventDefault();
+    const banner = document.getElementById('quote-success-banner');
+    if (banner) {
+      banner.classList.remove('hidden');
+      setTimeout(() => {
+        banner.classList.add('hidden');
+        const form = document.getElementById('quote-form');
+        if (form) form.reset();
+      }, 4000);
+    }
+  };
+
+  window.handleContactSubmit = function(e) {
+    e.preventDefault();
+    const banner = document.getElementById('contact-success-banner');
+    if (banner) {
+      banner.classList.remove('hidden');
+      setTimeout(() => {
+        banner.classList.add('hidden');
+        const form = document.getElementById('contact-general-form');
+        if (form) form.reset();
+      }, 4000);
+    }
+  };
+
+  // ===================================================
+  // 11. LÓGICA JAVASCRIPT: GASTRONOMÍA, RESTAURANTES Y MENÚS
+  // ===================================================
+
+  // Base de datos de menús digitales por establecimiento
+  const gastronomiaMenusData = {
+    'two-chefs': {
+      name: "Two Chefs Restaurant",
+      sede: "Hotel Kariña Punta de Mata • Salón Principal y Terraza",
+      schedule: "Lun a Dom • 7:00 AM – 11:00 PM",
+      phone: "584249207903",
+      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Punta-de-Mata/Restaurant-ptmata.webp",
+      categories: [
+        {
+          name: "Entradas",
+          items: [
+            { name: "Tequeños Tradicionales de Queso Blanco (6 und)", desc: "Crujientes deditos de hojaldre rellenos de abundante queso blanco con salsa tártara casera.", price: "$4", tag: "Clásico" },
+            { name: "Ceviche Clásico Two Chefs", desc: "Pesca fresca del día marinada en limón criollo, cebolla morada, ají dulce y cilantro fresco con tostones.", price: "$8", tag: "Fresco" },
+            { name: "Carpaccio de Res con Lascas de Parmesano", desc: "Finas láminas de lomito de res con alcaparras baby, reducción balsámica, rúgula y parmesano reggiano.", price: "$10", tag: "De Autor" }
+          ]
+        },
+        {
+          name: "Ensaladas",
+          items: [
+            { name: "Ensalada Verde de la Huerta", desc: "Mezcla de lechugas hidropónicas, tomate cherry, pepino, zanahoria y vinagreta cítrica de la casa.", price: "$4", tag: "Ligera" },
+            { name: "Ensalada César Tradicional", desc: "Lechuga romana crujiente, aderezo César casero, croutons aromatizados al ajo y queso parmesano.", price: "$8", tag: "Favorito" },
+            { name: "Ensalada César con Suprema de Pollo o Camarones", desc: "Nuestra César insigne coronada con pechuga de pollo a la plancha o camarones salteados al grill.", price: "$12", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Cortes de Res",
+          items: [
+            { name: "Solomo de Cuerito a la Parrilla (350g)", desc: "Corte tierno y jugoso a las brasas, servido con yuca al vapor, guasacaca y ensalada fresca.", price: "$14", tag: "A las Brasas" },
+            { name: "Punta Trasera Premium (350g)", desc: "Corte selecto madurado a la brasa con chimichurri casero, yuca frita y queso telita.", price: "$15", tag: "Corte Selecto" },
+            { name: "Churrasco de Lomito de Res al Grill", desc: "Medallón de lomito tierno a la plancha bañado en mantequilla de finas hierbas y papas rústicas.", price: "$15", tag: "Insignia" }
+          ]
+        },
+        {
+          name: "Parrillas",
+          items: [
+            { name: "Parrilla Individual Two Chefs", desc: "Solomo de res, pechuga de pollo, chorizo parrillero, morcilla, yuca frita, guasacaca y queso asado.", price: "$14", tag: "Individual" },
+            { name: "Parrilla Mixta Dúo (2 Personas)", desc: "Selección de res, pechuga de pollo, chuleta de cerdo, chorizo, morcilla, tostones con queso y ensalada.", price: "$20", tag: "Para Compartir" },
+            { name: "Gran Parrilla Familiar Two Chefs (4 Personas)", desc: "Banquete parrillero completo con cortes premium, embutidos artesanales, tostones, yuca frita y ensalada mixta.", price: "$28", tag: "Familiar" }
+          ]
+        },
+        {
+          name: "Aves",
+          items: [
+            { name: "Pechuga de Pollo a la Plancha en Finas Hierbas", desc: "Suprema de pollo marinada en hierbas aromáticas y limón, vegetales salteados y puré de papas.", price: "$9", tag: "Balanceado" },
+            { name: "Pollo al Grill en Salsa de Champiñones", desc: "Pechuga grille bañada en cremosa salsa de hongos silvestres y arroz perfumado.", price: "$11", tag: "Especial" },
+            { name: "Cordon Bleu de Pollo Artesanal", desc: "Pechuga rellena de jamón ahumado superior y queso mozzarella fundido, dorada y crujiente.", price: "$12", tag: "Favorito" }
+          ]
+        },
+        {
+          name: "Pastas",
+          items: [
+            { name: "Fettuccine o Penne al Pomodoro y Albahaca", desc: "Salsa de tomates frescos confitados, ajo, aceite de oliva virgen extra y albahaca fresca.", price: "$10", tag: "Artesanal" },
+            { name: "Fettuccine Alfredo con Suprema de Pollo", desc: "Salsa blanca cremosa a base de mantequilla, crema de leche, parmesano y dados de pechuga grille.", price: "$13", tag: "Clásico" },
+            { name: "Linguini Frutti di Mare Especial", desc: "Pasta larga salteada con camarones, calamares y mejillones en vino blanco y bisqué de mariscos.", price: "$15", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Pescados y Marisquería",
+          items: [
+            { name: "Rueda de Carite o Pargo a la Plancha", desc: "Pesca fresca del Oriente a la plancha con tostones crujientes, ensalada rayada y limón criollo.", price: "$12", tag: "Pesca del Día" },
+            { name: "Filete de Merluza en Salsa de Alcaparras", desc: "Filete tierno salteado con mantequilla clarificada, alcaparras baby y puré rústico.", price: "$14", tag: "Gourmet" },
+            { name: "Camarones al Ajillo o al Grill", desc: "Camarones selectos salteados en abundante aceite de oliva, ajo laminado, perejil y vino blanco.", price: "$15", tag: "Insignia" }
+          ]
+        },
+        {
+          name: "Sándwiches & Burgers",
+          items: [
+            { name: "Sándwich Tostado de Jamón y Queso Fundido", desc: "Pan artesanal sellado a la plancha con mantequilla, jamón superior y doble queso gouda.", price: "$5", tag: "Rápido" },
+            { name: "Club House Tradicional Two Chefs", desc: "Triple piso con pollo desmechado, tocineta crocante, queso gouda, jamón, huevo frito y papas fritas.", price: "$10", tag: "Clásico" },
+            { name: "Hamburguesa Monster Doble Carne Two Chefs", desc: "Doble carne smash de res, pan brioche, queso cheddar fundido, tocineta ahumada y papas rústicas.", price: "$13", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Pizzas Pequeñas",
+          items: [
+            { name: "Pizza Pequeña Margarita", desc: "Masa artesanal fina, salsa de la casa, mozzarella fundida y orégano aromático.", price: "$7", tag: "Personal" },
+            { name: "Pizza Pequeña Pepperoni o Jamón", desc: "Mozzarella abundante, salsa de tomate y abundante pepperoni americano o jamón cocido.", price: "$9", tag: "Favorito" },
+            { name: "Pizza Pequeña Especial Two Chefs", desc: "Mozzarella, tocineta crocante, champiñones frescos, maíz tierno y pimentón asado.", price: "$10", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Pizzas Familiares",
+          items: [
+            { name: "Pizza Familiar Cuatro Quesos", desc: "Mozzarella, parmesano, queso azul y gouda fundidos sobre masa madre crujiente.", price: "$12", tag: "Familiar" },
+            { name: "Pizza Familiar Suprema Two Chefs", desc: "Jamón, pepperoni, tocineta ahumada, champiñones, cebolla morada, maíz y pimientos verdes.", price: "$14", tag: "Completa" },
+            { name: "Pizza Familiar Mar y Tierra Especial", desc: "Combinación exclusiva con camarones salteados, tocineta ahumada, mozzarella premium y orégano.", price: "$15", tag: "Gourmet" }
+          ]
+        }
+      ]
+    },
+    'moriche-restaurant': {
+      name: "Moriche Restaurant",
+      sede: "Hotel Kariña • Salón Insignia y Terraza (Precios con IVA incluido)",
+      schedule: "Lun a Dom • 6:30 AM – 10:30 PM",
+      phone: "584249344204",
+      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Moriche-Restaurant.webp",
+      categories: [
+        {
+          name: "Entradas",
+          items: [
+            { name: "Tequeños Gourmet de Hoja con Dip de Ají Dulce", desc: "Deditos artesanales con masa fina crocante rellenos de queso blanco y dip de ají dulce oriental.", price: "$10", tag: "Entrada" },
+            { name: "Tartar de Atún Rojo y Sésamo Tostado", desc: "Atún fresco en cubos, aderezo cítrico de soya, aguacate cremoso y chips de plátano verde.", price: "$14", tag: "De Autor" },
+            { name: "Arepitas de Langosta Caribeña (3 und)", desc: "Masa de maíz pilado rellena con langosta fresca salteada en emulsión de ají dulce margariteño.", price: "$18", tag: "Insignia" },
+            { name: "Experiencia Moriche Gran Degustación (4-6 Personas)", desc: "Tabla maestra de alta cocina con arepas de langosta, carpaccio de lomo, tartar de atún, croquetas ibéricas y tequeños gourmet.", price: "$60", tag: "Experiencia VIP" }
+          ]
+        },
+        {
+          name: "Ensaladas",
+          items: [
+            { name: "Ensalada Capresa Contemporánea", desc: "Bocconcini de mozzarella fresca, tomates confitados, pesto de albahaca fresca y reducción balsámica.", price: "$12", tag: "Fresco" },
+            { name: "Ensalada César Moriche con Pollo Grille", desc: "Hojas hidropónicas seleccionadas, aderezo de anchoas casero, pechuga a la brasa y lascas de parmesano reggiano.", price: "$14", tag: "Clásico" },
+            { name: "Ensalada Tibia de Langostinos y Mango Verde", desc: "Langostinos al grill sobre mix de verdes, mango verde en julianas, aguacate y vinagreta de maracuyá.", price: "$16", tag: "De Autor" }
+          ]
+        },
+        {
+          name: "Hamburguesas con papas",
+          items: [
+            { name: "Hamburguesa Clásica Moriche", desc: "Carne de res angus (200g), pan brioche tostado con mantequilla, lechuga, tomate, queso gouda y papas fritas.", price: "$10", tag: "Clásica" },
+            { name: "Hamburguesa Bacon & Cheddar Ahumada", desc: "Carne premium a la brasa, queso cheddar fundido, tocineta glaseada en miel de papelón y papas.", price: "$12", tag: "Favorito" },
+            { name: "Hamburguesa Insignia Moriche Trufada", desc: "Carne angus seleccionada, queso brie fundido, cebolla caramelizada, mayonesa trufada y papas rústicas.", price: "$13", tag: "Gourmet" }
+          ]
+        },
+        {
+          name: "Sandwichería con papas",
+          items: [
+            { name: "Sándwich de Pollo Crispy en Pan Brioche", desc: "Pechuga marinada empanizada, aderezo ranch de la casa, pepinillos agridulces y papas fritas.", price: "$12", tag: "Crispy" },
+            { name: "Club House Especial Guanipa", desc: "Triple piso de pechuga grille, jamón selva negra, tocineta crocante, queso gouda y huevo con papas.", price: "$14", tag: "Clásico" },
+            { name: "Philly Steak Sandwich de Lomito", desc: "Tiras de lomito de res salteadas con cebollas caramelizadas, pimientos y queso provolone fundido.", price: "$16", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Platos Fuertes",
+          items: [
+            { name: "Pechuga Moriche en Mantequilla de Romero", desc: "Suprema de pollo a la brasa con puré rústico de apio criollo y vegetales salteados al vapor.", price: "$16", tag: "Balanceado" },
+            { name: "Risotto Cremoso de Hongos Silvestres y Trufa", desc: "Arroz arborio en fondo aromatizado con setas silvestres, aceite de trufa y parmesano.", price: "$22", tag: "De Autor" },
+            { name: "Asado Negro Braseado 12 Horas", desc: "Corte selecto braseado a fuego lento en reducción de vino tinto y papelón con puré de papas.", price: "$26", tag: "Insignia" },
+            { name: "Lomo de Rótalo o Pargo en Costra de Almendras", desc: "Pesca fresca del día sobre risotto cremoso de coco y chips crocantes de plátano.", price: "$28", tag: "Pesca Selecta" },
+            { name: "Churrasco de Lomito Angus a las Brasas (400g)", desc: "Corte de lomito de res a las brasas con mantequilla aromatizada, vegetales asados y papas rústicas.", price: "$30", tag: "Corte Prime" }
+          ]
+        },
+        {
+          name: "Bebidas",
+          items: [
+            { name: "Agua Mineral / Refrescos Variados", desc: "Agua mineral embotellada o refrescos de línea bien fríos.", price: "$2", tag: "Bebida" },
+            { name: "Café Espresso / Americano / Cappuccino", desc: "Granos de café seleccionados de especialidad venezolana tostados artesanalmente.", price: "$3", tag: "Cafetería" },
+            { name: "Jugos Naturales Tropicales de Temporada", desc: "Parchita, guanábana, fresa, piña o melón 100% natural recién exprimido.", price: "$4", tag: "Natural" },
+            { name: "Limonada Frappé con Hierbabuena o Coco", desc: "Refrescante limonada granizada con hierbabuena fresca o cremosa crema de coco.", price: "$5", tag: "Refrescante" }
+          ]
+        }
+      ]
+    },
+    'restaurante-283': {
+      name: "283 Restaurant",
+      sede: "Hotel Kariña • Complejo Gastronómico Insignia",
+      schedule: "Lun a Dom • 7:00 AM – 9:00 PM",
+      phone: "584249169610",
+      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondades-El-Tigre/Paella-En-El-Tigre.webp",
+      categories: [
+        {
+          name: "Desayunos",
+          items: [
+            { name: "Desayuno Continental Ligero", desc: "Tostadas artesanales, mermelada casera, mantequilla, huevos al gusto, café de la casa y jugo natural.", price: "$9,60", tag: "Continental" },
+            { name: "Omelette de Claras con Vegetales y Queso Telita", desc: "Omelette tierno con espinacas baby, champiñones, queso telita fresco y tostadas integrales.", price: "$11,50", tag: "Saludable" },
+            { name: "Desayuno Criollo Tradicional 283", desc: "Arepas asadas, carne mechada jugosa, huevos perico, queso telita fresco y caraotas negras refritas.", price: "$14,50", tag: "Insignia" }
+          ]
+        },
+        {
+          name: "Entradas & Snacks",
+          items: [
+            { name: "Tequeños Tradicionales 283 (6 und)", desc: "Deditos de queso dorados y crujientes con dip tártara casera y salsa de la casa.", price: "$7,00", tag: "Clásico" },
+            { name: "Ceviche Mixto Oriental", desc: "Pescado blanco y camarones en leche de tigre con ají dulce oriental, cebolla morada y tostones.", price: "$12,50", tag: "Fresco" },
+            { name: "Carpaccio de Lomito con Alcaparras y Parmesano", desc: "Finas láminas de lomito fresco, aderezo balsámico, rúgula fresca y lascas de parmesano.", price: "$14,00", tag: "Gourmet" },
+            { name: "Tabla de Degustación 283 de Entradas", desc: "Surtido especial para compartir con tequeños, mini arepitas rellenas, ceviche y croquetas.", price: "$18,00", tag: "Para Compartir" }
+          ]
+        },
+        {
+          name: "Carnes & Aves",
+          items: [
+            { name: "Suprema de Pollo a la Plancha o en Finas Hierbas", desc: "Pechuga marinada a la brasa con puré de papas y vegetales salteados de temporada.", price: "$18,50", tag: "Aves" },
+            { name: "Parrillada Individual de Solomo y Pollo", desc: "Cortes de res y pollo a la parrilla con yuca frita, guasacaca y queso asado.", price: "$22,00", tag: "Parrilla" },
+            { name: "Churrasco de Lomito al Grill (350g)", desc: "Centro de lomito tierno a las brasas con mantequilla aromatizada y papas rústicas.", price: "$26,50", tag: "Corte Selecto" },
+            { name: "Punta Trasera Prime 283 (400g)", desc: "Corte prémium madurado con chimichurri casero, yuca al vapor y ensalada mixta.", price: "$31,50", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Especiales 283 / Pinchos",
+          items: [
+            { name: "Pinchos Mixtos 283 de Res y Pollo al Carbón", desc: "Brochetas marinadas al carbón intercaladas con pimentón dulce, cebolla y tostones.", price: "$22,30", tag: "Al Carbón" },
+            { name: "Paella Valenciana Tradicional 283", desc: "Receta insigne con azafrán español, mariscos frescos, calamares, pollo y pimientos asados.", price: "$26,00", tag: "Insignia 283" },
+            { name: "Pinchos Especiales de Lomito y Langostinos", desc: "Brochetas de medallones de lomito y langostinos gigantes a la brasa con mantequilla de ajo.", price: "$34,00", tag: "Chef Special" }
+          ]
+        },
+        {
+          name: "Mariscos",
+          items: [
+            { name: "Cazuela de Mariscos Gratinada 283", desc: "Selección de langostinos, calamares, pulpo y mejillones en cremosa salsa bisqué gratinada con queso.", price: "$41,00", tag: "Marisquería" },
+            { name: "Langostinos Gigantes al Ajillo o a las Brasas", desc: "Langostinos frescos en emulsión de ajo confitado, vino blanco, perejil y arroz con coco.", price: "$44,95", tag: "Plato de Lujo" }
+          ]
+        },
+        {
+          name: "Pastas",
+          items: [
+            { name: "Fettuccine al Pesto Genovés y Nueces", desc: "Pasta al dente salteada con salsa pesto tradicional, nueces tostadas y queso parmesano reggiano.", price: "$17,00", tag: "Pasta Fresca" },
+            { name: "Fettuccine con Lomito y Champiñones", desc: "Pasta larga con tiras de lomito salteadas, salsa cremosa de hongos y toque de trufa.", price: "$24,50", tag: "Gourmet" },
+            { name: "Linguini Frutti di Mare con Langosta y Camarones", desc: "Pasta larga salteada con cola de langosta, camarones y calamares en reducción de vino blanco.", price: "$38,00", tag: "Insignia de Mar" }
+          ]
+        },
+        {
+          name: "Ensaladas",
+          items: [
+            { name: "Ensalada César 283 Tradicional", desc: "Lechuga romana fresca, aderezo César artesanal, croutons crocantes y queso parmesano.", price: "$12,15", tag: "Clásica" },
+            { name: "Ensalada César con Pollo Grillado", desc: "Nuestra César clásica con pechuga de pollo marinada a las brasas y parmesano.", price: "$16,50", tag: "Favorito" },
+            { name: "Ensalada Especial 283 de Camarones y Aguacate", desc: "Mix de lechugas, camarones al grill, aguacate cremoso, tomates cherry y vinagreta de mostaza miel.", price: "$21,00", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Burgers",
+          items: [
+            { name: "Hamburguesa Clásica 283", desc: "Carne de res seleccionada (200g), pan brioche, queso gouda, lechuga, tomate y papas fritas.", price: "$14,80", tag: "Artesanal" },
+            { name: "Hamburguesa Gourmet Bacon & Cheese", desc: "Carne angus, queso cheddar fundido, tocineta crocante caramelizada y papas rústicas.", price: "$16,20", tag: "Favorito" },
+            { name: "Hamburguesa Doble Smash 283 Monster", desc: "Doble carne smash, cebolla caramelizada, doble queso cheddar fundido, salsa especial y papas.", price: "$17,50", tag: "Especialidad" }
+          ]
+        },
+        {
+          name: "Pizzas",
+          items: [
+            { name: "Pizza Margherita a la Leña", desc: "Salsa pomodoro San Marzano, mozzarella fresca, albahaca y aceite de oliva virgen extra.", price: "$13,00", tag: "A la Leña" },
+            { name: "Pizza Cuatro Estaciones 283", desc: "Jamón superior, pepperoni, champiñones frescos y aceitunas negras sobre mozzarella fundida.", price: "$17,50", tag: "Favorito" },
+            { name: "Pizza Especial 283 Mar y Tierra", desc: "Masa madre crocante, camarones salteados, tocineta ahumada, queso parmesano y orégano.", price: "$22,50", tag: "Insignia" }
+          ]
+        },
+        {
+          name: "Postres",
+          items: [
+            { name: "Quesillo Tradicional al Caramelo de Ron Añejo", desc: "Receta casera con suave textura cremosa y reducción de ron añejo venezolano.", price: "$9,80", tag: "Artesanal" },
+            { name: "Texturas de Cacao de Caripito 70%", desc: "Mousse aireado de chocolate oscuro, bizcocho húmedo y coulis de frutos rojos silvestres.", price: "$10,20", tag: "Cacao Monagas" }
+          ]
+        }
+      ]
+    },
+    'oh-my-bar': {
+      name: "OH MY BAR & BISTRO",
+      sede: "Hotel Kariña Maturín • Complejo Master Pádel",
+      schedule: "Mié a Dom • 5:00 PM – 2:00 AM",
+      phone: "584249169610",
+      heroImg: "https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Bar-En-Maturin.webp",
+      categories: [
+        {
+          name: "Entradas & Snacks",
+          items: [
+            { name: "Tequeños (6 und)", desc: "Crujientes deditos de hojaldre rellenos de queso blanco con salsa tártara de la casa.", price: "$8", tag: "Para Picar" },
+            { name: "Nuggets con Papas", desc: "Trocitos de pechuga de pollo crujientes acompañados de papas fritas doradas.", price: "$6", tag: "Snack" },
+            { name: "Alitas BBQ con Papas", desc: "Alitas de pollo glaseadas en salsa barbacoa artesanal con papas fritas.", price: "$8", tag: "Favorito" },
+            { name: "Nachos", desc: "Totopos crujientes de maíz con abundante queso cheddar fundido, pico de gallo y salsas.", price: "$10", tag: "Para Compartir" },
+            { name: "Carpaccio de Lomito", desc: "Finas láminas de lomito de res fresco con alcaparras baby, aceite de oliva virgen y queso parmesano.", price: "$12", tag: "Gourmet" }
+          ]
+        },
+        {
+          name: "Ensaladas",
+          items: [
+            { name: "Ensalada César Clásica", desc: "Hojas frescas de lechuga romana seleccionada, aderezo César casero, croutons crocantes y parmesano.", price: "$8", tag: "Clásica" },
+            { name: "Ensalada César con Pollo", desc: "Nuestra ensalada César tradicional servida con jugosa pechuga de pollo a la brasa.", price: "$10", tag: "Favorito" }
+          ]
+        },
+        {
+          name: "Burgers & Bistro",
+          items: [
+            { name: "Hamburguesa de Carne", desc: "Jugosa carne de res artesanal al grill, pan brioche, queso gouda fundido, lechuga, tomate y salsas especiales.", price: "$8", tag: "Artesanal" },
+            { name: "Hamburguesa Crispy de Pollo", desc: "Pechuga de pollo extra crujiente marinada, pan brioche, queso, vegetales frescos y aderezo especial.", price: "$9", tag: "Crispy" },
+            { name: "Perro Caliente", desc: "Salchicha premium, pan suave al vapor, cebolla picadita, papitas crujientes y trío de salsas tradicionales.", price: "$2,5", tag: "Clásico" }
+          ]
+        },
+        {
+          name: "Raciones de Papas",
+          items: [
+            { name: "Ración Tradicional", desc: "Papas fritas doradas y crujientes recién hechas con el toque perfecto de sal.", price: "$2,5", tag: "Ración" },
+            { name: "Ración Especial con Cheddar y Tocineta", desc: "Papas fritas crujientes bañadas en abundante queso cheddar fundido y trocitos de tocineta crocante.", price: "$3,5", tag: "Especial" }
+          ]
+        }
+      ]
+    }
+  };
+
+  // Configuración de alias
+  gastronomiaMenusData['tu-chef'] = gastronomiaMenusData['two-chefs'];
+  gastronomiaMenusData['twochefs'] = gastronomiaMenusData['two-chefs'];
+  gastronomiaMenusData['moriche'] = gastronomiaMenusData['moriche-restaurant'];
+  gastronomiaMenusData['moriche-el-tigre'] = gastronomiaMenusData['moriche-restaurant'];
+  gastronomiaMenusData['moriche-maturin'] = gastronomiaMenusData['moriche-restaurant'];
+  gastronomiaMenusData['283'] = gastronomiaMenusData['restaurante-283'];
+  gastronomiaMenusData['283-restaurant'] = gastronomiaMenusData['restaurante-283'];
+  gastronomiaMenusData['ohmybar'] = gastronomiaMenusData['oh-my-bar'];
+  gastronomiaMenusData['oh-my-bar-bistro'] = gastronomiaMenusData['oh-my-bar'];
+
+
+  // 1. Filtrado de Tarjetas de Gastronomía por Sede
+  window.filterGastronomiaBySede = function(sedeKey, btnEl) {
+    // Actualizar estados visuales de las pills
+    const pills = document.querySelectorAll('.sede-filter-pill');
+    pills.forEach(pill => {
+      pill.classList.remove('is-active', 'bg-karina-charcoal', 'text-white', 'font-bold', 'shadow-md');
+      pill.classList.add('bg-white/80', 'text-karina-charcoal/80', 'border-black/10');
+    });
+
+    if (btnEl) {
+      btnEl.classList.remove('bg-white/80', 'text-karina-charcoal/80', 'border-black/10');
+      btnEl.classList.add('is-active', 'bg-karina-charcoal', 'text-white', 'font-bold', 'shadow-md');
+    }
+
+    // Filtrar tarjetas y sección de aliados
+    const cards = document.querySelectorAll('.gastronomia-card, #section-club-palma-real');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const cardSede = card.getAttribute('data-sede');
+      if (sedeKey === 'all' || cardSede === sedeKey) {
+        card.classList.remove('hidden');
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+          card.style.transition = 'all 320ms cubic-bezier(0.16, 1, 0.3, 1)';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 30 * visibleCount);
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  };
+
+  // 2. Intercambio de Foto Principal con Transición Suave
+  window.changeRestaurantPhoto = function(restaurantId, newSrc, clickedThumb) {
+    const mainImg = document.getElementById('main-photo-' + restaurantId);
+    if (!mainImg) return;
+
+    // Aplicar clase de swap (fade out / scale down)
+    mainImg.classList.add('is-swapping');
+
+    setTimeout(() => {
+      mainImg.src = newSrc;
+      mainImg.classList.remove('is-swapping');
+    }, 180);
+
+    // Actualizar borde activo en la fila de miniaturas
+    if (clickedThumb) {
+      const parentRow = clickedThumb.closest('.thumbs-row');
+      if (parentRow) {
+        parentRow.querySelectorAll('.restaurant-thumb').forEach(thumb => {
+          thumb.classList.remove('is-active', 'border-karina-mustard', 'ring-2', 'ring-karina-mustard/40', 'opacity-100');
+          thumb.classList.add('border-transparent', 'opacity-70');
+        });
+        clickedThumb.classList.remove('border-transparent', 'opacity-70');
+        clickedThumb.classList.add('is-active', 'border-karina-mustard', 'ring-2', 'ring-karina-mustard/40', 'opacity-100');
+      }
+    }
+  };
+
+  // Helper: Asegurar existencia del modal de menú en el DOM
+  function ensureGastronomiaMenuModal() {
+    let modal = document.getElementById('gastronomia-menu-modal');
+    if (modal) return modal;
+
+    modal = document.createElement('div');
+    modal.id = 'gastronomia-menu-modal';
+    modal.className = 'is-hidden fixed inset-0 z-[250] flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-md';
+    modal.setAttribute('onclick', 'closeGastronomiaMenuOnBackdrop(event)');
+    modal.innerHTML = `
+      <div class="modal-panel relative w-full max-w-4xl max-h-[92vh] bg-karina-cream rounded-[32px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-black/10 flex flex-col justify-between" onclick="event.stopPropagation()">
+        <!-- Encabezado Fijo del Menú -->
+        <div class="p-5 sm:p-7 bg-white/90 border-b border-black/10 flex items-start justify-between gap-4 shrink-0">
+          <div class="space-y-1 text-left">
+            <span class="text-[10px] font-mono tracking-widest uppercase bg-karina-mustard text-karina-charcoal font-bold px-2.5 py-0.5 rounded-full inline-block">
+              CARTA DIGITAL
+            </span>
+            <h3 id="modal-menu-title" class="text-xl sm:text-2xl font-bold text-karina-charcoal"></h3>
+            <p id="modal-menu-subtitle" class="text-xs text-karina-charcoal/70 font-light"></p>
+            <p id="modal-menu-schedule" class="text-[11px] text-karina-charcoal/80 font-mono font-medium pt-1"></p>
+          </div>
+          <button onclick="closeGastronomiaMenu()" class="w-9 h-9 rounded-full bg-black/5 hover:bg-black/10 text-karina-charcoal flex items-center justify-center text-lg transition-colors cursor-pointer shrink-0" aria-label="Cerrar carta">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Contenido Scrolleable de Categorías -->
+        <div id="modal-menu-categories" class="p-5 sm:p-8 overflow-y-auto space-y-8 flex-1"></div>
+
+        <!-- Footer Fijo con CTA Directo -->
+        <div class="p-4 sm:p-5 bg-white/90 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+          <p class="text-xs text-karina-charcoal/70 font-light text-center sm:text-left">
+            Precios sujetos a disponibilidad e IVA según normativa.
+          </p>
+          <a id="modal-menu-whatsapp-btn" href="#" target="_blank" class="w-full sm:w-auto py-2.5 px-6 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Pedir / Reservar por WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    return modal;
+  }
+
+  // 3. Modal de Menú Digital
+  window.openGastronomiaMenu = function(restaurantId, categoryKeyword = '') {
+    const data = gastronomiaMenusData[restaurantId];
+    if (!data) return;
+
+    const modal = ensureGastronomiaMenuModal();
+    const titleEl = document.getElementById('modal-menu-title');
+    const subtitleEl = document.getElementById('modal-menu-subtitle');
+    const scheduleEl = document.getElementById('modal-menu-schedule');
+    const contentEl = document.getElementById('modal-menu-categories');
+    const whatsappBtn = document.getElementById('modal-menu-whatsapp-btn');
+
+    if (titleEl) titleEl.textContent = data.name;
+    if (subtitleEl) subtitleEl.textContent = data.sede;
+    if (scheduleEl) scheduleEl.innerHTML = `<i class="fa-regular fa-clock mr-1.5 text-karina-mustard"></i>${data.schedule}`;
+
+    if (whatsappBtn) {
+      const message = encodeURIComponent(`Hola ${data.name} (${data.sede}), deseo consultar la disponibilidad y realizar una reserva/pedido de su menú.`);
+      whatsappBtn.href = `https://wa.me/${data.phone}?text=${message}`;
+    }
+
+    let categoriesToShow = data.categories;
+    if (categoryKeyword) {
+      const matched = data.categories.filter(cat => 
+        cat.name.toLowerCase().includes(categoryKeyword.toLowerCase())
+      );
+      if (matched.length > 0) {
+        const others = data.categories.filter(cat => !matched.includes(cat));
+        categoriesToShow = [...matched, ...others];
+      }
+    }
+
+    if (contentEl) {
+      contentEl.innerHTML = categoriesToShow.map(cat => `
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 border-b border-black/10 pb-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-karina-mustard"></span>
+            <h4 class="text-sm sm:text-base font-bold text-karina-charcoal tracking-wide uppercase">${cat.name}</h4>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            ${cat.items.map(item => `
+              <div class="bg-white/80 p-3.5 sm:p-4 rounded-2xl border border-black/5 flex flex-col justify-between gap-2 shadow-xs hover:border-karina-mustard/50 transition-colors">
+                <div class="space-y-1 text-left">
+                  <div class="flex items-start justify-between gap-2">
+                    <h5 class="text-xs sm:text-sm font-bold text-karina-charcoal leading-snug">${item.name}</h5>
+                    <span class="text-xs sm:text-sm font-bold text-karina-charcoal shrink-0 font-mono">${item.price}</span>
+                  </div>
+                  <p class="text-[11px] text-karina-charcoal/70 font-light leading-relaxed">${item.desc}</p>
+                </div>
+                <div class="flex items-center justify-between pt-1 border-t border-black/5">
+                  <span class="tag-pill text-[9px]">${item.tag}</span>
+                  <a href="https://wa.me/${data.phone}?text=${encodeURIComponent(`Hola ${data.name}, me interesa ordenar: ${item.name} (${item.price})`)}" target="_blank" class="text-[10px] font-bold text-karina-blue hover:text-karina-charcoal flex items-center gap-1 transition-colors">
+                    <span>Pedir por WhatsApp</span>
+                    <i class="fa-brands fa-whatsapp text-xs text-[#25D366]"></i>
+                  </a>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    if (modal) {
+      modal.classList.remove('is-hidden');
+      document.body.style.overflow = 'hidden';
+      const modalScroll = modal.querySelector('.overflow-y-auto');
+      if (modalScroll) modalScroll.scrollTop = 0;
+    }
+  };
+
+  window.closeGastronomiaMenu = function() {
+    const modal = document.getElementById('gastronomia-menu-modal');
+    if (modal) {
+      modal.classList.add('is-hidden');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.closeGastronomiaMenuOnBackdrop = function(e) {
+    if (e.target.id === 'gastronomia-menu-modal') closeGastronomiaMenu();
+  };
+
+  // 4. Carrusel de Propuestas Aliadas Club Palma Real (Touch & Mouse Drag)
+  window.scrollPalmaRealCarousel = function(direction) {
+    const track = document.getElementById('palma-real-carousel-track');
+    if (!track) return;
+    const card = track.querySelector('.snap-start');
+    const cardWidth = card ? card.offsetWidth + 16 : 320;
+    track.scrollBy({ left: cardWidth * direction, behavior: 'smooth' });
+  };
+
+  // Inicializar observador y dots del carrusel de Club Palma Real
+  const setupPalmaRealCarousel = () => {
+    const track = document.getElementById('palma-real-carousel-track');
+    const dots = document.querySelectorAll('.palma-dot');
+    if (!track) return;
+
+    // Sincronización de dots con scroll táctil
+    const updateDots = () => {
+      if (!dots.length) return;
+      const scrollLeft = track.scrollLeft;
+      const card = track.querySelector('.snap-start');
+      const cardWidth = card ? card.offsetWidth + 16 : 320;
+      const activeIndex = Math.min(dots.length - 1, Math.max(0, Math.round(scrollLeft / cardWidth)));
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.className = 'palma-dot w-5 h-1.5 rounded-full bg-karina-charcoal transition-all cursor-pointer';
+        } else {
+          dot.className = 'palma-dot w-1.5 h-1.5 rounded-full bg-karina-charcoal/20 transition-all cursor-pointer';
+        }
+      });
+    };
+
+    track.addEventListener('scroll', updateDots, { passive: true });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        const card = track.querySelector('.snap-start');
+        const cardWidth = card ? card.offsetWidth + 16 : 320;
+        track.scrollTo({ left: cardWidth * idx, behavior: 'smooth' });
+      });
+    });
+
+    // Soporte para arrastre con ratón en desktop además de touch nativo en mobile
+    let isDown = false;
+    let startX = 0;
+    let scrollLeftPos = 0;
+
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - track.offsetLeft;
+      scrollLeftPos = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+
+    track.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      track.scrollLeft = scrollLeftPos - walk;
+    });
+  };
+
+  setupPalmaRealCarousel();
+
+  // Cerrar modales al presionar Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      window.closeGastronomiaMenu();
+      window.closeLightbox();
+    }
+  });
+
+
+
+
+  // ===================================================
+  // 11B. SELECCIÓN DE PLATOS / CARRITO RÁPIDO (COMPATIBILIDAD)
+  // ===================================================
+  let cart = [];
+
+  window.addToOrder = function(name, price, img) {
+    const existing = cart.find(i => i.name === name);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ name, price, img, qty: 1 });
+    }
+    updateCartUI();
+    toggleCartDrawer(true);
+  };
+
+  function updateCartUI() {
+    const badge = document.getElementById('cart-badge');
+    const list = document.getElementById('cart-items-list');
+    const totalEl = document.getElementById('cart-total-price');
+
+    const totalQty = cart.reduce((acc, i) => acc + i.qty, 0);
+    const totalPrice = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+
+    if (badge) badge.textContent = totalQty;
+    if (totalEl) totalEl.textContent = `$${totalPrice}`;
+
+    if (!list) return;
+
+    if (cart.length === 0) {
+      list.innerHTML = `<p class="text-xs text-karina-charcoal/50 font-light text-center py-10">Tu selección está vacía. Añade tus opciones preferidas.</p>`;
+      return;
+    }
+
+    list.innerHTML = cart.map(item => `
+      <div class="flex items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-black/5 shadow-xs">
+        <div class="flex items-center gap-3">
+          <img src="${item.img}" class="w-12 h-12 rounded-xl object-cover">
+          <div>
+            <p class="text-xs font-bold text-karina-charcoal">${item.name}</p>
+            <p class="text-[11px] text-karina-charcoal/60">$${item.price} x ${item.qty}</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold text-karina-charcoal">$${item.price * item.qty}</span>
+          <button onclick="removeFromOrder('${item.name}')" class="text-xs text-red-400 hover:text-red-600 p-1" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  window.removeFromOrder = function(name) {
+    cart = cart.filter(i => i.name !== name);
+    updateCartUI();
+  };
+
+  window.toggleCartDrawer = function(open) {
+    const drawer = document.getElementById('cart-drawer');
+    const backdrop = document.getElementById('cart-backdrop');
+
+    if (!drawer || !backdrop) return;
+
+    if (open) {
+      drawer.classList.remove('translate-x-full');
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+    } else {
+      drawer.classList.add('translate-x-full');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.submitOrderToAI = function() {
+    if (cart.length === 0) {
+      alert('Por favor, añade al menos un platillo o servicio a tu selección.');
+      return;
+    }
+
+    const orderSummary = cart.map(i => `• ${i.name} (x${i.qty}) - $${i.price * i.qty}`).join('%0A');
+    const total = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+    const text = `Hola Arimiña-IA, deseo realizar la siguiente reserva/pedido:%0A%0A${orderSummary}%0A%0ATotal Estimado: $${total}`;
+
+    window.open(`https://wa.me/584249169610?text=${text}`, '_blank');
+  };
+
+  window.consultAIAssistant = function() {
+    alert('Arimiña-IA: Te sugiero acompañar tus elecciones gastronómicas con nuestra selección de vinos tintos Reserva o solicitar una cita personalizada para nuestros servicios de estilismo.');
+  };
+
+
+  // ===================================================
+  // 12. CONTROLADORES: FUNDACIÓN KARIÑA (MODALES Y LIGHTBOX)
+  // ===================================================
+
+  window.openModal = function(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      const video = modal.querySelector('video');
+      if (video) {
+        video.play().catch(() => {});
+      }
+    }
+  };
+
+  window.closeModal = function(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      const video = modal.querySelector('video');
+      if (video) {
+        video.pause();
+      }
+    }
+  };
+
+
+
+  // ===================================================
+  // 13. CONTROLADORES: PÁGINAS LEGALES Y RESCATE 404
+  // ===================================================
+
+  window.askAIForHelp404 = function() {
+    if (typeof window.openAriminaChat === 'function') {
+      window.openAriminaChat("Hola Arimiña, me he perdido en el sitio web de Hoteles Kariña. ¿Podrías orientarme con las suites disponibles o servicios?");
+    }
+  };
+
+  // Observador para resaltar la sección activa en el TOC de Términos y Privacidad
+  const legalSections = document.querySelectorAll('article section[id]');
+  const tocLinks = document.querySelectorAll('.toc-link');
+
+  if (legalSections.length > 0 && tocLinks.length > 0) {
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          tocLinks.forEach(link => {
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('is-active');
+            } else {
+              link.classList.remove('is-active');
+            }
+          });
+        }
+      });
+    }, {
+      rootMargin: '-20% 0px -70% 0px'
+    });
+
+    legalSections.forEach(section => tocObserver.observe(section));
+  }
+
+  // ===================================================
+  // 14. CONTROLADORES: NAVEGACIÓN Y MENÚS DESPLEGABLES
+  // ===================================================
+  const dropdownWrappers = document.querySelectorAll('.nav-dropdown-wrapper');
+
+  dropdownWrappers.forEach(wrapper => {
+    const trigger = wrapper.querySelector('.nav-link-item');
+    const panel = wrapper.querySelector('.nav-dropdown-panel');
+
+    if (!trigger || !panel) return;
+
+    // Abrir/Cerrar con Enter o Espacio para accesibilidad
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const isOpen = panel.classList.contains('is-keyboard-open');
+        
+        dropdownWrappers.forEach(w => {
+          const p = w.querySelector('.nav-dropdown-panel');
+          if (p) p.classList.remove('is-keyboard-open', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+        });
+
+        if (!isOpen) {
+          panel.classList.add('is-keyboard-open', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+        }
+      } else if (e.key === 'Escape') {
+        panel.classList.remove('is-keyboard-open', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+        trigger.focus();
+      }
+    });
+  });
+
+  // Cerrar al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown-wrapper')) {
+      document.querySelectorAll('.nav-dropdown-panel').forEach(panel => {
+        panel.classList.remove('is-keyboard-open', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+      });
+    }
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+});
+
+// ===================================================
+// 15. CONTROLADORES: AUTENTICACIÓN Y DASHBOARD DEL HUÉSPED
+// ===================================================
+
+let currentAuthMode = 'register';
+let currentLightLevel = 4;
+
+// 1. Alternar modo entre Iniciar Sesión y Registro
+function switchAuthMode(mode) {
+  currentAuthMode = mode;
+  const tabLogin = document.getElementById('tab-login');
+  const tabRegister = document.getElementById('tab-register');
+  const fieldName = document.getElementById('field-fullname');
+  const fieldPhone = document.getElementById('field-whatsapp');
+  const title = document.getElementById('auth-title');
+  const subtitle = document.getElementById('auth-subtitle');
+  const submitBtn = document.getElementById('auth-submit-btn');
+
+  if (!tabLogin || !tabRegister) return;
+
+  if (mode === 'login') {
+    tabLogin.className = 'auth-segment-btn is-active flex-1 py-2 rounded-full text-xs font-bold bg-white text-karina-charcoal shadow-sm transition-all';
+    tabRegister.className = 'auth-segment-btn flex-1 py-2 rounded-full text-xs font-semibold text-karina-charcoal/60 hover:text-karina-charcoal transition-all';
+
+    if (fieldName) fieldName.style.display = 'none';
+    if (fieldPhone) fieldPhone.style.display = 'none';
+    if (title) title.textContent = 'Iniciar Sesión';
+    if (subtitle) subtitle.textContent = 'Ingresa tus credenciales para acceder a tu suite y reservas.';
+    if (submitBtn) submitBtn.textContent = 'ENTRAR A MI CUENTA';
+  } else {
+    tabRegister.className = 'auth-segment-btn is-active flex-1 py-2 rounded-full text-xs font-bold bg-white text-karina-charcoal shadow-sm transition-all';
+    tabLogin.className = 'auth-segment-btn flex-1 py-2 rounded-full text-xs font-semibold text-karina-charcoal/60 hover:text-karina-charcoal transition-all';
+
+    if (fieldName) fieldName.style.display = 'block';
+    if (fieldPhone) fieldPhone.style.display = 'block';
+    if (title) title.textContent = 'Bienvenido';
+    if (subtitle) subtitle.textContent = 'Accede a tu cuenta o únete a Kariña Club.';
+    if (submitBtn) submitBtn.textContent = 'REGISTRARME';
+  }
+}
+
+// 2. Enviar formulario con bypass directo a Home (Módulo usuario temporalmente inactivo)
+function handleAuthSubmit(event) {
+  if (event) event.preventDefault();
+  window.location.replace('index.html');
+}
+
+function bypassToDashboard(socialName) {
+  window.location.replace('index.html');
+}
+
+// 3. Inicialización del Dashboard
+document.addEventListener('DOMContentLoaded', () => {
+  const userNameElem = document.getElementById('dash-user-name');
+  if (userNameElem) {
+    const savedName = localStorage.getItem('karina_user_name');
+    if (savedName) userNameElem.textContent = savedName;
+  }
+});
+
+// 4. Control domótico de Suite
+function toggleSuiteFeature(featureName, isChecked) {
+  const statusElem = document.getElementById('dash-ai-status');
+  if (statusElem) {
+    statusElem.textContent = `${featureName} ha sido ${isChecked ? 'activado' : 'desactivado'} con éxito para tu suite.`;
+  }
+}
+
+function adjustLightLevel(delta) {
+  currentLightLevel = Math.max(1, Math.min(6, currentLightLevel + delta));
+  const levelElem = document.getElementById('light-level');
+  if (levelElem) levelElem.textContent = currentLightLevel;
+
+  const statusElem = document.getElementById('dash-ai-status');
+  if (statusElem) {
+    statusElem.textContent = `Nivel de iluminación ajustado a escena ${currentLightLevel}/6.`;
+  }
+}
+
+// 5. Interacción con Arimiña-IA en el Dashboard
+function handleDashboardAISubmit(event) {
+  event.preventDefault();
+  const input = document.getElementById('dash-ai-input');
+  const statusElem = document.getElementById('dash-ai-status');
+  if (!input || !input.value.trim()) return;
+
+  const query = input.value.trim();
+  input.value = '';
+
+  if (statusElem) {
+    statusElem.textContent = `Arimiña-IA procesando: "${query}"... Solicitud enviada a la conserjería de tu sede.`;
+  }
+}
+
+function requestItineraryChange() {
+  const statusElem = document.getElementById('dash-ai-status');
+  if (statusElem) {
+    statusElem.textContent = 'Arimiña-IA: Te he abierto el canal de WhatsApp para reprogramar tu masaje o cena de hoy.';
+  }
+  window.open('https://wa.me/584249169610?text=Hola%20Arimi%C3%B1a-IA,%20deseo%20reprogramar%20mi%20itinerario%20de%20hoy%20en%20la%20suite%20403', '_blank');
+}
+
+function triggerQuickAction(actionName) {
+  const statusElem = document.getElementById('dash-ai-status');
+  if (statusElem) {
+    statusElem.textContent = `Solicitud de "${actionName}" enviada a recepción. Un conserje atenderá tu suite a la brevedad.`;
+  }
+}
+
+// Exportación a objeto window para llamadas inline
+window.switchAuthMode = switchAuthMode;
+window.handleAuthSubmit = handleAuthSubmit;
+window.bypassToDashboard = bypassToDashboard;
+window.toggleSuiteFeature = toggleSuiteFeature;
+window.adjustLightLevel = adjustLightLevel;
+window.handleDashboardAISubmit = handleDashboardAISubmit;
+window.requestItineraryChange = requestItineraryChange;
+window.triggerQuickAction = triggerQuickAction;
+
+/* ==========================================================
+   16. CONTROLADORES: PRE-CHECKIN Y CHECKIN CONTROLLER
+   ========================================================== */
+
+function solicitarServicio(servicio) {
+  const token = document.getElementById('display-token')?.textContent || 'KD-78291';
+  const mensaje = `Hola Arimiña-IA, deseo solicitar el servicio de *${servicio}* para mi reserva con Token Odoo: *${token}*.`;
+  window.open(`https://wa.me/584249169610?text=${encodeURIComponent(mensaje)}`, '_blank');
+}
+
+function seleccionarHora(btn) {
+  document.querySelectorAll('.hora-btn').forEach(b => {
+    b.classList.remove('bg-[#1E1E1E]', 'text-white');
+    b.classList.add('bg-[#FAF6F0]', 'text-[#1E1E1E]', 'border', 'border-[#E8DFC8]');
+  });
+  btn.classList.add('bg-[#1E1E1E]', 'text-white');
+  btn.classList.remove('bg-[#FAF6F0]', 'border', 'border-[#E8DFC8]');
+}
+
+function completarCheckin() {
+  const modal = document.getElementById('modal-pase-express');
+  if (modal) {
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function cerrarModalPaseExpress() {
+  const modal = document.getElementById('modal-pase-express');
+  if (modal) {
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+function enviarAriminaDashboard() {
+  const input = document.getElementById('arimina-input');
+  if (input && input.value.trim() !== '') {
+    const query = input.value.trim();
+    const token = 'KD-78291';
+    window.open(`https://wa.me/584249169610?text=${encodeURIComponent(`[Token Odoo: ${token}] Solicitud Huésped: ${query}`)}`, '_blank');
+    input.value = '';
+  }
+}
+
+function accionRapida(accion) {
+  const token = 'KD-78291';
+  window.open(`https://wa.me/584249169610?text=${encodeURIComponent(`[Token: ${token}] Solicitud rápida: ${accion}`)}`, '_blank');
+}
+
+// Exportación a objeto window para llamadas inline
+window.solicitarServicio = solicitarServicio;
+window.seleccionarHora = seleccionarHora;
+window.completarCheckin = completarCheckin;
+window.cerrarModalPaseExpress = cerrarModalPaseExpress;
+window.enviarAriminaDashboard = enviarAriminaDashboard;
+window.accionRapida = accionRapida;
+
+// ==========================================
+// 17. CONTROLADOR DE CAMBIO DE IDIOMA (BOTÓN FLOTANTE DISCRETO)
+// ==========================================
+function toggleLanguage() {
+  const btns = document.querySelectorAll('#floating-lang-btn, .floating-lang-toggle, .fixed button');
+  btns.forEach(btn => {
+    const span = btn.querySelector('span') || btn;
+    if (span.textContent.trim().toUpperCase() === 'ES/EN') {
+      span.textContent = 'EN/ES';
+    } else if (span.textContent.trim().toUpperCase() === 'EN/ES') {
+      span.textContent = 'ES/EN';
+    }
+  });
+}
+window.toggleLanguage = toggleLanguage;
+
+// ==========================================
+// 18. ASISTENTE CONVERSACIONAL ARIMIÑA (MODAL INMERSIVO FULLSCREEN)
+// ==========================================
+
+function initAriminaChatModal() {
+  if (document.getElementById('modal-arimina')) return;
+
+  const modalHtml = `
+  <div id="modal-arimina" class="fixed inset-0 z-[100] h-[100dvh] max-h-[100dvh] w-full bg-[#FAF8F5]/95 backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none flex flex-col overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="arimina-header-title">
+    <div class="max-w-4xl mx-auto w-full h-[100dvh] max-h-[100dvh] flex flex-col py-3 sm:py-6 px-3 sm:px-6 relative overflow-hidden">
+      
+      <!-- Cabecera Minimalista del Asistente -->
+      <header class="flex items-center justify-between pb-3 sm:pb-4 border-b border-[#E8DFC8]/60 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="relative w-10 h-10 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] shadow-md shrink-0">
+            <i class="fa-solid fa-wand-magic-sparkles text-sm animate-pulse"></i>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 id="arimina-header-title" class="text-base sm:text-lg font-bold text-[#1E1E1E] tracking-tight">Arimiña ✨</h3>
+              <span class="text-[10px] font-mono font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-full border border-emerald-200">En línea</span>
+            </div>
+            <p class="text-xs text-[#726B63] font-light">Conserje Virtual • Hotel Kariña</p>
+          </div>
+        </div>
+
+        <!-- Botón de Cierre Accesible -->
+        <button onclick="closeAriminaChat()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/5 hover:bg-black/10 text-xs font-semibold text-[#1E1E1E] transition-all active:scale-95 cursor-pointer" aria-label="Cerrar asistente Arimiña">
+          <span>✕ Cerrar</span>
+          <kbd class="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 bg-white/80 rounded text-[#726B63] border border-black/10">Esc</kbd>
+        </button>
+      </header>
+
+      <!-- Área Conversacional Central con Scroll Suave y overscroll-contain -->
+      <main id="arimina-messages-container" class="flex-1 overflow-y-auto overscroll-contain py-4 sm:py-6 space-y-4 no-scrollbar scroll-smooth pr-1">
+        
+        <!-- Welcome / Empty State Inicial Limpio y Conversacional -->
+        <div id="arimina-welcome-state" class="text-center py-8 sm:py-12 space-y-5 max-w-xl mx-auto my-auto">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-3xl bg-gradient-to-tr from-[#FFF3D6] to-[#FFE8A3] border border-[#F0A800]/30 shadow-lg flex items-center justify-center animate-ai-glow">
+            <img src="https://uploads.onecompiler.io/44s48z3dm/1787539299313/Icono-Kari%C3%B1a-new.png" alt="Arimiña Asistente" class="w-10 sm:w-12 h-auto object-contain">
+          </div>
+
+          <div class="space-y-2.5 px-2">
+            <h2 class="text-xl sm:text-2xl font-light text-[#1E1E1E]">
+              ¡Hola! Soy <strong class="font-extrabold text-karina-charcoal">Arimiña</strong> ✨
+            </h2>
+            <p class="text-xs sm:text-sm text-[#726B63] font-light leading-relaxed max-w-md mx-auto">
+              Tu conserje virtual para asesorarte con información sobre nuestras suites, restaurantes, eventos y servicios en Maturín, El Tigre y Punta de Mata. ¿En qué puedo ayudarte hoy?
+            </p>
+          </div>
+        </div>
+
+        <!-- Feed Dinámico de Mensajes -->
+        <div id="arimina-messages-feed" class="space-y-4"></div>
+
+        <!-- Indicador de Escritura -->
+        <div id="arimina-typing-indicator" class="hidden flex items-center gap-2 text-xs text-[#726B63] pt-2">
+          <div class="w-7 h-7 rounded-full bg-[#FFD573]/60 flex items-center justify-center text-[10px] text-[#1E1E1E] shrink-0">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <div class="bg-white/90 border border-[#E8DFC8] px-3.5 py-2 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 bg-[#F0A800] rounded-full animate-bounce"></span>
+            <span class="w-1.5 h-1.5 bg-[#F0A800] rounded-full animate-bounce [animation-delay:0.2s]"></span>
+            <span class="w-1.5 h-1.5 bg-[#F0A800] rounded-full animate-bounce [animation-delay:0.4s]"></span>
+            <span class="text-[11px] text-[#726B63] ml-1 font-mono">Arimiña está escribiendo...</span>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- Input Bar Estilo Gemini / Claude (Flotante Inferior - shrink-0) -->
+      <footer class="pt-2 pb-2 sm:pb-0 shrink-0">
+        <div class="max-w-3xl mx-auto w-full bg-white/95 backdrop-blur-xl border border-[#E8DFC8] rounded-3xl p-2 sm:p-2.5 shadow-xl transition-all focus-within:ring-2 focus-within:ring-[#F0A800]/50 focus-within:border-[#F0A800]">
+          <div class="flex items-end gap-2">
+            <textarea 
+              id="arimina-chat-input" 
+              rows="1" 
+              placeholder="Escribe tu consulta aquí (ej. tarifas de suites, restaurantes)..." 
+              class="flex-1 bg-transparent border-none outline-none resize-none px-3 py-2 text-base text-[#1E1E1E] placeholder:text-[#726B63]/60 focus:ring-0 max-h-32 leading-relaxed"
+            ></textarea>
+            
+            <button 
+              id="arimina-chat-send" 
+              onclick="sendAriminaUserMessage()" 
+              class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E1E1E] hover:bg-black text-white flex items-center justify-center shrink-0 transition-all active:scale-90 shadow-sm cursor-pointer" 
+              aria-label="Enviar mensaje a Arimiña"
+            >
+              <i class="fa-solid fa-arrow-up text-xs sm:text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <p class="text-[10px] text-center text-[#726B63]/70 font-light mt-1.5 pb-0.5">
+          Arimiña utiliza IA para ayudarte a planificar tu estancia en Hotel Kariña.
+        </p>
+      </footer>
+
+    </div>
+  </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  const input = document.getElementById('arimina-chat-input');
+  if (input) {
+    input.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = (this.scrollHeight) + 'px';
+    });
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendAriminaUserMessage();
+      }
+    });
+    input.addEventListener('focus', function() {
+      setTimeout(() => {
+        const container = document.getElementById('arimina-messages-container');
+        const feed = document.getElementById('arimina-messages-feed');
+        if (feed && feed.lastElementChild) {
+          feed.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        } else if (container) {
+          container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+        }
+      }, 250);
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('modal-arimina');
+      if (modal && !modal.classList.contains('opacity-0')) {
+        closeAriminaChat();
+      }
+    }
+  });
+}
+
+function getSessionId() {
+  let sid = localStorage.getItem('karina_chat_session_id');
+  if (!sid) {
+    sid = 'karina_' + Math.random().toString(36).substring(2, 11) + '_' + Date.now();
+    localStorage.setItem('karina_chat_session_id', sid);
+  }
+  return sid;
+}
+
+const ARIMINA_BACKEND_ENDPOINT = 'https://infinityart3d-agent.up.railway.app/webhook/webchat/karina';
+
+function openAriminaChat(initialPrompt = '', contextData = null) {
+  initAriminaChatModal();
+  const modal = document.getElementById('modal-arimina');
+  if (modal) {
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100', 'pointer-events-auto');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    const input = document.getElementById('arimina-chat-input');
+    setTimeout(() => {
+      if (input) input.focus();
+      if (initialPrompt && initialPrompt.trim()) {
+        sendAriminaUserMessage(initialPrompt.trim(), contextData);
+      }
+    }, 150);
+  }
+}
+
+function closeAriminaChat() {
+  const modal = document.getElementById('modal-arimina');
+  if (modal) {
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    modal.classList.remove('opacity-100', 'pointer-events-auto');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+  }
+}
+
+function sendAriminaQuickPrompt(prompt) {
+  sendAriminaUserMessage(prompt);
+}
+
+async function sendAriminaUserMessage(overrideText = null, contextData = null) {
+  const input = document.getElementById('arimina-chat-input');
+  const sendBtn = document.getElementById('arimina-chat-send');
+  const text = overrideText || (input ? input.value.trim() : '');
+  if (!text) return;
+
+  if (input && !overrideText) {
+    input.value = '';
+    input.style.height = 'auto';
+  }
+
+  const welcomeState = document.getElementById('arimina-welcome-state');
+  if (welcomeState) welcomeState.style.display = 'none';
+
+  const feed = document.getElementById('arimina-messages-feed');
+  const container = document.getElementById('arimina-messages-container');
+  const typing = document.getElementById('arimina-typing-indicator');
+
+  if (feed) {
+    const userBubble = document.createElement('div');
+    userBubble.className = 'flex justify-end chat-message chat-message-user';
+    userBubble.innerHTML = `
+      <div class="bg-[#1E1E1E] text-white rounded-2xl rounded-tr-none px-4 py-3 max-w-[85%] sm:max-w-[75%] text-xs sm:text-sm font-normal shadow-sm leading-relaxed text-left">
+        ${escapeHtml(text)}
+      </div>
+    `;
+    feed.appendChild(userBubble);
+  }
+
+  if (typing) typing.classList.remove('hidden');
+  if (container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+  if (sendBtn) sendBtn.disabled = true;
+
+  try {
+    const payload = {
+      sessionId: getSessionId(),
+      text: text,
+      senderName: "Huésped"
+    };
+
+    if (contextData && typeof contextData === 'object') {
+      if (contextData.suite_nombre) payload.suite_nombre = contextData.suite_nombre;
+      if (contextData.sede) payload.sede = contextData.sede;
+      if (contextData.tarifa_usd) payload.tarifa_usd = contextData.tarifa_usd;
+      payload.metadata = {
+        ...(contextData.metadata || {}),
+        ...contextData
+      };
+    }
+
+    const response = await fetch(ARIMINA_BACKEND_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    renderBotRepliesData(data);
+  } catch (error) {
+    console.error('Error conectando con Arimiña-IA:', error);
+    renderAriminaBotMessage(
+      'En este momento estoy experimentando dificultades técnicas para conectar con el servidor. Nuestro equipo está disponible por WhatsApp para atenderte de inmediato.',
+      true
+    );
+  } finally {
+    if (typing) typing.classList.add('hidden');
+    if (sendBtn) sendBtn.disabled = false;
+    if (container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+  }
+}
+
+function parseMarkdown(md) {
+  return formatAriminaMarkdown(md);
+}
+
+function renderBotRepliesData(data) {
+  const chatContainer = document.getElementById('arimina-messages-feed');
+  const scrollContainer = document.getElementById('arimina-messages-container');
+  if (!chatContainer) return;
+
+  // Normalizar replies si data es un string o no tiene el formato estándar
+  let replies = [];
+  if (data && Array.isArray(data.replies) && data.replies.length > 0) {
+    replies = data.replies;
+  } else if (data && typeof data === 'object') {
+    const text = data.output || data.text || data.message || data.reply || data.response || (data.data && data.data.text) || '';
+    const imageUrl = data.imageUrl || data.image_url || (data.data && (data.data.imageUrl || data.data.image_url));
+    const imageTitle = data.imageTitle || data.image_title || (data.data && (data.data.imageTitle || data.data.image_title));
+    if (text || imageUrl) {
+      replies = [{ text, imageUrl, imageTitle }];
+    }
+  } else if (typeof data === 'string' && data.trim()) {
+    replies = [{ text: data.trim() }];
+  }
+
+  if (replies.length === 0) {
+    renderAriminaBotMessage('Disculpa, no pude procesar tu solicitud en este momento. ¿Podrías reformular tu consulta o contactarnos por WhatsApp?');
+    return;
+  }
+
+  // Extraer textos e imágenes de data.replies
+  const textElements = [];
+  const imageElements = [];
+
+  replies.forEach(reply => {
+    if (typeof reply === 'string') {
+      if (reply.trim()) textElements.push(reply.trim());
+    } else if (reply && typeof reply === 'object') {
+      const t = reply.text || reply.output || reply.message || '';
+      if (t && t.trim()) textElements.push(t.trim());
+      if (reply.imageUrl) {
+        imageElements.push({
+          imageUrl: reply.imageUrl,
+          imageTitle: reply.imageTitle || ''
+        });
+      }
+    }
+  });
+
+  // 1. Contenedor principal de la respuesta del bot
+  const botMessageElement = document.createElement('div');
+  botMessageElement.className = 'chat-message chat-message-bot flex items-start gap-3 text-left';
+
+  // Avatar de Arimiña
+  const avatarElement = document.createElement('div');
+  avatarElement.className = 'w-8 h-8 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] text-xs shadow-sm shrink-0 mt-1';
+  avatarElement.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>';
+  botMessageElement.appendChild(avatarElement);
+
+  // Contenedor de la burbuja
+  const bubbleWrapper = document.createElement('div');
+  bubbleWrapper.className = 'bg-white/95 border border-[#E8DFC8] text-[#1E1E1E] rounded-2xl rounded-tl-none p-4 sm:p-5 max-w-[90%] sm:max-w-[80%] text-xs sm:text-sm shadow-sm space-y-3 leading-relaxed w-full';
+
+  // 2. Renderizado del texto (con Markdown si aplica)
+  if (textElements.length > 0) {
+    const textElement = document.createElement('div');
+    textElement.className = 'chat-bubble-text arimina-msg-content text-[#1E1E1E] space-y-1';
+    textElement.innerHTML = parseMarkdown(textElements.join('\n\n'));
+    bubbleWrapper.appendChild(textElement);
+  }
+
+  // 3. Renderizado de imágenes: Bento Grid si >= 2 imágenes, Ancho Completo si 1 sola
+  if (imageElements.length === 1) {
+    const single = imageElements[0];
+    const mediaContainer = document.createElement('div');
+    mediaContainer.className = 'chat-bubble-media';
+    mediaContainer.style.marginTop = textElements.length > 0 ? '10px' : '0';
+    mediaContainer.style.borderRadius = '12px';
+    mediaContainer.style.overflow = 'hidden';
+    mediaContainer.style.border = '1px solid rgba(0,0,0,0.08)';
+
+    mediaContainer.innerHTML = `
+      <a href="${single.imageUrl}" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none;">
+        <img 
+          src="${single.imageUrl}" 
+          alt="${single.imageTitle || 'Fotografía de Hotel Kariña'}" 
+          loading="lazy"
+          style="width: 100%; max-height: 240px; object-fit: cover; display: block; transition: transform 0.2s ease;"
+          onmouseover="this.style.transform='scale(1.02)'"
+          onmouseout="this.style.transform='scale(1)'"
+        />
+        ${single.imageTitle ? `
+          <div style="padding: 8px 12px; font-size: 12px; background: rgba(0,0,0,0.03); color: #555; font-weight: 500;">
+            ${single.imageTitle}
+          </div>
+        ` : ''}
+      </a>
+    `;
+    bubbleWrapper.appendChild(mediaContainer);
+  } else if (imageElements.length >= 2) {
+    const bentoGrid = document.createElement('div');
+    let gridClass = 'grid-2';
+    if (imageElements.length === 3) gridClass = 'grid-3';
+    else if (imageElements.length === 4) gridClass = 'grid-4';
+    else if (imageElements.length > 4) gridClass = 'grid-many';
+
+    bentoGrid.className = `chat-bento-grid ${gridClass}`;
+    if (textElements.length > 0) {
+      bentoGrid.style.marginTop = '10px';
+    }
+
+    imageElements.forEach(img => {
+      const itemLink = document.createElement('a');
+      itemLink.href = img.imageUrl;
+      itemLink.target = '_blank';
+      itemLink.rel = 'noopener noreferrer';
+      itemLink.className = 'chat-bento-item';
+      itemLink.innerHTML = `
+        <img 
+          src="${img.imageUrl}" 
+          alt="${img.imageTitle || 'Fotografía de Hotel Kariña'}" 
+          loading="lazy"
+        />
+        ${img.imageTitle ? `
+          <div class="chat-bento-title">${img.imageTitle}</div>
+        ` : ''}
+      `;
+      bentoGrid.appendChild(itemLink);
+    });
+
+    bubbleWrapper.appendChild(bentoGrid);
+  }
+
+  botMessageElement.appendChild(bubbleWrapper);
+
+  // 4. Agregar mensaje al contenedor del chat
+  chatContainer.appendChild(botMessageElement);
+
+  // 5. Scroll automático hacia el último mensaje
+  if (scrollContainer) {
+    scrollContainer.scrollTo({ top: scrollContainer.scrollHeight, behavior: 'smooth' });
+    scrollContainer.scrollTop = scrollContainer.scrollHeight;
+  }
+}
+
+function extractBotReply(data) {
+  if (!data) return '';
+  if (typeof data === 'string') return data;
+  if (data.replies && Array.isArray(data.replies) && data.replies.length > 0) {
+    return data.replies.map(r => (typeof r === 'string' ? r : (r.text || r.message || r.output || ''))).filter(Boolean).join('\n\n');
+  }
+  if (Array.isArray(data) && data.length > 0) {
+    return data.map(item => {
+      if (typeof item === 'string') return item;
+      if (item && typeof item === 'object') {
+        return item.output || item.text || item.message || item.reply || item.response || '';
+      }
+      return '';
+    }).filter(Boolean).join('\n\n');
+  }
+  if (typeof data === 'object') {
+    return data.output || data.text || data.message || data.reply || data.response || (data.data && data.data.text) || '';
+  }
+  return '';
+}
+
+function renderAriminaBotMessage(replyOrText, isError = false) {
+  const feed = document.getElementById('arimina-messages-feed');
+  const container = document.getElementById('arimina-messages-container');
+  if (!feed) return;
+
+  if (isError) {
+    const aiBubble = document.createElement('div');
+    aiBubble.className = 'chat-message chat-message-bot flex items-start gap-3 text-left';
+
+    const waEncoded = encodeURIComponent('Hola, deseo consultar con un asesor de Hotel Kariña');
+    const waLink = `https://wa.me/584249169610?text=${waEncoded}`;
+    const actionsHtml = `
+      <div class="flex flex-wrap gap-2 pt-2 border-t border-[#E8DFC8]/60">
+        <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
+          <i class="fa-brands fa-whatsapp text-xs"></i>
+          <span>Contactar por WhatsApp (+58 424-9169610)</span>
+        </a>
+      </div>
+    `;
+
+    const text = typeof replyOrText === 'string' ? replyOrText : (replyOrText && replyOrText.text ? replyOrText.text : '');
+
+    aiBubble.innerHTML = `
+      <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#F0A800] to-[#FFD573] flex items-center justify-center text-[#1E1E1E] text-xs shadow-sm shrink-0 mt-1">
+        <i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>
+      </div>
+      <div class="bg-white/95 border border-[#E8DFC8] text-[#1E1E1E] rounded-2xl rounded-tl-none p-4 sm:p-5 max-w-[90%] sm:max-w-[80%] text-xs sm:text-sm shadow-sm space-y-3 leading-relaxed">
+        <div class="chat-bubble-text arimina-msg-content text-[#1E1E1E] space-y-1">${formatAriminaMarkdown(text)}</div>
+        ${actionsHtml}
+      </div>
+    `;
+    feed.appendChild(aiBubble);
+
+    if (container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+    return;
+  }
+
+  if (typeof replyOrText === 'string') {
+    renderBotRepliesData({ replies: [{ text: replyOrText }] });
+  } else if (replyOrText && typeof replyOrText === 'object') {
+    if (replyOrText.replies) {
+      renderBotRepliesData(replyOrText);
+    } else {
+      renderBotRepliesData({ replies: [replyOrText] });
+    }
+  }
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function formatAriminaMarkdown(md) {
+  if (!md) return '';
+  let text = md.trim();
+
+  // Escape HTML characters to prevent raw injection
+  text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  // Markdown links [title](url)
+  text = text.replace(/\[(.*?)\]\((https?:\/\/[^\s\)]+)\)/g, (match, title, url) => {
+    if (url.includes('wa.me')) {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i><span>${title}</span></a>`;
+    }
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-[#2680BD] underline font-semibold hover:text-[#F0A800] transition-colors">${title}</a>`;
+  });
+
+  // Raw wa.me links
+  text = text.replace(/(^|[\s\n])(https?:\/\/wa\.me\/[^\s<\)]+)/g, '$1<a href="$2" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i><span>Contactar por WhatsApp</span></a>');
+
+  // Bold **text**
+  text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+  // Italic *text* or _text_
+  text = text.replace(/\*([^\*]+)\*/g, '<em>$1</em>');
+  text = text.replace(/_([^_]+)_/g, '<em>$1</em>');
+
+  // Numbered lists (e.g. "1. Suite Estándar")
+  text = text.replace(/^(\d+)\.\s+(.*?)$/gm, '<div class="flex items-start gap-2 my-1"><span class="font-mono font-bold text-[#F0A800] shrink-0 text-xs">$1.</span><div>$2</div></div>');
+
+  // Bullet points (- or • or *)
+  text = text.replace(/^[\s]*[-•]\s+(.*?)$/gm, '<div class="flex items-start gap-2 my-0.5"><span class="text-[#F0A800] shrink-0">•</span><div>$1</div></div>');
+
+  // Paragraph breaks
+  text = text.replace(/\n\n+/g, '<div class="h-2"></div>');
+  text = text.replace(/\n/g, '<br>');
+
+  return text;
+}
+
+// Inicializar Arimiña Chat Modal al cargar el DOM
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAriminaChatModal);
+} else {
+  initAriminaChatModal();
+}
+
+// Exportación global de funciones de Arimiña y Planes Corporativos
+window.getSessionId = getSessionId;
+window.initAriminaChatModal = initAriminaChatModal;
+window.openAriminaChat = openAriminaChat;
+window.closeAriminaChat = closeAriminaChat;
+window.sendAriminaQuickPrompt = sendAriminaQuickPrompt;
+window.sendAriminaUserMessage = sendAriminaUserMessage;
+window.formatAriminaMarkdown = formatAriminaMarkdown;
+window.parseMarkdown = parseMarkdown;
+window.renderAriminaBotMessage = renderAriminaBotMessage;
+window.renderBotRepliesData = renderBotRepliesData;
+window.setCorporateDuration = setCorporateDuration;
+window.setCorporateBreakfast = setCorporateBreakfast;
+window.renderCorporateGrid = renderCorporateGrid;
+window.requestCorporateQuote = requestCorporateQuote;
+window.consultarTarifasSedeModal = consultarTarifasSedeModal;
+window.consultarTarifasSede = consultarTarifasSede;
+
+
+

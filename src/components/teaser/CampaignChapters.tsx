@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function CampaignChapters() {
   return (
     <div className="w-full max-w-sm mt-7 space-y-2.5">

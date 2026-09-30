@@ -1,0 +1,927 @@
+@charset "UTF-8";
+
+/* ===================================================
+   VARIABLES Y BASE
+   =================================================== */
+:root {
+  --karina-cream: #FFF6EA;
+  --karina-charcoal: #343434;
+  --karina-mustard: #F0A800;
+  --karina-mustard-light: #FFD573;
+  --karina-blue: #2680BD;
+  --karina-blue-light: #92CEF7;
+  --karina-terracotta: #C7473B;
+  --karina-coral: #EB8C84;
+}
+
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--karina-charcoal);
+  color: var(--karina-charcoal);
+  overflow-x: hidden;
+}
+
+/* Formas Asimétricas Orgánicas Kariña */
+.rounded-pebble {
+  border-radius: 32px 32px 120px 32px !important;
+}
+
+.rounded-pebble-inverse {
+  border-radius: 120px 32px 32px 32px !important;
+}
+
+/* Transición Cruzada Fluida de Suites */
+.suite-fade {
+  transition: opacity 260ms cubic-bezier(0.16, 1, 0.3, 1), transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.suite-fade.changing {
+  opacity: 0.15;
+  transform: translateY(6px);
+}
+
+/* ===================================================
+   HERO VIDEO & CONTAINER (DARK NEUTRAL BACKGROUND)
+   =================================================== */
+.hero,
+.hero-section,
+.hero-video-container {
+  background-color: #0f172a !important;
+  background-image: none !important;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ===================================================
+   MORPHING FLOATING ISLAND NAVBAR
+   =================================================== */
+#main-navbar {
+  transition: 
+    top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    max-width 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s ease,
+    box-shadow 0.5s ease,
+    border-color 0.4s ease;
+  will-change: top, max-width, border-radius, background-color, box-shadow;
+}
+
+/* Estado normal (anclado arriba) */
+#main-navbar.navbar-default {
+  top: 0;
+  max-width: 100%;
+  border-radius: 0;
+  background-color: var(--karina-cream);
+  border-bottom: 1px solid rgba(52, 52, 52, 0.1);
+  box-shadow: none;
+}
+
+/* Estado activo: Isla Flotante */
+#main-navbar.navbar-scrolled {
+  top: 1.25rem !important; /* Separación de 20px del borde superior */
+  max-width: 1080px !important; /* Ancho cápsula centrado */
+  border-radius: 9999px !important; /* Redondeado completo */
+  background-color: rgba(255, 246, 234, 0.88) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 
+    0 16px 36px -6px rgba(52, 52, 52, 0.12),
+    0 4px 16px -2px rgba(240, 168, 0, 0.15);
+  border: 1px solid rgba(240, 168, 0, 0.25) !important;
+}
+
+#main-navbar .nav-inner {
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+}
+
+#main-navbar.navbar-scrolled .nav-inner {
+  height: 4rem !important; /* 64px de altura compacta */
+  padding-left: 1.75rem !important;
+  padding-right: 1.75rem !important;
+}
+
+/* Botón de cuenta: prevenir wrapping y adaptar a modo cápsula */
+.nav-account-btn {
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 1 !important;
+}
+
+#main-navbar.navbar-scrolled .nav-account-text {
+  display: none !important;
+}
+
+#main-navbar.navbar-scrolled .nav-account-btn {
+  padding: 0.5rem !important;
+  border-radius: 9999px !important;
+  background-color: rgba(232, 223, 200, 0.4) !important;
+}
+
+/* Brillo sutil en el botón de reserva */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: rotate(25deg);
+  animation: shimmerMove 4.5s infinite;
+}
+@keyframes shimmerMove {
+  0%, 70% { left: -150%; }
+  100% { left: 200%; }
+}
+
+/* ===================================================
+   EFECTO BORDE DE LUZ ANIMADO (BUSINESS)
+   =================================================== */
+.glowing-box {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #343434;
+  padding: 1.5px;
+}
+
+.glowing-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent, transparent, var(--karina-mustard), transparent);
+  animation: rotateGlow 4.5s linear infinite;
+}
+
+.glowing-content {
+  position: relative;
+  background: #2D2D2D;
+  border-radius: 23px;
+  z-index: 1;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===================================================
+   ANIMACIONES DE SCROLL (REVEAL)
+   =================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+/* Ocultar barra de desplazamiento */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ===================================================
+   SECCIÓN FAQ EDITORIAL (LINE-BASED MINIMALISM)
+   =================================================== */
+.faq-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-wrapper.is-open {
+  grid-template-rows: 1fr;
+}
+
+.faq-inner-content {
+  overflow: hidden;
+}
+
+.faq-text-body {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 300ms ease 80ms, transform 300ms cubic-bezier(0.16, 1, 0.3, 1) 80ms;
+}
+
+.faq-wrapper.is-open .faq-text-body {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.faq-line-item {
+  transition: border-color 300ms ease, background-color 300ms ease, padding 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-line-item.is-active {
+  border-color: rgba(240, 168, 0, 0.4) !important;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.faq-icon-rotator {
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), color 250ms ease;
+}
+
+.faq-line-item.is-active .faq-icon-rotator {
+  transform: rotate(135deg);
+  color: #F0A800;
+}
+
+.filter-tab {
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===================================================
+   MASTER FOOTER MODERNO Y ELEGANTE
+   =================================================== */
+.footer-insta-pill {
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-insta-pill:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(240, 168, 0, 0.4);
+  transform: translateX(4px);
+}
+
+.back-to-top-btn {
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.back-to-top-btn:hover {
+  background-color: #F0A800;
+  color: #343434;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px -4px rgba(240, 168, 0, 0.4);
+}
+
+/* ===================================================
+   ESTILOS Y ANIMACIONES SECCIÓN SEDES & MODAL INMERSIVO
+   =================================================== */
+
+/* Formas Asimétricas Orgánicas Kariña */
+.rounded-pebble {
+  border-radius: 32px 32px 110px 32px !important;
+}
+
+/* Modal Display Animation */
+#sede-modal {
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#sede-modal-container {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), opacity 400ms ease;
+}
+
+#sede-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#sede-modal.is-open #sede-modal-container {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+#sede-modal:not(.is-open) #sede-modal-container {
+  transform: scale(0.96) translateY(16px);
+  opacity: 0;
+}
+
+/* Luz Ambiental Dorada Expansiva */
+@keyframes ambientPulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(1.35);
+  }
+}
+
+.animate-ambient-glow {
+  animation: ambientPulse 6.5s ease-in-out infinite alternate;
+}
+
+/* Miniaturas de Galería */
+.thumb-btn {
+  transition: all 250ms ease;
+  opacity: 0.55;
+}
+.thumb-btn:hover {
+  opacity: 0.85;
+}
+.thumb-btn.is-active-thumb {
+  opacity: 1;
+  border-color: #F0A800;
+  box-shadow: 0 0 0 2px rgba(240, 168, 0, 0.35);
+}
+
+/* Card Hover Motion */
+.sede-card {
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sede-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Transición Suave de Cambio entre Sedes en el Modal */
+.modal-content-fade {
+  transition: opacity 220ms ease-in-out, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-content-fade.is-switching {
+  opacity: 0.15;
+  transform: translateY(4px);
+}
+
+/* ===================================================
+   8. ESTILOS ESPECÍFICOS DEL CATÁLOGO DE SUITES & MODAL
+   =================================================== */
+.rounded-pebble {
+  border-radius: 32px 32px 110px 32px !important;
+}
+
+.rounded-pebble-reverse {
+  border-radius: 110px 32px 32px 32px !important;
+}
+
+#suite-modal {
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#suite-modal-container {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), opacity 400ms ease;
+}
+
+#suite-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#suite-modal.is-open #suite-modal-container {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+#suite-modal:not(.is-open) #suite-modal-container {
+  transform: scale(0.96) translateY(16px);
+  opacity: 0;
+}
+
+.suite-card-hover {
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 350ms ease;
+}
+
+.suite-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(52, 52, 52, 0.1);
+}
+
+/* ===================================================
+   9. ESTILOS DEDICADOS PÁGINA VIVE KARIÑA & DAY PASS
+   =================================================== */
+
+/* Animación de Entrada para la Grilla Bento */
+.vive-item {
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), opacity 350ms ease;
+}
+.vive-item:hover {
+  transform: translateY(-4px);
+}
+
+/* Modal Lightbox Active */
+#vive-lightbox-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Day Pass Modal Display */
+#daypass-modal {
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+#daypass-modal-container {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), opacity 400ms ease;
+}
+#daypass-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+#daypass-modal.is-open #daypass-modal-container {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+#daypass-modal:not(.is-open) #daypass-modal-container {
+  transform: scale(0.96) translateY(16px);
+  opacity: 0;
+}
+
+/* ===================================================
+   10. ESTILOS DEDICADOS: BUSINESS, FAQS Y CONTACTO
+   =================================================== */
+
+/* Accordion Grid Animation */
+.faq-accordion-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-accordion-wrapper.is-open {
+  grid-template-rows: 1fr;
+}
+.faq-accordion-inner {
+  overflow: hidden;
+}
+
+/* Chevron Rotation */
+.faq-chevron {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-item-card.is-open .faq-chevron {
+  transform: rotate(180deg);
+  color: #F0A800;
+}
+
+/* Sede Details Transition */
+.sede-detail-fade {
+  transition: opacity 250ms ease-in-out, transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sede-detail-fade.is-changing {
+  opacity: 0.2;
+  transform: translateY(6px);
+}
+
+/* ===================================================
+   11. ESTILOS DEDICADOS: GASTRONOMÍA, PELUQUERÍA & SERVICIOS
+   =================================================== */
+
+/* Animación de Hover para Tarjetas de Platillos / Servicios */
+.dish-card-hover {
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dish-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -6px rgba(52, 52, 52, 0.08);
+}
+
+/* Transición para Botones de Categorías */
+.cat-btn {
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cat-btn.is-active {
+  color: #343434;
+  font-weight: 700;
+}
+.cat-btn.is-active .cat-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Drawer Lateral de Pedidos / Citas */
+#cart-drawer {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+#cart-backdrop {
+  transition: opacity 300ms ease;
+}
+
+/* Resplandor Encantado Arimiña-IA */
+@keyframes aiGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(240, 168, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(240, 168, 0, 0.45);
+  }
+}
+.animate-ai-glow {
+  animation: aiGlow 4s infinite ease-in-out;
+}
+
+/* ===================================================
+   12. ESTILOS DEDICADOS: FUNDACIÓN KARIÑA
+   =================================================== */
+
+/* Animaciones de Flotación Escalonadas para Ejes de Acción */
+@keyframes floatPebble1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(0.6deg); }
+}
+@keyframes floatPebble2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-9px) rotate(-0.8deg); }
+}
+@keyframes floatPebble3 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(0.5deg); }
+}
+@keyframes floatPebble4 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-0.6deg); }
+}
+
+.animate-float-1 { animation: floatPebble1 6s ease-in-out infinite; }
+.animate-float-2 { animation: floatPebble2 7s ease-in-out infinite 0.6s; }
+.animate-float-3 { animation: floatPebble3 6.5s ease-in-out infinite 1.2s; }
+.animate-float-4 { animation: floatPebble4 7.2s ease-in-out infinite 0.3s; }
+
+/* ===================================================
+   13. ESTILOS DEDICADOS: PÁGINAS LEGALES & 404
+   =================================================== */
+
+/* Indicador Activo de Tabla de Contenidos (TOC) */
+.toc-link.is-active {
+  color: #343434 !important;
+  font-weight: 700 !important;
+}
+
+.toc-link.is-active .toc-dot {
+  opacity: 1 !important;
+}
+
+/* ===================================================
+   14. ESTILOS EXCLUSIVOS: HOVER ORGÁNICO & DROPDOWNS DEL NAVBAR
+   =================================================== */
+
+/* Eliminación de la cápsula/píldora y hover artesanal */
+.nav-link-item {
+  position: relative;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  transition: color 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Línea semicurva sutil artesanal dorada con trazo de pincel */
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  width: 28px;
+  height: 6px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 8' fill='none'%3E%3Cpath d='M2 5C10 2 26 2 34 5' stroke='%23F0A800' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms cubic-bezier(0.16, 1, 0.3, 1), transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link-item:hover::after,
+.nav-dropdown-wrapper:hover > .nav-link-item::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(2px);
+}
+
+.nav-link-item:hover,
+.nav-dropdown-wrapper:hover > .nav-link-item {
+  color: #F0A800 !important;
+  background-color: transparent !important;
+}
+
+/* Animación de Entrada Suave del Panel Desplegable */
+.nav-dropdown-panel {
+  box-shadow: 0 24px 54px -12px rgba(52, 52, 52, 0.16),
+              0 6px 18px -4px rgba(240, 168, 0, 0.08);
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+
+/* Micro-animación en las tarjetas internas del Dropdown */
+/* Micro-animación en las opciones del Dropdown */
+.dropdown-item-row {
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dropdown-item-row:hover {
+  transform: translateX(3px);
+}
+
+/* Puente invisible para evitar que el menú se cierre al mover el mouse */
+.dropdown-hover-bridge {
+  pointer-events: auto;
+}
+
+/* Soporte para que los dropdowns se adapten perfectamente al navbar comprimido en scroll */
+#main-navbar.navbar-scrolled .nav-dropdown-panel {
+  top: calc(100% + 12px) !important;
+}
+
+/* ===================================================
+   15. ESTILOS COMPLEMENTARIOS: AUTENTICACIÓN & DASHBOARD
+   =================================================== */
+
+/* Switch Toggle iOS Style para Control de Suite */
+.switch-toggle {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+}
+
+.switch-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-round {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(52, 52, 52, 0.2);
+  transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 9999px;
+}
+
+.slider-round:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+input:checked + .slider-round {
+  background-color: #F0A800;
+}
+
+input:checked + .slider-round:before {
+  transform: translateX(18px);
+}
+
+/* Micro-animación de Botones Rápidos del Dashboard */
+.dash-quick-btn {
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dash-quick-btn:hover {
+  transform: translateY(-3px);
+  border-color: rgba(240, 168, 0, 0.35);
+}
+
+/* ===================================================
+   16. GASTRONOMÍA & RESTAURANTES: MOBILE-FIRST UX
+   =================================================== */
+
+/* Transición suave de foto principal en tarjetas de restaurante */
+.restaurant-main-img {
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.restaurant-main-img.is-swapping {
+  opacity: 0.2;
+  transform: scale(0.97);
+}
+
+/* Miniaturas de fotos de restaurante */
+.restaurant-thumb {
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.restaurant-thumb:hover {
+  opacity: 1 !important;
+  transform: translateY(-2px);
+}
+
+.restaurant-thumb.is-active {
+  border-color: #F0A800 !important;
+  box-shadow: 0 0 0 2px rgba(240, 168, 0, 0.4) !important;
+  opacity: 1 !important;
+  transform: scale(1.02);
+}
+
+/* Pills de filtrado por Sede */
+.sede-filter-pill {
+  transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sede-filter-pill:active {
+  transform: scale(0.95);
+}
+
+.sede-filter-pill.is-active {
+  background-color: #343434 !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+  border-color: #343434 !important;
+}
+
+/* Tag pills */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background-color: rgba(52, 52, 52, 0.06);
+  color: #343434;
+  letter-spacing: 0.02em;
+}
+
+/* Modal de Menú Digital */
+#gastronomia-menu-modal {
+  transition: opacity 280ms cubic-bezier(0.16, 1, 0.3, 1), visibility 280ms;
+}
+
+#gastronomia-menu-modal .modal-panel {
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#gastronomia-menu-modal.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ===================================================
+   17. CHAT WIDGET - BENTO GRID & WHATSAPP BUTTONS
+   =================================================== */
+.chat-bubble-text a[href*="wa.me"] {
+  display: inline-flex;
+  align-items: center;
+  background-color: #25D366;
+  color: #ffffff !important;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none !important;
+  font-weight: 600;
+  margin-top: 8px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
+}
+
+.chat-bubble-text a[href*="wa.me"]:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
+.chat-bubble-text a[href*="wa.me"] i {
+  margin-right: 6px;
+  font-size: 14px;
+}
+
+/* Bento Grid para Agrupación de Fotos del Bot */
+.chat-bento-grid {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.chat-bento-grid.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.chat-bento-grid.grid-3 {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 105px 105px;
+}
+
+.chat-bento-grid.grid-3 > .chat-bento-item:first-child {
+  grid-row: span 2;
+}
+
+.chat-bento-grid.grid-4 {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 110px 110px;
+}
+
+.chat-bento-grid.grid-many {
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+}
+
+.chat-bento-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: block;
+  text-decoration: none;
+  min-height: 100px;
+  height: 100%;
+}
+
+.chat-bento-item:hover {
+  transform: scale(1.02);
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.chat-bento-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.chat-bento-item:hover img {
+  transform: scale(1.04);
+}
+
+.chat-bento-item .chat-bento-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 6px 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2) 70%, transparent);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Media individual a ancho completo */
+.chat-bubble-media {
+  margin-top: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* ===================================================
+   MOBILE KEYBOARD & 100dvh SAFE CHAT STYLES (iOS/Android)
+   =================================================== */
+#modal-arimina {
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+}
+
+#modal-arimina textarea,
+#modal-arimina input {
+  font-size: 16px !important; /* Previene auto-zoom en iOS Safari */
+}
+
+.overscroll-contain {
+  overscroll-behavior: contain;
+}
+
+/* ===================================================
+   BARRA FLOTANTE DE ARIMIÑA CON SAFE AREA (iOS/Safari/Android)
+   =================================================== */
+.arimina-floating-bar {
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
+  max-width: 92vw;
+  z-index: 40 !important;
+}
+
+@media (min-width: 768px) {
+  .arimina-floating-bar {
+    bottom: 2rem !important;
+    max-width: none;
+  }
+}
+
