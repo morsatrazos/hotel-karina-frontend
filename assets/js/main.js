@@ -1,4 +1,15 @@
 // ==========================================
+// GUARDIA TEMPORAL DE RUTAS (FASE DE EXPECTATIVA)
+// ==========================================
+if (typeof window !== 'undefined' && window.location) {
+  const currentPath = window.location.pathname;
+  const isTeaser = currentPath === '/' || currentPath === '/index.html' || currentPath === '' || currentPath.endsWith('/index.html');
+  if (!isTeaser && !window.location.search.includes('preview=true')) {
+    window.location.replace('/');
+  }
+}
+
+// ==========================================
 // CONFIGURACIÓN CENTRALIZADA GRUPO KARIÑA
 // ==========================================
 window.KARINA_CONFIG = {
