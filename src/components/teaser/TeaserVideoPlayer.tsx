@@ -6,8 +6,8 @@ import type { MouseEvent } from 'react';
 interface TeaserVideoPlayerProps {
   src: string;
   badge: string;
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
 }
 
 export function TeaserVideoPlayer({ src, badge, title, subtitle }: TeaserVideoPlayerProps) {
@@ -83,17 +83,8 @@ export function TeaserVideoPlayer({ src, badge, title, subtitle }: TeaserVideoPl
           </div>
         )}
 
-        {/* Overlay inferior de información y botón de audio */}
-        <div className="absolute bottom-5 left-4 right-4 z-20 flex items-end justify-between gap-3 pointer-events-none">
-          <div className="space-y-1">
-            <span className="text-[11px] tracking-widest text-amber-300 font-bold uppercase block drop-shadow">
-              {title}
-            </span>
-            <p className="text-xs text-white/95 font-medium leading-tight drop-shadow-md">
-              {subtitle}
-            </p>
-          </div>
-
+        {/* Botón de audio flotante en la esquina inferior derecha */}
+        <div className="absolute bottom-5 right-4 z-20 pointer-events-none">
           <button
             type="button"
             onClick={toggleMute}

@@ -22,7 +22,7 @@ export default function TeaserHomePage() {
       <header className="relative z-10 w-full max-w-5xl mx-auto px-6 pt-7 pb-3 flex items-center justify-between">
         <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 border border-[#E8DFD3] shadow-sm backdrop-blur-md text-[11px] font-bold tracking-wider uppercase text-stone-700">
           <span className="w-2 h-2 rounded-full bg-[#C8832B] animate-pulse" />
-          Gran Reapertura &bull; Próximamente
+          Próximamente
         </div>
         <div className="hidden sm:flex items-center gap-2 text-xs tracking-wider text-stone-500 uppercase font-semibold">
           <span>Maturín</span>
@@ -52,8 +52,6 @@ export default function TeaserHomePage() {
         <TeaserVideoPlayer 
           badge="Capítulo I" 
           src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Karina-Breaking-Logo.mp4" 
-          subtitle="Demolición de la estructura inicial." 
-          title="El primer paso del cambio"
         />
 
         {/* Lista de Capítulos */}
@@ -66,8 +64,7 @@ export default function TeaserHomePage() {
       {/* Footer corporativo provisional */}
       <footer className="relative z-10 w-full max-w-5xl mx-auto px-6 py-6 border-t border-[#E8DFD3] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
         <div>
-          <span className="font-semibold text-stone-700">Campaña Oficial de Reapertura</span> &bull; 
-          <span>Oriente de Venezuela</span>
+          <span className="font-semibold text-stone-700">Oriente de Venezuela</span>
         </div>
         <div className="flex items-center gap-2 text-[11px]">
           <span>Atención a empresas y eventos:</span>
