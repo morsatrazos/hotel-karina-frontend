@@ -4,18 +4,17 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Permitir la raíz, recursos estáticos, APIs internas y assets
+  // Permitir home, assets y archivos estáticos
   if (
     pathname === '/' ||
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
-    pathname.startsWith('/favicon.ico') ||
-    pathname.match(/\.(png|jpg|jpeg|webp|svg|mp4|ico|css|js|woff|woff2|ttf|eot)$/)
+    pathname.includes('.')
   ) {
     return NextResponse.next();
   }
 
-  // Redirigir cualquier otra ruta interna hacia el Home del Teaser
+  // Redirigir cualquier otra subruta hacia el home
   return NextResponse.redirect(new URL('/', request.url));
 }
 

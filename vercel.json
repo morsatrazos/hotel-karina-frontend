@@ -1,6 +1,5 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
+  "framework": "nextjs",
   "redirects": [
     { "source": "/maturin", "destination": "/", "permanent": false },
     { "source": "/maturin.html", "destination": "/", "permanent": false },
