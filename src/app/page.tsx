@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { TeaserVideoPlayer } from '@/components/teaser/TeaserVideoPlayer';
-import { CampaignChapters } from '@/components/teaser/CampaignChapters';
 import { InstagramCta } from '@/components/teaser/InstagramCta';
 
 export const metadata: Metadata = {
@@ -48,14 +47,8 @@ export default function TeaserHomePage() {
           </p>
         </div>
 
-        {/* Reproductor Vertical 9:16 */}
-        <TeaserVideoPlayer 
-          badge="Capítulo I" 
-          src="https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Karina-Breaking-Logo.mp4" 
-        />
-
-        {/* Lista de Capítulos */}
-        <CampaignChapters />
+        {/* Serie de Videos de la Campaña (Episodio 1 & Episodio 2) */}
+        <TeaserVideoPlayer />
 
         {/* CTA a Instagram */}
         <InstagramCta instagramUrl="https://instagram.com/hoteleskarina" />
