@@ -47,7 +47,7 @@ export default function TeaserHomePage() {
           </p>
         </div>
 
-        {/* Serie de Videos de la Campaña (Episodio 1 & Episodio 2) */}
+        {/* Trilogía de Videos de la Campaña (Capítulo 01, 02 y 03: La Revelación) */}
         <TeaserVideoPlayer />
 
         {/* CTA a Instagram */}

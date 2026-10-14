@@ -5,7 +5,7 @@ export interface CampaignChaptersProps {
   onSelectEpisode?: (id: number) => void;
 }
 
-export function CampaignChapters({ activeEpisodeId = 2, onSelectEpisode }: CampaignChaptersProps) {
+export function CampaignChapters({ activeEpisodeId = 3, onSelectEpisode }: CampaignChaptersProps) {
   const chapters = [
     {
       id: 1,
@@ -14,28 +14,30 @@ export function CampaignChapters({ activeEpisodeId = 2, onSelectEpisode }: Campa
       subtitle: 'El comienzo del viaje: reconectando con la esencia',
       status: 'Disponible',
       isAvailable: true,
+      isNew: false,
     },
     {
       id: 2,
       number: '02',
       title: 'La Experiencia Continúa',
       subtitle: 'Descanso ejecutivo y excelencia en cada detalle',
-      status: 'Nuevo',
+      status: 'Disponible',
       isAvailable: true,
-      isNew: true,
+      isNew: false,
     },
     {
       id: 3,
       number: '03',
-      title: 'La Revelación',
-      subtitle: 'El nuevo rostro de Hoteles Kariña en Oriente',
-      status: 'Pronto',
-      isAvailable: false,
+      title: 'La Revelación: Una Nueva Era',
+      subtitle: 'El desenlace de nuestra transformación en Oriente',
+      status: 'Estreno',
+      isAvailable: true,
+      isNew: true,
     },
   ];
 
   return (
-    <div className="w-full max-w-[330px] sm:max-w-[350px] md:max-w-[365px] mt-6 space-y-2.5">
+    <div className="w-full max-w-[340px] sm:max-w-[365px] md:max-w-[385px] mt-6 space-y-2.5">
       <div className="text-[11px] uppercase tracking-wider text-stone-500 font-bold text-center mb-2">
         Capítulos de la Campaña
       </div>
@@ -84,7 +86,7 @@ export function CampaignChapters({ activeEpisodeId = 2, onSelectEpisode }: Campa
                 <div className={`font-bold transition-colors ${isActive ? 'text-[#C8832B]' : 'text-stone-900'}`}>
                   {ch.title}
                 </div>
-                <div className="text-[11px] text-stone-500 truncate max-w-[160px] sm:max-w-[185px]">
+                <div className="text-[11px] text-stone-500 truncate max-w-[155px] sm:max-w-[190px]">
                   {ch.subtitle}
                 </div>
               </div>
@@ -96,8 +98,8 @@ export function CampaignChapters({ activeEpisodeId = 2, onSelectEpisode }: Campa
                   Reproduciendo
                 </span>
               ) : ch.isNew ? (
-                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-50 text-[#C8832B] border border-amber-200">
-                  Nuevo
+                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-50 text-[#C8832B] border border-amber-200 shadow-sm">
+                  Estreno
                 </span>
               ) : ch.isAvailable ? (
                 <span className="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-600 border border-stone-200">
