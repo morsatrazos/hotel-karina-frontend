@@ -31,11 +31,11 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
-        <link rel="stylesheet" href="/assets/css/style.css?v=20261026-3" />
+        <link rel="stylesheet" href="/assets/css/style.css?v=20261026-4" />
       </head>
       <body className="bg-karina-charcoal text-karina-charcoal font-sans font-['Manrope'] font-manrope antialiased selection:bg-karina-mustard selection:text-karina-charcoal">
         {children}
-        <Script src="/assets/js/main.js?v=20261026-3" strategy="afterInteractive" />
+        <Script src="/assets/js/main.js?v=20261026-4" strategy="afterInteractive" />
       </body>
     </html>
   );

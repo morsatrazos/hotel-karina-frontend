@@ -1885,7 +1885,7 @@ function initKarinaSite() {
       badgeB2B: 'Tarifa Preferencial B2B',
       rateBadge: 'A Convenio',
       paxIcon: 'fa-user-tie',
-      capacity: 'Ejecutivos & Consultores',
+      capacity: 'Ejecutivos y Consultores',
       featured: false,
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
       description: 'Ideal para ejecutivos en tránsito recurrente y visitas comerciales que demandan confort, conectividad ininterrumpida y flexibilidad.',
@@ -1906,7 +1906,7 @@ function initKarinaSite() {
       badgeB2B: 'Tarifa Preferencial B2B',
       rateBadge: 'A Convenio',
       paxIcon: 'fa-calendar-check',
-      capacity: 'Media & Larga Estadía',
+      capacity: 'Media y Larga Estadía',
       featured: true,
       badgeHighlight: 'Más Solicitado',
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
@@ -1969,15 +1969,13 @@ function initKarinaSite() {
             </div>
           </div>
 
-          <!-- Badges Superiores B2B & A Convenio -->
-          <div class="flex items-center gap-2 flex-wrap">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-karina-mustard/15 border border-karina-mustard/40 text-[10px] font-mono font-bold text-karina-charcoal uppercase tracking-wider">
-              <span class="w-1.5 h-1.5 rounded-full bg-karina-mustard"></span>
-              ${card.badgeB2B}
-            </span>
-            <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#242424] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-xs">
-              ${card.rateBadge}
-            </span>
+          <!-- Etiquetas Superiores en Texto Limpio y Editorial -->
+          <div class="text-left">
+            <p class="text-xs tracking-wider uppercase font-semibold text-karina-charcoal/80">
+              <span class="text-[#C8832B]">${card.badgeB2B}</span>
+              <span class="mx-2 text-karina-charcoal/40">•</span>
+              <span>${card.rateBadge}</span>
+            </p>
           </div>
 
           <!-- Título y Encabezado de la Tarjeta (Sin precios numéricos) -->
@@ -2029,7 +2027,7 @@ function initKarinaSite() {
         <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#2D2A26] via-[#221F1D] to-[#1A1816] text-white border border-[#F0A800]/30 shadow-xl space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[10px] font-mono uppercase tracking-wider text-amber-300">
             <i class="fa-solid fa-handshake text-xs"></i>
-            <span>Soporte Corporativo & Alianzas B2B</span>
+            <span>Soporte Corporativo y Alianzas B2B</span>
           </div>
           <p class="text-sm sm:text-base font-light italic text-white/95 leading-relaxed max-w-2xl mx-auto">
             “Diseñamos planes a la medida para empresas y grupos ejecutivos en Monagas. Contáctanos para evaluar tu convenio corporativo anual.”

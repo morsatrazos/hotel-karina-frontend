@@ -32,7 +32,7 @@ const DEFAULT_CORPORATE_PLANS: CorporatePlan[] = [
     category: 'Estancia Ejecutiva',
     badgeB2B: 'Tarifa Preferencial B2B',
     rateBadge: 'A Convenio',
-    capacity: 'Ejecutivos & Consultores',
+    capacity: 'Ejecutivos y Consultores',
     featured: false,
     image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
     description: 'Ideal para ejecutivos en tránsito recurrente y visitas comerciales que demandan confort, conectividad ininterrumpida y flexibilidad.',
@@ -52,7 +52,7 @@ const DEFAULT_CORPORATE_PLANS: CorporatePlan[] = [
     category: 'Residencia de Proyectos',
     badgeB2B: 'Tarifa Preferencial B2B',
     rateBadge: 'A Convenio',
-    capacity: 'Media & Larga Estadía',
+    capacity: 'Media y Larga Estadía',
     featured: true,
     badgeHighlight: 'Más Solicitado',
     image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
@@ -89,7 +89,7 @@ export function CorporateRatesSection({
 
   return (
     <section id="planes-corporativos" className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-14 ${className}`}>
-      {/* 1. Cabecera B2B */}
+      {/* 1. Cabecera B2B + Trazo Artesanal Amarillo Sutil */}
       <div className="text-center max-w-3xl mx-auto space-y-3.5">
         <div className="inline-flex items-center gap-2">
           <span className="w-8 h-[2px] bg-[#C8832B]" />
@@ -105,30 +105,27 @@ export function CorporateRatesSection({
           {subtitle}
         </p>
 
-        {/* Distintivos de Valor */}
-        <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5">
-          <span className="px-3.5 py-1.5 rounded-full bg-white/90 border border-[#E8DFD3] text-[11px] font-semibold text-stone-800 flex items-center gap-2 shadow-sm">
-            <svg className="w-3.5 h-3.5 text-[#C8832B]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-            <span>Tarifas Blindadas por Volumen</span>
-          </span>
-          <span className="px-3.5 py-1.5 rounded-full bg-white/90 border border-[#E8DFD3] text-[11px] font-semibold text-stone-800 flex items-center gap-2 shadow-sm">
-            <svg className="w-3.5 h-3.5 text-[#C8832B]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <span>Facturación Fiscal Directa</span>
-          </span>
-          <span className="px-3.5 py-1.5 rounded-full bg-white/90 border border-[#E8DFD3] text-[11px] font-semibold text-stone-800 flex items-center gap-2 shadow-sm">
-            <svg className="w-3.5 h-3.5 text-[#C8832B]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span>Continuidad Operativa 24/7</span>
-          </span>
+        {/* Trazo gráfico delgado característico de la marca */}
+        <div className="flex justify-center pt-2">
+          <svg
+            width="104"
+            height="10"
+            viewBox="0 0 104 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="text-karina-mustard-light"
+          >
+            <path
+              d="M3 7C30 2.5 74 2.5 101 7"
+              stroke="currentColor"
+              strokeWidth="4.5"
+              strokeLinecap="round"
+            />
+          </svg>
         </div>
       </div>
 
-      {/* Grid de 2 Tarjetas Principales de Convenios de Alojamiento B2B */}
+      {/* 2. Grid Centrado de las 2 Tarjetas Principales de Convenios de Alojamiento B2B */}
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {customPlans.map((plan) => {
           const planWaUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(plan.whatsappText)}`;
@@ -168,15 +165,13 @@ export function CorporateRatesSection({
                   </div>
                 </div>
 
-                {/* Badges Superiores B2B & A Convenio */}
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-[10px] font-mono font-bold text-[#C8832B] uppercase tracking-wider">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#C8832B]" />
-                    {plan.badgeB2B}
-                  </span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-stone-900 text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-sm">
-                    {plan.rateBadge}
-                  </span>
+                {/* Etiquetas Superiores en Texto Limpio y Editorial */}
+                <div className="text-left">
+                  <p className="text-xs tracking-wider uppercase font-semibold text-stone-700">
+                    <span className="text-[#C8832B]">{plan.badgeB2B}</span>
+                    <span className="mx-2 text-stone-400">•</span>
+                    <span>{plan.rateBadge}</span>
+                  </p>
                 </div>
 
                 {/* Título y Descripción (Sin montos numéricos en USD) */}
@@ -232,45 +227,7 @@ export function CorporateRatesSection({
         })}
       </div>
 
-      {/* 2. Banner Oscuro de Cierre B2B */}
-      <div className="max-w-4xl mx-auto">
-        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#2D2A26] via-[#221F1D] to-[#1A1816] text-white border border-[#C8832B]/35 shadow-xl space-y-4 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[10px] font-mono uppercase tracking-wider text-amber-300">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-            <span>Soporte Corporativo &amp; Alianzas B2B</span>
-          </div>
-          <p className="text-sm sm:text-base font-light italic text-white/95 leading-relaxed max-w-2xl mx-auto">
-            “Diseñamos planes a la medida para empresas y grupos ejecutivos en Monagas. Contáctanos para evaluar tu convenio corporativo anual.”
-          </p>
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href={generalSupportWaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#F0A800] hover:bg-[#FFD573] text-[#242424] text-xs font-extrabold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2"
-            >
-              <svg className="w-4 h-4 fill-current text-[#242424]" viewBox="0 0 24 24">
-                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.941-.708-1.792s.448-1.272.607-1.446c.159-.175.346-.219.462-.219s.232.002.333.007c.106.005.249-.04.39.299.144.35.491 1.196.534 1.284.043.088.072.19.014.305-.058.115-.087.19-.173.289l-.26.302c-.087.086-.18.18-.077.356.101.175.452.746.97 1.207.669.596 1.233.78 1.408.868.175.088.277.073.379-.044.102-.117.434-.506.55-.681.116-.175.232-.146.39-.088s1.011.477 1.185.564c.174.087.29.13.333.204.043.073.043.424-.101.829zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.981-1.307A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
-              </svg>
-              <span>Solicitar Cotización</span>
-            </a>
-            <button
-              type="button"
-              onClick={() =>
-                handleOpenArimina(
-                  'Hola, deseo evaluar un convenio corporativo anual a la medida para mi empresa.'
-                )
-              }
-              className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-md transition-all flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <i className="fa-solid fa-wand-magic-sparkles text-[#FFD573] text-xs" />
-              <span>Consultar con Arimiña IA</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* 3. Infraestructura de Soporte: Capacidades técnicas (Inmediatamente debajo del banner oscuro) */}
+      {/* 3. Infraestructura de Soporte: Capacidades técnicas */}
       <div id="capacidades-tecnicas" className="pt-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-4 space-y-3 text-left">
@@ -340,6 +297,44 @@ export function CorporateRatesSection({
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. Bloque Final de Cierre / CTA Oscuro (Después de Capacidades Técnicas) */}
+      <div className="max-w-4xl mx-auto pt-2">
+        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#2D2A26] via-[#221F1D] to-[#1A1816] text-white border border-[#C8832B]/35 shadow-xl space-y-4 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[10px] font-mono uppercase tracking-wider text-amber-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <span>Soporte Corporativo y Alianzas B2B</span>
+          </div>
+          <p className="text-sm sm:text-base font-light italic text-white/95 leading-relaxed max-w-2xl mx-auto">
+            “Diseñamos planes a la medida para empresas y grupos ejecutivos en Monagas. Contáctanos para evaluar tu convenio corporativo anual.”
+          </p>
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href={generalSupportWaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#F0A800] hover:bg-[#FFD573] text-[#242424] text-xs font-extrabold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2"
+            >
+              <svg className="w-4 h-4 fill-current text-[#242424]" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.941-.708-1.792s.448-1.272.607-1.446c.159-.175.346-.219.462-.219s.232.002.333.007c.106.005.249-.04.39.299.144.35.491 1.196.534 1.284.043.088.072.19.014.305-.058.115-.087.19-.173.289l-.26.302c-.087.086-.18.18-.077.356.101.175.452.746.97 1.207.669.596 1.233.78 1.408.868.175.088.277.073.379-.044.102-.117.434-.506.55-.681.116-.175.232-.146.39-.088s1.011.477 1.185.564c.174.087.29.13.333.204.043.073.043.424-.101.829zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.981-1.307A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
+              </svg>
+              <span>Solicitar Cotización</span>
+            </a>
+            <button
+              type="button"
+              onClick={() =>
+                handleOpenArimina(
+                  'Hola, deseo evaluar un convenio corporativo anual a la medida para mi empresa.'
+                )
+              }
+              className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <i className="fa-solid fa-wand-magic-sparkles text-[#FFD573] text-xs" />
+              <span>Consultar con Arimiña IA</span>
+            </button>
           </div>
         </div>
       </div>
