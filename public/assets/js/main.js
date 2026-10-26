@@ -1940,7 +1940,7 @@ function initKarinaSite() {
     const footerNote = document.getElementById('corporate-footer-note');
     if (!gridContainer) return;
 
-    gridContainer.className = "grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-6 sm:gap-8 transition-opacity duration-300";
+    gridContainer.className = "max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 transition-opacity duration-300";
 
     gridContainer.innerHTML = corporatePlansData.map(card => {
       const waText = encodeURIComponent(`Hola, quisiera solicitar una cotización para ${card.whatsappSubject} en Hotel Kariña.`);

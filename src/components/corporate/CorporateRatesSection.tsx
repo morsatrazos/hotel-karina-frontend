@@ -129,7 +129,7 @@ export function CorporateRatesSection({
       </div>
 
       {/* Grid de 2 Tarjetas Principales de Convenios de Alojamiento B2B */}
-      <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-6 sm:gap-8">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {customPlans.map((plan) => {
           const planWaUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(plan.whatsappText)}`;
 

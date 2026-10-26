@@ -43,7 +43,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-karina-charcoal text-karina-charcoal font-manrope antialiased selection:bg-karina-mustard selection:text-karina-charcoal">
+    <div className="min-h-screen bg-karina-charcoal text-karina-charcoal font-sans font-['Manrope'] font-manrope antialiased selection:bg-karina-mustard selection:text-karina-charcoal">
       {/* ========================================== */}
       {/* 1. NAVBAR OFICIAL CON ISLA FLOTANTE & DROPDOWNS CREATIVOS */}
       {/* ========================================== */}
@@ -473,7 +473,7 @@ export default function HomePage() {
       {/* ========================================== */}
       {/* 3. HERO SECTION (ENCUADRE FIGMA EXACTO)    */}
       {/* ========================================== */}
-      <section className="hero-section relative min-h-[92vh] sm:min-h-screen flex items-end justify-start pb-16 sm:pb-20 px-6 sm:px-16 bg-[#0f172a] overflow-hidden">
+      <section className="hero-section relative min-h-[92vh] sm:min-h-screen flex items-end justify-start pb-16 sm:pb-20 px-6 sm:px-16 bg-[#0f172a] overflow-hidden font-sans font-['Manrope']">
         {/* Video de Fondo Nítido (Autoplay & Loop) */}
         <div className="hero-video-container absolute inset-0 z-0 pointer-events-none overflow-hidden bg-[#0f172a]">
           <video
@@ -496,11 +496,11 @@ export default function HomePage() {
         </div>
 
         {/* Botón Flotante de Audio Hero */}
-        <div className="absolute bottom-20 right-6 sm:bottom-10 sm:right-28 z-20">
+        <div className="absolute bottom-20 right-6 sm:bottom-10 sm:right-28 z-20 font-sans font-['Manrope']">
           <button
             id="hero-audio-btn"
             type="button"
-            className="inline-flex items-center gap-2 bg-black/40 hover:bg-black/60 text-white backdrop-blur-md px-3.5 py-2 rounded-full border border-white/20 transition-all text-xs font-medium shadow-lg hover:scale-105 active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-2 bg-black/40 hover:bg-black/60 text-white backdrop-blur-md px-3.5 py-2 rounded-full border border-white/20 transition-all text-xs font-medium shadow-lg hover:scale-105 active:scale-95 cursor-pointer font-sans font-['Manrope']"
             aria-label="Activar o desactivar sonido del video"
           >
             <i id="hero-audio-icon" className="fa-solid fa-volume-high text-[#FFD573]" />
@@ -509,8 +509,8 @@ export default function HomePage() {
         </div>
 
         {/* Contenido Inferior Izquierdo (Titular + CTA Suites) */}
-        <div className="relative z-10 max-w-2xl lg:max-w-3xl text-left reveal active">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)] mb-6">
+        <div className="relative z-10 max-w-2xl lg:max-w-3xl text-left reveal active font-sans font-['Manrope']">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)] mb-6 font-sans font-['Manrope']">
             Miles de huéspedes eligen
             <br className="hidden md:inline" /> hospedarse con nosotros
           </h1>
@@ -518,15 +518,15 @@ export default function HomePage() {
           {/* Botón Explorar Tarifas y Suites */}
           <a
             href="#suites"
-            className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-md px-5 py-3 rounded-full shadow-2xl border border-white/80 cursor-pointer hover:bg-white hover:scale-105 transition-all active:scale-95 text-left group"
+            className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-md px-5 py-3 rounded-full shadow-2xl border border-white/80 cursor-pointer hover:bg-white hover:scale-105 transition-all active:scale-95 text-left group font-sans font-['Manrope']"
             aria-label="Explorar Tarifas y Suites"
           >
             <div className="w-8 h-8 rounded-full bg-[#FFD573] group-hover:bg-[#F0A800] flex items-center justify-center text-[#343434] shadow-sm shrink-0 transition-colors">
               <i className="fa-solid fa-bed text-xs" />
             </div>
-            <div className="text-left pr-2">
-              <p className="text-xs font-bold text-[#343434] leading-tight">Explorar Tarifas y Suites</p>
-              <p className="text-[11px] text-[#343434]/70">Ver catálogo y sedes →</p>
+            <div className="text-left pr-2 font-sans font-['Manrope']">
+              <p className="text-xs font-bold text-[#343434] leading-tight font-sans font-['Manrope']">Explorar Tarifas y Suites</p>
+              <p className="text-[11px] text-[#343434]/70 font-sans font-['Manrope']">Ver catálogo y sedes →</p>
             </div>
           </a>
         </div>

@@ -19,7 +19,7 @@ export default function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="es" className="font-manrope scroll-smooth">
+    <html lang="es" className="font-sans font-['Manrope'] font-manrope scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -31,11 +31,11 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
-        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="/assets/css/style.css?v=20261026-3" />
       </head>
-      <body className="bg-karina-charcoal text-karina-charcoal font-manrope antialiased selection:bg-karina-mustard selection:text-karina-charcoal">
+      <body className="bg-karina-charcoal text-karina-charcoal font-sans font-['Manrope'] font-manrope antialiased selection:bg-karina-mustard selection:text-karina-charcoal">
         {children}
-        <Script src="/assets/js/main.js" strategy="afterInteractive" />
+        <Script src="/assets/js/main.js?v=20261026-3" strategy="afterInteractive" />
       </body>
     </html>
   );

@@ -30,8 +30,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        manrope: ['var(--font-manrope)', 'Manrope', 'sans-serif'],
-        sans: ['var(--font-manrope)', 'Manrope', 'sans-serif'],
+        manrope: ['Manrope', 'sans-serif'],
+        sans: ['Manrope', 'sans-serif'],
       },
     },
   },

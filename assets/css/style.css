@@ -12,8 +12,10 @@
   --karina-blue-light: #92CEF7;
   --karina-terracotta: #C7473B;
   --karina-coral: #EB8C84;
+  --font-manrope: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+html,
 body {
   font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--karina-charcoal);
