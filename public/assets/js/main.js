@@ -1920,27 +1920,6 @@ function initKarinaSite() {
         'Servicio de mantenimiento de lencería y room service adaptado a turnos.'
       ],
       whatsappSubject: 'convenio corporativo'
-    },
-    {
-      id: 'tarifa-eventos-conferencias',
-      title: 'Tarifa Eventos & Conferencias',
-      category: 'Grupos & Convenciones',
-      badgeB2B: 'Tarifa Preferencial B2B',
-      rateBadge: 'A Convenio',
-      paxIcon: 'fa-users-rectangle',
-      capacity: 'Grupos & Delegaciones',
-      featured: false,
-      image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Salon-Maturin.webp',
-      description: 'Infraestructura integral para conferencias, juntas directivas, asambleas de accionistas y bloqueo exclusivo de habitaciones para delegaciones.',
-      benefits: [
-        'Check-in/out flexible sujeto a disponibilidad.',
-        'Tarifas blindadas anuales por volumen de pernocta.',
-        'Facturación fiscal directa empresarial.',
-        'Desayuno ejecutivo y conectividad de alta velocidad.',
-        'Salones climatizados con aislamiento acústico y soporte audiovisual.',
-        'Servicio de banquetes, coffee break y bloque de habitaciones unificado.'
-      ],
-      whatsappSubject: 'convenio corporativo'
     }
   ];
 
@@ -1961,7 +1940,7 @@ function initKarinaSite() {
     const footerNote = document.getElementById('corporate-footer-note');
     if (!gridContainer) return;
 
-    gridContainer.className = "grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 transition-opacity duration-300";
+    gridContainer.className = "grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-6 sm:gap-8 transition-opacity duration-300";
 
     gridContainer.innerHTML = corporatePlansData.map(card => {
       const waText = encodeURIComponent(`Hola, quisiera solicitar una cotización para ${card.whatsappSubject} en Hotel Kariña.`);

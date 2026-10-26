@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 export interface CorporatePlan {
@@ -64,26 +66,6 @@ const DEFAULT_CORPORATE_PLANS: CorporatePlan[] = [
       'Servicio de mantenimiento de lencería y room service adaptado a turnos.'
     ],
     whatsappText: 'Hola, quisiera solicitar una cotización para convenio corporativo en Hotel Kariña.'
-  },
-  {
-    id: 'tarifa-eventos-conferencias',
-    title: 'Tarifa Eventos & Conferencias',
-    category: 'Grupos & Convenciones',
-    badgeB2B: 'Tarifa Preferencial B2B',
-    rateBadge: 'A Convenio',
-    capacity: 'Grupos & Delegaciones',
-    featured: false,
-    image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Salon-Maturin.webp',
-    description: 'Infraestructura integral para conferencias, juntas directivas, asambleas de accionistas y bloqueo exclusivo de habitaciones para delegaciones.',
-    benefits: [
-      'Check-in/out flexible sujeto a disponibilidad.',
-      'Tarifas blindadas anuales por volumen de pernocta.',
-      'Facturación fiscal directa empresarial.',
-      'Desayuno ejecutivo y conectividad de alta velocidad.',
-      'Salones climatizados con aislamiento acústico y soporte audiovisual.',
-      'Servicio de banquetes, coffee break y bloque de habitaciones unificado.'
-    ],
-    whatsappText: 'Hola, quisiera solicitar una cotización para convenio corporativo en Hotel Kariña.'
   }
 ];
 
@@ -96,9 +78,18 @@ export function CorporateRatesSection({
 }: CorporateRatesSectionProps) {
   const generalSupportWaUrl = `https://wa.me/${whatsappNumber}?text=Hola%2C%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20para%20convenio%20corporativo%20en%20Hotel%20Kari%C3%B1a.`;
 
+  const handleOpenArimina = (promptText: string) => {
+    const win = window as any;
+    if (typeof win.openAriminaChat === 'function') {
+      win.openAriminaChat(promptText);
+    } else {
+      window.open(generalSupportWaUrl, '_blank');
+    }
+  };
+
   return (
-    <section id="planes-corporativos" className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-12 ${className}`}>
-      {/* Cabecera B2B */}
+    <section id="planes-corporativos" className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-14 ${className}`}>
+      {/* 1. Cabecera B2B */}
       <div className="text-center max-w-3xl mx-auto space-y-3.5">
         <div className="inline-flex items-center gap-2">
           <span className="w-8 h-[2px] bg-[#C8832B]" />
@@ -137,8 +128,8 @@ export function CorporateRatesSection({
         </div>
       </div>
 
-      {/* Grid de 3 Tarjetas de Convenio B2B */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+      {/* Grid de 2 Tarjetas Principales de Convenios de Alojamiento B2B */}
+      <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-6 sm:gap-8">
         {customPlans.map((plan) => {
           const planWaUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(plan.whatsappText)}`;
 
@@ -241,12 +232,12 @@ export function CorporateRatesSection({
         })}
       </div>
 
-      {/* Bloque Inferior de Soporte Corporativo */}
+      {/* 2. Banner Oscuro de Cierre B2B */}
       <div className="max-w-4xl mx-auto">
         <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#2D2A26] via-[#221F1D] to-[#1A1816] text-white border border-[#C8832B]/35 shadow-xl space-y-4 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[10px] font-mono uppercase tracking-wider text-amber-300">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-            <span>Soporte Corporativo & Alianzas B2B</span>
+            <span>Soporte Corporativo &amp; Alianzas B2B</span>
           </div>
           <p className="text-sm sm:text-base font-light italic text-white/95 leading-relaxed max-w-2xl mx-auto">
             “Diseñamos planes a la medida para empresas y grupos ejecutivos en Monagas. Contáctanos para evaluar tu convenio corporativo anual.”
@@ -256,13 +247,99 @@ export function CorporateRatesSection({
               href={generalSupportWaUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#C8832B] hover:bg-amber-500 text-white text-xs font-extrabold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#F0A800] hover:bg-[#FFD573] text-[#242424] text-xs font-extrabold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2"
             >
-              <svg className="w-4 h-4 fill-current text-white" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 fill-current text-[#242424]" viewBox="0 0 24 24">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.941-.708-1.792s.448-1.272.607-1.446c.159-.175.346-.219.462-.219s.232.002.333.007c.106.005.249-.04.39.299.144.35.491 1.196.534 1.284.043.088.072.19.014.305-.058.115-.087.19-.173.289l-.26.302c-.087.086-.18.18-.077.356.101.175.452.746.97 1.207.669.596 1.233.78 1.408.868.175.088.277.073.379-.044.102-.117.434-.506.55-.681.116-.175.232-.146.39-.088s1.011.477 1.185.564c.174.087.29.13.333.204.043.073.043.424-.101.829zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.981-1.307A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
               </svg>
               <span>Solicitar Cotización</span>
             </a>
+            <button
+              type="button"
+              onClick={() =>
+                handleOpenArimina(
+                  'Hola, deseo evaluar un convenio corporativo anual a la medida para mi empresa.'
+                )
+              }
+              className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <i className="fa-solid fa-wand-magic-sparkles text-[#FFD573] text-xs" />
+              <span>Consultar con Arimiña IA</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. Infraestructura de Soporte: Capacidades técnicas (Inmediatamente debajo del banner oscuro) */}
+      <div id="capacidades-tecnicas" className="pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="lg:col-span-4 space-y-3 text-left">
+            <div className="flex items-center gap-2">
+              <span className="w-8 h-[2px] bg-[#F0A800]" />
+              <span className="text-[10px] font-mono tracking-widest uppercase font-bold text-[#C8832B]">
+                INFRAESTRUCTURA DE SOPORTE
+              </span>
+            </div>
+            <h3 className="text-3xl sm:text-4xl font-light text-stone-900 tracking-tight">
+              Capacidades técnicas
+            </h3>
+            <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
+              Diferenciales operativos diseñados para garantizar la continuidad ininterrumpida de sus operaciones empresariales en el Oriente Venezolano.
+            </p>
+          </div>
+
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+            {/* Capacidad 1: 24/7 Respaldo Eléctrico */}
+            <div className="animate-float-1 bg-[#FEF9E7] p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-stone-800 text-lg shadow-xs">
+                <i className="fa-solid fa-bolt text-[#F0A800]" />
+              </div>
+              <div className="space-y-1.5">
+                <h4 className="text-base font-bold text-stone-900">24/7 Respaldo Eléctrico</h4>
+                <p className="text-xs text-stone-700 font-light leading-relaxed">
+                  Planta eléctrica de transferencia automática con 100% de cobertura en todas las instalaciones y suites, garantizando cero inactividad.
+                </p>
+              </div>
+            </div>
+
+            {/* Capacidad 2: Conectividad de Alta Velocidad */}
+            <div className="animate-float-2 bg-[#EBF5FB] p-8 rounded-pebble-reverse border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-[#2680BD] text-lg shadow-xs">
+                <i className="fa-solid fa-wifi text-[#2680BD]" />
+              </div>
+              <div className="space-y-1.5">
+                <h4 className="text-base font-bold text-stone-900">Conectividad de Alta Velocidad</h4>
+                <p className="text-xs text-stone-700 font-light leading-relaxed">
+                  Fibra óptica dedicada simétrica y cobertura Wi-Fi continua de estándar empresarial en habitaciones, salones y áreas comunes.
+                </p>
+              </div>
+            </div>
+
+            {/* Capacidad 3: Salones para Conferencias */}
+            <div className="animate-float-3 bg-[#FDF2E9] p-8 rounded-pebble border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-[#C7473B] text-lg shadow-xs">
+                <i className="fa-solid fa-users-rectangle text-[#C7473B]" />
+              </div>
+              <div className="space-y-1.5">
+                <h4 className="text-base font-bold text-stone-900">Salones para Conferencias</h4>
+                <p className="text-xs text-stone-700 font-light leading-relaxed">
+                  Salones climatizados y áreas de reuniones ejecutivas acondicionadas acústicamente para juntas directivas y eventos de trabajo.
+                </p>
+              </div>
+            </div>
+
+            {/* Capacidad 4: Centro de Negocios */}
+            <div className="animate-float-4 bg-[#FAF6F0] p-8 rounded-pebble-reverse border border-black/5 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-stone-800 text-lg shadow-xs">
+                <i className="fa-solid fa-briefcase text-stone-800" />
+              </div>
+              <div className="space-y-1.5">
+                <h4 className="text-base font-bold text-stone-900">Centro de Negocios</h4>
+                <p className="text-xs text-stone-700 font-light leading-relaxed">
+                  Espacios de trabajo dedicados, facturación fiscal empresarial y atención personalizada a todos sus requerimientos corporativos.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
