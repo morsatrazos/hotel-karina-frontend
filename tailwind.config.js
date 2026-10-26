@@ -5,13 +5,22 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './public/**/*.{html,js}',
     './*.html',
   ],
   theme: {
     extend: {
       colors: {
         karina: {
-          cream: '#FAF6F0',
+          cream: '#FFF6EA',
+          charcoal: '#343434',
+          'charcoal-dark': '#242424',
+          mustard: '#F0A800',
+          'mustard-light': '#FFD573',
+          blue: '#2680BD',
+          'blue-light': '#92CEF7',
+          terracotta: '#C7473B',
+          coral: '#EB8C84',
           white: '#FFFFFF',
           border: '#E8DFD3',
           dark: '#1C1917',
@@ -21,6 +30,7 @@ module.exports = {
         },
       },
       fontFamily: {
+        manrope: ['var(--font-manrope)', 'Manrope', 'sans-serif'],
         sans: ['var(--font-manrope)', 'Manrope', 'sans-serif'],
       },
     },

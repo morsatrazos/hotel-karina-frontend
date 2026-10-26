@@ -35,14 +35,14 @@ const DEFAULT_CORPORATE_PLANS: CorporatePlan[] = [
     image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
     description: 'Ideal para ejecutivos en tránsito recurrente y visitas comerciales que demandan confort, conectividad ininterrumpida y flexibilidad.',
     benefits: [
-      'Check-in / Check-out flexible sujeto a disponibilidad.',
-      'Facturación fiscal directa corporativa.',
+      'Check-in/out flexible sujeto a disponibilidad.',
+      'Tarifas blindadas anuales por volumen de pernocta.',
+      'Facturación fiscal directa empresarial.',
       'Desayuno ejecutivo y conectividad de alta velocidad.',
-      'Tarifas blindadas según volumen mensual o anual.',
       'Planta eléctrica continua 24/7 y acceso a business lounge.',
       'Atención ejecutiva prioritaria en recepción y reservas.'
     ],
-    whatsappText: 'Hola, quisiera solicitar una cotización para el Convenio Corporativo Estándar en Hotel Kariña.'
+    whatsappText: 'Hola, quisiera solicitar una cotización para convenio corporativo en Hotel Kariña.'
   },
   {
     id: 'plan-larga-estadia',
@@ -56,14 +56,14 @@ const DEFAULT_CORPORATE_PLANS: CorporatePlan[] = [
     image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
     description: 'Solución optimizada para líderes de proyectos, auditores, ingenieros y personal en asignaciones prolongadas con máxima comodidad.',
     benefits: [
-      'Check-in / Check-out flexible sujeto a disponibilidad.',
-      'Facturación fiscal directa corporativa.',
+      'Check-in/out flexible sujeto a disponibilidad.',
+      'Tarifas blindadas anuales por volumen de pernocta.',
+      'Facturación fiscal directa empresarial.',
       'Desayuno ejecutivo y conectividad de alta velocidad.',
-      'Tarifas blindadas según volumen mensual o anual.',
       'Kitchenette equipada, nevera ejecutiva y microondas.',
       'Servicio de mantenimiento de lencería y room service adaptado a turnos.'
     ],
-    whatsappText: 'Hola, quisiera solicitar una cotización para el Plan Larga Estadía en Hotel Kariña.'
+    whatsappText: 'Hola, quisiera solicitar una cotización para convenio corporativo en Hotel Kariña.'
   },
   {
     id: 'tarifa-eventos-conferencias',
@@ -76,27 +76,25 @@ const DEFAULT_CORPORATE_PLANS: CorporatePlan[] = [
     image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Salon-Maturin.webp',
     description: 'Infraestructura integral para conferencias, juntas directivas, asambleas de accionistas y bloqueo exclusivo de habitaciones para delegaciones.',
     benefits: [
-      'Check-in / Check-out flexible sujeto a disponibilidad.',
-      'Facturación fiscal directa corporativa.',
+      'Check-in/out flexible sujeto a disponibilidad.',
+      'Tarifas blindadas anuales por volumen de pernocta.',
+      'Facturación fiscal directa empresarial.',
       'Desayuno ejecutivo y conectividad de alta velocidad.',
-      'Tarifas blindadas según volumen mensual o anual.',
       'Salones climatizados con aislamiento acústico y soporte audiovisual.',
       'Servicio de banquetes, coffee break y bloque de habitaciones unificado.'
     ],
-    whatsappText: 'Hola, quisiera solicitar una cotización para la Tarifa Eventos & Conferencias en Hotel Kariña.'
+    whatsappText: 'Hola, quisiera solicitar una cotización para convenio corporativo en Hotel Kariña.'
   }
 ];
 
 export function CorporateRatesSection({
   whatsappNumber = '584249169610',
   title = 'Tarifas Corporativas y Convenios Empresariales',
-  subtitle = 'Planes B2B diseñados para responder a la dinámica operacional de su empresa en Monagas y el Oriente de Venezuela. Tarifas blindadas según volumen, facturación fiscal directa y atención ejecutiva preferencial.',
+  subtitle = 'Planes B2B diseñados para responder a la dinámica operacional de su empresa en Monagas y el Oriente de Venezuela. Tarifas blindadas anuales por volumen de pernocta, facturación fiscal directa empresarial y atención ejecutiva preferencial.',
   customPlans = DEFAULT_CORPORATE_PLANS,
   className = '',
 }: CorporateRatesSectionProps) {
-  const generalSupportWaUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    'Hola, quisiera evaluar un convenio corporativo anual a la medida en Hotel Kariña.'
-  )}`;
+  const generalSupportWaUrl = `https://wa.me/${whatsappNumber}?text=Hola%2C%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20para%20convenio%20corporativo%20en%20Hotel%20Kari%C3%B1a.`;
 
   return (
     <section id="planes-corporativos" className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-12 ${className}`}>
@@ -263,7 +261,7 @@ export function CorporateRatesSection({
               <svg className="w-4 h-4 fill-current text-white" viewBox="0 0 24 24">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.941-.708-1.792s.448-1.272.607-1.446c.159-.175.346-.219.462-.219s.232.002.333.007c.106.005.249-.04.39.299.144.35.491 1.196.534 1.284.043.088.072.19.014.305-.058.115-.087.19-.173.289l-.26.302c-.087.086-.18.18-.077.356.101.175.452.746.97 1.207.669.596 1.233.78 1.408.868.175.088.277.073.379-.044.102-.117.434-.506.55-.681.116-.175.232-.146.39-.088s1.011.477 1.185.564c.174.087.29.13.333.204.043.073.043.424-.101.829zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.981-1.307A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
               </svg>
-              <span>Hablar con un Asesor Corporativo</span>
+              <span>Solicitar Cotización</span>
             </a>
           </div>
         </div>

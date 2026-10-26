@@ -1,19 +1,13 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Manrope } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 
-const manrope = Manrope({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-manrope',
-  display: 'swap',
-});
-
 export const metadata: Metadata = {
-  title: 'Nuestras raíces, nuestra presencia | Hoteles Kariña',
-  description: 'Fase de transformación y reapertura oficial. ¡Oriente es territorio Kariña!',
+  title: 'Hotel Kariña ★★★★ | Experiencia 4 Estrellas',
+  description:
+    'Una estadía que te abraza. Confort ejecutivo, hospitalidad 4 estrellas, piscinas resort, Master Pádel y alta gastronomía en Maturín, El Tigre y Punta de Mata. ¡Oriente es territorio Kariña!',
   icons: {
     icon: '/favicon.ico',
   },
@@ -25,9 +19,23 @@ export default function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="es" className={`${manrope.variable} font-sans scroll-smooth`}>
-      <body className="bg-[#FAF6F0] text-stone-900 antialiased selection:bg-[#C8832B] selection:text-white">
+    <html lang="es" className="font-manrope scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+      </head>
+      <body className="bg-karina-charcoal text-karina-charcoal font-manrope antialiased selection:bg-karina-mustard selection:text-karina-charcoal">
         {children}
+        <Script src="/assets/js/main.js" strategy="afterInteractive" />
       </body>
     </html>
   );

@@ -1,15 +1,4 @@
 // ==========================================
-// GUARDIA TEMPORAL DE RUTAS (FASE DE EXPECTATIVA)
-// ==========================================
-if (typeof window !== 'undefined' && window.location) {
-  const currentPath = window.location.pathname;
-  const isTeaser = currentPath === '/' || currentPath === '/index.html' || currentPath === '' || currentPath.endsWith('/index.html');
-  if (!isTeaser && !window.location.search.includes('preview=true')) {
-    window.location.replace('/');
-  }
-}
-
-// ==========================================
 // CONFIGURACIÓN CENTRALIZADA GRUPO KARIÑA
 // ==========================================
 window.KARINA_CONFIG = {
@@ -51,7 +40,9 @@ window.KARINA_CONFIG = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+function initKarinaSite() {
+  if (window.__karinaSiteInitialized) return;
+  window.__karinaSiteInitialized = true;
 
   // Sincronizar dinámicamente enlaces de email con clase .karina-email-link
   document.querySelectorAll('.karina-email-link').forEach(link => {
@@ -1899,14 +1890,14 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Estandar-El-Tigre/Suite-Estandar-Principal-El-Tigre.webp',
       description: 'Ideal para ejecutivos en tránsito recurrente y visitas comerciales que demandan confort, conectividad ininterrumpida y flexibilidad.',
       benefits: [
-        'Check-in / Check-out flexible sujeto a disponibilidad.',
-        'Facturación fiscal directa corporativa.',
+        'Check-in/out flexible sujeto a disponibilidad.',
+        'Tarifas blindadas anuales por volumen de pernocta.',
+        'Facturación fiscal directa empresarial.',
         'Desayuno ejecutivo y conectividad de alta velocidad.',
-        'Tarifas blindadas según volumen mensual o anual.',
         'Planta eléctrica continua 24/7 y acceso a business lounge.',
         'Atención ejecutiva prioritaria en recepción y reservas.'
       ],
-      whatsappSubject: 'el Convenio Corporativo Estándar'
+      whatsappSubject: 'convenio corporativo'
     },
     {
       id: 'plan-larga-estadia',
@@ -1921,14 +1912,14 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Suite-Premium-Maturin/Suite-Doble-Premium-main2.webp',
       description: 'Solución optimizada para líderes de proyectos, auditores, ingenieros y personal en asignaciones prolongadas con máxima comodidad.',
       benefits: [
-        'Check-in / Check-out flexible sujeto a disponibilidad.',
-        'Facturación fiscal directa corporativa.',
+        'Check-in/out flexible sujeto a disponibilidad.',
+        'Tarifas blindadas anuales por volumen de pernocta.',
+        'Facturación fiscal directa empresarial.',
         'Desayuno ejecutivo y conectividad de alta velocidad.',
-        'Tarifas blindadas según volumen mensual o anual.',
         'Kitchenette equipada, nevera ejecutiva y microondas.',
         'Servicio de mantenimiento de lencería y room service adaptado a turnos.'
       ],
-      whatsappSubject: 'el Plan Larga Estadía'
+      whatsappSubject: 'convenio corporativo'
     },
     {
       id: 'tarifa-eventos-conferencias',
@@ -1942,14 +1933,14 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'https://sdwxibeicptfevccvjmt.supabase.co/storage/v1/object/public/Assets/Bondade-Maturin/Salon-Maturin.webp',
       description: 'Infraestructura integral para conferencias, juntas directivas, asambleas de accionistas y bloqueo exclusivo de habitaciones para delegaciones.',
       benefits: [
-        'Check-in / Check-out flexible sujeto a disponibilidad.',
-        'Facturación fiscal directa corporativa.',
+        'Check-in/out flexible sujeto a disponibilidad.',
+        'Tarifas blindadas anuales por volumen de pernocta.',
+        'Facturación fiscal directa empresarial.',
         'Desayuno ejecutivo y conectividad de alta velocidad.',
-        'Tarifas blindadas según volumen mensual o anual.',
         'Salones climatizados con aislamiento acústico y soporte audiovisual.',
         'Servicio de banquetes, coffee break y bloque de habitaciones unificado.'
       ],
-      whatsappSubject: 'la Tarifa Eventos & Conferencias'
+      whatsappSubject: 'convenio corporativo'
     }
   ];
 
@@ -2053,8 +2044,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
 
     if (footerNote) {
-      const waGeneralText = encodeURIComponent('Hola, quisiera evaluar un convenio corporativo anual a la medida en Hotel Kariña.');
-      const waGeneralLink = `https://wa.me/${WHATSAPP_CORPORATIVO_NUMERO}?text=${waGeneralText}`;
+      const waGeneralLink = `https://wa.me/${WHATSAPP_CORPORATIVO_NUMERO}?text=Hola%2C%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20para%20convenio%20corporativo%20en%20Hotel%20Kari%C3%B1a.`;
 
       footerNote.innerHTML = `
         <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#2D2A26] via-[#221F1D] to-[#1A1816] text-white border border-[#F0A800]/30 shadow-xl space-y-4">
@@ -2068,7 +2058,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a href="${waGeneralLink}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#F0A800] hover:bg-[#FFD573] text-[#242424] text-xs font-extrabold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
               <i class="fa-brands fa-whatsapp text-sm text-[#242424]"></i>
-              <span>Hablar con un Asesor Corporativo</span>
+              <span>Solicitar Cotización</span>
             </a>
             <button onclick="if(typeof openAriminaChat === 'function') openAriminaChat('Hola, deseo evaluar un convenio corporativo anual a la medida para mi empresa.')" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-md transition-all flex items-center justify-center gap-2 cursor-pointer">
               <i class="fa-solid fa-wand-magic-sparkles text-[#FFD573] text-xs"></i>
@@ -2905,7 +2895,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initKarinaSite);
+} else {
+  initKarinaSite();
+}
+window.initKarinaSite = initKarinaSite;
 
 // ===================================================
 // 15. CONTROLADORES: AUTENTICACIÓN Y DASHBOARD DEL HUÉSPED
