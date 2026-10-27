@@ -334,26 +334,26 @@ function initKarinaSite() {
     }
 
     // Botón de acción Sede / Catálogo Suites
-    const exploreBtn = document.getElementById('modal-explore-sede-link') || document.querySelector('#sede-modal a[href="#suites"], #sede-modal a[href="el-tigre.html"], #sede-modal a[href="maturin.html"], #sede-modal a[href="punta-de-mata.html"]');
+    const exploreBtn = document.getElementById('modal-explore-sede-link') || document.querySelector('#sede-modal a[href="#suites"], #sede-modal a[href="/el-tigre.html"], #sede-modal a[href="/maturin.html"], #sede-modal a[href="/punta-de-mata.html"]');
     const exploreText = document.getElementById('modal-explore-sede-text');
     if (exploreBtn) {
       exploreBtn.removeAttribute('onclick');
       if (index === 0) {
-        exploreBtn.href = "maturin.html";
+        exploreBtn.href = "/maturin.html";
         if (exploreText) {
           exploreText.innerHTML = `Explorar Sede Maturín <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
         } else {
           exploreBtn.innerHTML = `<span>Explorar Sede Maturín</span> <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
         }
       } else if (index === 1) {
-        exploreBtn.href = "punta-de-mata.html";
+        exploreBtn.href = "/punta-de-mata.html";
         if (exploreText) {
           exploreText.innerHTML = `Explorar Sede Punta de Mata <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
         } else {
           exploreBtn.innerHTML = `<span>Explorar Sede Punta de Mata</span> <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
         }
       } else if (index === 2) {
-        exploreBtn.href = "el-tigre.html";
+        exploreBtn.href = "/el-tigre.html";
         if (exploreText) {
           exploreText.innerHTML = `Explorar Sede El Tigre <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>`;
         } else {
@@ -2925,11 +2925,11 @@ function switchAuthMode(mode) {
 // 2. Enviar formulario con bypass directo a Home (Módulo usuario temporalmente inactivo)
 function handleAuthSubmit(event) {
   if (event) event.preventDefault();
-  window.location.replace('index.html');
+  window.location.replace('/');
 }
 
 function bypassToDashboard(socialName) {
-  window.location.replace('index.html');
+  window.location.replace('/');
 }
 
 // 3. Inicialización del Dashboard

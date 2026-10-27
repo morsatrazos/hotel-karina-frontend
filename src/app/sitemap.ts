@@ -10,19 +10,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/sedes/maturin`,
+      url: `${baseUrl}/maturin`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/sedes/punta-de-mata`,
+      url: `${baseUrl}/punta-de-mata`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/sedes/el-tigre`,
+      url: `${baseUrl}/el-tigre`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
