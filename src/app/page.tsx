@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 import { TeaserVideoPlayer } from '@/components/teaser/TeaserVideoPlayer';
 import { InstagramCta } from '@/components/teaser/InstagramCta';
 import { CorporateRatesSection } from '@/components/corporate/CorporateRatesSection';
@@ -102,8 +103,8 @@ export default function HomePage() {
 
                 <div className="space-y-1">
                   {/* Opción 1: Maturín */}
-                  <a
-                    href="/maturin.html"
+                  <Link
+                    href="/sedes/maturin"
                     className="dropdown-item-row flex items-center gap-3.5 p-2 rounded-2xl hover:bg-[#E8DFC8]/30 transition-all group/item"
                   >
                     <img
@@ -120,11 +121,11 @@ export default function HomePage() {
                       </p>
                     </div>
                     <i className="fa-solid fa-chevron-right text-[10px] text-[#726B63]/40 group-hover/item:text-[#1E1E1E] group-hover/item:translate-x-0.5 transition-all pr-1" />
-                  </a>
+                  </Link>
 
                   {/* Opción 2: Punta de Mata */}
-                  <a
-                    href="/punta-de-mata.html"
+                  <Link
+                    href="/sedes/punta-de-mata"
                     className="dropdown-item-row flex items-center gap-3.5 p-2 rounded-2xl hover:bg-[#E8DFC8]/30 transition-all group/item"
                   >
                     <img
@@ -141,11 +142,11 @@ export default function HomePage() {
                       </p>
                     </div>
                     <i className="fa-solid fa-chevron-right text-[10px] text-[#726B63]/40 group-hover/item:text-[#1E1E1E] group-hover/item:translate-x-0.5 transition-all pr-1" />
-                  </a>
+                  </Link>
 
                   {/* Opción 3: El Tigre */}
-                  <a
-                    href="/el-tigre.html"
+                  <Link
+                    href="/sedes/el-tigre"
                     className="dropdown-item-row flex items-center gap-3.5 p-2 rounded-2xl hover:bg-[#E8DFC8]/30 transition-all group/item"
                   >
                     <img
@@ -162,7 +163,7 @@ export default function HomePage() {
                       </p>
                     </div>
                     <i className="fa-solid fa-chevron-right text-[10px] text-[#726B63]/40 group-hover/item:text-[#1E1E1E] group-hover/item:translate-x-0.5 transition-all pr-1" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -351,15 +352,15 @@ export default function HomePage() {
               />
             </button>
             <div id="sedes-sub-menu" className="hidden pl-10 pt-3 space-y-2 text-sm text-white/60">
-              <a href="/maturin.html" className="block hover:text-karina-mustard transition-colors">
+              <Link href="/sedes/maturin" className="block hover:text-karina-mustard transition-colors">
                 Maturín (Resort y Salón de Eventos)
-              </a>
-              <a href="/punta-de-mata.html" className="block hover:text-karina-mustard transition-colors">
+              </Link>
+              <Link href="/sedes/punta-de-mata" className="block hover:text-karina-mustard transition-colors">
                 Punta de Mata (Hub Ejecutivo)
-              </a>
-              <a href="/el-tigre.html" className="block hover:text-karina-mustard transition-colors">
+              </Link>
+              <Link href="/sedes/el-tigre" className="block hover:text-karina-mustard transition-colors">
                 El Tigre (Negocios y Eventos)
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -1325,19 +1326,19 @@ export default function HomePage() {
             </span>
             <ul className="space-y-2 text-xs text-white/75 font-normal">
               <li>
-                <a href="/maturin.html" className="hover:text-white transition-colors">
-                  Hotel Kariña Maturín
-                </a>
+                <Link href="/sedes/maturin" className="hover:text-white transition-colors">
+                  Hotel en Maturín
+                </Link>
               </li>
               <li>
-                <a href="/punta-de-mata.html" className="hover:text-white transition-colors">
-                  Hotel Kariña Punta de Mata
-                </a>
+                <Link href="/sedes/punta-de-mata" className="hover:text-white transition-colors">
+                  Hotel en Punta de Mata
+                </Link>
               </li>
               <li>
-                <a href="/el-tigre.html" className="hover:text-white transition-colors">
-                  Hotel Kariña El Tigre
-                </a>
+                <Link href="/sedes/el-tigre" className="hover:text-white transition-colors">
+                  Hotel en El Tigre
+                </Link>
               </li>
               <li>
                 <a href="/suites.html" className="hover:text-white transition-colors">

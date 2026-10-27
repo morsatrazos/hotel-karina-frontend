@@ -5,9 +5,19 @@ import Script from 'next/script';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Hotel Kariña ★★★★ | Experiencia 4 Estrellas',
-  description:
-    'Una estadía que te abraza. Confort ejecutivo, hospitalidad 4 estrellas, piscinas resort, Master Pádel y alta gastronomía en Maturín, El Tigre y Punta de Mata. ¡Oriente es territorio Kariña!',
+  title: 'Hotel Kariña | Cadena Hotelera en Maturín, Punta de Mata y El Tigre',
+  description: 'Descubre Hotel Kariña en Monagas y Anzoátegui. Suites ejecutivas con respaldo eléctrico 24/7, fibra óptica, gastronomía y planes corporativos.',
+  alternates: {
+    canonical: 'https://www.hoteleskariña.com',
+  },
+  openGraph: {
+    title: 'Hotel Kariña | Hospitalidad y Confort Ejecutivo en Oriente',
+    description: 'Alojamiento corporativo y turístico en Maturín, Punta de Mata y El Tigre con respaldo eléctrico 24/7 y conectividad de alta velocidad.',
+    url: 'https://www.hoteleskariña.com',
+    siteName: 'Hotel Kariña',
+    locale: 'es_VE',
+    type: 'website',
+  },
   icons: {
     icon: '/favicon.ico',
   },
